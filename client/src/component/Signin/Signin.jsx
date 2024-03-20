@@ -39,19 +39,23 @@ export default function SignIn() {
                     <div className='singup_way'>
                         <p>Don't have a account, <a href='#'>Sign up</a></p>
                     </div>
+
                     <div className='email'>
+
                         <div className='email_label'>
                             <label htmlFor='username'>Username</label>
                         </div>
+                        
                         <div>
                             <input
                                 className='email_input'
-                                placeholder='    hello@paruluniversity.ac.in'
+                                placeholder='hello@paruluniversity.ac.in'
                                 type='text'
                                 id='username'
                                 name='Email'
                                 value={SigninData.Email}
                                 onChange={handleSignin}
+                                spellCheck={false}
                             />
                         </div>
                     </div>

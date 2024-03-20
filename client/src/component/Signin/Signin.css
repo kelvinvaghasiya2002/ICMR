@@ -45,6 +45,11 @@
     margin-bottom: 15px;
 }
 
+.email  input::placeholder {
+    opacity: 0.2;
+    color: blue;
+}
+
 .password_label{
     margin-bottom: 3%;
 }
@@ -88,8 +93,9 @@
     border-radius: 40px;
     width: 350px;
     height: 40px;
-    background-color: blue;
+    background-color: #3177FF;
     color: white;
+    border: none;
 }
 
 .footer_con{
@@ -103,23 +109,20 @@
     justify-content: space-evenly;
 }
 
-.webimg{
-    /* height: 50px;
-    width: 50px; */
-}
-
 .webimg img{
     aspect-ratio: 3 / 2;
     width: 60px;
 }
 .signin_img{
     width: 50%;
+    text-align: center;
     /* background-color: black; */
 }
 
-.signin_img{
+/* .signin_img{
     text-align: center;
-}
+} */
+
 .signin_img div img{
     width: 500px;
     height: 500px;
