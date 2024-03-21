@@ -1,0 +1,20 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1%;
+    padding-right: 2%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.ICMRIcon img{
+    width: 150px;
+    aspect-ratio: 3 / 2;
+}
+.ICMRLogo img{
+    width: 200px;
+    aspect-ratio: 3 / 1.32;
+}
+.PUIcon img{
+    width: 300px;
+    aspect-ratio: 3 / 0.58;
+}
