@@ -1,0 +1,80 @@
+.contactus_first_page {
+    display: flex;
+    width: 94%;
+    margin: 3% 3% 5% 3%;
+    /* background-color: antiquewhite; */
+}
+
+.contactus_img{
+    text-align: center;
+    padding-top: 65px;
+    padding-bottom: 65px;
+    width: 50%;
+}
+
+.contactus_img img{
+    width: 400px;
+    aspect-ratio: 3 / 2.9;
+}
+
+.contactus_content{
+    width: 50%;
+    /* border: 5px solid black; */
+}
+
+.con_title h6{
+    margin: 0;
+    font-weight: bold;
+}
+
+.con_querise{
+    margin-top: 20px;
+}
+
+.con_querise h2{
+    margin: 0;
+}
+
+.contextus_form{
+    margin-top: 20px;
+    /* background-color: antiquewhite; */
+    width: 350px;
+}
+
+.contextus_form input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    width: 343px;
+    height: 30px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+textarea{
+    width: 343px;
+    resize: none;
+    text-indent: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /* padding-left: 1em; */
+}
+
+.con_button button{
+    width: 350px;
+    background-color: #3B71FE;
+    color: white;
+    height: 40px;
+    border-radius: 4px;
+}
+
+
+
+ /* contactus second page css starting from here */
