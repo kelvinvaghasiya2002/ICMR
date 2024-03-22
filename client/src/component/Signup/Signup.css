@@ -1,7 +1,7 @@
 .signup_main{
     width: 100%;
     display: flex;
-    margin-top: 20px;
+    margin-top: 16px;
 }  
 
 .signup_con{
@@ -14,7 +14,7 @@
     padding: 10px;
     /* background-color: antiquewhite; */
     margin: auto;
-    width:280px
+    width:350px
 }
 
 .signuptitle h4{
@@ -78,7 +78,7 @@
 
 .singup_input{
     border-radius: 40px;
-    width: 272px;
+    width: 343px;
     height: 37px;
 }
 
@@ -106,7 +106,7 @@
 }
 .signup_button button{
     border-radius: 40px;
-    width: 280px;
+    width: 350px;
     height: 40px;
     background-color: #3177FF;
     color: white;
@@ -128,11 +128,17 @@
 
 .signup_img{
     width: 50%;
-    /* background-color: black; */
+    text-align: center;
+    margin-top: 140px;
+    margin-bottom: 32px;
+}
+
+.signup_img div{
     text-align: center;
 }
 
 .signup_img div img{
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 350px;
+    aspect-ratio: 3 / 2.7;
 }

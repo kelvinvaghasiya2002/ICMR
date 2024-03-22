@@ -1,0 +1,9 @@
+.main_info{
+    width: 35%;
+    margin-top: 70px;
+    margin-left: 2.5%;
+}
+
+.main_info div h3{
+    line-height: 1.6rem;
+}

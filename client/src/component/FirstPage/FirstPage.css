@@ -1,14 +1,15 @@
 .fpage_main{
-    margin-top: 2%;
-    width: 100%;
+    margin-top: 3%;
+    width: 95%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
 }
 
 .fpage_navbar{
     display: flex;
-    height: 50px;
+    height: 40px;
     align-items: center;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
+    /* background-color: antiquewhite; */
 }
 
 .fpage_navbar h1{
@@ -17,45 +18,75 @@
 
 .in_Up{
     display: flex;
-    gap: 15px;
+    gap: 20px;
     flex-wrap: wrap;
-    margin-top: 5%;
     justify-content: center;
+    margin-left: auto;
 }
 
 .in_Up button{
-    width: 170px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: black;
-}
-
-/* .con div {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 5%;
-    justify-content: center;
-}
-
-.con button{
-    width: 170px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: black;
-} */
-/* .up{
-    background-color: black;
+    width: 100px;
+    height: 40px;
     color: white;
-    height: 100%;
+    background-color: black;
+    border-radius: 20px ;
 }
 
-.in button{
-    background-color: blue;
-    color: white;
-    height: 20px;
-} */
+.in_Up a button:hover{
+    background-color: #3177FF;
+}
 
 a{
     text-decoration: none;
+}
+
+.morepage{
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    /* background-color: blanchedalmond; */
+}
+
+.morepage button{
+    border-radius: 25PX;
+    height: 45PX;
+    width: 150PX;
+    background-color: #D4D4D4;
+    color: #000000;
+}
+
+.morepage button:hover{
+    background: #3177FF;
+    color: white;
+}
+
+.morepage div button{
+    width: 120px;
+}
+
+.fpage_content{
+    width: 100%;
+    margin-top: 8%;
+    text-align: center;
+    /* background-color: #3177FF; */
+}
+
+.fpage_study{
+    text-align: center;
+    /* background-color: blanchedalmond; */
+    margin-top: 5%;
+}
+
+.fpage_footer{
+    margin-top: 5%;
+    text-align: center;
+    /* background-color: #3177FF; */
+}
+
+h5{
+    margin: 0;
+    margin-bottom: 5px !important;
 }
