@@ -1,0 +1,61 @@
+.fpage_main{
+    margin-top: 2%;
+    width: 100%;
+}
+
+.fpage_navbar{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.fpage_navbar h1{
+    margin: 0px;
+}
+
+.in_Up{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    justify-content: center;
+}
+
+.in_Up button{
+    width: 170px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: black;
+}
+
+/* .con div {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    justify-content: center;
+}
+
+.con button{
+    width: 170px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: black;
+} */
+/* .up{
+    background-color: black;
+    color: white;
+    height: 100%;
+}
+
+.in button{
+    background-color: blue;
+    color: white;
+    height: 20px;
+} */
+
+a{
+    text-decoration: none;
+}
