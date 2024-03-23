@@ -10,13 +10,8 @@ export default function FirstPage() {
                     <h1>Welcome</h1>
                 </div>
                 <div className='in_Up'>
-<<<<<<< HEAD
                     <button><Link to="/sign-up">Sign Up</Link></button>
                     <button><a href='#'>Sign In</a></button>
-=======
-                    <a href='#'><button>Sign Up</button></a>
-                    <a href='#'><button>Sign In</button></a>
->>>>>>> 8a92eff0800f8f12d62a5252dc996a0609b68912
                 </div>
             </div>
             <div className='morepage'>

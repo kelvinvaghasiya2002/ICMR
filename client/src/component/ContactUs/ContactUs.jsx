@@ -5,7 +5,7 @@ export default function ContactUs(){
     return (
         <div>
             <Queries />
-            <Questions />
+            {/* <Questions /> */}
         </div>
     )
 }
