@@ -1,0 +1,10 @@
+.map_main{
+    margin: 1% 11% 0 5%;
+    width: 84%;
+    text-align: center;
+}
+
+.map_main img {
+    width: 890px;
+    aspect-ratio: 3 / 1.98;
+}
