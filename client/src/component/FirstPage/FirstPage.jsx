@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './FirstPage.css'
 
 export default function FirstPage() {
@@ -8,7 +9,7 @@ export default function FirstPage() {
                     <h1>Welcome</h1>
                 </div>
                 <div className='in_Up'>
-                    <button><a href='#'>Sign Up</a></button>
+                    <button><Link to="/sign-up">Sign Up</Link></button>
                     <button><a href='#'>Sign In</a></button>
                 </div>
             </div>
