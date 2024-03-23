@@ -3,7 +3,7 @@ import './Signin.css'
 import GoogleImg from '../../assets/Google_Icon.png'
 import FaceBookImg from '../../assets/FaceBook_Icon.png'
 import AppleImg from '../../assets/Apple_Icon.png'
-import SignInImg from '../../assets/SignUp_Img.png'
+import SignIn_Img from '../../assets/SignIn_Img.png'
 
 export default function SignIn() {
 
@@ -109,7 +109,7 @@ export default function SignIn() {
             </div>
             <div className='signin_img'>
                 <div>
-                    <img src={SignInImg} alt="SignInImg" />
+                    <img src={SignIn_Img} alt="SignInImg" />
                 </div>
             </div>
         </div>
