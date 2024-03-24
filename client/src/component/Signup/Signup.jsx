@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import './Signup.css';
-import GoogleImg from '../../assets/Google_Icon.png';
-import FaceBookImg from '../../assets/FaceBook_Icon.png';
-import AppleImg from '../../assets/Apple_Icon.png';
+// import GoogleImg from '../../assets/Google_Icon.png';
+// import FaceBookImg from '../../assets/FaceBook_Icon.png';
+// import AppleImg from '../../assets/Apple_Icon.png';
 import SignUpImg from '../../assets/SignUp_Img.png';
+import Google from './Google';
+import Facebook from './Facebook';
+import Apple from './Apple';
+
+
+
+
+
 
 export default function SignUp() {
 
@@ -40,15 +48,9 @@ export default function SignUp() {
                         <h4>Sign Up</h4>
                     </div>
                     <div className='webimgsignup_con'>
-                        <div>
-                            <img src={GoogleImg} alt="Google" />
-                        </div>
-                        <div>
-                            <img src={FaceBookImg} alt="FaceBook" />
-                        </div>
-                        <div>
-                            <img src={AppleImg} alt="Apple" />
-                        </div>
+                        <Google />
+                        <Facebook />
+                        <Apple />
                     </div>
                     <div>
                         <hr />

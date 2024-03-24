@@ -14,8 +14,8 @@ function App() {
     <Navbar/>
     {/* <SignIn/> */}
     {/* <SignUp/> */}
-    <ContactUs/>
-    {/* <FirstPage/> */}
+    {/* <ContactUs/> */}
+    <FirstPage/>
     
     </>
   )

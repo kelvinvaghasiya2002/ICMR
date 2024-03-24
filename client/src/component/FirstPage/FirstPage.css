@@ -27,9 +27,13 @@
 .in_Up button{
     width: 100px;
     height: 40px;
-    color: white;
-    background-color: black;
+    color: white !important;
+    background-color: #3177FF;
     border-radius: 20px ;
+}
+
+.in_Up button a{
+    text-decoration: none;
 }
 
 .in_Up a button:hover{
