@@ -122,7 +122,7 @@ export default function SignUp() {
                         </div>
                     </div>
                     <div className='signup_button' onClick={SubmitsignupData}>
-                        <button>Sign In</button>
+                        <button>Sign Up</button>
                     </div>
                     <div>
                         <hr />

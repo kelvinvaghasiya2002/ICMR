@@ -1,26 +1,45 @@
 import express from "express"; 
 import mongoose from "mongoose";
 import 'dotenv/config'
-
+import cors from "cors"
+import session from "express-session";
+import passport from "passport";
+import router from "./AuthRouters/auth.js";
+import "./AuthRouters/passport.js"
 const mongoURL = process.env.MONGO_URL;
+const client = process.env.CLIENT_URL
 
-mongoose.connect("mongodb+srv://kelvin123:Kelvin123@cluster0.yntrczs.mongodb.net/icmrDB?retryWrites=true&w=majority&appName=Cluster0").then(()=>{
+mongoose.connect(mongoURL).then(()=>{
     console.log("Database connected...");
 }).catch((err)=>{
     console.log(err);
 })
 
-
 const app = express();
 
-app.get("/",(req,res)=>{
-    res.json({
-        mongoURL
-    })
-})
+app.use(session({
+    secret : process.env.SESSION_SECRET,
+    resave : false,
+    saveUninitialized : true,
+    cookie : {
+        maxAge : 1000*60
+    }
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
+app.use(cors(
+    {
+        origin : [   `${client}`   ,   `${client}/sign-up`   ,   `${client}/sign-in`],
+        methods : "GET,POST,PUT,DELETE",
+        credentials : true
+    }
+))
 
+
+app.use(router)
 
 
 app.listen(3000,()=>{
