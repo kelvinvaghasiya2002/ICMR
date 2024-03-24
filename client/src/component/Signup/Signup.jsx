@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import './Signup.css';
-// import GoogleImg from '../../assets/Google_Icon.png';
-// import FaceBookImg from '../../assets/FaceBook_Icon.png';
-// import AppleImg from '../../assets/Apple_Icon.png';
 import SignUpImg from '../../assets/SignUp_Img.png';
 import Google from './Google';
 import Facebook from './Facebook';
 import Apple from './Apple';
-
+import axios from 'axios';
+const url = "http://localhost:3000"
 
 
 
 
 
 export default function SignUp() {
-
+    const [getOTP, setgetOTP] = useState(false);
+    const [verifyOTP, setverifyOTP] = useState(false);
     let [SignupData, setSignupData] = useState({
-        Name:"",
+        Name: "",
         Username: "",
         Password: "",
     })
@@ -34,10 +33,23 @@ export default function SignUp() {
         console.log(SignupData)
         Event.preventDefault();
         setSignupData({
-            Name:"",
+            Name: "",
             Username: "",
             Password: "",
         })
+    })
+
+    const handleGetOTP = (async (event) => {
+        event.preventDefault();
+        if (!getOTP) {
+            try {
+                const response = await axios.get(`${url}/getotp`);
+                console.log(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+            setgetOTP(true);
+        }
     })
 
     return (
@@ -75,12 +87,11 @@ export default function SignUp() {
                             </div>
                             <div className='signup_D'>
                                 <div className='singup_label'>
-                                    <label htmlFor='username'>UserName</label>
+                                    <label htmlFor='username'>Email</label>
                                 </div>
                                 <div>
                                     <input
                                         className='singup_input'
-                                        placeholder='hello@paruluniversity.ac.in'
                                         type='email'
                                         id='username'
                                         name='Username'
@@ -90,7 +101,18 @@ export default function SignUp() {
                                     />
                                 </div>
                             </div>
-                            <div className='signup_D'>
+
+                            <div style={{
+                                marginTop: "40px",
+                            }} className='signup_button'>
+                                <button onClick={handleGetOTP} style={{ cursor: "pointer" }}>Get OTP</button>
+                            </div>
+
+
+
+
+
+                            {/* <div className='signup_D'>
                                 <div className='singup_label'>
                                     <label htmlFor='password'>Password</label>
                                 </div>
@@ -104,12 +126,11 @@ export default function SignUp() {
                                         onChange={handleSignup}
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                         </form>
                     </div>
-                    <div>
+                    {/* <div>
                         <hr />
-                        {/* <span> OR </span> */}
                     </div>
                     <div className='condition_con'>
                         <div>
@@ -123,7 +144,7 @@ export default function SignUp() {
                     </div>
                     <div className='signup_button' onClick={SubmitsignupData}>
                         <button>Sign Up</button>
-                    </div>
+                    </div> */}
                     <div>
                         <hr />
                     </div>

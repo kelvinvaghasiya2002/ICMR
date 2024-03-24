@@ -6,6 +6,7 @@ import session from "express-session";
 import passport from "passport";
 import router from "./AuthRouters/auth.js";
 import "./AuthRouters/passport.js"
+import sendEmail from "./controllers/sendEmail.js";
 const mongoURL = process.env.MONGO_URL;
 const client = process.env.CLIENT_URL
 
@@ -38,9 +39,12 @@ app.use(cors(
     }
 ))
 
-
 app.use(router)
 
+
+app.get("/getotp",(req,res)=>{
+    sendEmail();
+})
 
 app.listen(3000,()=>{
     console.log("server is running on port 3000");
