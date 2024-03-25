@@ -42,6 +42,7 @@ export default function SignUp() {
     const handleGetOTP = (async (event) => {
         event.preventDefault();
         if (!getOTP) {
+            console.log("clicked");
             try {
                 const response = await axios.get(`${url}/getotp`);
                 console.log(response.data);

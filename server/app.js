@@ -5,8 +5,8 @@ import cors from "cors"
 import session from "express-session";
 import passport from "passport";
 import router from "./AuthRouters/auth.js";
+import emailRouter from "./Routers/sendEmail.js";
 import "./AuthRouters/passport.js"
-import sendEmail from "./controllers/sendEmail.js";
 const mongoURL = process.env.MONGO_URL;
 const client = process.env.CLIENT_URL
 
@@ -40,10 +40,19 @@ app.use(cors(
 ))
 
 app.use(router)
+app.use(emailRouter)
 
 
 app.get("/getotp",(req,res)=>{
-    sendEmail();
+    const response = sendEmail().then((result)=>{
+        return result
+    }).catch((err)=>{
+        return err
+    })
+    console.log(response);
+    res.json({
+        data : sendEmail()
+    })
 })
 
 app.listen(3000,()=>{
