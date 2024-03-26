@@ -1,10 +1,11 @@
-import express from "express";
+import express, { response } from "express";
 import nodemailer from "nodemailer"
 const router = express.Router();
 import otpGenerator from "otp-generator";
 import {Otp} from "../Database/otp.js"
 
 router.get("/getotp",(req,res)=>{
+    console.log(req.query.email);
     const OTP = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false , lowerCaseAlphabets: false });
     const sendEmail = async () => {
         const transporter = nodemailer.createTransport({
@@ -18,12 +19,12 @@ router.get("/getotp",(req,res)=>{
     
     
         async function main() {
-            const src = "./assets/ICMR_Logo.png"
+            // const src = ""
             const info = await transporter.sendMail({
                 from: '<ICMR@gmail.com>', // sender address
-                to: "kelvinvaghasiya50@gmail.com", // list of receivers
+                to: `${req.query.email}`, // list of receivers
                 subject: "Here's the otp you requested", // Subject line
-                html: `<h1>${OTP}</h1>`, // html body
+                html: `<h1>${OTP}</h1><br/> <br/> <p>If you did not request it kindly ignore.</>`, // html body
             });
     
             // console.log("Message sent: %s", info.messageId);
@@ -32,9 +33,14 @@ router.get("/getotp",(req,res)=>{
         main().then((result)=>{
 
             const otp = new Otp({
+                email:req.query.email,
                 otp : OTP 
             })
-            otp.save();
+            otp.save().then((response)=>{
+                console.log(response);
+            }).catch((err)=>{
+                console.log(err);
+            })
 
             res.json({
                 success : "otp sent successfully"

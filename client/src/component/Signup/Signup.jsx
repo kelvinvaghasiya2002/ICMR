@@ -40,16 +40,31 @@ export default function SignUp() {
     })
 
     const handleGetOTP = (async (event) => {
+
+        function ValidateEmail(input) {
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (input.match(validRegex)) {
+                return true;
+            } else {
+                alert("Invalid email address!");
+                return false;
+            }
+        }
+
+        var velidateEmail = ValidateEmail(SignupData.Username);
+
         event.preventDefault();
-        if (!getOTP) {
+        if (!getOTP && velidateEmail) {
             console.log("clicked");
             try {
-                const response = await axios.get(`${url}/getotp`);
+                const response = await axios.get(`${url}/getotp?email=${SignupData.Username}`);
                 console.log(response.data);
             } catch (error) {
                 console.log(error);
             }
             setgetOTP(true);
+        }else if(!velidateEmail){
+            console.log(velidateEmail);
         }
     })
 
@@ -103,11 +118,30 @@ export default function SignUp() {
                                 </div>
                             </div>
 
-                            <div style={{
+                            {!getOTP && <div style={{
                                 marginTop: "40px",
                             }} className='signup_button'>
                                 <button onClick={handleGetOTP} style={{ cursor: "pointer" }}>Get OTP</button>
-                            </div>
+                            </div>}
+
+
+
+                            {getOTP && <div className='signup_D'>
+                                <div className='singup_label'>
+                                    <label htmlFor='username'>Enter OTP</label>
+                                </div>
+                                <div>
+                                    <input
+                                        className='singup_input'
+                                        type='email'
+                                        id='username'
+                                        name='Username'
+                                        value={SignupData.Username}
+                                        onChange={handleSignup}
+                                        spellCheck={false}
+                                    />
+                                </div>
+                            </div>}
 
 
 
