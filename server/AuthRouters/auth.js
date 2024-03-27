@@ -8,7 +8,6 @@ router.get("/google",passport.authenticate("google" , ["profile","email"]));
 
 
 router.get("/login/success", (req, res) => {
-    // console.log(req.user);
     if (req.user) {
         res.status(200).json({
             user: req.user

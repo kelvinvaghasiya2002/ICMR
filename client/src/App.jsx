@@ -1,19 +1,38 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './component/Navbar/Navbar'
 import axios from "axios"
 import FirstPage from './component/FirstPage/FirstPage'
+import { useUserInfo } from './contexts/User.jsx'
+import InformationPage from "./component/InformationPage/InformationPage.jsx"
+import ContactUs from "./component/ContactUs/ContactUs.jsx"
 
 
 function App() {
+  const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
+  console.log(user);
 
   const getUser = async () => {
     try {
       const { data } = await axios.get("http://localhost:3000/login/success",
         { withCredentials: true });
-      console.log(data.user);
+      setUser(data.user._json);
+      setloggedIn(true)
+      // console.log(data.user._json);
+      // console.log(user);
 
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
+
+      try {
+        const token = localStorage.getItem("token");
+        const { data } = await axios.get(`http://localhost:3000/localauth?token=${token}`);
+        setUser(data.user);
+        setloggedIn(true)
+        // console.log(user);
+      } catch (error) {
+        console.log(error.response);
+      }
+
     }
   }
 
@@ -24,7 +43,8 @@ function App() {
   return (
     <>
       <Navbar />
-      <FirstPage />
+      {!loggedIn && <FirstPage />}
+      {/* {loggedIn && <ContactUs />} */}
 
     </>
   )

@@ -6,11 +6,12 @@ const otpSchema = new mongoose.Schema({
     },
     otp : {
         type : String
-    },
-    createdAt : {
+    }
+    ,
+    expireAt : {
         type : Date ,
         default : Date.now,
-        expires : 30
+        index : {expires : "3m"}
     }
 })
 

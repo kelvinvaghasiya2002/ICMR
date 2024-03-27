@@ -4,20 +4,20 @@ import axios from "axios"
 
 export default function Google() {
 
-    const getUser = async () => {
-        try {
-            const { data } = await axios.get("http://localhost:3000/login/success",
-                { withCredentials: true });
-            console.log(data.user);
+    // const getUser = async () => {
+    //     try {
+    //         const { data } = await axios.get("http://localhost:3000/login/success",
+    //             { withCredentials: true });
+    //         console.log(data.user);
 
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
-    useEffect(() => {
-        getUser();
-    }, [])
+    // useEffect(() => {
+    //     getUser();
+    // }, [])
 
     
     const handleClick = ()=>{

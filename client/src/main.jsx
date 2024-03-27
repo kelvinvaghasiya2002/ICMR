@@ -8,24 +8,25 @@ import App from './App.jsx'
 import ContactUs from './component/ContactUs/ContactUs.jsx';
 import SignIn from './component/Signin/Signin.jsx';
 import SignUp from './component/Signup/Signup.jsx';
+import UserProvider from './contexts/User.jsx';
 
 
 const router = createBrowserRouter([
   {
     path : "/",
-    element : <App />
+    element : <UserProvider><App /></UserProvider>
   },
   {
     path : "/contact-us",
-    element : <ContactUs />
+    element : <UserProvider><ContactUs /></UserProvider>
   },
   {
     path : "/sign-in",
-    element : <SignIn />
+    element : <UserProvider><SignIn /></UserProvider>
   },
   {
     path : "/sign-up",
-    element : <SignUp />
+    element : <UserProvider><SignUp /></UserProvider>
   }
 ])
 

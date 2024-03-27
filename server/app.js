@@ -6,7 +6,9 @@ import session from "express-session";
 import passport from "passport";
 import router from "./AuthRouters/auth.js";
 import emailRouter from "./Routers/sendEmail.js";
+import verifyEmailRouter from "./Routers/verifyEmail.js";
 import "./AuthRouters/passport.js"
+import localAuthRouter from "./AuthRouters/localAuth.js";
 const mongoURL = process.env.MONGO_URL;
 const client = process.env.CLIENT_URL
 
@@ -23,7 +25,7 @@ app.use(session({
     resave : false,
     saveUninitialized : true,
     cookie : {
-        maxAge : 1000*60
+        maxAge : 1000*60*3
     }
 }))
 
@@ -41,19 +43,21 @@ app.use(cors(
 
 app.use(router)
 app.use(emailRouter)
+app.use(verifyEmailRouter)
+app.use(localAuthRouter)
 
 
-app.get("/getotp",(req,res)=>{
-    const response = sendEmail().then((result)=>{
-        return result
-    }).catch((err)=>{
-        return err
-    })
-    console.log(response);
-    res.json({
-        data : sendEmail()
-    })
-})
+// app.get("/getotp",(req,res)=>{
+//     const response = sendEmail().then((result)=>{
+//         return result
+//     }).catch((err)=>{
+//         return err
+//     })
+//     console.log(response);
+//     res.json({
+//         data : sendEmail()
+//     })
+// })
 
 app.listen(3000,()=>{
     console.log("server is running on port 3000");

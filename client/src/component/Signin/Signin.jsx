@@ -1,33 +1,69 @@
 import { useState } from 'react'
 import './Signin.css'
-import GoogleImg from '../../assets/Google_Icon.png'
-import FaceBookImg from '../../assets/FaceBook_Icon.png'
-import AppleImg from '../../assets/Apple_Icon.png'
 import SignIn_Img from '../../assets/SignIn_Img.png'
+import { Link, Navigate } from 'react-router-dom'
+import GoogleSI from './GoogleSI'
+import AppleSI from "./AppleSI"
+import FacebookSI from './FacebookSI'
+import { useUserInfo } from '../../contexts/User'
+import axios from 'axios'
+const url = "http://localhost:3000"
 
 export default function SignIn() {
-
+    const {user , setUser ,loggedIn , setloggedIn} = useUserInfo();
+    const [signIn , setsignIn] = useState(false);
     let [SigninData, setSigninData] = useState({
         Email: "",
         Password: "",
     })
 
     let handleSignin = ((Event) => {
-        console.log(SigninData);
+        // console.log(SigninData);
         setSigninData((crrdata) => {
             return { ...crrdata, [Event.target.name]: Event.target.value }
         })
 
     })
 
-    let SubmitData = ((Event) => {
-        console.log("Submited");
-        console.log(SigninData)
+    let SubmitData = (async(Event) => {
         Event.preventDefault();
-        setSigninData({
-            Email: "",
-            Password: "",
-        })
+
+        function ValidateEmail(input) {
+            var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (input.match(validRegex)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        var ValidateEmail = ValidateEmail(SigninData.Email);
+
+
+        if(ValidateEmail){
+            try {
+                const {data} = await axios.get(`${url}/signin`,{
+                    headers : {
+                        username : SigninData.Email ,
+                        password : SigninData.Password
+                    }
+                })
+                console.log(data);
+                setUser(data.user);
+                setloggedIn(true);
+                setsignIn(true);
+                localStorage.setItem("token", data.token);
+
+                setSigninData({
+                    Email: "",
+                    Password: "",
+                })
+            } catch (error) {
+                alert(error.response.data.error);    
+            }
+        }else if(!ValidateEmail){
+            alert("Invalid Email!")
+        }
     })
     return (
         <div className='sigin_main'>
@@ -37,19 +73,19 @@ export default function SignIn() {
                         <h4>WELCOME BACK!</h4>
                     </div>
                     <div className='singup_way'>
-                        <p>Don't have a account, <a href='#'>Sign up</a></p>
+                        <p>Don't have a account, <Link to="/sign-up">Sign Up</Link></p>
                     </div>
 
                     <div className='email'>
 
                         <div className='email_label'>
-                            <label htmlFor='username'>Username</label>
+                            <label htmlFor='username'>Email</label>
                         </div>
-                        
+
                         <div>
                             <input
                                 className='email_input'
-                                placeholder='hello@paruluniversity.ac.in'
+                                // placeholder='hello@paruluniversity.ac.in'
                                 type='text'
                                 id='username'
                                 name='Email'
@@ -95,15 +131,10 @@ export default function SignIn() {
                         <span>or continue with</span>
                     </div>
                     <div className='webimg_con'>
-                        <div className='webimg'>
-                            <img src={GoogleImg} alt="Google" />
-                        </div>
-                        <div className='webimg'>
-                            <img src={FaceBookImg} alt="FaceBook" />
-                        </div>
-                        <div className='webimg'>
-                            <img src={AppleImg} alt="Apple" />
-                        </div>
+                        <GoogleSI />
+                        <FacebookSI />
+                        <AppleSI />
+
                     </div>
                 </div>
             </div>
@@ -112,6 +143,9 @@ export default function SignIn() {
                     <img src={SignIn_Img} alt="SignInImg" />
                 </div>
             </div>
+            {
+                signIn && <Navigate to="/" replace={true} />
+            }
         </div>
     )
 }
