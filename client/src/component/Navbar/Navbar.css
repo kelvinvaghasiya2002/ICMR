@@ -18,3 +18,16 @@
     width: 300px;
     aspect-ratio: 3 / 0.58;
 }
+
+
+
+.buttons-grid{
+    height: 7vh;
+    background-color: yellow;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.buttons-grid button{
+    height: 80%;
+}

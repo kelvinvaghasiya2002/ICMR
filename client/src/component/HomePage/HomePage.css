@@ -1,0 +1,17 @@
+.homePage{
+    margin-top: 200px;
+    padding: 0 10%;
+
+}
+
+
+.homePage h1{
+    font-size: 32px;
+    color: #23376D;
+}
+
+
+.homePage p{
+    font-size: 22px;
+    line-height: 32px;
+}

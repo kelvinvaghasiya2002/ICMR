@@ -18,10 +18,10 @@ export default function FirstPage() {
                 <div>
                     <a href='#'><button>Home</button></a>
                 </div>
-                <a href='#'><button>About Project</button></a>
-                <a href='#'><button>Project Sites</button></a>
-                <a href='#'><button>Research Team</button></a>
-                <a href='#'><button>What's New ?</button></a>
+                <Link to='/aboutus'><button>About Project</button></Link>
+                <Link href='#'><button>Project Sites</button></Link>
+                <Link href='#'><button>Research Team</button></Link>
+                <Link href='#'><button>What's New ?</button></Link>
             </div>
             <div className='fpage_content'>
                 <h3>

@@ -5,6 +5,7 @@ import FirstPage from './component/FirstPage/FirstPage'
 import { useUserInfo } from './contexts/User.jsx'
 import InformationPage from "./component/InformationPage/InformationPage.jsx"
 import ContactUs from "./component/ContactUs/ContactUs.jsx"
+import HomePage from './component/HomePage/HomePage.jsx'
 
 
 function App() {
@@ -43,8 +44,10 @@ function App() {
   return (
     <>
       <Navbar />
-      {!loggedIn && <FirstPage />}
+      {/* {!loggedIn && <FirstPage />} */}
       {/* {loggedIn && <ContactUs />} */}
+      {/* <InformationPage /> */}
+      <HomePage />
 
     </>
   )

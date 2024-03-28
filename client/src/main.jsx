@@ -9,6 +9,7 @@ import ContactUs from './component/ContactUs/ContactUs.jsx';
 import SignIn from './component/Signin/Signin.jsx';
 import SignUp from './component/Signup/Signup.jsx';
 import UserProvider from './contexts/User.jsx';
+import InformationPage from './component/InformationPage/InformationPage.jsx';
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path : "/sign-up",
     element : <UserProvider><SignUp /></UserProvider>
+  },
+  {
+    path : "/aboutus",
+    element : <UserProvider><InformationPage /></UserProvider>
   }
 ])
 

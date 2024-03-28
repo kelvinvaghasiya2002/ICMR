@@ -1,6 +1,9 @@
+import Navbar from '../Navbar/Navbar'
 import './InformationPage.css'
 export default function InformationPage() {
     return (
+        <>
+        <Navbar />
         <div className='main_info'>
             <div>
                 <p>
@@ -20,5 +23,6 @@ export default function InformationPage() {
                 </h3>
             </div>
         </div>
+        </>
     )
 }
