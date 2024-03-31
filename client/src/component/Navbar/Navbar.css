@@ -1,33 +1,60 @@
 .navbar{
     display: flex;
+    height: 17vh;
+    /* width: 100vw; */
     justify-content: space-between;
     align-items: center;
-    padding-left: 1%;
-    padding-right: 2%;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding-left: 4%;
+    padding-right: 3%;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 .ICMRIcon img{
-    width: 150px;
+    height: 14vh; 
+    /* height: 80%; */
     aspect-ratio: 3 / 2;
 }
 .ICMRLogo img{
-    width: 200px;
-    aspect-ratio: 3 / 1.32;
+    height: 12vh;
+    aspect-ratio: 3.2 / 1.32;
 }
 .PUIcon img{
-    width: 300px;
+    height: 9vh;
     aspect-ratio: 3 / 0.58;
 }
 
 
-
 .buttons-grid{
-    height: 7vh;
-    background-color: yellow;
-    text-align: center;
-    padding: 15px 0;
+    height: 11vh;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: sticky;
+    top: 0;
 }
 
 .buttons-grid button{
-    height: 80%;
+    height: 70%;
+    font-weight: 700;
+    padding: 0 2.7vw;
+    border-radius: 99px;
+    background-color: #D4D4D4;
+    font-family: "Inter", sans-serif;
+    border: none;
+    cursor: pointer;
+    
+}
+
+
+.buttons-grid button p{
+    font-size: 1vw;
+}
+
+
+
+.buttons-grid button:hover{
+    background-color: #3177FF;
+    color: white;
 }

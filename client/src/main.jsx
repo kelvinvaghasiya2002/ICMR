@@ -9,6 +9,7 @@ import ContactUs from './component/ContactUs/ContactUs.jsx';
 import SignIn from './component/Signin/Signin.jsx';
 import SignUp from './component/Signup/Signup.jsx';
 import UserProvider from './contexts/User.jsx';
+import Map from "./component/Map/Map.jsx"
 import InformationPage from './component/InformationPage/InformationPage.jsx';
 
 
@@ -32,6 +33,9 @@ const router = createBrowserRouter([
   {
     path : "/aboutus",
     element : <UserProvider><InformationPage /></UserProvider>
+  },{
+    path : "/project-sites",
+    element : <UserProvider><Map /></UserProvider>
   }
 ])
 

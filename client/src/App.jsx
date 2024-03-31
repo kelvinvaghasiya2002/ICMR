@@ -9,6 +9,7 @@ import HomePage from './component/HomePage/HomePage.jsx'
 
 
 function App() {
+  document.title = "ICMR"
   const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
   console.log(user);
 
@@ -44,11 +45,10 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* {!loggedIn && <FirstPage />} */}
+      {!loggedIn && <FirstPage />}
       {/* {loggedIn && <ContactUs />} */}
       {/* <InformationPage /> */}
-      <HomePage />
-
+      {loggedIn && <HomePage />}
     </>
   )
 }

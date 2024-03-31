@@ -1,66 +1,66 @@
-
- .sigin_main{
+.sigin_main {
     width: 100%;
     display: flex;
     margin-top: 7%;
-}  
+}
 
-.sigin_con{
+.sigin_con {
     width: 50%;
     height: auto;
     /* background-color: bisque; */
 }
 
-.sigin_content{
+.sigin_content {
     /* background-color: antiquewhite; */
     margin: auto;
     /* align-items: center;
     justify-content: center; */
-    width:350px
+    width: 350px
 }
 
-.signintitle h4{
+.signintitle h4 {
     letter-spacing: 1.8px;
     margin-top: 0;
     margin-bottom: 0;
 }
 
-.singup_way p{
+.singup_way p {
     margin-top: 3%;
 }
 
-.singup_way p a{
+.singup_way p a {
     text-decoration: none;
 }
 
-.email_label{
+.email_label {
     margin-top: 30px;
     margin-bottom: 3%;
 }
 
-.email_input{
+.email_input {
     border-radius: 40px;
     width: 343px;
     height: 37px;
     margin-bottom: 15px;
 }
 
-.email  input::placeholder {
+.email input::placeholder {
     opacity: 0.2;
     color: blue;
 }
 
-.password_label{
+.password_label {
     margin-bottom: 3%;
 }
-.password_input{
+
+.password_input {
     border-radius: 40px;
     width: 343px;
     height: 37px;
     margin-bottom: 15px;
 }
 
-.forgetpass_con{
+.forgetpass_con {
     display: flex;
     justify-content: space-between;
     height: 35px;
@@ -68,28 +68,29 @@
     margin-bottom: 7%;
 }
 
-.radio{
+.radio {
     display: flex;
     align-items: center;
 }
-.radio input{
+
+.radio input {
     width: 15%;
     height: 25px;
 }
 
-.radio label{
+.radio label {
     width: 100px;
 }
 
-.forgetpass{
+.forgetpass {
     margin-left: auto;
 }
 
-.forgetpass p a{
+.forgetpass p a {
     text-decoration: none;
 }
 
-.signin_button button{
+.signin_button button {
     border-radius: 40px;
     width: 350px;
     height: 40px;
@@ -98,22 +99,23 @@
     border: none;
 }
 
-.footer_con{
+.footer_con {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 15px;
 }
 
-.webimg_con{
+.webimg_con {
     display: flex;
     justify-content: space-evenly;
 }
 
-.webimg img{
+.webimg img {
     aspect-ratio: 3 / 2;
     width: 60px;
 }
-.signin_img{
+
+.signin_img {
     width: 50%;
     text-align: center;
     /* background-color: black; */
@@ -123,8 +125,284 @@
     text-align: center;
 } */
 
-.signin_img div img{
+.signin_img div img {
     width: 500px;
     height: 500px;
 }
 
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------   NEW CSS FILE  ------------------------------------ */
+
+
+
+
+
+.main-signin-div {
+    display: flex;
+    margin: 7vh 0 2vh 0;
+    /* background-color: #3177FF; */
+}
+
+
+#signin-form h2 {
+    font-family: "Overpass", sans-serif;
+    font-size: 1.2vw;
+    letter-spacing: 0.1vw;
+}
+
+
+#signin-form {
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    /* background-color: antiquewhite; */
+    font-family: "Nunito", sans-serif;
+    /* background-color: aliceblue; */
+}
+
+
+#signin-form form {
+    /* background-color: aliceblue; */
+    width: 25vw;
+}
+
+
+
+
+/* ------------------    WELCOME SECTION   ----------------- */
+
+
+
+.welcome-back {
+    margin-bottom: 3vh;
+}
+
+.welcome-back h2,
+p {
+    margin: 1vh 0;
+}
+
+.welcome-back p {
+    font-size: 1vw;
+    letter-spacing: 0.1vw;
+    color: #444B59;
+    font-weight: 500;
+}
+
+.welcome-back a {
+    text-decoration: none;
+    color: #3177FF;
+    font-weight: 600;
+    letter-spacing: 0.05vw;
+}
+
+
+
+
+
+
+/* ------------------------  LABEL , INPUTS AND BUTTONS  ------------------------ */
+
+
+
+
+
+#signin-form label {
+    font-size: 1.1vw;
+    font-family: "Nunito", sans-serif;
+    color: #444B59;
+    font-weight: 600;
+}
+
+
+
+.form-signin-inputs input {
+    font-size: 1vw;
+    font-weight: 500;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    border: 0.2vh solid #3177FF;
+    border-radius: 99px;
+    padding: 0 3vh;
+    width: 100%;
+    height: 5.6vh;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+    outline: none;
+}
+
+
+
+
+
+/* ----------------------   Remember me and Forgot Password  -------------------- */
+
+
+
+
+
+
+.remember-me {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.remember-me a {
+    text-decoration: none;
+    color: #3177FF;
+}
+
+.remember-me p,
+a {
+    font-size: 1vw;
+    letter-spacing: 0.05vw;
+}
+
+
+
+.radio-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio-btn input {
+    width: 1vw;
+    margin: 0 0.5vw 0 0;
+}
+
+
+
+
+
+
+
+
+/* ----------------------   SIGN IN BUTTON  -------------------- */
+
+
+
+
+.signin-button button {
+    border-radius: 99px;
+    height: 5.6vh;
+    width: 100%;
+    background-color: #3177FF;
+    color: white;
+    margin: 2.5vh 0;
+    font-size: 2vh;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1vh;
+    cursor: pointer;
+    border: 0.2vh solid #3177FF;
+
+}
+
+
+
+
+
+/* ---------------------- CSS FOR  CONTINUE WITH... SECTION  -------------------- */
+
+
+.continue-with{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 0.2vh solid #3177FF;
+}
+
+.separator:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .25em;
+}
+
+
+
+.separator p{
+    font-size: 1vw;
+}
+
+
+
+
+
+/* ----------------------   O AUTH ICONS   -------------------- */
+
+
+
+
+.parent-o-auth{
+    display: flex;
+    justify-content: center;
+}
+
+
+.o-auth-icons{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+
+
+.o-auth-icons div img{
+    width: 5vw;
+    aspect-ratio: 102.48/68.32;
+}
+
+
+
+
+
+
+
+
+
+#signin-rightside-img{
+    display: flex;
+    width: 50vw;
+    height: 70vh;
+    justify-content: center;
+    align-items: center;
+    /* background-color: antiquewhite; */
+}
+
+
+
+#signin-rightside-img div{
+    height: 80vh;
+}
+
+
+
+#signin-rightside-img img{
+    height: 100%;
+    aspect-ratio: 826/826;
+}

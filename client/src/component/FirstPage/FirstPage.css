@@ -1,63 +1,63 @@
-.fpage_main{
-    margin-top: 3%;
-    width: 95%;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-}
-
 .fpage_navbar{
+    padding: 0 2.5%;
+    height: 13vh;
     display: flex;
-    height: 40px;
     align-items: center;
     /* background-color: antiquewhite; */
 }
 
-.fpage_navbar h1{
-    margin: 0px;
-}
 
-.in_Up{
+
+/* CSS FOR FOR SIGN-IN AND SIGN-UP buttons PLACED BESIDES WELCOME  */
+
+.signin-up{
     display: flex;
-    gap: 20px;
+    gap: 2vw;
     flex-wrap: wrap;
     justify-content: center;
     margin-left: auto;
 }
 
-.in_Up button{
-    width: 100px;
-    height: 40px;
-    color: white !important;
+
+.signin-up button:nth-child(1)
+
+.signin-up-buttons{
+    height: 6vh;
+    border: none;
     background-color: #3177FF;
-    border-radius: 20px ;
+    border-radius: 99px ;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    padding: 0 2vw;
+    font-size: 2vh;
 }
 
-.in_Up button a{
-    text-decoration: none;
-}
 
-.in_Up a button:hover{
-    background-color: #3177FF;
-}
 
-a{
-    text-decoration: none;
-}
+
+
+
+/* END OF CSS FOR FOR SIGN-IN AND SIGN-UP buttons PLACED BESIDES WELCOME  */
+
+
+
+/* START OF CSS FOR BUUTONS PRESENT IN DIV WITH CLASS NAME .morepage */
+
+
+
 
 .morepage{
     margin-top: 40px;
     display: flex;
-    gap: 40px;
+    gap: 3vw;
     justify-content: center;
     align-items: center;
     height: 50px;
-    /* background-color: blanchedalmond; */
 }
 
 .morepage button{
-    border-radius: 25PX;
-    height: 45PX;
-    width: 150PX;
     background-color: #D4D4D4;
     color: #000000;
 }
@@ -67,30 +67,49 @@ a{
     color: white;
 }
 
-.morepage div button{
-    width: 120px;
+
+
+
+.morepage-buttons{
+    height: 6vh;
+    border: none;
+    background-color: #3177FF;
+    border-radius: 99px ;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    padding: 0 2vw;
+    font-size: 1vw;
 }
+
+
+
+
+
+
+
+
+
 
 .fpage_content{
     width: 100%;
-    margin-top: 8%;
+    margin-top: 7%;
     text-align: center;
-    /* background-color: #3177FF; */
+    line-height: 4vh;
 }
 
 .fpage_study{
     text-align: center;
-    /* background-color: blanchedalmond; */
     margin-top: 5%;
 }
 
 .fpage_footer{
+    font-family: "Poppins", sans-serif;
     margin-top: 5%;
     text-align: center;
-    /* background-color: #3177FF; */
 }
 
-h5{
-    margin: 0;
-    margin-bottom: 5px !important;
+.fpage_footer span{
+    font-weight: 700;
 }

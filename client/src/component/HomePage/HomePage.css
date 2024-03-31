@@ -1,17 +1,104 @@
-.homePage{
-    margin-top: 200px;
-    padding: 0 10%;
-
+.homePage {
+    margin-top: 20vh;
+    padding: 0 5%;
+    font-family: "Poppins", sans-serif;
 }
 
 
-.homePage h1{
-    font-size: 32px;
+.homePage section {
+    margin-top: 25vh;
+    padding: 0 2%;
+}
+
+.homePage h1 {
+    
+    font-weight: 700;
+    letter-spacing: -0.2px;
     color: #23376D;
 }
 
+.homePage h2 {
+    /* font-family: "Poppins", sans-serif; */
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    color: #23376D;
+    margin-bottom: 0;
+}
 
-.homePage p{
-    font-size: 22px;
-    line-height: 32px;
+
+.homePage p {
+    font-weight: 500;
+    line-height: 4vh;
+    letter-spacing: 0px;
+}
+
+
+
+
+#aim-section{
+    padding: 0 1%;
+}
+
+
+
+
+
+
+
+/* OBJECTIVE SECTION */
+
+
+
+#objective-section p {
+    text-align: justify;
+}
+
+
+
+
+
+/* OUTCOME SECTION */
+
+
+
+
+
+#outcome-section button {
+    border: none;
+    background-color: #000000;
+    color: #ffff;
+    padding: 5px 25px;
+    font-family: "Inter", sans-serif;
+}
+
+
+
+#outcome-section p{
+    font-family: "Inter", sans-serif;
+    margin: 0;
+}
+
+
+
+
+
+
+/* GOAL SECTION */
+
+
+
+
+#goal-section button {
+    border: none;
+    background-color: #000000;
+    color: #ffff;
+    padding: 5px 25px;
+    font-family: "Inter", sans-serif;
+}
+
+
+
+#goal-section p{
+    font-family: "Inter", sans-serif;
+    margin: 0;
 }

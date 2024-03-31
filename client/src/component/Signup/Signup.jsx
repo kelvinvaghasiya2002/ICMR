@@ -6,7 +6,8 @@ import Facebook from './Facebook';
 import Apple from './Apple';
 import { useUserInfo } from '../../contexts/User.jsx';
 import axios from 'axios';
-import { Navigate , Link } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
+import Navbar from "../Navbar/Navbar.jsx"
 const url = "http://localhost:3000"
 
 
@@ -14,10 +15,11 @@ const url = "http://localhost:3000"
 
 
 export default function SignUp() {
+    document.title = "Sign Up ICMR"
     const [getOTP, setgetOTP] = useState(false);
     const [verifyOTP, setverifyOTP] = useState(false);
-    const [signUp , setsignUp] = useState(false)
-    const {user , setUser ,loggedIn , setloggedIn} = useUserInfo();
+    const [signUp, setsignUp] = useState(false)
+    const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
     let [SignupData, setSignupData] = useState({
         Name: "",
         Username: "",
@@ -47,11 +49,13 @@ export default function SignUp() {
                         "Password": SignupData.Password
                     }
                 })
-                if(response.data.error){
+                if (response.data.error) {
                     alert(response.data.error)
+                    setgetOTP(false);
+                    setverifyOTP(false)
                 }
                 console.log(response.data);
-                if(response.data.success){
+                if (response.data.success) {
                     setsignUp(true);
                     setUser(response.data.user)
                     setloggedIn(true)
@@ -147,11 +151,15 @@ export default function SignUp() {
     }
 
     return (
-        <div className='signup_main'>
+        <>
+            <Navbar />
+
+            {
+                /* <div className='signup_main'>
             <div className='signup_con'>
                 <div className='signup_content'>
                     <div className='signuptitle'>
-                        <h4>Sign Up</h4>
+                        <h2>Sign Up</h2>
                     </div>
                     <div className='webimgsignup_con'>
                         <Google setsignUp={setsignUp}  signUp={signUp} />
@@ -197,9 +205,7 @@ export default function SignUp() {
                                 </div>
                             </div>
 
-                            {!getOTP && <div style={{
-                                marginTop: "40px",
-                            }} className='signup_button'>
+                            {!getOTP && <div className='signup_button'>
                                 <button onClick={handleGetOTP} style={{ cursor: "pointer" }}>Get OTP</button>
                             </div>}
 
@@ -300,9 +306,172 @@ export default function SignUp() {
                     <img src={SignUpImg} alt="SignUp" />
                 </div>
             </div>
+            
+            
+        </div> */}
+
+
+
+            <div className='main-signup-div'>
+                <section id='signup-form'>
+                    <form>
+
+                        <div className='heading-signup'>
+                            <h2>Sign up</h2>
+                        </div>
+
+
+                        <div className='oauth-div'>
+                            <Google setsignUp={setsignUp} signUp={signUp} />
+                            <Facebook />
+                            <Apple />
+                        </div>
+
+
+                        <div className='hr-signup'>
+                            <hr />
+                        </div>
+
+
+                        <div className='parent-name-field  form-inputs'>
+                            <div>
+                                <label htmlFor='name'>Name</label>
+                            </div>
+                            <div>
+                                <input
+                                    type='text'
+                                    id='name'
+                                    pattern="[A-Za-z]{1,32}"
+                                    name='Name'
+                                    value={SignupData.Name}
+                                    onChange={handleSignup}
+                                    spellCheck={false}
+                                />
+                            </div>
+                        </div>
+
+
+                        <div className='parent-username-field form-inputs'>
+                            <div>
+                                <label htmlFor='username'>Username</label>
+                            </div>
+                            <div>
+                                <input
+                                    type='email'
+                                    id='username'
+                                    name='Username'
+                                    value={SignupData.Username}
+                                    onChange={handleSignup}
+                                    spellCheck={false}
+                                />
+                            </div>
+                        </div>
+
+
+                        {!getOTP && <div className='get-otp-btn sign-up-btns'>
+                            <button onClick={handleGetOTP}>Get OTP</button>
+                        </div>}
+
+
+                        {(!verifyOTP && getOTP) &&
+                            <>
+                                <div className='parent-otp-field form-inputs'>
+                                    <div>
+                                        <label htmlFor='username'>Enter OTP</label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            type='text'
+                                            id='otp'
+                                            name='otp'
+                                            value={otp}
+                                            onChange={handleOTPchange}
+                                            maxLength={6}
+                                            spellCheck={false}
+                                        />
+                                    </div>
+                                </div>
+
+
+                                <div className='submit-otp-btn sign-up-btns'>
+                                    <button onClick={submitOTP}>Submit OTP</button>
+                                </div>
+                            </>
+                        }
+
+
+
+                        {verifyOTP &&
+                            <>
+                                <div className='parent-password-field form-inputs'>
+                                    <div>
+                                        <label htmlFor='password'>Password</label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            type='password'
+                                            id='password'
+                                            name='Password'
+                                            value={SignupData.Password}
+                                            onChange={handleSignup}
+                                        />
+                                    </div>
+                                </div>
+
+
+                                <div className='parent-confirmPassword-field form-inputs'>
+                                    <div>
+                                        <label htmlFor='password'>Confirm Password</label>
+                                    </div>
+                                    <div>
+                                        <input
+                                            type='password'
+                                            id='confirmPassword'
+                                            name='confirmPassword'
+                                            value={SignupData.confirmPassword}
+                                            onChange={handleSignup}
+                                        />
+                                    </div>
+                                </div>
+
+
+                                <div className='terms-conditions-field'>
+                                    <div>
+                                        <input type='checkbox' />
+                                    </div>
+                                    <div>
+                                        <p> I agree with <a href='#'>Terms</a> and <a href='#'>Privacy</a> </p>
+                                    </div>
+                                </div>
+
+
+                                <div className='signup-btn  sign-up-btns' onClick={SubmitsignupData}>
+                                    <button>Sign Up</button>
+                                </div>
+                            </>
+                        }
+
+                        <div className='hr-signup'>
+                            <hr />
+                        </div>
+
+                        <div className='sign-in-link'>
+                            <div><p>Already have an account?</p></div>
+                            <div><p><Link to="/sign-in">Log In</Link></p></div>
+                        </div>
+
+                    </form>
+                </section>
+                <section id='signup-rightside-img'>
+                    <div>
+                        <img src={SignUpImg} alt="SignUp" />
+                    </div>
+                </section>
+            </div>
+
             {
                 signUp && <Navigate to="/" replace={true} />
             }
-        </div>
+        </>
     )
 }

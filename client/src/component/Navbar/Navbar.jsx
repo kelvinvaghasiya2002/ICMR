@@ -2,32 +2,35 @@ import './Navbar.css'
 import ICMRIcon from "../../assets/ICMR_Icon.png"
 import ICMRLogo from "../../assets/ICMR_Logo.png";
 import PUIcon from "../../assets/PU_Icon.png";
+import { useUserInfo } from '../../contexts/User';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
+    const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
     return (
         <>
-            <div className='navbar'>
-                <div className='ICMRIcon'>
-                    <img src={ICMRIcon}></img>
+            <div style={!loggedIn ? { boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" } : { boxShadow: 'none' }} className='navbar'>
+                <div className='ICMRIcon  nav-img'>
+                    <Link to="/"><img src={ICMRIcon}></img></Link>
                 </div>
-                <div className='ICMRLogo'>
+                <div className='ICMRLogo nav-img'>
                     <img src={ICMRLogo} className=''></img>
                 </div>
-                <div className='PUIcon'>
+                <div className='PUIcon nav-img'>
                     <img src={PUIcon} className='ICMRIcon'></img>
                 </div>
             </div>
-            {/* <div className='buttons-grid'>
-                <button>Facilities</button>
-                <button>AIM</button>
-                <button>Objective</button>
-                <button>Outcome</button>
-                <button>Methodology</button>
-                <button>Workflow</button>
-                <button>Goals</button>
-                <button>Research Team</button>
-                <button>What's New?</button>
-            </div> */}
+           { loggedIn && <div className='buttons-grid'>
+                <button><p style={{margin : "0px" , padding : "0px"}}>Facilities</p></button>
+                <button><p style={{margin : "0px" , padding : "0px"}}>AIM</p></button>
+                <button><p style={{margin : "0px" , padding : "0px"}}>Objective</p></button>
+                <button><p style={{margin : "0px" , padding : "0px"}}>Outcome</p></button>
+                <button><p style={{margin : "0px" , padding : "0px"}}>Methodology</p></button>
+                <button><p style={{margin : "0px" , padding : "0px"}}>Workflow</p></button>
+                <button><p style={{margin : "0px" , padding : "0px"}}>Goals</p></button>
+                <button><p style={{margin : "0px" , padding : "0px"}}>Research Team</p></button>
+                <button><p style={{margin : "0px" , padding : "0px"}}>What's New?</p></button>
+            </div>}
         </>
     )
 }
