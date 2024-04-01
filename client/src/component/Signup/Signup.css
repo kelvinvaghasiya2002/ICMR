@@ -231,17 +231,7 @@
 
 
 
-
-.form-inputs label{
-    font-size: 1vw;
-    font-family: "Nunito", sans-serif;
-    color: #444B59;
-
-}
-
-
-
-.form-inputs input{
+.form-inputs input,select{
     font-size: 1vw;
     font-weight: 500;
     margin-top: 1vh;
@@ -255,6 +245,33 @@
     font-family: "Nunito", sans-serif;
     outline: none;
 }
+
+ 
+
+select {
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
+
+
+
+.form-inputs label{
+    font-size: 1vw;
+    font-family: "Nunito", sans-serif;
+    color: #444B59;
+}
+
+
+
+.site-label{
+    font-size: 1vw;
+    font-family: "Nunito", sans-serif;
+    color: #444B59;
+}
+
+
+
 
 
 
@@ -344,7 +361,8 @@
 
 
 #signup-rightside-img{
-    /* background-color: antiquewhite; */
+    position: sticky;
+    top: 22vh;
     display: flex;
     width: 50vw;
     height: 70vh;

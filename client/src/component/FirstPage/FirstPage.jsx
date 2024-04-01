@@ -35,7 +35,7 @@ export default function FirstPage() {
             </div>
             <div className='fpage_footer'>
                 <p>Content Managed By <span>ICMR-New Delhi</span></p>
-                <p style={{marginTop : "0px"}}>Design & Developed By <span>Parul University</span></p>
+                <p style={{marginTop : "0px"}}>Design & Developed By <span>Parul <span style={{color : "red"}}>University</span></span></p>
             </div>
         </div>
     )

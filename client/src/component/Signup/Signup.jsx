@@ -15,11 +15,35 @@ const url = "http://localhost:3000"
 
 
 export default function SignUp() {
+    // document.getElementById("navigation").style.position="sticky";
+    // document.getElementById("navigation").style.top="0";
+    // document.getElementById("navigation").style.backgroundColor="white";
+    window.onload = function () {
+        document.getElementById("navigation").style.position = "sticky";
+        document.getElementById("navigation").style.top = "0";
+        document.getElementById("navigation").style.backgroundColor = "white";
+    };
     document.title = "Sign Up ICMR"
+
+
     const [getOTP, setgetOTP] = useState(false);
     const [verifyOTP, setverifyOTP] = useState(false);
     const [signUp, setsignUp] = useState(false)
+    const [selectSite, setselectSite] = useState({
+        siteName: "",
+        status: false  // false means user has not selected the site yet.
+    })
+
     const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
+
+    let handleSelectSite = (event) => {
+        console.log(event.target.value);
+        setselectSite({
+            siteName: event.target.value,
+            status: true
+        })
+    }
+
     let [SignupData, setSignupData] = useState({
         Name: "",
         Username: "",
@@ -40,13 +64,16 @@ export default function SignUp() {
         if (SignupData.Password !== SignupData.confirmPassword) {
             alert("Password & Confirm Password does not match");
 
+        } else if (!selectSite.status) {
+            alert("Select site first")
         } else {
             try {
                 const response = await axios.post(`${url}/register`, {}, {
                     headers: {
                         "Username": SignupData.Username,
                         "Name": SignupData.Name,
-                        "Password": SignupData.Password
+                        "Password": SignupData.Password,
+                        "siteName" : selectSite.siteName
                     }
                 })
                 if (response.data.error) {
@@ -135,7 +162,6 @@ export default function SignUp() {
         event.preventDefault();
         try {
             const response = await axios.post(`${url}/submitotp?otp=${otp}&email=${SignupData.Username}`);
-            // console.log(response.data.error);
             if (response.data.success) {
                 setverifyOTP(true)
                 alert(response.data.success)
@@ -153,164 +179,6 @@ export default function SignUp() {
     return (
         <>
             <Navbar />
-
-            {
-                /* <div className='signup_main'>
-            <div className='signup_con'>
-                <div className='signup_content'>
-                    <div className='signuptitle'>
-                        <h2>Sign Up</h2>
-                    </div>
-                    <div className='webimgsignup_con'>
-                        <Google setsignUp={setsignUp}  signUp={signUp} />
-                        <Facebook />
-                        <Apple />
-                    </div>
-                    <div>
-                        <hr />
-                    </div>
-                    <div className='signup_form_con'>
-                        <form>
-                            <div className='signup_D'>
-                                <div className='singup_label'>
-                                    <label htmlFor='name'>Name</label>
-                                </div>
-                                <div>
-                                    <input
-                                        className='singup_input'
-                                        type='text'
-                                        id='name'
-                                        pattern="[A-Za-z]{1,32}"
-                                        name='Name'
-                                        value={SignupData.Name}
-                                        onChange={handleSignup}
-                                        spellCheck={false}
-                                    />
-                                </div>
-                            </div>
-                            <div className='signup_D'>
-                                <div className='singup_label'>
-                                    <label htmlFor='username'>Email</label>
-                                </div>
-                                <div>
-                                    <input
-                                        className='singup_input'
-                                        type='email'
-                                        id='username'
-                                        name='Username'
-                                        value={SignupData.Username}
-                                        onChange={handleSignup}
-                                        spellCheck={false}
-                                    />
-                                </div>
-                            </div>
-
-                            {!getOTP && <div className='signup_button'>
-                                <button onClick={handleGetOTP} style={{ cursor: "pointer" }}>Get OTP</button>
-                            </div>}
-
-
-
-                            {(!verifyOTP && getOTP) && <div className='signup_D'>
-                                <div className='singup_label'>
-                                    <label htmlFor='username'>Enter OTP</label>
-                                </div>
-                                <div>
-                                    <input
-                                        className='singup_input'
-                                        type='text'
-                                        id='otp'
-                                        name='otp'
-                                        value={otp}
-                                        onChange={handleOTPchange}
-                                        maxLength={6}
-                                        spellCheck={false}
-                                    />
-                                </div>
-                                <div style={{ marginTop: "30px" }} className='signup_button' onClick={submitOTP}>
-                                    <button>Submit OTP</button>
-                                </div>
-                            </div>}
-
-
-
-
-
-                            {verifyOTP && <>
-                                <div className='signup_D'>
-                                    <div className='singup_label'>
-                                        <label htmlFor='password'>Password</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                            className='singup_input'
-                                            type='password'
-                                            id='password'
-                                            name='Password'
-                                            value={SignupData.Password}
-                                            onChange={handleSignup}
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className='signup_D'>
-                                    <div className='singup_label'>
-                                        <label htmlFor='password'>Confirm Password</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                            className='singup_input'
-                                            type='password'
-                                            id='confirmPassword'
-                                            name='confirmPassword'
-                                            value={SignupData.confirmPassword}
-                                            onChange={handleSignup}
-                                        />
-                                    </div>
-                                </div>
-
-                            </>}
-                        </form>
-                    </div>
-                    {verifyOTP &&
-                        <>
-                            <div>
-                                <hr />
-                            </div>
-                            <div className='condition_con'>
-                                <div>
-                                    <input
-                                        type='checkbox'
-                                    />
-                                </div>
-                                <div>
-                                    <p> I agree with <a href='#'>Terms</a> and <a href='#'>Privacy</a> </p>
-                                </div>
-                            </div>
-                            <div className='signup_button' onClick={SubmitsignupData}>
-                                <button>Sign Up</button>
-                            </div>
-                        </>}
-                    <div>
-                        <hr />
-                    </div>
-                    <div className='signup_footer'>
-                        <p>Already have an account?</p>
-                        <p><Link to="/sign-in">Sign In</Link></p>
-                    </div>
-
-                </div>
-            </div>
-            <div className='signup_img'>
-                <div>
-                    <img src={SignUpImg} alt="SignUp" />
-                </div>
-            </div>
-            
-            
-        </div> */}
-
-
 
             <div className='main-signup-div'>
                 <section id='signup-form'>
@@ -421,7 +289,7 @@ export default function SignUp() {
 
                                 <div className='parent-confirmPassword-field form-inputs'>
                                     <div>
-                                        <label htmlFor='password'>Confirm Password</label>
+                                        <label htmlFor='confirmPassword'>Confirm Password</label>
                                     </div>
                                     <div>
                                         <input
@@ -431,6 +299,21 @@ export default function SignUp() {
                                             value={SignupData.confirmPassword}
                                             onChange={handleSignup}
                                         />
+                                    </div>
+                                </div>
+
+                                <div className='form-inputs'>
+                                    <div>
+                                        <label className='site-label' htmlFor='cities'>Select site</label>
+                                    </div>
+                                    <div>
+                                        <select onClick={handleSelectSite} name="cities" id="cities">
+                                            <option value="Ludhiana, Punjab">Ludhiana, Punjab</option>
+                                            <option value="Vadodara, Gujarat">Vadodara, Gujarat</option>
+                                            <option value="Vidisha, Madhya Pradesh">Vidisha, Madhya Pradesh</option>
+                                            <option value="Puri, Orissa">Puri, Orissa</option>
+                                            <option value="Puducherry, Tamil Nadu">Puducherry, Tamil Nadu</option>
+                                        </select>
                                     </div>
                                 </div>
 

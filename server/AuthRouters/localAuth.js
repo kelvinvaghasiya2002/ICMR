@@ -13,10 +13,12 @@ const jwt_secret = process.env.JWT_SECRET;
 
 
 router.post("/register", (req, res) => {
-    console.log(req.headers);
+    // console.log(req.headers);
     const username = req.headers.username;
     const name = req.headers.name;
     const password = req.headers.password;
+    const sitename = req.headers.sitename;
+    // console.log(sitename);
 
     User.findOne({ username: username }).then((result) => {
         if (result) {
@@ -38,7 +40,8 @@ router.post("/register", (req, res) => {
                 const user = new User({
                     name: name,
                     password: hash,
-                    username: username
+                    username: username,
+                    sitename : sitename
                 });
 
                 user.save().then(() => {
