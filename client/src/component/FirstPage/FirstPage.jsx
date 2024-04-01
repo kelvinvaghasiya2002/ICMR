@@ -11,7 +11,7 @@ export default function FirstPage() {
                     <h1>Welcome</h1>
                 </div>
                 <div className='signin-up'>
-                    <Link to="/sign-up"><button className='signin-up-buttons'>Sign Up</button></Link>
+                    <Link to="/sign-up"><button className='signin-up-buttons xyz'>Sign Up</button></Link>
                     <Link to="/sign-in"><button className='signin-up-buttons'>Sign In</button></Link>
                 </div>
             </div>

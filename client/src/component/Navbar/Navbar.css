@@ -23,6 +23,53 @@
 }
 
 
+
+
+.nav-flex{
+    display: flex;
+    flex-direction: column;
+    /* gap: 1vh; */
+    height: 100%;
+}
+
+
+.nav-flex div{
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+}
+
+.nav-flex div:nth-child(1){
+    height: 10vh;
+}
+
+
+.nav-flex div:nth-child(2){
+    height: 7vh;
+}
+
+
+.nav-flex img{
+    height: 7vh;
+}
+
+.nav-flex div p{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 1vw;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
 .buttons-grid{
     height: 11vh;
     display: flex;
