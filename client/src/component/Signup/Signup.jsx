@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Signup.css';
 import SignUpImg from '../../assets/SignUp_Img.png';
 import Google from './Google';
@@ -18,11 +18,11 @@ export default function SignUp() {
     // document.getElementById("navigation").style.position="sticky";
     // document.getElementById("navigation").style.top="0";
     // document.getElementById("navigation").style.backgroundColor="white";
-    window.onload = function () {
+    useEffect(()=>{
         document.getElementById("navigation").style.position = "sticky";
         document.getElementById("navigation").style.top = "0";
         document.getElementById("navigation").style.backgroundColor = "white";
-    };
+    })
     document.title = "Sign Up ICMR"
 
 
