@@ -157,7 +157,7 @@ export default function SignIn() {
                     <form>
                         <div className='welcome-back'>
                             <h2>WELCOME BACK!</h2>
-                            <p>Don’t have a account, <Link to="/sign-up">Sign up</Link></p>
+                            <p>Don’t have an account, <Link to="/sign-up">Sign up</Link></p>
                         </div>
 
 

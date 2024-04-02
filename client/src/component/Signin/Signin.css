@@ -332,15 +332,15 @@ a {
 .separator::after {
     content: '';
     flex: 1;
-    border-bottom: 0.2vh solid #3177FF;
+    border-bottom: 0.2vh solid #d8d8d8;
 }
 
 .separator:not(:empty)::before {
-    margin-right: .25em;
+    margin-right: .75em;
 }
 
 .separator:not(:empty)::after {
-    margin-left: .25em;
+    margin-left: .75em;
 }
 
 
