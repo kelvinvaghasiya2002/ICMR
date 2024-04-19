@@ -5,7 +5,7 @@ export default function Map() {
     document.title="Project sites"
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <div className="map_main">
                 <img src={MapImg} alt="MapImg" />
             </div>

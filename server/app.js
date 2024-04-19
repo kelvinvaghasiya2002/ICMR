@@ -25,7 +25,7 @@ app.use(session({
     resave : false,
     saveUninitialized : true,
     cookie : {
-        maxAge : 1000*60*3
+        maxAge : 1000*60
     }
 }))
 
@@ -46,18 +46,6 @@ app.use(emailRouter)
 app.use(verifyEmailRouter)
 app.use(localAuthRouter)
 
-
-// app.get("/getotp",(req,res)=>{
-//     const response = sendEmail().then((result)=>{
-//         return result
-//     }).catch((err)=>{
-//         return err
-//     })
-//     console.log(response);
-//     res.json({
-//         data : sendEmail()
-//     })
-// })
 
 app.listen(3000,()=>{
     console.log("server is running on port 3000");

@@ -151,7 +151,7 @@ export default function SignIn() {
         //     }
         // </div>
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <div className='main-signin-div'>
                 <section id='signin-form'>
                     <form>

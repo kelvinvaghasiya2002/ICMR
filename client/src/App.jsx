@@ -2,10 +2,15 @@ import { useState, useEffect } from 'react'
 import Navbar from './component/Navbar/Navbar'
 import axios from "axios"
 import FirstPage from './component/FirstPage/FirstPage'
-import { useUserInfo } from './contexts/User.jsx'
+import UserProvider, { useUserInfo } from './contexts/User.jsx'
 import InformationPage from "./component/InformationPage/InformationPage.jsx"
 import ContactUs from "./component/ContactUs/ContactUs.jsx"
 import HomePage from './component/HomePage/HomePage.jsx'
+import Map from './component/Map/Map.jsx'
+import { Routes, Route } from "react-router-dom";
+import SignIn from './component/Signin/Signin.jsx'
+import SignUp from './component/Signup/Signup.jsx'
+import Protected from './component/Protected/Protected.jsx'
 
 
 function App() {
@@ -44,13 +49,26 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      {!loggedIn && <FirstPage />}
-      {/* {loggedIn && <ContactUs />} */}
-      {/* <InformationPage /> */}
-      {loggedIn && <HomePage />}
+    <Navbar />
+    <Routes>
+      <Route path='/' element={loggedIn?<HomePage />:<FirstPage />} />
+      <Route path='/sign-in' element={<SignIn />} />
+      <Route path='/sign-up' element={<SignUp />} />
+      <Route path='/protected' element={loggedIn?<Protected />:<SignIn/>}/>
+      <Route path= "/aboutus" element={ <InformationPage />} />
+      <Route path='/project-sites' element={<Map />} />
+      <Route path='/contact-us' element={<ContactUs />} />
+    </Routes>
     </>
   )
+
 }
 
 export default App
+
+
+{/* <Navbar />
+      {!loggedIn && <FirstPage />}
+      {/* {loggedIn && <ContactUs />} */}
+  {/* <InformationPage /> */ }
+  {/* {loggedIn && <HomePage />}  */ }

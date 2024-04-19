@@ -56,7 +56,7 @@ export default function InformationPage() {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <section id="InfoPage" className='main_info'>
                 <div className='firstParagraph'>
                     <p>

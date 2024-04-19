@@ -15,9 +15,6 @@ const url = "http://localhost:3000"
 
 
 export default function SignUp() {
-    // document.getElementById("navigation").style.position="sticky";
-    // document.getElementById("navigation").style.top="0";
-    // document.getElementById("navigation").style.backgroundColor="white";
     useEffect(()=>{
         document.getElementById("navigation").style.position = "sticky";
         document.getElementById("navigation").style.top = "0";
@@ -178,7 +175,7 @@ export default function SignUp() {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
 
             <div className='main-signup-div'>
                 <section id='signup-form'>

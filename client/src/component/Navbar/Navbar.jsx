@@ -38,7 +38,7 @@ export default function Navbar() {
             </div>
             {loggedIn && <div className='buttons-grid'>
                 <button id='but'><p style={{ margin: "0px", padding: "0px" }}>AIM</p></button>
-                <button><p style={{ margin: "0px", padding: "0px" }}>Objective</p></button>
+                <button><Link to="/protected"><p style={{ margin: "0px", padding: "0px" }}>Objective</p></Link></button>
                 <button><p style={{ margin: "0px", padding: "0px" }}>Outcome</p></button>
                 <button><p style={{ margin: "0px", padding: "0px" }}>Methodology</p></button>
                 <button><p style={{ margin: "0px", padding: "0px" }}>Workflow</p></button>

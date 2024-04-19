@@ -1,11 +1,10 @@
 import { useContext , createContext , useState } from "react";
 
-
-
-export const userContext = createContext(null);
+const userContext = createContext(null);
 
 export function useUserInfo() {
     const userInfo = useContext(userContext);
+    console.log(userInfo);
     return userInfo;
 }
 
