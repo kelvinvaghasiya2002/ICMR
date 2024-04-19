@@ -4,7 +4,7 @@ import GoogleImg from '../../assets/Google_Icon.png'
 
 
 const handleClick = ()=>{
-    window.open("http://localhost:3000/auth/google/callback", "_self")
+    window.open("https://icmr.onrender.com/auth/google/callback", "_self")
 }
 
 

@@ -8,7 +8,7 @@ import FacebookSI from './FacebookSI'
 import { useUserInfo } from '../../contexts/User'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
-const url = "http://localhost:3000"
+const url = "https://icmr.onrender.com"
 
 export default function SignIn() {
     const { user, setUser, loggedIn, setloggedIn } = useUserInfo();

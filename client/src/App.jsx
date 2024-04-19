@@ -20,7 +20,7 @@ function App() {
 
   const getUser = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/login/success",
+      const { data } = await axios.get("https://icmr.onrender.com/login/success",
         { withCredentials: true });
       setUser(data.user._json);
       setloggedIn(true)
@@ -32,7 +32,7 @@ function App() {
 
       try {
         const token = localStorage.getItem("token");
-        const { data } = await axios.get(`http://localhost:3000/localauth?token=${token}`);
+        const { data } = await axios.get(`https://icmr.onrender.com/localauth?token=${token}`);
         setUser(data.user);
         setloggedIn(true)
         // console.log(user);
