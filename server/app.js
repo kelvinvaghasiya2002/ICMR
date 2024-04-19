@@ -36,7 +36,7 @@ app.use(passport.session());
 app.use(cors(
     {
         // origin : [   `${client}`   ,   `${client}/sign-up`   ,   `${client}/sign-in`],
-        origin : [`${client}` ],
+        origin : [ "https://icmr.vercel.app/" ],
         methods : "GET,POST,PUT,DELETE",
         credentials : true
     }
