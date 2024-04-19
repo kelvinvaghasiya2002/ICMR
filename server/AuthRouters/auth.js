@@ -34,7 +34,7 @@ router.get("/auth/google/callback", passport.authenticate("google", {
 
 router.get("/logout",(req,res)=>{
     req.logOut();
-    res.redirect("http://localhost:5173")
+    res.redirect("https://icmr.vercel.app/")
 })
 
 
