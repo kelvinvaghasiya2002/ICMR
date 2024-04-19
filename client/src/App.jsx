@@ -21,7 +21,8 @@ function App() {
   const getUser = async () => {
     try {
       const { data } = await axios.get("https://icmr.onrender.com/login/success",
-        { withCredentials: true });
+        // { withCredentials: true }
+      );
       setUser(data.user._json);
       setloggedIn(true)
       // console.log(data.user._json);
