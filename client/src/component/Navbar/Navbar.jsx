@@ -40,7 +40,7 @@ export default function Navbar() {
                 <button><p>Facilities</p></button>
                 <button><p>Research Team</p></button>
                 <button><p>What's New?</p></button>
-                <button><Link to="/forms"><p>Fill Form</p></Link></button>
+                <button><Link to="/formsaa"><p>Fill Form</p></Link></button>
             </div>}
         </>
     )

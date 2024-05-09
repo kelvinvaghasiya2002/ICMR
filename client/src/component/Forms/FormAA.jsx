@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
-import SidePanel from './SidePanel';
+import SidePanel from './SidePanel.jsx';
 import Checkbox from './Checkbox.jsx';
+import { Link } from 'react-router-dom';
 
 function Form() {
     const date = new Date();
 
     useEffect(() => {
-        setTimeout(() => {
-            const buttons = document.getElementById("nav-buttons");
-            buttons.style.display = "none"
-            return () => {
-                buttons.style.display = "flex"
-            }
-        })
+        const buttons = document.getElementById("nav-buttons");
+        if(buttons)
+        buttons.style.display = "none"
+        return () => {
+            if(buttons)
+            buttons.style.display = "flex"
+        }
     })
     return (
         <section id='site-info'>
@@ -40,6 +41,8 @@ function Form() {
                 <h3>Respondent ID: </h3>
                 <input placeholder='Type here' />
             </div>
+
+            <button><Link to="/formsab">Next</Link></button>
         </section>
     )
 }

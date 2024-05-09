@@ -11,7 +11,8 @@ import { Routes, Route } from "react-router-dom";
 import SignIn from './component/Signin/Signin.jsx'
 import SignUp from './component/Signup/Signup.jsx'
 import Protected from './component/Protected/Protected.jsx'
-import Form from './component/Forms/Form.jsx'
+import FormAA from './component/Forms/FormAA.jsx'
+import FormAB from './component/Forms/FormAB.jsx'
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -61,7 +62,8 @@ function App() {
       <Route path= "/aboutus" element={ <InformationPage />} />
       <Route path='/project-sites' element={<Map />} />
       <Route path='/contact-us' element={<ContactUs />} />
-      <Route path='/forms' element={<Form />} />
+      <Route path='/formsaa' element={<FormAA />} />
+      <Route path='/formsab' element={<FormAB />} />
     </Routes>
     </>
   )
