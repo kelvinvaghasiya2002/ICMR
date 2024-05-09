@@ -85,7 +85,7 @@
 .buttons-grid button{
     height: 70%;
     font-weight: 700;
-    padding: 0 2.7vw;
+    padding: 0 2.4vw;
     border-radius: 99px;
     background-color: #D4D4D4;
     font-family: "Inter", sans-serif;
@@ -97,8 +97,15 @@
 
 .buttons-grid button p{
     font-size: 1vw;
+    margin: 0;
+    padding: 0;
 }
 
+
+.buttons-grid button a{
+    text-decoration: none;
+    color: black;
+}
 
 
 .buttons-grid button:hover{

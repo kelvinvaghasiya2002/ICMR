@@ -7,12 +7,6 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
     const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
-    // var targetElm = document.querySelector('#aim-section'),  // reference to scroll target
-    // button = document.getElementById('but');        // button that triggers the scroll
-    // console.log(button);
-    // button?.addEventListener('click', function () {
-    //     targetElm.scrollIntoView()
-    // })
 
     return (
         <>
@@ -36,16 +30,17 @@ export default function Navbar() {
                     }
                 </div>
             </div>
-            {loggedIn && <div className='buttons-grid'>
-                <button id='but'><p style={{ margin: "0px", padding: "0px" }}>AIM</p></button>
-                <button><Link to="/protected"><p style={{ margin: "0px", padding: "0px" }}>Objective</p></Link></button>
-                <button><p style={{ margin: "0px", padding: "0px" }}>Outcome</p></button>
-                <button><p style={{ margin: "0px", padding: "0px" }}>Methodology</p></button>
-                <button><p style={{ margin: "0px", padding: "0px" }}>Workflow</p></button>
-                <button><p style={{ margin: "0px", padding: "0px" }}>Goals</p></button>
-                <button><p style={{ margin: "0px", padding: "0px" }}>Facilities</p></button>
-                <button><p style={{ margin: "0px", padding: "0px" }}>Research Team</p></button>
-                <button><p style={{ margin: "0px", padding: "0px" }}>What's New?</p></button>
+            {loggedIn && <div id='nav-buttons' className='buttons-grid'>
+                <button id='but'><p>AIM</p></button>
+                <button><p>Objective</p></button>
+                <button><p>Outcome</p></button>
+                <button><p>Methodology</p></button>
+                <button><p>Workflow</p></button>
+                <button><p>Goals</p></button>
+                <button><p>Facilities</p></button>
+                <button><p>Research Team</p></button>
+                <button><p>What's New?</p></button>
+                <button><Link to="/forms"><p>Fill Form</p></Link></button>
             </div>}
         </>
     )
