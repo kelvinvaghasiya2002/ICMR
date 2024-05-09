@@ -2,7 +2,7 @@ import express from "express";
 import passport from "passport";
 
 const router=express.Router();
-
+const CLIENT_URL=process.env.CLIENT_URL;
 
 router.get("/google",passport.authenticate("google" , ["profile","email"]));
 
@@ -34,7 +34,7 @@ router.get("/auth/google/callback", passport.authenticate("google", {
 
 router.get("/logout",(req,res)=>{
     req.logOut();
-    res.redirect("https://icmr.vercel.app/")
+    res.redirect(`${CLIENT_URL}`)
 })
 
 

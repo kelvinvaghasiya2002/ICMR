@@ -25,7 +25,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000 * 60
+        maxAge: 1000 * 60 * 60 * 24
     }
 }))
 
@@ -33,25 +33,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-// app.use(cors(
-//     {
-//         // origin : [   `${client}`   ,   `${client}/sign-up`   ,   `${client}/sign-in`],
-//         origin : [ "https://icmr.vercel.app/" ],
-//         methods : "GET,POST,PUT,DELETE",
-//         credentials : true
-//     }
-// ))
+app.use(cors(
+    {
+        origin : [   `${client}`   ,   `${client}/sign-up`   ,   `${client}/sign-in`],
+        methods : "GET,POST,PUT,DELETE",
+        credentials : true
+    }
+))
 
-// app.use(function (req, res, next) {
-//     //Enabling CORS
-//     res.header("Access-Control-Allow-Origin", "https://icmr.vercel.app");
-//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-//     res.header("Access-Control-Allow-Credentials", "true");
-//     next();
-// });
-
-app.use(cors());
 
 app.use(router)
 app.use(emailRouter)

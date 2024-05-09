@@ -1,6 +1,7 @@
 import GoogleImg from '../../assets/Google_Icon.png';
 import { useEffect } from 'react';
 import axios from "axios"
+const url = import.meta.env.VITE_SERVER;
 
 export default function Google() {
 
@@ -21,7 +22,7 @@ export default function Google() {
 
     
     const handleClick = ()=>{
-        window.open("https://icmr.onrender.com/auth/google/callback", "_self")
+        window.open(`${url}/auth/google/callback`, "_self")
     }
 
 

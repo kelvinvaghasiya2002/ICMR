@@ -1,10 +1,11 @@
 
 import GoogleImg from '../../assets/Google_Icon.png'
+const url = import.meta.env.VITE_SERVER;
 
 
 
 const handleClick = ()=>{
-    window.open("https://icmr.onrender.com/auth/google/callback", "_self")
+    window.open(`${url}/auth/google/callback`, "_self")
 }
 
 

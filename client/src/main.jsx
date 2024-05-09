@@ -47,11 +47,13 @@ const router = createBrowserRouter([
 
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    {/* <RouterProvider router={router} /> */}
-    <BrowserRouter>
-      <UserProvider><App /></UserProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-)
+setTimeout(()=>{
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      {/* <RouterProvider router={router} /> */}
+      <BrowserRouter>
+        <UserProvider><App /></UserProvider>
+      </BrowserRouter>
+    </React.StrictMode>,
+  )
+},100)

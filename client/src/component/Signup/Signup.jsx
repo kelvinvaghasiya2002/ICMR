@@ -8,7 +8,7 @@ import { useUserInfo } from '../../contexts/User.jsx';
 import axios from 'axios';
 import { Navigate, Link } from 'react-router-dom';
 import Navbar from "../Navbar/Navbar.jsx"
-const url = "https://icmr.onrender.com"
+const url = import.meta.env.VITE_SERVER;
 
 
 
