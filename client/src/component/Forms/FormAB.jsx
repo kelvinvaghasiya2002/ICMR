@@ -30,7 +30,8 @@ function FormAB() {
         <div className='block'>
           <h3 className='h3block'>Type of PSU :</h3>
           <Checkbox CheckbobItems={["Rural", "Urban"]} name={"type_of_psu"} />
-        </div>
+        </div> 
+        
 
         <div className='block'>
           <h3 className='h3block'>GPS Co-ordinates :</h3>
