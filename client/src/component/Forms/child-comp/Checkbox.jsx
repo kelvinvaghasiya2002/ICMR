@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Checkbox({CheckbobItems , name}) {
+function Checkbox({ CheckbobItems, name }) {
     return (
         <form>
             {
@@ -12,10 +12,14 @@ function Checkbox({CheckbobItems , name}) {
                             <label style={{fontWeight : "400"}} htmlFor={item}>{item}</label><br />
                         </div>
                     )
-                })
+                }
+
+                )
+
             }
         </form>
     )
 }
+
 
 export default Checkbox
