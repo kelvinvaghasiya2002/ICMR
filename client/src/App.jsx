@@ -14,6 +14,17 @@ import Protected from './component/Protected/Protected.jsx'
 import FormAA from './component/Forms/FormAA.jsx'
 import FormAB from './component/Forms/FormAB.jsx'
 import FormAC3 from './component/Forms/FormAC3.jsx'
+import FormAC4 from './component/Forms/FormAC4.jsx'
+import FormAC5 from './component/Forms/FormAC5.jsx'
+import FormAC6 from './component/Forms/FormAC6.jsx'
+import FormAC7 from './component/Forms/FormAC7.jsx'
+import FormAC8 from './component/Forms/FormAC8.jsx'
+import FormAC9 from './component/Forms/FormAC9.jsx'
+import FormAC10 from './component/Forms/FormAC10.jsx'
+import FormAC11 from './component/Forms/FormAC11.jsx'
+import FormAC12 from './component/Forms/FormAC12.jsx'
+import FormAC13 from './component/Forms/FormAC13.jsx'
+import FormAC14 from './component/Forms/FormAC14.jsx'
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -62,6 +73,17 @@ function App() {
       <Route path='/formsaa' element={<FormAA />} />
       <Route path='/formsab' element={<FormAB />} />
       <Route path='/formsac-householdschedule' element={<FormAC3 />} />
+      <Route path='/formsac-relationshipwithheadofhousehold' element={<FormAC4 />} />
+      <Route path='/formsac-trauma&burns' element={<FormAC5 />} />
+      <Route path='/formsac-stemi' element={<FormAC6 />} />
+      <Route path='/formsac-stroke' element={<FormAC7 />} />
+      <Route path='/formsac-acuterespiratoryillness' element={<FormAC8 />} />
+      <Route path='/formsac-postpartumhaemorrhage' element={<FormAC9 />} />
+      <Route path='/formsac-neonatalemergencies' element={<FormAC10 />} />
+      <Route path='/formsac-snakebite' element={<FormAC11 />} />
+      <Route path='/formsac-poisoning' element={<FormAC12 />} />
+      <Route path='/formsac-others' element={<FormAC13 />} />
+      <Route path='/formsac-verbal&socialautopsyquestionnaire' element={<FormAC14 />} />
     </Routes>
     </>
   )

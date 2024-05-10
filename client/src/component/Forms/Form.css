@@ -68,3 +68,19 @@ section {
 .blockinput:focus {
     outline: 0.05vw solid #3177FF;
 }
+
+
+
+
+
+
+/* ----------------   CSS FOR TABLE     --------------- */
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+table{
+    width: 100%;
+}
