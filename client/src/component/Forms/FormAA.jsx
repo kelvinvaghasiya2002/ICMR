@@ -31,17 +31,17 @@ function Form() {
                 <div>
                     <p className='datetime'>Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
                 </div>
-                <div className='site'>
-                    <h3>Site :</h3>
-                    <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
+                <div className='block'>
+                    <h3 className='h3block'>Site :</h3>
+                    <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]}/>
                 </div>
-                <div className='dataCol'>
-                    <h3>Name Of the Data Collector :</h3>
-                    <input placeholder='Type here' />
+                <div className='block'>
+                    <h3 className='h3block'>Name Of the Data Collector :</h3>
+                    <input className='blockinput' placeholder='Type here' />
                 </div>
-                <div className='dataCol'>
-                    <h3>Respondent ID: </h3>
-                    <input placeholder='Type here' />
+                <div className='block'>
+                    <h3 className='h3block'>Respondent ID: </h3>
+                    <input className='blockinput' placeholder='Type here' />
                 </div>
 
                 <button className='nextbtn'><Link style={{ color: "white" }} to="/formsab">Next</Link></button>

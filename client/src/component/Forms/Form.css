@@ -1,6 +1,3 @@
-/* Form AA */
-
-
 .sidePanel {
     box-shadow: rgba(0, 0, 0, 0.26) 0vw 0.03vw 1.05vw;
     margin: 1.20vw 1.20vw 1.2vw 0vw;
@@ -13,10 +10,6 @@
 
 .innerdiv {
     padding: 0vw 1.05vw;
-}
-
-.siteInfoText {
-    color: #3177FF;
 }
 
 .siteInfo {
@@ -34,26 +27,6 @@ section {
     display: flex;
 }
 
-.checkbox {
-    color: red;
-}
-
-.dataCol {
-    display: flex;
-}
-
-.dataCol input {
-    border: 0.05vw solid #CCCCCC;
-    border-radius: 0.35vw;
-    padding: 0vw 0.7vw;
-    margin: 0.7vw 0vw 0.7vw 0.7vw;
-    font-size: 0.9vw;
-}
-
-.dataCol input:focus {
-    outline: 0.05vw solid #3177FF;
-}
-
 .nextbtn {
     background-color: #3177FF;
     border: none;
@@ -64,21 +37,33 @@ section {
     display: flex;
     font-size: 1.12vw;
     margin-left: auto;
-    
 }
 
-/* for align checkbox */
-.site {
-    display: flex;
-    align-items: baseline
-}
-
-.datetime{
+.datetime {
     font-size: 1.2vw;
     margin: 1em 0em;
     font-weight: bold;
 }
 
+.block {
+    display: inline-flex;
+    align-items: baseline;
+    margin: 0.5vw 0vw 0vw 0vw;
 
+}
 
-/* Form AB */
+.h3block {
+    margin: 0.9vw 0.9vw 0.9vw 0vw;
+}
+
+.blockinput {
+    border: 0.05vw solid #CCCCCC;
+    border-radius: 0.35vw;
+    padding: 0vw 0.7vw;
+    font-size: 0.9vw;
+    height: 2.3vw;
+}
+
+.blockinput:focus {
+    outline: 0.05vw solid #3177FF;
+}
