@@ -142,3 +142,9 @@ table{
     margin-right: auto;
 }
 
+
+.radiobtn{
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1vw;
+}
