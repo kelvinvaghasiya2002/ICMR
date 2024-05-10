@@ -75,48 +75,60 @@ function FormAC15() {
                 <div className='block'>
                     <h3 className='h3block'>What were the symptoms the deceased complained about? ( optional )</h3>
                     <form>
-                        <div>
+                        <div className='radiobtn'>
                             <input onClick={handleClick} type="radio" id="1" name="ac-33-9" value="1" />
-                            <label style={{ fontWeight: "400" }} htmlFor="1">STEMI : Acute chest pain, heaviness or constriction, or radiation to left arms or necks or back or breathlessness, or upper abdominal pain, or palpitation, or giddiness, which might have been accompanied by profuse sweating, and easily reproduced with post-meal exertion.</label><br />
+                            <div>
+                            <label style={{ fontWeight: "400" }} htmlFor="1"><b>STEMI : </b>Acute chest pain, heaviness or constriction, or radiation to left arms or necks or back or breathlessness, or upper abdominal pain, or palpitation, or giddiness, which might have been accompanied by profuse sweating, and easily reproduced with post-meal exertion.</label></div><br />
                         </div>
-                        <div>
+                        <div className='radiobtn'>
                             <input onClick={handleClick} type="radio" id="2" name="ac-33-9" value="2" />
-                            <label style={{ fontWeight: "400" }} htmlFor="2">Trauma & Burn : sudden injury in Road Traffic Accident/ severe fall/ drowning/ stabbing/ gunshot/ any other assault/ suicidal attempt/ burns/ domestic violence/ homicidal/ suicidal etc.</label><br />
+                            <div>
+                            <label style={{ fontWeight: "400" }} htmlFor="2"><b>Trauma & Burn :</b> sudden injury in Road Traffic Accident/ severe fall/ drowning/ stabbing/ gunshot/ any other assault/ suicidal attempt/ burns/ domestic violence/ homicidal/ suicidal etc.</label>
+                            </div><br />
                         </div>
-                        <div>
+                        <div className='radiobtn'>
                             <input onClick={handleClick} type="radio" id="3" name="ac-33-9" value="3" />
-                            <label style={{ fontWeight: "400" }} htmlFor="3">Stroke: sudden onset of weakness, especially one side of the body/ loss of consciousness/ altered sensorium/ Imbalance/ blurred vision/ facial deviation/ drooping of eyelid/ speech abnormality with numbness and tingling sensation, or difficulty in speaking or understanding speech (aphasia), or sudden severe headache with no known cause of one's life (haemorrhagic strokes).</label><br />
+                            <div>
+                            <label style={{ fontWeight: "400" }} htmlFor="3"><b>Stroke:</b> sudden onset of weakness, especially one side of the body/ loss of consciousness/ altered sensorium/ Imbalance/ blurred vision/ facial deviation/ drooping of eyelid/ speech abnormality with numbness and tingling sensation, or difficulty in speaking or understanding speech (aphasia), or sudden severe headache with no known cause of one's life (haemorrhagic strokes).</label>
+                            </div><br />
                         </div>
-                        <div>
+                        <div className='radiobtn'>
                             <input onClick={handleClick} type="radio" id="4" name="ac-33-9" value="4" />
-                            <label style={{ fontWeight: "400" }} htmlFor="4">Acute Respiratory Illness: sudden onset of fever, or cough with expectoration, or chest pain (pleuritic) , or fast breathing, or bluish colouration of tongue or lip (cyanosis), or speaks in short sentences, or altered mentation, chest tightness or pressure, indicating a lack of oxygen.</label><br />
+                            <div>
+                            <label style={{ fontWeight: "400" }} htmlFor="4"><b>Acute Respiratory Illness:</b>   sudden onset of fever, or cough with expectoration, or chest pain (pleuritic) , or fast breathing, or bluish colouration of tongue or lip (cyanosis), or speaks in short sentences, or altered mentation, chest tightness or pressure, indicating a lack of oxygen.</label></div><br />
                         </div>
-                        <div>
+                        <div className='radiobtn'>
                             <input onClick={handleClick} type="radio" id="5" name="ac-33-9" value="5" />
-                            <label style={{ fontWeight: "400" }} htmlFor="5">Postpartum Haemorrhage & Pre-Eclampsia: excessive bleeding or suddenly increased blood pressure or deterioration of sensorium or generalized seizure or fits etc after delivery.</label><br />
+                            <div>
+                            <label style={{ fontWeight: "400" }} htmlFor="5"><b>Postpartum Haemorrhage & Pre-Eclampsia:</b> excessive bleeding or suddenly increased blood pressure or deterioration of sensorium or generalized seizure or fits etc after delivery.</label></div><br />
                         </div>
-                        <div>
+                        <div className='radiobtn'>
                             <input onClick={handleClick} type="radio" id="6" name="ac-33-9" value="6" />
-                            <label style={{ fontWeight: "400" }} htmlFor="6">Neonatal Emergency: fever, or hypothermia, or convulsion, or any difficulty in feeding, or lethargy, or dusky colour, or cyanosis, or excessive diarrhoea, or jaundice, etc.</label><br />
+                            <div>
+                            <label style={{ fontWeight: "400" }} htmlFor="6"><b>Neonatal Emergency:</b> fever, or hypothermia, or convulsion, or any difficulty in feeding, or lethargy, or dusky colour, or cyanosis, or excessive diarrhoea, or jaundice, etc.</label></div><br />
                         </div>
-                        <div>
+                        <div className='radiobtn'>
                             <input onClick={handleClick} type="radio" id="7" name="ac-33-9" value="7" />
-                            <label style={{ fontWeight: "400" }} htmlFor="7">Snake bite</label><br />
+                            <div>
+                            <label style={{ fontWeight: "400" }} htmlFor="7"><b>Snake bite</b></label></div><br />
                         </div>
-                        <div>
+                        <div className='radiobtn'>
                             <input onClick={handleClick} type="radio" id="8" name="ac-33-9" value="8" />
-                            <label style={{ fontWeight: "400" }} htmlFor="8">Poisoning: poisoning that leads to nausea, or vomiting, or diarrhoea, or drooling of saliva, or foaming at the mouth, or difficulty in breathing, or dilated or constricted pupils, or suddenly got faint, or seizure.</label><br />
+                            <div>
+                            <label style={{ fontWeight: "400" }} htmlFor="8"><b>Poisoning:</b> poisoning that leads to nausea, or vomiting, or diarrhoea, or drooling of saliva, or foaming at the mouth, or difficulty in breathing, or dilated or constricted pupils, or suddenly got faint, or seizure.</label></div><br />
                         </div>
                     </form>
                 </div>
 
-                {popup && <div>
+                {popup && <div className='popup'>
                     <h3>Form</h3>
                     <h3>Confirmation Message</h3>
                     <p>Your response have been received. </p>
-                    <div>
-                        <button onClick={handleCancel}>cancel</button>
-                        <button><Link to="/formsac-verbal&socialautopsyquestionnaire-3">Submit</Link></button>
+                    <div className='popupbtn'>
+                        <button className='cancelbtn' onClick={handleCancel}>cancel</button>
+                        <button className='nextbtn'><Link
+                        style={{ color: "white" }}
+                         to="/formsac-verbal&socialautopsyquestionnaire-3">Submit</Link></button>
                     </div>
                 </div>}
 
