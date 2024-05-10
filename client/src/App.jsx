@@ -13,6 +13,7 @@ import SignUp from './component/Signup/Signup.jsx'
 import Protected from './component/Protected/Protected.jsx'
 import FormAA from './component/Forms/FormAA.jsx'
 import FormAB from './component/Forms/FormAB.jsx'
+import FormAC3 from './component/Forms/FormAC3.jsx'
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -28,9 +29,6 @@ function App() {
       );
       setUser(data.user._json);
       setloggedIn(true)
-      // console.log(data.user._json);
-      // console.log(user);
-
     } catch (error) {
       console.log(error.response);
 
@@ -39,7 +37,6 @@ function App() {
         const { data } = await axios.get(`${url}/localauth?token=${token}`);
         setUser(data.user);
         setloggedIn(true)
-        // console.log(user);
       } catch (error) {
         console.log(error.response);
       }
@@ -64,7 +61,7 @@ function App() {
       <Route path='/contact-us' element={<ContactUs />} />
       <Route path='/formsaa' element={<FormAA />} />
       <Route path='/formsab' element={<FormAB />} />
-      <Route path='/formsac' element={<FormAA />} />
+      <Route path='/formsac-householdschedule' element={<FormAC3 />} />
     </Routes>
     </>
   )

@@ -33,7 +33,7 @@ function Form() {
                 </div>
                 <div className='site'>
                     <h3>Site :</h3>
-                    <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
+                    <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name={"site_location"} />
                 </div>
                 <div className='dataCol'>
                     <h3>Name Of the Data Collector :</h3>
