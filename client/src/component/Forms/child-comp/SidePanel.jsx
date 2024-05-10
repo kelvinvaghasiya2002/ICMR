@@ -1,12 +1,17 @@
 import React from 'react'
+import "./Form.css"
 
 function SidePanel() {
   return (
-    <div style={{border : "1px solid black"}}>
-        <p>A Socio-demographic Characteristics</p>
-        <p>Site Information</p>
+    <div className='sidePanel'>
+      <p>A Socio-demographic Characteristics</p>
+      <div className='innerdiv'>
+        <p className='siteInfoText'>Site Information</p>
         <p>Cluster Information</p>
         <p>Household Schedule</p>
+        <p>Relationship with Head of the Household</p>
+        <p>Household Schedule 2 </p>
+      </div>
     </div>
   )
 }
