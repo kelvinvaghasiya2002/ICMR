@@ -4,6 +4,7 @@ import SidePanel from './child-comp/SidePanel';
 import DropDown from './child-comp/DropDown';
 import Checkbox from './child-comp/Checkbox';
 import { Link } from 'react-router-dom';
+import "./Form.css"
 
 function FormAB() {
   turnOffbutton();
@@ -44,6 +45,7 @@ function FormAB() {
         </div>
         <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac">Next</Link></button>
       </div>
+      <button><Link to="/formsac-householdschedule">Next</Link></button>
     </section>
   )
 }

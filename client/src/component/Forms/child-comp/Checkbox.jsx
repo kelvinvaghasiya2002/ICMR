@@ -9,7 +9,7 @@ function Checkbox({ CheckbobItems, name }) {
                     return (
                         <div key={index}>
                             <input type="radio" id={item} name={name} value={item} />
-                            <label htmlFor={item}>{item}</label><br/>
+                            <label style={{fontWeight : "400"}} htmlFor={item}>{item}</label><br />
                         </div>
                     )
                 }

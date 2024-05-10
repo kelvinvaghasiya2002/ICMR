@@ -45,10 +45,10 @@ function Form() {
                 </div>
 
                 <button className='nextbtn'><Link style={{ color: "white" }} to="/formsab">Next</Link></button>
-
             </div>
         </section>
     )
+
 }
 
-export default Form
+export default Form;
