@@ -102,3 +102,43 @@ table{
     margin: 0.5vw;
 
 }
+
+.tableinput{
+    border: none;
+    margin: 0.5vw;
+}
+
+.tableinput:focus{
+    outline: none;
+}
+
+.popup{
+    position: fixed;
+    top: 0;
+    left: 35%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0vw 0.03vw 1.05vw;
+    width: auto;
+    margin: 1.40vw 1.40vw 1.4vw 0vw;
+    padding: 0vw 1.40vw 1.40vw 1.4vw;
+    border-radius: 0.7vw;
+    background-color: white;
+
+}
+
+.popupbtn{
+    display:flex;
+    margin-top: 1.40vw;
+}
+
+.cancelbtn{
+    background-color: #EAEAEA;
+    border: none;
+    border-radius: 1.40vw;
+    padding: 0.5vw 1.40vw;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 1.12vw;
+    margin-right: auto;
+}
+
