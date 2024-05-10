@@ -1,3 +1,6 @@
+/* Form AA */
+
+
 .sidePanel {
     box-shadow: rgba(0, 0, 0, 0.26) 0vw 0.03vw 1.05vw;
     margin: 1.20vw 1.20vw 1.2vw 0vw;
@@ -61,6 +64,7 @@ section {
     display: flex;
     font-size: 1.12vw;
     margin-left: auto;
+    
 }
 
 /* for align checkbox */
@@ -74,3 +78,7 @@ section {
     margin: 1em 0em;
     font-weight: bold;
 }
+
+
+
+/* Form AB */
