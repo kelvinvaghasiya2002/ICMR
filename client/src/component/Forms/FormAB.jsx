@@ -31,7 +31,7 @@ function FormAB() {
           <h3 className='h3block'>Type of PSU :</h3>
           <Checkbox CheckbobItems={["Rural", "Urban"]} name={"type_of_psu"} />
         </div> 
-        
+
 
         <div className='block'>
           <h3 className='h3block'>GPS Co-ordinates :</h3>
@@ -46,7 +46,6 @@ function FormAB() {
         </div>
         <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac">Next</Link></button>
       </div>
-      <button><Link to="/formsac-householdschedule">Next</Link></button>
     </section>
   )
 }
