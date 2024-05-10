@@ -25,6 +25,7 @@ import FormAC11 from './component/Forms/FormAC11.jsx'
 import FormAC12 from './component/Forms/FormAC12.jsx'
 import FormAC13 from './component/Forms/FormAC13.jsx'
 import FormAC14 from './component/Forms/FormAC14.jsx'
+import FormAC15 from './component/Forms/FormAC15.jsx'
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -84,6 +85,7 @@ function App() {
       <Route path='/formsac-poisoning' element={<FormAC12 />} />
       <Route path='/formsac-others' element={<FormAC13 />} />
       <Route path='/formsac-verbal&socialautopsyquestionnaire' element={<FormAC14 />} />
+      <Route path='/formsac-verbal&socialautopsyquestionnaire-2' element={<FormAC15 />} />
     </Routes>
     </>
   )

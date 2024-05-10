@@ -5,7 +5,7 @@ import Checkbox from './child-comp/Checkbox';
 import SidePanel from './child-comp/SidePanel';
 import { Link } from 'react-router-dom';
 
-function FormAC12() {
+function FormAC13() {
     turnOffbutton();
     return (
         <section id='Others'>
@@ -23,18 +23,18 @@ function FormAC12() {
 
             <div>
                 <h3>Apart from the above-mentioned conditions, did anyone suffer from any other conditions that required immediate emergency services?</h3>
-                <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-31-1"} />
+                <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-32-1"} />
                 <h3>If Yes, Please Specify</h3>
                 <input placeholder='Type here' />
             </div>
 
             <div>
                 <h3>could you please tell who all suffered with this condition?</h3>
-                <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-31-2"} />
+                <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-32-2"} />
             </div>
             <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-verbal&socialautopsyquestionnaire">Next</Link></button>
         </section>
     )
 }
 
-export default FormAC12
+export default FormAC13
