@@ -4,7 +4,7 @@
     padding: 1.20vw 0vw 1.20vw 1.20vw;
     border-radius: 0.53vw;
     font-weight: 600;
-    position: static;
+   
     width: 33vw;
 }
 
@@ -49,7 +49,8 @@ section {
     display: inline-flex;
     align-items: baseline;
     margin: 0.5vw 0vw 0vw 0vw;
-
+    width: 60vw;
+    flex-wrap: wrap;
 }
 
 .h3block {
