@@ -1,20 +1,13 @@
 import React, { useEffect } from 'react'
-import SidePanel from './SidePanel.jsx';
-import Checkbox from './Checkbox.jsx';
+import SidePanel from './child-comp/SidePanel.jsx';
+import Checkbox from './child-comp/Checkbox.jsx';
 import { Link } from 'react-router-dom';
+import {turnOffbutton} from "./helpers.js"
 
 function Form() {
     const date = new Date();
-
-    useEffect(() => {
-        const buttons = document.getElementById("nav-buttons");
-        if(buttons)
-        buttons.style.display = "none"
-        return () => {
-            if(buttons)
-            buttons.style.display = "flex"
-        }
-    })
+    turnOffbutton();
+    
     return (
         <section id='site-info'>
             <SidePanel />
@@ -31,7 +24,7 @@ function Form() {
             </div>
             <div>
                 <h3>SITE :</h3>
-                <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
+                <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name={"site_name"} />
             </div>
             <div>
                 <h3>Name Of the Data Collector :</h3>

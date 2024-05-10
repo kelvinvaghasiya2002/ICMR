@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Checkbox({CheckbobItems}) {
+function Checkbox({CheckbobItems , name}) {
     return (
         <form>
             {
@@ -8,7 +8,7 @@ function Checkbox({CheckbobItems}) {
                     console.log(item)
                     return (
                         <div key={index}>
-                            <input type="checkbox" id={item} name={item} value={item} />
+                            <input type="radio" id={item} name={name} value={item} />
                             <label htmlFor={item}>{item}</label><br />
                         </div>
                     )

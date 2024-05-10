@@ -1,3 +1,13 @@
-const tounOffbutton = ()=>{
-    console.log("Hello World");
+import { useEffect } from "react";
+
+export const turnOffbutton = () => {
+    useEffect(() => {
+        const buttons = document.getElementById("nav-buttons");
+        if (buttons)
+            buttons.style.display = "none"
+        return () => {
+            if (buttons)
+                buttons.style.display = "flex"
+        }
+    })
 }

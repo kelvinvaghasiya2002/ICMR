@@ -64,6 +64,7 @@ function App() {
       <Route path='/contact-us' element={<ContactUs />} />
       <Route path='/formsaa' element={<FormAA />} />
       <Route path='/formsab' element={<FormAB />} />
+      <Route path='/formsac' element={<FormAB />} />
     </Routes>
     </>
   )
