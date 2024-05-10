@@ -4,6 +4,7 @@ import DropDown from './child-comp/DropDown';
 import Checkbox from './child-comp/Checkbox';
 import SidePanel from './child-comp/SidePanel';
 import { Link } from 'react-router-dom';
+import Buttons from './child-comp/Buttons';
 
 function FormAC15() {
     const [popup , setPopup] = useState(false);
@@ -20,7 +21,7 @@ function FormAC15() {
     turnOffbutton();
     return (
         <section id='Verbal-Social-Autopsy-Questionnaire-2'>
-            <SidePanel />
+            <SidePanel id={"15"}/>
             <div className="siteInfo">
                 <div>
                     <h2>A Socio-demographic Characteristics</h2>
@@ -132,7 +133,7 @@ function FormAC15() {
                     </div>
                 </div>}
 
-                <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-verbal&socialautopsyquestionnaire-3">Next</Link></button>
+                <Buttons prev="/formsac-verbal&socialautopsyquestionnaire" next="/formsac-verbal&socialautopsyquestionnaire-3" />
             </div>
         </section>
     )

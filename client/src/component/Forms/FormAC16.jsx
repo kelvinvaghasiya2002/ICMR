@@ -6,6 +6,7 @@ import SidePanel from './child-comp/SidePanel';
 import { Link } from 'react-router-dom';
 
 function FormAC16() {
+    turnOffbutton();
     const [popup , setPopup] = useState(false)
     function handleClick() {
         setPopup(true)
@@ -15,7 +16,7 @@ function FormAC16() {
     }
     return (
         <section id='Verbal-Social-Autopsy-Questionnaire-3'>
-            <SidePanel />
+            <SidePanel id={"16"}/>
             <div className="siteInfo">
                 <div>
                     <h2>A Socio-demographic Characteristics</h2>

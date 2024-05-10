@@ -4,6 +4,7 @@ import DropDown from './child-comp/DropDown';
 // import Checkbox from './child-comp/Checkbox';
 import SidePanel from './child-comp/SidePanel';
 import { Link } from 'react-router-dom';
+import Buttons from './child-comp/Buttons';
 
 function FormAC14() {
     turnOffbutton();
@@ -27,7 +28,7 @@ function FormAC14() {
 
     return (
         <section id='Verbal-Social-Autopsy-Questionnaire'>
-            <SidePanel />
+            <SidePanel id={"14"}/>
             <div className="siteInfo">
                 <div>
                     <h2>A Socio-demographic Characteristics</h2>
@@ -69,7 +70,8 @@ function FormAC14() {
                         to="/">Submit</Link></button>
                     </div>
                 </div>}
-                <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-verbal&socialautopsyquestionnaire-2">Next</Link></button>
+                
+                <Buttons prev="/formsac-others" next="/formsac-verbal&socialautopsyquestionnaire-2" />
             </div>
         </section>
     )

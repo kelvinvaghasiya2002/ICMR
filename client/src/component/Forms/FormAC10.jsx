@@ -4,12 +4,13 @@ import DropDown from './child-comp/DropDown';
 import Checkbox from './child-comp/Checkbox';
 import SidePanel from './child-comp/SidePanel';
 import { Link } from 'react-router-dom';
+import Buttons from './child-comp/Buttons';
 
 function FormAC10() {
     turnOffbutton();
     return (
         <section id='Neonatal-Emergencies'>
-            <SidePanel />
+            <SidePanel id={"10"}/>
             <div className="siteInfo">
                 <div>
                     <h2>A Socio-demographic Characteristics</h2>
@@ -35,7 +36,8 @@ function FormAC10() {
                     <h3 className='h3block'>could you please tell who all from your Household suffered with this condition?</h3>
                     <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-29-3"} />
                 </div>
-                <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-snakebite">Next</Link></button>
+                
+                <Buttons prev="/formsac-postpartumhaemorrhage" next="/formsac-snakebite" />
             </div>
         </section>
     )

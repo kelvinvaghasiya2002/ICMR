@@ -5,13 +5,14 @@ import DropDown from './child-comp/DropDown';
 import Checkbox from './child-comp/Checkbox';
 import { Link } from 'react-router-dom';
 import "./Form.css"
+import Buttons from './child-comp/Buttons';
 
 function FormAB() {
   turnOffbutton();
 
   return (
     <section id='cluster-info'>
-      <SidePanel />
+      <SidePanel id={"2"} />
       <div className='siteInfo'>
         <div>
           <h2>A Socio-demographic Characteristics</h2>
@@ -44,7 +45,8 @@ function FormAB() {
           <input className='blockinput'
             placeholder='Number' />
         </div>
-        <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-householdschedule">Next</Link></button>
+        
+        <Buttons prev="/formsaa" next="/formsac-householdschedule" />
       </div>
     </section>
   )

@@ -4,12 +4,13 @@ import DropDown from './child-comp/DropDown';
 import Checkbox from './child-comp/Checkbox';
 import SidePanel from './child-comp/SidePanel';
 import { Link } from 'react-router-dom';
+import Buttons from './child-comp/Buttons';
 
 function FormAC8() {
     turnOffbutton();
     return (
         <section id='Acute-Respiratory-Illness'>
-            <SidePanel />
+            <SidePanel id={"8"}/>
             <div className="siteInfo">
                 <div>
                     <h2>A Socio-demographic Characteristics</h2>
@@ -30,7 +31,8 @@ function FormAC8() {
                     <h3 className='h3block'>could you please tell who all from your Household suffered with this condition?</h3>
                     <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-27-2"} />
                 </div>
-                <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-postpartumhaemorrhage">Next</Link></button>
+                
+                <Buttons prev="/formsac-stroke" next="/formsac-postpartumhaemorrhage" />
             </div>
         </section>
     )

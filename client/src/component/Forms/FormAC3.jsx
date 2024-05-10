@@ -3,13 +3,14 @@ import SidePanel from './child-comp/SidePanel'
 import { turnOffbutton } from './helpers'
 import Checkbox from './child-comp/Checkbox';
 import { Link } from 'react-router-dom';
+import Buttons from './child-comp/Buttons';
 
 
 function FormAC() {
   turnOffbutton();
   return (
     <section id='household-schedule'>
-      <SidePanel />
+      <SidePanel id={"3"} />
       <div className='siteInfo'>
         <div>
           <h2>A Socio-demographic Characteristics</h2>
@@ -130,11 +131,9 @@ function FormAC() {
           <input className='blockinput'
             placeholder='Type herer' />
         </div>
-        <button className='nextbtn'>
-          <Link style={{ color: "white" }} 
-        to="/formsac-relationshipwithheadofhousehold">
-          Next</Link>
-          </button>
+        
+
+        <Buttons prev="/formsab" next="/formsac-relationshipwithheadofhousehold" />
       </div>
     </section>
   )

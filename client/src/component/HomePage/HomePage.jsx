@@ -23,13 +23,13 @@ export default function HomePage() {
 
             <section id="outcome-section">
                 <h1>Outcome :</h1>
-                <button>Primary</button>
+                <button style={{height : "5vh"}}>Primary</button>
                 <ul>
                     <li><p>Identify potential barriers and facilitators to the implementation of a patient-centric, integrated emergency care system in India.</p></li>
                     <li><p>Develop an implementation model for high-quality patient-centric integrated emergency care that is feasible, sustainable, and cost-effective.</p></li>
                     <li><p>Evaluate the optimized model in terms of coverage, implementation, costing, and impact on outcomes.</p></li>
                 </ul>
-                <button>Secondary</button>
+                <button style={{height : "5vh"}}>Secondary</button>
                 <ul>
                     <li><p>Improve the quality and efficiency of emergency care in India.</p></li>
                     <li><p>Increase the availability of emergency care services to underserved populations.</p></li>
@@ -42,13 +42,13 @@ export default function HomePage() {
 
             <section id="goal-section">
                 <h1>GOALS :</h1>
-                <button>Primary</button>
+                <button style={{height : "5vh"}}>Primary</button>
                 <ul>
                     <li><p>Identify potential barriers and facilitators to the implementation of a patient-centric, integrated emergency care system in India.</p></li>
                     <li><p>Develop an implementation model for high-quality patient-centric integrated emergency care that is feasible, sustainable, and cost-effective.</p></li>
                     <li><p>Evaluate the optimized model in terms of coverage, implementation, costing, and impact on outcomes.</p></li>
                 </ul>
-                <button>Secondary</button>
+                <button style={{height : "5vh"}}>Secondary</button>
                 <ul>
                     <li><p>Improve the quality and efficiency of emergency care in India.</p></li>
                     <li><p>Increase the availability of emergency care services to underserved populations.</p></li>

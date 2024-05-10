@@ -12,6 +12,15 @@
     padding: 0vw 1.05vw;
 }
 
+.innerdiv p{
+    margin-top: 2vh;
+}
+
+.innerdiv a{
+    text-decoration: none;
+    color: black;
+}
+
 .siteInfo {
     display: flex;
     flex-direction: column;
@@ -27,6 +36,10 @@ section {
     display: flex;
 }
 
+.homePage section{
+    display: block;
+}
+
 .nextbtn {
     background-color: #3177FF;
     border: none;
@@ -34,9 +47,35 @@ section {
     padding: 0.5vw 1.40vw;
     text-align: center;
     text-decoration: none;
-    display: flex;
     font-size: 1.12vw;
     margin-left: auto;
+    color: white;
+}
+
+.prevbtn{
+    border: none;
+    background-color: white;
+    font-weight :700
+}
+
+.prevbtn a{
+    color: #757575 ;
+}
+
+.prevbtn a , .nextbtn a{
+    text-decoration: none;
+}
+
+.nextbtn a{
+    color: white;
+    font-weight: 600;
+}
+
+.buttons{
+    margin-top: 5vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .datetime {

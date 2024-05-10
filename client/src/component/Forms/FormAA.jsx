@@ -3,6 +3,7 @@ import Checkbox from './child-comp/Checkbox.jsx';
 import { Link } from 'react-router-dom';
 import "./Form.css"
 import React, { useEffect } from 'react'
+import Buttons from './child-comp/Buttons.jsx';
 
 function Form() {
     const date = new Date();
@@ -18,7 +19,7 @@ function Form() {
     })
     return (
         <section id='site-info'>
-            <SidePanel />
+            <SidePanel id={"1"} />
             <div className='siteInfo'>
                 <div>
                     <h2>A Socio-demographic Characteristics</h2>
@@ -33,7 +34,7 @@ function Form() {
                 </div>
                 <div className='block'>
                     <h3 className='h3block'>Site :</h3>
-                    <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]}/>
+                    <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
                 </div>
                 <div className='block'>
                     <h3 className='h3block'>Name Of the Data Collector :</h3>
@@ -44,7 +45,7 @@ function Form() {
                     <input className='blockinput' placeholder='Type here' />
                 </div>
 
-                <button className='nextbtn'><Link style={{ color: "white" }} to="/formsab">Next</Link></button>
+                <Buttons prev="/formsaa" next="/formsab" />
             </div>
         </section>
     )
