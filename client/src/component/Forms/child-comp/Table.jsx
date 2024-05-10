@@ -20,33 +20,34 @@ function Table() {
     }
     return (
         <>
-        <div className='tablediv'>
-            <table className='t'>
-                <tr>
-                    <th>Sr. No.</th>
-                    <th>Name</th>
-                    <th>Age (years)</th>
-                    <th>Sex</th>
-                    <th>Relationship With Head of the Household</th>
-                </tr>
-                {
-                    rows.map((item, index) => {
-                        return (
-                            <tr key={index}>
-                                <th>{index + 1}</th>
-                                <th><input /></th>
-                                <th><input /></th>
-                                <th><DropDown dropdownItems={["Male", "Female", "Other"]} name={"table_sex_field"} /></th>
-                                <th><input /></th>
-                            </tr>
-                        )
-                    })
-                }
-            </table>
-          <div className='tablebtn'>
-            <button onClick={handlePlusClick}>+</button>
-            <button onClick={handleMinusClick}>-</button>
-            </div>
+            <div className='tablediv'>
+                <table>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Name</th>
+                        <th>Age (years)</th>
+                        <th>Sex</th>
+                        <th>Relationship With Head of the Household</th>
+                    </tr>
+                    {
+                        rows.map((item, index) => {
+                            return (
+                                <tr key={index}>
+                                    <th>{index + 1}</th>
+                                    <th><input className='tableinput' /></th>
+                                    <th><input
+                                        className='tableinput' /></th>
+                                    <th><DropDown dropdownItems={["Male", "Female", "Other"]} name={"table_sex_field"} /></th>
+                                    <th><input className='tableinput' /></th>
+                                </tr>
+                            )
+                        })
+                    }
+                </table>
+                <div className='tablebtn'>
+                    <button onClick={handlePlusClick}>+</button>
+                    <button onClick={handleMinusClick}>-</button>
+                </div>
             </div>
         </>
     )

@@ -24,7 +24,7 @@ function FormAC13() {
                 <div className='block'>
                     <h3 className='h3block'>Apart from the above-mentioned conditions, did anyone suffer from any other conditions that required immediate emergency services?</h3>
                     <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-31-1"} />
-                    <h3 className='h3blockleftmg'>If Yes, Please Specify</h3>
+                    <h3 className='h3blockleftmg'>If Yes, Please Specify:</h3>
                     <input className='blockinput' placeholder='Type here' />
                 </div>
 
