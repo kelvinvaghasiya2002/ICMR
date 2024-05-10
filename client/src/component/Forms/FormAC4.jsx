@@ -9,10 +9,12 @@ function FormAC4() {
     return (
         <section id='relationship-with-head'>
             <SidePanel />
+            <div className='siteInfo'>
             <div>
                 <Table />
             </div>
             <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-trauma&burns">Next</Link></button>
+            </div>
         </section>
     )
 }

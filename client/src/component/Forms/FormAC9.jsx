@@ -10,34 +10,35 @@ function FormAC9() {
     return (
         <section id='Postpartum-Haemorrhage-and-Preeclampsia'>
             <SidePanel />
+            <div className="siteInfo">
+                <div>
+                    <h2>A Socio-demographic Characteristics</h2>
+                </div>
 
-            <div>
-                <h2>A Socio-demographic Characteristics</h2>
-            </div>
+                <div>
+                    <h3>
+                        Postpartum Haemorrhage and Preeclampsia
+                    </h3>
+                </div>
 
-            <div>
-                <h3>
-                    Postpartum Haemorrhage and Preeclampsia
-                </h3>
-            </div>
+                <div className='block'>
+                    <h3 className='h3block'>In the past year, did any women in your household give birth to a child or had any episode of miscarriage/ abortion?</h3>
+                    <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-28-1"} />
+                </div>
 
-            <div>
-                <h3>In the past year, did any women in your household give birth to a child or had any episode of miscarriage/ abortion?</h3>
-                <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-28-1"} />
-            </div>
+                <div className='block'>
+                    <h3 className='h3block'>If yes, did she suffer with any condition like excessive bleeding or suddenly
+                        increased blood pressure or deterioration of sensorium or generalized seizure
+                        or fits etc after delivery leading to immediate medical service requirement?</h3>
+                    <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-28-2"} />
+                </div>
 
-            <div>
-                <h3>If yes, did she suffer with any condition like excessive bleeding or suddenly
-                    increased blood pressure or deterioration of sensorium or generalized seizure
-                    or fits etc after delivery leading to immediate medical service requirement?</h3>
-                <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-28-2"} />
+                <div className='block'>
+                    <h3 className='h3block'>could you please tell us who suffered with this condition?</h3>
+                    <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-28-3"} />
+                </div>
+                <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-neonatalemergencies">Next</Link></button>
             </div>
-
-            <div>
-                <h3>could you please tell us who suffered with this condition?</h3>
-                <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-28-3"} />
-            </div>
-            <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-neonatalemergencies">Next</Link></button>
         </section>
     )
 }

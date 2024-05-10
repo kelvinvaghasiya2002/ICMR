@@ -10,29 +10,30 @@ function FormAC13() {
     return (
         <section id='Others'>
             <SidePanel />
+            <div className="siteInfo">
+                <div>
+                    <h2>A Socio-demographic Characteristics</h2>
+                </div>
 
-            <div>
-                <h2>A Socio-demographic Characteristics</h2>
-            </div>
+                <div>
+                    <h3>
+                        Others
+                    </h3>
+                </div>
 
-            <div>
-                <h3>
-                    Others
-                </h3>
-            </div>
+                <div className='block'>
+                    <h3 className='h3block'>Apart from the above-mentioned conditions, did anyone suffer from any other conditions that required immediate emergency services?</h3>
+                    <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-31-1"} />
+                    <h3 className='h3blockleftmg'>If Yes, Please Specify</h3>
+                    <input className='blockinput' placeholder='Type here' />
+                </div>
 
-            <div>
-                <h3>Apart from the above-mentioned conditions, did anyone suffer from any other conditions that required immediate emergency services?</h3>
-                <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-32-1"} />
-                <h3>If Yes, Please Specify</h3>
-                <input placeholder='Type here' />
+                <div className='block'>
+                    <h3 className='h3block'>could you please tell who all suffered with this condition?</h3>
+                    <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-31-2"} />
+                </div>
+                <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-verbal&socialautopsyquestionnaire">Next</Link></button>
             </div>
-
-            <div>
-                <h3>could you please tell who all suffered with this condition?</h3>
-                <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-32-2"} />
-            </div>
-            <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-verbal&socialautopsyquestionnaire">Next</Link></button>
         </section>
     )
 }
