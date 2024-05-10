@@ -10,27 +10,27 @@ function FormAC11() {
     return (
         <section id='Snakebite'>
             <SidePanel />
-
-            <div>
+            <div className="siteInfo">            <div>
                 <h2>A Socio-demographic Characteristics</h2>
             </div>
 
-            <div>
-                <h3>
-                    Snakebite
-                </h3>
-            </div>
+                <div>
+                    <h3>
+                        Snakebite
+                    </h3>
+                </div>
 
-            <div>
-                <h3>Did you or anyone from your family suffer from Snakebite in the last one year requiring immediate emergency medical services?</h3>
-                <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-30-1"} />
-            </div>
+                <div className='block'>
+                    <h3 className='h3block'>Did you or anyone from your family suffer from Snakebite in the last one year requiring immediate emergency medical services?</h3>
+                    <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-30-1"} />
+                </div>
 
-            <div>
-                <h3>could you please tell who all from your Household suffered with this condition?</h3>
-                <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-30-2"} />
+                <div className='block'>
+                    <h3 className='h3block'>could you please tell who all from your Household suffered with this condition?</h3>
+                    <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-30-2"} />
+                </div>
+                <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-poisoning">Next</Link></button>
             </div>
-            <button className='nextbtn'><Link style={{ color: "white" }} to="/formsac-poisoning">Next</Link></button>
         </section>
     )
 }

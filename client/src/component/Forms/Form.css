@@ -57,6 +57,10 @@ section {
     margin: 0.9vw 0.9vw 0.9vw 0vw;
 }
 
+.h3blockleftmg{
+    margin: 0.9vw 0.9vw 0.9vw 0.9vw;
+}
+
 .blockinput {
     border: 0.05vw solid #CCCCCC;
     border-radius: 0.35vw;
@@ -83,4 +87,18 @@ td {
 
 table{
     width: 100%;
+}
+
+.tablediv{
+    margin: 1.40vw 1.40vw 1.4vw 0vw;
+}
+
+.tablebtn{
+  display: flex;
+  justify-content: end;
+}
+
+.tablebtn button{
+    margin: 0.5vw;
+
 }

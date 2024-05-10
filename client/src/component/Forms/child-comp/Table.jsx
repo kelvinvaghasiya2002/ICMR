@@ -20,7 +20,8 @@ function Table() {
     }
     return (
         <>
-            <table>
+        <div className='tablediv'>
+            <table className='t'>
                 <tr>
                     <th>Sr. No.</th>
                     <th>Name</th>
@@ -42,8 +43,11 @@ function Table() {
                     })
                 }
             </table>
+          <div className='tablebtn'>
             <button onClick={handlePlusClick}>+</button>
             <button onClick={handleMinusClick}>-</button>
+            </div>
+            </div>
         </>
     )
 }
