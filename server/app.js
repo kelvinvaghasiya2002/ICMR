@@ -26,7 +26,9 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24
+        maxAge: 1000 * 60 * 60 * 24,
+        sameSite: 'none',
+        secure: true
     }
 }))
 
@@ -36,9 +38,9 @@ app.use(passport.session());
 
 app.use(cors(
     {
-        origin : [   `${client}`   ,   `${client}/sign-up`   ,   `${client}/sign-in`],
-        methods : "GET,POST,PUT,DELETE",
-        credentials : true
+        origin: [`${client}`, `${client}/sign-up`, `${client}/sign-in`],
+        methods: "GET,POST,PUT,DELETE",
+        credentials: true
     }
 ))
 
