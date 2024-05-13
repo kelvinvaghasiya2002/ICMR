@@ -19,7 +19,7 @@ mongoose.connect(mongoURL).then(() => {
 })
 
 const app = express();
-// app.enable('trust proxy')
+app.enable('trust proxy')
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
