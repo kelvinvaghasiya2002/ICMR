@@ -8,6 +8,7 @@ router.get("/google",passport.authenticate("google" , ["profile","email"]));
 
 
 router.get("/login/success", (req, res) => {
+    console.log(req.user);
     if (req.user) {
         res.status(200).json({
             user: req.user
@@ -33,8 +34,15 @@ router.get("/auth/google/callback", passport.authenticate("google", {
 
 
 router.get("/logout",(req,res)=>{
-    req.logOut();
-    res.redirect(`${CLIENT_URL}`)
+    console.log(req.logOut);
+    console.log(req.user);
+    req.logout(req.user,(err)=>{
+        if(err){
+            console.log(err);
+        }
+        console.log(req.user)
+        res.redirect(`${CLIENT_URL}`)
+    });
 })
 
 

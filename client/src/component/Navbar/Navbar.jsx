@@ -4,9 +4,21 @@ import ICMRLogo from "../../assets/ICMR_Logo.png";
 import PUIcon from "../../assets/PU_Icon.png";
 import { useUserInfo } from '../../contexts/User';
 import { Link } from 'react-router-dom';
+const VITE_SERVER = import.meta.env.VITE_SERVER;
+import axios from "axios"
 
 export default function Navbar() {
     const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
+
+    const handleLogOut = async()=>{
+        localStorage.setItem("token",null);
+        try {
+            const response  = await axios.get(`${VITE_SERVER}/logout`)
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -42,6 +54,7 @@ export default function Navbar() {
                 <button><p>What's New?</p></button>
                 <button><Link to="/formsaa"><p>Fill Form</p></Link></button>
             </div>}
+            <button onClick={handleLogOut}>logout</button>
         </>
     )
 }
