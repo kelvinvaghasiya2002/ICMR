@@ -35,7 +35,7 @@ router.post("/register", (req, res) => {
 
                 const token = jwt.sign({
                     username: username
-                }, jwt_secret ,{expiresIn: '1d'});
+                }, jwt_secret ,{expiresIn: '1m'});
 
                 const user = new User({
                     name: name,
@@ -104,7 +104,7 @@ router.get("/signin", (req, res) => {
                 if (response) {
                     const token = jwt.sign({
                         username: username
-                    }, jwt_secret ,{expiresIn: '1d'});
+                    }, jwt_secret ,{expiresIn: '1m'});
 
                     res.status(200).json({
                         success: "You are signed in!",

@@ -19,7 +19,7 @@ mongoose.connect(mongoURL).then(() => {
 })
 
 const app = express();
-app.enable('trust proxy')
+// app.enable('trust proxy')
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -27,8 +27,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         maxAge: 1000 * 60 * 2,
-        sameSite: 'none',
-        secure: true
+        // sameSite: 'none',
+        // secure: true
     }
 }))
 
