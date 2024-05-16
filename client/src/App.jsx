@@ -48,6 +48,7 @@ function App() {
       try {
         const token = localStorage.getItem("token");
         const { data } = await axios.get(`${url}/localauth?token=${token}`);
+        // console.log(data);
         setUser(data.user);
         setloggedIn(true)
       } catch (error) {
