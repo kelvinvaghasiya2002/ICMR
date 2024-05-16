@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import "../HFAT-1/Form.css"
+import "../CST/Form.css"
 import { Link } from 'react-router-dom';
 
 function SidePanel({id}) {

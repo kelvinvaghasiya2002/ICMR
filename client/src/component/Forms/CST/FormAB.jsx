@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { turnOffbutton } from '../helpers'
 import SidePanel from '../child-comp/SidePanel';
 import DropDown from '../child-comp/DropDown';
@@ -9,6 +9,7 @@ import Buttons from '../child-comp/Buttons';
 
 function FormAB() {
   turnOffbutton();
+  const [form , setForm] = useState({})
 
   return (
     <section id='cluster-info'>
