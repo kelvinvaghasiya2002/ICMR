@@ -21,7 +21,8 @@ function Form() {
         <section id='site-info'>
             <SidePanel id={"1"} />
             <div className='siteInfo'>
-                <div>
+               <div className="formhdr">
+               <div>
                     <h2>A Socio-demographic Characteristics</h2>
                 </div>
                 <div>
@@ -29,6 +30,9 @@ function Form() {
                         Site Information
                     </h3>
                 </div>
+                </div> 
+
+                <div className="formcontent">
                 <div>
                     <p className='datetime'>Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
                 </div>
@@ -46,6 +50,7 @@ function Form() {
                 </div>
 
                 <Buttons prev="/formsaa" next="/formsab" />
+                </div>
             </div>
         </section>
     )

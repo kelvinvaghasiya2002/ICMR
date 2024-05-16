@@ -54,7 +54,7 @@ export default function Navbar() {
                 <button><p>What's New?</p></button>
                 <button><Link to="/formsaa"><p>Fill Form</p></Link></button>
             </div>}
-            <button onClick={handleLogOut}>logout</button>
+            {/* <button onClick={handleLogOut}>logout</button> */}
         </>
     )
 }
