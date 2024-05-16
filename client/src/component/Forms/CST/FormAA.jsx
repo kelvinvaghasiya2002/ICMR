@@ -37,10 +37,9 @@ function Form() {
                 <div>
                     <p className='datetime'>Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
                 </div>
-                <div className='block'>
-                    <h3 className='h3block'>Site :</h3>
-                    <Checkbox CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
-                </div>
+                
+
+                <Checkbox h3="Site :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name="site_name" />
 
 
                 <InputField h3="Name Of the Data Collector :" placeholder="Type here" />

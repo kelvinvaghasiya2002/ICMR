@@ -6,6 +6,7 @@ import Checkbox from '../child-comp/Checkbox';
 import { Link } from 'react-router-dom';
 import "./Form.css"
 import Buttons from '../child-comp/Buttons';
+import InputField from '../child-comp/InputField';
 
 function FormAB() {
   turnOffbutton();
@@ -24,29 +25,17 @@ function FormAB() {
             Cluster Information
           </h3>
         </div>
-        <div className='block'>
-          <h3 className='h3block'>Block :</h3>
-          <DropDown className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"block_name"} />
-        </div>
 
-        <div className='block'>
-          <h3 className='h3block'>Type of PSU :</h3>
-          <Checkbox CheckbobItems={["Rural", "Urban"]} name={"type_of_psu"} />
-        </div> 
+        <DropDown className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"block_name"} h3="Block :"/>
 
+        <Checkbox h3="Type of PSU :" CheckbobItems={["Rural", "Urban"]} name="type_of_psu" />
 
-        <div className='block'>
-          <h3 className='h3block'>GPS Co-ordinates :</h3>
-          <input className='blockinput'
-            placeholder='Type here' />
-        </div>
+        <InputField h3="Name of PSU (Town/Village) :" placeholder="Type here" />
 
+        <InputField h3="GPS Co-ordinates :" placeholder="Type here" />
 
-        <div className='block'>
-          <h3 className='h3block'>Household ID Number :</h3>
-          <input className='blockinput'
-            placeholder='Number' />
-        </div>
+        <InputField h3="Household ID Number :" placeholder="Number" />
+
         
         <Buttons prev="/formsaa" next="/formsac-householdschedule" />
       </div>
