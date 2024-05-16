@@ -1,10 +1,10 @@
 import React from 'react'
-import SidePanel from './child-comp/SidePanel';
+import SidePanel from '../child-comp/SidePanel';
 import { Link } from 'react-router-dom';
-import DropDown from './child-comp/DropDown';
-import Checkbox from './child-comp/Checkbox';
-import { turnOffbutton } from './helpers';
-import Buttons from './child-comp/Buttons';
+import DropDown from '../child-comp/DropDown';
+import Checkbox from '../child-comp/Checkbox';
+import { turnOffbutton } from '../helpers';
+import Buttons from '../child-comp/Buttons';
 
 function FormAC7() {
     turnOffbutton();

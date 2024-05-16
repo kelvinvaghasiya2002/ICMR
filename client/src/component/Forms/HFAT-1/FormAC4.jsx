@@ -1,9 +1,9 @@
 import React from 'react'
-import SidePanel from './child-comp/SidePanel'
-import Table from './child-comp/Table.jsx'
-import { turnOffbutton } from './helpers.js'
+import SidePanel from '../child-comp/SidePanel.jsx'
+import Table from '../child-comp/Table.jsx'
+import { turnOffbutton } from '../helpers.js'
 import { Link } from 'react-router-dom'
-import Buttons from './child-comp/Buttons.jsx'
+import Buttons from '../child-comp/Buttons.jsx'
 
 function FormAC4() {
     turnOffbutton();

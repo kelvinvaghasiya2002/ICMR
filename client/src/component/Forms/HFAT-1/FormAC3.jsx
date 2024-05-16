@@ -1,9 +1,9 @@
 import React from 'react'
-import SidePanel from './child-comp/SidePanel'
-import { turnOffbutton } from './helpers'
-import Checkbox from './child-comp/Checkbox';
+import SidePanel from '../child-comp/SidePanel'
+import { turnOffbutton } from '../helpers'
+import Checkbox from '../child-comp/Checkbox';
 import { Link } from 'react-router-dom';
-import Buttons from './child-comp/Buttons';
+import Buttons from '../child-comp/Buttons';
 
 
 function FormAC() {

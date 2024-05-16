@@ -1,10 +1,10 @@
 import React from 'react'
-import { turnOffbutton } from './helpers'
-import Checkbox from './child-comp/Checkbox';
-import DropDown from './child-comp/DropDown';
+import { turnOffbutton } from '../helpers'
+import Checkbox from '../child-comp/Checkbox';
+import DropDown from '../child-comp/DropDown';
 import { Link } from 'react-router-dom';
-import SidePanel from './child-comp/SidePanel';
-import Buttons from './child-comp/Buttons';
+import SidePanel from '../child-comp/SidePanel';
+import Buttons from '../child-comp/Buttons';
 
 function FormAC6() {
     turnOffbutton();

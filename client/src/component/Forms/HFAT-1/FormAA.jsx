@@ -1,9 +1,9 @@
-import SidePanel from './child-comp/SidePanel.jsx';
-import Checkbox from './child-comp/Checkbox.jsx';
+import SidePanel from '../child-comp/SidePanel.jsx';
+import Checkbox from '../child-comp/Checkbox.jsx';
 import { Link } from 'react-router-dom';
 import "./Form.css"
 import React, { useEffect } from 'react'
-import Buttons from './child-comp/Buttons.jsx';
+import Buttons from '../child-comp/Buttons.jsx';
 
 function Form() {
     const date = new Date();
