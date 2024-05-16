@@ -12,6 +12,7 @@ function FormAC() {
     <section id='household-schedule'>
       <SidePanel id={"3"} />
       <div className='siteInfo'>
+        <div className='formhdr'>
         <div>
           <h2>A Socio-demographic Characteristics</h2>
         </div>
@@ -21,7 +22,8 @@ function FormAC() {
             Household Schedule
           </h3>
         </div>
-
+        </div>
+        <div className='formcontent'>
         <div className='block'>
           <h3 className='h3block'>Name of the Head of the Household : </h3>
           <input className='blockinput'
@@ -134,6 +136,8 @@ function FormAC() {
         
 
         <Buttons prev="/formsab" next="/formsac-relationshipwithheadofhousehold" />
+        
+        </div>
       </div>
     </section>
   )
