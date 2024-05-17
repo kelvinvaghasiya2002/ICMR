@@ -4,6 +4,7 @@ import DropDown from '../child-comp/DropDown';
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from '../child-comp/SidePanel';
 import { Link } from 'react-router-dom';
+import Buttons from '../child-comp/Buttons';
 
 function FormAC16() {
     turnOffbutton();
@@ -54,7 +55,9 @@ function FormAC16() {
                     </div>
                 </div>}
 
-                <button onClick={handleClick} style={{color : "white"}} className='nextbtn'>Next</button>
+                <Buttons prev="/formsac-verbal&socialautopsyquestionnaire-2" next="/formsb-sociodemographicprofile" />
+                    
+    
             </div>
         </section>
     )
