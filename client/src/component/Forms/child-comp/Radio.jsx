@@ -11,7 +11,7 @@ function Radio({ CheckbobItems, name ,h3}) {
                             console.log(item)
                             return (
                                 <div key={index}>
-                                    <input type="checkbox" id={item} name={name} value={item} />
+                                    <input type="radio" id={item} name={name} value={item} />
                                     <label style={{ fontWeight: "400" }} htmlFor={item}>{item}</label><br />
                                 </div>
                             )
