@@ -3,7 +3,7 @@ import "../CST/Form.css"
 import { Link } from 'react-router-dom';
 
 function SidePanel({id}) {
-  console.log(id);
+  // console.log(id);
   useEffect(()=>{
     const link = document.getElementById(id);
     if(link) link.style.color="#3177FF"

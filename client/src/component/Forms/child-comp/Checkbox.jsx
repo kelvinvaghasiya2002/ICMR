@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Checkbox({ CheckbobItems, name ,h3}) {
+function Checkbox({ CheckbobItems, name ,h3 , onClick}) {
     return (
         <>
             <div className='block'>
@@ -8,10 +8,10 @@ function Checkbox({ CheckbobItems, name ,h3}) {
                 <form>
                     {
                         CheckbobItems.map((item, index) => {
-                            console.log(item)
+                            {/* console.log(item) */}
                             return (
                                 <div key={index}>
-                                    <input type="radio" id={item} name={name} value={item} />
+                                    <input onClick={onClick} type="radio" id={item} name={name} value={item} />
                                     <label style={{ fontWeight: "400" }} htmlFor={item}>{item}</label><br />
                                 </div>
                             )

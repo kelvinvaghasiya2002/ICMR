@@ -2,22 +2,19 @@ import SidePanel from '../child-comp/SidePanel.jsx';
 import Checkbox from '../child-comp/Checkbox.jsx';
 import { Link } from 'react-router-dom';
 import "./Form.css"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Buttons from '../child-comp/Buttons.jsx';
 import InputField from '../child-comp/InputField.jsx';
+import { turnOffbutton , handleChange } from '../helpers.js';
 
 function Form() {
+    turnOffbutton();
     const date = new Date();
-
-    useEffect(() => {
-        const buttons = document.getElementById("nav-buttons");
-        if (buttons)
-            buttons.style.display = "none"
-        return () => {
-            if (buttons)
-                buttons.style.display = "flex"
-        }
+    const [formAA , setFormAA] = useState({
+        AA2 : "",
+        AA3 : "",
     })
+    console.log(formAA);
     return (
         <section id='site-info'>
             <SidePanel id={"1"} />
@@ -39,10 +36,10 @@ function Form() {
                 </div>
                 
 
-                <Checkbox h3="Site :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name="site_name" />
+                <Checkbox h3="Site :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name="AA2"  onClick={handleChange(setFormAA)} />
 
+                <InputField h3="Name Of the Data Collector :" placeholder="Type here" name="AA3" value={formAA.AA3} onChange={handleChange(setFormAA)} />
 
-                <InputField h3="Name Of the Data Collector :" placeholder="Type here" />
                 <InputField h3="Respondent ID: " placeholder="Type here" />
 
                 <Buttons prev="/formsaa" next="/formsab" />
