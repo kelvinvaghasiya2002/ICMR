@@ -5,6 +5,7 @@ import Checkbox from '../child-comp/Checkbox';
 import SidePanel from '../child-comp/SidePanel';
 import { Link } from 'react-router-dom';
 import Buttons from '../child-comp/Buttons';
+import InputField from '../child-comp/InputField';
 
 function FormAC15() {
     const [popup , setPopup] = useState(false);
@@ -37,6 +38,7 @@ function FormAC15() {
                     <h3 className='h3block'>Name of the deceased :</h3>
                     <input className='blockinput' placeholder='Type here' />
                 </div>
+                
 
                 <div className='block'>
                     <h3 className='h3block'>Age (in Years) :</h3>
