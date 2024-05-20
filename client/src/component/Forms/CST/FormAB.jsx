@@ -3,7 +3,6 @@ import { handleChange, turnOffbutton } from '../helpers'
 import SidePanel from '../child-comp/SidePanel';
 import DropDown from '../child-comp/DropDown';
 import Radio from "../child-comp/Radio.jsx"
-import "./Form.css"
 import Buttons from '../child-comp/Buttons';
 import InputField from '../child-comp/InputField';
 import setLocalStorage from '../setLocalStorage.js';

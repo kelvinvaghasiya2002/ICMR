@@ -2,7 +2,7 @@ import SidePanel from '../child-comp/SidePanel.jsx';
 import Checkbox from '../child-comp/Checkbox.jsx';
 import Radio from '../child-comp/Radio.jsx';
 import { Link } from 'react-router-dom';
-import "./Form.css"
+import "../Form.css"
 import React, { useEffect, useState } from 'react'
 import Buttons from '../child-comp/Buttons.jsx';
 import InputField from '../child-comp/InputField.jsx';

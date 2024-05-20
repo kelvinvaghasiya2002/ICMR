@@ -33,6 +33,11 @@ import FormB19 from './component/Forms/CST/FormB19.jsx'
 import FormC20 from './component/Forms/CST/FormC20.jsx'
 import FormD21 from './component/Forms/CST/FormD21.jsx'
 import FormE22 from './component/Forms/CST/FormE22.jsx'
+import FormF from './component/Forms/HFAT-1/FormF.jsx'
+import FormG from './component/Forms/HFAT-1/FormG.jsx'
+import FormH from './component/Forms/HFAT-1/FormH.jsx'
+import FormI from './component/Forms/HFAT-1/FormI.jsx'
+import FormJ from './component/Forms/HFAT-1/FormJ.jsx'
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -100,7 +105,12 @@ function App() {
       <Route path='/formsb-initialhealthcareseekingpathway2' element={<FormB19 />} />
       <Route path='/formsc-referralfacility' element={<FormC20 />} />
       <Route path='/formsd-barriersandfacilitatorsinseekingcare' element={<FormD21 />} />
-      <Route path='/formse-costing' element={<FormE22 />} />
+      <Route path='/formse-costing' element={<FormE22/>} />
+      <Route path='/informationsystem' element={<FormF />} />
+      <Route path='/finance' element={<FormG />} />
+      <Route path='/leadershipandgovernance' element={<FormH/>} />
+      <Route path='/processpoliciessops' element={<FormI />} />
+      <Route path='/referrallinkages' element={<FormJ />} />
     </Routes>
     </>
   )
