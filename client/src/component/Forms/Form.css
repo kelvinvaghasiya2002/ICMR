@@ -53,6 +53,7 @@
 
 .formcontent {
     padding: 0vw 1.20vw 1.20vw 1.20vw;
+    width: -webkit-fill-available;
 }
 
 section {
