@@ -54,6 +54,7 @@
 .formcontent {
     padding: 0vw 1.20vw 1.20vw 1.20vw;
     width: -webkit-fill-available;
+
 }
 
 section {
@@ -101,7 +102,6 @@ section {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    
 }
 
 .datetime {
@@ -225,4 +225,3 @@ table {
     align-items: center
    
 }
-
