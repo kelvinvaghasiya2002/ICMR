@@ -9,8 +9,6 @@
     height: 76vh;
     width: 24vw;
     overflow: scroll;
-    overflow-y: hidden;
-    overflow-x: hidden;
 }
 
 .sidePanel p {
@@ -41,8 +39,6 @@
     border-radius: 0.7vw;
     height: 76vh;
     overflow: scroll;
-    overflow-x: hidden;
-    /* overflow-y: hidden; */
     
 }
 
@@ -104,6 +100,7 @@ section {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    
 }
 
 .datetime {
@@ -113,10 +110,10 @@ section {
 }
 
 .block {
-    display: inline-flex;
+    display: flex;
     align-items: baseline;
     margin: 0.5vw 0vw 0vw 0vw;
-    width: 60vw;
+    /* width: 60vw; */
     flex-wrap: wrap;
 }
 
@@ -227,3 +224,4 @@ table {
     align-items: center
    
 }
+
