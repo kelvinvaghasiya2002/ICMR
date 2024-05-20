@@ -28,4 +28,4 @@ function Checkbox({ CheckbobItems, name ,h3 , onClick}) {
 }
 
 
-export default Radio
+export default Checkbox
