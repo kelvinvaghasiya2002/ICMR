@@ -1,15 +1,17 @@
-import React from 'react'
-import { turnOffbutton } from '../helpers'
+import React,{useState} from 'react'
+import { handleChange, turnOffbutton } from '../helpers'
 import DropDown from '../child-comp/DropDown';
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from '../child-comp/SidePanel';
 import { Link } from 'react-router-dom';
 import Buttons from '../child-comp/Buttons';
 import setLocalStorage from '../setLocalStorage';
+import Radio from "../child-comp/Radio.jsx"
 
 function FormAC10() {
     turnOffbutton();
-    const formac10 = setLocalStorage
+    var formac10 = setLocalStorage("formac10", { AC29a: "", AC29b: "", AC29c: "" })
+    const [formAC10, setFormAC10] = useState(JSON.parse(formac10));
     return (
         <section id='Neonatal-Emergencies'>
             <SidePanel id={"10"}/>
@@ -24,22 +26,14 @@ function FormAC10() {
                     </h3>
                 </div>
 
-                <div className='block'>
-                    <h3 className='h3block'>In the last one year, was there any childbirth in your household? </h3>
-                    <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-29-1"} />
-                </div>
-
-                <div className='block'>
-                    <h3 className='h3block'>did the newborn have suffered with sudden onset of fever/ birth asphyxia or neonatal hypothermia, or convulsion, or any difficulty in feeding, or lethargy, or dusky colour, or cyanosis, or excessive diarrhoea, etc leading to immediate medical service requirement?</h3>
-                    <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-29-2"} />
-                </div>
-
-                <div className='block'>
-                    <h3 className='h3block'>could you please tell who all from your Household suffered with this condition?</h3>
-                    <DropDown dropdownItems={["Kelvin", "Prince", "Jeel"]} name={"ac-29-3"} />
-                </div>
                 
-                <Buttons prev="/formsac-postpartumhaemorrhage" next="/formsac-snakebite" />
+                <Radio name={"AC29a"} h3="In the last one year, was there any childbirth in your household?" CheckbobItems={["Yes", "No"]} onClick={handleChange(setFormAC10)} byDefault={formAC10.AC29a} />
+
+                <Radio name={"AC29b"} h3="did the newborn have suffered with sudden onset of fever/ birth asphyxia or neonatal hypothermia, or convulsion, or any difficulty in feeding, or lethargy, or dusky colour, or cyanosis, or excessive diarrhoea, etc leading to immediate medical service requirement?" CheckbobItems={["Yes", "No"]} onClick={handleChange(setFormAC10)} byDefault={formAC10.AC29b} />
+
+                <DropDown name={"AC29c"} h3={"could you please tell who all from your Household suffered with this condition?"}  dropdownItems={["Kelvin", "Prince", "Jeel"]} onClick={handleChange(setFormAC10)}  byDefault={formAC10.AC29c}/>
+                
+                <Buttons formName={"formac10"} formData={formAC10} prev="/formsac-postpartumhaemorrhage" next="/formsac-snakebite" />
             </div>
         </section>
     )

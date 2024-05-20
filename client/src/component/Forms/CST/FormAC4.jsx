@@ -22,11 +22,10 @@ function FormAC4() {
                         </h3>
                     </div>
                 </div>
-                <div>
+                <div className='formcontent'>
                     <Table />
+                    <Buttons prev="/formsac-householdschedule" next="/formsac-trauma&burns" />
                 </div>
-
-                <Buttons prev="/formsac-householdschedule" next="/formsac-trauma&burns" />
             </div>
         </section>
     )

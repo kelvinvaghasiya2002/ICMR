@@ -53,6 +53,8 @@
 
 .formcontent {
     padding: 0vw 1.20vw 1.20vw 1.20vw;
+    width: -webkit-fill-available;
+
 }
 
 section {
@@ -109,10 +111,10 @@ section {
 }
 
 .block {
-    display: inline-flex;
+    display: flex;
     align-items: baseline;
     margin: 0.5vw 0vw 0vw 0vw;
-    width: 60vw;
+    /* width: 60vw; */
     flex-wrap: wrap;
 }
 
