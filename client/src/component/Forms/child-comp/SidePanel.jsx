@@ -29,6 +29,12 @@ function SidePanel({id}) {
         <Link id='14' to='/formsac-verbal&socialautopsyquestionnaire'><p>Verbal & Social Autopsy Questionnaire</p></Link>
         <Link id='15' to='/formsac-verbal&socialautopsyquestionnaire-2'><p>Verbal & Social Autopsy Questionnaire 2</p></Link>
         <Link id='16' to='/formsac-verbal&socialautopsyquestionnaire-3'><p>Verbal & Social Autopsy Questionnaire 3</p></Link>
+        <Link id='17' to='/formsb-sociodemographicprofile'><p>Socio-demographic profile of the patient in the HH with Emergency Condition</p></Link>
+        <Link id='18' to='/formsb-initialhealthcareseekingpathway1'><p style={{marginLeft : "2vw"}}>Initial Healthcare Seeking Pathway - 1</p></Link>
+        <Link id='18' to='/formsb-initialhealthcareseekingpathway1'><p style={{marginLeft : "2vw"}}>Initial Healthcare Seeking Pathway - 2</p></Link>
+        <Link id='20' to='/formsc-referralfacility'><p>Referral Facility</p></Link>
+        <Link id='21' to='/formsd-barriersandfacilitatorsinseekingcare'><p>Barriers and facilitators in seeking care</p></Link>
+        <Link id='22' to='/formse-costing'><p>Costing (Complete event of seeking care)</p></Link>
       </div>
     </div>
   )
