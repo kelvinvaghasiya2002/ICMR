@@ -5,9 +5,11 @@ import Checkbox from '../child-comp/Checkbox';
 import SidePanel from '../child-comp/SidePanel';
 import { Link } from 'react-router-dom';
 import Buttons from '../child-comp/Buttons';
+import setLocalStorage from '../setLocalStorage';
 
 function FormAC10() {
     turnOffbutton();
+    const formac10 = setLocalStorage
     return (
         <section id='Neonatal-Emergencies'>
             <SidePanel id={"10"}/>

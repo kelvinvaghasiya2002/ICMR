@@ -1,22 +1,31 @@
 .sidePanel {
     box-shadow: rgba(0, 0, 0, 0.26) 0vw 0.03vw 1.05vw;
-    margin: 1.20vw 1.20vw 1.2vw 0vw;
-    padding: 1.20vw 0vw 1.20vw 1.20vw;
+    margin: 1.40vw 1.40vw 1.4vw 0vw;
+    padding: 0vw 1.40vw 1.40vw 1.4vw;
     border-radius: 0.53vw;
     font-weight: 600;
-   
-    width: 33vw;
+    position: sticky;
+    top: 10%;
+    height: 76vh;
+    width: 24vw;
+    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.sidePanel p {
+    font-size: 1vw;
 }
 
 .innerdiv {
     padding: 0vw 1.05vw;
 }
 
-.innerdiv p{
-    margin-top: 2vh;
+.innerdiv p {
+    font-size: 0.9vw;
 }
 
-.innerdiv a{
+.innerdiv a {
     text-decoration: none;
     color: black;
 }
@@ -28,15 +37,33 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0vw 0.03vw 1.05vw;
     width: -webkit-fill-available;
     margin: 1.40vw 1.40vw 1.4vw 0vw;
-    padding: 0vw 1.40vw 1.40vw 1.4vw;
+    padding-bottom: 1.20vw;
     border-radius: 0.7vw;
+    height: 76vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+    
+}
+
+.formhdr {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0vw 0.03vw 1.05vw;
+    width: -webkit-fill-available;
+    padding-left: 1.2vw;
+}
+
+.formcontent {
+    padding: 0vw 1.20vw 1.20vw 1.20vw;
 }
 
 section {
     display: flex;
 }
 
-.homePage section{
+.homePage section {
     display: block;
 }
 
@@ -52,26 +79,27 @@ section {
     color: white;
 }
 
-.prevbtn{
+.prevbtn {
     border: none;
     background-color: white;
-    font-weight :700
+    font-weight: 700
 }
 
-.prevbtn a{
-    color: #757575 ;
+.prevbtn a {
+    color: #757575;
 }
 
-.prevbtn a , .nextbtn a{
+.prevbtn a,
+.nextbtn a {
     text-decoration: none;
 }
 
-.nextbtn a{
+.nextbtn a {
     color: white;
     font-weight: 600;
 }
 
-.buttons{
+.buttons {
     margin-top: 5vh;
     width: 100%;
     display: flex;
@@ -96,7 +124,7 @@ section {
     margin: 0.9vw 0.9vw 0.9vw 0vw;
 }
 
-.h3blockleftmg{
+.h3blockleftmg {
     margin: 0.9vw 0.9vw 0.9vw 0.9vw;
 }
 
@@ -124,34 +152,34 @@ td {
     border: 1px solid black;
 }
 
-table{
+table {
     width: 100%;
 }
 
-.tablediv{
+.tablediv {
     margin: 1.40vw 1.40vw 1.4vw 0vw;
 }
 
-.tablebtn{
-  display: flex;
-  justify-content: end;
+.tablebtn {
+    display: flex;
+    justify-content: end;
 }
 
-.tablebtn button{
+.tablebtn button {
     margin: 0.5vw;
 
 }
 
-.tableinput{
+.tableinput {
     border: none;
     margin: 0.5vw;
 }
 
-.tableinput:focus{
+.tableinput:focus {
     outline: none;
 }
 
-.popup{
+.popup {
     position: fixed;
     top: 0;
     left: 35%;
@@ -164,12 +192,12 @@ table{
 
 }
 
-.popupbtn{
-    display:flex;
+.popupbtn {
+    display: flex;
     margin-top: 1.40vw;
 }
 
-.cancelbtn{
+.cancelbtn {
     background-color: #EAEAEA;
     border: none;
     border-radius: 1.40vw;
@@ -182,8 +210,20 @@ table{
 }
 
 
-.radiobtn{
+.radiobtn {
     display: flex;
     align-items: baseline;
     margin-bottom: 1vw;
+}
+
+.dateTimeBox{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.dateTimeBox div{
+    display: flex;
+    align-items: center
+   
 }

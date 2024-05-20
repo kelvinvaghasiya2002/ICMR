@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Checkbox({ CheckbobItems, name ,h3 , onClick}) {
+export default function Radio({ CheckbobItems, name, h3, onClick, byDefault }) {
     return (
         <>
             <div className='block'>
@@ -8,10 +8,16 @@ function Checkbox({ CheckbobItems, name ,h3 , onClick}) {
                 <form>
                     {
                         CheckbobItems.map((item, index) => {
-                            {/* console.log(item) */}
                             return (
                                 <div key={index}>
-                                    <input onClick={onClick} type="checkbox" id={item} name={name} value={item} />
+                                    {
+                                        (byDefault === item) ?
+                                            <input type="radio" id={item} name={name} value={item} onClick={onClick} checked />
+                                            :
+                                            <input type="radio" id={item} name={name} value={item} onClick={onClick} />
+
+                                    }
+
                                     <label style={{ fontWeight: "400" }} htmlFor={item}>{item}</label><br />
                                 </div>
                             )
@@ -28,4 +34,3 @@ function Checkbox({ CheckbobItems, name ,h3 , onClick}) {
 }
 
 
-export default Checkbox

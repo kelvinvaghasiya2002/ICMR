@@ -11,3 +11,19 @@ export const turnOffbutton = () => {
         }
     })
 }
+
+
+
+export const handleChange = (setter) =>{
+    return (
+        (event) => {
+            const {name , value} = event.target;
+            setter((prevValue)=>{
+                return ({
+                    ...prevValue,
+                    [name] : value
+                })
+            })
+        }
+    )
+} 

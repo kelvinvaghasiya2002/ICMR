@@ -27,6 +27,12 @@ import FormAC13 from './component/Forms/CST/FormAC13.jsx'
 import FormAC14 from './component/Forms/CST/FormAC14.jsx'
 import FormAC15 from './component/Forms/CST/FormAC15.jsx'
 import FormAC16 from './component/Forms/CST/FormAC16.jsx'
+import FormB17 from './component/Forms/CST/FormB17.jsx'
+import FormB18 from './component/Forms/CST/FormB18.jsx'
+import FormB19 from './component/Forms/CST/FormB19.jsx'
+import FormC20 from './component/Forms/CST/FormC20.jsx'
+import FormD21 from './component/Forms/CST/FormD21.jsx'
+import FormE22 from './component/Forms/CST/FormE22.jsx'
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -89,6 +95,12 @@ function App() {
       <Route path='/formsac-verbal&socialautopsyquestionnaire' element={<FormAC14 />} />
       <Route path='/formsac-verbal&socialautopsyquestionnaire-2' element={<FormAC15 />} />
       <Route path='/formsac-verbal&socialautopsyquestionnaire-3' element={<FormAC16 />} />
+      <Route path='/formsb-sociodemographicprofile' element={<FormB17 />} />
+      <Route path='/formsb-initialhealthcareseekingpathway1' element={<FormB18 />} />
+      <Route path='/formsb-initialhealthcareseekingpathway2' element={<FormB19 />} />
+      <Route path='/formsc-referralfacility' element={<FormC20 />} />
+      <Route path='/formsd-barriersandfacilitatorsinseekingcare' element={<FormD21 />} />
+      <Route path='/formse-costing' element={<FormE22 />} />
     </Routes>
     </>
   )

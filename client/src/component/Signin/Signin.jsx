@@ -135,7 +135,7 @@ export default function SignIn() {
                     </div> */}
 
                         <div className='continue-with'>
-                            <div class="separator">
+                            <div className="separator">
                                 <p> or continue with </p>
                             </div>
                         </div>

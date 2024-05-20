@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
-import { turnOffbutton } from '../helpers'
+import { handleChange, turnOffbutton } from '../helpers'
 import SidePanel from '../child-comp/SidePanel';
 import DropDown from '../child-comp/DropDown';
-import Checkbox from '../child-comp/Checkbox';
-import { Link } from 'react-router-dom';
+import Radio from "../child-comp/Radio.jsx"
 import "./Form.css"
 import Buttons from '../child-comp/Buttons';
+import InputField from '../child-comp/InputField';
+import setLocalStorage from '../setLocalStorage.js';
 
 function FormAB() {
+  var formab = setLocalStorage("formab" , {AB1: "" , AB2: "" , AB3:"" , AB4:"" , AB5:""})
   turnOffbutton();
-  const [form , setForm] = useState({})
+  const [formAB, setFormAB] = useState(JSON.parse(formab))
 
   return (
     <section id='cluster-info'>
@@ -24,30 +26,19 @@ function FormAB() {
             Cluster Information
           </h3>
         </div>
-        <div className='block'>
-          <h3 className='h3block'>Block :</h3>
-          <DropDown className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"block_name"} />
-        </div>
 
-        <div className='block'>
-          <h3 className='h3block'>Type of PSU :</h3>
-          <Checkbox CheckbobItems={["Rural", "Urban"]} name={"type_of_psu"} />
-        </div> 
+        <DropDown className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"AB1"} h3="Block :" onClick={handleChange(setFormAB)} byDefault={formAB.AB1}/>
+
+        <Radio h3="Type of PSU :" CheckbobItems={["Rural", "Urban"]} name="AB2" byDefault={formAB.AB2} onClick={handleChange(setFormAB)}/>
+
+        <InputField h3="Name of PSU (Town/Village) :" placeholder="Type here" name={"AB3"} value={formAB.AB3} onChange={handleChange(setFormAB)}/>
+
+        <InputField h3="GPS Co-ordinates :" placeholder="Type here" name={"AB4"} value={formAB.AB4} onChange={handleChange(setFormAB)}/>
+
+        <InputField h3="Household ID Number :" placeholder="Number" name={"AB5"} value={formAB.AB5} onChange={handleChange(setFormAB)}/>
 
 
-        <div className='block'>
-          <h3 className='h3block'>GPS Co-ordinates :</h3>
-          <input className='blockinput'
-            placeholder='Type here' />
-        </div>
-
-        <div className='block'>
-          <h3 className='h3block'>Household ID Number :</h3>
-          <input className='blockinput'
-            placeholder='Number' />
-        </div>
-        
-        <Buttons prev="/formsaa" next="/formsac-householdschedule" />
+        <Buttons formName="formab" formData={formAB} prev="/formsaa" next="/formsac-householdschedule" />
       </div>
     </section>
   )
