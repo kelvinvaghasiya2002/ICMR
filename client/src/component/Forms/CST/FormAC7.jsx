@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SidePanel from './SidePanel';
+import SidePanel from './SidePanelCST';
 import { Link } from 'react-router-dom';
 import DropDown from '../child-comp/DropDown';
 import Checkbox from '../child-comp/Checkbox';

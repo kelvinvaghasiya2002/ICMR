@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
-<<<<<<< HEAD
-import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanel';
-=======
 import Radio from '../child-comp/Radio.jsx';
-import SidePanel from '../child-comp/SidePanel';
->>>>>>> 087056a8f6dd44038cd3d968ba3c85ff2f7b7326
+import SidePanel from './SidePanelCST.jsx';
 import Buttons from '../child-comp/Buttons';
 import InputField from '../child-comp/InputField';
 import setLocalStorage from '../setLocalStorage';

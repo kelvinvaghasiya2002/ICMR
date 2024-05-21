@@ -1,6 +1,6 @@
 import { handleChange, turnOffbutton } from '../helpers'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanel.jsx';
+import SidePanel from './SidePanelCST.jsx';
 import Buttons from '../child-comp/Buttons';
 import InputField from '../child-comp/InputField.jsx';
 import { Link } from 'react-router-dom';

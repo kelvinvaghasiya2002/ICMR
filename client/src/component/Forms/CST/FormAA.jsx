@@ -1,4 +1,4 @@
-import SidePanel from './SidePanel.jsx';
+import SidePanel from './SidePanelCST.jsx';
 import Checkbox from '../child-comp/Checkbox.jsx';
 import Radio from '../child-comp/Radio.jsx';
 import { Link } from 'react-router-dom';

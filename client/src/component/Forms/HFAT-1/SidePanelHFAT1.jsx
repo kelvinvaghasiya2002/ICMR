@@ -1,0 +1,30 @@
+import React, { useEffect } from 'react'
+import "../Form.css"
+import { Link } from 'react-router-dom';
+
+function SidePanelHFAT1({id}) {
+  // console.log(id);
+  useEffect(()=>{
+    const link = document.getElementById(id)
+    if(link) link.style.color="#3177FF" 
+    console.log(link);
+  })
+  return (
+    <div className='sidePanel'>
+      <div className='innerdiv'>
+        <Link id='1' to='/formsaa'><p>Health Facility Information</p></Link>
+        <Link id='2' to='/formsab'><p>Infrastructure</p></Link>
+        <Link id='3' to='/formsac-householdschedule'><p>Human Resources</p></Link>
+        <Link id='4' to='/formsac-relationshipwithheadofhousehold'><p>Logistics (Drugs/ Consumables/ Equipment)</p></Link>
+        <Link id='5' to='/formsac-trauma&burns'><p>Emergency Care Services</p></Link>
+        <Link id='6' to='/informationsystem'><p>Information System</p></Link>
+        <Link id='7' to='/finance'><p>Finance</p></Link>
+        <Link id='8' to='/leadershipandgovernance'><p>Leadership and Governance</p></Link>
+        <Link id='9' to='/processpoliciessops'><p>Process/ Policies/SOPs</p></Link>
+        <Link id='10' to='/referrallinkages'><p>Referral Linkages</p></Link>
+      </div>
+    </div>
+  )
+}
+
+export default SidePanelHFAT1

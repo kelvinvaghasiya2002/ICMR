@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { handleChange, turnOffbutton } from '../helpers'
 import Radio from '../child-comp/Radio';
-import SidePanel from './SidePanel.jsx';
+import SidePanel from './SidePanelCST.jsx';
 import Buttons from '../child-comp/Buttons';
 import InputField from '../child-comp/InputField.jsx';
 import setLocalStorage from '../setLocalStorage.js';

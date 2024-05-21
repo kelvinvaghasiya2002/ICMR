@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SidePanel from './SidePanel.jsx'
+import SidePanel from './SidePanelCST.jsx'
 import Table from '../child-comp/Table.jsx'
 import { turnOffbutton } from '../helpers.js'
 import { Link } from 'react-router-dom'

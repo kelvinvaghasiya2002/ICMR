@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import React from 'react'
-import { turnOffbutton } from '../helpers'
-import SidePanel from './SidePanel.jsx';
-=======
+
 import React, { useState } from 'react'
 import { handleChange, turnOffbutton } from '../helpers'
-import SidePanel from '../child-comp/SidePanel';
->>>>>>> 087056a8f6dd44038cd3d968ba3c85ff2f7b7326
+import SidePanel from './SidePanelCST.jsx';
 import Checkbox from '../child-comp/Checkbox';
 import Radio from '../child-comp/Radio';
 import Buttons from '../child-comp/Buttons';
