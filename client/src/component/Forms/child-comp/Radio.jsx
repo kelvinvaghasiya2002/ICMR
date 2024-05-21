@@ -9,7 +9,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault }) {
                     {
                         CheckbobItems.map((item, index) => {
                             return (
-                                <div key={index}>
+                                <div key={index} style={{display : "flex", alignItems : "center"}}>
                                     {
                                         (byDefault === item) ?
                                             <input type="radio" id={item} name={name} value={item} onClick={onClick} checked />
