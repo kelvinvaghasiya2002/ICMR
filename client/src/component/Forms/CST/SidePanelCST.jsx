@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import "../Form.css"
 import { Link } from 'react-router-dom';
 
-function SidePanel({id}) {
+function SidePanelCST({id}) {
   // console.log(id);
   useEffect(()=>{
     const link = document.getElementById(id);
@@ -40,4 +40,4 @@ function SidePanel({id}) {
   )
 }
 
-export default SidePanel
+export default SidePanelCST
