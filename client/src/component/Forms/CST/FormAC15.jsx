@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
-import { turnOffbutton } from '../helpers'
+import { handleChange, turnOffbutton } from '../helpers'
 import DropDown from '../child-comp/DropDown';
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanel';
 import { Link } from 'react-router-dom';
 import Buttons from '../child-comp/Buttons';
+import InputField from '../child-comp/InputField';
+import Radio from "../child-comp/Radio.jsx"
+import setLocalStorage from '../setLocalStorage.js';
 
 function FormAC15() {
+    var formac15 = setLocalStorage("formac15", { AC33c1: "", AC33c2: "" , AC33c3 :"" , AC33c4 :"", AC33c5 : "",AC33c6 :"",AC33c7 :"",AC33c8 :"",AC33c9 :"", })
+    const [formAC15, setFormAC15] = useState(JSON.parse(formac15));
     const [popup , setPopup] = useState(false);
     function handleClick(event) {
         const v= event.target.value;
@@ -33,93 +38,28 @@ function FormAC15() {
                     </h3>
                 </div>
 
-                <div className='block'>
-                    <h3 className='h3block'>Name of the deceased :</h3>
-                    <input className='blockinput' placeholder='Type here' />
-                </div>
+                <InputField name="AC33c1" h3="Name of the deceased :" placeholder="Type here" value={formAC15.AC33c1}  onChange={handleChange(setFormAC15)} />
+                
 
-                <div className='block'>
-                    <h3 className='h3block'>Age (in Years) :</h3>
-                    <input className='blockinput' placeholder='Type here' />
-                </div>
+                <InputField name="AC33c2" h3="Age (in Years) :" placeholder="Type here" value={formAC15.AC33c2}  onChange={handleChange(setFormAC15)} />
 
-                <div className='block'>
-                    <h3 className='h3block'>Sex :</h3>
-                    <Checkbox CheckbobItems={["Male", "Female", "Other"]} name={"ac-33-3-3"} />
-                </div>
+                <Radio name={"AC33c3"} h3={"Sex :"} CheckbobItems={["Male", "Female", "Other"]} onClick={handleChange(setFormAC15)} byDefault={formAC15.AC33c3} />
 
-                <div className='block'>
-                    <h3 className='h3block'>Relationship with Head of the Household :</h3>
-                    <Checkbox CheckbobItems={["Head ", "Wife/Husband", "Son/Daughter", "Sister/Brother", "Sister-in Law/Brother in-law", "Niece/Nephew", "Other Relative", "Adopted/Foster/Stepchild", "Domestic servant", "Others not related", "Don’t know"]} name={"ac-33-3-4"} />
-                </div>
+                <Radio name={"AC33c4"} h3={"Relationship with Head of the Household :"} CheckbobItems={["Head ", "Wife/Husband", "Son/Daughter", "Sister/Brother", "Sister-in Law/Brother in-law", "Niece/Nephew", "Other Relative", "Adopted/Foster/Stepchild", "Domestic servant", "Others not related", "Don’t know"]} onClick={handleChange(setFormAC15)} byDefault={formAC15.AC33c4} />
 
                 <div className='block'>
                     <h3 className='h3block'>Date of death :</h3>
-                    <input type='date' className='blockinput' placeholder='Type here' />
+                    <input type='date' name='AC33c5' value={formAC15.AC33c5} onChange={handleChange(setFormAC15)} className='blockinput' placeholder='Type here' />
                 </div>
 
-                <div className='block'>
-                    <h3 className='h3block'>Place of death :</h3>
-                    <Checkbox CheckbobItems={["Hospital", "Home", "Workplace", "In transit to seek care"]} name={"ac-33-3-6"} />
-                </div>
+                <Radio name={"AC33c6"} h3={"Place of death :"} CheckbobItems={["Hospital", "Home", "Workplace", "In transit to seek care"]} onClick={handleChange(setFormAC15)} byDefault={formAC15.AC33c6} />
 
-                <div className='block'>
-                    <h3 className='h3block'>If death in hospital, Name & Address of the Hospital :</h3>
-                    <input className='blockinput' placeholder='Type here' />
-                </div>
+                <InputField name="AC33c7" h3="If death in hospital, Name & Address of the Hospital :" placeholder="Type here" value={formAC15.AC33c7}  onChange={handleChange(setFormAC15)} />
 
-                <div className='block'>
-                    <h3 className='h3block'>Type of   Hospital :</h3>
-                    <Checkbox CheckbobItems={["Public", "Private"]} name={"ac-33-3-8"} />
-                </div>
+                <Radio name={"AC33c8"} h3={"Type of   Hospital :"} CheckbobItems={["Public", "Private"]} onClick={handleChange(setFormAC15)} byDefault={formAC15.AC33c8} />
 
-                <div className='block'>
-                    <h3 className='h3block'>What were the symptoms the deceased complained about? ( optional )</h3>
-                    <form>
-                        <div className='radiobtn'>
-                            <input onClick={handleClick} type="radio" id="1" name="ac-33-9" value="1" />
-                            <div>
-                            <label style={{ fontWeight: "400" }} htmlFor="1"><b>STEMI : </b>Acute chest pain, heaviness or constriction, or radiation to left arms or necks or back or breathlessness, or upper abdominal pain, or palpitation, or giddiness, which might have been accompanied by profuse sweating, and easily reproduced with post-meal exertion.</label></div><br />
-                        </div>
-                        <div className='radiobtn'>
-                            <input onClick={handleClick} type="radio" id="2" name="ac-33-9" value="2" />
-                            <div>
-                            <label style={{ fontWeight: "400" }} htmlFor="2"><b>Trauma & Burn :</b> sudden injury in Road Traffic Accident/ severe fall/ drowning/ stabbing/ gunshot/ any other assault/ suicidal attempt/ burns/ domestic violence/ homicidal/ suicidal etc.</label>
-                            </div><br />
-                        </div>
-                        <div className='radiobtn'>
-                            <input onClick={handleClick} type="radio" id="3" name="ac-33-9" value="3" />
-                            <div>
-                            <label style={{ fontWeight: "400" }} htmlFor="3"><b>Stroke:</b> sudden onset of weakness, especially one side of the body/ loss of consciousness/ altered sensorium/ Imbalance/ blurred vision/ facial deviation/ drooping of eyelid/ speech abnormality with numbness and tingling sensation, or difficulty in speaking or understanding speech (aphasia), or sudden severe headache with no known cause of one's life (haemorrhagic strokes).</label>
-                            </div><br />
-                        </div>
-                        <div className='radiobtn'>
-                            <input onClick={handleClick} type="radio" id="4" name="ac-33-9" value="4" />
-                            <div>
-                            <label style={{ fontWeight: "400" }} htmlFor="4"><b>Acute Respiratory Illness:</b>   sudden onset of fever, or cough with expectoration, or chest pain (pleuritic) , or fast breathing, or bluish colouration of tongue or lip (cyanosis), or speaks in short sentences, or altered mentation, chest tightness or pressure, indicating a lack of oxygen.</label></div><br />
-                        </div>
-                        <div className='radiobtn'>
-                            <input onClick={handleClick} type="radio" id="5" name="ac-33-9" value="5" />
-                            <div>
-                            <label style={{ fontWeight: "400" }} htmlFor="5"><b>Postpartum Haemorrhage & Pre-Eclampsia:</b> excessive bleeding or suddenly increased blood pressure or deterioration of sensorium or generalized seizure or fits etc after delivery.</label></div><br />
-                        </div>
-                        <div className='radiobtn'>
-                            <input onClick={handleClick} type="radio" id="6" name="ac-33-9" value="6" />
-                            <div>
-                            <label style={{ fontWeight: "400" }} htmlFor="6"><b>Neonatal Emergency:</b> fever, or hypothermia, or convulsion, or any difficulty in feeding, or lethargy, or dusky colour, or cyanosis, or excessive diarrhoea, or jaundice, etc.</label></div><br />
-                        </div>
-                        <div className='radiobtn'>
-                            <input onClick={handleClick} type="radio" id="7" name="ac-33-9" value="7" />
-                            <div>
-                            <label style={{ fontWeight: "400" }} htmlFor="7"><b>Snake bite</b></label></div><br />
-                        </div>
-                        <div className='radiobtn'>
-                            <input onClick={handleClick} type="radio" id="8" name="ac-33-9" value="8" />
-                            <div>
-                            <label style={{ fontWeight: "400" }} htmlFor="8"><b>Poisoning:</b> poisoning that leads to nausea, or vomiting, or diarrhoea, or drooling of saliva, or foaming at the mouth, or difficulty in breathing, or dilated or constricted pupils, or suddenly got faint, or seizure.</label></div><br />
-                        </div>
-                    </form>
-                </div>
+                <Radio name="AC33c9" h3={"What were the symptoms the deceased complained about? ( optional )"} CheckbobItems={["STEMI : Acute chest pain, heaviness or constriction, or radiation to left arms or necks or back or breathlessness, or upper abdominal pain, or palpitation, or giddiness, which might have been accompanied by profuse sweating, and easily reproduced with post-meal exertion.","Trauma & Burn : sudden injury in Road Traffic Accident/ severe fall/ drowning/ stabbing/ gunshot/ any other assault/ suicidal attempt/ burns/ domestic violence/ homicidal/ suicidal etc.","Stroke: sudden onset of weakness, especially one side of the body/ loss of consciousness/ altered sensorium/ Imbalance/ blurred vision/ facial deviation/ drooping of eyelid/ speech abnormality with numbness and tingling sensation, or difficulty in speaking or understanding speech (aphasia), or sudden severe headache with no known cause of one's life (haemorrhagic strokes).","Acute Respiratory Illness:   sudden onset of fever, or cough with expectoration, or chest pain (pleuritic) , or fast breathing, or bluish colouration of tongue or lip (cyanosis), or speaks in short sentences, or altered mentation, chest tightness or pressure, indicating a lack of oxygen.","Postpartum Haemorrhage & Pre-Eclampsia: excessive bleeding or suddenly increased blood pressure or deterioration of sensorium or generalized seizure or fits etc after delivery.","Neonatal Emergency: fever, or hypothermia, or convulsion, or any difficulty in feeding, or lethargy, or dusky colour, or cyanosis, or excessive diarrhoea, or jaundice, etc.","Snake bite","Poisoning: poisoning that leads to nausea, or vomiting, or diarrhoea, or drooling of saliva, or foaming at the mouth, or difficulty in breathing, or dilated or constricted pupils, or suddenly got faint, or seizure."]} onClick={handleChange(setFormAC15)} byDefault={formAC15.AC33c9}/>
+
 
                 {popup && <div className='popup'>
                     <h3>Form</h3>
@@ -133,7 +73,7 @@ function FormAC15() {
                     </div>
                 </div>}
 
-                <Buttons prev="/formsac-verbal&socialautopsyquestionnaire" next="/formsac-verbal&socialautopsyquestionnaire-3" />
+                <Buttons formName={"formac15"} formData={formAC15} prev="/formsac-verbal&socialautopsyquestionnaire" next="/formsac-verbal&socialautopsyquestionnaire-3" />
             </div>
         </section>
     )

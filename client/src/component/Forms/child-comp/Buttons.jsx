@@ -16,8 +16,8 @@ function Buttons({ prev, next, formName, formData }) {
 
     return (
         <div className='buttons'>
-            <button className='prevbtn'><Link to={prev}>Previous</Link></button>
-            <button onClick={handleSubmit} className='nextbtn'><Link to={next}>Next</Link></button>
+            <button style={{marginLeft : "1vw"}} className='prevbtn'><Link to={prev}>Previous</Link></button>
+            <button style={{marginRight : "1vw"}} onClick={handleSubmit} className='nextbtn'><Link to={next}>Next</Link></button>
         </div>
     )
 }

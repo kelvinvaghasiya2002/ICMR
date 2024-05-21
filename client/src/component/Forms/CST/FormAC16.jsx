@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
-import { turnOffbutton } from '../helpers'
+import { handleChange, turnOffbutton } from '../helpers'
 import DropDown from '../child-comp/DropDown';
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanel';
 import { Link } from 'react-router-dom';
 import Buttons from '../child-comp/Buttons';
+import Radio from '../child-comp/Radio';
+import setLocalStorage from '../setLocalStorage';
 
 function FormAC16() {
     turnOffbutton();
+    var formac16 = setLocalStorage("formac16", { AC33c10: "", AC33c11: "" ,AC33c12 : ""})
+    const [formAC16, setFormAC16] = useState(JSON.parse(formac16));
     const [popup , setPopup] = useState(false)
     function handleClick() {
         setPopup(true)
@@ -29,20 +33,12 @@ function FormAC16() {
                     </h3>
                 </div>
 
-                <div className='block'>
-                    <h3 className='h3block'>What was the cause of death as per your knowledge/ information?</h3>
-                    <Checkbox CheckbobItems={["STEMI", "Trauma & Burn", "Stroke", "Acute Respiratory Illness", "Postpartum Haemorrhage & Pre-Eclampsia", "Neonatal Emergency", "Snake bite", "Poisoning", "Others", "Don’t know"]} name={"ac-33-3-10"} />
-                </div>
+                <Radio  name={"AC33c10"} h3="What was the cause of death as per your knowledge/ information?" CheckbobItems={["STEMI", "Trauma & Burn", "Stroke", "Acute Respiratory Illness", "Postpartum Haemorrhage & Pre-Eclampsia", "Neonatal Emergency", "Snake bite", "Poisoning", "Others", "Don’t know"]} onClick={handleChange(setFormAC16)} byDefault={formAC16.AC33c10} />
 
-                <div className='block'>
-                    <h3 className='h3block'>Do you have the death certificate of the deceased?</h3>
-                    <Checkbox CheckbobItems={["Yes", "No"]} name={"ac-33-3-11"} />
-                </div>
+                <Radio  name={"AC33c11"} h3="Do you have the death certificate of the deceased?" CheckbobItems={["Yes", "No"]} onClick={handleChange(setFormAC16)} byDefault={formAC16.AC33c11} />
 
-                <div className='block'>
-                    <h3 className='h3block'>What was the cause of death as per your knowledge/ information?</h3>
-                    <Checkbox CheckbobItems={["STEMI", "Trauma & Burn", "Stroke", "Acute Respiratory Illness", "Postpartum Haemorrhage & Pre-Eclampsia", "Neonatal Emergency", "Snake bite", "Poisoning", "Others"]} name={"ac-33-3-12"} />
-                </div>
+                <Radio  name={"AC33c12"} h3="What was the cause of death as per your knowledge/ information?"CheckbobItems={["STEMI", "Trauma & Burn", "Stroke", "Acute Respiratory Illness", "Postpartum Haemorrhage & Pre-Eclampsia", "Neonatal Emergency", "Snake bite", "Poisoning", "Others"]} onClick={handleChange(setFormAC16)} byDefault={formAC16.AC33c12} />
+
                 {popup && <div className='popup'>
                     <h3 className='popuph3'>Form</h3>
                     <h3>Confirmation Message</h3>
@@ -55,7 +51,7 @@ function FormAC16() {
                     </div>
                 </div>}
 
-                <Buttons prev="/formsac-verbal&socialautopsyquestionnaire-2" next="/formsb-sociodemographicprofile" />
+                <Buttons formName={"formac16"} formData={formAC16} prev="/formsac-verbal&socialautopsyquestionnaire-2" next="/formsb-sociodemographicprofile" />
                     
     
             </div>

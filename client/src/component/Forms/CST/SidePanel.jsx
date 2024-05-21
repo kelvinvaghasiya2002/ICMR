@@ -23,9 +23,9 @@ function SidePanel({id}) {
         <Link id='8' to='/formsac-acuterespiratoryillness'><p style={{marginLeft : "2vw"}}>- Acute Respiratory Illness</p></Link>
         <Link id='9' to='/formsac-postpartumhaemorrhage'><p style={{marginLeft : "2vw"}}>- Postpartum Haemorrhage </p></Link>
         <Link id='10' to='/formsac-neonatalemergencies'><p style={{marginLeft : "2vw"}}>- Neonatal Emergencies</p></Link>
-        <Link id='11' to='/formsac-snakebite'><p style={{marginLeft : "2vw"}}>Snakebite</p></Link>
-        <Link id='12' to='/formsac-poisoning'><p style={{marginLeft : "2vw"}}>Poisoning</p></Link>
-        <Link id='13' to='/formsac-others'><p style={{marginLeft : "2vw"}}>Others</p></Link>
+        <Link id='11' to='/formsac-snakebite'><p style={{marginLeft : "2vw"}}>- Snakebite</p></Link>
+        <Link id='12' to='/formsac-poisoning'><p style={{marginLeft : "2vw"}}>- Poisoning</p></Link>
+        <Link id='13' to='/formsac-others'><p style={{marginLeft : "2vw"}}>- Others</p></Link>
         <Link id='14' to='/formsac-verbal&socialautopsyquestionnaire'><p>Verbal & Social Autopsy Questionnaire</p></Link>
         <Link id='15' to='/formsac-verbal&socialautopsyquestionnaire-2'><p>Verbal & Social Autopsy Questionnaire 2</p></Link>
         <Link id='16' to='/formsac-verbal&socialautopsyquestionnaire-3'><p>Verbal & Social Autopsy Questionnaire 3</p></Link>
