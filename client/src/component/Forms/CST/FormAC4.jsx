@@ -7,6 +7,8 @@ import Buttons from '../child-comp/Buttons.jsx'
 
 function FormAC4() {
     turnOffbutton();
+    var formac4 = localStorage.getItem("formac4");
+    console.log(formac4);
     return (
         <section id='relationship-with-head'>
             <SidePanel id={"4"} />
@@ -23,8 +25,8 @@ function FormAC4() {
                     </div>
                 </div>
                 <div className='formcontent'>
-                    <Table />
-                    <Buttons prev="/formsac-householdschedule" next="/formsac-trauma&burns" />
+                    <Table tableName={"formac4"} />
+                    <Buttons formName={"formac4"}  prev="/formsac-householdschedule" next="/formsac-trauma&burns" />
                 </div>
             </div>
         </section>
