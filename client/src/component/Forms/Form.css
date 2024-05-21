@@ -101,7 +101,6 @@ section {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    
 }
 
 .datetime {
@@ -226,3 +225,17 @@ table {
    
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
