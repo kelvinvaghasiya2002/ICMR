@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SidePanel from '../child-comp/SidePanel'
+import SidePanel from './SidePanelCST'
 import { handleChange, turnOffbutton } from '../helpers'
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
@@ -64,15 +64,15 @@ function FormAC() {
           <Radio name="AC6" h3="Marital status: (Select the appropriate response):" onClick={handleChange(setFormAC3)} CheckbobItems={["Never married", "Currently Married", "Separated  ", "Divorced  ", "Widow", "Cohabitating", "Prefer not to disclose/ Refuse"]} byDefault={formAC3.AC6} />
 
 
-          <Radio name="AC7" h3="Level of education (Select the appropriate response):" onClick={handleChange(setFormAC3)} CheckbobItems={["Illiterate", " Primary School Certificate", " Middle School Certificate", "High School Certificate  ", "Intermediate/ Diploma", "Graduate", "Professional or Honours", " Prefer not to disclose/ Refuse"]} byDefault={formAC3.AC7} />
+          <Radio name="AC7" h3="Level of education (Select the appropriate response):" onClick={handleChange(setFormAC3)} CheckbobItems={["Illiterate", "Primary School Certificate", "Middle School Certificate", "High School Certificate", "Intermediate/ Diploma", "Graduate", "Professional or Honours", "Prefer not to disclose/ Refuse"]} byDefault={formAC3.AC7} />
 
 
-          <Radio name="AC8" h3="Occupation :" onClick={handleChange(setFormAC3)} CheckbobItems={["Unemployed", " Elementary Occupation", "  Plant & Machine Operators and Assemblers", "Craft & Related Trade Workers", " Skilled Agricultural  Fishery Workers", "Skilled Workers and Shop & Market Sales Workers", "Clerks", " Technicians & Associate Professionals", "Professionals", "Legislators, Senior Officers & Managers", "Prefer not to disclose/ Refuse"]} byDefault={formAC3.AC8} />
+          <Radio name="AC8" h3="Occupation :" onClick={handleChange(setFormAC3)} CheckbobItems={["Unemployed", "Elementary Occupation", "Plant & Machine Operators and Assemblers", "Craft & Related Trade Workers", "Skilled Agricultural  Fishery Workers", "Skilled Workers and Shop & Market Sales Workers", "Clerks", "Technicians & Associate Professionals", "Professionals", "Legislators, Senior Officers & Managers", "Prefer not to disclose/ Refuse"]} byDefault={formAC3.AC8} />
 
           <InputField name="AC9" h3="Total family Income per Month (in INR) (Optional):" value={formAC3.AC9} onChange={handleChange(setFormAC3)} placeholder="INR" />
 
 
-          <Radio name="AC10" h3="What type of Transport facility available at home :" onClick={handleChange(setFormAC3)} CheckbobItems={["None", "Two-Wheeler (Bicycle)", "Two-Wheeler (Motorcycle)", " Three-Wheeler (Manual Rickshaw, etc.)", "Three-Wheeler (Auto Rickshaw/ E-rickshaw, etc.)", "Four-Wheeler (Car/Jeep/ etc.)", "Agricultural Vehicle (Tractor)", "Others (Specify)"]} byDefault={formAC3.AC10} />
+          <Radio name="AC10" h3="What type of Transport facility available at home :" onClick={handleChange(setFormAC3)} CheckbobItems={["None", "Two-Wheeler (Bicycle)", "Two-Wheeler (Motorcycle)", "Three-Wheeler (Manual Rickshaw, etc.)", "Three-Wheeler (Auto Rickshaw/ E-rickshaw, etc.)", "Four-Wheeler (Car/Jeep/ etc.)", "Agricultural Vehicle (Tractor)", "Others (Specify)"]} byDefault={formAC3.AC10} />
 
           <Radio name="AC11" h3="Do you have any household medical insurance?" onClick={handleChange(setFormAC3)} CheckbobItems={["Yes", "No"]} byDefault={formAC3.AC11} />
 
