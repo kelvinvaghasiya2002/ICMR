@@ -10,7 +10,7 @@ function Checkbox({ CheckbobItems, name ,h3 , onClick}) {
                         CheckbobItems.map((item, index) => {
                             {/* console.log(item) */}
                             return (
-                                <div key={index}>
+                                <div key={index} style={{display : "flex", alignItems : "center"}}>
                                     <input onClick={onClick} type="checkbox" id={item} name={name} value={item} />
                                     <label style={{ fontWeight: "400" }} htmlFor={item}>{item}</label><br />
                                 </div>
