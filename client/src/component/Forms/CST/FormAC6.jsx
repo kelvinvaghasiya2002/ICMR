@@ -3,7 +3,7 @@ import { handleChange, turnOffbutton } from '../helpers'
 import Checkbox from '../child-comp/Checkbox';
 import DropDown from '../child-comp/DropDown';
 import { Link } from 'react-router-dom';
-import SidePanel from '../child-comp/SidePanel';
+import SidePanel from './SidePanel';
 import Buttons from '../child-comp/Buttons';
 import setLocalStorage from '../setLocalStorage';
 import Radio from '../child-comp/Radio';

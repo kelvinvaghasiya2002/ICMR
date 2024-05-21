@@ -1,6 +1,6 @@
 import { turnOffbutton } from '../helpers'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from '../child-comp/SidePanel';
+import SidePanel from './SidePanel.jsx';
 import Buttons from '../child-comp/Buttons';
 import InputField from '../child-comp/InputField.jsx';
 import { Link } from 'react-router-dom';

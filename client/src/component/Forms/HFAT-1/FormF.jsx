@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from '../child-comp/SidePanel';
+import SidePanel from '../CST/SidePanel';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';

@@ -1,6 +1,6 @@
 import React from 'react'
 import { turnOffbutton } from '../helpers'
-import SidePanel from '../child-comp/SidePanel';
+import SidePanel from './SidePanel.jsx';
 import Checkbox from '../child-comp/Checkbox';
 import Radio from '../child-comp/Radio';
 import Buttons from '../child-comp/Buttons';

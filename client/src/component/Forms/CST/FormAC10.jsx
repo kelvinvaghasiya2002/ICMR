@@ -2,7 +2,7 @@ import React from 'react'
 import { turnOffbutton } from '../helpers'
 import DropDown from '../child-comp/DropDown';
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from '../child-comp/SidePanel';
+import SidePanel from './SidePanel';
 import { Link } from 'react-router-dom';
 import Buttons from '../child-comp/Buttons';
 import setLocalStorage from '../setLocalStorage';

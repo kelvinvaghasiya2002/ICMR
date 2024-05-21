@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SidePanel from '../child-comp/SidePanel'
+import SidePanel from './SidePanel'
 import { handleChange, turnOffbutton } from '../helpers'
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { handleChange, turnOffbutton } from '../helpers'
-import SidePanel from '../child-comp/SidePanel';
+import SidePanel from './SidePanel.jsx';
 import DropDown from '../child-comp/DropDown';
 import Radio from "../child-comp/Radio.jsx"
 import Buttons from '../child-comp/Buttons';
