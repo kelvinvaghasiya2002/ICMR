@@ -250,8 +250,8 @@ th {
 }
 
 .lable{
-    font-size: 1.12vw;
-    font-weight: 500;
+    font-size: 1.12vw !important;
+    font-weight: 500 !important;
 }
 
 
