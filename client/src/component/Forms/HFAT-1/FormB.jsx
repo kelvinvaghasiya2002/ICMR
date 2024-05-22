@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from '../child-comp/SidePanel';
+import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
@@ -8,7 +8,7 @@ import InputField from '../child-comp/InputField';
 function FormB() {
   return (
     <section>
-      <SidePanel id={"20"} />
+      <SidePanel id={"2"} />
       <div className="siteInfo">
 
         <div className="formhdr">

@@ -8,7 +8,7 @@ import InputField from '../child-comp/InputField';
 function FormF() {
   return (
     <section>
-      <SidePanel id={"F"} />
+      <SidePanel id={"6"} />
       <div className="siteInfo">
 
         <div className="formhdr">
@@ -40,7 +40,7 @@ Door to CT/ECG time, Door to needle time, Time to activate emergency alert team
 
           <Radio h3="Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]} name="1F-9" />
 
-          <Buttons prev="" next="/finance" />
+          <Buttons prev="/emergencycareservices" next="/finance" />
         </div>
       </div>
     </section>

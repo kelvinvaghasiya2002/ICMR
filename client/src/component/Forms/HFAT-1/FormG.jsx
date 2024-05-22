@@ -8,7 +8,7 @@ import InputField from '../child-comp/InputField';
 function FormG() {
   return (
     <section>
-    <SidePanel id={"20"} />
+    <SidePanel id={"7"} />
     <div className="siteInfo">
 
       <div className="formhdr">
