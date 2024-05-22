@@ -38,6 +38,16 @@ import FormG from './component/Forms/HFAT-1/FormG.jsx'
 import FormH from './component/Forms/HFAT-1/FormH.jsx'
 import FormI from './component/Forms/HFAT-1/FormI.jsx'
 import FormJ from './component/Forms/HFAT-1/FormJ.jsx'
+import Form2A from './component/Forms/HFAT-2/Form2A.jsx'
+import Form2C from './component/Forms/HFAT-2/Form2C.jsx'
+import Form2B from './component/Forms/HFAT-2/Form2B.jsx'
+import Form2D from './component/Forms/HFAT-2/Form2D.jsx'
+import Form2E from './component/Forms/HFAT-2/Form2E.jsx'
+import Form2F from './component/Forms/HFAT-2/Form2F.jsx'
+import Form2G from './component/Forms/HFAT-2/Form2G.jsx'
+import Form2H from './component/Forms/HFAT-2/Form2H.jsx'
+import Form2I from './component/Forms/HFAT-2/Form2I.jsx'
+import Form2J from './component/Forms/HFAT-2/Form2J.jsx'
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -111,6 +121,16 @@ function App() {
       <Route path='/leadershipandgovernance' element={<FormH/>} />
       <Route path='/processpoliciessops' element={<FormI />} />
       <Route path='/referrallinkages' element={<FormJ />} />
+      <Route path='/facilityinformation-2' element={<Form2A />} />
+      <Route path='/infrastructure-2' element={<Form2B />} />
+      <Route path='/humanresources-2' element={<Form2C />} />
+      <Route path='/logistics-2' element={<Form2D />} />
+      <Route path='/emergencycareservices-2' element={<Form2E />} />
+      <Route path='/informationsystem-2' element={<Form2F />} />
+      <Route path='/finance-2' element={<Form2G />} />
+      <Route path='/leadershipandgovernance-2' element={<Form2H/>} />
+      <Route path='/processpoliciessops-2' element={<Form2I />} />
+      <Route path='/referrallinkages-2' element={<Form2J />} />
     </Routes>
     </>
   )
