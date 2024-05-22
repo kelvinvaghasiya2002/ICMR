@@ -8,7 +8,7 @@ import InputField from '../child-comp/InputField';
 function FormJ() {
   return (
     <section>
-    <SidePanel id={"20"} />
+    <SidePanel id={"10"} />
     <div className="siteInfo">
 
       <div className="formhdr">
