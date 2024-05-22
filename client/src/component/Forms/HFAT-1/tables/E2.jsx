@@ -126,7 +126,7 @@ const E1 = ({ columns, initialRows }) => {
                     ))}
                 </tbody>
             </table>
-            <div className='tablebtn'>
+            {/* <div className='tablebtn'>
                 <button onClick={addRow}>+</button>
                 {columns.map((col, colIndex) => (
                     (col.type === 'radio' || col.type === 'checkbox') && (
@@ -147,7 +147,7 @@ const E1 = ({ columns, initialRows }) => {
                 ))}
                 <button onClick={() => removeRow()} disabled={rows.length === 1}>-</button>
 
-            </div>
+            </div> */}
 
         </div>
     );

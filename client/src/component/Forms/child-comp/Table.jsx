@@ -19,7 +19,10 @@ function Table({ tableName }) {
     }
 
     function handleMinusClick() {
-        setRows(rows.slice(0, -1));
+        if (rows.length > 1) {
+            const newRows = rows.filter((_, rowIndex) => rowIndex !== rows.length - 1);
+            setRows(newRows);
+        }
     }
 
     const handleInputChange = (index, field, value) => {
