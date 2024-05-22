@@ -21,6 +21,12 @@ function Form2D() {
 
       <div className="formcontent">
 
+      <InputField h3="Which of the following emergency drugs are available at the CHC? 
+(Multiple answers possible)?" placeholder="Type family member"/>
+
+      <InputField h3="Which of the following emergency equipment is available at the CHC? 
+(Multiple answers possible)" placeholder="Type family member"/>
+
       <Buttons prev="/humanresources-2" next="/emergencycareservices-2" />
       </div>
     </div>

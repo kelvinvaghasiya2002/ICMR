@@ -12,7 +12,7 @@ function Checkbox({ CheckbobItems, name ,h3 , onClick}) {
                             return (
                                 <div key={index} style={{display : "flex", alignItems : "center"}}>
                                     <input onClick={onClick} type="checkbox" id={item} name={name} value={item} />
-                                    <label style={{ fontWeight: "400" }} htmlFor={item}>{item}</label><br />
+                                    <label style={{ fontWeight: "400",marginLeft:"0.25vw" }} htmlFor={item}>{item}</label><br />
                                 </div>
                             )
                         }

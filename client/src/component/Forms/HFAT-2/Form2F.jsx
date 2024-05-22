@@ -21,6 +21,24 @@ function Form2F() {
 
       <div className="formcontent">
 
+      <Radio h3="Does the facility have a Hospital   Management Information System (HMIS)" CheckbobItems={["Yes", "No"]}  />
+
+      <Radio h3="Does this facility do complete   reporting of indicators on emergency care in HMIS?" CheckbobItems={["Yes", "No"]}  />
+
+      <InputField h3="How many personnel are available for managing information system?" placeholder="Type here"/>
+
+      <Radio h3="What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencies", "Length of hospital stay","Turnaround time","Disposal time","Number of deaths","Number of Referrals"]}  />
+
+      <Radio h3="Whether time bound management of common emergencies is captured in MIS." CheckbobItems={["Yes", "No"]}  />
+
+      <Radio h3="Which of the following alert systems does your facility have?" CheckbobItems={["Code blue alert system.", "NSTEMI alert systemo","Stroke alert system.","Trauma alert system"]}  />
+
+      <Radio h3="Whether Medical Officer In charge (MO/IC) uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]}  />
+
+      <Radio h3="Do you get Pre-Hospital Notification during an emergency?" CheckbobItems={["Yes ___________ (How often per week)", "No"]}  />
+
+      <Radio h3="Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]}  />
+
       <Buttons prev="/emergencycareservices-2" next="/finance-2" />
       </div>
     </div>

@@ -21,6 +21,12 @@ function Form2J() {
 
       <div className="formcontent">
 
+      <Radio h3="Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]}  />
+
+
+      <Radio h3="Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]}  />
+
+
       <Buttons prev="/processpoliciessops-2" next="" />
       </div>
     </div>
