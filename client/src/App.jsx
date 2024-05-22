@@ -38,6 +38,11 @@ import FormG from './component/Forms/HFAT-1/FormG.jsx'
 import FormH from './component/Forms/HFAT-1/FormH.jsx'
 import FormI from './component/Forms/HFAT-1/FormI.jsx'
 import FormJ from './component/Forms/HFAT-1/FormJ.jsx'
+import FormA from './component/Forms/HFAT-1/FormA.jsx'
+import FormB from './component/Forms/HFAT-1/FormB.jsx'
+import FormC from './component/Forms/HFAT-1/FormC.jsx'
+import FormD from './component/Forms/HFAT-1/FormD.jsx'
+import FormE from './component/Forms/HFAT-1/FormE.jsx'
 import Form2A from './component/Forms/HFAT-2/Form2A.jsx'
 import Form2C from './component/Forms/HFAT-2/Form2C.jsx'
 import Form2B from './component/Forms/HFAT-2/Form2B.jsx'
@@ -48,6 +53,7 @@ import Form2G from './component/Forms/HFAT-2/Form2G.jsx'
 import Form2H from './component/Forms/HFAT-2/Form2H.jsx'
 import Form2I from './component/Forms/HFAT-2/Form2I.jsx'
 import Form2J from './component/Forms/HFAT-2/Form2J.jsx'
+
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -116,6 +122,11 @@ function App() {
       <Route path='/formsc-referralfacility' element={<FormC20 />} />
       <Route path='/formsd-barriersandfacilitatorsinseekingcare' element={<FormD21 />} />
       <Route path='/formse-costing' element={<FormE22/>} />
+      <Route path='/healthfacilityinformation' element={<FormA/>} />
+        <Route path='/infrastructure' element={<FormB/>} />
+        <Route path='/humanresources' element={<FormC/>} />
+        <Route path='/logisticsdrugsconsumablesequipment' element={<FormD />} />
+        <Route path='/emergencycareservices' element={<FormE />} />
       <Route path='/informationsystem' element={<FormF />} />
       <Route path='/finance' element={<FormG />} />
       <Route path='/leadershipandgovernance' element={<FormH/>} />
@@ -143,5 +154,5 @@ export default App
 {/* <Navbar />
       {!loggedIn && <FirstPage />}
       {/* {loggedIn && <ContactUs />} */}
-  {/* <InformationPage /> */ }
-  {/* {loggedIn && <HomePage />}  */ }
+{/* <InformationPage /> */ }
+{/* {loggedIn && <HomePage />}  */ }
