@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT2';
+import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
 
-function Form2J() {
-  turnOffbutton();
+function Form3J() {
+    turnOffbutton();
   return (
     <section>
     <SidePanel id={"10"} />
@@ -29,11 +29,11 @@ function Form2J() {
       <Radio h3="Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]}  />
 
 
-      <Buttons prev="/processpoliciessops-2" next="" />
+      <Buttons prev="/processpoliciessops-3" next="" />
       </div>
     </div>
   </section>
   )
 }
 
-export default Form2J
+export default Form3J

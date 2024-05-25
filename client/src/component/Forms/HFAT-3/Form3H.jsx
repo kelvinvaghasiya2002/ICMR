@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT2';
+import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
 
 
-function Form2H() {
-  turnOffbutton();
+function Form3H() {
+    turnOffbutton();
   return (
     <section>
     <SidePanel id={"8"} />
@@ -50,11 +50,11 @@ function Form2H() {
 
 <InputField h3="Any action being taken on Audit report in the last one year?" placeholder="Type here" />
 
-      <Buttons prev="/finance-2" next="/processpoliciessops-2" />
+      <Buttons prev="/finance-3" next="/processpoliciessops-3" />
       </div>
     </div>
   </section>
   )
 }
 
-export default Form2H
+export default Form3H

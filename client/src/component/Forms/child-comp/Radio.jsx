@@ -18,7 +18,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault }) {
 
                                     }
 
-                                    <label style={{ fontWeight: "400",marginLeft: "4px" }} htmlFor={item}>{item}</label><br />
+                                    <label style={{ fontWeight: "400",marginLeft: "0.25vw" }} htmlFor={item}>{item}</label><br />
                                 </div>
                             )
                         }

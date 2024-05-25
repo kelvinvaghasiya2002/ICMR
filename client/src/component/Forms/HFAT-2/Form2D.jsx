@@ -42,6 +42,7 @@ const initialRows = [
     { SrNo: '29', DrugName: 'Carboprost', DistrictHospital: '' },
 ];
 
+
   return (
     <section>
       <SidePanel id={"4"} />
@@ -55,10 +56,16 @@ const initialRows = [
           </div>
         </div>
 
-        <div className="formcontent">
-        <D1 columns={columns} initialRows={initialRows} />
-          <Buttons prev="/humanresources" next="/logistics-2-1" />
-        </div>
+      <div className="formcontent">
+
+      <InputField h3="Which of the following emergency drugs are available at the CHC? 
+(Multiple answers possible)?" placeholder="Type family member"/>
+
+      <InputField h3="Which of the following emergency equipment is available at the CHC? 
+(Multiple answers possible)" placeholder="Type family member"/>
+
+      <Buttons prev="/humanresources-2" next="/emergencycareservices-2" />
+
       </div>
     </section>
   )

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT2';
+import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
 
-function Form2G() {
-  turnOffbutton();
+function Form3G() {
+    turnOffbutton();
   return (
     <section>
     <SidePanel id={"7"} />
@@ -35,11 +35,11 @@ function Form2G() {
 
       <Radio h3="Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?" CheckbobItems={["Yes", "No"]}  />
 
-      <Buttons prev="/informationsystem-2" next="/leadershipandgovernance-2" />
+      <Buttons prev="/informationsystem-3" next="/leadershipandgovernance-3" />
       </div>
     </div>
   </section>
   )
 }
 
-export default Form2G
+export default Form3G

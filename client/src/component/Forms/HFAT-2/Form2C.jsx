@@ -37,6 +37,7 @@ function Form2C() {
 
 
 
+
   return (
     <section>
       <SidePanel id={"3"} />
@@ -50,7 +51,14 @@ function Form2C() {
           </div>
         </div>
 
-        <div className="formcontent">
+
+      <div className="formcontent">
+        <h3>Tick the manpower available in your emergency department and provide numbers</h3>
+        <C1 columns={columns} initialRows={initialRows} />
+
+        <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]}  />
+
+        <InputField h3="When   was the last training conducted?" placeholder="Type here"/>
 
           <C1 columns={columns} initialRows={initialRows} />
           <Radio
@@ -88,7 +96,7 @@ function Form2C() {
             name="2C4"
           />
 
-          <InputField h3="When   was the last training conducted?" placeholder="Type here" name="2C5" />
+          <InputField h3="When was the last training conducted?" placeholder="Type here" name="2C5" />
 
           <Buttons prev="/infrastructure-2" next="/logistics-2" />
         </div>

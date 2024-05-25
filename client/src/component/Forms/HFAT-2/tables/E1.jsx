@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const E2 = ({ columns, initialRows }) => {
+const E1 = ({ columns, initialRows }) => {
     const [rows, setRows] = useState(initialRows);
     const [columnOptions, setColumnOptions] = useState(
         columns.reduce((acc, col) => {
@@ -17,7 +17,7 @@ const E2 = ({ columns, initialRows }) => {
         setRows([...rows, newRow]);
     };
 
-    const removeRow = () => {
+    const removeRow = (index) => {
         if (rows.length > 1) {
             const newRows = rows.filter((_, rowIndex) => rowIndex !== rows.length - 1);
             setRows(newRows);
@@ -126,7 +126,7 @@ const E2 = ({ columns, initialRows }) => {
                     ))}
                 </tbody>
             </table>
-            {/* <div className='tablebtn'>
+            <div className='tablebtn'>
                 <button onClick={addRow}>+</button>
                 {columns.map((col, colIndex) => (
                     (col.type === 'radio' || col.type === 'checkbox') && (
@@ -147,11 +147,11 @@ const E2 = ({ columns, initialRows }) => {
                 ))}
                 <button onClick={() => removeRow()} disabled={rows.length === 1}>-</button>
 
-            </div> */}
+            </div>
 
         </div>
     );
 };
 
-export default E2;
+export default E1;
 

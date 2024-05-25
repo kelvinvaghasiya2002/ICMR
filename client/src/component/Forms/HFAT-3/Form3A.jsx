@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT2';
+import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
 
-function Form2A() {
-  turnOffbutton();
+function Form3A() {
+
+    turnOffbutton();
 
   const date = new Date();
   return (
@@ -52,11 +53,11 @@ function Form2A() {
       <Radio h3="Type of locality:" CheckbobItems={["Urban", "Rural"]}  />
  
 
-      <Buttons prev="" next="/infrastructure-2" />
+      <Buttons prev="" next="/infrastructure-3" />
       </div>
     </div>
   </section>
   )
 }
 
-export default Form2A
+export default Form3A

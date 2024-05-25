@@ -4,8 +4,10 @@ import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
+import { turnOffbutton } from '../helpers';
 
 function Form2I() {
+  turnOffbutton();
   return (
     <section>
     <SidePanel id={"9"} />
@@ -20,6 +22,15 @@ function Form2I() {
       </div>
 
       <div className="formcontent">
+
+        <Checkbox h3="What   types of registers are maintained at the CHC?" CheckbobItems={["Emergency/OPD/Treatment Register","Inventory Register","Procedure register","Referral Register","Record for handing over and taking over of critical care equipment","Medico-legal register","Death Register","Patient/Community feedback register","Other (please specify) ___________________"]}/>
+
+        <Checkbox h3="Which of the following SOPs for the management of common medical emergencies are followed at your CHC?" CheckbobItems={["Documented triage guidelines and protocols","Standard treatment protocols for emergencies","Transfer policies and procedures","Disaster Management Plan","Policies for handling cases of death"]} />
+
+        <h1>TABLE</h1>
+
+        <Radio h3="Does the facility have defined and   established procedure for informing patients about their medical condition,   involving them in treatment planning and facilitating informed decision   making?" CheckbobItems={["Yes", "No"]}  />
+
 
       <Buttons prev="/leadershipandgovernance-2" next="/referrallinkages-2" />
       </div>

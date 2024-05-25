@@ -42,6 +42,7 @@ const initialRows = [
     { SrNo: '29', DrugName: 'Carboprost', DistrictHospital: '' },
 ];
 
+
   return (
     <section>
       <SidePanel id={"4"} />
