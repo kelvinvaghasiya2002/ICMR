@@ -5,8 +5,10 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import I1 from './tables/I1';
+import { turnOffbutton } from '../helpers';
 
 function FormI() {
+  turnOffbutton();
   const columns = [
     { key: 'EmergencyCondition', label: 'Emergency Condition', type: 'text' },
     { key: 'SOP', label: 'Have Specific SOP/STW', type: 'radio', options: ['Yes', 'No'] },

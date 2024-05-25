@@ -4,8 +4,11 @@ import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
+import { turnOffbutton } from '../helpers';
 
 function FormD() {
+
+  turnOffbutton();
   return (
     <section>
       <SidePanel id={"4"} />

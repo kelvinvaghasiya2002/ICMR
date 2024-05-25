@@ -6,8 +6,10 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import E1 from './tables/E1';
 import E2 from './tables/E2';
+import { turnOffbutton } from '../helpers';
 
 function Form2E() {
+  turnOffbutton();
   const columns1 =[
     { key: 'Number1', label: 'Adult (> 18Years)', type: 'input'},
     { key: 'Number2', label: 'Pediatric', type: 'input' },

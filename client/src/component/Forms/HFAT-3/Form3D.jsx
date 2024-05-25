@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT2';
+import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
 
-function Form2D() {
-  turnOffbutton();
+function Form3D() {
+    turnOffbutton();
   return (
     <section>
     <SidePanel id={"4"} />
@@ -29,11 +29,11 @@ function Form2D() {
       <InputField h3="Which of the following emergency equipment is available at the CHC? 
 (Multiple answers possible)" placeholder="Type family member"/>
 
-      <Buttons prev="/humanresources-2" next="/emergencycareservices-2" />
+      <Buttons prev="/humanresources-3" next="/emergencycareservices-3" />
       </div>
     </div>
   </section>
   )
 }
 
-export default Form2D
+export default Form3D

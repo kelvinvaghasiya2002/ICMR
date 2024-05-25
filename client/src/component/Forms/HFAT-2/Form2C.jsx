@@ -4,10 +4,12 @@ import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
-import C1 from './tables/c1';
+import C1 from './tables/C1';
+import { turnOffbutton } from '../helpers';
 
 
 function Form2C() {
+  turnOffbutton();
 
   const columns = [
     { key: 'btn', label: 'Select Required', type: 'checkbox', options: ['Yes'] },

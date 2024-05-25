@@ -53,6 +53,17 @@ import Form2G from './component/Forms/HFAT-2/Form2G.jsx'
 import Form2H from './component/Forms/HFAT-2/Form2H.jsx'
 import Form2I from './component/Forms/HFAT-2/Form2I.jsx'
 import Form2J from './component/Forms/HFAT-2/Form2J.jsx'
+import Form3A from './component/Forms/HFAT-3/Form3A.jsx'
+import Form3C from './component/Forms/HFAT-3/Form3C.jsx'
+import Form3B from './component/Forms/HFAT-3/Form3B.jsx'
+import Form3D from './component/Forms/HFAT-3/Form3D.jsx'
+import Form3E from './component/Forms/HFAT-3/Form3E.jsx'
+import Form3F from './component/Forms/HFAT-3/Form3F.jsx'
+import Form3G from './component/Forms/HFAT-3/Form3G.jsx'
+import Form3H from './component/Forms/HFAT-3/Form3H.jsx'
+import Form3I from './component/Forms/HFAT-3/Form3I.jsx'
+import Form3J from './component/Forms/HFAT-3/Form3J.jsx'
+import Facility from './component/Forms/Ambulance/Facility.jsx'
 
 const url = import.meta.env.VITE_SERVER;
 
@@ -142,6 +153,17 @@ function App() {
       <Route path='/leadershipandgovernance-2' element={<Form2H/>} />
       <Route path='/processpoliciessops-2' element={<Form2I />} />
       <Route path='/referrallinkages-2' element={<Form2J />} />
+      <Route path='/facilityinformation-3' element={<Form3A />} />
+      <Route path='/infrastructure-3' element={<Form3B />} />
+      <Route path='/humanresources-3' element={<Form3C />} />
+      <Route path='/logistics-3' element={<Form3D />} />
+      <Route path='/emergencycareservices-3' element={<Form3E />} />
+      <Route path='/informationsystem-3' element={<Form3F />} />
+      <Route path='/finance-3' element={<Form3G />} />
+      <Route path='/leadershipandgovernance-3' element={<Form3H/>} />
+      <Route path='/processpoliciessops-3' element={<Form3I />} />
+      <Route path='/referrallinkages-3' element={<Form3J />} />
+      <Route path='/facilityinformation' element={<Facility />} />
     </Routes>
     </>
   )
