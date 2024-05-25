@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT2';
+import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
 
-function Form2F() {
-  turnOffbutton();
+function Form3F() {
+    turnOffbutton();
   return (
     <section>
     <SidePanel id={"6"} />
@@ -41,11 +41,11 @@ function Form2F() {
 
       <Radio h3="Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]}  />
 
-      <Buttons prev="/emergencycareservices-2" next="/finance-2" />
+      <Buttons prev="/emergencycareservices-3" next="/finance-3" />
       </div>
     </div>
   </section>
   )
 }
 
-export default Form2F
+export default Form3F
