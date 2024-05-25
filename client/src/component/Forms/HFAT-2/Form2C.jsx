@@ -5,55 +5,52 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import C1 from './tables/C1';
-import { turnOffbutton } from '../helpers';
-
 
 function Form2C() {
-  turnOffbutton();
-
   const columns = [
-    { key: 'btn', label: 'Select Required', type: 'checkbox', options: ['Yes'] },
     { key: 'Manpower', label: 'Manpower', type: 'text' },
     { key: 'Number', label: 'Number', type: 'input' },
-    { key: 'availability247', label: '24/7 Availability', type: 'radio', options: ['Yes', 'No'] },
-    { key: 'onSiteAvailability', label: 'On-site Availability', type: 'radio', options: ['Yes', 'No'] },
-    { key: 'onCallAvailability', label: 'On-call Availability', type: 'radio', options: ['Yes', 'No'] }
-];
+    { key: 'Availability', label: '24/7 Availability', type: 'radio', options: ['Yes', 'No'] },
+    { key: 'OnSite', label: '24/7 On-site Availability', type: 'radio', options: ['Yes', 'No'] },
+    { key: 'OnCall', label: '24/7 On-call Availability', type: 'radio', options: ['Yes', 'No'] },
+  ];
 
-const initialRows = [
-    {btn:"", Manpower: 'Faculty/Consultant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'CMO (casualty medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'SR (Senior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'JR (Junior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'MO (Medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Nursing officer in charge / Team leader', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Staff Nurse/ Nursing Officer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Radiology technician/ Radiographer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'OT. Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'H.A/ GDA/ Orderly', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'SA/ Housekeeping staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'EMT', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Security', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Registration staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'IT Staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Hospital Administrator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Radiology technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Other (please specify)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' }
-];
+  const initialRows = [
+    { Manpower: 'Physician/Family Medicine Specialist', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Surgeon', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Obstetrician & Gynecologist', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Pediatrician', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Anesthesiologist', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Ophthalmologist', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Orthopaedician', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'ENT', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Microbiologist/Pathologist/Biochemist', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'GDMO', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Nurses', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Data entry operator', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'ECG technician', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'MLT', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Pharmacist', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Radiology technician', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Others (please specify)', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  ];
+
+
+
+
   return (
     <section>
-    <SidePanel id={"3"} />
-    <div className="siteInfo">
+      <SidePanel id={"3"} />
+      <div className="siteInfo">
 
-      <div className="formhdr">
-        <div>
-          <h3>
-          Human Resources
-          </h3>
+        <div className="formhdr">
+          <div>
+            <h3>
+              Human Resources
+            </h3>
+          </div>
         </div>
-      </div>
+
 
       <div className="formcontent">
         <h3>Tick the manpower available in your emergency department and provide numbers</h3>
@@ -63,10 +60,48 @@ const initialRows = [
 
         <InputField h3="When   was the last training conducted?" placeholder="Type here"/>
 
-      <Buttons prev="/infrastructure-2" next="/logistics-2" />
+          <C1 columns={columns} initialRows={initialRows} />
+          <Radio
+            h3="Whether training for emergency care management is being conducted for the staff in the institution?"
+            CheckbobItems={["Yes", "No"]}
+            name="2C2"
+          />
+
+          <Checkbox
+            h3="Which of the following emergency care trainings you have undergone?"
+            CheckbobItems={[
+              "Trauma & Accidental Injuries",
+              "Burns",
+              "Cardiac emergencies: acute chest pain, acute coronary syndrome (ACS)/ STEMI, Heart failure, Cardiac Arrest",
+              "Stroke",
+              "Acute Breathlessness",
+              "Bites (Animal bite/snake bite/scorpion sting)",
+              "Choking/foreign body ingestion",
+              "Poisoning",
+              "PPH",
+              "Pre-Eclampsia",
+              "Others (Specify)____________________________"
+            ]}
+            name="2C3"
+          />
+
+          <Radio
+            h3="Frequency of training on emergency care in a year?"
+            CheckbobItems={[
+              "Every Month",
+              "Quarterly",
+              "Annually",
+              "Others (Specify)________________"
+            ]}
+            name="2C4"
+          />
+
+          <InputField h3="When was the last training conducted?" placeholder="Type here" name="2C5" />
+
+          <Buttons prev="/infrastructure-2" next="/logistics-2" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   )
 }
 

@@ -42,11 +42,13 @@ import FormA from './component/Forms/HFAT-1/FormA.jsx'
 import FormB from './component/Forms/HFAT-1/FormB.jsx'
 import FormC from './component/Forms/HFAT-1/FormC.jsx'
 import FormD from './component/Forms/HFAT-1/FormD.jsx'
+import FormD1 from './component/Forms/HFAT-1/FormD1.jsx'
 import FormE from './component/Forms/HFAT-1/FormE.jsx'
 import Form2A from './component/Forms/HFAT-2/Form2A.jsx'
 import Form2C from './component/Forms/HFAT-2/Form2C.jsx'
 import Form2B from './component/Forms/HFAT-2/Form2B.jsx'
 import Form2D from './component/Forms/HFAT-2/Form2D.jsx'
+import Form2D1 from './component/Forms/HFAT-2/Form2D1.jsx'
 import Form2E from './component/Forms/HFAT-2/Form2E.jsx'
 import Form2F from './component/Forms/HFAT-2/Form2F.jsx'
 import Form2G from './component/Forms/HFAT-2/Form2G.jsx'
@@ -136,7 +138,8 @@ function App() {
       <Route path='/healthfacilityinformation' element={<FormA/>} />
         <Route path='/infrastructure' element={<FormB/>} />
         <Route path='/humanresources' element={<FormC/>} />
-        <Route path='/logisticsdrugsconsumablesequipment' element={<FormD />} />
+        <Route path='/logisticsdrugsconsumablesequipment-1' element={<FormD />} />
+        <Route path='/logisticsdrugsconsumablesequipment-2' element={<FormD1 />} />
         <Route path='/emergencycareservices' element={<FormE />} />
       <Route path='/informationsystem' element={<FormF />} />
       <Route path='/finance' element={<FormG />} />
@@ -147,6 +150,7 @@ function App() {
       <Route path='/infrastructure-2' element={<Form2B />} />
       <Route path='/humanresources-2' element={<Form2C />} />
       <Route path='/logistics-2' element={<Form2D />} />
+      <Route path='/logistics-2-1' element={<Form2D1 />} />
       <Route path='/emergencycareservices-2' element={<Form2E />} />
       <Route path='/informationsystem-2' element={<Form2F />} />
       <Route path='/finance-2' element={<Form2G />} />
