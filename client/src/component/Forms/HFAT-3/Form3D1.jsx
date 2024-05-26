@@ -1,5 +1,5 @@
 import React from 'react'
-import SidePanel from './SidePanelHFAT2';
+import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import D2 from '../HFAT-2/tables/D2';
 
@@ -57,7 +57,7 @@ function FormD() {
                     <h3>Which of the following essential emergency equipment is available at the DH/ Tertiary Care Hospital?
                         (Multiple answers possible)</h3>
                     <D2 columns={columns} initialRows={initialRows} />
-                    <Buttons prev="/logistics-2" next="/emergencycareservices-2" />
+                    <Buttons prev="/logistics-3" next="/emergencycareservices-3" />
                 </div>
             </div>
         </section>

@@ -37,7 +37,7 @@ function Form2B() {
 
       <Checkbox h3="Which of the following infrastructure requirements for emergency are available at the CHC?" CheckbobItems={["Emergency Registration Counter","Computerized Registration","Triage Area","Resuscitation Area","Decontamination Facility","Security Services","Designated Parking Area for Ambulance","Smooth Entry for Wheelchair Trolley and Stretcher Bay","Waiting Area for patients & Attendants.","Plaster Room/Suturing Room/Minor OT","Emergency OT","Dedicated Isolation rooms","Point of Care Lab","Blood storage unit","Point of care ultrasound","Radiology service-X ray, Ultrasound","Demarcated Duty Rooms for Doctors and Nurses","Area to Keep Dead Bodies","Tele-Medicine Facility"]}/>
 
-      <Checkbox h3="Which   of these signage or display boards of the emergency services and entitlements   available in its departments?" CheckbobItems={["Services provided to the patients are clearly defined, displayed prominently.","Names of doctor and nursing staff on duty are displayed and updated.","List of available drugs are displayed.","All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.","Important contact numbers including ambulance, blood bank, police and referral centers displayed.","Display of citizen’s charter","Other (Specify)____________"]}/>
+      <Checkbox h3="Which   of these signage or display boards of the emergency services and entitlements   available in its departments?" CheckbobItems={["Services provided to the patients are clearly defined, displayed prominently.","Names of doctor and nursing staff on duty are displayed and updated.","List of available drugs are displayed.","All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.","Important contact numbers including ambulance, blood bank, police and referral centers displayed.","Display of citizen’s charter"]} other={true}/>
 
       <Radio h3="Does this facility provide ambulance services?" CheckbobItems={["Yes", "No"]}  />
 
@@ -45,7 +45,7 @@ function Form2B() {
 
       <Buttons prev="/facilityinformation-2" next="/humanresources-2" />
       </div>
-    </div>
+    </div>  
   </section>
   )
 }

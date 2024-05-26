@@ -18,30 +18,30 @@ function FormC() {
     { key: 'availability247', label: '24/7 Availability', type: 'radio', options: ['Yes', 'No'] },
     { key: 'onSiteAvailability', label: 'On-site Availability', type: 'radio', options: ['Yes', 'No'] },
     { key: 'onCallAvailability', label: 'On-call Availability', type: 'radio', options: ['Yes', 'No'] }
-];
+  ];
 
-const initialRows = [
-    {btn:"", Manpower: 'Faculty/Consultant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'CMO (casualty medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'SR (Senior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'JR (Junior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'MO (Medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Nursing officer in charge / Team leader', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Staff Nurse/ Nursing Officer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Radiology technician/ Radiographer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'OT. Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'H.A/ GDA/ Orderly', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'SA/ Housekeeping staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'EMT', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Security', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Registration staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'IT Staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Hospital Administrator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Radiology technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    {btn:"", Manpower: 'Other (please specify)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' }
-];
+  const initialRows = [
+    { btn: "", Manpower: 'Faculty/Consultant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'CMO (casualty medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'SR (Senior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'JR (Junior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'MO (Medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Nursing officer in charge / Team leader', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Staff Nurse/ Nursing Officer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Radiology technician/ Radiographer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'OT. Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'H.A/ GDA/ Orderly', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'SA/ Housekeeping staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'EMT', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Security', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Registration staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'IT Staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Hospital Administrator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Radiology technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: 'Other (please specify)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' }
+  ];
 
   return (
     <section>
@@ -57,7 +57,7 @@ const initialRows = [
         </div>
 
         <div className="formcontent">
-          <h3>Tick the manpower available in your emergency department and provide numbers</h3>
+          {/* <h3>Tick the manpower available in your emergency department and provide numbers</h3> */}
           <C1 columns={columns} initialRows={initialRows} />
           <h3>Please indicate which of the following specialist/super specialist services are available in your hospital</h3>
           <Checkbox
@@ -103,14 +103,37 @@ const initialRows = [
             CheckbobItems={["Yes", "No"]}
             name="C3"
           />
+          <Checkbox
+            h3="Which of the following emergency care trainings you have undergone?"
+            CheckbobItems={[
+              "Trauma & Accidental Injuries",
+              "Burns",
+              "Cardiac emergencies: acute chest pain, acute coronary syndrome (ACS)/ STEMI, Heart failure, Cardiac Arrest",
+              "Stroke",
+              "Acute Breathlessness",
+              "Bites (Animal bite/snake bite/scorpion sting)",
+              "Choking/foreign body ingestion",
+              "Poisoning",
+              "PPH",
+              "Pre-Eclampsia",
 
-          <InputField name="C4" h3="When was the last training conducted ? " placeholder="Type here" />
+            ]}
+            other={true}
+            name="C4"
+          />
+          <Checkbox
+            h3="Frequency of training on emergency care in a year?"
+            CheckbobItems={[
+              "Every Month",
+              "Quarterly",
+              "Annually"
+            ]}
+            name="C5"
+          />
 
 
-
-
-
-          <Buttons prev="/infrastructure" next="/logisticsdrugsconsumablesequipment" />
+          <InputField name="C6" h3="When was the last training conducted ? " placeholder="Type here" />
+          <Buttons prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" />
         </div>
       </div>
     </section>

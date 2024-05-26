@@ -7,10 +7,10 @@ function FormD() {
   const columns = [
     { key: 'SrNo', label: 'Sr.No', type: 'text' },
     { key: 'DrugName', label: 'Drug Name', type: 'text' },
-    { key: 'DistrictHospital', label: 'District Hospital', type: 'checkbox', options:['Yes'] },
-];
+    { key: 'DistrictHospital', label: 'District Hospital', type: 'checkbox', options: ['Yes'] },
+  ];
 
-const initialRows = [
+  const initialRows = [
     { SrNo: '1', DrugName: 'Oxygen medicinal gas', DistrictHospital: "" },
     { SrNo: '2', DrugName: 'Atropine', DistrictHospital: '' },
     { SrNo: '3', DrugName: 'Diazepam/Lorazepam', DistrictHospital: '' },
@@ -40,7 +40,7 @@ const initialRows = [
     { SrNo: '27', DrugName: 'tPA IV', DistrictHospital: '' },
     { SrNo: '28', DrugName: 'Methergine', DistrictHospital: '' },
     { SrNo: '29', DrugName: 'Carboprost', DistrictHospital: '' },
-];
+  ];
 
 
   return (
@@ -57,7 +57,9 @@ const initialRows = [
         </div>
 
         <div className="formcontent">
-        <D1 columns={columns} initialRows={initialRows} />
+          <h3>Which of the following essential emergency drugs are available at the DH/ Tertiary Care Hospital?
+            (Multiple answers possible)?</h3>
+          <D1 columns={columns} initialRows={initialRows} />
           <Buttons prev="/humanresources" next="/logisticsdrugsconsumablesequipment-2" />
         </div>
       </div>

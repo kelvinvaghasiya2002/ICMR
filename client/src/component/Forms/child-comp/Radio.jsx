@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Radio({ CheckbobItems, name, h3, onClick, byDefault }) {
+export default function Radio({ CheckbobItems, name, h3, onClick, byDefault,other}) {
     return (
         <>
             <div className='block'>
@@ -24,6 +24,12 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault }) {
                         }
 
                         )
+
+                    }
+                     {
+                        other &&
+                        <input
+                        className='blockinput others' type="text" name={name} placeholder="Other (Specify)" />
 
                     }
                 </form>

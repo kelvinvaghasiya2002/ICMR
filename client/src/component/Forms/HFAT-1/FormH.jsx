@@ -35,7 +35,7 @@ function FormH() {
         <h3 style={{color:"#3177FF"}}>Quality Improvement Plan :</h3>
 
 
-        <Radio h3="Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes","No"]} name="1H-2-1"/>
+        <Radio h3="Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes","No"]} other={true} name="1H-2-1"/>
 
         <InputField h3="How frequently does this committee meet in a year?" placeholder="Type here" />
 
@@ -45,7 +45,7 @@ function FormH() {
         <InputField h3="How frequently audits are conducted in a year?" placeholder="Type here" />
 
 
-        <Checkbox h3="Types of audits conducted?" CheckbobItems={["Mortality audit","Morbidity Audit","Others (Specify)_______________"]} name="1H-2-5"/>
+        <Checkbox h3="Types of audits conducted?" CheckbobItems={["Mortality audit","Morbidity Audit"]} other={true} name="1H-2-5"/>
 
 
         <InputField h3="Any action being taken on Audit report in the last one year?" placeholder="Type here" />
