@@ -136,6 +136,12 @@ function App() {
         <Route path='/formsc-referralfacility' element={<FormC20 />} />
         <Route path='/formsd-barriersandfacilitatorsinseekingcare' element={<FormD21 />} />
         <Route path='/formse-costing' element={<FormE22 />} />
+
+
+
+        {/* BELOW are HFAT-1 */}
+
+
         <Route path='/healthfacilityinformation' element={<FormA />} />
         <Route path='/infrastructure' element={<FormB />} />
         <Route path='/humanresources' element={<FormC />} />
@@ -147,6 +153,9 @@ function App() {
         <Route path='/leadershipandgovernance' element={<FormH />} />
         <Route path='/processpoliciessops' element={<FormI />} />
         <Route path='/referrallinkages' element={<FormJ />} />
+
+        {/* BELOW are HFAT-2 */}
+
         <Route path='/facilityinformation-2' element={<Form2A />} />
         <Route path='/infrastructure-2' element={<Form2B />} />
         <Route path='/humanresources-2' element={<Form2C />} />
@@ -158,6 +167,11 @@ function App() {
         <Route path='/leadershipandgovernance-2' element={<Form2H />} />
         <Route path='/processpoliciessops-2' element={<Form2I />} />
         <Route path='/referrallinkages-2' element={<Form2J />} />
+
+
+        {/* BELOW are HFAT-3 */}
+
+
         <Route path='/facilityinformation-3' element={<Form3A />} />
         <Route path='/infrastructure-3' element={<Form3B />} />
         <Route path='/humanresources-3' element={<Form3C />} />

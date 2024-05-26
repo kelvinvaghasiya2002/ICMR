@@ -4,10 +4,14 @@ import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
-import { turnOffbutton } from '../helpers';
+import { handleChange, turnOffbutton } from '../helpers';
+import setLocalStorage from '../setLocalStorage';
 
 function FormA() {
   turnOffbutton();
+  var forma = setLocalStorage("forma", {A1:"",A2:"",A3:"",A4:"",A5:"",A6:"",A7:"",A8:"",A9:"",A10:"",A11 : [] ,A12:""})
+
+  const [formA, setFormA] = useState(JSON.parse(forma))
 
   const date = new Date();
 
@@ -25,21 +29,33 @@ function FormA() {
         </div>
 
         <div className="formcontent">
-          <InputField name="A1" h3="Assessor’s Name: " placeholder="Type here" />
+          <InputField name="A1" h3="Assessor’s Name: "  onChange={handleChange(setFormA)} value={formA.A1} placeholder="Type here" />
+
           <div>
             <p className='datetime'>Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
           </div>
-          <Radio h3="Site :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name="A3" />
-          <InputField name="A4" h3="Block Name:" placeholder="Type here" />
-          <InputField name="A5" h3="Healthcare Facility Name:  " placeholder="Type here" />
-          <InputField name="A6" h3="Healthcare Facility Address:  " placeholder="Type here" />
-          <InputField name="A7" h3="Name of the hospital Superintendent:" placeholder="Type here" />
-          <InputField name="A8" h3="Contact Number of the hospital Superintendent:" placeholder="Type here" />
-          <InputField name="A9" h3="Email ID:" placeholder="Type here" />
-          <InputField name="A10" h3="GPS Coordinates:" placeholder="Type here" />
-          <Checkbox h3="Type of Health Care Facility?" CheckbobItems={["District Hospital (DH))","Tertiary care center"]} name="A11" />
-          <Checkbox h3="If Tertiary care center, select the appropriate one." CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College","Semi govt. hospital","Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" />
-          <Buttons prev="" next="/infrastructure" />
+
+          <Radio h3="Site :"  onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH_00000", "ORPUR_DH_11111", "MPBHS_DH_22222", "PBLDH_DH_33333", "PYPDY_DH_44444"]} name="A3" />
+
+          <InputField name="A4" value={formA.A4} onChange={handleChange(setFormA)} h3="Block Name:" placeholder="Type here" />
+
+          <InputField name="A5" value={formA.A5} onChange={handleChange(setFormA)} h3="Healthcare Facility Name:  " placeholder="Type here" />
+
+          <InputField name="A6" value={formA.A6} onChange={handleChange(setFormA)} h3="Healthcare Facility Address:  " placeholder="Type here" />
+
+          <InputField name="A7" value={formA.A7} onChange={handleChange(setFormA)} h3="Name of the hospital Superintendent:" placeholder="Type here" />
+
+          <InputField name="A8" value={formA.A8} onChange={handleChange(setFormA)} h3="Contact Number of the hospital Superintendent:" placeholder="Type here" />
+
+          <InputField name="A9" value={formA.A9} onChange={handleChange(setFormA)} h3="Email ID:" placeholder="Type here" />
+
+          <InputField name="A10" value={formA.A10} onChange={handleChange(setFormA)} h3="GPS Coordinates:" placeholder="Type here" />
+
+          <Checkbox h3="Type of Health Care Facility?" CheckbobItems={["District Hospital (DH))", "Tertiary care center"]} byDefault={formA.A11} name="A11" setFunction={setFormA} arr={formA} />
+
+          <Radio h3="If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
+
+          <Buttons formName="forma" formData={formA} prev="" next="/infrastructure" />
         </div>
       </div>
     </section>
