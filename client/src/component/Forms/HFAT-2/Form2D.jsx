@@ -1,16 +1,16 @@
 import React from 'react'
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
-import D1 from '../HFAT-2/tables/D1';
+import D1 from './tables/D1';
 
 function FormD() {
   const columns = [
     { key: 'SrNo', label: 'Sr.No', type: 'text' },
     { key: 'DrugName', label: 'Drug Name', type: 'text' },
-    { key: 'DistrictHospital', label: 'District Hospital', type: 'checkbox', options:['Yes'] },
-];
+    { key: 'DistrictHospital', label: 'District Hospital', type: 'checkbox', options: ['Yes'] },
+  ];
 
-const initialRows = [
+  const initialRows = [
     { SrNo: '1', DrugName: 'Oxygen medicinal gas', DistrictHospital: "" },
     { SrNo: '2', DrugName: 'Atropine', DistrictHospital: '' },
     { SrNo: '3', DrugName: 'Diazepam/Lorazepam', DistrictHospital: '' },
@@ -40,7 +40,7 @@ const initialRows = [
     { SrNo: '27', DrugName: 'tPA IV', DistrictHospital: '' },
     { SrNo: '28', DrugName: 'Methergine', DistrictHospital: '' },
     { SrNo: '29', DrugName: 'Carboprost', DistrictHospital: '' },
-];
+  ];
 
 
   return (
@@ -56,16 +56,14 @@ const initialRows = [
           </div>
         </div>
 
-      <div className="formcontent">
+        <div className="formcontent">
+          <h3>Which of the following essential emergency drugs are available at the DH/ Tertiary Care Hospital?
+            (Multiple answers possible)?</h3>
+          <D1 columns={columns} initialRows={initialRows} />
 
-      <InputField h3="Which of the following emergency drugs are available at the CHC? 
-(Multiple answers possible)?" placeholder="Type family member"/>
+          <Buttons prev="/humanresources-2" next="/logistics-2-1" />
 
-      <InputField h3="Which of the following emergency equipment is available at the CHC? 
-(Multiple answers possible)" placeholder="Type family member"/>
-
-      <Buttons prev="/humanresources-2" next="/emergencycareservices-2" />
-
+        </div>
       </div>
     </section>
   )

@@ -7,7 +7,7 @@ function FormD() {
     const columns = [
         { key: 'SrNo', label: 'Sr.No', type: 'text' },
         { key: 'Question', label: '24x7 availability of (with numbers and availability and functionality)', type: 'text' },
-        { key: 'DistrictHospital', label: 'District Hospital', type: 'checkbox' ,options:["Yes"] },
+        { key: 'DistrictHospital', label: 'District Hospital', type: 'checkbox', options: ["Yes"] },
     ];
 
     const initialRows = [
@@ -53,6 +53,8 @@ function FormD() {
                 </div>
 
                 <div className="formcontent">
+                    <h3>Which of the following essential emergency equipment is available at the DH/ Tertiary Care Hospital?
+                        (Multiple answers possible)</h3>
                     <D2 columns={columns} initialRows={initialRows} />
                     <Buttons prev="/logisticsdrugsconsumablesequipment-1" next="/emergencycareservices" />
                 </div>

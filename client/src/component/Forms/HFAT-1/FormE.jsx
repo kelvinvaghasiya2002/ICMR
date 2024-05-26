@@ -77,8 +77,9 @@ const initialRows2 = [
             "Intervention neuroradiology service with DSA",
             "Stroke unit",
             "Tele-Medicine facility",
-            "Other (Specify)________"
+            
           ]}
+          other={true}
           name="E3"
         />
 
@@ -91,13 +92,14 @@ const initialRows2 = [
             "Radiology Services are functional 24X7",
             "Point of care lab -ABG, Troponin",
             "Availability of Functional ECG Services",
-            "Other (Specify)______________"
+           
           ]}
+          other={true}
           name="E4"
         />
 
 
-        <Buttons prev="/logisticsdrugsconsumablesequipment" next="/informationsystem" />
+        <Buttons prev="/logisticsdrugsconsumablesequipment-2" next="/informationsystem" />
       </div>
     </div>
   </section>

@@ -52,20 +52,11 @@ function Form2C() {
         </div>
 
 
-      <div className="formcontent">
-        <h3>Tick the manpower available in your emergency department and provide numbers</h3>
-        <C1 columns={columns} initialRows={initialRows} />
-
-        <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]}  />
-
-        <InputField h3="When   was the last training conducted?" placeholder="Type here"/>
-
+        <div className="formcontent">
+          <h3>Tick the manpower available in your emergency department and provide numbers</h3>
           <C1 columns={columns} initialRows={initialRows} />
-          <Radio
-            h3="Whether training for emergency care management is being conducted for the staff in the institution?"
-            CheckbobItems={["Yes", "No"]}
-            name="2C2"
-          />
+
+          <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} />
 
           <Checkbox
             h3="Which of the following emergency care trainings you have undergone?"
@@ -80,8 +71,8 @@ function Form2C() {
               "Poisoning",
               "PPH",
               "Pre-Eclampsia",
-              "Others (Specify)____________________________"
             ]}
+            other={true}
             name="2C3"
           />
 
@@ -91,8 +82,8 @@ function Form2C() {
               "Every Month",
               "Quarterly",
               "Annually",
-              "Others (Specify)________________"
             ]}
+            other={true}
             name="2C4"
           />
 

@@ -5,9 +5,29 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
+import I1 from './tables/I1';
 
 function Form3I() {
-    turnOffbutton();
+  turnOffbutton();
+  const columns = [
+    { key: 'EmergencyCondition', label: 'Emergency Condition', type: 'text' },
+    { key: 'SOP', label: 'Have Specific SOP/STW', type: 'radio', options: ['Yes', 'No'] },
+    { key: 'FollowsSOP', label: 'Follows SOP', type: 'radio', options: ['Yes', 'No'] },
+];
+
+// Define the initial rows
+const initialRows = [
+    { EmergencyCondition: 'MI', SOP: '', FollowsSOP: '' },
+    { EmergencyCondition: 'Stroke', SOP: '', FollowsSOP: '' },
+    { EmergencyCondition: 'Trauma & Burns', SOP: '', FollowsSOP: '' },
+    { EmergencyCondition: 'Poisoning', SOP: '', FollowsSOP: '' },
+    { EmergencyCondition: 'Snake Bite', SOP: '', FollowsSOP: '' },
+    { EmergencyCondition: 'Maternal Emergencies-PPH', SOP: '', FollowsSOP: '' },
+    { EmergencyCondition: 'Maternal Emergencies- Eclampsia', SOP: '', FollowsSOP: '' },
+    { EmergencyCondition: 'Neonatal Emergencies', SOP: '', FollowsSOP: '' },
+    { EmergencyCondition: 'Acute Respiratory Illness', SOP: '', FollowsSOP: '' },
+];
+
   return (
     <section>
     <SidePanel id={"9"} />
@@ -27,7 +47,8 @@ function Form3I() {
 
         <Checkbox h3="Which of the following SOPs for the management of common medical emergencies are followed at your PHC?" CheckbobItems={["Documented triage guidelines and protocols","Standard treatment protocols for emergencies","Transfer policies and procedures","Disaster Management Plan","Policies for handling cases of death"]} />
 
-        <h1>TABLE</h1>
+        <h3>Whether having Emergency condition specific SOP/STW for emergency care?</h3>
+        <I1 columns={columns} initialRows={initialRows} />
 
         <Radio h3="Does the facility have defined and   established procedure for informing patients about their medical condition,   involving them in treatment planning and facilitating informed decision   making?" CheckbobItems={["Yes", "No"]}  />
 

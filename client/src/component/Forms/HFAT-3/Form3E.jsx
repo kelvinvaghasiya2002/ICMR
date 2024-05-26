@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
-import Checkbox from '../child-comp/Checkbox';
+import React from 'react'
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
-import InputField from '../child-comp/InputField';
 import E1 from '../HFAT-2/tables/E1';
 import E2 from '../HFAT-2/tables/E2';
 import { turnOffbutton } from '../helpers';
@@ -62,7 +60,7 @@ const initialRows2 = [
 
         <Radio h3="Which of the following emergency services are delivered at the PHC? " CheckbobItems={["Triage", "Resuscitation","Medico Legal Reporting"]}  />
 
-      <Buttons prev="/logistics-3" next="/informationsystem-3" />
+      <Buttons prev="/logistics-3-1" next="/informationsystem-3" />
       </div>
     </div>
   </section>

@@ -59,6 +59,7 @@ import Form3A from './component/Forms/HFAT-3/Form3A.jsx'
 import Form3C from './component/Forms/HFAT-3/Form3C.jsx'
 import Form3B from './component/Forms/HFAT-3/Form3B.jsx'
 import Form3D from './component/Forms/HFAT-3/Form3D.jsx'
+import Form3D1 from './component/Forms/HFAT-3/Form3D1.jsx'
 import Form3E from './component/Forms/HFAT-3/Form3E.jsx'
 import Form3F from './component/Forms/HFAT-3/Form3F.jsx'
 import Form3G from './component/Forms/HFAT-3/Form3G.jsx'
@@ -104,71 +105,72 @@ function App() {
 
   return (
     <>
-    <Navbar />
-    <Routes>
-      <Route path='/' element={!loggedIn?<FirstPage />:<HomePage />} />
-      <Route path='/sign-in' element={<SignIn />} />
-      <Route path='/sign-up' element={<SignUp />} />
-      <Route path='/protected' element={loggedIn?<Protected />:<SignIn/>}/>
-      <Route path= "/aboutus" element={ <InformationPage />} />
-      <Route path='/project-sites' element={<Map />} />
-      <Route path='/contact-us' element={<ContactUs />} />
-      <Route path='/formsaa' element={<FormAA />} />
-      <Route path='/formsab' element={<FormAB />} />
-      <Route path='/formsac-householdschedule' element={<FormAC3 />} />
-      <Route path='/formsac-relationshipwithheadofhousehold' element={<FormAC4 />} />
-      <Route path='/formsac-trauma&burns' element={<FormAC5 />} />
-      <Route path='/formsac-stemi' element={<FormAC6 />} />
-      <Route path='/formsac-stroke' element={<FormAC7 />} />
-      <Route path='/formsac-acuterespiratoryillness' element={<FormAC8 />} />
-      <Route path='/formsac-postpartumhaemorrhage' element={<FormAC9 />} />
-      <Route path='/formsac-neonatalemergencies' element={<FormAC10 />} />
-      <Route path='/formsac-snakebite' element={<FormAC11 />} />
-      <Route path='/formsac-poisoning' element={<FormAC12 />} />
-      <Route path='/formsac-others' element={<FormAC13 />} />
-      <Route path='/formsac-verbal&socialautopsyquestionnaire' element={<FormAC14 />} />
-      <Route path='/formsac-verbal&socialautopsyquestionnaire-2' element={<FormAC15 />} />
-      <Route path='/formsac-verbal&socialautopsyquestionnaire-3' element={<FormAC16 />} />
-      <Route path='/formsb-sociodemographicprofile' element={<FormB17 />} />
-      <Route path='/formsb-initialhealthcareseekingpathway1' element={<FormB18 />} />
-      <Route path='/formsb-initialhealthcareseekingpathway2' element={<FormB19 />} />
-      <Route path='/formsc-referralfacility' element={<FormC20 />} />
-      <Route path='/formsd-barriersandfacilitatorsinseekingcare' element={<FormD21 />} />
-      <Route path='/formse-costing' element={<FormE22/>} />
-      <Route path='/healthfacilityinformation' element={<FormA/>} />
-        <Route path='/infrastructure' element={<FormB/>} />
-        <Route path='/humanresources' element={<FormC/>} />
+      <Navbar />
+      <Routes>
+        <Route path='/' element={!loggedIn ? <FirstPage /> : <HomePage />} />
+        <Route path='/sign-in' element={<SignIn />} />
+        <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/protected' element={loggedIn ? <Protected /> : <SignIn />} />
+        <Route path="/aboutus" element={<InformationPage />} />
+        <Route path='/project-sites' element={<Map />} />
+        <Route path='/contact-us' element={<ContactUs />} />
+        <Route path='/formsaa' element={<FormAA />} />
+        <Route path='/formsab' element={<FormAB />} />
+        <Route path='/formsac-householdschedule' element={<FormAC3 />} />
+        <Route path='/formsac-relationshipwithheadofhousehold' element={<FormAC4 />} />
+        <Route path='/formsac-trauma&burns' element={<FormAC5 />} />
+        <Route path='/formsac-stemi' element={<FormAC6 />} />
+        <Route path='/formsac-stroke' element={<FormAC7 />} />
+        <Route path='/formsac-acuterespiratoryillness' element={<FormAC8 />} />
+        <Route path='/formsac-postpartumhaemorrhage' element={<FormAC9 />} />
+        <Route path='/formsac-neonatalemergencies' element={<FormAC10 />} />
+        <Route path='/formsac-snakebite' element={<FormAC11 />} />
+        <Route path='/formsac-poisoning' element={<FormAC12 />} />
+        <Route path='/formsac-others' element={<FormAC13 />} />
+        <Route path='/formsac-verbal&socialautopsyquestionnaire' element={<FormAC14 />} />
+        <Route path='/formsac-verbal&socialautopsyquestionnaire-2' element={<FormAC15 />} />
+        <Route path='/formsac-verbal&socialautopsyquestionnaire-3' element={<FormAC16 />} />
+        <Route path='/formsb-sociodemographicprofile' element={<FormB17 />} />
+        <Route path='/formsb-initialhealthcareseekingpathway1' element={<FormB18 />} />
+        <Route path='/formsb-initialhealthcareseekingpathway2' element={<FormB19 />} />
+        <Route path='/formsc-referralfacility' element={<FormC20 />} />
+        <Route path='/formsd-barriersandfacilitatorsinseekingcare' element={<FormD21 />} />
+        <Route path='/formse-costing' element={<FormE22 />} />
+        <Route path='/healthfacilityinformation' element={<FormA />} />
+        <Route path='/infrastructure' element={<FormB />} />
+        <Route path='/humanresources' element={<FormC />} />
         <Route path='/logisticsdrugsconsumablesequipment-1' element={<FormD />} />
         <Route path='/logisticsdrugsconsumablesequipment-2' element={<FormD1 />} />
         <Route path='/emergencycareservices' element={<FormE />} />
-      <Route path='/informationsystem' element={<FormF />} />
-      <Route path='/finance' element={<FormG />} />
-      <Route path='/leadershipandgovernance' element={<FormH/>} />
-      <Route path='/processpoliciessops' element={<FormI />} />
-      <Route path='/referrallinkages' element={<FormJ />} />
-      <Route path='/facilityinformation-2' element={<Form2A />} />
-      <Route path='/infrastructure-2' element={<Form2B />} />
-      <Route path='/humanresources-2' element={<Form2C />} />
-      <Route path='/logistics-2' element={<Form2D />} />
-      <Route path='/logistics-2-1' element={<Form2D1 />} />
-      <Route path='/emergencycareservices-2' element={<Form2E />} />
-      <Route path='/informationsystem-2' element={<Form2F />} />
-      <Route path='/finance-2' element={<Form2G />} />
-      <Route path='/leadershipandgovernance-2' element={<Form2H/>} />
-      <Route path='/processpoliciessops-2' element={<Form2I />} />
-      <Route path='/referrallinkages-2' element={<Form2J />} />
-      <Route path='/facilityinformation-3' element={<Form3A />} />
-      <Route path='/infrastructure-3' element={<Form3B />} />
-      <Route path='/humanresources-3' element={<Form3C />} />
-      <Route path='/logistics-3' element={<Form3D />} />
-      <Route path='/emergencycareservices-3' element={<Form3E />} />
-      <Route path='/informationsystem-3' element={<Form3F />} />
-      <Route path='/finance-3' element={<Form3G />} />
-      <Route path='/leadershipandgovernance-3' element={<Form3H/>} />
-      <Route path='/processpoliciessops-3' element={<Form3I />} />
-      <Route path='/referrallinkages-3' element={<Form3J />} />
-      <Route path='/facilityinformation' element={<Facility />} />
-    </Routes>
+        <Route path='/informationsystem' element={<FormF />} />
+        <Route path='/finance' element={<FormG />} />
+        <Route path='/leadershipandgovernance' element={<FormH />} />
+        <Route path='/processpoliciessops' element={<FormI />} />
+        <Route path='/referrallinkages' element={<FormJ />} />
+        <Route path='/facilityinformation-2' element={<Form2A />} />
+        <Route path='/infrastructure-2' element={<Form2B />} />
+        <Route path='/humanresources-2' element={<Form2C />} />
+        <Route path='/logistics-2' element={<Form2D />} />
+        <Route path='/logistics-2-1' element={<Form2D1 />} />
+        <Route path='/emergencycareservices-2' element={<Form2E />} />
+        <Route path='/informationsystem-2' element={<Form2F />} />
+        <Route path='/finance-2' element={<Form2G />} />
+        <Route path='/leadershipandgovernance-2' element={<Form2H />} />
+        <Route path='/processpoliciessops-2' element={<Form2I />} />
+        <Route path='/referrallinkages-2' element={<Form2J />} />
+        <Route path='/facilityinformation-3' element={<Form3A />} />
+        <Route path='/infrastructure-3' element={<Form3B />} />
+        <Route path='/humanresources-3' element={<Form3C />} />
+        <Route path='/logistics-3' element={<Form3D />} />
+        <Route path='/logistics-3-1' element={<Form3D1 />} />
+        <Route path='/emergencycareservices-3' element={<Form3E />} />
+        <Route path='/informationsystem-3' element={<Form3F />} />
+        <Route path='/finance-3' element={<Form3G />} />
+        <Route path='/leadershipandgovernance-3' element={<Form3H />} />
+        <Route path='/processpoliciessops-3' element={<Form3I />} />
+        <Route path='/referrallinkages-3' element={<Form3J />} />
+        <Route path='/facilityinformation' element={<Facility />} />
+      </Routes>
     </>
   )
 

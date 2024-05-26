@@ -84,7 +84,7 @@ const initialRows2 = [
 
         <Radio h3="Which of the following emergency services are delivered at the CHC? " CheckbobItems={["Triage", "Resuscitation","Medico Legal Reporting"]}  />
 
-      <Buttons prev="/logistics-2" next="/informationsystem-2" />
+      <Buttons prev="/logistics-2-1" next="/informationsystem-2" />
       </div>
     </div>
   </section>
