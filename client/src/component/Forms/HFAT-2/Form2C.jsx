@@ -55,8 +55,7 @@ function Form2C() {
         <div className="formcontent">
           <h3>Tick the manpower available in your emergency department and provide numbers</h3>
           <C1 columns={columns} initialRows={initialRows} />
-
-          <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} />
+          <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="2C2" />
 
           <Checkbox
             h3="Which of the following emergency care trainings you have undergone?"
