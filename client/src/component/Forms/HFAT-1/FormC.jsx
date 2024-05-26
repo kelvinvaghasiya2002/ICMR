@@ -5,10 +5,13 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import C1 from './tables/C1';
-import { turnOffbutton } from '../helpers';
+import { handleChange, turnOffbutton } from '../helpers';
+import setLocalStorage from "../setLocalStorage.js"
 
 function FormC() {
+  const formc = setLocalStorage("formc",{C2a : [] , C2b : [] , C3: "" , C4 : [] , C5 : [], C6 : ""});
 
+  const [formC , setFormC] = useState(JSON.parse(formc));
   turnOffbutton();
 
   const columns = [
@@ -57,9 +60,12 @@ function FormC() {
         </div>
 
         <div className="formcontent">
-          {/* <h3>Tick the manpower available in your emergency department and provide numbers</h3> */}
+          <h3>Tick the manpower available in your emergency department and provide numbers</h3>
+
           <C1 columns={columns} initialRows={initialRows} />
+
           <h3>Please indicate which of the following specialist/super specialist services are available in your hospital</h3>
+
           <Checkbox
             h3="District Hospital + Medical College"
             CheckbobItems={[
@@ -76,8 +82,10 @@ function FormC() {
               "Dermatology",
               "Forensic medicine"
             ]}
-            name="C2a"
+            name="C2a" 
+            setFunction={setFormC} StateValue={formC} array={formC.C2a}
           />
+
 
           <Checkbox
             h3="Medical College"
@@ -96,12 +104,15 @@ function FormC() {
               "Emergency medicine"
             ]}
             name="C2b"
+            setFunction={setFormC} StateValue={formC} array={formC.C2b}
           />
 
           <Radio
             h3="Whether training for emergency care management is being conducted for the staff in the institution?"
             CheckbobItems={["Yes", "No"]}
             name="C3"
+            onClick={handleChange(setFormC)}
+            byDefault={formC.C3}
           />
           <Checkbox
             h3="Which of the following emergency care trainings you have undergone?"
@@ -120,6 +131,7 @@ function FormC() {
             ]}
             other={true}
             name="C4"
+            setFunction={setFormC} StateValue={formC} array={formC.C4}
           />
           <Checkbox
             h3="Frequency of training on emergency care in a year?"
@@ -129,11 +141,13 @@ function FormC() {
               "Annually"
             ]}
             name="C5"
+            setFunction={setFormC} StateValue={formC} array={formC.C5}
           />
 
 
-          <InputField name="C6" h3="When was the last training conducted ? " placeholder="Type here" />
-          <Buttons prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" />
+          <InputField name="C6" h3="When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} />
+
+          <Buttons formName={"formc"} formData={formC} prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" />
         </div>
       </div>
     </section>

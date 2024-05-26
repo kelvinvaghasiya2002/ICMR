@@ -4,7 +4,7 @@ import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
-import { turnOffbutton } from '../helpers';
+import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 
 function FormB() {
@@ -28,23 +28,23 @@ function FormB() {
 
         <div className="formcontent">
 
-          <InputField name="B1" h3="How many beds are available for the in-patient department (IPD)?" placeholder="Type here" />
+          <InputField name="B1" h3="How many beds are available for the in-patient department (IPD)?" value={formB.B1}  onChange={handleChange(setFormB)} placeholder="Type here" />
 
-          <Radio h3="Whether any dedicated bed present for emergency care?" CheckbobItems={["Yes", "No"]} name="B2" />
+          <Radio h3="Whether any dedicated bed present for emergency care?" CheckbobItems={["Yes", "No"]} byDefault={formB.B2} onClick={handleChange(setFormB)} name="B2" />
 
-          <InputField name="B3" h3="How many beds are available for emergency care?" placeholder="Type here" />
+          <InputField name="B3" onChange={handleChange(setFormB)} h3="How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" />
 
           <Checkbox h3="Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={[" Red", " Yellow", "Green"]} name="B4" setFunction={setFormB} StateValue={formB} array={formB.B4} />
 
-          <InputField name="B5" h3="What is the average number of patients presenting to OPD per month?" placeholder="Type here" />
+          <InputField name="B5" onChange={handleChange(setFormB)} h3="What is the average number of patients presenting to OPD per month?" value={formB.B5} placeholder="Type here" />
 
-          <InputField name="B6" p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" />
+          <InputField name="B6" onChange={handleChange(setFormB)} value={formB.B6} p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" />
 
-          <Radio h3="Does the facility have a licensed in-house blood bank?" CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No"]} name="B7" other={true} />
+          <Radio h3="Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No"]} name="B7" byDefault={formB.B7} other={true} />
 
-          <Radio h3="Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} name="B8" />
+          <Radio h3="Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} onClick={handleChange(setFormB)} byDefault={formB.B8} name="B8" />
 
-          <Radio h3="Is there a blood storage facility inside the emergency?" CheckbobItems={["Yes", "No"]} name="B9" />
+          <Radio h3="Is there a blood storage facility inside the emergency?" CheckbobItems={["Yes", "No"]} byDefault={formB.B9} onClick={handleChange(setFormB)} name="B9" />
 
           <Radio
             h3="Which of the following does your facility have to provide easy access for emergency care?"
@@ -54,7 +54,7 @@ function FormB() {
               "Designated parking area for Ambulance, Staff and Public",
               "Smooth entry area with adequate wheelchair, trolley and stretcher bay"
             ]}
-            name="B10"
+            name="B10" onClick={handleChange(setFormB)} byDefault={formB.B10}
           />
 
           <Checkbox
@@ -120,10 +120,10 @@ function FormB() {
           <Radio
             h3="Does the hospital provide ambulance services?"
             CheckbobItems={["Yes", "No"]}
-            name="B14"
+            name="B14" onClick={handleChange(setFormB)} byDefault={formB.B14}
           />
 
-          <InputField name="B15" h3="If ambulances are not there, how are patients transferred?" placeholder="Type here" />
+          <InputField name="B15" onChange={handleChange(setFormB)} h3="If ambulances are not there, how are patients transferred?" value={formB.B15} placeholder="Type here" />
 
           <Buttons formName={"formb"} formData={formB} prev="/healthfacilityinformation" next="/humanresources" />
         </div>
