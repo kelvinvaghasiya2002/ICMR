@@ -7,7 +7,6 @@ function SidePanelHFAT1({id}) {
   useEffect(()=>{
     const link = document.getElementById(id)
     if(link) link.style.color="#3177FF" 
-    console.log(link);
   })
   return (
     <div className='sidePanel'>

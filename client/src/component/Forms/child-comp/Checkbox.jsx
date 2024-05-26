@@ -1,18 +1,23 @@
 import React from 'react'
 
-function Checkbox({ CheckbobItems, name, h3 , other,time, setFunction }) {
+function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValue, array }) {
     const handleClick = (event) => {
-        console.log(event.target.name , event.target.value);
-        const name =  event.target.name;
-        // console.log(name);
-        setFunction((prevValue)=>{
-            // for(const key in prevValue){
-            //     console.log(prevValue.key);
-            // }
-            console.log(prevValue.name);
-            return prevValue;
-        })
+        const { value } = event.target;
+        if (array.includes(value)) {
+            array = array.filter(item => {
+                return item !== value
+            })
+        } else {
+            array.push(value)
+        }
+
+        StateValue = {
+            ...StateValue,
+            [event.target.name]: array
+        }
+        setFunction(StateValue)
     }
+
     return (
         <>
             <div className='block'>
@@ -20,18 +25,22 @@ function Checkbox({ CheckbobItems, name, h3 , other,time, setFunction }) {
                 <form>
                     {
                         CheckbobItems.map((item, index) => {
-                            {/* console.log(item) */ }
                             return (
                                 <div key={index} style={{ display: "flex", alignItems: "center" }}>
 
-                                    <input onClick={handleClick} type="checkbox" id={item} name={name} value={item} />
+                                    {
+                                        (array.includes(item)) ?
+                                            <input onChange={handleClick} type="checkbox" id={item} name={name} value={item} checked />
+                                            :
+                                            <input onChange={handleClick} type="checkbox" id={item} name={name} value={item} />
+                                    }
 
                                     <label style={{ fontWeight: "400", marginLeft: "0.25vw" }} htmlFor={item}>{item}</label>
 
                                     <br />
                                     {
                                         time &&
-                                    <input type="time"  className='blockinput others'/>
+                                        <input type="time" className='blockinput others' />
                                     }
 
                                 </div>
@@ -45,7 +54,7 @@ function Checkbox({ CheckbobItems, name, h3 , other,time, setFunction }) {
                     {
                         other &&
                         <input
-                        className='blockinput others' type="text" name={name} placeholder="Other (Specify)" />
+                            className='blockinput others' type="text" name={name} placeholder="Other (Specify)" />
 
                     }
                 </form>
