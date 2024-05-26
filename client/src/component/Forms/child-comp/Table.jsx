@@ -14,7 +14,6 @@ function Table({ tableName }) {
 
 
     function handlePlusClick() {
-        console.log("Clice");
         setRows([...rows, { name: '', age: '', sex: 'Male', relationship: '' }]);
     }
 
