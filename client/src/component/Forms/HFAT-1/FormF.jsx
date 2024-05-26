@@ -5,6 +5,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
+import CheckboxTextarea from '../child-comp/CheckboxTextarea';
 
 function FormF() {
 
@@ -35,7 +36,7 @@ function FormF() {
           <Radio h3="Whether time bound management of common emergencies is captured in MIS. For example,
 Door to CT/ECG time, Door to needle time, Time to activate emergency alert team." CheckbobItems={["Yes", "No"]} name="1F-5" />
 
-          <Checkbox h3="If yes, select all that apply and provide their value" CheckbobItems={["Door to CT/ECG time: _________", "Door to needle time: _______________", "Time to activate emergency alert team: __________"]} name="1F-6" />
+          <CheckboxTextarea h3="If yes, select all that apply and provide their value" items={["Door to CT/ECG time: ", "Door to needle time:", "Time to activate emergency alert team:"]} name="1F-6" />
 
           <Radio h3="Whether hospital administrators/ Medical Superintendent uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]} name="1F-7" />
 

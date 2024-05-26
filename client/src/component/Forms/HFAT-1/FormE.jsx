@@ -7,6 +7,7 @@ import InputField from '../child-comp/InputField';
 import E1 from './tables/E1';
 import E2 from './tables/E2';
 import { turnOffbutton } from '../helpers';
+import CheckBoxOtherSpecify from '../child-comp/CheckBoxOtherSpecify';
 
 function FormE() {
 
@@ -58,9 +59,9 @@ const initialRows2 = [
         <E1 columns={columns1} initialRows={initialRows1}/>
         <h3>Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
         <E2 columns={columns2} initialRows={initialRows2}/>
-        <Checkbox
+        <CheckBoxOtherSpecify
           h3="Which of these emergency care services does your facility provide? (Select all that apply)"
-          CheckbobItems={[
+          CheckboxItems={[
             "Emergency operative services for trauma patients",
             "Emergency operative services for non-trauma (surgical, orthopedics etc.) patients",
             "Emergency operative services for obstetrics patients",
@@ -77,21 +78,21 @@ const initialRows2 = [
             "Intervention neuroradiology service with DSA",
             "Stroke unit",
             "Tele-Medicine facility",
-            "Other (Specify)________"
+            "Other (Specify)"
           ]}
           name="E3"
         />
 
-        <Checkbox
+        <CheckBoxOtherSpecify
           h3="Which of these emergency diagnostic facilities are provided at DH/ Tertiary Care Hospital?"
-          CheckbobItems={[
+          CheckboxItems={[
             "Radiology-CT",
             "Radiology-ultrasound",
             "Radiology-MRI",
             "Radiology Services are functional 24X7",
             "Point of care lab -ABG, Troponin",
             "Availability of Functional ECG Services",
-            "Other (Specify)______________"
+            "Other (Specify)"
           ]}
           name="E4"
         />

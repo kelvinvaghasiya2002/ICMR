@@ -5,6 +5,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
+import CheckBoxOtherSpecify from '../child-comp/CheckBoxOtherSpecify';
 
 function Form3I() {
     turnOffbutton();
@@ -23,7 +24,7 @@ function Form3I() {
 
       <div className="formcontent">
 
-        <Checkbox h3="What   types of registers are maintained at the PHC?" CheckbobItems={["Emergency/OPD/Treatment Register","Inventory Register","Procedure register","Referral Register","Record for handing over and taking over of critical care equipment","Medico-legal register","Death Register","Patient/Community feedback register","Other (please specify) ___________________"]}/>
+        <CheckBoxOtherSpecify h3="What   types of registers are maintained at the PHC?" CheckboxItems={["Emergency/OPD/Treatment Register","Inventory Register","Procedure register","Referral Register","Record for handing over and taking over of critical care equipment","Medico-legal register","Death Register","Patient/Community feedback register","Other (please specify)"]}/>
 
         <Checkbox h3="Which of the following SOPs for the management of common medical emergencies are followed at your PHC?" CheckbobItems={["Documented triage guidelines and protocols","Standard treatment protocols for emergencies","Transfer policies and procedures","Disaster Management Plan","Policies for handling cases of death"]} />
 

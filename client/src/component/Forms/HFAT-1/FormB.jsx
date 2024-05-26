@@ -5,6 +5,8 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
+import RadioButtonOtherSpecify from '../child-comp/RadioButtonOtherSpecify';
+import CheckBoxOtherSpecify from '../child-comp/CheckBoxOtherSpecify';
 
 function FormB() {
   turnOffbutton();
@@ -29,7 +31,7 @@ function FormB() {
           <Checkbox h3="Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={[" Red", " Yellow", "Green"]} name="B4" />
           <InputField name="B5" h3="What is the average number of patients presenting to OPD per month?" placeholder="Type here" />
           <InputField name="B6" p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" />
-          <Radio h3="Does the facility have a licensed in-house blood bank?" CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No", "Other"]} name="B7" />
+          <RadioButtonOtherSpecify h3="Does the facility have a licensed in-house blood bank?" CheckboxItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No", "Other"]} name="B7" />
           <Radio h3="Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} name="B8" />
           <Radio h3="Is there a blood storage facility inside the emergency?" CheckbobItems={["Yes", "No"]} name="B9" />
           <Checkbox
@@ -57,15 +59,15 @@ function FormB() {
             name="B9"
           />
 
-          <Checkbox
+          <CheckBoxOtherSpecify
             h3="Is there any display board of all the emergency services and entitlements available in its departments?"
-            CheckbobItems={[
+            CheckboxItems={[
               "Services provided to the patients are clearly defined, displayed prominently.",
               "Names of doctor and nursing staff on duty are displayed and updated.",
               "List of available drugs are displayed.",
               "All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.",
               "Important contact numbers including ambulance, blood bank, police and referral centers displayed.",
-              "Other (Specify)____________"
+              "Other (Specify)"
             ]}
             name="B10"
           />

@@ -5,6 +5,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
+import RadioButtonOtherSpecify from '../child-comp/RadioButtonOtherSpecify';
 
 function Form3F() {
     turnOffbutton();
@@ -37,7 +38,7 @@ function Form3F() {
 
       <Radio h3="Whether Medical Officer In charge (MO/IC) uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]}  />
 
-      <Radio h3="Do you get Pre-Hospital Notification during an emergency?" CheckbobItems={["Yes ___________ (How often per week)", "No"]}  />
+      <RadioButtonOtherSpecify h3="Do you get Pre-Hospital Notification during an emergency?" CheckbobItems={["No","Yes(How often per week)"]}  />
 
       <Radio h3="Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]}  />
 

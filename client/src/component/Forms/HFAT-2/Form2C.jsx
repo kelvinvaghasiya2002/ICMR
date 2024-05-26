@@ -6,6 +6,8 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import C1 from './tables/C1';
 import { turnOffbutton } from '../helpers';
+import RadioButtonOtherSpecify from '../child-comp/RadioButtonOtherSpecify';
+import CheckBoxOtherSpecify from '../child-comp/CheckBoxOtherSpecify';
 
 
 function Form2C() {
@@ -61,7 +63,34 @@ const initialRows = [
 
         <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]}  />
 
+        <CheckBoxOtherSpecify
+            h3="Which of the following emergency care trainings you have undergone?"
+            CheckboxItems={[
+              "Trauma & Accidental Injuries",
+              "Burns",
+              "Cardiac emergencies: acute chest pain, acute coronary syndrome (ACS)/ STEMI, Heart failure, Cardiac Arrest",
+              "Stroke",
+              "Acute Breathlessness",
+              "Bites (Animal bite/snake bite/scorpion sting)",
+              "Choking/foreign body ingestion",
+              "Poisoning",
+              "PPH",
+              "Pre-Eclampsia",
+              "Pediatric surgery",
+              "Others (Specify)"
+            ]}
+            name="C4"
+          />
+
+          <RadioButtonOtherSpecify
+            h3="Frequency of training on emergency care in a year?"
+            CheckboxItems={["Every Month", "Quarterly","Annually","Others(Specify)"]}
+            name="C5"
+          />
+
         <InputField h3="When   was the last training conducted?" placeholder="Type here"/>
+
+
 
       <Buttons prev="/infrastructure-2" next="/logistics-2" />
       </div>

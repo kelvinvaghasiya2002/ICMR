@@ -5,6 +5,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
+import RadioButtonOtherSpecify from '../child-comp/RadioButtonOtherSpecify';
 
 function FormH() {
 
@@ -45,7 +46,7 @@ function FormH() {
         <InputField h3="How frequently audits are conducted in a year?" placeholder="Type here" />
 
 
-        <Checkbox h3="Types of audits conducted?" CheckbobItems={["Mortality audit","Morbidity Audit","Others (Specify)_______________"]} name="1H-2-5"/>
+        <RadioButtonOtherSpecify h3="Types of audits conducted?" CheckboxItems={["Mortality audit","Morbidity Audit","Others (Specify)"]} name="1H-2-5"/>
 
 
         <InputField h3="Any action being taken on Audit report in the last one year?" placeholder="Type here" />

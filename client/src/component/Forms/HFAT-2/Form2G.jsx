@@ -5,6 +5,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
+import RadioButtonOtherSpecify from '../child-comp/RadioButtonOtherSpecify';
 
 function Form2G() {
   turnOffbutton();
@@ -29,7 +30,7 @@ function Form2G() {
 
       <Radio h3="Whether any fund is available for emergency care?" CheckbobItems={["Yes", "No"]}  />
 
-      <Radio h3="If funds are available, which health protection schemes are covering your emergency care system?" CheckbobItems={["PMJAY", "RKS","Others(Specify) _____________________"]}  />
+      <RadioButtonOtherSpecify h3="If funds are available, which health protection schemes are covering your emergency care system?" CheckboxItems={["PMJAY", "RKS","Others(Specify)"]}  />
 
       <InputField h3="Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type family member"/>
 
