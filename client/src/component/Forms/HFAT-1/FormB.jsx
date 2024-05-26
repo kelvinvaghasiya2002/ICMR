@@ -7,8 +7,14 @@ import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
 import RadioButtonOtherSpecify from '../child-comp/RadioButtonOtherSpecify';
 import CheckBoxOtherSpecify from '../child-comp/CheckBoxOtherSpecify';
+import setLocalStorage from '../setLocalStorage';
+
 
 function FormB() {
+  var formb = setLocalStorage("formb", { B1: "", B2: "", B3: "", B4: [], B5: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11: [], B12: [], B13: [], B14: "", B15: "" }
+  )
+
+  const [formB , setFormB] = useState(JSON.parse(formb));
   turnOffbutton();
   return (
     <section>
@@ -26,14 +32,38 @@ function FormB() {
         <div className="formcontent">
 
           <InputField name="B1" h3="How many beds are available for the in-patient department (IPD)?" placeholder="Type here" />
+
           <Radio h3="Whether any dedicated bed present for emergency care?" CheckbobItems={["Yes", "No"]} name="B2" />
+
           <InputField name="B3" h3="How many beds are available for emergency care?" placeholder="Type here" />
-          <Checkbox h3="Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={[" Red", " Yellow", "Green"]} name="B4" />
+
+          <Checkbox h3="Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={[" Red", " Yellow", "Green"]} name="B4" setFunction={setFormB} StateValue={formB} array={formB.B4} />
+
           <InputField name="B5" h3="What is the average number of patients presenting to OPD per month?" placeholder="Type here" />
+
           <InputField name="B6" p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" />
+
           <RadioButtonOtherSpecify h3="Does the facility have a licensed in-house blood bank?" CheckboxItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No", "Other"]} name="B7" />
+
+
+          <Radio h3="Does the facility have a licensed in-house blood bank?" CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No"]} name="B7" other={true} />
+
+
           <Radio h3="Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} name="B8" />
+
           <Radio h3="Is there a blood storage facility inside the emergency?" CheckbobItems={["Yes", "No"]} name="B9" />
+
+          <Radio
+            h3="Which of the following does your facility have to provide easy access for emergency care?"
+            CheckbobItems={[
+              "A blood storage facility inside the emergency",
+              "No vehicles parked on the way/in front of emergency department",
+              "Designated parking area for Ambulance, Staff and Public",
+              "Smooth entry area with adequate wheelchair, trolley and stretcher bay"
+            ]}
+            name="B10"
+          />
+
           <Checkbox
             h3="Which of the following demarcated/dedicated areas does this facility have for emergency care? (Select all that apply)"
             CheckbobItems={[
@@ -56,7 +86,8 @@ function FormB() {
               "Child-friendly service based on MusQan",
               "NABH Accreditation"
             ]}
-            name="B9"
+            name="B11"
+            setFunction={setFormB} StateValue={formB} array={formB.B11}
           />
 
           <CheckBoxOtherSpecify
@@ -66,10 +97,16 @@ function FormB() {
               "Names of doctor and nursing staff on duty are displayed and updated.",
               "List of available drugs are displayed.",
               "All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.",
+
               "Important contact numbers including ambulance, blood bank, police and referral centers displayed.",
               "Other (Specify)"
+
+              "Important contact numbers including ambulance, blood bank, police and referral centers displayed."
+
             ]}
-            name="B10"
+            other={true}
+            name="B12"
+            setFunction={setFormB} StateValue={formB} array={formB.B12}
           />
 
           <Checkbox
@@ -87,22 +124,19 @@ function FormB() {
               "Disease outbreak management plan",
               "Surge capacity in your hospital"
             ]}
-            name="B11"
+            name="B13"
+            setFunction={setFormB} StateValue={formB} array={formB.B13}
           />
 
           <Radio
             h3="Does the hospital provide ambulance services?"
             CheckbobItems={["Yes", "No"]}
-            name="B12"
+            name="B14"
           />
 
-          <InputField name="B13" h3="If ambulances are not there, how are patients transferred? " placeholder="Type here" />
+          <InputField name="B15" h3="If ambulances are not there, how are patients transferred?" placeholder="Type here" />
 
-
-
-
-
-          <Buttons prev="/healthfacilityinformation" next="/humanresources" />
+          <Buttons formName={"formb"} formData={formB} prev="/healthfacilityinformation" next="/humanresources" />
         </div>
       </div>
     </section>

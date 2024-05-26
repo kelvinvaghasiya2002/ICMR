@@ -45,7 +45,7 @@ function Facility() {
       <InputField h3="How many cases do you transport per day on an a average" placeholder="Type here"/>
 
       <InputField h3="How many emergency cases do you transport per day on an a average" placeholder="Type here"/>
- 
+
 
       <Buttons prev="" next="" />
       </div>

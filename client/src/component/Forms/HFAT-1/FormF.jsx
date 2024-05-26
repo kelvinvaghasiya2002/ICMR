@@ -36,7 +36,11 @@ function FormF() {
           <Radio h3="Whether time bound management of common emergencies is captured in MIS. For example,
 Door to CT/ECG time, Door to needle time, Time to activate emergency alert team." CheckbobItems={["Yes", "No"]} name="1F-5" />
 
+
           <CheckboxTextarea h3="If yes, select all that apply and provide their value" items={["Door to CT/ECG time: ", "Door to needle time:", "Time to activate emergency alert team:"]} name="1F-6" />
+
+          <Checkbox h3="If yes, select all that apply and provide their value" CheckbobItems={["Door to CT/ECG time:-  ", "Door to needle time:- ", "Time to activate emergency alert team:- "]} name="1F-6" time={true} />
+
 
           <Radio h3="Whether hospital administrators/ Medical Superintendent uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]} name="1F-7" />
 

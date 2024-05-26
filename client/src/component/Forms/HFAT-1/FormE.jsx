@@ -80,6 +80,7 @@ const initialRows2 = [
             "Tele-Medicine facility",
             "Other (Specify)"
           ]}
+          other={true}
           name="E3"
         />
 
@@ -94,11 +95,12 @@ const initialRows2 = [
             "Availability of Functional ECG Services",
             "Other (Specify)"
           ]}
+          other={true}
           name="E4"
         />
 
 
-        <Buttons prev="/logisticsdrugsconsumablesequipment" next="/informationsystem" />
+        <Buttons prev="/logisticsdrugsconsumablesequipment-2" next="/informationsystem" />
       </div>
     </div>
   </section>

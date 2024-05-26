@@ -11,41 +11,42 @@ function Form2F() {
   turnOffbutton();
   return (
     <section>
-    <SidePanel id={"6"} />
-    <div className="siteInfo">
+      <SidePanel id={"6"} />
+      <div className="siteInfo">
 
-      <div className="formhdr">
-        <div>
-          <h3>
-          Information System
-          </h3>
+        <div className="formhdr">
+          <div>
+            <h3>
+              Information System
+            </h3>
+          </div>
         </div>
-      </div>
 
-      <div className="formcontent">
+        <div className="formcontent">
+          <Radio h3="Does the facility have a Hospital Management Information System (HMIS)" CheckbobItems={["Yes", "No"]} name="2F1" />
 
-      <Radio h3="Does the facility have a Hospital   Management Information System (HMIS)" CheckbobItems={["Yes", "No"]}  />
+          <Radio h3="Does this facility do complete reporting of indicators on emergency care in HMIS?" CheckbobItems={["Yes", "No"]} name="2F2" />
 
-      <Radio h3="Does this facility do complete   reporting of indicators on emergency care in HMIS?" CheckbobItems={["Yes", "No"]}  />
+          <InputField h3="How many personnel are available for managing information system?" placeholder="Type here" name="2F3" />
 
-      <InputField h3="How many personnel are available for managing information system?" placeholder="Type here"/>
+          <Radio h3="What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencies", "Length of hospital stay", "Turnaround time", "Disposal time", "Number of deaths", "Number of Referrals"]} name="2F4" />
 
-      <Radio h3="What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencies", "Length of hospital stay","Turnaround time","Disposal time","Number of deaths","Number of Referrals"]}  />
+          <Radio h3="Whether time bound management of common emergencies is captured in MIS." CheckbobItems={["Yes", "No"]} name="2F5" />
 
-      <Radio h3="Whether time bound management of common emergencies is captured in MIS." CheckbobItems={["Yes", "No"]}  />
+          <Radio h3="Which of the following alert systems does your facility have?" CheckbobItems={["Code blue alert system.", "NSTEMI alert system", "Stroke alert system.", "Trauma alert system"]} name="2F6" />
 
-      <Radio h3="Which of the following alert systems does your facility have?" CheckbobItems={["Code blue alert system.", "NSTEMI alert systemo","Stroke alert system.","Trauma alert system"]}  />
+          <Radio h3="Whether Medical Officer In charge (MO/IC) uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]} name="2F7" />
 
-      <Radio h3="Whether Medical Officer In charge (MO/IC) uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]}  />
 
       <RadioButtonOtherSpecify h3="Do you get Pre-Hospital Notification during an emergency?" CheckboxItems={["No","Yes (How often per week)"]}  />
 
-      <Radio h3="Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]}  />
 
-      <Buttons prev="/emergencycareservices-2" next="/finance-2" />
+          <Radio h3="Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]} name="2F9" />
+
+          <Buttons prev="/emergencycareservices-2" next="/finance-2" />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   )
 }
 
