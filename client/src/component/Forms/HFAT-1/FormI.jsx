@@ -4,10 +4,13 @@ import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
-import I1 from './tables/I1';
+import I2 from './tables/I2.jsx';
 import { turnOffbutton } from '../helpers';
+import setLocalStorage from '../setLocalStorage';
 
 function FormI() {
+  var formi = setLocalStorage('formi' , {I1 : ""});
+  const [formI , setFormI] = useState(JSON.parse(formi));
   turnOffbutton();
   const columns = [
     { key: 'EmergencyCondition', label: 'Emergency Condition', type: 'text' },
@@ -43,10 +46,11 @@ const initialRows = [
 
         <div className="formcontent">
 
-          <Checkbox h3="Indicate whether your hospital has the following documented protocols and systems (Select all that apply):" CheckbobItems={["Procedure for registration and admission of new emergency patients", "Procedure/Policy for receiving of referral patients", "Emergency Manual at the point of care", "Triage guidelines and protocol.", "Discharge summaries for all patients.", "Policy on handling cases of death (outside and inside hospital).", "Disaster management plan", "Triage policy/system at your emergency department.", "Alert system: Code Blue.", "Alert system: Trauma.", "Alert system: Chest Pain", "Alert system: Sepsis.", "Alert system: Stroke", "Alert system: Maternal Emergencies", "Alert system: Neonatal Emergencies", "Alert system: Acute Respiratory Emergencies", "Alert system: Snake bite and Poisoning"]} name="1I-1" />
+          <Checkbox h3="Indicate whether your hospital has the following documented protocols and systems (Select all that apply):" CheckbobItems={["Procedure for registration and admission of new emergency patients", "Procedure/Policy for receiving of referral patients", "Emergency Manual at the point of care", "Triage guidelines and protocol.", "Discharge summaries for all patients.", "Policy on handling cases of death (outside and inside hospital).", "Disaster management plan", "Triage policy/system at your emergency department.", "Alert system: Code Blue.", "Alert system: Trauma.", "Alert system: Chest Pain", "Alert system: Sepsis.", "Alert system: Stroke", "Alert system: Maternal Emergencies", "Alert system: Neonatal Emergencies", "Alert system: Acute Respiratory Emergencies", "Alert system: Snake bite and Poisoning"]} name="I1" setFunction={setFormI} StateValue={formI} array={formI.I1}   />
 
           <h3>Whether having Emergency condition specific SOP/STW for emergency care? </h3>
-          <I1 columns={columns} initialRows={initialRows} />
+
+          <I2 columns={columns} initialRows={initialRows} />
 
           <Buttons prev="/leadershipandgovernance" next="/referrallinkages" />
         </div>

@@ -1,157 +1,98 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'
 
-const E1 = ({ columns, initialRows }) => {
-    const [rows, setRows] = useState(initialRows);
-    const [columnOptions, setColumnOptions] = useState(
-        columns.reduce((acc, col) => {
-            acc[col.key] = col.options || [];
-            return acc;
-        }, {})
-    );
+function Table({ tableName }) {
+    const [rows, setRows] = useState(() => {
+        const storedRows = localStorage.getItem("E1");
+        return storedRows ? JSON.parse(storedRows) : [{ Adult: '', Pediatric: '', Broughtdead: '', Deathafterarrival: '',MLC : '' }];
+    });
 
-    const addRow = () => {
-        const newRow = columns.reduce((acc, col) => {
-            acc[col.key] = col.type === 'checkbox' ? [] : '';
-            return acc;
-        }, {});
-        setRows([...rows, newRow]);
-    };
+    useEffect(() => {
+        localStorage.setItem("E1", JSON.stringify(rows));
+    }, [rows]);
 
-    const removeRow = () => {
+
+    function handlePlusClick() {
+        setRows([...rows, { Adult: '', Pediatric: '', Broughtdead: '', Deathafterarrival: '',MLC : '' }]);
+    }
+
+    function handleMinusClick() {
         if (rows.length > 1) {
             const newRows = rows.filter((_, rowIndex) => rowIndex !== rows.length - 1);
             setRows(newRows);
         }
-    };
+    }
 
-    const handleInputChange = (rowIndex, columnKey, value) => {
-        const newRows = [...rows];
-        newRows[rowIndex][columnKey] = value;
+    const handleInputChange = (index, field, value) => {
+        const newRows = rows.map((row, i) => (
+            i === index ? { ...row, [field]: value } : row
+        ));
         setRows(newRows);
     };
 
-    const handleOptionChange = (columnKey, options) => {
-        setColumnOptions({
-            ...columnOptions,
-            [columnKey]: options,
-        });
-    };
-
-    const addOption = (columnKey) => {
-        const newOptions = [...columnOptions[columnKey], ''];
-        handleOptionChange(columnKey, newOptions);
-    };
-
-    const updateOption = (columnKey, index, value) => {
-        const newOptions = [...columnOptions[columnKey]];
-        newOptions[index] = value;
-        handleOptionChange(columnKey, newOptions);
-    };
-
     return (
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        {columns.map((col, index) => (
-                            <th key={index}>{col.label}</th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                            {columns.map((col, colIndex) => (
-                                <td key={colIndex}>
-                                    {col.type === 'text' && (
-                                        <span>{row[col.key]}</span>
-                                    )}
-                                    {col.type === 'input' && (
-                                        <input
-                                            className='tableinput'
-                                            type="text"
-                                            value={row[col.key]}
-                                            onChange={(e) => handleInputChange(rowIndex, col.key, e.target.value)}
-                                        />
-                                    )}
-                                    {col.type === 'radio' && (
-                                        columnOptions[col.key].map((option, optionIndex) => (
-                                            <label className='label' key={optionIndex}>
-                                                <input
-                                                    type="radio"
-                                                    name={`${col.key}-${rowIndex}`}
-                                                    value={option}
-                                                    checked={row[col.key] === option}
-                                                    onChange={(e) => handleInputChange(rowIndex, col.key, e.target.value)}
-                                                />
-                                                {option}
-                                            </label>
-                                        ))
-                                    )}
-                                    {col.type === 'checkbox' && (
-                                        columnOptions[col.key].map((option, optionIndex) => (
-                                            <label className='label' key={optionIndex}>
-                                                <input
-                                                    type="checkbox"
-                                                    name={`${col.key}-${rowIndex}`}
-                                                    value={option}
-                                                    checked={row[col.key].includes(option)}
-                                                    onChange={(e) => {
-                                                        const value = e.target.value;
-                                                        const newValue = row[col.key].includes(value)
-                                                            ? row[col.key].filter(item => item !== value)
-                                                            : [...row[col.key], value];
-                                                        handleInputChange(rowIndex, col.key, newValue);
-                                                    }}
-                                                />
-                                                {option}
-                                            </label>
-                                        ))
-                                    )}
-                                    {col.type === 'select' && (
-                                        <select
-                                            value={row[col.key]}
-                                            onChange={(e) => handleInputChange(rowIndex, col.key, e.target.value)}
-                                        >
-                                            {col.options.map((option, optionIndex) => (
-                                                <option key={optionIndex} value={option}>
-                                                    {option}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    )}
-                                </td>
-                            ))}
+        <>
+            <div className='tablediv'>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Adult ( greater than 18Years)</th>
+                            <th>Pediatric</th>
+                            <th>Brought dead</th>
+                            <th>Death after arrival</th>
+                            <th>MLC</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            <div className='tablebtn'>
-                <button onClick={addRow}>+</button>
-                {columns.map((col, colIndex) => (
-                    (col.type === 'radio' || col.type === 'checkbox') && (
-                        <div key={colIndex}>
-                            <h4>{col.label} Options</h4>
-                            {columnOptions[col.key].map((option, optionIndex) => (
-                                <div key={optionIndex}>
-                                    <input
-                                        type="text"
-                                        value={option}
-                                        onChange={(e) => updateOption(col.key, optionIndex, e.target.value)}
-                                    />
-                                </div>
-                            ))}
-                            <button onClick={() => addOption(col.key)}>Add Option</button>
-                        </div>
-                    )
-                ))}
-                <button onClick={() => removeRow()} disabled={rows.length === 1}>-</button>
-
+                        {
+                            rows.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>
+                                            <input
+                                                className='tableinput'
+                                                value={item.Adult}
+                                                onChange={(e) => handleInputChange(index, 'Adult', e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                className='tableinput'
+                                                value={item.Pediatric}
+                                                onChange={(e) => handleInputChange(index, 'Pediatric', e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                className='tableinput'
+                                                value={item.Broughtdead	}
+                                                onChange={(e) => handleInputChange(index, 'Broughtdead', e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                className='tableinput'
+                                                value={item.Deathafterarrival}
+                                                onChange={(e) => handleInputChange(index, 'Deathafterarrival', e.target.value)}
+                                            />
+                                        </td>
+                                        <td>
+                                            <input
+                                                className='tableinput'
+                                                value={item.MLC}
+                                                onChange={(e) => handleInputChange(index, 'MLC', e.target.value)}
+                                            />
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
+                <div className='tablebtn'>
+                    <button onClick={handlePlusClick}>+</button>
+                    <button onClick={handleMinusClick}>-</button>
+                </div>
             </div>
+        </>
+    )
+}
 
-        </div>
-    );
-};
-
-export default E1;
-
+export default Table

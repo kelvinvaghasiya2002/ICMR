@@ -26,7 +26,7 @@ function FormAC4() {
                 </div>
                 <div className='formcontent'>
                     <Table tableName={"formac4"} />
-                    <Buttons formName={"formac4"}  prev="/formsac-householdschedule" next="/formsac-trauma&burns" />
+                    <Buttons formName={"formac4"} formData={FormAC4} prev="/formsac-householdschedule" next="/formsac-trauma&burns" />
                 </div>
             </div>
         </section>

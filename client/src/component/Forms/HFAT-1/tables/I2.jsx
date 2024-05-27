@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 
 
-const E1 = ({ columns, initialRows }) => {
+const I2 = ({ columns, initialRows }) => {
     const [rows, setRows] = useState(initialRows);
+    console.log(rows);
     const [columnOptions, setColumnOptions] = useState(
         columns.reduce((acc, col) => {
             acc[col.key] = col.options || [];
             return acc;
         }, {})
     );
+
+    useEffect(()=>{
+        localStorage.setItem("I2" , JSON.stringify(rows))
+    },[rows])
 
     const addRow = () => {
         const newRow = columns.reduce((acc, col) => {
@@ -154,5 +159,5 @@ const E1 = ({ columns, initialRows }) => {
     );
 };
 
-export default E1;
+export default I2;
 
