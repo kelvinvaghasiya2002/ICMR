@@ -9,6 +9,8 @@ import emailRouter from "./Routers/sendEmail.js";
 import verifyEmailRouter from "./Routers/verifyEmail.js";
 import "./AuthRouters/passport.js"
 import localAuthRouter from "./AuthRouters/localAuth.js";
+import HFAT1ROUTER from "./Routers/hfat-1.js";
+import HFAT3ROUTER from "./Routers/HFAT-3.js";
 const mongoURL = process.env.MONGO_URL;
 const client = process.env.CLIENT_URL
 
@@ -49,6 +51,8 @@ app.use(router)
 app.use(emailRouter)
 app.use(verifyEmailRouter)
 app.use(localAuthRouter)
+app.use(HFAT1ROUTER)
+app.use(HFAT3ROUTER)
 
 app.get("/", (req, res) => {
     res.json({
