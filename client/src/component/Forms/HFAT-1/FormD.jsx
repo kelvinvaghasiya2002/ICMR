@@ -2,8 +2,17 @@ import React from 'react'
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import D1 from './tables/D1';
+import Checkbox from '../child-comp/Checkbox';
+import { useState } from 'react';
+import setLocalStorage from '../setLocalStorage';
 
 function FormD() {
+
+  var formd = setLocalStorage("formd",
+   {H1D1:[]})
+
+  const [formD, setFormD] = useState(JSON.parse(formd));
+
   const columns = [
     { key: 'SrNo', label: 'Sr.No', type: 'text' },
     { key: 'DrugName', label: 'Drug Name', type: 'text' },
@@ -59,8 +68,10 @@ function FormD() {
         <div className="formcontent">
           <h3>Which of the following essential emergency drugs are available at the DH/ Tertiary Care Hospital?
             (Multiple answers possible)?</h3>
-          <D1 columns={columns} initialRows={initialRows} />
-          <Buttons prev="/humanresources" next="/logisticsdrugsconsumablesequipment-2" />
+            <h3>Drug Name:</h3>
+          {/* <D1 columns={columns} initialRows={initialRows} /> */}
+          <Checkbox  setFunction={setFormD} StateValue={formD} array={formD.H1D1}  name="H1D1" CheckbobItems={["Oxygen medicinal gas","Atropine","Diazepam/Lorazepam","Adrenaline","Charcoal activated","Antisnake venom","Pralidoxime (PAM)","Magnesium sulphate","Tetanus immunoglobulin","Neostigmine","Aspirin","Clopidogrel","Atorvastatin","Misoprostol","Labetalol IV","Phenobarbitone","Phenytoin (inj)","Plasma volume expander","3% Saline","Dobutamine","Streptokinase","Tenecteplase","Oxytocin","Salbutamol sulphate","Glucose/ 25 % dextrose","Tranexamic acid","tPA IV","Methergine","Carboprost"]} />
+          <Buttons formName="formd" formData={formD} prev="/humanresources" next="/logisticsdrugsconsumablesequipment-2" />
         </div>
       </div>
     </section>

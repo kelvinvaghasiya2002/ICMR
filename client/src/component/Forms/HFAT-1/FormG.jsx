@@ -22,7 +22,7 @@ function FormG() {
       <div className="formhdr">
         <div>
           <h3>
-          Finance          </h3>
+          Finance </h3>
         </div>
       </div>
 
