@@ -59,7 +59,7 @@ import Form3A from './component/Forms/HFAT-3/Form3A.jsx'
 import Form3C from './component/Forms/HFAT-3/Form3C.jsx'
 import Form3B from './component/Forms/HFAT-3/Form3B.jsx'
 import Form3D from './component/Forms/HFAT-3/Form3D.jsx'
-import Form3D1 from './component/Forms/HFAT-3/Form3D1.jsx'
+import Form3D2 from './component/Forms/HFAT-3/Form3D2.jsx'
 import Form3E from './component/Forms/HFAT-3/Form3E.jsx'
 import Form3F from './component/Forms/HFAT-3/Form3F.jsx'
 import Form3G from './component/Forms/HFAT-3/Form3G.jsx'
@@ -176,7 +176,7 @@ function App() {
         <Route path='/infrastructure-3' element={<Form3B />} />
         <Route path='/humanresources-3' element={<Form3C />} />
         <Route path='/logistics-3' element={<Form3D />} />
-        <Route path='/logistics-3-1' element={<Form3D1 />} />
+        <Route path='/logistics-3-1' element={<Form3D2 />} />
         <Route path='/emergencycareservices-3' element={<Form3E />} />
         <Route path='/informationsystem-3' element={<Form3F />} />
         <Route path='/finance-3' element={<Form3G />} />
@@ -191,10 +191,3 @@ function App() {
 }
 
 export default App
-
-
-{/* <Navbar />
-      {!loggedIn && <FirstPage />}
-      {/* {loggedIn && <ContactUs />} */}
-{/* <InformationPage /> */ }
-{/* {loggedIn && <HomePage />}  */ }

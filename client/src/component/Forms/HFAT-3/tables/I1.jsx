@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const E1 = ({ columns, initialRows }) => {
@@ -9,6 +9,10 @@ const E1 = ({ columns, initialRows }) => {
             return acc;
         }, {})
     );
+
+    useEffect(()=>{
+        localStorage.setItem("H3I3" , JSON.stringify(rows))
+    },[rows])
 
     const addRow = () => {
         const newRow = columns.reduce((acc, col) => {
@@ -127,29 +131,6 @@ const E1 = ({ columns, initialRows }) => {
                     ))}
                 </tbody>
             </table>
-            {/* <div className='tablebtn'>
-                <button onClick={addRow}>+</button>
-                {columns.map((col, colIndex) => (
-                    (col.type === 'radio' || col.type === 'checkbox') && (
-                        <div key={colIndex}>
-                            <h4>{col.label} Options</h4>
-                            {columnOptions[col.key].map((option, optionIndex) => (
-                                <div key={optionIndex}>
-                                    <input
-                                        type="text"
-                                        value={option}
-                                        onChange={(e) => updateOption(col.key, optionIndex, e.target.value)}
-                                    />
-                                </div>
-                            ))}
-                            <button onClick={() => addOption(col.key)}>Add Option</button>
-                        </div>
-                    )
-                ))}
-                <button onClick={() => removeRow()} disabled={rows.length === 1}>-</button>
-
-            </div> */}
-
         </div>
     );
 };
