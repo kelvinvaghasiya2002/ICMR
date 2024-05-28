@@ -4,10 +4,15 @@ import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
-import { turnOffbutton } from '../helpers';
+import { handleChange, turnOffbutton } from '../helpers';
+import setLocalStorage from '../setLocalStorage';
 
 function Form2B() {
   turnOffbutton();
+  var form2b = setLocalStorage("form2b",
+  {H2B1: "",H2B2: "",H2B3: "",H2B4: "",H2B5: "",H2B6: "",H2B7: [], H2B8: [],H2B9: "",H2B10: ""})
+
+ const [form2B, setForm2B] = useState(JSON.parse(form2b));
   return (
     <section>
       <SidePanel id={"2"} />
@@ -20,27 +25,92 @@ function Form2B() {
         </div>
 
         <div className="formcontent">
-          <Radio h3="Is the CHC 24/7?" CheckbobItems={["Yes", "No"]} name="2B1" />
+          <Radio 
+              h3="Is the CHC 24/7?" 
+              CheckbobItems={["Yes", "No"]} 
+              name="H2B1" 
+              byDefault={form2B.H2B1} 
+              onClick={handleChange(setForm2B)} 
+          />
 
-          <InputField h3="How many beds are available for the in-patient department (IPD)?" placeholder="Type here" name="2B2" />
+          <InputField 
+              h3="How many beds are available for the in-patient department (IPD)?" 
+              placeholder="Type here" 
+              name="H2B2" 
+              value={form2B.H2B2} 
+              onChange={handleChange(setForm2B)} 
+          />
 
-          <Radio h3="Whether any dedicated beds present for emergency care?" CheckbobItems={["Yes", "No"]} name="2B3" />
+          <Radio 
+              h3="Whether any dedicated beds present for emergency care?" 
+              CheckbobItems={["Yes", "No"]} 
+              name="H2B3" 
+              byDefault={form2B.H2B3} 
+              onClick={handleChange(setForm2B)} 
+          />
 
-          <InputField h3="How many beds are available for emergency care?" placeholder="Type here" name="2B4" />
+          <InputField 
+              h3="How many beds are available for emergency care?" 
+              placeholder="Type here" 
+              name="H2B4" 
+              value={form2B.H2B4} 
+              onChange={handleChange(setForm2B)} 
+          />
 
-          <InputField h3="What is the average number of patients presenting to OPD?" placeholder="Type here" name="2B5" />
+          <InputField 
+              h3="What is the average number of patients presenting to OPD?" 
+              placeholder="Type here" 
+              name="H2B5" 
+              value={form2B.H2B5} 
+              onChange={handleChange(setForm2B)} 
+          />
 
-          <InputField h3="What is the average daily number of patients presenting with emergency conditions?" p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries, poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" placeholder="Type here" name="2B6" />
+          <InputField 
+              h3="What is the average daily number of patients presenting with emergency conditions?" 
+              p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries, poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" 
+              placeholder="Type here" 
+              name="H2B6" 
+              value={form2B.H2B6} 
+              onChange={handleChange(setForm2B)} 
+          />
 
-          <Checkbox h3="Which of the following infrastructure requirements for emergency are available at the CHC?" CheckbobItems={["Emergency Registration Counter","Computerized Registration","Triage Area","Resuscitation Area","Decontamination Facility","Security Services","Designated Parking Area for Ambulance","Smooth Entry for Wheelchair Trolley and Stretcher Bay","Waiting Area for patients & Attendants.","Plaster Room/Suturing Room/Minor OT","Emergency OT","Dedicated Isolation rooms","Point of Care Lab","Blood storage unit","Point of care ultrasound","Radiology service-X ray, Ultrasound","Demarcated Duty Rooms for Doctors and Nurses","Area to Keep Dead Bodies","Tele-Medicine Facility"]} name="2B7" />
+          <Checkbox 
+              h3="Which of the following infrastructure requirements for emergency are available at the CHC?" 
+              CheckbobItems={["Emergency Registration Counter","Computerized Registration","Triage Area","Resuscitation Area","Decontamination Facility","Security Services","Designated Parking Area for Ambulance","Smooth Entry for Wheelchair Trolley and Stretcher Bay","Waiting Area for patients & Attendants.","Plaster Room/Suturing Room/Minor OT","Emergency OT","Dedicated Isolation rooms","Point of Care Lab","Blood storage unit","Point of care ultrasound","Radiology service-X ray, Ultrasound","Demarcated Duty Rooms for Doctors and Nurses","Area to Keep Dead Bodies","Tele-Medicine Facility"]} 
+              name="H2B7" 
+              setFunction={setForm2B}
+              StateValue={form2B}
+              array={form2B.H2B7}
+          />
 
-          <Checkbox h3="Which of these signage or display boards of the emergency services and entitlements are available in its departments?" CheckbobItems={["Services provided to the patients are clearly defined, displayed prominently.","Names of doctor and nursing staff on duty are displayed and updated.","List of available drugs are displayed.","All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.","Important contact numbers including ambulance, blood bank, police and referral centers displayed.","Display of citizen’s charter"]} other={true} name="2B8" />
+          <Checkbox 
+              h3="Which of these signage or display boards of the emergency services and entitlements are available in its departments?" 
+              CheckbobItems={["Services provided to the patients are clearly defined, displayed prominently.","Names of doctor and nursing staff on duty are displayed and updated.","List of available drugs are displayed.","All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.","Important contact numbers including ambulance, blood bank, police and referral centers displayed.","Display of citizen’s charter"]} 
+              other={true} 
+              name="H2B8" 
+              setFunction={setForm2B}
+              StateValue={form2B}
+              array={form2B.H2B8} 
+          />
 
-          <Radio h3="Does this facility provide ambulance services?" CheckbobItems={["Yes", "No"]} name="2B9" />
+          <Radio 
+              h3="Does this facility provide ambulance services?" 
+              CheckbobItems={["Yes", "No"]} 
+              name="H2B9" 
+              byDefault={form2B.H2B9} 
+              onClick={handleChange(setForm2B)} 
+          />
 
-          <InputField h3="If ambulances are not there, how are patients transferred?" placeholder="Type here" name="2B10" />
+          <InputField 
+              h3="If ambulances are not there, how are patients transferred?" 
+              placeholder="Type here" 
+              name="H2B10" 
+              value={form2B.H2B10} 
+              onChange={handleChange(setForm2B)} 
+          />
 
-          <Buttons prev="/facilityinformation-2" next="/humanresources-2" />
+
+          <Buttons formData={form2B} formName="form2b" prev="/facilityinformation-2" next="/humanresources-2" />
         </div>
       </div>
     </section>
