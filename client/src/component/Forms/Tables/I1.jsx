@@ -1,24 +1,33 @@
+import React, { useEffect, useState } from 'react';
 
-import React, { useState } from 'react';
 
-const C1 = ({ columns, initialRows }) => {
+const E1 = ({ columns, initialRows , tableName}) => {
     const [rows, setRows] = useState(initialRows);
     const [columnOptions, setColumnOptions] = useState(
         columns.reduce((acc, col) => {
-            if (col.type === 'radio' || col.type === 'checkbox') {
-                acc[col.key] = col.options || [];
-            }
+            acc[col.key] = col.options || [];
             return acc;
         }, {})
     );
 
-    // const addRow = () => {
-    //     const newRow = columns.reduce((acc, col) => {
-    //         acc[col.key] = col.type === 'checkbox' ? false : '';
-    //         return acc;
-    //     }, {});
-    //     setRows([...rows, newRow]);
-    // };
+    useEffect(()=>{
+        localStorage.setItem(tableName , JSON.stringify(rows))
+    },[rows])
+
+    const addRow = () => {
+        const newRow = columns.reduce((acc, col) => {
+            acc[col.key] = col.type === 'checkbox' ? [] : '';
+            return acc;
+        }, {});
+        setRows([...rows, newRow]);
+    };
+
+    const removeRow = () => {
+        if (rows.length > 1) {
+            const newRows = rows.filter((_, rowIndex) => rowIndex !== rows.length - 1);
+            setRows(newRows);
+        }
+    };
 
     const handleInputChange = (rowIndex, columnKey, value) => {
         const newRows = [...rows];
@@ -33,16 +42,16 @@ const C1 = ({ columns, initialRows }) => {
         });
     };
 
-    // const addOption = (columnKey) => {
-    //     const newOptions = [...columnOptions[columnKey], ''];
-    //     handleOptionChange(columnKey, newOptions);
-    // };
+    const addOption = (columnKey) => {
+        const newOptions = [...columnOptions[columnKey], ''];
+        handleOptionChange(columnKey, newOptions);
+    };
 
-    // const updateOption = (columnKey, index, value) => {
-    //     const newOptions = [...columnOptions[columnKey]];
-    //     newOptions[index] = value;
-    //     handleOptionChange(columnKey, newOptions);
-    // };
+    const updateOption = (columnKey, index, value) => {
+        const newOptions = [...columnOptions[columnKey]];
+        newOptions[index] = value;
+        handleOptionChange(columnKey, newOptions);
+    };
 
     return (
         <div>
@@ -59,14 +68,12 @@ const C1 = ({ columns, initialRows }) => {
                         <tr key={rowIndex}>
                             {columns.map((col, colIndex) => (
                                 <td key={colIndex}>
-                                    {
-                                        col.type === 'text' && (
-                                            <span>{row[col.key]}</span>
-                                        )
-                                    }
+                                    {col.type === 'text' && (
+                                        <span>{row[col.key]}</span>
+                                    )}
                                     {col.type === 'input' && (
                                         <input
-                                        className='tableinput'
+                                            className='tableinput'
                                             type="text"
                                             value={row[col.key]}
                                             onChange={(e) => handleInputChange(rowIndex, col.key, e.target.value)}
@@ -74,7 +81,7 @@ const C1 = ({ columns, initialRows }) => {
                                     )}
                                     {col.type === 'radio' && (
                                         columnOptions[col.key].map((option, optionIndex) => (
-                                            <label className='lable' key={optionIndex}>
+                                            <label className='label' key={optionIndex}>
                                                 <input
                                                     type="radio"
                                                     name={`${col.key}-${rowIndex}`}
@@ -88,7 +95,7 @@ const C1 = ({ columns, initialRows }) => {
                                     )}
                                     {col.type === 'checkbox' && (
                                         columnOptions[col.key].map((option, optionIndex) => (
-                                            <label className='lable' key={optionIndex}>
+                                            <label className='label' key={optionIndex}>
                                                 <input
                                                     type="checkbox"
                                                     name={`${col.key}-${rowIndex}`}
@@ -124,26 +131,9 @@ const C1 = ({ columns, initialRows }) => {
                     ))}
                 </tbody>
             </table>
-            {/* <button onClick={addRow}>Add Row</button> */}
-            {/* {columns.map((col, colIndex) => (
-                (col.type === 'radio' || col.type === 'checkbox') && (
-                    <div key={colIndex}>
-                        <h4>{col.label} Options</h4>
-                        {columnOptions[col.key].map((option, optionIndex) => (
-                            <div key={optionIndex}>
-                                <input
-                                    type="text"
-                                    value={option}
-                                    onChange={(e) => updateOption(col.key, optionIndex, e.target.value)}
-                                />
-                            </div>
-                        ))}
-                        <button onClick={() => addOption(col.key)}>Add Option</button>
-                    </div>
-                )
-            ))} */}
         </div>
     );
 };
 
-export default C1;
+export default E1;
+

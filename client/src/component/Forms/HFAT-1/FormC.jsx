@@ -4,7 +4,7 @@ import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
-import C1 from './tables/C1';
+import C1 from '../Tables/C1.jsx';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from "../setLocalStorage.js"
 
@@ -62,7 +62,7 @@ function FormC() {
         <div className="formcontent">
           <h3>Tick the manpower available in your emergency department and provide numbers</h3>
 
-          <C1 columns={columns} initialRows={initialRows} />
+          <C1 columns={columns} initialRows={initialRows} tableName={"C1"} />
 
           <h3>Please indicate which of the following specialist/super specialist services are available in your hospital</h3>
 

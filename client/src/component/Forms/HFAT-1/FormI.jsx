@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
-import Radio from '../child-comp/Radio';
-import InputField from '../child-comp/InputField';
-import I2 from './tables/I2.jsx';
+import I2 from "../Tables/I1.jsx"
 import { turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 
@@ -50,7 +48,7 @@ const initialRows = [
 
           <h3>Whether having Emergency condition specific SOP/STW for emergency care? </h3>
 
-          <I2 columns={columns} initialRows={initialRows} />
+          <I2 columns={columns} initialRows={initialRows} tableName="I2" />
 
           <Buttons prev="/leadershipandgovernance" next="/referrallinkages" />
         </div>

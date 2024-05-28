@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const E2 = ({ columns, initialRows }) => {
+const E2 = ({ columns, initialRows , tableName }) => {
     const [rows, setRows] = useState(initialRows);
     const [columnOptions, setColumnOptions] = useState(
         columns.reduce((acc, col) => {
@@ -8,6 +8,9 @@ const E2 = ({ columns, initialRows }) => {
             return acc;
         }, {})
     );
+    useEffect (()=>{
+        localStorage.setItem(tableName,JSON.stringify(rows));
+    },[rows]);
 
     const addRow = () => {
         const newRow = columns.reduce((acc, col) => {
