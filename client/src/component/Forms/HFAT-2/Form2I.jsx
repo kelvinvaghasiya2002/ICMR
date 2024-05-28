@@ -3,11 +3,14 @@ import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
-import InputField from '../child-comp/InputField';
-import { turnOffbutton } from '../helpers';
-import I1 from './tables/I1';
+import { handleChange, turnOffbutton } from '../helpers';
+import I1 from "../Tables/I1.jsx"
+import setLocalStorage from '../setLocalStorage.js';
 
 function Form2I() {
+  var form2i = setLocalStorage("form2i" , {H2I1:[] , H2I2 : [], H2I4:""})
+  const [form2I , setForm2I] = useState(JSON.parse(form2i));
+
   turnOffbutton();
   const columns = [
     { key: 'EmergencyCondition', label: 'Emergency Condition', type: 'text' },
@@ -44,16 +47,17 @@ function Form2I() {
 
         <div className="formcontent">
 
-          <Checkbox h3="What types of registers are maintained at the CHC?" CheckbobItems={["Emergency/OPD/Treatment Register", "Inventory Register", "Procedure register", "Referral Register", "Record for handing over and taking over of critical care equipment", "Medico-legal register", "Death Register", "Patient/Community feedback register"]} other={true} name="2I1" />
+          <Checkbox h3="What types of registers are maintained at the CHC?" CheckbobItems={["Emergency/OPD/Treatment Register", "Inventory Register", "Procedure register", "Referral Register", "Record for handing over and taking over of critical care equipment", "Medico-legal register", "Death Register", "Patient/Community feedback register"]} other={true} name="H2I1" setFunction={setForm2I} StateValue={form2I} array={form2I.H2I1} />
 
-          <Checkbox h3="Which of the following SOPs for the management of common medical emergencies are followed at your CHC?" CheckbobItems={["Documented triage guidelines and protocols", "Standard treatment protocols for emergencies", "Transfer policies and procedures", "Disaster Management Plan", "Policies for handling cases of death"]} name="2I2" />
+          <Checkbox h3="Which of the following SOPs for the management of common medical emergencies are followed at your CHC?" CheckbobItems={["Documented triage guidelines and protocols", "Standard treatment protocols for emergencies", "Transfer policies and procedures", "Disaster Management Plan", "Policies for handling cases of death"]} name="H2I2" setFunction={setForm2I} StateValue={form2I} array={form2I.H2I2} />
 
           <h3>Whether having Emergency condition specific SOP/STW for emergency care?</h3>
-          <I1 columns={columns} initialRows={initialRows} baseName="2I3" />
 
-          <Radio h3="Does the facility have defined and established procedure for informing patients about their medical condition, involving them in treatment planning and facilitating informed decision making?" CheckbobItems={["Yes", "No"]} name="2I4" />
+          <I1 columns={columns} initialRows={initialRows} tableName="H2I3" />
 
-          <Buttons prev="/leadershipandgovernance-2" next="/referrallinkages-2" />
+          <Radio h3="Does the facility have defined and established procedure for informing patients about their medical condition, involving them in treatment planning and facilitating informed decision making?" CheckbobItems={["Yes", "No"]} name="H2I4" onClick={handleChange(setForm2I)} byDefault={form2I.H2I4} />
+
+          <Buttons formName={"form2i"} formData={form2I} prev="/leadershipandgovernance-2" next="/referrallinkages-2" />
         </div>
 
       </div>

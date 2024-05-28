@@ -46,7 +46,7 @@ function FormE() {
       <div className="formcontent">
 
         <h3>Numbers of Patients who Visited ED in Last One Month</h3>
-        <E1 />
+        <E1 tableName={"E1"} />
 
         <h3>Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
 

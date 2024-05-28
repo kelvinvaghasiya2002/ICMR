@@ -4,9 +4,15 @@ import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
-import C1 from './tables/C1';
+import C1 from '../Tables/C1';
+import setLocalStorage from '../setLocalStorage';
+import { handleChange } from '../helpers';
 
 function Form2C() {
+
+  var form2c = setLocalStorage("form2c" , {H2C2 : "", H2C3:"" , H2C4:"" , H2C5:""});
+  const [form2C , setForm2C] = useState(JSON.parse(form2c));
+
   const columns = [
     { key: 'Manpower', label: 'Manpower', type: 'text' },
     { key: 'Number', label: 'Number', type: 'input' },
@@ -37,7 +43,6 @@ function Form2C() {
 
 
 
-
   return (
     <section>
       <SidePanel id={"3"} />
@@ -54,8 +59,10 @@ function Form2C() {
 
         <div className="formcontent">
           <h3>Tick the manpower available in your emergency department and provide numbers</h3>
-          <C1 columns={columns} initialRows={initialRows} />
-          <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="2C2" />
+          <C1 columns={columns} initialRows={initialRows} tableName="H2C1" />
+
+          <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H2C2"
+          onClick={handleChange(setForm2C)} byDefault={form2C.H2C2} />
 
           <Checkbox
             h3="Which of the following emergency care trainings you have undergone?"
@@ -72,7 +79,8 @@ function Form2C() {
               "Pre-Eclampsia",
             ]}
             other={true}
-            name="2C3"
+            name="H2C3"
+            setFunction={setForm2C} StateValue={form2C} array={form2C.H2C3}
           />
 
           <Radio
@@ -83,12 +91,12 @@ function Form2C() {
               "Annually",
             ]}
             other={true}
-            name="2C4"
+            name="H2C4" onClick={handleChange(setForm2C)} byDefault={form2C.H2C4}
           />
 
-          <InputField h3="When was the last training conducted?" placeholder="Type here" name="2C5" />
+          <InputField h3="When was the last training conducted?" placeholder="Type here" name="H2C5" value={form2C.H2C5} onChange={handleChange(setForm2C)} />
 
-          <Buttons prev="/infrastructure-2" next="/logistics-2" />
+          <Buttons formName={"form2c"} formData={form2C} prev="/infrastructure-2" next="/logistics-2" />
         </div>
       </div>
     </section>

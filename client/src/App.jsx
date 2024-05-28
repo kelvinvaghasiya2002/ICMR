@@ -48,7 +48,7 @@ import Form2A from './component/Forms/HFAT-2/Form2A.jsx'
 import Form2C from './component/Forms/HFAT-2/Form2C.jsx'
 import Form2B from './component/Forms/HFAT-2/Form2B.jsx'
 import Form2D from './component/Forms/HFAT-2/Form2D.jsx'
-import Form2D1 from './component/Forms/HFAT-2/Form2D1.jsx'
+import Form2D2 from './component/Forms/HFAT-2/Form2D2.jsx'
 import Form2E from './component/Forms/HFAT-2/Form2E.jsx'
 import Form2F from './component/Forms/HFAT-2/Form2F.jsx'
 import Form2G from './component/Forms/HFAT-2/Form2G.jsx'
@@ -160,7 +160,7 @@ function App() {
         <Route path='/infrastructure-2' element={<Form2B />} />
         <Route path='/humanresources-2' element={<Form2C />} />
         <Route path='/logistics-2' element={<Form2D />} />
-        <Route path='/logistics-2-1' element={<Form2D1 />} />
+        <Route path='/logistics-2-1' element={<Form2D2 />} />
         <Route path='/emergencycareservices-2' element={<Form2E />} />
         <Route path='/informationsystem-2' element={<Form2F />} />
         <Route path='/finance-2' element={<Form2G />} />

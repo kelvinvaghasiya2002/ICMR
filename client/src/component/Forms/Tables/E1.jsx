@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 function E1({ tableName }) {
     const [rows, setRows] = useState(() => {
-        // const storedRows = localStorage.getItem("H3E1");
         const storedRows = localStorage.getItem(tableName);
         return storedRows ? JSON.parse(storedRows) : [{ Adult: '', Pediatric: '', Broughtdead: '', Deathafterarrival: '',MLC : '' }];
     });
