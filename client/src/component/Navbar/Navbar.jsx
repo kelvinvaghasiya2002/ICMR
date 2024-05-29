@@ -42,18 +42,35 @@ export default function Navbar() {
                     }
                 </div>
             </div>
-            {loggedIn && <div id='nav-buttons' className='buttons-grid'>
+            {loggedIn &&<>  <div id='nav-buttons' className='buttons-grid'>
                 <button id='but'><p>AIM</p></button>
                 <button><p>Objective</p></button>
                 <button><p>Outcome</p></button>
                 <button><p>Methodology</p></button>
-                <button><p>Workflow</p></button>
-                <button><p>Goals</p></button>
                 <button><p>Facilities</p></button>
-                <button><p>Research Team</p></button>
-                <button><p>What's New?</p></button>
-                <button><Link to="/formsaa"><p>Fill Form</p></Link></button>
-            </div>}
+                <button><p>Workflow</p></button>
+                {/* <button><p>Goals</p></button> */}
+                
+                {/* <button><p>Research Team</p></button> */}
+                {/* <button><p>What's New?</p></button> */}
+                <button onClick={''}><p>Data Collection</p></button>
+            </div>  
+
+            <div className='container'>
+
+               <div style={{display:'block',padding:"2%"}}>
+               <a href="/formsaa"><h3>Community Survey Tool</h3></a>
+                <a href="/healthfacilityinformation"><h3>HFAT:  District Hospital/Tertiary Care (Public or Private)</h3></a>
+                <a href="/facilityinformation-2"><h3>HFAT:  CHC</h3></a>
+                <a href="/facilityinformation-3"><h3>HFAT:  PHC</h3></a>
+                <a href="/facilityinformation"><h3>GAP Assessment Tool – Ambulance at Facility Level</h3></a>
+               </div>
+
+            </div>
+
+            </>
+            
+            }
             {/* <button onClick={handleLogOut}>logout</button> */}
         </>
     )
