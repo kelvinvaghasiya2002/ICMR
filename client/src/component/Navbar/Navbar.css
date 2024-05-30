@@ -119,9 +119,10 @@
     border-radius: 10px;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    height: 40vh;
+    height: auto;
     width: 94vw;
     margin: 2%;
+    position: fixed;
 }
 
 a{

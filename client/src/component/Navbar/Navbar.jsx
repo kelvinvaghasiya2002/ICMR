@@ -3,17 +3,26 @@ import ICMRIcon from "../../assets/ICMR_Icon.png"
 import ICMRLogo from "../../assets/ICMR_Logo.png";
 import PUIcon from "../../assets/PU_Icon.png";
 import { useUserInfo } from '../../contexts/User';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 const VITE_SERVER = import.meta.env.VITE_SERVER;
 import axios from "axios"
+import { useRef, useState } from 'react';
+import FillFormMenu from './FillFormMenu';
 
 export default function Navbar() {
-    const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
 
-    const handleLogOut = async()=>{
-        localStorage.setItem("token",null);
+    const [menuState , setMenuState] = useState(false);
+
+    const handleClick = ()=>{
+        setMenuState(!menuState)
+    }
+
+    const { user, loggedIn } = useUserInfo();
+
+    const handleLogOut = async () => {
+        localStorage.setItem("token", null);
         try {
-            const response  = await axios.get(`${VITE_SERVER}/logout`)
+            const response = await axios.get(`${VITE_SERVER}/logout`)
             console.log(response);
         } catch (error) {
             console.log(error);
@@ -42,34 +51,21 @@ export default function Navbar() {
                     }
                 </div>
             </div>
-            {loggedIn &&<>  <div id='nav-buttons' className='buttons-grid'>
+            {loggedIn && <>  <div id='nav-buttons' className='buttons-grid'>
                 <button id='but'><p>AIM</p></button>
                 <button><p>Objective</p></button>
                 <button><p>Outcome</p></button>
                 <button><p>Methodology</p></button>
                 <button><p>Facilities</p></button>
                 <button><p>Workflow</p></button>
-                {/* <button><p>Goals</p></button> */}
-                
-                {/* <button><p>Research Team</p></button> */}
-                {/* <button><p>What's New?</p></button> */}
-                <button onClick={''}><p>Data Collection</p></button>
-            </div>  
-
-            <div className='container'>
-
-               <div style={{display:'block',padding:"2%"}}>
-               <a href="/formsaa"><h3>Community Survey Tool</h3></a>
-                <a href="/healthfacilityinformation"><h3>HFAT:  District Hospital/Tertiary Care (Public or Private)</h3></a>
-                <a href="/facilityinformation-2"><h3>HFAT:  CHC</h3></a>
-                <a href="/facilityinformation-3"><h3>HFAT:  PHC</h3></a>
-                <a href="/facilityinformation"><h3>GAP Assessment Tool – Ambulance at Facility Level</h3></a>
-               </div>
-
+                <button onClick={handleClick}><p>Data Collection</p></button>
             </div>
 
+
+            <FillFormMenu menuState={menuState} setMenuState={setMenuState} />
+
             </>
-            
+
             }
             {/* <button onClick={handleLogOut}>logout</button> */}
         </>
