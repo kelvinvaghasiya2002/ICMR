@@ -125,11 +125,11 @@
     position: fixed;
 }
 
-a{
+.container a{
     text-decoration: none;
     color: black;
 }
 
-a :hover{
+.container a :hover{
     color:#3177FF;
 }
