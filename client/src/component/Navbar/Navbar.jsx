@@ -11,9 +11,9 @@ import FillFormMenu from './FillFormMenu';
 
 export default function Navbar() {
 
-    const [menuState , setMenuState] = useState(false);
+    const [menuState, setMenuState] = useState(false);
 
-    const handleClick = ()=>{
+    const handleClick = () => {
         setMenuState(!menuState)
     }
 
@@ -62,7 +62,7 @@ export default function Navbar() {
             </div>
 
 
-            <FillFormMenu menuState={menuState} setMenuState={setMenuState} />
+                <FillFormMenu menuState={menuState} setMenuState={setMenuState} />
 
             </>
 
