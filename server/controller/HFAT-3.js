@@ -1,5 +1,5 @@
 import express from "express"
-import { HFAT3 } from "../Database/HFAT-3.JS";
+import { HFAT3 } from "../Database/HFAT-3.js";
 const app = express();
 
 export const HFAT3Controller = (req,res)=>{
