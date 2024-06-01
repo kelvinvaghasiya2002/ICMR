@@ -9,8 +9,9 @@ import emailRouter from "./Routers/sendEmail.js";
 import verifyEmailRouter from "./Routers/verifyEmail.js";
 import "./AuthRouters/passport.js"
 import localAuthRouter from "./AuthRouters/localAuth.js";
-import HFAT1ROUTER from "./Routers/hfat-1.js";
+import HFAT1ROUTER from "./Routers/HFAT-1.js";
 import HFAT3ROUTER from "./Routers/HFAT-3.js";
+import HFAT2ROUTER from "./Routers/HFAT-2.js";
 const mongoURL = process.env.MONGO_URL;
 const client = process.env.CLIENT_URL
 
@@ -21,7 +22,7 @@ mongoose.connect(mongoURL).then(() => {
 })
 
 const app = express();
-// app.enable('trust proxy')
+app.enable('trust proxy')
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -29,8 +30,8 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         maxAge: 1000 * 60 * 2,
-        // sameSite: 'none',
-        // secure: true
+        sameSite: 'none',
+        secure: true
     }
 }))
 
@@ -53,6 +54,7 @@ app.use(verifyEmailRouter)
 app.use(localAuthRouter)
 app.use(HFAT1ROUTER)
 app.use(HFAT3ROUTER)
+app.use(HFAT2ROUTER)
 
 app.get("/", (req, res) => {
     res.json({

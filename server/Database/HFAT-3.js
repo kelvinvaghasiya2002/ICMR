@@ -2,5 +2,4 @@ import mongoose from "mongoose";
 
 var HFATSchema = new mongoose.Schema({}, { strict: false });
 
-
-export const HFAT1 = new mongoose.model("HFAT1",HFATSchema);
+export const HFAT3 = new mongoose.model("HFAT3",HFATSchema);
