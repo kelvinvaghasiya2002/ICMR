@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
