@@ -52,10 +52,6 @@ function Form2D() {
     { SrNo: '29', DrugName: 'Carboprost', DistrictHospital: '' },
   ];
 
-
-  var form2d = setLocalStorage("form2d" , {H2D1:[]});
-  const [form2D , setForm2D] = useState(JSON.parse(form2d));
-
   return (
     
     <section>

@@ -5,7 +5,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
-import I1 from './tables/I1';
+import I1 from '../Tables/I1.jsx'
 import setLocalStorage from '../setLocalStorage';
 
 function Form3I() {
