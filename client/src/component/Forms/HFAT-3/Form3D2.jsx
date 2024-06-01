@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
-import D2 from '../HFAT-2/tables/D2';
 import setLocalStorage from '../setLocalStorage';
 import Checkbox from '../child-comp/Checkbox';
 

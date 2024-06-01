@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
-// import E1 from '../HFAT-2/tables/E1';
-// import E2 from '../HFAT-2/tables/E2';
-import E1 from './tables/E1';
-import E2 from './tables/E2';
+import E1 from "../Tables/E1.jsx"
+import E2 from "../Tables/E2.jsx"
 
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
@@ -51,11 +49,11 @@ function Form3E() {
 
           <h3>Numbers of Patients who Visited ED in Last One Month</h3>
 
-          <E1  />
+          <E1 tableName={"H3E1"}  />
 
           <h3>Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
 
-          <E2 columns={columns2} initialRows={initialRows2} />
+          <E2 columns={columns2} initialRows={initialRows2} tableName={"H3E2"} />
 
           <Radio h3="Which of the following emergency services are delivered at the PHC? " CheckbobItems={["Triage", "Resuscitation", "Medico Legal Reporting"]} name={"H3E3"} onClick={handleChange(setForm3E)} byDefault={form3E.H3E3} />
 
