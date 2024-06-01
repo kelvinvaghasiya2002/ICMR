@@ -4,7 +4,7 @@ import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
-import C1 from './tables/C1';
+import C1 from '../Tables/C1.jsx'
 import { turnOffbutton , handleChange } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 
@@ -52,7 +52,7 @@ function Form3C() {
 
         <div className="formcontent">
           <h3>Tick the manpower available in your emergency department and provide numbers</h3>
-          <C1 columns={columns} initialRows={initialRows} />
+          <C1 columns={columns} initialRows={initialRows} tableName={"H3C1"} />
 
           <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H3C2" onClick={handleChange(setForm3C)} byDefault={form3C.H3C2} />
 
