@@ -50,7 +50,7 @@ const initialRows = [
 
           <I2 columns={columns} initialRows={initialRows} tableName="I2" />
 
-          <Buttons prev="/leadershipandgovernance" next="/referrallinkages" />
+          <Buttons formName={"formi"} formData={formI} prev="/leadershipandgovernance" next="/referrallinkages" />
         </div>
       </div>
     </section>
