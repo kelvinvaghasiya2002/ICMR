@@ -35,6 +35,7 @@ function FormC() {
     { btn: "", Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
     { btn: "", Manpower: 'OT. Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
     { btn: "", Manpower: 'H.A/ GDA/ Orderly', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { btn: "", Manpower: ' H.A/ GDA/ Orderly (GDA)General Duty Assistant, SA- Sanitary Attendant, HA- Hospital Attendant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
     { btn: "", Manpower: 'SA/ Housekeeping staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
     { btn: "", Manpower: 'EMT', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
     { btn: "", Manpower: 'Security', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
@@ -127,6 +128,7 @@ function FormC() {
               "Poisoning",
               "PPH",
               "Pre-Eclampsia",
+              "Neonatal emergencies"
 
             ]}
             other={true}
@@ -140,6 +142,7 @@ function FormC() {
               "Quarterly",
               "Annually"
             ]}
+            other={true}
             name="C5"
             setFunction={setFormC} StateValue={formC} array={formC.C5}
           />

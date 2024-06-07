@@ -35,7 +35,7 @@ function FormF() {
 
           <InputField value={formF.H1F3} onChange={handleChange(setFormF)} name="H1F3" h3="How many personnel are available for managing information system?" placeholder="Type here" />
 
-          <Radio byDefault={formF.H1F4} onClick={handleChange(setFormF)} name="H1F4" h3="What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencieses", "Length of hospital stay", "Turnaround time", "Disposal time", "Number of deaths", "Number of Referrals"]}  />
+          <Radio byDefault={formF.H1F4} onClick={handleChange(setFormF)} name="H1F4" h3="What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencieses", "Length of hospital stay", "Turnaround time", "Disposal time", "Number of deaths", "Number of Referrals (in-house referrals and to other hospitals)"]}  />
 
           <Radio byDefault={formF.H1F5} onClick={handleChange(setFormF)} name="H1F5" h3="Whether time bound management of common emergencies is captured in MIS. For example,
 Door to CT/ECG time, Door to needle time, Time to activate emergency alert team." CheckbobItems={["Yes", "No"]}  />

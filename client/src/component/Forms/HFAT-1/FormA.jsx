@@ -9,7 +9,7 @@ import setLocalStorage from '../setLocalStorage';
 
 function FormA() {
   turnOffbutton();
-  var forma = setLocalStorage("forma", {A1:"",A2:"",A3:"",A4:"",A5:"",A6:"",A7:"",A8:"",A9:"",A10:"",A11 : [] ,A12:""})
+  var forma = setLocalStorage("forma", {A1:"",A2:"",A3:"",A4:"",A5:"",A6:"",A7:"",A8:"",A9:"",A10:"",A11 : "" ,A12:""})
   const [formA, setFormA] = useState(JSON.parse(forma))
   
   console.log(formA);
@@ -52,7 +52,7 @@ function FormA() {
 
           <InputField name="A10" value={formA.A10} onChange={handleChange(setFormA)} h3="GPS Coordinates:" placeholder="Type here" />
 
-          <Checkbox h3="Type of Health Care Facility?" CheckbobItems={["District Hospital (DH))", "Tertiary care center"]} name="A11" setFunction={setFormA} array={formA.A11} StateValue={formA}  />
+          <Radio h3="Type of Health Care Facility?" CheckbobItems={["District Hospital (DH))", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
 
           <Radio h3="If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
 
