@@ -5,6 +5,7 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading';
 
 function FormG() {
 
@@ -14,6 +15,8 @@ function FormG() {
 
   const [formG, setFormG] = useState(JSON.parse(formg));
   return (
+    <div>
+      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"7"} />
       <div className="siteInfo">
@@ -41,6 +44,7 @@ function FormG() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

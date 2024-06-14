@@ -3,13 +3,18 @@ import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import setLocalStorage from '../setLocalStorage';
 import Checkbox from '../child-comp/Checkbox';
+import Heading from '../../Heading/Heading.jsx';
+import { turnOffbutton } from '../helpers.js';
 
 
 function FormD2() {
+    turnOffbutton();
     var form3d2 = setLocalStorage("form3d2", { H3D2: [] });
     const [form3D2, setForm3D2] = useState(JSON.parse(form3d2));
 
     return (
+        <div>
+            <Heading h2="HFAT: PHC"></Heading>
         <section>
             <SidePanel id={"4"} />
             <div className="siteInfo">
@@ -61,6 +66,7 @@ function FormD2() {
                 </div>
             </div>
         </section>
+        </div>
     )
 }
 

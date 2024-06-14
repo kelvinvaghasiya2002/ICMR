@@ -6,6 +6,7 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading';
 
 function FormF() {
 
@@ -15,6 +16,8 @@ function FormF() {
 
   const [formF, setFormF] = useState(JSON.parse(formf));
   return (
+    <div>
+      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"6"} />
       <div className="siteInfo">
@@ -52,6 +55,7 @@ Door to CT/ECG time, Door to needle time, Time to activate emergency alert team
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

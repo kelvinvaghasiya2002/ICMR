@@ -4,6 +4,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import E1 from "../Tables/E1.jsx"
 import E2 from "../Tables/E2.jsx"
+import Heading from '../../Heading/Heading.jsx';
 
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
@@ -33,6 +34,8 @@ function Form3E() {
   ];
   
   return (
+    <div>
+      <Heading h2="HFAT: PHC"></Heading>
     <section>
       <SidePanel id={"5"} />
       <div className="siteInfo">
@@ -61,6 +64,7 @@ function Form3E() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

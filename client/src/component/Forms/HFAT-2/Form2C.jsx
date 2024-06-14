@@ -6,9 +6,11 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import C1 from '../Tables/C1';
 import setLocalStorage from '../setLocalStorage';
-import { handleChange } from '../helpers';
+import { handleChange, turnOffbutton } from '../helpers';
+import Heading from '../../Heading/Heading.jsx';
 
 function Form2C() {
+  turnOffbutton();
 
   var form2c = setLocalStorage("form2c" , {H2C2 : "", H2C3:"" , H2C4:"" , H2C5:""});
   const [form2C , setForm2C] = useState(JSON.parse(form2c));
@@ -44,6 +46,8 @@ function Form2C() {
 
 
   return (
+    <div>
+      <Heading h2="HFAT: CHC"></Heading>
     <section>
       <SidePanel id={"3"} />
       <div className="siteInfo">
@@ -100,6 +104,7 @@ function Form2C() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

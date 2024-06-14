@@ -6,7 +6,8 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import C1 from '../Tables/C1.jsx';
 import { handleChange, turnOffbutton } from '../helpers';
-import setLocalStorage from "../setLocalStorage.js"
+import setLocalStorage from "../setLocalStorage.js";
+import Heading from '../../Heading/Heading.jsx';
 
 function FormC() {
   const formc = setLocalStorage("formc",{C2a : [] , C2b : [] , C3: "" , C4 : [] , C5 : [], C6 : ""});
@@ -48,6 +49,8 @@ function FormC() {
   ];
 
   return (
+    <div>
+      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"3"} />
       <div className="siteInfo">
@@ -154,6 +157,7 @@ function FormC() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

@@ -6,6 +6,7 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading';
 
 function FormA() {
   turnOffbutton();
@@ -17,6 +18,8 @@ function FormA() {
   const date = new Date();
 
   return (
+    <div>
+      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"1"} />
       <div className="siteInfo">
@@ -60,6 +63,7 @@ function FormA() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

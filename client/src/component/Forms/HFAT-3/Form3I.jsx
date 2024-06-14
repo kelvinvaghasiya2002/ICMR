@@ -7,6 +7,7 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import I1 from '../Tables/I1.jsx'
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading.jsx';
 
 function Form3I() {
   var form3i = setLocalStorage("form3i", { H3I1: [], H3I2: [], H3I4: "" });
@@ -32,6 +33,8 @@ function Form3I() {
   ];
 
   return (
+    <div>
+      <Heading h2="HFAT: PHC"></Heading>
     <section>
       <SidePanel id={"9"} />
       <div className="siteInfo">
@@ -60,6 +63,7 @@ function Form3I() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

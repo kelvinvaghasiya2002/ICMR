@@ -6,6 +6,7 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading.jsx';
 
 function Form2G() {
   turnOffbutton();
@@ -16,6 +17,8 @@ function Form2G() {
 
  const [form2G, setForm2G] = useState(JSON.parse(form2g));
   return (
+    <div>
+      <Heading h2="HFAT: CHC"></Heading>
     <section>
       <SidePanel id={"7"} />
       <div className="siteInfo">
@@ -47,6 +50,7 @@ function Form2G() {
 
       </div>
     </section>
+    </div>
   )
 }
 

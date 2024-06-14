@@ -5,6 +5,7 @@ import Checkbox from '../child-comp/Checkbox';
 import { useState } from 'react';
 import setLocalStorage from '../setLocalStorage';
 import { turnOffbutton } from '../helpers';
+import Heading from '../../Heading/Heading';
 
 
 function FormD2() {
@@ -15,6 +16,8 @@ function FormD2() {
     const [formD1, setFormD1] = useState(JSON.parse(formd1));
 
     return (
+        <div>
+            <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
         <section>
             <SidePanel id={"4"} />
             <div className="siteInfo">
@@ -39,6 +42,7 @@ function FormD2() {
                 </div>
             </div>
         </section>
+        </div>
     )
 }
 

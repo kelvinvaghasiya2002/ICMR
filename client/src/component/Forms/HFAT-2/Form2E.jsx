@@ -7,6 +7,7 @@ import E1 from '../Tables/E1';
 import E2 from '../Tables/E2';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading.jsx';
 
 function Form2E() {
 
@@ -35,6 +36,8 @@ function Form2E() {
     { Type: 'Acute Respiratory Illness', Attended: '', Death: '' },
   ];
   return (
+    <div>
+      <Heading h2="HFAT: CHC"></Heading>
     <section>
       <SidePanel id={"5"} />
       <div className="siteInfo">
@@ -88,6 +91,7 @@ function Form2E() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

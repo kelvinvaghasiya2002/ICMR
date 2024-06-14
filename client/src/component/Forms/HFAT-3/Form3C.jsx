@@ -7,6 +7,7 @@ import InputField from '../child-comp/InputField';
 import C1 from '../Tables/C1.jsx'
 import { turnOffbutton , handleChange } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading.jsx';
 
 
 function Form3C() {
@@ -38,6 +39,8 @@ function Form3C() {
     { btn: "", Manpower: 'Other (please specify): _______', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
   ]
   return (
+    <div>
+      <Heading h2="HFAT: PHC"></Heading>
     <section>
       <SidePanel id={"3"} />
       <div className="siteInfo">
@@ -62,6 +65,7 @@ function Form3C() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 
