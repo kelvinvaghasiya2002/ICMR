@@ -4,6 +4,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading.jsx';
 
 function Form2J() {
   var form2j = setLocalStorage("form2j" , {H2J1:"" , H2J2:""});
@@ -11,6 +12,8 @@ function Form2J() {
 
   turnOffbutton();
   return (
+    <div>
+      <Heading h2="HFAT: CHC"></Heading>
     <section>
       <SidePanel id={"10"} />
       <div className="siteInfo">
@@ -36,6 +39,7 @@ function Form2J() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

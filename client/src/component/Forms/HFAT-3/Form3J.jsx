@@ -4,6 +4,7 @@ import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading.jsx';
 
 function Form3J() {
     turnOffbutton();
@@ -13,6 +14,8 @@ function Form3J() {
   const [form3J, setForm3J] = useState(JSON.parse(form3j));
 
   return (
+    <div>
+      <Heading h2="HFAT: PHC"></Heading>
     <section>
     <SidePanel id={"10"} />
     <div className="siteInfo">
@@ -37,6 +40,7 @@ function Form3J() {
       </div>
     </div>
   </section>
+  </div>
   )
 }
 

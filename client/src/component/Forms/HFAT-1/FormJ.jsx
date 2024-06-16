@@ -5,6 +5,7 @@ import Radio from '../child-comp/Radio';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import LastButton from '../child-comp/LastButton';
+import Heading from '../../Heading/Heading.jsx';
 function FormJ() {
   turnOffbutton();
   var formj = setLocalStorage("formj",
@@ -12,6 +13,8 @@ function FormJ() {
 
   const [formJ, setFormJ] = useState(JSON.parse(formj));
   return (
+    <div>
+      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"10"} />
       <div className="siteInfo">
@@ -36,6 +39,7 @@ function FormJ() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

@@ -3,10 +3,12 @@ import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Checkbox from '../child-comp/Checkbox';
 import setLocalStorage from '../setLocalStorage';
+import { turnOffbutton } from '../helpers';
+import Heading from '../../Heading/Heading.jsx';
 
 function Form2D() {
 
-
+turnOffbutton();
   var form2d = setLocalStorage("form2d",
   {
     H2D1: []
@@ -53,7 +55,8 @@ function Form2D() {
   ];
 
   return (
-    
+    <div>
+      <Heading h2="HFAT: CHC"></Heading>
     <section>
       <SidePanel id={"4"} />
       <div className="siteInfo">
@@ -78,6 +81,7 @@ function Form2D() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

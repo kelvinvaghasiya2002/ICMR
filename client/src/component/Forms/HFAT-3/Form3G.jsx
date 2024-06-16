@@ -6,7 +6,7 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
-
+import Heading from '../../Heading/Heading.jsx';
 function Form3G() {
     turnOffbutton();
     var form3g = setLocalStorage("form3g",
@@ -14,6 +14,8 @@ function Form3G() {
 
   const [form3G, setForm3G] = useState(JSON.parse(form3g));
   return (
+    <div>
+      <Heading h2="HFAT: PHC"></Heading>
     <section>
     <SidePanel id={"7"} />
     <div className="siteInfo">
@@ -44,6 +46,7 @@ function Form3G() {
       </div>
     </div>
   </section>
+  </div>
   )
 }
 

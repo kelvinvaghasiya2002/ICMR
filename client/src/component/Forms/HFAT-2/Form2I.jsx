@@ -6,6 +6,7 @@ import Radio from '../child-comp/Radio';
 import { handleChange, turnOffbutton } from '../helpers';
 import I1 from "../Tables/I1.jsx"
 import setLocalStorage from '../setLocalStorage.js';
+import Heading from '../../Heading/Heading.jsx';
 
 function Form2I() {
   var form2i = setLocalStorage("form2i" , {H2I1:[] , H2I2 : [], H2I4:""})
@@ -33,6 +34,8 @@ function Form2I() {
 
 
   return (
+    <div>
+      <Heading h2="HFAT: CHC"></Heading>
     <section>
       <SidePanel id={"9"} />
       <div className="siteInfo">
@@ -62,6 +65,7 @@ function Form2I() {
 
       </div>
     </section>
+    </div>
   )
 }
 

@@ -6,6 +6,7 @@ import E1 from '../Tables/E1';
 import E2 from '../Tables/E2';
 import { turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading';
 
 function FormE() {
   var forme = setLocalStorage("forme",{E3 : [] , E4:[]});
@@ -31,7 +32,10 @@ function FormE() {
     { Type: 'Acute Respiratory Illness', Attended: '', Death: '' },
   ];
 
-  return (<section>
+  return (
+    <div>
+      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
+  <section>
     <SidePanel id={"5"} />
     <div className="siteInfo">
 
@@ -100,6 +104,7 @@ function FormE() {
       </div>
     </div>
   </section>
+  </div>
   )
 }
 

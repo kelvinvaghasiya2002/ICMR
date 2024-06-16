@@ -67,6 +67,7 @@ import Form3H from './component/Forms/HFAT-3/Form3H.jsx'
 import Form3I from './component/Forms/HFAT-3/Form3I.jsx'
 import Form3J from './component/Forms/HFAT-3/Form3J.jsx'
 import Facility from './component/Forms/Ambulance/Facility.jsx'
+import Heading from './component/Heading/Heading.jsx'
 
 const url = import.meta.env.VITE_SERVER;
 
@@ -106,6 +107,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <Heading/>
       <Routes>
         <Route path='/' element={!loggedIn ? <FirstPage /> : <HomePage />} />
         <Route path='/sign-in' element={<SignIn />} />

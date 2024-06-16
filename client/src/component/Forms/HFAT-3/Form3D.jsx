@@ -4,13 +4,18 @@ import Buttons from '../child-comp/Buttons';
 import Checkbox from '../child-comp/Checkbox';
 import { useState } from 'react';
 import setLocalStorage from '../setLocalStorage';
+import { turnOffbutton } from '../helpers';
+import Heading from '../../Heading/Heading.jsx';
 
 function FormD() {
+  turnOffbutton();
   var form3d = setLocalStorage("form3d", { H3D1: [] })
   const [form3D, setForm3D] = useState(JSON.parse(form3d))
 
 
   return (
+    <div>
+      <Heading h2="HFAT: PHC"></Heading>
     <section>
       <SidePanel id={"4"} />
       <div className="siteInfo">
@@ -32,6 +37,7 @@ function FormD() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

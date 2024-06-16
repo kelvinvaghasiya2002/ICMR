@@ -5,6 +5,7 @@ import Buttons from '../child-comp/Buttons';
 import I2 from "../Tables/I1.jsx"
 import { turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading.jsx';
 
 function FormI() {
   var formi = setLocalStorage('formi' , {I1 : ""});
@@ -30,6 +31,8 @@ const initialRows = [
 ];
 
   return (
+    <div>
+      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"9"} />
       <div className="siteInfo">
@@ -54,6 +57,7 @@ const initialRows = [
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

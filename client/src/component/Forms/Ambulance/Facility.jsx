@@ -7,6 +7,7 @@ import InputField from '../child-comp/InputField';
 import { turnOffbutton } from '../helpers';
 import AMB1 from './table/AMB1';
 import AMB2 from './table/AMB2';
+import Heading from '../../Heading/Heading.jsx';
 
 function Facility() {
 
@@ -93,6 +94,8 @@ function Facility() {
 
   const date = new Date();
   return (
+    <div>
+      <Heading h2="GAP Assessment Tool – Ambulance at Facility Level"></Heading>
     <section>
       <SidePanel id={"1"} />
       <div className="siteInfo">
@@ -189,6 +192,7 @@ function Facility() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

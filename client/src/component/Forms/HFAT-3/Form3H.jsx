@@ -6,6 +6,7 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading.jsx';
 
 
 function Form3H() {
@@ -17,6 +18,8 @@ function Form3H() {
   const [form3H, setForm3H] = useState(JSON.parse(form3h));
 
   return (
+    <div>
+      <Heading h2="HFAT: PHC"></Heading>
     <section>
       <SidePanel id={"8"} />
       <div className="siteInfo">
@@ -61,6 +64,7 @@ function Form3H() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

@@ -6,6 +6,7 @@ import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Heading from '../../Heading/Heading';
 
 function FormB() {
   var formb = setLocalStorage("formb", { B1: "", B2: "", B3: "", B4:"", B5: "", B6: "", B7: "", B8: "", B9: "", B10: [], B11: [], B12: [], B13: [], B14: "", B15: "" }
@@ -14,6 +15,8 @@ function FormB() {
   const [formB , setFormB] = useState(JSON.parse(formb));
   turnOffbutton();
   return (
+    <div>
+      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"2"} />
       <div className="siteInfo">
@@ -128,6 +131,7 @@ function FormB() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 
