@@ -38,6 +38,7 @@ function Form2B() {
               placeholder="Type here" 
               name="H2B2" 
               value={form2B.H2B2} 
+              type={"number"}
               onChange={handleChange(setForm2B)} 
           />
 
@@ -54,6 +55,7 @@ function Form2B() {
               placeholder="Type here" 
               name="H2B4" 
               value={form2B.H2B4} 
+              type={"number"}
               onChange={handleChange(setForm2B)} 
           />
 

@@ -114,7 +114,9 @@ function Facility() {
           <div>
             <p className='datetime'>Date : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
           </div>
+
           <InputField h3="GPS Coordinates:" placeholder="Type here" name='AMB4'/>
+
           <Radio h3="Name of the Ambulance Service?" CheckbobItems={["Public", "108", "104", "112", "102", "Private", "Institutional Ambulance"]} name='AMB5' />
 
           <InputField h3="Which Location/Area does your ambulance operate in?" placeholder="Type here" name='AMB6'/>
@@ -128,7 +130,6 @@ function Facility() {
           <InputField h3="How many emergency cases do you transport per day on an a average" placeholder="Type here" name='AMB10'/>
           <InputField h3="How much area to you cater to ?" placeholder="Km radius" name='AMB11'/>
 
-          {/* Radio */}
 
           <h2>EMERGENCY EQUIPMENT:</h2>
           <Radio
@@ -152,6 +153,7 @@ function Facility() {
             CheckbobItems={["Yes", "No"]}
             name="AMB15"
           />
+          
           <h3>Whether it’s available or not</h3>
           <AMB1 columns={columns1} initialRows={initialRows1} name='AMB16'/>
 
