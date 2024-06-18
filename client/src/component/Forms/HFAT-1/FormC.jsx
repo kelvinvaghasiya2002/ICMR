@@ -10,7 +10,7 @@ import setLocalStorage from "../setLocalStorage.js";
 import Heading from '../../Heading/Heading.jsx';
 
 function FormC() {
-  const formc = setLocalStorage("formc",{C2a : [] , C2b : [] , C3: "" , C4 : [] , C5 : [], C6 : ""});
+  const formc = setLocalStorage("formc",{C2a : [] , C2b : [] , C3: "" , C4 : [""] , C5 : "", C6 : ""});
 
   const [formC , setFormC] = useState(JSON.parse(formc));
   turnOffbutton();
@@ -68,7 +68,7 @@ function FormC() {
 
           <C1 columns={columns} initialRows={initialRows} tableName={"C1"} />
 
-          <h3>Please indicate which of the following specialist/super specialist services are available in your hospital</h3>
+          <h3>1C.2 : Please indicate which of the following specialist/super specialist services are available in your hospital</h3>
 
           <Checkbox
             h3="District Hospital + Medical College"
@@ -112,14 +112,15 @@ function FormC() {
           />
 
           <Radio
-            h3="Whether training for emergency care management is being conducted for the staff in the institution?"
+            h3="1C.4 : Whether training for emergency care management is being conducted for the staff in the institution?"
             CheckbobItems={["Yes", "No"]}
             name="C3"
             onClick={handleChange(setFormC)}
             byDefault={formC.C3}
           />
+
           <Checkbox
-            h3="Which of the following emergency care trainings you have undergone?"
+            h3="1C.5 : If Yes to 1C.3, Which of the following emergency care trainings you have undergone?"
             CheckbobItems={[
               "Trauma & Accidental Injuries",
               "Burns",
@@ -132,26 +133,28 @@ function FormC() {
               "PPH",
               "Pre-Eclampsia",
               "Neonatal emergencies"
-
             ]}
             other={true}
             name="C4"
             setFunction={setFormC} StateValue={formC} array={formC.C4}
           />
-          <Checkbox
-            h3="Frequency of training on emergency care in a year?"
+
+          <Radio
+            h3="1C.6 : If Yes, Frequency of training on emergency care in a year?"
             CheckbobItems={[
               "Every Month",
               "Quarterly",
+              "Half Yearly",
               "Annually"
             ]}
             other={true}
             name="C5"
-            setFunction={setFormC} StateValue={formC} array={formC.C5}
+            onClick={handleChange(setFormC)}
+            byDefault={formC.C5}
           />
 
 
-          <InputField name="C6" h3="When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} />
+          <InputField name="C6" h3="1C.7 : When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} />
 
           <Buttons formName={"formc"} formData={formC} prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" />
         </div>

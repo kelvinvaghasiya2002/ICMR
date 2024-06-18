@@ -34,29 +34,29 @@ function FormH() {
 
         <h3 style={{color:"#3177FF"}}>Disaster management plan :</h3>
 
-        <Radio byDefault={formH.H1H1} onClick={handleChange(setFormH)} name="H1H1" h3="Do you have any disaster management plan?" CheckbobItems={["Yes","No"]} />
+        <Radio byDefault={formH.H1H1} onClick={handleChange(setFormH)} name="H1H1" h3="1H.1.1 : Do you have any disaster management plan?" CheckbobItems={["Yes","No"]} />
 
-        <Radio byDefault={formH.H1H2} onClick={handleChange(setFormH)} name="H1H2" h3="Do you have a redistribution plan?" CheckbobItems={["Yes","No"]} />
+        <Radio byDefault={formH.H1H2} onClick={handleChange(setFormH)} name="H1H2" h3="1H.1.2 : Do you have a redistribution plan?" CheckbobItems={["Yes","No"]} />
 
-        <Radio byDefault={formH.H1H3} onClick={handleChange(setFormH)} name="H1H3" h3="Do you have any evacuation plan?" CheckbobItems={["Yes","No"]}/>
+        <Radio byDefault={formH.H1H3} onClick={handleChange(setFormH)} name="H1H3" h3="1H.1.3 : Do you have any evacuation plan?" CheckbobItems={["Yes","No"]}/>
 
         <h3 style={{color:"#3177FF"}}>Quality Improvement Plan :</h3>
 
 
-        <Radio byDefault={formH.H1H4} onClick={handleChange(setFormH)} name="H1H4" h3="Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes","No"]} other={true} />
+        <Radio byDefault={formH.H1H4} onClick={handleChange(setFormH)} name="H1H4" h3="1H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes","No"]} other={true} />
 
-        <InputField value={formH.H1H5} onChange={handleChange(setFormH)} name="H1H5" h3="How frequently does this committee meet in a year?" placeholder="Type here" />
-
-
-        <Radio byDefault={formH.H1H6} onClick={handleChange(setFormH)} name="H1H6" h3="Do you have regular audits related to emergency care in hospital?" CheckbobItems={["Yes","No"]} />
-
-        <InputField value={formH.H1H7} onChange={handleChange(setFormH)} name="H1H7" h3="How frequently audits are conducted in a year?" placeholder="Type here" />
+        <InputField value={formH.H1H5} onChange={handleChange(setFormH)} name="H1H5" h3="1H.2.2 : How frequently does this committee meet in a year?" placeholder="Type here" />
 
 
-        <Checkbox setFunction={setFormH} array={formH.H1H8} StateValue={formH}  name="H1H8" h3="Types of audits conducted?" CheckbobItems={["Mortality audit","Morbidity Audit"]} other={true} />
+        <Radio byDefault={formH.H1H6} onClick={handleChange(setFormH)} name="H1H6" h3="1H.2.3 : Do you have regular audits related to emergency care in hospital?" CheckbobItems={["Yes","No"]} />
+
+        <InputField value={formH.H1H7} onChange={handleChange(setFormH)} name="H1H7" h3="1H.2.4 : How frequently audits are conducted in a year?" placeholder="Type here" />
 
 
-        <InputField value={formH.H1H9} onChange={handleChange(setFormH)} name="H1H9" h3="Any action being taken on Audit report in the last one year?" placeholder="Type here" />
+        <Checkbox setFunction={setFormH} array={formH.H1H8} StateValue={formH}  name="H1H8" h3="1H.2.5 : Types of audits conducted?" CheckbobItems={["Mortality audit","Morbidity Audit"]} other={true} />
+
+
+        <InputField value={formH.H1H9} onChange={handleChange(setFormH)} name="H1H9" h3="1H.2.6 : Any action being taken on Audit report in the last one year?" placeholder="Type here" />
 
       <Buttons formName="formh" formData={formH} prev="/finance" next="/processpoliciessops" />
       </div>

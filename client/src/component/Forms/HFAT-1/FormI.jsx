@@ -8,7 +8,7 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 
 function FormI() {
-  var formi = setLocalStorage('formi' , {I1 : ""});
+  var formi = setLocalStorage('formi' , {I1 : []});
   const [formI , setFormI] = useState(JSON.parse(formi));
   turnOffbutton();
   const columns = [
@@ -47,7 +47,7 @@ const initialRows = [
 
         <div className="formcontent">
 
-          <Checkbox h3="Indicate whether your hospital has the following documented protocols and systems (Select all that apply):" CheckbobItems={["Procedure for registration and admission of new emergency patients", "Procedure/Policy for receiving of referral patients", "Emergency Manual at the point of care", "Triage guidelines and protocol.", "Discharge summaries for all patients.", "Policy on handling cases of death (outside and inside hospital).", "Disaster management plan", "Triage policy/system at your emergency department.", "Alert system: Code Blue.", "Alert system: Trauma.", "Alert system: Chest Pain", "Alert system: Sepsis.", "Alert system: Stroke", "Alert system: Maternal Emergencies", "Alert system: Neonatal Emergencies", "Alert system: Acute Respiratory Emergencies", "Alert system: Snake bite and Poisoning"]} name="I1" setFunction={setFormI} StateValue={formI} array={formI.I1}   />
+          <Checkbox h3="1I.1 : Indicate whether your hospital has the following documented protocols and systems (Select all that apply):" CheckbobItems={["Procedure for registration and admission of new emergency patients", "Procedure/Policy for receiving of referral patients", "Emergency Manual at the point of care", "Triage guidelines and protocol.", "Discharge summaries for all patients.", "Policy on handling cases of death (outside and inside hospital).", "Disaster management plan", "Triage policy/system at your emergency department.", "Alert system: Code Blue.", "Alert system: Trauma.", "Alert system: Chest Pain", "Alert system: Sepsis.", "Alert system: Stroke", "Alert system: Maternal Emergencies", "Alert system: Neonatal Emergencies", "Alert system: Acute Respiratory Emergencies", "Alert system: Snake bite and Poisoning"]} name="I1" setFunction={setFormI} StateValue={formI} array={formI.I1}   />
 
           <h3>Whether having Emergency condition specific SOP/STW for emergency care? </h3>
 

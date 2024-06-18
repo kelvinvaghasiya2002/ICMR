@@ -9,7 +9,7 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
 
 function FormE() {
-  var forme = setLocalStorage("forme",{E3 : [] , E4:[]});
+  var forme = setLocalStorage("forme",{E3 : [""] , E4:[""]});
   const [formE, setFormE] = useState(JSON.parse(forme));
   turnOffbutton();
 
@@ -57,7 +57,7 @@ function FormE() {
         <E2 columns={columns2} initialRows={initialRows2} tableName={"E2"} />
 
         <Checkbox
-          h3="Which of these emergency care services does your facility provide? (Select all that apply)"
+          h3="1E.3 : Which of these emergency care services does your facility provide? (Select all that apply)"
           CheckbobItems={[
             "Emergency operative services for trauma patients",
             "Emergency operative services for non-trauma (surgical, orthopedics etc.) patients",
@@ -83,7 +83,7 @@ function FormE() {
         />
 
         <Checkbox
-          h3="Which of these emergency diagnostic facilities are provided at DH/ Tertiary Care Hospital?"
+          h3="1E.4 : Which of these emergency diagnostic facilities are provided at DH/ Tertiary Care Hospital?"
           CheckbobItems={[
             "Radiology-CT",
             "Radiology-ultrasound",

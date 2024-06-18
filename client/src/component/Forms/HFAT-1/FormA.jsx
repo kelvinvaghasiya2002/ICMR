@@ -39,7 +39,7 @@ function FormA() {
             <p className='datetime'>Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
           </div>
 
-          <Radio h3="Site :"  onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH_00000", "ORPUR_DH_11111", "MPBHS_DH_22222", "PBLDH_DH_33333", "PYPDY_DH_44444"]} name="A3" />
+          <Radio h3="Code :"  onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH_00000", "ORPUR_DH_11111", "MPBHS_DH_22222", "PBLDH_DH_33333", "PYPDY_DH_44444"]} name="A3" />
 
           <InputField name="A4" value={formA.A4} onChange={handleChange(setFormA)} h3="Block Name:" placeholder="Type here" />
 

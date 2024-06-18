@@ -31,7 +31,7 @@ function FormD2() {
                 </div>
 
                 <div className="formcontent">
-                    <h3>Which of the following essential emergency equipment is available at the DH/ Tertiary Care Hospital?
+                    <h3>1D.2 : Which of the following essential emergency equipment is available at the DH/ Tertiary Care Hospital?
                         (Multiple answers possible)</h3>
 
                     <h3>24x7 availability of (with numbers and availability and functionality):</h3>

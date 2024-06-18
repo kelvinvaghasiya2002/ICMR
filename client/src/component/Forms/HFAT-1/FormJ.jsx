@@ -29,10 +29,10 @@ function FormJ() {
 
         <div className="formcontent">
 
-          <Radio byDefault={formJ.H1J1} onClick={handleChange(setFormJ)} name="H1J1" h3="Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]} />
+          <Radio byDefault={formJ.H1J1} onClick={handleChange(setFormJ)} name="H1J1" h3="1J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]} />
 
 
-          <Radio byDefault={formJ.H1J2} onClick={handleChange(setFormJ)} name="H1J2" h3="Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]} />
+          <Radio byDefault={formJ.H1J2} onClick={handleChange(setFormJ)} name="H1J2" h3="1J.2 : Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]} />
 
           <LastButton formName="formj" formData={formJ} prev="/processpoliciessops" MainForm={"HFAT-1"} />
 
