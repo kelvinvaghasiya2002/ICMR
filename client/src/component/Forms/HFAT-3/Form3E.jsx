@@ -8,10 +8,11 @@ import Heading from '../../Heading/Heading.jsx';
 
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
+import Checkbox from '../child-comp/Checkbox.jsx';
 
 function Form3E() {
   turnOffbutton();
-  var form3e = setLocalStorage("form3e",{H3E3 : ""});
+  var form3e = setLocalStorage("form3e",{H3E3 : []});
   const [form3E , setForm3E] = useState(JSON.parse(form3e));
 
   const columns2 = [
@@ -58,7 +59,7 @@ function Form3E() {
 
           <E2 columns={columns2} initialRows={initialRows2} tableName={"H3E2"} />
 
-          <Radio h3="Which of the following emergency services are delivered at the PHC? " CheckbobItems={["Triage", "Resuscitation", "Medico Legal Reporting"]} name={"H3E3"} onClick={handleChange(setForm3E)} byDefault={form3E.H3E3} />
+          <Checkbox h3="3E.3 : Which of the following emergency services are delivered at the PHC? " CheckbobItems={["Triage", "Resuscitation", "Medico Legal Reporting"]} name={"H3E3"} setFunction={setForm3E} StateValue={form3E} array={form3E.H3E3}  />
 
           <Buttons formName={"form3e"} formData={form3E} prev="/logistics-3-1" next="/informationsystem-3" />
         </div>

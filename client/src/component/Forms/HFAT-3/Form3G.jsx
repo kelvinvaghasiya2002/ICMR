@@ -30,17 +30,17 @@ function Form3G() {
 
       <div className="formcontent">
 
-      <Radio byDefault={form3G.H3G1} onClick={handleChange(setForm3G)} name="H3G1" h3="Whether any untied fund is available at your hospital?" CheckbobItems={["Yes", "No"]}  />
+      <Radio byDefault={form3G.H3G1} onClick={handleChange(setForm3G)} name="H3G1" h3="3G.1 : Whether any untied fund is available at your hospital?" CheckbobItems={["Yes", "No"]}  />
 
-      <Radio byDefault={form3G.H3G2} onClick={handleChange(setForm3G)} name="H3G2" h3="whether this fund is utilized for providing emergency care services?" CheckbobItems={["Yes", "No"]}  />
+      <Radio byDefault={form3G.H3G2} onClick={handleChange(setForm3G)} name="H3G2" h3="3G.2 : If yes, whether this fund is utilized for providing emergency care services?" CheckbobItems={["Yes", "No"]}  />
 
-      <Radio byDefault={form3G.H3G3} onClick={handleChange(setForm3G)} name="H3G3" h3="Whether any fund is available for emergency care?" CheckbobItems={["Yes", "No"]}  />
+      <Radio byDefault={form3G.H3G3} onClick={handleChange(setForm3G)} name="H3G3" h3="3G.3 : Whether any fund is available for emergency care?" CheckbobItems={["Yes", "No"]}  />
 
-      <Radio byDefault={form3G.H3G4} onClick={handleChange(setForm3G)} name="H3G4" h3="If funds are available, which health protection schemes are covering your emergency care system?" CheckbobItems={["PMJAY", "RKS"]} other={true} />
+      <Radio byDefault={form3G.H3G4} onClick={handleChange(setForm3G)} name="H3G4" h3="3G.4 : If funds are available, which health protection schemes are covering your emergency care system?" CheckbobItems={["PMJAY", "RKS"]} other={true} />
 
-      <InputField value={form3G.H3G5} onChange={handleChange(setForm3G)} name="H3G5" h3="Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type family member"/>
+      <InputField value={form3G.H3G5} onChange={handleChange(setForm3G)} name="H3G5" h3="3G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type family member"/>
 
-      <Radio byDefault={form3G.H3G6} onClick={handleChange(setForm3G)} name="H3G6" h3="Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?" CheckbobItems={["Yes", "No"]}  />
+      <Radio byDefault={form3G.H3G6} onClick={handleChange(setForm3G)} name="H3G6" h3="3G.6 : Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?" CheckbobItems={["Yes", "No"]}  />
 
       <Buttons formName="form3g" formData={form3G} prev="/informationsystem-3" next="/leadershipandgovernance-3" />
       </div>

@@ -30,10 +30,10 @@ function Form3J() {
 
       <div className="formcontent">
 
-      <Radio byDefault={form3J.H3J1} onClick={handleChange(setForm3J)} name="H3J1" h3="Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]}  />
+      <Radio byDefault={form3J.H3J1} onClick={handleChange(setForm3J)} name="H3J1" h3="3J.1 : Does this facility follow any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility? " CheckbobItems={["Yes", "No"]}  />
 
 
-      <Radio byDefault={form3J.H3J2} onClick={handleChange(setForm3J)} name="H3J2" h3="Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]}  />
+      <Radio byDefault={form3J.H3J2} onClick={handleChange(setForm3J)} name="H3J2" h3="3J.2 : Do you any documented SOP/STW guiding the referral linkages?" CheckbobItems={["Yes", "No"]}  />
 
 
       <Buttons formName="form3j" formData={form3J} prev="/processpoliciessops-3" next="" />

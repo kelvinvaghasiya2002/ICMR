@@ -37,7 +37,7 @@ function Form2A() {
             <p className='datetime'>Date : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
           </div>
 
-          <Radio h3="Code :" CheckbobItems={[
+          <Radio h3="State :" CheckbobItems={[
             "GJBRC_CHC_",
             "ORPUR_CHC_",
             "MPBHS_CHC_",

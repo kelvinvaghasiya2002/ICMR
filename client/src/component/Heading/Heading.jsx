@@ -1,9 +1,9 @@
-export default function Heading({h2}){
+export default function Heading({ h2 }) {
     return (
         <>
-        <div>
-      <h2 style={{display:"flex",justifyContent:"center",fontSize:"1.5vw"}}>{h2}</h2>
-    </div>
+            <div style={{textAlign:"center"}}>
+                <h2 style={{fontSize: "1.1vw", margin: "0" }}>{h2}</h2>
+            </div>
         </>
     )
 }

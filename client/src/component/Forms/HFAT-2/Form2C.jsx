@@ -12,7 +12,7 @@ import Heading from '../../Heading/Heading.jsx';
 function Form2C() {
   turnOffbutton();
 
-  var form2c = setLocalStorage("form2c" , {H2C2 : "", H2C3:"" , H2C4:"" , H2C5:""});
+  var form2c = setLocalStorage("form2c" , {H2C2 : "", H2C3:[""] , H2C4:"" , H2C5:""});
   const [form2C , setForm2C] = useState(JSON.parse(form2c));
 
   const columns = [
@@ -65,22 +65,24 @@ function Form2C() {
           <h3>Tick the manpower available in your emergency department and provide numbers</h3>
           <C1 columns={columns} initialRows={initialRows} tableName="H2C1" />
 
-          <Radio h3="Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H2C2"
+          <Radio h3="2C.2 : Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H2C2"
           onClick={handleChange(setForm2C)} byDefault={form2C.H2C2} />
 
           <Checkbox
-            h3="Which of the following emergency care trainings you have undergone?"
+            h3="2C.3 : if Yes to 2C.2 , Which of the following emergency care trainings you have undergone?"
             CheckbobItems={[
               "Trauma & Accidental Injuries",
               "Burns",
               "Cardiac emergencies: acute chest pain, acute coronary syndrome (ACS)/ STEMI, Heart failure, Cardiac Arrest",
               "Stroke",
               "Acute Breathlessness",
+              "Seizures",
               "Bites (Animal bite/snake bite/scorpion sting)",
               "Choking/foreign body ingestion",
               "Poisoning",
               "PPH",
               "Pre-Eclampsia",
+              "Neonatal emergencies"
             ]}
             other={true}
             name="H2C3"
@@ -88,17 +90,18 @@ function Form2C() {
           />
 
           <Radio
-            h3="Frequency of training on emergency care in a year?"
+            h3="2C.4 : if Yes, Frequency of training on emergency care in a year?"
             CheckbobItems={[
               "Every Month",
               "Quarterly",
+              "Half Yearly",
               "Annually",
             ]}
             other={true}
             name="H2C4" onClick={handleChange(setForm2C)} byDefault={form2C.H2C4}
           />
 
-          <InputField h3="When was the last training conducted?" placeholder="Type here" name="H2C5" value={form2C.H2C5} onChange={handleChange(setForm2C)} />
+          <InputField h3="2C.5 : When was the last training conducted?" placeholder="Type here" name="H2C5" value={form2C.H2C5} onChange={handleChange(setForm2C)} />
 
           <Buttons formName={"form2c"} formData={form2C} prev="/infrastructure-2" next="/logistics-2" />
         </div>

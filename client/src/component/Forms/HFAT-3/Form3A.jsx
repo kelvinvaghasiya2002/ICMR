@@ -40,7 +40,7 @@ function Form3A() {
             <p className='datetime'>Date : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
           </div>
 
-          <Radio byDefault={form3A.H3A2}  onClick={handleChange(setForm3A)} name="H3A2" h3="Code :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
+          <Radio byDefault={form3A.H3A2}  onClick={handleChange(setForm3A)} name="H3A2" h3="State :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
 
           <InputField value={Form3A.H3A3} onChange={handleChange(setForm3A)} name="H3A3" h3="Block Name :" placeholder="Type here" />
 
@@ -48,17 +48,17 @@ function Form3A() {
 
           <InputField value={Form3A.H3A5} onChange={handleChange(setForm3A)} name="H3A5" h3="Healthcare Facility Address :" placeholder="Type here" />
 
-          <InputField value={Form3A.H3A6} onChange={handleChange(setForm3A)} name="H3A6" h3="Name of the MOIC :" placeholder="Type here" />
+          <InputField value={Form3A.H3A6} onChange={handleChange(setForm3A)} name="H3A6" h3="Name of the Medical Officer :" placeholder="Type here" />
 
-          <InputField value={Form3A.H3A7} onChange={handleChange(setForm3A)} name="H3A7" h3="Contact Number of MOIC :" placeholder="Type here" />
+          <InputField value={Form3A.H3A7} onChange={handleChange(setForm3A)} name="H3A7" h3="Contact Number of Medical Officer :" placeholder="Type here" />
 
           <InputField value={Form3A.H3A8} onChange={handleChange(setForm3A)} name="H3A8" h3="Email ID :" placeholder="Type here" />
 
           <InputField value={Form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="GPS Coordinates :" placeholder="Type here" />
 
-          <Radio byDefault={form3A.H3A10} onClick={handleChange(setForm3A)} name="H3A10" h3="What type of CHC is this?" CheckbobItems={["Non-FRU – CHC (30 beds)", "FRU – CHC (30 beds)", "FRU – CHC (50 beds)", "FRU – UCHC (50 beds)", "FRU – UCHC (100 beds)"]} />
+          <Radio byDefault={form3A.H3A10} onClick={handleChange(setForm3A)} name="H3A10" h3="What type of Health care facility is this?" CheckbobItems={["Non-FRU – CHC (30 beds)", "FRU – CHC (30 beds)", "FRU – CHC (50 beds)", "FRU – UCHC (50 beds)", "FRU – UCHC (100 beds)"]} />
 
-          <Radio byDefault={form3A.H3A11} onClick={handleChange(setForm3A)} name="H3A11" h3="Type of locality:" CheckbobItems={["Urban", "Rural"]} />
+          <Radio byDefault={form3A.H3A11} onClick={handleChange(setForm3A)} name="H3A11" h3="The facility is coming under : " CheckbobItems={["Urban", "Rural"]} />
 
 
           <Buttons formName="form3a" formData={form3A} prev="" next="/infrastructure-3" />

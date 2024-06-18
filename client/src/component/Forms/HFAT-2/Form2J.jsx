@@ -28,10 +28,10 @@ function Form2J() {
 
         <div className="formcontent">
 
-          <Radio h3="Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]} name={"H2J1"} onClick={handleChange(setForm2J)} byDefault={form2J.H2J1}  />
+          <Radio h3="2J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]} name={"H2J1"} onClick={handleChange(setForm2J)} byDefault={form2J.H2J1}  />
 
 
-          <Radio h3="Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]} name={"H2J2"} onClick={handleChange(setForm2J)} byDefault={form2J.H2J2}  />
+          <Radio h3="2J.2 : Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]} name={"H2J2"} onClick={handleChange(setForm2J)} byDefault={form2J.H2J2}  />
 
 
           <Buttons formName={"form2j"} formData={form2J} prev="/processpoliciessops-2" next="" />

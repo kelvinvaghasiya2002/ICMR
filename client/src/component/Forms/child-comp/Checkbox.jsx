@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValue, array }) {
+    console.log(name);
+    const [otherSpecify , setOtherSpecify] = useState("");
+
+    const handleChange = (event)=>{
+        setOtherSpecify(event.target.value);
+        array[0]=event.target.value;
+    }
+
     const handleClick = (event) => {
         const { value } = event.target;
         if (array.includes(value)) {
+            console.log(value);
             array = array.filter(item => {
                 return item !== value
             })
@@ -16,6 +25,17 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             [event.target.name]: array
         }
         setFunction(StateValue)
+    }
+
+    const handleCheckboxClick = ()=>{
+        // console.log("Clicked");
+        const otherSpecifyCheckBox = document.getElementById(`${name}otherSpecifyCheckBox`);
+        if(otherSpecifyCheckBox.checked == true){
+            console.log(otherSpecifyCheckBox.checked);
+            document.getElementById(name).disabled = false;
+        }else{
+            document.getElementById(name).disabled = true;
+        }
     }
 
     return (
@@ -53,8 +73,12 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                     }
                     {
                         other &&
-                        <input
-                            className='blockinput others' type="text" name={name} placeholder="Other (Specify)" />
+                        <>
+                            <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" />
+                            <input
+                            style={{borderLeft : "none" , borderRight: "none" , borderTop : "none"}}
+                                className='blockinput others' onChange={handleChange} type="text" name="otherSpecify" placeholder="Other (Specify)" value={array[0]} id={name} disabled/>
+                        </>
 
                     }
                 </form>

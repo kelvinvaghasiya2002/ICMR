@@ -86,10 +86,10 @@ function E1({ tableName }) {
                         }
                     </tbody>
                 </table>
-                <div className='tablebtn'>
+                {/* <div className='tablebtn'>
                     <button onClick={handlePlusClick}>+</button>
                     <button onClick={handleMinusClick}>-</button>
-                </div>
+                </div> */}
             </div>
         </>
     )

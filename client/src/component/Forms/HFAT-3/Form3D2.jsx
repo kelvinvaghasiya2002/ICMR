@@ -28,7 +28,7 @@ function FormD2() {
                 </div>
 
                 <div className="formcontent">
-                    <h3>Which of the following essential emergency equipment is available at the DH/ Tertiary Care Hospital?
+                    <h3>3D.2 : Which of the following essential emergency equipment is available at the DH/ Tertiary Care Hospital?
                         (Multiple answers possible)</h3>
 
                     <Checkbox name={"H3D2"} setFunction={setForm3D2} StateValue={form3D2} array={form3D2.H3D2} CheckbobItems={[

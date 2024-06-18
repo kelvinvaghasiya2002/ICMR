@@ -10,7 +10,7 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 
 function Form3I() {
-  var form3i = setLocalStorage("form3i", { H3I1: [], H3I2: [], H3I4: "" });
+  var form3i = setLocalStorage("form3i", { H3I1: [""], H3I2: [""], H3I4: "" });
   const [form3I, setForm3I] = useState(JSON.parse(form3i));
   turnOffbutton();
   const columns = [
@@ -49,14 +49,14 @@ function Form3I() {
 
         <div className="formcontent">
 
-          <Checkbox h3="What   types of registers are maintained at the PHC?" CheckbobItems={["Emergency/OPD/Treatment Register", "Inventory Register", "Procedure register", "Referral Register", "Record for handing over and taking over of critical care equipment", "Medico-legal register", "Death Register", "Patient/Community feedback register"]} other={true} name="H3I1" setFunction={setForm3I} StateValue={form3I} array={form3I.H3I1} />
+          <Checkbox h3="3I.1 : What types of registers are maintained at the PHC?" CheckbobItems={["OPD/Treatment Register", "Inventory Register", "Referral Register", "Record for handing over and taking over of critical care equipment", "Medico-legal register", "Patient/Community feedback register","At Risk Register for vulnerable patients","Emergency Register","Mapping of the other Facilities in the block/district"]} other={true} name="H3I1" setFunction={setForm3I} StateValue={form3I} array={form3I.H3I1} />
 
-          <Checkbox h3="Which of the following SOPs for the management of common medical emergencies are followed at your PHC?" CheckbobItems={["Documented triage guidelines and protocols", "Standard treatment protocols for emergencies", "Transfer policies and procedures", "Disaster Management Plan", "Policies for handling cases of death"]} name="H3I2" setFunction={setForm3I} StateValue={form3I} array={form3I.H3I2} />
+          <Checkbox h3="3I.2 : Which of the following SOPs for the management of common medical emergencies are followed at your PHC? (Select all that apply)" CheckbobItems={["Use of Standard guidelines for triage","Post Exposure prophylaxis protocols.","Protocols for communication among health care teams and with patients and relatives.", "Disaster Management Plan"]} name="H3I2" setFunction={setForm3I} StateValue={form3I} array={form3I.H3I2} other={true} />
 
           <h3>Whether having Emergency condition specific SOP/STW for emergency care?</h3>
-          <I1 columns={columns} initialRows={initialRows} />
+          <I1 columns={columns} initialRows={initialRows} tableName="H3I3" />
 
-          <Radio h3="Does the facility have defined and   established procedure for informing patients about their medical condition,   involving them in treatment planning and facilitating informed decision   making?" CheckbobItems={["Yes", "No"]} name="H3I4" onClick={handleChange(setForm3I)} byDefault={form3I.H3I4} />
+          <Radio h3="3I.4 : Does the facility have defined and   established procedure for informing patients about their medical condition,   involving them in treatment planning and facilitating informed decision   making?" CheckbobItems={["Yes", "No"]} name="H3I4" onClick={handleChange(setForm3I)} byDefault={form3I.H3I4} />
 
 
           <Buttons formName={"form3i"} formData={form3I} prev="/leadershipandgovernance-3" next="/referrallinkages-3" />
