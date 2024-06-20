@@ -34,7 +34,7 @@ function FormE() {
 
   return (
     <div>
-      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
   <section>
     <SidePanel id={"5"} />
     <div className="siteInfo">
@@ -49,10 +49,10 @@ function FormE() {
 
       <div className="formcontent">
 
-        <h3>Numbers of Patients who Visited ED in Last One Month</h3>
+        <h3>1E.1 : Numbers of Patients who Visited ED in Last One Month</h3>
         <E1 tableName={"E1"} />
 
-        <h3>Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
+        <h3>1E.2 : Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
 
         <E2 columns={columns2} initialRows={initialRows2} tableName={"E2"} />
 

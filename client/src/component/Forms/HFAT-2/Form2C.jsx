@@ -40,7 +40,7 @@ function Form2C() {
     { Manpower: 'MLT', Number: '', Availability: '', OnSite: '', OnCall: '' },
     { Manpower: 'Pharmacist', Number: '', Availability: '', OnSite: '', OnCall: '' },
     { Manpower: 'Radiology technician', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Others (please specify)', Number: '', Availability: '', OnSite: '', OnCall: '' },
+    { Manpower: 'Other', Number: '', Availability: '', OnSite: '', OnCall: '' },
   ];
 
 

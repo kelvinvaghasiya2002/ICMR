@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 
-export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other }) {
+export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other, otherArray }) {
     const [otherSpecify, setOtherSpecify] = useState("");
 
     const handleChange = (event) => {
         setOtherSpecify(event.target.value);
     }
 
-    const handleRadioClick = ()=>{
-        const otherSpecifyRadio = document.getElementById(`${name}otherSpecifyRadio`);
+    const handleRadioClick = (event) => {
+        const otherSpecifyRadio = document.getElementById(event.target.value);
         console.log(otherSpecifyRadio.checked);
-        if(otherSpecifyRadio.checked == true){
-            document.getElementById(name).disabled = false;
-        }else{
-            document.getElementById(name).disabled = true;
+        if (otherSpecifyRadio.checked == true) {
+            document.getElementById(`${event.target.value}otherInput`).disabled = false;
+        } else {
+            document.getElementById(`${event.target.value}otherInput`).disabled = true;
         }
     }
 
@@ -27,14 +27,40 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                             return (
                                 <div key={index} style={{ display: "flex", alignItems: "center" }}>
                                     {
-                                        (byDefault === item) ?
-                                            <input type="radio" id={item} name={name} value={item} onClick={onClick} checked />
+                                        (otherArray && otherArray[index]) ?
+                                            <>
+                                                <input
+                                                    id={item}
+                                                    onClick={handleRadioClick}
+                                                    value={item}
+                                                    type="radio"
+                                                    name={name} />
+
+                                                <span style={{ fontSize: "1.2vw" }}>{item}</span>
+
+                                                <input
+                                                    className='others' 
+                                                    onInput={handleChange} 
+                                                    onChange={onClick} 
+                                                    type="text" 
+                                                    name={name} 
+                                                    value={CheckbobItems.includes(byDefault) ? "" : byDefault} 
+                                                    id={`${item}otherInput`} 
+                                                    disabled />
+                                            </>
                                             :
-                                            <input type="radio" id={item} name={name} value={item} onClick={onClick} />
+                                            <>
+                                                {
+                                                    (byDefault === item) ?
+                                                        <input type="radio" id={item} name={name} value={item} onClick={onClick} checked />
+                                                        :
+                                                        <input type="radio" id={item} name={name} value={item} onClick={onClick} />
 
+                                                }
+
+                                                <label style={{ fontWeight: "400", marginLeft: "0.25vw" }} htmlFor={item}>{item}</label><br />
+                                            </>
                                     }
-
-                                    <label style={{ fontWeight: "400", marginLeft: "0.25vw" }} htmlFor={item}>{item}</label><br />
                                 </div>
                             )
                         }
@@ -42,16 +68,15 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                         )
 
                     }
-                    {
+                    {/* {
                         other &&
                         <>
                             <input id={`${name}otherSpecifyRadio`} onClick={handleRadioClick} value={otherSpecify} type="radio" name={name} />
+                            <span style={{ fontSize: "1.2vw" }}>Other(specify)</span>
                             <input
-                                style={{ borderLeft: "none", borderRight: "none", borderTop: "none" }}
-                                className='blockinput others' onInput={handleChange} onChange={onClick} type="text" name={name} placeholder="Other (Specify)" value={byDefault} id={name} disabled />
+                                className='others' onInput={handleChange} onChange={onClick} type="text" name={name} value={CheckbobItems.includes(byDefault) ? "" : byDefault} id={name} disabled />
                         </>
-
-                    }
+                    } */}
                 </form>
             </div>
 

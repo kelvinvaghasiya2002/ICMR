@@ -16,7 +16,7 @@ function FormG() {
   const [formG, setFormG] = useState(JSON.parse(formg));
   return (
     <div>
-      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"7"} />
       <div className="siteInfo">

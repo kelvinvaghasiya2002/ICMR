@@ -16,7 +16,6 @@ function Form3C() {
   const [form3C, setForm3C] = useState(JSON.parse(form3c))
 
   const columns = [
-    { key: 'btn', label: 'Select Required', type: 'checkbox', options: ['Yes'] },
     { key: 'Manpower', label: 'Manpower', type: 'text' },
     { key: 'Number', label: 'Number', type: 'input' },
     { key: 'availability247', label: '24/7 Availability', type: 'radio', options: ['Yes', 'No'] },
@@ -25,18 +24,18 @@ function Form3C() {
   ];
 
   const initialRows = [
-    { btn: "", Manpower: 'MO MBBS', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Specialist for Medicine', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Specialist for Pediatrics', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Specialist for Ophthalmology', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Specialist Obstetrics & Gynecologist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Staff Nurses', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Dressor', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Data entry operator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Sanitation staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Other (please specify): _______', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'MO MBBS', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Specialist for Medicine', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Specialist for Pediatrics', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Specialist for Ophthalmology', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Specialist Obstetrics & Gynecologist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Staff Nurses', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Dressor', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Data entry operator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Sanitation staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Other', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
   ]
   return (
     <div>

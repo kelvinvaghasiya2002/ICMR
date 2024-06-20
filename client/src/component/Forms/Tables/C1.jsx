@@ -1,6 +1,6 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const C1 = ({ columns, initialRows , tableName }) => {
+const C1 = ({ columns, initialRows, tableName }) => {
     const [rows, setRows] = useState(initialRows);
     console.log(rows);
     const [columnOptions, setColumnOptions] = useState(
@@ -12,11 +12,11 @@ const C1 = ({ columns, initialRows , tableName }) => {
         }, {})
     );
 
-    useEffect(()=>{
+    useEffect(() => {
         // localStorage.setItem("H3C1",JSON.stringify(rows))
-        localStorage.setItem(tableName,JSON.stringify(rows))
+        localStorage.setItem(tableName, JSON.stringify(rows))
 
-    },[rows])
+    }, [rows])
 
     const handleInputChange = (rowIndex, columnKey, value) => {
         const newRows = [...rows];
@@ -48,12 +48,17 @@ const C1 = ({ columns, initialRows , tableName }) => {
                                 <td key={colIndex}>
                                     {
                                         col.type === 'text' && (
-                                            <span>{row[col.key]}</span>
+                                            row[col.key] !== 'Other' ? <span><input type='checkbox' />{row[col.key]}</span> :
+                                                <span>
+                                                    <input type='checkbox' />
+                                                    <input className='others' placeholder='Other (please specify)' />
+                                                </span>
+
                                         )
                                     }
                                     {col.type === 'input' && (
                                         <input
-                                        className='tableinput'
+                                            className='tableinput'
                                             type="text"
                                             value={row[col.key]}
                                             onChange={(e) => handleInputChange(rowIndex, col.key, e.target.value)}
@@ -80,7 +85,7 @@ const C1 = ({ columns, initialRows , tableName }) => {
                                                     type="checkbox"
                                                     name={`${col.key}-${rowIndex}`}
                                                     value={option}
-                                                    checked={row[col.key].includes(option)}
+                                                    checked={row[col.key]?.includes(option)}
                                                     onChange={(e) => {
                                                         const value = e.target.value;
                                                         const newValue = row[col.key].includes(value)

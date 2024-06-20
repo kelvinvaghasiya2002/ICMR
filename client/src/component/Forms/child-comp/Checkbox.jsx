@@ -75,9 +75,9 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                         other &&
                         <>
                             <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" />
+                            <span style={{fontSize : "1.2vw"}}>Other(specify)</span>
                             <input
-                            style={{borderLeft : "none" , borderRight: "none" , borderTop : "none"}}
-                                className='blockinput others' onChange={handleChange} type="text" name="otherSpecify" placeholder="Other (Specify)" value={array[0]} id={name} disabled/>
+                                className='others' onChange={handleChange} type="text" name="otherSpecify" value={array[0]} id={name} disabled/>
                         </>
 
                     }

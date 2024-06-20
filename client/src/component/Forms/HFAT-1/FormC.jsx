@@ -16,7 +16,6 @@ function FormC() {
   turnOffbutton();
 
   const columns = [
-    { key: 'btn', label: 'Select Required', type: 'checkbox', options: ['Yes'] },
     { key: 'Manpower', label: 'Manpower', type: 'text' },
     { key: 'Number', label: 'Number', type: 'input' },
     { key: 'availability247', label: '24/7 Availability', type: 'radio', options: ['Yes', 'No'] },
@@ -25,32 +24,48 @@ function FormC() {
   ];
 
   const initialRows = [
-    { btn: "", Manpower: 'Faculty/Consultant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'CMO (casualty medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'SR (Senior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'JR (Junior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'MO (Medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Nursing officer in charge / Team leader', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Staff Nurse/ Nursing Officer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Radiology technician/ Radiographer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'OT. Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'H.A/ GDA/ Orderly', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: ' H.A/ GDA/ Orderly (GDA)General Duty Assistant, SA- Sanitary Attendant, HA- Hospital Attendant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'SA/ Housekeeping staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'EMT', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Security', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Registration staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'IT Staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Hospital Administrator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Radiology technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { btn: "", Manpower: 'Other (please specify)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' }
+    {Manpower: 'Faculty/Consultant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'CMO (casualty medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'SR (Senior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'JR (Junior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'MO (Medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Nursing officer in charge / Team leader', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Staff Nurse/ Nursing Officer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Radiology technician/ Radiographer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    
+    {Manpower: 'OT. Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'H.A/ GDA/ Orderly (GDA)General Duty Assistant, SA- Sanitary Attendant, HA- Hospital Attendant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'SA/ Housekeeping staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'EMT', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Security', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Registration staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'IT Staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Hospital Administrator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+
+    {Manpower: 'Other', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' }
   ];
 
   return (
     <div>
-      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"3"} />
       <div className="siteInfo">
@@ -64,7 +79,7 @@ function FormC() {
         </div>
 
         <div className="formcontent">
-          <h3>Tick the manpower available in your emergency department and provide numbers</h3>
+          <h3>1C.1 : Tick the manpower available in your emergency department and provide numbers</h3>
 
           <C1 columns={columns} initialRows={initialRows} tableName={"C1"} />
 
@@ -112,7 +127,7 @@ function FormC() {
           />
 
           <Radio
-            h3="1C.4 : Whether training for emergency care management is being conducted for the staff in the institution?"
+            h3="1C.3 : Whether training for emergency care management is being conducted for the staff in the institution?"
             CheckbobItems={["Yes", "No"]}
             name="C3"
             onClick={handleChange(setFormC)}
@@ -120,7 +135,7 @@ function FormC() {
           />
 
           <Checkbox
-            h3="1C.5 : If Yes to 1C.3, Which of the following emergency care trainings you have undergone?"
+            h3="1C.4 : If Yes to 1C.3, Which of the following emergency care trainings you have undergone?"
             CheckbobItems={[
               "Trauma & Accidental Injuries",
               "Burns",
@@ -140,7 +155,7 @@ function FormC() {
           />
 
           <Radio
-            h3="1C.6 : If Yes, Frequency of training on emergency care in a year?"
+            h3="1C.5 : If Yes, Frequency of training on emergency care in a year?"
             CheckbobItems={[
               "Every Month",
               "Quarterly",
@@ -154,7 +169,7 @@ function FormC() {
           />
 
 
-          <InputField name="C6" h3="1C.7 : When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} />
+          <InputField name="C6" h3="1C.6 : When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} />
 
           <Buttons formName={"formc"} formData={formC} prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" />
         </div>

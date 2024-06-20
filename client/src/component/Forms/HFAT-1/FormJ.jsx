@@ -14,7 +14,7 @@ function FormJ() {
   const [formJ, setFormJ] = useState(JSON.parse(formj));
   return (
     <div>
-      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"10"} />
       <div className="siteInfo">

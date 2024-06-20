@@ -17,7 +17,7 @@ function FormH() {
   const [formH, setFormH] = useState(JSON.parse(formh));
   return (
     <div>
-      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
     <SidePanel id={"8"} />
     <div className="siteInfo">
@@ -43,7 +43,7 @@ function FormH() {
         <h3 style={{color:"#3177FF"}}>Quality Improvement Plan :</h3>
 
 
-        <Radio byDefault={formH.H1H4} onClick={handleChange(setFormH)} name="H1H4" h3="1H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes","No"]} other={true} />
+        <Radio byDefault={formH.H1H4} onClick={handleChange(setFormH)} name="H1H4" h3="1H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes","No"]} />
 
         <InputField value={formH.H1H5} onChange={handleChange(setFormH)} name="H1H5" h3="1H.2.2 : How frequently does this committee meet in a year?" placeholder="Type here" />
 
@@ -53,7 +53,7 @@ function FormH() {
         <InputField value={formH.H1H7} onChange={handleChange(setFormH)} name="H1H7" h3="1H.2.4 : How frequently audits are conducted in a year?" placeholder="Type here" />
 
 
-        <Checkbox setFunction={setFormH} array={formH.H1H8} StateValue={formH}  name="H1H8" h3="1H.2.5 : Types of audits conducted?" CheckbobItems={["Mortality audit","Morbidity Audit"]} other={true} />
+        <Checkbox setFunction={setFormH} array={formH.H1H8} StateValue={formH}  name="H1H8" h3="1H.2.5 : Types of audits conducted?" CheckbobItems={["Mortality Audit","Morbidity Audit"]} other={true} />
 
 
         <InputField value={formH.H1H9} onChange={handleChange(setFormH)} name="H1H9" h3="1H.2.6 : Any action being taken on Audit report in the last one year?" placeholder="Type here" />

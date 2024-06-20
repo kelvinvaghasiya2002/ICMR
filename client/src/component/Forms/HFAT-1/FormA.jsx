@@ -19,7 +19,7 @@ function FormA() {
 
   return (
     <div>
-      <Heading h2="HFAT:  District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"1"} />
       <div className="siteInfo">
@@ -33,31 +33,31 @@ function FormA() {
         </div>
 
         <div className="formcontent">
-          <InputField name="A1" h3="Assessor’s Name: "  onChange={handleChange(setFormA)} value={formA.A1} placeholder="Type here" />
+          <InputField name="A1" h3="1A.1 : Assessor’s Name: "  onChange={handleChange(setFormA)} value={formA.A1} placeholder="Type here" />
 
           <div>
             <p className='datetime'>Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
           </div>
 
-          <Radio h3="Code :"  onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH_00000", "ORPUR_DH_11111", "MPBHS_DH_22222", "PBLDH_DH_33333", "PYPDY_DH_44444"]} name="A3" />
+          <Radio h3="1A.3 : Code :"  onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH_00000", "ORPUR_DH_11111", "MPBHS_DH_22222", "PBLDH_DH_33333", "PYPDY_DH_44444"]} name="A3" />
 
-          <InputField name="A4" value={formA.A4} onChange={handleChange(setFormA)} h3="Block Name:" placeholder="Type here" />
+          <InputField name="A4" value={formA.A4} onChange={handleChange(setFormA)} h3="1A.4 : Block Name:" placeholder="Type here" />
 
-          <InputField name="A5" value={formA.A5} onChange={handleChange(setFormA)} h3="Healthcare Facility Name:  " placeholder="Type here" />
+          <InputField name="A5" value={formA.A5} onChange={handleChange(setFormA)} h3="1A.5 : Healthcare Facility Name:  " placeholder="Type here" />
 
-          <InputField name="A6" value={formA.A6} onChange={handleChange(setFormA)} h3="Healthcare Facility Address:  " placeholder="Type here" />
+          <InputField name="A6" value={formA.A6} onChange={handleChange(setFormA)} h3="1A.6 : Healthcare Facility Address:  " placeholder="Type here" />
 
-          <InputField name="A7" value={formA.A7} onChange={handleChange(setFormA)} h3="Name of the hospital Superintendent:" placeholder="Type here" />
+          <InputField name="A7" value={formA.A7} onChange={handleChange(setFormA)} h3="1A.7 : Name of the hospital Superintendent:" placeholder="Type here" />
 
-          <InputField name="A8" value={formA.A8} onChange={handleChange(setFormA)} h3="Contact Number of the hospital Superintendent:" placeholder="Type here" />
+          <InputField name="A8" value={formA.A8} onChange={handleChange(setFormA)} h3="1A.8 : Contact Number of the hospital Superintendent:" placeholder="Type here" />
 
-          <InputField name="A9" value={formA.A9} onChange={handleChange(setFormA)} h3="Email ID:" placeholder="Type here" />
+          <InputField name="A9" value={formA.A9} onChange={handleChange(setFormA)} h3="1A.9 : Email ID:" placeholder="Type here" />
 
-          <InputField name="A10" value={formA.A10} onChange={handleChange(setFormA)} h3="GPS Coordinates:" placeholder="Type here" />
+          <InputField name="A10" value={formA.A10} onChange={handleChange(setFormA)} h3="1A.10 : GPS Coordinates:" placeholder="Type here" />
 
-          <Radio h3="Type of Health Care Facility?" CheckbobItems={["District Hospital (DH))", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
+          <Radio h3="1A.11 : Type of Health Care Facility?" CheckbobItems={["District Hospital (DH)", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
 
-          <Radio h3="If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
+          <Radio h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
 
           <Buttons formName="forma" formData={formA} prev="" next="/infrastructure" />
         </div>
