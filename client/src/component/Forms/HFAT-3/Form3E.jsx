@@ -36,7 +36,7 @@ function Form3E() {
   
   return (
     <div>
-      <Heading h2="HFAT: PHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
     <section>
       <SidePanel id={"5"} />
       <div className="siteInfo">
@@ -44,18 +44,18 @@ function Form3E() {
         <div className="formhdr">
           <div>
             <h3>
-              Emergency Care Services
+            3E. Emergency Care Services
             </h3>
           </div>
         </div>
 
         <div className="formcontent">
 
-          <h3>Numbers of Patients who Visited ED in Last One Month</h3>
+          <h3>3E.1 : Numbers of Patients who Visited ED in Last One Month</h3>
 
           <E1 tableName={"H3E1"}  />
 
-          <h3>Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
+          <h3>3E.2 : Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
 
           <E2 columns={columns2} initialRows={initialRows2} tableName={"H3E2"} />
 

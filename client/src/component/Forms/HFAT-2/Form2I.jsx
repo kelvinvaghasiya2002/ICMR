@@ -35,7 +35,7 @@ function Form2I() {
 
   return (
     <div>
-      <Heading h2="HFAT: CHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"9"} />
       <div className="siteInfo">
@@ -43,7 +43,7 @@ function Form2I() {
         <div className="formhdr">
           <div>
             <h3>
-              Process/ Policies/SOPs
+              2I. Process/ Policies/SOPs
             </h3>
           </div>
         </div>

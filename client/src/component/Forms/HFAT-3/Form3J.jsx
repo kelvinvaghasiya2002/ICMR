@@ -7,40 +7,40 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 
 function Form3J() {
-    turnOffbutton();
-    var form3j = setLocalStorage("form3j",
-   {H3J1:"",H3J2:""})
+  turnOffbutton();
+  var form3j = setLocalStorage("form3j",
+    { H3J1: "", H3J2: "" })
 
   const [form3J, setForm3J] = useState(JSON.parse(form3j));
 
   return (
     <div>
-      <Heading h2="HFAT: PHC"></Heading>
-    <section>
-    <SidePanel id={"10"} />
-    <div className="siteInfo">
+      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
+      <section>
+        <SidePanel id={"10"} />
+        <div className="siteInfo">
 
-      <div className="formhdr">
-        <div>
-          <h3>
-          Referral Linkages
-          </h3>
+          <div className="formhdr">
+            <div>
+              <h3>
+                3J. Referral Linkages
+              </h3>
+            </div>
+          </div>
+
+          <div className="formcontent">
+
+            <Radio byDefault={form3J.H3J1} onClick={handleChange(setForm3J)} name="H3J1" h3="3J.1 : Does this facility follow any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility? " CheckbobItems={["Yes", "No"]} />
+
+
+            <Radio byDefault={form3J.H3J2} onClick={handleChange(setForm3J)} name="H3J2" h3="3J.2 : Do you any documented SOP/STW guiding the referral linkages?" CheckbobItems={["Yes", "No"]} />
+
+
+            <Buttons formName="form3j" formData={form3J} prev="/processpoliciessops-3" next="" />
+          </div>
         </div>
-      </div>
-
-      <div className="formcontent">
-
-      <Radio byDefault={form3J.H3J1} onClick={handleChange(setForm3J)} name="H3J1" h3="3J.1 : Does this facility follow any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility? " CheckbobItems={["Yes", "No"]}  />
-
-
-      <Radio byDefault={form3J.H3J2} onClick={handleChange(setForm3J)} name="H3J2" h3="3J.2 : Do you any documented SOP/STW guiding the referral linkages?" CheckbobItems={["Yes", "No"]}  />
-
-
-      <Buttons formName="form3j" formData={form3J} prev="/processpoliciessops-3" next="" />
-      </div>
+      </section>
     </div>
-  </section>
-  </div>
   )
 }
 

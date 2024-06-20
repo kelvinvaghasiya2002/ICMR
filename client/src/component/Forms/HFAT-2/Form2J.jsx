@@ -13,7 +13,7 @@ function Form2J() {
   turnOffbutton();
   return (
     <div>
-      <Heading h2="HFAT: CHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"10"} />
       <div className="siteInfo">
@@ -21,7 +21,7 @@ function Form2J() {
         <div className="formhdr">
           <div>
             <h3>
-              Referral Linkages
+              2J. Referral Linkages
             </h3>
           </div>
         </div>

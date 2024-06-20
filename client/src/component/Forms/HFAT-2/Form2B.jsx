@@ -16,14 +16,14 @@ function Form2B() {
  const [form2B, setForm2B] = useState(JSON.parse(form2b));
   return (
     <div>
-      <Heading h2="HFAT: CHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"2"} />
       <div className="siteInfo">
 
         <div className="formhdr">
           <div>
-            <h3>Infrastructure</h3>
+            <h3>2B. Infrastructure</h3>
           </div>
         </div>
 

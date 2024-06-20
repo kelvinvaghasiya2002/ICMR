@@ -17,7 +17,7 @@ function Form2H() {
   turnOffbutton();
   return (
     <div>
-      <Heading h2="HFAT: CHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"8"} />
       <div className="siteInfo">
@@ -25,7 +25,7 @@ function Form2H() {
         <div className="formhdr">
           <div>
             <h3>
-              Leadership and Governance
+              2H. Leadership and Governance
             </h3>
           </div>
         </div>
@@ -51,7 +51,7 @@ function Form2H() {
 
           <InputField h3="2H.2.4 : How frequently audits are conducted in a year?" placeholder="Type here" name="H2H7" onChange={handleChange(setForm2H)} value={form2H.H2H7} />
 
-          <Checkbox h3="2H.2.5 : Types of audits conducted?" CheckbobItems={["Mortality audit", "Morbidity Audit"]} other={true} name="H2H8" setFunction={setForm2H} StateValue={form2H} array={form2H.H2H8}  />
+          <Checkbox h3="2H.2.5 : Types of audits conducted?" CheckbobItems={["Mortality Audit", "Morbidity Audit"]} other={true} name="H2H8" setFunction={setForm2H} StateValue={form2H} array={form2H.H2H8}  />
 
           <Radio h3="2H.2.6 : Any action being taken on Audit report in the last one year?" placeholder="Type here" name="H2H9" onClick={handleChange(setForm2H)} CheckbobItems={["Yes", "No"]} byDefault={form2H.H2H9} />
 

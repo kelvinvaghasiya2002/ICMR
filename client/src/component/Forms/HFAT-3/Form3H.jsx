@@ -19,7 +19,7 @@ function Form3H() {
 
   return (
     <div>
-      <Heading h2="HFAT: PHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
     <section>
       <SidePanel id={"8"} />
       <div className="siteInfo">
@@ -27,7 +27,7 @@ function Form3H() {
         <div className="formhdr">
           <div>
             <h3>
-              Leadership and Governance
+            3H. Leadership and Governance
             </h3>
           </div>
         </div>

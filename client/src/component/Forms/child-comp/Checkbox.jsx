@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValue, array }) {
-    console.log(name);
+    // console.log(name);
     const [otherSpecify , setOtherSpecify] = useState("");
 
     const handleChange = (event)=>{
@@ -28,7 +28,6 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
     }
 
     const handleCheckboxClick = ()=>{
-        // console.log("Clicked");
         const otherSpecifyCheckBox = document.getElementById(`${name}otherSpecifyCheckBox`);
         if(otherSpecifyCheckBox.checked == true){
             console.log(otherSpecifyCheckBox.checked);
@@ -75,9 +74,9 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                         other &&
                         <>
                             <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" />
-                            <span style={{fontSize : "1.2vw"}}>Other(specify)</span>
+                            <span style={{fontSize : "1.2vw"}}>Other (Specify)</span>
                             <input
-                                className='others' onChange={handleChange} type="text" name="otherSpecify" value={array[0]} id={name} disabled/>
+                                className='others blockinput' onChange={handleChange} type="text" name="otherSpecify" value={array[0]} id={name} disabled/>
                         </>
 
                     }

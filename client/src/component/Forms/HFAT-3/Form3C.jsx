@@ -25,10 +25,10 @@ function Form3C() {
 
   const initialRows = [
     { Manpower: 'MO MBBS', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Specialist for Medicine', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Specialist for Pediatrics', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Specialist for Ophthalmology', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Specialist Obstetrics & Gynecologist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Specialist for Medicine*', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Specialist for Pediatrics*', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Specialist for Ophthalmology*', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+    { Manpower: 'Specialist Obstetrics & Gynecologist*', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
     { Manpower: 'Staff Nurses', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
     { Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
     { Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
@@ -39,7 +39,7 @@ function Form3C() {
   ]
   return (
     <div>
-      <Heading h2="HFAT: PHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
       <section>
         <SidePanel id={"3"} />
         <div className="siteInfo">
@@ -47,14 +47,15 @@ function Form3C() {
           <div className="formhdr">
             <div>
               <h3>
-                Human Resources
+              3C. Human Resources
               </h3>
             </div>
           </div>
 
           <div className="formcontent">
-            <h3>Tick the manpower available in your emergency department and provide numbers</h3>
+            <h3>3C.1 : Tick the manpower available in your emergency department and provide numbers</h3>
             <C1 columns={columns} initialRows={initialRows} tableName={"H3C1"} />
+            <span style={{fontSize : "1vw"}}>*1 Specialists are on rotation basis at polyclinics as per IPHS guideline for PHCs.</span>
 
             <Radio h3="3C.2 : Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H3C2" onClick={handleChange(setForm3C)} byDefault={form3C.H3C2} />
 
@@ -74,7 +75,8 @@ function Form3C() {
             <Radio CheckbobItems={["Every Month",
               "Quarterly",
               "Half Yearly",
-              "Annually"]} name="H3C4" h3="3C.4 : If Yes, Frequency of training on emergency care in a year?" other={true} byDefault={form3C.H3C4} onClick={handleChange(setForm3C)} />
+              "Annually",
+              "Others (Specify)"]} otherArray={[0,0,0,0,1]} name="H3C4" h3="3C.4 : If Yes, Frequency of training on emergency care in a year?" other={true} byDefault={form3C.H3C4} onClick={handleChange(setForm3C)} />
 
             <InputField h3="3C.5 : When was the last training conducted?" placeholder="Type here" value={form3C.H3C5} name={"H3C5"} onChange={handleChange(setForm3C)} />
 

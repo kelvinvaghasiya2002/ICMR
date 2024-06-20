@@ -18,7 +18,7 @@ function Form2G() {
  const [form2G, setForm2G] = useState(JSON.parse(form2g));
   return (
     <div>
-      <Heading h2="HFAT: CHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"7"} />
       <div className="siteInfo">
@@ -26,7 +26,7 @@ function Form2G() {
         <div className="formhdr">
           <div>
             <h3>
-              Finance
+              2G. Finance
             </h3>
           </div>
         </div>

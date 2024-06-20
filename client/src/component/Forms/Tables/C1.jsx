@@ -51,7 +51,8 @@ const C1 = ({ columns, initialRows, tableName }) => {
                                             row[col.key] !== 'Other' ? <span><input type='checkbox' />{row[col.key]}</span> :
                                                 <span>
                                                     <input type='checkbox' />
-                                                    <input className='others' placeholder='Other (please specify)' />
+                                                    <span>Other (Please Specify)</span>
+                                                    <input className='others blockinput' />
                                                 </span>
 
                                         )

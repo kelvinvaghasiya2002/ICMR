@@ -34,7 +34,7 @@ function Form3I() {
 
   return (
     <div>
-      <Heading h2="HFAT: PHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
     <section>
       <SidePanel id={"9"} />
       <div className="siteInfo">
@@ -42,7 +42,7 @@ function Form3I() {
         <div className="formhdr">
           <div>
             <h3>
-              Process/ Policies/SOPs
+            3I. Process/ Policies/SOPs
             </h3>
           </div>
         </div>

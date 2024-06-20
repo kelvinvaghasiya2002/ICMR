@@ -15,7 +15,7 @@ function Form3G() {
   const [form3G, setForm3G] = useState(JSON.parse(form3g));
   return (
     <div>
-      <Heading h2="HFAT: PHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
     <section>
     <SidePanel id={"7"} />
     <div className="siteInfo">
@@ -23,7 +23,7 @@ function Form3G() {
       <div className="formhdr">
         <div>
           <h3>
-          Finance
+          3G. Finance
           </h3>
         </div>
       </div>

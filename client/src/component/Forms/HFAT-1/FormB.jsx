@@ -37,7 +37,7 @@ function FormB() {
 
           <InputField name="B3" type="number" onChange={handleChange(setFormB)} h3="1B.3 : How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" />
 
-          <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={[" Red", " Yellow", "Green"]} otherArray={[1,1,1]} name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} />
+          <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={[" Red", " Yellow", "Green"]} otherArray={[1,0,1]} setter={setFormB} name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} />
 
           <InputField name="B5" onChange={handleChange(setFormB)} h3="1B.5 : What is the average number of patients presenting to OPD per month?" value={formB.B5} placeholder="Type here" type="number" />
 

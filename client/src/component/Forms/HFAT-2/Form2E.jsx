@@ -37,7 +37,7 @@ function Form2E() {
   ];
   return (
     <div>
-      <Heading h2="HFAT: CHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"5"} />
       <div className="siteInfo">
@@ -45,18 +45,18 @@ function Form2E() {
         <div className="formhdr">
           <div>
             <h3>
-              Emergency Care Services
+              2E. Emergency Care Services
             </h3>
           </div>
         </div>
 
         <div className="formcontent">
 
-          <h3>Numbers of Patients who Visited ED in Last One Month</h3>
+          <h3>2E.1 : Numbers of Patients who Visited ED in Last One Month</h3>
 
           <E1 tableName={"H2E1"} />
 
-          <h3>Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
+          <h3>2E.2 : Numbers of Patients Attended in ED and Deaths in Last One Year (Jan - Dec 2023)</h3>
 
           <E2 columns={columns2} initialRows={initialRows2} tableName={"H2E2"} />
 

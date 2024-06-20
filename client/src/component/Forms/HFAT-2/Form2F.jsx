@@ -18,7 +18,7 @@ function Form2F() {
   const [form2F, setForm2F] = useState(JSON.parse(form2f));
   return (
     <div>
-      <Heading h2="HFAT: CHC"></Heading>
+      <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
       <section>
         <SidePanel id={"6"} />
         <div className="siteInfo">
@@ -26,7 +26,7 @@ function Form2F() {
           <div className="formhdr">
             <div>
               <h3>
-                Information System
+                2F. Information System
               </h3>
             </div>
           </div>
@@ -108,7 +108,7 @@ function Form2F() {
             {/* if yes show textbox */}
 
             <Radio
-              h3="2F.9 : Infrastructure for receiving internal communication?"
+              h3="2F.9 : Infrastructure for receiving external communication?"
               CheckbobItems={["Yes", "No"]}
               name="H2F9"
               byDefault={form2F.H2F9}

@@ -14,7 +14,7 @@ function FormD2() {
 
     return (
         <div>
-            <Heading h2="HFAT: PHC"></Heading>
+            <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
         <section>
             <SidePanel id={"4"} />
             <div className="siteInfo">
@@ -22,42 +22,41 @@ function FormD2() {
                 <div className="formhdr">
                     <div>
                         <h3>
-                            Logistics (Drugs/ Consumables/ Equipment)
+                        3D. Logistics (Drugs/ Consumables/ Equipment)
                         </h3>
                     </div>
                 </div>
 
                 <div className="formcontent">
-                    <h3>3D.2 : Which of the following essential emergency equipment is available at the DH/ Tertiary Care Hospital?
-                        (Multiple answers possible)</h3>
+                    <h3>3D.2 : Which of the following emergency equipment is available at the PHC? (Multiple answers possible)</h3>
 
                     <Checkbox name={"H3D2"} setFunction={setForm3D2} StateValue={form3D2} array={form3D2.H3D2} CheckbobItems={[
-                        "Do you have mobile bed for Resuscitation?",
-                        "Do you have crash cart (specialized cart for resuscitation)?",
-                        "Do you have Hard Cervical collar?",
-                        "Do you have Oxygen cylinder/central oxygen supply?",
-                        "Do you have suction machine?",
-                        "Do you have Multipara Monitor (To monitor Heart rate, BP, SPO2[Essential] ECG, Respiration Rate [Desirable] etc)?",
-                        "Do you have defibrillator with or without external pacer?",
-                        "Do you have Toothed Forceps, Kocher Forceps, Magill's forceps, Artery forceps?",
-                        "Do you have AMBU Bag for adult and Paediatric?",
-                        "Do you have basic airway equipment like oropharyngeal nasopharyngeal airway, LMA for adult and pediatric?",
-                        "Do you have advanced laryngoscope and endotracheal tube or other similar device?",
-                        "Do you have tourniquet?",
-                        "Do you have pelvic binder or bed sheets with clips?",
-                        "Do you have laryngoscope with all sized blades?",
-                        "Do you have Endotracheal Tubes of all sizes?",
-                        "Do you have Laryngeal Mask Airway (LMA)?",
-                        "Do you have Chest Tubes with Water seal drain?",
-                        "Do you have ECG machine?",
-                        "Do you have nebulizer?",
-                        "Do you have fluid warmer?",
-                        "Do you have Infusion pump and Syringe Drivers?",
-                        "Do you have spine board with sling and scotch tapes?",
-                        "Do you have splints for all types of fracture?",
-                        "Do you have non-invasive ventilators?",
-                        "Do you have invasive ventilators?",
-                        "Do you have incubators?"
+                        "Mobile bed for Resuscitation",
+                        "Crash Cart (Specialized Cart for Resuscitation)",
+                        "Hard Cervical Collar",
+                        "Oxygen Cylinder/Central Oxygen Supply",
+                        "Suction Machine",
+                        "Multipara Monitor (To monitor Heart rate, BP, SPO2[Essential] ECG, Respiration Rate [Desirable] etc)",
+                        "Defibrillator with or without External Pacer",
+                        "Toothed Forceps, Kocher Forceps, Magill's forceps, Artery forceps",
+                        "AMBU Bag for Adult and Paediatric",
+                        "Basic airway equipment like oropharyngeal nasopharyngeal airway, LMA for adult and pediatric",
+                        "Advanced Laryngoscope and Endotracheal Tube or Other Similar Device",
+                        "Tourniquet",
+                        "Pelvic Binder or Bed Sheets with Clips",
+                        "Laryngoscope with all sized Blades",
+                        "Endotracheal Tubes of all sizes",
+                        "Laryngeal Mask Airway (LMA)",
+                        "Chest Tubes with Water seal drain",
+                        "ECG Machine",
+                        "Nebulizer",
+                        "Fluid Warmer",
+                        "Infusion Pump and Syringe Drivers",
+                        "Spine Board with Sling and Scotch Tapes",
+                        "Splints for all types of Fracture",
+                        "Non-invasive Ventilators",
+                        "Invasive Ventilators",
+                        "Incubators"
                     ]
                     } />
 
