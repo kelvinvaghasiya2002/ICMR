@@ -33,7 +33,7 @@ export default function FormB17() {
 
                     <Radio h3="Which of the following Insurance coverage you or the person with emergency condition or the deceased had?" CheckbobItems={["Private cashless", "Private reimbursement", "Central Health Insurance Scheme (Ayushman Bharat/ CGHS / etc.)", "State Health Insurance Scheme", "Community Health Insurance Programme", "None", "Prefer not to disclose/ Refuse", "Don’t Know"]} name={"B4"} onClick={handleChange(setFormB17)} byDefault={formB17.B4} />
 
-                    <Buttons formName={"formb17"} formData={formB17} prev="/formsac-verbal&socialautopsyquestionnaire-3" next="/formsb-initialhealthcareseekingpathway1" />
+                    <Buttons formName={"formb17"} formData={formB17}  prevText="Previous" nextText="Next"  prev="/formsac-verbal&socialautopsyquestionnaire-3" next="/formsb-initialhealthcareseekingpathway1" />
                 </div>
 
             </div>

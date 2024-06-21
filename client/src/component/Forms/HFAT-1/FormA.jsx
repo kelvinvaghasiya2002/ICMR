@@ -36,7 +36,7 @@ function FormA() {
           <InputField name="A1" h3="1A.1 : Assessor’s Name: "  onChange={handleChange(setFormA)} value={formA.A1} placeholder="Type here" />
 
           <div>
-            <p className='datetime'>Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
+            <p className='datetime'>1A.2: Date & Time : <span className='datetime_current'>{date.toDateString()}  {date.getHours()}:{date.getMinutes()}</span></p>
           </div>
 
           <Radio h3="1A.3 : Code :"  onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH_00000", "ORPUR_DH_11111", "MPBHS_DH_22222", "PBLDH_DH_33333", "PYPDY_DH_44444"]} name="A3" />
@@ -57,9 +57,9 @@ function FormA() {
 
           <Radio h3="1A.11 : Type of Health Care Facility?" CheckbobItems={["District Hospital (DH)", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
 
-          <Radio h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
+          <Radio style={{display:"flex", flexDirection:"column"}} h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
 
-          <Buttons formName="forma" formData={formA} prev="" next="/infrastructure" />
+          <Buttons formName="forma" formData={formA} prevText="" nextText="Next" prev="" next="/infrastructure" />
         </div>
       </div>
     </section>

@@ -27,11 +27,14 @@ function FormAC11() {
                     </h3>
                 </div>
 
+                <div className="formcontent cont_extra">
+
                 <Radio name={"AC30a"} h3={"Did you or anyone from your family suffer from Snakebite in the last one year requiring immediate emergency medical services?"} CheckbobItems={["Yes", "No"]} onClick={handleChange(setFormAC11)} byDefault={formAC11.AC30a} />
 
                 <DropDown name={"AC30b"} h3={"could you please tell who all from your Household suffered with this condition?"} dropdownItems={["Kelvin", "Prince", "Jeel"]}  onClick={handleChange( setFormAC11)} byDefault={formAC11.AC30b} />
 
-                <Buttons formName={"formac11"} formData={formAC11} prev="/formsac-neonatalemergencies" next="/formsac-poisoning" />
+                <Buttons formName={"formac11"} formData={formAC11}  prevText="Previous" nextText="Next"  prev="/formsac-neonatalemergencies" next="/formsac-poisoning" />
+                </div>
             </div>
         </section>
     )

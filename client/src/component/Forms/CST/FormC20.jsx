@@ -112,7 +112,7 @@ function FormC20() {
 
           <InputField h3="What emergency condition was found after consultation with the healthcare provider or mentioned in the discharge report?" placeholder="Type here" value={formC20.C19} name={"C19"} onChange={handleChange(setFormC20)} />
           
-          <Buttons formName={"formc20"} formData={formC20} prev="/formsb-initialhealthcareseekingpathway2" next="//formsd-barriersandfacilitatorsinseekingcare" />
+          <Buttons formName={"formc20"} formData={formC20}  prevText="Previous" nextText="Next"  prev="/formsb-initialhealthcareseekingpathway2" next="//formsd-barriersandfacilitatorsinseekingcare" />
         </div>
 
       </div>

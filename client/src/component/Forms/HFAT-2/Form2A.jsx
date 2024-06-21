@@ -64,7 +64,7 @@ function Form2A() {
           <Radio byDefault={form2A.H2A11} onClick={handleChange(setForm2A)} h3="2A.11 : Type of locality:" CheckbobItems={["Urban", "Rural"]} name="H2A11" />
 
 
-          <Buttons formName="form2a" formData={form2A} prev="" next="/infrastructure-2" />
+          <Buttons formName="form2a" formData={form2A} prevText="" nextText="Next" prev="" next="/infrastructure-2" />
         </div>
       </div>
     </section>

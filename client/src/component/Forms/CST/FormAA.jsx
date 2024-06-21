@@ -31,7 +31,7 @@ function Form() {
                     </div>
                 </div>
 
-                <div className="formcontent">
+                <div className="formcontent cont_extra">
                     <div>
                         <p className='datetime'>Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
                     </div>
@@ -43,7 +43,7 @@ function Form() {
 
                     <InputField h3="Respondent ID: " placeholder="Type here" />
 
-                    <Buttons formName="formaa" formData={formAA} prev="/formsaa" next="/formsab" />
+                    <Buttons formName="formaa" formData={formAA}  prevText="" nextText="Next" prev="/formsaa" next="/formsab" />
                 </div>
             </div>
         </section>

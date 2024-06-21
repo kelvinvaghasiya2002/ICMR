@@ -38,6 +38,8 @@ function FormAC15() {
                     </h3>
                 </div>
 
+                <div className="formcontent cont_extra">
+
                 <InputField name="AC33c1" h3="Name of the deceased :" placeholder="Type here" value={formAC15.AC33c1}  onChange={handleChange(setFormAC15)} />
                 
 
@@ -73,7 +75,9 @@ function FormAC15() {
                     </div>
                 </div>}
 
-                <Buttons formName={"formac15"} formData={formAC15} prev="/formsac-verbal&socialautopsyquestionnaire" next="/formsac-verbal&socialautopsyquestionnaire-3" />
+                <Buttons formName={"formac15"} formData={formAC15}  prevText="Previous" nextText="Next"  prev="/formsac-verbal&socialautopsyquestionnaire" next="/formsac-verbal&socialautopsyquestionnaire-3" />
+            
+                </div>
             </div>
         </section>
     )

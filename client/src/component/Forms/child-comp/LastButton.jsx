@@ -40,7 +40,7 @@ function LastButton({ prev, formName, formData, MainForm }) {
     return (
         <div className='buttons'>
             <button className='prevbtn'><Link to={prev}>Previous</Link></button>
-            <button onClick={handleSubmit} className='nextbtn'><Link to="/">Next</Link></button>
+            <button onClick={handleSubmit} className='nextbtn'><Link to="/">Submit</Link></button>
         </div>
     )
 }

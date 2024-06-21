@@ -28,7 +28,7 @@ function Form3J() {
             </div>
           </div>
 
-          <div className="formcontent">
+          <div className="formcontent cont_extra">
 
             <Radio byDefault={form3J.H3J1} onClick={handleChange(setForm3J)} name="H3J1" h3="3J.1 : Does this facility follow any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility? " CheckbobItems={["Yes", "No"]} />
 
@@ -36,7 +36,7 @@ function Form3J() {
             <Radio byDefault={form3J.H3J2} onClick={handleChange(setForm3J)} name="H3J2" h3="3J.2 : Do you any documented SOP/STW guiding the referral linkages?" CheckbobItems={["Yes", "No"]} />
 
 
-            <Buttons formName="form3j" formData={form3J} prev="/processpoliciessops-3" next="" />
+            <Buttons formName="form3j" formData={form3J} prevText="Previous" nextText="Submit" prev="/processpoliciessops-3" next="" />
           </div>
         </div>
       </section>

@@ -115,7 +115,7 @@ function Form2B() {
           />
 
 
-          <Buttons formData={form2B} formName="form2b" prev="/facilityinformation-2" next="/humanresources-2" />
+          <Buttons formData={form2B} formName="form2b" prevText="Previous" nextText="Next" prev="/facilityinformation-2" next="/humanresources-2" />
         </div>
       </div>
     </section>

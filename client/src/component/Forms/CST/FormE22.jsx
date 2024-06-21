@@ -67,7 +67,7 @@ function FormE22() {
                 to="/">Submit</Link></button>
             </div>
           </div>}
-          <Buttons formName={"forme22"} formData={formE22} prev="/formsb-sociodemographicprofile" next="/" />
+          <Buttons formName={"forme22"} formData={formE22}  prevText="Previous" nextText="Submit"  prev="/formsb-sociodemographicprofile" next="/" />
         </div>
       </div>
     </section>

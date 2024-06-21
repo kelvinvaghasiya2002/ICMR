@@ -65,7 +65,7 @@ function FormB18() {
 
           <Radio h3="What was your first course of action on identifying the emergency condition?" CheckbobItems={["Visited allopathic health care facility.", "Consulted traditional healers/ spiritual healers", "Local remedy/ Self-medication at home", "AYUSH facility", "Home consultation", "Did not visit health facility"]} name="B13" byDefault={formB18.B13} onClick={handleChange(setFormB18)} />
 
-          <Buttons formName={"formb18"} formData={formB18} prev="/formsb-sociodemographicprofile" next="/formsb-initialhealthcareseekingpathway2" />
+          <Buttons formName={"formb18"} formData={formB18}  prevText="Previous" nextText="Next"  prev="/formsb-sociodemographicprofile" next="/formsb-initialhealthcareseekingpathway2" />
         </div>
       </div>
     </section>

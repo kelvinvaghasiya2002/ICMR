@@ -60,7 +60,7 @@ function FormD2() {
                     ]
                     } />
 
-                    <Buttons formName={"form3d2"} formData={form3D2} prev="/logistics-3" next="/emergencycareservices-3" />
+                    <Buttons formName={"form3d2"} formData={form3D2} prevText="Previous" nextText="Next" prev="/logistics-3" next="/emergencycareservices-3" />
 
                 </div>
             </div>

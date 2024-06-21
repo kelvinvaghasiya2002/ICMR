@@ -45,7 +45,7 @@ function Form2G() {
 
           <Radio byDefault={form2G.H2G6} onClick={handleChange(setForm2G)} h3="2G.6 : Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?" CheckbobItems={["Yes", "No"]} name="H2G6" />
 
-          <Buttons formData={form2G} formName="form2g" prev="/informationsystem-2" next="/leadershipandgovernance-2" />
+          <Buttons formData={form2G} formName="form2g" prevText="Previous" nextText="Next" prev="/informationsystem-2" next="/leadershipandgovernance-2" />
         </div>
 
       </div>

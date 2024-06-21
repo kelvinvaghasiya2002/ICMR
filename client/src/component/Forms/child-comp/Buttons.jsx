@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Buttons({ prev, next, formName, formData }) {
+function Buttons({ prevText, prev, nextText, next, formName, formData }) {
     const handleSubmit = () => {
         var CompleteForm = localStorage.getItem("CompleteForm");
         if (formName === "formac4") {
@@ -29,8 +29,8 @@ function Buttons({ prev, next, formName, formData }) {
 
     return (
         <div className='buttons'>
-            <button className='prevbtn'><Link to={prev}>Previous</Link></button>
-            <button onClick={handleSubmit} className='nextbtn'><Link to={next}>Next</Link></button>
+            <button className='prevbtn'><Link to={prev}>{prevText}</Link></button>
+            <button onClick={handleSubmit} className='nextbtn'><Link to={next}>{nextText}</Link></button>
         </div>
     )
 }

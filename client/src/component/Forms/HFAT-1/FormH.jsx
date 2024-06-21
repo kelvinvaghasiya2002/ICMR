@@ -58,7 +58,7 @@ function FormH() {
 
         <InputField value={formH.H1H9} onChange={handleChange(setFormH)} name="H1H9" h3="1H.2.6 : Any action being taken on Audit report in the last one year?" placeholder="Type here" />
 
-      <Buttons formName="formh" formData={formH} prev="/finance" next="/processpoliciessops" />
+      <Buttons formName="formh" formData={formH} prevText="Previous" nextText="Next" prev="/finance" next="/processpoliciessops" />
       </div>
     </div>
   </section>

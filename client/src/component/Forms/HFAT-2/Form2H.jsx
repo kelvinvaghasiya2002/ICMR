@@ -55,7 +55,7 @@ function Form2H() {
 
           <Radio h3="2H.2.6 : Any action being taken on Audit report in the last one year?" placeholder="Type here" name="H2H9" onClick={handleChange(setForm2H)} CheckbobItems={["Yes", "No"]} byDefault={form2H.H2H9} />
 
-          <Buttons formName={"form2h"} formData={form2H} prev="/finance-2" next="/processpoliciessops-2" />
+          <Buttons formName={"form2h"} formData={form2H} prevText="Previous" nextText="Next" prev="/finance-2" next="/processpoliciessops-2" />
         </div>
       </div>
     </section>

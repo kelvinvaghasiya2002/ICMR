@@ -26,13 +26,13 @@ function FormAC8() {
                         </h3>
                     </div>
                 </div>
-                <div className="formcontent">
+                <div className="formcontent cont_extra">
 
                     <Radio name="AC27a" h3="In the past 1 year, did you or any member of this household suffered with sudden onset of fever, or cough with expectoration, or chest pain (pleuritic) , or fast breathing, or bluish colouration of tongue or lip (cyanosis), or speaks in short sentences, or altered mentation, chest tightness or pressure, indicating a lack of oxygen that required immediate medical service?" CheckbobItems={["Yes", "No"]} onClick={handleChange(setFormAC8)} byDefault={formAC8.AC27a} />
 
                     <DropDown name="AC27b" h3="could you please tell who all from your Household suffered with this condition?" dropdownItems={["Kelvin", "Prince", "Jeel"]} onClick={handleChange(setFormAC8)} byDefault={formAC8.AC27b} />
 
-                    <Buttons formName={"formac8"} formData={formAC8} prev="/formsac-stroke" next="/formsac-postpartumhaemorrhage" />
+                    <Buttons formName={"formac8"} formData={formAC8}  prevText="Previous" nextText="Next"  prev="/formsac-stroke" next="/formsac-postpartumhaemorrhage" />
                 </div>
             </div>
         </section>
