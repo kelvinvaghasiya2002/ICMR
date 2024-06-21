@@ -27,13 +27,13 @@ function FormAC6() {
                         </h3>
                     </div>
                 </div>
-                <div className="formcontent">
+                <div className="formcontent cont_extra">
 
                     <Radio name="AC25a" h3="In the past year, did you or any member of this household suffer from sudden onset of acute chest pain/ heaviness/ constriction/ radiation to left arms or necks or back/ breathlessness, which might have been accompanied with upper abdominal pain/ palpitation/ giddiness/ profuse sweating and easily reproduced with post-meal exertion that required immediate medical service?" CheckbobItems={["Yes", "No"]} onClick={handleChange(setFormAC6)} byDefault={formAC6.AC25a} />
 
                     <DropDown name="AC25b" h3="could you please tell who all from your Household suffered with this condition?" dropdownItems={["Kelvin", "Prince", "Jeel"]} onClick={handleChange(setFormAC6)} byDefault={formAC6.AC25b} />
 
-                    <Buttons formName={"formac6"} formData={formAC6} prev="/formsac-trauma&burns" next="/formsac-stroke" />
+                    <Buttons formName={"formac6"} formData={formAC6}  prevText="Previous" nextText="Next"  prev="/formsac-trauma&burns" next="/formsac-stroke" />
                 </div>
             </div>
         </section>

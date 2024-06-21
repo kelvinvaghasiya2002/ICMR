@@ -188,7 +188,7 @@ function Facility() {
           Patient Register
           Other (Specify) _______________________ */}
 
-          <Buttons prev="" next="" />
+          <Buttons prevText="" nextText="Submit" prev="" next="" />
         </div>
       </div>
     </section>

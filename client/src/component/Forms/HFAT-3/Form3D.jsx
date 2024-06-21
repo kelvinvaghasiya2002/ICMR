@@ -32,7 +32,7 @@ function FormD() {
           <h3>3D.1 : Which of the following emergency drugs are available at the PHC? (Multiple answers possible)? Please tick in the attached drug list.</h3>
           <Checkbox name="H3D1" CheckbobItems={['Oxygen medicinal gas', 'Atropine', 'Diazepam/Lorazepam', 'Adrenaline', 'Charcoal activated', 'Antisnake venom', 'Pralidoxime (PAM)', 'Magnesium sulphate', 'Tetanus immunoglobulin', 'Neostigmine', 'Aspirin', 'Clopidogrel', 'Atorvastatin', 'Misoprostol', 'Labetalol IV', 'Phenobarbitone', 'Phenytoin (inj)', 'Plasma volume expander', '3% Saline', 'Dobutamine', 'Streptokinase', 'Tenecteplase', 'Oxytocin', 'Salbutamol sulphate', 'Glucose/ 25 % dextrose', 'Tranexamic acid', 'tPA IV', 'Methergine', 'Carboprost']} setFunction={setForm3D} StateValue={form3D} array={form3D.H3D1} />
 
-          <Buttons formName={"form3d"} formData={form3D} prev="/humanresources-3" next="/logistics-3-1" />
+          <Buttons formName={"form3d"} formData={form3D} prevText="Previous" nextText="Next" prev="/humanresources-3" next="/logistics-3-1" />
 
         </div>
       </div>

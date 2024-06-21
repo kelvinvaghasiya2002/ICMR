@@ -27,12 +27,15 @@ function FormAC12() {
                 </div>
 
                 
+                <div className="formcontent cont_extra">
 
                 <Radio name={"AC31a"} h3={"Did you or anyone from your family have history of intentional ingestion/ exposure to chemicals or any hazardous substance that led to nausea, or vomiting, or diarrhoea, or drooling of saliva, or foaming at the mouth, or difficulty in breathing, or dilated or constricted pupils, or suddenly got faint, or seizure in the last one year requiring immediate emergency medical services?"} CheckbobItems={["Yes", "No"]} onClick={handleChange(setFormAC12)} byDefault={formAC12.AC31a} />
 
                 <DropDown name={"AC31b"} h3={"could you please tell who all suffered with this condition?"} dropdownItems={["Kelvin", "Prince", "Jeel"]}  onClick={handleChange(setFormAC12)} byDefault={formAC12.AC31b} />
                 
-                <Buttons formName={"formac12"} formData={formAC12} prev="/formsac-snakebite" next="/formsac-others"/>
+                <Buttons formName={"formac12"} formData={formAC12}  prevText="Previous" nextText="Next" prev="/formsac-snakebite" next="/formsac-others"/>
+                </div>
+                
             </div>
         </section>
     )

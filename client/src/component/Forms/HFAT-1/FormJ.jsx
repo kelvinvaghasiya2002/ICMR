@@ -27,7 +27,7 @@ function FormJ() {
           </div>
         </div>
 
-        <div className="formcontent">
+        <div className="formcontent cont_extra">
 
           <Radio byDefault={formJ.H1J1} onClick={handleChange(setFormJ)} name="H1J1" h3="1J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]} />
 

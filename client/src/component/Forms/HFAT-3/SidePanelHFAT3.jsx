@@ -6,8 +6,12 @@ function SidePanelHFAT3({id}) {
   // console.log(id);
   useEffect(()=>{
     const link = document.getElementById(id)
-    if(link) link.style.color="#3177FF" 
-    // console.log(link);
+    if(link){
+      const pElement = link.querySelector('p'); // Select the <p> inside the Link
+      pElement.style.backgroundColor = "#152266";
+      link.style.color="white";
+      // link.style.backgroundColor="#152266" ;
+    } 
   })
   return (
     <div className='sidePanel'>

@@ -29,7 +29,7 @@ function FormAB() {
           </div>
         </div>
 
-        <div className="formcontent">
+        <div className="formcontent cont_extra">
 
           <DropDown className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"AB1"} h3="Block :" onClick={handleChange(setFormAB)} byDefault={formAB.AB1} />
 
@@ -42,7 +42,7 @@ function FormAB() {
           <InputField h3="Household ID Number :" placeholder="Number" name={"AB5"} value={formAB.AB5} onChange={handleChange(setFormAB)} />
 
 
-          <Buttons formName="formab" formData={formAB} prev="/formsaa" next="/formsac-householdschedule" />
+          <Buttons formName="formab" formData={formAB}  prevText="Previous" nextText="Next"  prev="/formsaa" next="/formsac-householdschedule" />
         </div>
       </div>
     </section>

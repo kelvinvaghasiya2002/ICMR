@@ -110,7 +110,7 @@
 
 
 .buttons-grid button:hover{
-    background-color: #3177FF;
+    background-color: #152266;
     color: white;
 }
 
@@ -131,5 +131,5 @@
 }
 
 .container a :hover{
-    color:#3177FF;
+    color:#152266;
 }

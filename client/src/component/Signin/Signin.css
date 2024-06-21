@@ -94,7 +94,7 @@
     border-radius: 40px;
     width: 350px;
     height: 40px;
-    background-color: #3177FF;
+    background-color: #152266;
     color: white;
     border: none;
 }
@@ -200,7 +200,7 @@ p {
 
 .welcome-back a {
     text-decoration: none;
-    color: #3177FF;
+    color: #152266;
     font-weight: 600;
     letter-spacing: 0.05vw;
 }
@@ -230,7 +230,7 @@ p {
     font-weight: 500;
     margin-top: 1vh;
     margin-bottom: 2vh;
-    border: 0.2vh solid #3177FF;
+    border: 0.2vh solid #152266;
     border-radius: 99px;
     padding: 0 3vh;
     width: 100%;
@@ -259,7 +259,7 @@ p {
 
 .remember-me a {
     text-decoration: none;
-    color: #3177FF;
+    color: #152266;
 }
 
 .remember-me p,
@@ -296,7 +296,7 @@ a {
     border-radius: 99px;
     height: 5.6vh;
     width: 100%;
-    background-color: #3177FF;
+    background-color: #152266;
     color: white;
     margin: 2.5vh 0;
     font-size: 2vh;
@@ -304,7 +304,7 @@ a {
     font-weight: 700;
     letter-spacing: 0.1vh;
     cursor: pointer;
-    border: 0.2vh solid #3177FF;
+    border: 0.2vh solid #152266;
 
 }
 

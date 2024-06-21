@@ -99,7 +99,7 @@ function FormE() {
         />
 
 
-        <Buttons formName={'forme'} formData={formE} prev="/logisticsdrugsconsumablesequipment-2" next="/informationsystem" />
+        <Buttons formName={'forme'} formData={formE} prevText="Previous" nextText="Next" prev="/logisticsdrugsconsumablesequipment-2" next="/informationsystem" />
         
       </div>
     </div>

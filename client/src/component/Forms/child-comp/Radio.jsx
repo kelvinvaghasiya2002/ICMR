@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other, otherArray , setter }) {
+export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other, otherArray , setter, style ,st}) {
     const [otherSpecify, setOtherSpecify] = useState("");
 
     const handleRadioClick = (event) => {
@@ -14,13 +14,13 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
 
     return (
         <>
-            <div className='block'>
+            <div className='block' style={style}>
                 <h3 className='h3block'>{h3}</h3>
                 <form>
                     {
                         CheckbobItems.map((item, index) => {
                             return (
-                                <div key={index} style={{ display: "flex", alignItems: "center" }}>
+                                <div key={index} className='radio_opts'>
                                     {
                                         (otherArray && otherArray[index]) ?
                                             <>
@@ -46,11 +46,12 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                                             )
                                                         })
                                                     }} 
+                                                    style={st}
                                                     type="text" 
                                                     name={name}
                                                     value={document.getElementById(item)?.checked ? otherSpecify : ""}
                                                     id={`${item}otherInput`} 
-                                                    disabled />
+                                                     />
                                             </>
                                             :
                                             <>
@@ -62,7 +63,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
 
                                                 }
 
-                                                <label style={{ fontWeight: "400", marginLeft: "0.25vw" }} htmlFor={item}>{item}</label><br />
+                                                <label className='radio_labels' htmlFor={item}>{item}</label><br />
                                             </>
                                     }
                                 </div>

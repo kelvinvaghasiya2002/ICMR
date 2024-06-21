@@ -33,6 +33,8 @@ function FormAC16() {
                     </h3>
                 </div>
 
+                <div className="formcontent cont_extra">
+
                 <Radio  name={"AC33c10"} h3="What was the cause of death as per your knowledge/ information?" CheckbobItems={["STEMI", "Trauma & Burn", "Stroke", "Acute Respiratory Illness", "Postpartum Haemorrhage & Pre-Eclampsia", "Neonatal Emergency", "Snake bite", "Poisoning", "Others", "Don’t know"]} onClick={handleChange(setFormAC16)} byDefault={formAC16.AC33c10} />
 
                 <Radio  name={"AC33c11"} h3="Do you have the death certificate of the deceased?" CheckbobItems={["Yes", "No"]} onClick={handleChange(setFormAC16)} byDefault={formAC16.AC33c11} />
@@ -51,8 +53,9 @@ function FormAC16() {
                     </div>
                 </div>}
 
-                <Buttons formName={"formac16"} formData={formAC16} prev="/formsac-verbal&socialautopsyquestionnaire-2" next="/formsb-sociodemographicprofile" />
-                    
+                <Buttons formName={"formac16"} formData={formAC16}  prevText="Previous" nextText="Next"  prev="/formsac-verbal&socialautopsyquestionnaire-2" next="/formsb-sociodemographicprofile" />
+                
+                </div>
     
             </div>
         </section>

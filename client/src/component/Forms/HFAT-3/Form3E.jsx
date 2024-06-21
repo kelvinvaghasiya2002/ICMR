@@ -61,7 +61,7 @@ function Form3E() {
 
           <Checkbox h3="3E.3 : Which of the following emergency services are delivered at the PHC? " CheckbobItems={["Triage", "Resuscitation", "Medico Legal Reporting"]} name={"H3E3"} setFunction={setForm3E} StateValue={form3E} array={form3E.H3E3}  />
 
-          <Buttons formName={"form3e"} formData={form3E} prev="/logistics-3-1" next="/informationsystem-3" />
+          <Buttons formName={"form3e"} formData={form3E} prevText="Previous" nextText="Next" prev="/logistics-3-1" next="/informationsystem-3" />
         </div>
       </div>
     </section>

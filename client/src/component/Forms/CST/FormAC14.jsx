@@ -50,6 +50,10 @@ function FormAC14() {
                         Verbal & Social Autopsy Questionnaire
                     </h3>
                 </div>
+                
+
+
+                <div className="formcontent cont_extra">
 
                 <div className='block'>
                     <h3 className='h3block'>In the last one year, did any member in your household lost his/her life due to any health emergency condition?</h3>
@@ -81,7 +85,9 @@ function FormAC14() {
                     </div>
                 </div>}
 
-                <Buttons formName={"formac14"} formData={formAC14} prev="/formsac-others" next="/formsac-verbal&socialautopsyquestionnaire-2" />
+                <Buttons formName={"formac14"} formData={formAC14}  prevText="Previous" nextText="Next"  prev="/formsac-others" next="/formsac-verbal&socialautopsyquestionnaire-2" />
+            
+                </div>
             </div>
         </section>
     )

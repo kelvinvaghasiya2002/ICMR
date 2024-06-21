@@ -115,7 +115,7 @@ function Form2F() {
               onClick={handleChange(setForm2F)}
             />
 
-            <Buttons formName="form2f" formData={form2F} prev="/emergencycareservices-2" next="/finance-2" />
+            <Buttons formName="form2f" formData={form2F} prevText="Previous" nextText="Next" prev="/emergencycareservices-2" next="/finance-2" />
           </div>
         </div>
       </section>

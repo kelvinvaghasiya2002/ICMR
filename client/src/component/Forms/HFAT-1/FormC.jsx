@@ -106,7 +106,7 @@ function FormC() {
           />
 
 
-          <Checkbox
+          <Checkbox 
             h3="Medical College"
             CheckbobItems={[
               "Transfusion medicine",
@@ -171,7 +171,7 @@ function FormC() {
 
           <InputField name="C6" h3="1C.6 : When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} />
 
-          <Buttons formName={"formc"} formData={formC} prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" />
+          <Buttons formName={"formc"} formData={formC} prevText="Previous" nextText="Next" prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" />
         </div>
       </div>
     </section>

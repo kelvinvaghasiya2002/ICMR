@@ -45,7 +45,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                     {
                         CheckbobItems.map((item, index) => {
                             return (
-                                <div key={index} style={{ display: "flex", alignItems: "center" }}>
+                                <div key={index} style={{ display: "flex", alignItems: "flex-start", marginBottom:"0.8vw" }}>
 
                                     {
                                         (array.includes(item)) ?
@@ -54,7 +54,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                                             <input onChange={handleClick} type="checkbox" id={item} name={name} value={item} />
                                     }
 
-                                    <label style={{ fontWeight: "400", marginLeft: "0.25vw" }} htmlFor={item}>{item}</label>
+                                    <label style={{ fontSize:"1.1vw" ,fontWeight: "400", marginLeft: "0.25vw", color:"gray" }} htmlFor={item}>{item}</label>
 
                                     <br />
                                     {
@@ -74,7 +74,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                         other &&
                         <>
                             <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" />
-                            <span style={{fontSize : "1.2vw"}}>Other (Specify)</span>
+                            <span style={{fontSize : "1.1vw", color:"gray", paddingLeft:"0.2vw"}}>Other (Specify)</span>
                             <input
                                 className='others blockinput' onChange={handleChange} type="text" name="otherSpecify" value={array[0]} id={name} disabled/>
                         </>

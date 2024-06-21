@@ -37,7 +37,7 @@ function FormD21() {
 " CheckbobItems={["Affordability", "Availability of Transport", "Availability of accompanying person", "Distance from facility", "Time delay", "Others (Specify):"]} name={"D4"} onClick={handleChange(setFormD21)} />
 
 
-          <Buttons formName={"formd21"} formData={formD21} prev="/formsc-referralfacility" next="/formse-costing" />
+          <Buttons formName={"formd21"} formData={formD21}  prevText="Previous" nextText="Next"  prev="/formsc-referralfacility" next="/formse-costing" />
 
         </div>
 

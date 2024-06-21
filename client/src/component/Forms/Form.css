@@ -1,26 +1,33 @@
 .sidePanel {
     box-shadow: rgba(0, 0, 0, 0.26) 0vw 0.03vw 1.05vw;
     margin: 1.40vw 1.40vw 1.4vw 0vw;
-    padding: 0vw 1.40vw 1.40vw 1.4vw;
+    padding: 0vw 1vw 1.40vw 1vw;
     border-radius: 0.53vw;
     font-weight: 600;
     position: sticky;
     top: 10%;
-    height: 76vh;
+    height: 75vh;
     width: 24vw;
-    overflow: scroll;
+    overflow: hidden;
+    background-color: #F2F7FF;
+
 }
 
 .sidePanel p {
-    font-size: 1vw;
+    line-height: 1.5vw;
 }
 
 .innerdiv {
-    padding: 0vw 1.05vw;
+    padding: 2vw 0.01vw;
 }
 
+
+
 .innerdiv p {
+    padding: 0.2vw 0.8vw 0.1vw 1.5vw;
     font-size: 0.9vw;
+    font-weight: 500;
+    border-radius: 0.35vw;
 }
 
 .innerdiv a {
@@ -34,26 +41,48 @@
     align-items: flex-start;
     box-shadow: rgba(0, 0, 0, 0.35) 0vw 0.03vw 1.05vw;
     width: -webkit-fill-available;
-    margin: 1.40vw 1.40vw 1.4vw 0vw;
-    padding-bottom: 1.20vw;
+    margin: 1.40vw 1.40vw 0vw 0vw;
+    /* padding-bottom: 2vw; */
     border-radius: 0.7vw;
-    height: 76vh;
+    height: 78vh;
     overflow: scroll;
+    /* overflow: hidden; */
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    
     
 }
 
 .formhdr {
     position: sticky;
     top: 0;
-    background-color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0vw 0.03vw 1.05vw;
     width: -webkit-fill-available;
     padding-left: 1.2vw;
+    background-color: #152266;
+    color: white;
+}
+
+.formhdr h3{
+    font-weight: 750;
 }
 
 .formcontent {
     padding: 0vw 1.20vw 1.20vw 1.20vw;
     width: -webkit-fill-available;
+    /* height: 100vh; */
+    background-color: #F2F7FF;
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+.formcontent::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit (Chrome, Safari, etc.) */
+}
+
+
+.cont_extra{
+    height: 100%;
 }
 
 section {
@@ -65,9 +94,9 @@ section {
 }
 
 .nextbtn {
-    background-color: #3177FF;
+    background-color: #152266;
     border: none;
-    border-radius: 1.40vw;
+    border-radius: .2vw;
     padding: 0.5vw 1.40vw;
     text-align: center;
     text-decoration: none;
@@ -78,7 +107,7 @@ section {
 
 .prevbtn {
     border: none;
-    background-color: white;
+    background-color: #F2F7FF;
     font-weight: 700
 }
 
@@ -119,6 +148,7 @@ section {
 
 .h3block {
     margin: 0.9vw 0.9vw 0.9vw 0vw;
+    font-size: 1.1vw;
 }
 
 .h3blockleftmg {
@@ -131,6 +161,8 @@ section {
     padding: 0vw 0.7vw;
     font-size: 0.9vw;
     height: 2.3vw;
+    background-color: #F2F7FF;
+    width: 15vw;
 }
 
 .blockinput:focus {
@@ -224,6 +256,29 @@ table {
    
 }
 
+.datetime{
+    font-size: 1.1vw;
+}
+
+.datetime_current{
+    font-weight: 400;
+    font-size: 1vw;
+    color: #757575;
+}
+
+.radio_opts{
+    color: #757575;
+    display: "flex";
+    align-items: "center";
+}
+
+.radio_labels{
+    font-weight: 400;
+    font-size: 1vw;
+    margin-left: 0.5vw;
+    line-height: 30px;
+}
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -263,7 +318,7 @@ th {
     outline: none;
     /* border: none; */
     /* border-bottom : 0.1vh solid black; */
-    background-color: white;
+    background-color: #F2F7FF;
 }
 
 
