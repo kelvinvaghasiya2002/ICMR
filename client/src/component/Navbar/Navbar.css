@@ -4,24 +4,26 @@
     /* width: 100vw; */
     justify-content: space-between;
     align-items: center;
-    padding-left: 4%;
-    padding-right: 3%;
+    padding-left: 7%;
+    padding-right: 7%;
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
-.ICMRIcon img{
-    height: 14vh; 
-    /* height: 80%; */
-    aspect-ratio: 3 / 2;
-}
+
+
 .ICMRLogo img{
-    height: 12vh;
+    height: 13vh;
     aspect-ratio: 3.2 / 1.32;
 }
+
 .PUIcon img{
-    height: 9vh;
+    height: 10vh;
     aspect-ratio: 3 / 0.58;
 }
 
+.secondLogo img{
+    height: 13vh;
+    /* width: 13vh; */
+}
 
 
 
