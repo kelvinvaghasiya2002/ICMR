@@ -19,7 +19,7 @@ function FormA() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"1"} />
       <div className="siteInfo">
@@ -27,7 +27,7 @@ function FormA() {
         <div className="formhdr">
           <div>
             <h3>
-              Health Facility Information
+              1A. Health Facility Information
             </h3>
           </div>
         </div>

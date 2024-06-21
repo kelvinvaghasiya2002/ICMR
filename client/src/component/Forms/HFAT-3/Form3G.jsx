@@ -36,7 +36,7 @@ function Form3G() {
 
       <Radio byDefault={form3G.H3G3} onClick={handleChange(setForm3G)} name="H3G3" h3="3G.3 : Whether any fund is available for emergency care?" CheckbobItems={["Yes", "No"]}  />
 
-      <Radio byDefault={form3G.H3G4} onClick={handleChange(setForm3G)} name="H3G4" h3="3G.4 : If funds are available, which health protection schemes are covering your emergency care system?" CheckbobItems={["PMJAY", "RKS"]} other={true} />
+      <Radio byDefault={form3G.H3G4} onClick={handleChange(setForm3G)} name="H3G4" h3="3G.4 : If funds are available, which health protection schemes are covering your emergency care system?" CheckbobItems={["PMJAY", "RKS" , "Others (Specify)"]} otherArray={[0,0,1]} setter={setForm3G} other={true} />
 
       <InputField value={form3G.H3G5} onChange={handleChange(setForm3G)} name="H3G5" h3="3G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type family member"/>
 

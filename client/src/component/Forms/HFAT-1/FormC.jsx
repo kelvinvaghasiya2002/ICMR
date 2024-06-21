@@ -65,7 +65,7 @@ function FormC() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"3"} />
       <div className="siteInfo">
@@ -73,7 +73,7 @@ function FormC() {
         <div className="formhdr">
           <div>
             <h3>
-              Human Resources
+              1C. Human Resources
             </h3>
           </div>
         </div>
@@ -160,10 +160,13 @@ function FormC() {
               "Every Month",
               "Quarterly",
               "Half Yearly",
-              "Annually"
+              "Annually",
+              "Others(Specify)"
             ]}
             other={true}
+            otherArray={[0,0,0,0,1]}
             name="C5"
+            setter={setFormC}
             onClick={handleChange(setFormC)}
             byDefault={formC.C5}
           />

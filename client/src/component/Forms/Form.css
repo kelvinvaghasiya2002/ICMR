@@ -103,6 +103,7 @@ section {
     font-size: 1.12vw;
     margin-left: auto;
     color: white;
+    cursor: pointer;
 }
 
 .prevbtn {
@@ -217,7 +218,7 @@ table {
     padding: 0vw 1.40vw 1.40vw 1.4vw;
     border-radius: 0.7vw;
     background-color: white;
-
+    z-index: 10;
 }
 
 .popupbtn {
@@ -235,6 +236,7 @@ table {
     display: flex;
     font-size: 1.12vw;
     margin-right: auto;
+    cursor: pointer;
 }
 
 
@@ -323,3 +325,64 @@ th {
 
 
 
+
+
+
+/* ------------------ STYLING FOR POP-UP MENU -------------------- */
+
+
+
+
+#blur-background {
+    height: 100vh;
+    width: 100vw;
+    z-index: 5;
+    backdrop-filter: blur(1.5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+
+
+
+  .scale-in-top {
+	-webkit-animation: scale-in-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-in-top 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+ @-webkit-keyframes scale-in-top {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      -webkit-transform-origin: 50% 0%;
+              transform-origin: 50% 0%;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: 50% 0%;
+              transform-origin: 50% 0%;
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-top {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      -webkit-transform-origin: 50% 0%;
+              transform-origin: 50% 0%;
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: 50% 0%;
+              transform-origin: 50% 0%;
+      opacity: 1;
+    }
+  }
+  
+  

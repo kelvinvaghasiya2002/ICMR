@@ -34,7 +34,7 @@ function Form3A() {
 
           <div className="formcontent">
 
-            <InputField value={Form3A.H3A1} onChange={handleChange(setForm3A)} name="H3A1" h3="3A.1 : Assessor’s Name: " placeholder="Type here" />
+            <InputField value={form3A.H3A1} onChange={handleChange(setForm3A)} name="H3A1" h3="3A.1 : Assessor’s Name:" placeholder="Type here" />
 
             <div>
               <p className='datetime'>Date : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
@@ -42,19 +42,19 @@ function Form3A() {
 
             <Radio byDefault={form3A.H3A2} onClick={handleChange(setForm3A)} name="H3A2" h3="3A.2 : State :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
 
-            <InputField value={Form3A.H3A3} onChange={handleChange(setForm3A)} name="H3A3" h3="3A.3 : Block Name :" placeholder="Type here" />
+            <InputField value={form3A.H3A3} onChange={handleChange(setForm3A)} name="H3A3" h3="3A.3 : Block Name :" placeholder="Type here" />
 
-            <InputField value={Form3A.H3A4} onChange={handleChange(setForm3A)} name="H3A4" h3="3A.4 : Healthcare Facility Name :" placeholder="Type here" />
+            <InputField value={form3A.H3A4} onChange={handleChange(setForm3A)} name="H3A4" h3="3A.4 : Healthcare Facility Name :" placeholder="Type here" />
 
-            <InputField value={Form3A.H3A5} onChange={handleChange(setForm3A)} name="H3A5" h3="3A.5 : Healthcare Facility Address :" placeholder="Type here" />
+            <InputField value={form3A.H3A5} onChange={handleChange(setForm3A)} name="H3A5" h3="3A.5 : Healthcare Facility Address :" placeholder="Type here" />
 
-            <InputField value={Form3A.H3A6} onChange={handleChange(setForm3A)} name="H3A6" h3="3A.6 : Name of the Medical Officer :" placeholder="Type here" />
+            <InputField value={form3A.H3A6} onChange={handleChange(setForm3A)} name="H3A6" h3="3A.6 : Name of the Medical Officer :" placeholder="Type here" />
 
-            <InputField value={Form3A.H3A7} onChange={handleChange(setForm3A)} name="H3A7" h3="3A.7 : Contact Number of Medical Officer :" placeholder="Type here" />
+            <InputField value={form3A.H3A7} onChange={handleChange(setForm3A)} name="H3A7" h3="3A.7 : Contact Number of Medical Officer :" placeholder="Type here" />
 
-            <InputField value={Form3A.H3A8} onChange={handleChange(setForm3A)} name="H3A8" h3="3A.8 : Email ID :" placeholder="Type here" />
+            <InputField value={form3A.H3A8} onChange={handleChange(setForm3A)} name="H3A8" h3="3A.8 : Email ID :" placeholder="Type here" />
 
-            <InputField value={Form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="3A.9 : GPS Coordinates :" placeholder="Type here" />
+            <InputField value={form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="3A.9 : GPS Coordinates :" placeholder="Type here" />
 
             <Radio byDefault={form3A.H3A10} onClick={handleChange(setForm3A)} name="H3A10" h3="3A.10 : What type of Health care facility is this?" CheckbobItems={["HWC-PHC", " Urban HWC-PHC", "Specialist UPHC/Polyclinic"]} />
 

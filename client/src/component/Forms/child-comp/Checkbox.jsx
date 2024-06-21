@@ -33,6 +33,8 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             console.log(otherSpecifyCheckBox.checked);
             document.getElementById(name).disabled = false;
         }else{
+            setOtherSpecify("");
+            array[0]="";
             document.getElementById(name).disabled = true;
         }
     }

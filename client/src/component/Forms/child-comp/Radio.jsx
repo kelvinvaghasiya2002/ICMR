@@ -5,7 +5,9 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
 
     const handleRadioClick = (event) => {
         const otherSpecifyRadio = document.getElementById(event.target.value);
-        if (otherSpecifyRadio.checked == true) {
+        // console.log("rgs");
+        if (otherSpecifyRadio.checked === true) {
+            console.log("rgs");
             document.getElementById(`${event.target.value}otherInput`).disabled = false;
         } else {
             document.getElementById(`${event.target.value}otherInput`).disabled = true;
@@ -51,7 +53,8 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                                     name={name}
                                                     value={document.getElementById(item)?.checked ? otherSpecify : ""}
                                                     id={`${item}otherInput`} 
-                                                     />
+                                                    disabled
+                                                    />
                                             </>
                                             :
                                             <>

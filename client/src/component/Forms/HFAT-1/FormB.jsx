@@ -16,7 +16,7 @@ function FormB() {
   turnOffbutton();
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"2"} />
       <div className="siteInfo">
@@ -24,7 +24,7 @@ function FormB() {
         <div className="formhdr">
           <div>
             <h3>
-              Infrastructure
+              1B. Infrastructure
             </h3>
           </div>
         </div>
@@ -37,13 +37,13 @@ function FormB() {
 
           <InputField name="B3" type="number" onChange={handleChange(setFormB)} h3="1B.3 : How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" />
 
-          <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={[" Red", " Yellow", "Green"]} otherArray={[1,1,1]} setter={setFormB} name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} st={{  borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius:"0"}}/>
+          <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={["Red", "Yellow", "Green"]} otherArray={[1,1,1]} setter={setFormB} name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} st={{  borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius:"0"}}/>
 
           <InputField name="B5" onChange={handleChange(setFormB)} h3="1B.5 : What is the average number of patients presenting to OPD per month?" value={formB.B5} placeholder="Type here" type="number" />
 
           <InputField name="B6" type="number" onChange={handleChange(setFormB)} value={formB.B6} p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" />
 
-          <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7","No, but there is a tie up with external Blood bank facility", "No"]} name="B7" byDefault={formB.B7} other={true} />
+          <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7","No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0,0,1,0]} byDefault={formB.B7} setter={setFormB} />
 
           <Radio h3="1B.8 : Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} onClick={handleChange(setFormB)} byDefault={formB.B8} name="B8" />
 

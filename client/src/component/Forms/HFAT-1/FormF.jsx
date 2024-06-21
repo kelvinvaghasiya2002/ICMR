@@ -17,7 +17,7 @@ function FormF() {
   const [formF, setFormF] = useState(JSON.parse(formf));
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"6"} />
       <div className="siteInfo">
@@ -25,7 +25,7 @@ function FormF() {
         <div className="formhdr">
           <div>
             <h3>
-              Information System
+              1F. Information System
             </h3>
           </div>
         </div>

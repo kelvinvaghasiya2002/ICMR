@@ -45,9 +45,9 @@ function Form3F() {
 
       <Radio byDefault={form3F.H3F6} onClick={handleChange(setForm3F)} name="H3F6" h3="3F.6 : Whether Medical Officer In charge (MO/IC) uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]}  />
 
-      <Radio byDefault={form3F.H3F7} onClick={handleChange(setForm3F)} name="H3F7" h3="3F.7 : Do you get Pre-Hospital Notification during an emergency?" CheckbobItems={["Yes ___________ (How often per week)", "No"]}  />
+      <Radio byDefault={form3F.H3F7} onClick={handleChange(setForm3F)} name="H3F7" h3="3F.7 : Do you get Pre-Hospital Notification during an emergency?" otherArray={[1,0]} setter={setForm3F} CheckbobItems={["Yes(How often per week)", "No"]}  />
 
-      <Radio byDefault={form3F.H3F8} onClick={handleChange(setForm3F)} name="H3F8" h3="3F.8 : Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]}  />
+      <Radio byDefault={form3F.H3F8} onClick={handleChange(setForm3F)} name="H3F8" h3="3F.8 : Infrastructure for receiving external communication?" CheckbobItems={["Yes", "No"]}  />
 
       <Buttons formName="form3f" formData={form3F} prevText="Previous" nextText="Next" prev="/emergencycareservices-3" next="/finance-3" />
       </div>

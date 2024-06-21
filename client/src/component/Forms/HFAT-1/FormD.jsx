@@ -17,7 +17,7 @@ function FormD() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"4"} />
       <div className="siteInfo">
@@ -25,7 +25,7 @@ function FormD() {
         <div className="formhdr">
           <div>
             <h3>
-              Logistics (Drugs/ Consumables/ Equipment)
+              1D. Logistics (Drugs/ Consumables/ Equipment)
             </h3>
           </div>
         </div>

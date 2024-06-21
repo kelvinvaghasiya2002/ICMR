@@ -34,7 +34,7 @@ function FormE() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
   <section>
     <SidePanel id={"5"} />
     <div className="siteInfo">
@@ -42,7 +42,7 @@ function FormE() {
       <div className="formhdr">
         <div>
           <h3>
-            Emergency Care Services
+            1E. Emergency Care Services
           </h3>
         </div>
       </div>

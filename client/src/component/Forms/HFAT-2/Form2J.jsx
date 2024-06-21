@@ -5,6 +5,7 @@ import Radio from '../child-comp/Radio';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
+import LastButton from '../child-comp/LastButton.jsx';
 
 function Form2J() {
   var form2j = setLocalStorage("form2j" , {H2J1:"" , H2J2:""});
@@ -34,7 +35,8 @@ function Form2J() {
           <Radio h3="2J.2 : Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]} name={"H2J2"} onClick={handleChange(setForm2J)} byDefault={form2J.H2J2}  />
 
 
-          <Buttons formName={"form2j"} formData={form2J} prevText="Previous" nextText="Submit" prev="/processpoliciessops-2" next="" />
+          {/* <Buttons formName={"form2j"} formData={form2J} prevText="Previous" nextText="Submit" prev="/processpoliciessops-2" next="" /> */}
+          <LastButton prev="/processpoliciessops-2" formName="form2j" formData={form2J} MainForm={"HFAT-2"} />
           
         </div>
       </div>

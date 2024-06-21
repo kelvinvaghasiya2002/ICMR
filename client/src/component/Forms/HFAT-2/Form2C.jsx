@@ -101,7 +101,7 @@ function Form2C() {
               ]}
               other={true}
               otherArray={[0,0,0,0,1]}
-              name="H2C4" onClick={handleChange(setForm2C)} byDefault={form2C.H2C4}
+              name="H2C4" onClick={handleChange(setForm2C)} setter={setForm2C} byDefault={form2C.H2C4}
             />
 
             <InputField h3="2C.5 : When was the last training conducted?" placeholder="Type here" name="H2C5" value={form2C.H2C5} onChange={handleChange(setForm2C)} />

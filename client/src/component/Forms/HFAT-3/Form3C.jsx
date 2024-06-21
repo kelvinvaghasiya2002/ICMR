@@ -76,7 +76,7 @@ function Form3C() {
               "Quarterly",
               "Half Yearly",
               "Annually",
-              "Others (Specify)"]} otherArray={[0,0,0,0,1]} name="H3C4" h3="3C.4 : If Yes, Frequency of training on emergency care in a year?" other={true} byDefault={form3C.H3C4} onClick={handleChange(setForm3C)} />
+              "Others (Specify)"]} setter={setForm3C} otherArray={[0,0,0,0,1]} name="H3C4" h3="3C.4 : If Yes, Frequency of training on emergency care in a year?" other={true} byDefault={form3C.H3C4} onClick={handleChange(setForm3C)} />
 
             <InputField h3="3C.5 : When was the last training conducted?" placeholder="Type here" value={form3C.H3C5} name={"H3C5"} onChange={handleChange(setForm3C)} />
 

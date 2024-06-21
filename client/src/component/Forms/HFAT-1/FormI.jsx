@@ -32,7 +32,7 @@ const initialRows = [
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"9"} />
       <div className="siteInfo">
@@ -40,7 +40,7 @@ const initialRows = [
         <div className="formhdr">
           <div>
             <h3>
-              Process/ Policies/SOPs
+              1I. Process/ Policies/SOPs
             </h3>
           </div>
         </div>

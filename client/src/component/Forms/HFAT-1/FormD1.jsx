@@ -17,7 +17,7 @@ function FormD2() {
 
     return (
         <div>
-            <Heading h2="Health Facility Assessment Tool: District Hospital/Tertiary Care (Public or Private)"></Heading>
+            <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
         <section>
             <SidePanel id={"4"} />
             <div className="siteInfo">
@@ -25,7 +25,7 @@ function FormD2() {
                 <div className="formhdr">
                     <div>
                         <h3>
-                            Logistics (Drugs/ Consumables/ Equipment)
+                            1D. Logistics (Drugs/ Consumables/ Equipment)
                         </h3>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ function FormD2() {
 
                     <h3>24x7 availability of (with numbers and availability and functionality):</h3>
 
-                    <Checkbox setFunction={setFormD1} StateValue={formD1} array={formD1.H1D2} name="H1D2" CheckbobItems={["Do you have mobile bed for Resuscitation?", "Do you have crash cart (specialized cart for resuscitation)?", "Do you have Hard Cervical collar?", "Do you have Oxygen cylinder/central oxygen supply?", "Do you have suction machine?", "Do you have Multipara Monitor (To monitor Heart rate, BP, SPO2[Essential] ECG, Respiration Rate [Desirable] etc)?", "Do you have defibrillator with or without external pacer?", "Do you have Toothed Forceps, Kocher Forceps, Magill\'s forceps, Artery forceps?", "Do you have AMBU Bag for adult and Paediatric?", "Do you have basic airway equipment like oropharyngeal nasopharyngeal airway, LMA for adult and pediatric?", "Do you have advanced laryngoscope and endotracheal tube or other similar device?", "Do you have tourniquet?", "Do you have pelvic binder or bed sheets with clips?", "Do you have laryngoscope with all sized blades?", "Do you have Endotracheal Tubes of all sizes?", "Do you have Laryngeal Mask Airway (LMA)?", "Do you have Chest Tubes with Water seal drain?", "Do you have ECG machine?", "Do you have nebulizer?", "Do you have fluid warmer?", "Do you have Infusion pump and Syringe Drivers?", "Do you have spine board with sling and scotch tapes?", "Do you have splints for all types of fracture?", "Do you have non-invasive ventilators?", "Do you have invasive ventilators?", "Do you have incubators?"]} />
+                    <Checkbox setFunction={setFormD1} StateValue={formD1} array={formD1.H1D2} name="H1D2" CheckbobItems={["Mobile Bed for Resuscitation", "Crash Cart (specialized cart for resuscitation)", "Hard Cervical Collar", "Oxygen Cylinder/Central Oxygen Supply", "Suction Machine", "Multipara Monitor (To monitor Heart rate, BP, SPO2[Essential] ECG, Respiration Rate [Desirable] etc)", "Defibrillator with or without external Pacer", "Toothed Forceps, Kocher Forceps, Magill\'s forceps, Artery forceps", "AMBU Bag for Adult and Paediatric", "Basic airway equipment like oropharyngeal nasopharyngeal airway, LMA for Adult and Pediatric", "Advanced laryngoscope and endotracheal tube or other similar device", "Tourniquet", "Pelvic binder or bed sheets with clips", "Laryngoscope with all sized Blades", "Endotracheal Tubes of all Sizes", "Laryngeal Mask Airway (LMA)", "Chest Tubes with Water Seal Drain", "ECG Machine", "Nebulizer", "Fluid Warmer", "Infusion Pump and Syringe Drivers", "Spine Board with Sling and Scotch Tapes", "Splints for all types of Fracture", "Non-invasive Ventilators", "Invasive Ventilators", "Incubators"]} />
                     
                     <Buttons formData={formD1} formName="formd1" prevText="Previous" nextText="Next" prev="/logisticsdrugsconsumablesequipment-1" next="/emergencycareservices" />
                 </div>
