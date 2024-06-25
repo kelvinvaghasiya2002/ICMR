@@ -4,14 +4,20 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
     const [otherSpecify, setOtherSpecify] = useState("");
 
     const handleRadioClick = (event) => {
-        const otherSpecifyRadio = document.getElementById(event.target.value);
-        // console.log("rgs");
-        if (otherSpecifyRadio.checked === true) {
-            console.log("rgs");
-            document.getElementById(`${event.target.value}otherInput`).disabled = false;
-        } else {
-            document.getElementById(`${event.target.value}otherInput`).disabled = true;
-        }
+        // const otherSpecifyRadio = document.getElementById(event.target.value);
+            // document.getElementById(`${event.target.value}otherInput`).disabled = false;
+
+            if(document.getElementById(`${event.target.value}otherInput`)){
+                document.getElementById(`${event.target.value}otherInput`).disabled = false;
+            }
+            
+            CheckbobItems.forEach(element => {
+                if(element !== event.target.value){
+                    if(document.getElementById(`${element}otherInput`)){
+                        document.getElementById(`${element}otherInput`).disabled = true;
+                    }
+                }
+            });
     }
 
     return (
