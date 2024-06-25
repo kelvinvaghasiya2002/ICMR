@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Navbar from './component/Navbar/Navbar'
 import axios from "axios"
 import FirstPage from './component/FirstPage/FirstPage'
-import UserProvider, { useUserInfo } from './contexts/User.jsx'
+import { useUserInfo } from './contexts/User.jsx'
 import InformationPage from "./component/InformationPage/InformationPage.jsx"
 import ContactUs from "./component/ContactUs/ContactUs.jsx"
 import HomePage from './component/HomePage/HomePage.jsx'
@@ -11,28 +11,6 @@ import { Routes, Route } from "react-router-dom";
 import SignIn from './component/Signin/Signin.jsx'
 import SignUp from './component/Signup/Signup.jsx'
 import Protected from './component/Protected/Protected.jsx'
-import FormAA from './component/Forms/CST/FormAA.jsx'
-import FormAB from './component/Forms/CST/FormAB.jsx'
-import FormAC3 from './component/Forms/CST/FormAC3.jsx'
-import FormAC4 from './component/Forms/CST/FormAC4.jsx'
-import FormAC5 from './component/Forms/CST/FormAC5.jsx'
-import FormAC6 from './component/Forms/CST/FormAC6.jsx'
-import FormAC7 from './component/Forms/CST/FormAC7.jsx'
-import FormAC8 from './component/Forms/CST/FormAC8.jsx'
-import FormAC9 from './component/Forms/CST/FormAC9.jsx'
-import FormAC10 from './component/Forms/CST/FormAC10.jsx'
-import FormAC11 from './component/Forms/CST/FormAC11.jsx'
-import FormAC12 from './component/Forms/CST/FormAC12.jsx'
-import FormAC13 from './component/Forms/CST/FormAC13.jsx'
-import FormAC14 from './component/Forms/CST/FormAC14.jsx'
-import FormAC15 from './component/Forms/CST/FormAC15.jsx'
-import FormAC16 from './component/Forms/CST/FormAC16.jsx'
-import FormB17 from './component/Forms/CST/FormB17.jsx'
-import FormB18 from './component/Forms/CST/FormB18.jsx'
-import FormB19 from './component/Forms/CST/FormB19.jsx'
-import FormC20 from './component/Forms/CST/FormC20.jsx'
-import FormD21 from './component/Forms/CST/FormD21.jsx'
-import FormE22 from './component/Forms/CST/FormE22.jsx'
 import FormF from './component/Forms/HFAT-1/FormF.jsx'
 import FormG from './component/Forms/HFAT-1/FormG.jsx'
 import FormH from './component/Forms/HFAT-1/FormH.jsx'
@@ -68,6 +46,21 @@ import Form3I from './component/Forms/HFAT-3/Form3I.jsx'
 import Form3J from './component/Forms/HFAT-3/Form3J.jsx'
 import Facility from './component/Forms/Ambulance/Facility.jsx'
 import Heading from './component/Heading/Heading.jsx'
+import FormA1 from './component/Forms/CST/FormA1.jsx'
+import FormA2 from './component/Forms/CST/FormA2.jsx'
+import FormA3 from './component/Forms/CST/FormA3.jsx'
+import FormA4 from './component/Forms/CST/FormA4.jsx'
+import FormA5 from './component/Forms/CST/FormA5.jsx'
+import FormA6 from './component/Forms/CST/FormA6.jsx'
+import FormA7 from './component/Forms/CST/FormA7.jsx'
+import FormA8 from './component/Forms/CST/FormA8.jsx'
+import FormA9 from './component/Forms/CST/FormA9.jsx'
+import FormA10 from './component/Forms/CST/FormA10.jsx'
+import FormA11 from './component/Forms/CST/FormA11.jsx'
+import FormA12 from './component/Forms/CST/FormA12.jsx'
+import FormA13 from './component/Forms/CST/FormA13.jsx'
+import FormA14 from './component/Forms/CST/FormA14.jsx'
+import FormA15 from './component/Forms/CST/FormA15.jsx'
 
 const url = import.meta.env.VITE_SERVER;
 
@@ -107,7 +100,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Heading/>
+      <Heading />
       <Routes>
         <Route path='/' element={!loggedIn ? <FirstPage /> : <HomePage />} />
         <Route path='/sign-in' element={<SignIn />} />
@@ -116,7 +109,9 @@ function App() {
         <Route path="/aboutus" element={<InformationPage />} />
         <Route path='/project-sites' element={<Map />} />
         <Route path='/contact-us' element={<ContactUs />} />
-        <Route path='/formsaa' element={<FormAA />} />
+
+        {/* BELOW are CST */}
+        {/* <Route path='/formsaa' element={<FormAA />} />
         <Route path='/formsab' element={<FormAB />} />
         <Route path='/formsac-householdschedule' element={<FormAC3 />} />
         <Route path='/formsac-relationshipwithheadofhousehold' element={<FormAC4 />} />
@@ -137,7 +132,23 @@ function App() {
         <Route path='/formsb-initialhealthcareseekingpathway2' element={<FormB19 />} />
         <Route path='/formsc-referralfacility' element={<FormC20 />} />
         <Route path='/formsd-barriersandfacilitatorsinseekingcare' element={<FormD21 />} />
-        <Route path='/formse-costing' element={<FormE22 />} />
+        <Route path='/formse-costing' element={<FormE22 />} /> */}
+
+        <Route path='/siteinformation' element={<FormA1 />} />
+        <Route path='/clusterinformation' element={<FormA2 />} />
+        <Route path='/linelistingofhouseholdmembers-1' element={<FormA3 />} />
+        <Route path='/linelistingofhouseholdmembers-2' element={<FormA4 />} />
+        <Route path='/linelistingofhouseholdmembers-3' element={<FormA5 />} />
+        <Route path='/trauma' element={<FormA6 />} />
+        <Route path='/burn' element={<FormA7 />} />
+        <Route path='/stemi' element={<FormA8 />} />
+        <Route path='/stroke' element={<FormA9 />} />
+        <Route path='/acuterespiratoryillness' element={<FormA10 />} />
+        <Route path='/maternalneonatalemergency' element={<FormA11 />} />
+        <Route path='/snakebite' element={<FormA12 />} />
+        <Route path='/poisoning' element={<FormA13 />} />
+        <Route path='/others' element={<FormA14 />} />
+        <Route path='/death' element={<FormA15 />} />
 
 
 
