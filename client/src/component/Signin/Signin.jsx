@@ -7,12 +7,14 @@ import AppleSI from "./AppleSI"
 import FacebookSI from './FacebookSI'
 import { useUserInfo } from '../../contexts/User'
 import axios from 'axios'
+import { Loader } from 'lucide-react'
 import Navbar from '../Navbar/Navbar'
 const url = import.meta.env.VITE_SERVER;
 
 export default function SignIn() {
     const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
     const [signIn, setsignIn] = useState(false);
+    const [loader, setLoader] = useState(false);
     let [SigninData, setSigninData] = useState({
         Email: "",
         Password: "",
@@ -28,6 +30,7 @@ export default function SignIn() {
 
     let SubmitData = (async (Event) => {
         Event.preventDefault();
+        setLoader(true)
 
         function ValidateEmail(input) {
             var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -39,7 +42,6 @@ export default function SignIn() {
         }
 
         var ValidateEmail = ValidateEmail(SigninData.Email);
-
 
         if (ValidateEmail) {
             try {
@@ -62,8 +64,12 @@ export default function SignIn() {
             } catch (error) {
                 alert(error.response.data.error);
             }
+            finally {
+                setLoader(false);
+            }
         } else if (!ValidateEmail) {
             alert("Invalid Email!")
+            setLoader(false)
         }
     })
     document.title="Sign In ICMR"
@@ -122,9 +128,11 @@ export default function SignIn() {
                             </div>
                         </div>
 
-
+                    {/* {loader ? ( <Loa)} */}
                         <div className='signin-button'>
-                            <button onClick={SubmitData}>Sign In</button>
+                        <button onClick={SubmitData} disabled={loader}>
+                                {loader ? <Loader size={30} className="loader-icon" /> : 'Sign In'}
+                            </button>
                         </div>
 
 
