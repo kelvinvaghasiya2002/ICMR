@@ -54,7 +54,7 @@ function Form3B() {
 
       <InputField value={form3B.H3B10} onChange={handleChange(setForm3B)} name="H3B10" h3="3B.10 : If ambulances are not there, how are patients transferred? " placeholder="Type here"/>
 
-      <Buttons formName="form3b" formData={form3B} prevText="Previous" nextText="Next" prev="/facilityinformation-3" next="/humanresources-3" />
+      <Buttons formName="form3b" formData={form3B} prevText="Previous" nextText="Save & Next" prev="/facilityinformation-3" next="/humanresources-3" />
       </div>
     </div>
   </section>

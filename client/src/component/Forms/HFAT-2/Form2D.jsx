@@ -75,7 +75,7 @@ turnOffbutton();
           <h3>Drug Name:</h3>
           <Checkbox setFunction={setForm2D} StateValue={form2D} array={form2D.H2D1} name="H2D1" CheckbobItems={["Oxygen medicinal gas","Atropine","Diazepam/Lorazepam","Adrenaline","Charcoal activated","Antisnake venom","Pralidoxime (PAM)","Magnesium sulphate","Tetanus immunoglobulin","Neostigmine","Aspirin","Clopidogrel","Atorvastatin","Misoprostol","Labetalol IV","Phenobarbitone","Phenytoin (inj)","Plasma volume expander","3% Saline","Dobutamine","Streptokinase","Tenecteplase","Oxytocin","Salbutamol sulphate","Glucose/ 25 % dextrose","Tranexamic acid","tPA IV","Methergine","Carboprost"]} />
 
-          <Buttons formData={form2D} formName="form2d" prevText="Previous" nextText="Next" prev="/humanresources-2" next="/logistics-2-1" />
+          <Buttons formData={form2D} formName="form2d" prevText="Previous" nextText="Save & Next" prev="/humanresources-2" next="/logistics-2-1" />
 
         </div>
       </div>

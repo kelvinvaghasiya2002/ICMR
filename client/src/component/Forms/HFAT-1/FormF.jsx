@@ -51,7 +51,7 @@ Door to CT/ECG time, Door to needle time, Time to activate emergency alert team
 
           <Radio byDefault={formF.H1F9} onClick={handleChange(setFormF)} name="H1F9" h3="1F.9 : Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]}  />
 
-          <Buttons formName="formf" formData={formF} prevText="Previous" nextText="Next" prev="/emergencycareservices" next="/finance" />
+          <Buttons formName="formf" formData={formF} prevText="Previous" nextText="Save & Next" prev="/emergencycareservices" next="/finance" />
         </div>
       </div>
     </section>

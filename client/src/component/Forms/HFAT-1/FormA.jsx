@@ -59,7 +59,7 @@ function FormA() {
 
           <Radio style={{display:"flex", flexDirection:"column"}} h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
 
-          <Buttons formName="forma" formData={formA} prevText="" nextText="Next" prev="" next="/infrastructure" />
+          <Buttons formName="forma" formData={formA} prevText="" nextText="Save & Next" prev="" next="/infrastructure" />
         </div>
       </div>
     </section>

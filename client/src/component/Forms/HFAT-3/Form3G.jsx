@@ -42,7 +42,7 @@ function Form3G() {
 
       <Radio byDefault={form3G.H3G6} onClick={handleChange(setForm3G)} name="H3G6" h3="3G.6 : Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?" CheckbobItems={["Yes", "No"]}  />
 
-      <Buttons formName="form3g" formData={form3G} prevText="Previous" nextText="Next" prev="/informationsystem-3" next="/leadershipandgovernance-3" />
+      <Buttons formName="form3g" formData={form3G} prevText="Previous" nextText="Save & Next" prev="/informationsystem-3" next="/leadershipandgovernance-3" />
       </div>
     </div>
   </section>

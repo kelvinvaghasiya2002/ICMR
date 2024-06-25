@@ -67,7 +67,7 @@ function FormB19() {
 
                     <InputField value={formB19.B30} name={"B30"} onChange={handleChange(setFormB19)} h3="What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary?" placeholder="IMAGE" />
 
-                    <Buttons formName={"formb19"} formData={formB19}  prevText="Previous" nextText="Next"  prev="/formsb-initialhealthcareseekingpathway1" next="/formsc-referralfacility" />
+                    <Buttons formName={"formb19"} formData={formB19}  prevText="Previous" nextText="Save & Next"  prev="/formsb-initialhealthcareseekingpathway1" next="/formsc-referralfacility" />
 
                 </div>
 

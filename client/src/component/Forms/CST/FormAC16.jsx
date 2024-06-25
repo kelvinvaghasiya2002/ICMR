@@ -53,7 +53,7 @@ function FormAC16() {
                     </div>
                 </div>}
 
-                <Buttons formName={"formac16"} formData={formAC16}  prevText="Previous" nextText="Next"  prev="/formsac-verbal&socialautopsyquestionnaire-2" next="/formsb-sociodemographicprofile" />
+                <Buttons formName={"formac16"} formData={formAC16}  prevText="Previous" nextText="Save & Next"  prev="/formsac-verbal&socialautopsyquestionnaire-2" next="/formsb-sociodemographicprofile" />
                 
                 </div>
     

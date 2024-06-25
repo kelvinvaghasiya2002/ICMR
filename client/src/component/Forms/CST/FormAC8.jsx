@@ -32,7 +32,7 @@ function FormAC8() {
 
                     <DropDown name="AC27b" h3="could you please tell who all from your Household suffered with this condition?" dropdownItems={["Kelvin", "Prince", "Jeel"]} onClick={handleChange(setFormAC8)} byDefault={formAC8.AC27b} />
 
-                    <Buttons formName={"formac8"} formData={formAC8}  prevText="Previous" nextText="Next"  prev="/formsac-stroke" next="/formsac-postpartumhaemorrhage" />
+                    <Buttons formName={"formac8"} formData={formAC8}  prevText="Previous" nextText="Save & Next"  prev="/formsac-stroke" next="/formsac-postpartumhaemorrhage" />
                 </div>
             </div>
         </section>
