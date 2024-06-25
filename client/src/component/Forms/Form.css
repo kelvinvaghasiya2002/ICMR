@@ -104,6 +104,7 @@ section {
     margin-left: auto;
     color: white;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .prevbtn {
@@ -119,6 +120,10 @@ section {
 .prevbtn a,
 .nextbtn a {
     text-decoration: none;
+}
+
+.nextbtn:hover {
+    background-color:#3f37c9
 }
 
 .nextbtn a {
