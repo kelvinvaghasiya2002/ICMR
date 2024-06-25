@@ -34,7 +34,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div id='navigation' style={!loggedIn ? { boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" } : { boxShadow: 'none' }} className='navbar'>
+            <div id='navigation' style={loggedIn ? { boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" } : { boxShadow: 'none' }} className='navbar'>
 
                 <div className='ICMRLogo  nav-img'>
                     <Link to="/"><img src={ICMRLogo}></img></Link>
@@ -61,14 +61,20 @@ export default function Navbar() {
                 </div>
 
             </div>
-            {loggedIn && <>  <div id='nav-buttons' className='buttons-grid'>
-                <button id='but'><p>AIM</p></button>
+            {loggedIn && <> 
+             <div id='nav-buttons' className='buttons-grid'>
+                <div className='nav-btn'>
+                <button id='but'><p>Aim</p></button>
                 <button><p>Objective</p></button>
                 <button><p>Outcome</p></button>
                 <button><p>Methodology</p></button>
                 <button><p>Facilities</p></button>
                 <button><p>Workflow</p></button>
                 <button onClick={handleClick}><p>Data Collection</p></button>
+                </div>
+                <div>
+                <button className='logout'><p>Logout</p></button>
+                </div>
             </div>
 
 
