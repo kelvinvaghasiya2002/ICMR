@@ -11,11 +11,12 @@ import setLocalStorage from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading'; ``
 
 function FormA1() {
-  var formaa = setLocalStorage("formaa", { AA2: "", AA3: "" })
+  var forma1 = setLocalStorage("forma1", {AA1 : "" , AA2: "", AA3: "", AA4 : "" })
   turnOffbutton();
 
   const date = new Date();
-  const [formAA, setFormAA] = useState(JSON.parse(formaa))
+  const [formA1, setFormA1] = useState(JSON.parse(forma1))
+
   return (
     <div>
       <Heading h2="Community Survey Tool"></Heading>
@@ -39,13 +40,13 @@ function FormA1() {
             </div>
 
 
-            <Radio h3="AA.2 Site :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name="AA2" onClick={handleChange(setFormAA)} byDefault={formAA.AA2} />
+            <Radio h3="AA.2 Site :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name="AA2" onClick={handleChange(setFormA1)} byDefault={formA1.AA2} />
 
-            <InputField h3="AA.3 Name Of the Data Collector :" placeholder="Type here" name="AA3" value={formAA.AA3} onChange={handleChange(setFormAA)} />
+            <InputField h3="AA.3 Name Of the Data Collector :" placeholder="Type here" name="AA3" value={formA1.AA3} onChange={handleChange(setFormA1)} />
 
-            <InputField h3="Respondent ID: " placeholder="Type here" />
+            <InputField h3="AA.4 Respondent ID: " placeholder="Type here" />
 
-            <Buttons formName="formaa" formData={FormA1} prevText="" nextText="Save & Next" next="/clusterinformation" />
+            <Buttons formName="forma1" formData={formA1} prevText="" nextText="Save & Next" next="/clusterinformation" />
           </div>
         </div>
       </section>
