@@ -45,7 +45,7 @@ function FormA2() {
 
                   <h4><i>I would like to ask few questions pertaining to people staying in the same household including both family and non-family members for the last 1 year like servants included but paying guests not included.</i></h4>
 
-                  <Buttons prev="/siteinformation" next="/linelistingofhouseholdmembers-1" prevText="previous" nextText="save & next"/>
+                  <Buttons prev="/siteinformation" next="/linelistingofhouseholdmembers-1" prevText="Previous" nextText="Save & Next"/>
               </div>
           </div>
       </section>

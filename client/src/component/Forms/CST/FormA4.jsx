@@ -30,9 +30,9 @@ function FormA4() {
 
               <div className="formcontent cont_extra">
 
-              <DropDown className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"AC21"} h3="AC.2.1  Name of the Respondent?"  />
+              <DropDown className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"AC2_1"} h3="AC.2.1  Name of the Respondent?"  />
 
-                  <Buttons prev="/linelistingofhouseholdmembers-1" next="/linelistingofhouseholdmembers-3" prevText="previous" nextText="save & next"/>
+                  <Buttons prev="/linelistingofhouseholdmembers-1" next="/linelistingofhouseholdmembers-3" prevText="Previous" nextText="Save & Next"/>
               </div>
           </div>
       </section>
