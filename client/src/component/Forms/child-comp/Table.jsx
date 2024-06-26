@@ -41,7 +41,7 @@ function Table({ tableName }) {
                             <th>Name</th>
                             <th>Age (years)</th>
                             <th>Sex</th>
-                            <th>Relationship With Head of the Household</th>
+                            <th>Member ID</th>
                         </tr>
                         {
                             rows.map((item, index) => {
