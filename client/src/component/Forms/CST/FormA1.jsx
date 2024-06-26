@@ -8,7 +8,7 @@ import Buttons from '../child-comp/Buttons.jsx';
 import InputField from '../child-comp/InputField.jsx';
 import { turnOffbutton, handleChange } from '../helpers.js';
 import setLocalStorage from '../setLocalStorage.js';
-import Heading from '../../Heading/Heading'; ``
+import Heading from '../../Heading/Heading'; 
 
 function FormA1() {
   var forma1 = setLocalStorage("forma1", {AA1 : "" , AA2: "", AA3: "", AA4 : "" })

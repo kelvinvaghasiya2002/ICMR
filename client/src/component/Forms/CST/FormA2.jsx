@@ -46,6 +46,7 @@ function FormA2() {
 
                         <Radio h3="AB.6 For how long have you been living in this city/ village with your family?" CheckbobItems={["< 1 year", "> 1 year"]} name="AB6" byDefault={formA2.AB6} onClick={handleChange(setFormA2)} />
 
+
                         <h4><i>I would like to ask few questions pertaining to people staying in the same household including both family and non-family members for the last 1 year like servants included but paying guests not included.</i></h4>
 
                         <Buttons formName={"forma2"} formData={formA2} prev="/siteinformation" next="/linelistingofhouseholdmembers-1" prevText="previous" nextText="save & next" />
@@ -54,6 +55,6 @@ function FormA2() {
             </section>
         </div>
     )
-}
+
 
 export default FormA2
