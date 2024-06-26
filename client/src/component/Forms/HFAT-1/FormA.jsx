@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
@@ -17,6 +17,23 @@ function FormA() {
   console.log(formA);
 
   const date = new Date();
+
+  const dropdownItems = useMemo(() => {
+    switch (formA.A3) {
+      case "GJBRC_DH_00000":
+        return ["Dabhoi", "Desar", "Karjan", "Padra", "Savali", "Sinor", "Vadodara", "Vaghodia"];
+      case "ORPUR_DH_11111":
+        return ["Astarang", "Brahmagiri", "Delang", "Gop", "Kakatpur", "Kanas", "Krushnaprasad", "Nimapura"];
+      case "MPBHS_DH_22222":
+        return ["Pipalkheda", "Gyaraspur", "Basoda", "Kurwai", "Sironj", "Lateri", "Nateran"];
+      case "PBLDH_DH_33333":
+        return ["Ludhiana-1", "Ludhiana-2", "Jagraon", "Samrala", "Khanna", "Dehlon", "Doraha", "Maloudh", "Pakhowal", "Machhiwara", "Sidhwan Bet", "Sudhar", "Raikot"];
+      case "PYPDY_DH_44444":
+          return ["Ludhiana-1", "Ludhiana-2", "Jagraon", "Samrala", "Khanna", "Dehlon", "Doraha", "Maloudh", "Pakhowal", "Machhiwara", "Sidhwan Bet", "Sudhar", "Raikot"];
+      default: 
+      return [];
+    }
+  }, [formA.A3])
 
   return (
     <div>
@@ -47,7 +64,7 @@ function FormA() {
              name="A4" h3="1A.4 : Block Name:" 
              byDefault={formA.A4}
              onClick={handleChange(setFormA)}
-              dropdownItems={["Male", "Female", "Other"]}
+            dropdownItems={dropdownItems}
             />
 
             <InputField name="A5" value={formA.A5} onChange={handleChange(setFormA)} h3="1A.5 : Healthcare Facility Name:  " placeholder="Type here" />
