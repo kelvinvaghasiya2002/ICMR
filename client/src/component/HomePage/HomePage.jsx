@@ -1,10 +1,16 @@
 import "./HomePage.css"
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 
 
 export default function HomePage() {
+    useEffect(()=> {
+        AOS.init({duration: 2000});
+    },[]);
     return (
-        <div className="homePage">
+        <div className="homePage" data-aos="fade-right">
             <section id="aim-section">
                 <div className="aim-parent">
                     <h2>AIM :</h2>

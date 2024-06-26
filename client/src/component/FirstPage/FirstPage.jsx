@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom'
 import './FirstPage.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 export default function FirstPage() {
-
+    useEffect(()=> {
+        AOS.init({duration: 2000});
+    },[]);
     return (
         <div className='fpage_main'>
 
@@ -25,7 +30,7 @@ export default function FirstPage() {
                 <Link to=""><button className='morepage-buttons'>What's New ?</button></Link>
             </div>
 
-            <div className='fpage_content'>
+            <div className='fpage_content' data-aos="fade-right">
                 <h3>
                     An implementation research study<br /> on developing a High-quality patient centric integrated model <br />for emergency care systems in selected districts of India
                 </h3>

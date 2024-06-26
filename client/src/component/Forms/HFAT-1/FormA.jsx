@@ -7,6 +7,10 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
+
 
 function FormA() {
   turnOffbutton();
@@ -16,13 +20,16 @@ function FormA() {
   console.log(formA);
 
   const date = new Date();
+  useEffect(()=> {
+    AOS.init({duration: 2000});
+},[]);
 
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"1"} />
-      <div className="siteInfo">
+      <div className="siteInfo" data-aos="fade-left">
 
         <div className="formhdr">
           <div>
@@ -32,7 +39,7 @@ function FormA() {
           </div>
         </div>
 
-        <div className="formcontent">
+        <div className="formcontent" >
           <InputField name="A1" h3="1A.1 : Assessor’s Name: "  onChange={handleChange(setFormA)} value={formA.A1} placeholder="Type here" />
 
           <div>

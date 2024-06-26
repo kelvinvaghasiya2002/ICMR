@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import "../Form.css"
 import { Link } from 'react-router-dom';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function SidePanelHFAT1({id}) {
   // console.log(id);
@@ -13,8 +15,11 @@ function SidePanelHFAT1({id}) {
       // link.style.backgroundColor="#152266" ;
     } 
   })
+  useEffect(()=> {
+    AOS.init({duration: 2000});
+},[]);
   return (
-    <div className='sidePanel'>
+    <div className='sidePanel' data-aos="fade-right">
       <div className='innerdiv'>
 
         <Link id='1' to='/healthfacilityinformation'><p>1A. Health Facility Information</p></Link>

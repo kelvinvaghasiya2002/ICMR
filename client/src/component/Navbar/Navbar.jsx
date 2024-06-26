@@ -11,6 +11,9 @@ const VITE_SERVER = import.meta.env.VITE_SERVER;
 import axios from "axios"
 import { useRef, useState } from 'react';
 import FillFormMenu from './FillFormMenu';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 export default function Navbar() {
 
@@ -31,10 +34,12 @@ export default function Navbar() {
             console.log(error);
         }
     }
-
+    useEffect(()=> {
+        AOS.init({duration: 2000});
+    },[]);
     return (
         <>
-            <div id='navigation' style={loggedIn ? { boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" } : { boxShadow: 'none' }} className='navbar'>
+            <div id='navigation' style={!loggedIn ? { boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" } : { boxShadow: 'none' }} className='navbar'>
 
                 <div className='ICMRLogo  nav-img'>
                     <Link to="/"><img src={ICMRLogo}></img></Link>
@@ -61,10 +66,8 @@ export default function Navbar() {
                 </div>
 
             </div>
-            {loggedIn && <> 
-             <div id='nav-buttons' className='buttons-grid'>
-                <div className='nav-btn'>
-                <button id='but'><p>Aim</p></button>
+            {loggedIn && <>  <div id='nav-buttons' className='buttons-grid'>
+                <button id='but'><p>AIM</p></button>
                 <button><p>Objective</p></button>
                 <button><p>Outcome</p></button>
                 <button><p>Methodology</p></button>
