@@ -12,7 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 
 function FormA3() {
-  var forma3 = setLocalStorage("forma3", { AC1: ""})
+  var forma3 = setLocalStorage("forma3", { AC1: "" , AC2_1 : ""})
   const [formA3, setFormA3] = useState(JSON.parse(forma3))
   turnOffbutton();
   return (
