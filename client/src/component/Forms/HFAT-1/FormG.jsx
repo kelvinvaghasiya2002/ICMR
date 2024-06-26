@@ -40,7 +40,7 @@ function FormG() {
 
           <InputField type="number" value={formG.H1G5} onChange={handleChange(setFormG)} name="H1G5" h3="1G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type here" />
 
-          <Buttons formName="formg" formData={formG} prevText="Previous" nextText="Next" prev="/informationsystem" next="/leadershipandgovernance" />
+          <Buttons formName="formg" formData={formG} prevText="Previous" nextText="Save & Next" prev="/informationsystem" next="/leadershipandgovernance" />
         </div>
       </div>
     </section>

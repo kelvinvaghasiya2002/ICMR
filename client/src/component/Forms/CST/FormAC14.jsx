@@ -85,7 +85,7 @@ function FormAC14() {
                     </div>
                 </div>}
 
-                <Buttons formName={"formac14"} formData={formAC14}  prevText="Previous" nextText="Next"  prev="/formsac-others" next="/formsac-verbal&socialautopsyquestionnaire-2" />
+                <Buttons formName={"formac14"} formData={formAC14}  prevText="Previous" nextText="Save & Next"  prev="/formsac-others" next="/formsac-verbal&socialautopsyquestionnaire-2" />
             
                 </div>
             </div>

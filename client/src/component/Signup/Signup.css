@@ -382,3 +382,19 @@ select {
     height: 100%;
     aspect-ratio: 566/521.21;
 }
+
+
+/* Loader css */
+
+.loader-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

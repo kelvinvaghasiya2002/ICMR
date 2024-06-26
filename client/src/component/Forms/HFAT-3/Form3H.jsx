@@ -60,7 +60,7 @@ function Form3H() {
 
           <Radio onClick={handleChange(setForm3H)} name="H3H9" h3="3H.2.6 : Any action being taken on Audit report in the last one year?" byDefault={form3H.H3H9} CheckbobItems={["Yes","No"]}/>
 
-          <Buttons formData={form3H} formName="form3h" prevText="Previous" nextText="Next" prev="/finance-3" next="/processpoliciessops-3" />
+          <Buttons formData={form3H} formName="form3h" prevText="Previous" nextText="Save & Next" prev="/finance-3" next="/processpoliciessops-3" />
         </div>
       </div>
     </section>

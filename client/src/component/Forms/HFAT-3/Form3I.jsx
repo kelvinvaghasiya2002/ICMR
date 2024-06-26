@@ -59,7 +59,7 @@ function Form3I() {
           <Radio h3="3I.4 : Does the facility have defined and   established procedure for informing patients about their medical condition,   involving them in treatment planning and facilitating informed decision   making?" CheckbobItems={["Yes", "No"]} name="H3I4" onClick={handleChange(setForm3I)} byDefault={form3I.H3I4} />
 
 
-          <Buttons formName={"form3i"} formData={form3I} prevText="Previous" nextText="Next" prev="/leadershipandgovernance-3" next="/referrallinkages-3" />
+          <Buttons formName={"form3i"} formData={form3I} prevText="Previous" nextText="Save & Next" prev="/leadershipandgovernance-3" next="/referrallinkages-3" />
         </div>
       </div>
     </section>

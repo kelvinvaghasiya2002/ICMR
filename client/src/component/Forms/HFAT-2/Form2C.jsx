@@ -106,7 +106,7 @@ function Form2C() {
 
             <InputField h3="2C.5 : When was the last training conducted?" placeholder="Type here" name="H2C5" value={form2C.H2C5} onChange={handleChange(setForm2C)} />
 
-            <Buttons formName={"form2c"} formData={form2C} prevText="Previous" nextText="Next" prev="/infrastructure-2" next="/logistics-2" />
+            <Buttons formName={"form2c"} formData={form2C} prevText="Previous" nextText="Save & Next" prev="/infrastructure-2" next="/logistics-2" />
           </div>
         </div>
       </section>

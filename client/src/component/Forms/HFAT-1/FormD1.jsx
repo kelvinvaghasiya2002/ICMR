@@ -38,7 +38,7 @@ function FormD2() {
 
                     <Checkbox setFunction={setFormD1} StateValue={formD1} array={formD1.H1D2} name="H1D2" CheckbobItems={["Mobile Bed for Resuscitation", "Crash Cart (specialized cart for resuscitation)", "Hard Cervical Collar", "Oxygen Cylinder/Central Oxygen Supply", "Suction Machine", "Multipara Monitor (To monitor Heart rate, BP, SPO2[Essential] ECG, Respiration Rate [Desirable] etc)", "Defibrillator with or without external Pacer", "Toothed Forceps, Kocher Forceps, Magill\'s forceps, Artery forceps", "AMBU Bag for Adult and Paediatric", "Basic airway equipment like oropharyngeal nasopharyngeal airway, LMA for Adult and Pediatric", "Advanced laryngoscope and endotracheal tube or other similar device", "Tourniquet", "Pelvic binder or bed sheets with clips", "Laryngoscope with all sized Blades", "Endotracheal Tubes of all Sizes", "Laryngeal Mask Airway (LMA)", "Chest Tubes with Water Seal Drain", "ECG Machine", "Nebulizer", "Fluid Warmer", "Infusion Pump and Syringe Drivers", "Spine Board with Sling and Scotch Tapes", "Splints for all types of Fracture", "Non-invasive Ventilators", "Invasive Ventilators", "Incubators"]} />
                     
-                    <Buttons formData={formD1} formName="formd1" prevText="Previous" nextText="Next" prev="/logisticsdrugsconsumablesequipment-1" next="/emergencycareservices" />
+                    <Buttons formData={formD1} formName="formd1" prevText="Previous" nextText="Save & Next" prev="/logisticsdrugsconsumablesequipment-1" next="/emergencycareservices" />
                 </div>
             </div>
         </section>

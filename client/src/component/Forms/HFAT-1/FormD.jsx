@@ -37,7 +37,7 @@ function FormD() {
 
           <Checkbox  setFunction={setFormD} StateValue={formD} array={formD.H1D1}  name="H1D1" CheckbobItems={["Oxygen medicinal gas","Atropine","Diazepam/Lorazepam","Adrenaline","Charcoal activated","Antisnake venom","Pralidoxime (PAM)","Magnesium sulphate","Tetanus immunoglobulin","Neostigmine","Aspirin","Clopidogrel","Atorvastatin","Misoprostol","Labetalol IV","Phenobarbitone","Phenytoin (inj)","Plasma volume expander","3% Saline","Dobutamine","Streptokinase","Tenecteplase","Oxytocin","Salbutamol sulphate","Glucose/ 25 % dextrose","Tranexamic acid","tPA IV","Methergine","Carboprost"]} />
           
-          <Buttons formName="formd" formData={formD} prevText="Previous" nextText="Next" prev="/humanresources" next="/logisticsdrugsconsumablesequipment-2" />
+          <Buttons formName="formd" formData={formD} prevText="Previous" nextText="Save & Next" prev="/humanresources" next="/logisticsdrugsconsumablesequipment-2" />
         </div>
       </div>
     </section>

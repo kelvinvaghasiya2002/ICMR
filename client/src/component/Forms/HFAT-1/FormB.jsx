@@ -127,7 +127,7 @@ function FormB() {
 
           <InputField name="B15" onChange={handleChange(setFormB)} h3="1B.15 : If ambulances are not there, how are patients transferred?" value={formB.B15} placeholder="Type here" />
 
-          <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Next" prev="/healthfacilityinformation" next="/humanresources" />
+          <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources" />
         </div>
       </div>
     </section>

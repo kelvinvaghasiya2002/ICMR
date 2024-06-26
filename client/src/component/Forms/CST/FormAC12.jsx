@@ -33,7 +33,7 @@ function FormAC12() {
 
                 <DropDown name={"AC31b"} h3={"could you please tell who all suffered with this condition?"} dropdownItems={["Kelvin", "Prince", "Jeel"]}  onClick={handleChange(setFormAC12)} byDefault={formAC12.AC31b} />
                 
-                <Buttons formName={"formac12"} formData={formAC12}  prevText="Previous" nextText="Next" prev="/formsac-snakebite" next="/formsac-others"/>
+                <Buttons formName={"formac12"} formData={formAC12}  prevText="Previous" nextText="Save & Next" prev="/formsac-snakebite" next="/formsac-others"/>
                 </div>
                 
             </div>

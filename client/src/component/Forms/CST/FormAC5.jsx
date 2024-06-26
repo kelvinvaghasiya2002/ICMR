@@ -34,7 +34,7 @@ function FormAC5() {
 
                     <DropDown name="AC24b" h3="could you please tell who all from your Household suffered with this condition?" dropdownItems={["Kelvin", "Prince", "Jeel"]} onClick={handleChange(setFormAC5)} byDefault={formAC5.AC24b} />
 
-                    <Buttons formName="formac5" formData={formAC5}  prevText="Previous" nextText="Next"  prev="/formsac-relationshipwithheadofhousehold" next="/formsac-stemi" />
+                    <Buttons formName="formac5" formData={formAC5}  prevText="Previous" nextText="Save & Next"  prev="/formsac-relationshipwithheadofhousehold" next="/formsac-stemi" />
                 </div>
             </div>
         </section>

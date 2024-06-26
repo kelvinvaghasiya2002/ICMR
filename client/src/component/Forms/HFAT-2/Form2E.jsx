@@ -62,7 +62,7 @@ function Form2E() {
 
           <Checkbox h3="2E.3 : Which of the following emergency services are delivered at the CHC? " CheckbobItems={["Triage", "Resuscitation", "Medico Legal Reporting"]} name={"H2E3"} setFunction={setForm2E} StateValue={form2E} array={form2E.H2E3}  />
 
-          <Buttons formName={"form2e"} formData={form2E} prevText="Previous" nextText="Next" prev="/logistics-2-1" next="/informationsystem-2" />
+          <Buttons formName={"form2e"} formData={form2E} prevText="Previous" nextText="Save & Next" prev="/logistics-2-1" next="/informationsystem-2" />
         </div>
       </div>
     </section>

@@ -80,7 +80,7 @@ function Form3C() {
 
             <InputField h3="3C.5 : When was the last training conducted?" placeholder="Type here" value={form3C.H3C5} name={"H3C5"} onChange={handleChange(setForm3C)} />
 
-            <Buttons formName={"form3c"} formData={form3C} prevText="Previous" nextText="Next" prev="/infrastructure-3" next="/logistics-3" />
+            <Buttons formName={"form3c"} formData={form3C} prevText="Previous" nextText="Save & Next" prev="/infrastructure-3" next="/logistics-3" />
           </div>
         </div>
       </section>

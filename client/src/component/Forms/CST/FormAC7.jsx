@@ -33,7 +33,7 @@ function FormAC7() {
 
                     <DropDown name="AC26b" h3="could you please tell who all from your Household suffered with this condition?" dropdownItems={["Kelvin", "Prince", "Jeel"]} onClick={handleChange(setFormAC7)} byDefault={formAC7.AC26b} />
 
-                    <Buttons formName="formac7" formData={formAC7}  prevText="Previous" nextText="Next"  prev="/formsac-stemi" next="/formsac-acuterespiratoryillness" />
+                    <Buttons formName="formac7" formData={formAC7}  prevText="Previous" nextText="Save & Next"  prev="/formsac-stemi" next="/formsac-acuterespiratoryillness" />
                 </div>
             </div>
         </section>
