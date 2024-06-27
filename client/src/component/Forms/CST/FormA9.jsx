@@ -43,9 +43,17 @@ function FormA9() {
               onClick={handleChange(setFormA3)}
               byDefault={formA3.AC9_1}
             />
-            <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC9_1_if" value={formA3.AC9_1_if}/>
-            <DropDown h3="AC.9.2  If yes, could you please tell who all from your Household suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC9_2" onClick={handleChange(setFormA3)} byDefault={formA3.AC9_2} />
-            <Buttons formName={"forma3"} formData={formA3}  prev="/stemi" next="/acuterespiratoryillness" prevText="Previous" nextText="Save & Next" />
+
+            {
+              (formA3.AC9_1 === "Yes") &&
+              <>
+                <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC9_1_if" value={formA3.AC9_1_if} />
+                
+                <DropDown h3="AC.9.2  If yes, could you please tell who all from your Household suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC9_2" onClick={handleChange(setFormA3)} byDefault={formA3.AC9_2} />
+              </>
+            }
+
+            <Buttons formName={"forma3"} formData={formA3} prev="/stemi" next="/acuterespiratoryillness" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>
