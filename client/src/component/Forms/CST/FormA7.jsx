@@ -13,8 +13,9 @@ import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 
 function FormA7() {
-  var forma7 = setLocalStorage("forma7", { AC7_1: "",AC7_1_if:"", AC7_2: "" })
-  const [formA7, setFormA7] = useState(JSON.parse(forma7))
+  var forma3 = setLocalStorage("forma3", { AC1: "", AC2_1: "", AC3: "", AC4: "", AC5: "", AC6_1: "", AC6_1_if: "", AC6_2: "", AC7_1: "", AC7_1_if: "", AC7_2: "", AC8_1: "", AC8_1_if: "", AC8_2: "", AC9_1: "", AC9_1_if: "", AC9_2: "", AC10_1: "", AC10_1_if: "", AC10_2: "", AC11_1: "", AC11_1_if: "", AC11_2: "", AC11_2_if: "", AC11_3: "", AC11_4: "", AC11_4_if: "", AC11_5: "", AC12_1: "", AC12_1_if: "", AC12_2: "", AC13_1: "", AC13_1_if: "", AC13_2: "", AC14_1: "", AC14_1_if: "", AC14_2: "", AC15_1: "", AC15_2: "", AC15_4: "" })
+
+  const [formA3, setFormA3] = useState(JSON.parse(forma3))
   turnOffbutton();
   return (
     <div>
@@ -39,13 +40,15 @@ function FormA7() {
               name="AC7_1"
               h3="AC.7.1 In the past one year, did you or any member of this household suffer from severe/minor burns etc. that required medical attention?"
               CheckbobItems={["Yes", "No"]}
-              onClick={handleChange(setFormA7)}
+              onClick={handleChange(setFormA3)}
+              byDefault={formA3.AC7_1}
             />
-            <InputField h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC7_1_if" />
-            <DropDown h3="AC.7.2  If yes, could you please tell who all from your Household suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC7_2" onClick={handleChange(setFormA7)} />
+            <InputField onClick={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC7_1_if" value={formA3.AC7_1_if} />
+
+            <DropDown h3="AC.7.2  If yes, could you please tell who all from your Household suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC7_2" onClick={handleChange(setFormA3)}  byDefault={formA3.AC7_2} />
 
 
-            <Buttons prev="/trauma" next="/stemi" prevText="Previous" nextText="Save & Next" />
+            <Buttons formName="forma3" formData={formA3}  prev="/trauma" next="/stemi" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>
