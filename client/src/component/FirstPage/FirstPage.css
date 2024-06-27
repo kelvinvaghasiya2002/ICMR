@@ -1,6 +1,14 @@
+.fpage_main{
+    background-color: #36517C;
+    height: 100vh;
+}
+
+
+/* ############################################################################################## */
+
 .fpage_navbar{
     padding: 0 2.5%;
-    height: 13vh;
+    height: 8vh;
     display: flex;
     align-items: center;
     /* background-color: antiquewhite; */
@@ -12,7 +20,7 @@
 
 .signin-up{
     display: flex;
-    gap: 2vw;
+    gap: 1.5vw;
     flex-wrap: wrap;
     justify-content: center;
     margin-left: auto;
@@ -20,7 +28,7 @@
 
 
 .signin-up-buttons{
-    height: 6vh;
+    height: 5vh;
     border: none;
     background-color: #3177FF;
     border-radius: 99px ;
@@ -28,7 +36,7 @@
     font-weight: 600;
     color: white;
     cursor: pointer;
-    padding: 0 2vw;
+    padding: 0 2.5vw;
     font-size: 2vh;
 }
 
@@ -58,18 +66,16 @@
     gap: 3vw;
     justify-content: center;
     align-items: center;
-    height: 10vh;
-    /* background-color: aliceblue; */
+    height: 8vh;
 }
 
 .morepage button{
-    background-color: #D4D4D4;
-    color: #000000;
+    color: white;
 }
 
 .morepage button:hover{
-    background: #3177FF;
-    color: white;
+    color: #54b2ff;
+    border-bottom: solid 0.2vw #54b2ff;
 }
 
 
@@ -78,43 +84,76 @@
 .morepage-buttons{
     height: 6vh;
     border: none;
-    background-color: #3177FF;
-    border-radius: 99px ;
     font-family: "Inter", sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     color: white;
     cursor: pointer;
-    padding: 0 2vw;
-    font-size: 1vw;
+    font-size: 1.2vw;
+    background-color: transparent;
 }
 
 
 
 
+.main_section{
+    display: flex;
+    padding: 0 2vw;
+    padding-top: 2vw;
+    justify-content: space-between;
+    /* background-color: aqua; */
+}
 
 
+.fpage_content h2{
+    font-size: 2.8vw;
+    line-height: 3.5vw;
+    text-align: left;
+}
 
-
-
+.fpage_content p{
+    font-size: 1.5vw;
+    font-weight: 250;
+    line-height: 2vw;
+    margin-top: -15px;
+}
 
 .fpage_content{
-    width: 100%;
-    margin-top: 7%;
-    text-align: center;
+    text-align: left;
     line-height: 4vh;
+    color: white;
+    margin-left: 5%;
+    /* background-color: aqua; */
+}
+
+.hero{
+    margin-right: 5%;
+}
+
+.hero img{
+    width: 30vw;
+    /* background-color: pink; */
 }
 
 .fpage_study{
     text-align: center;
-    margin-top: 5%;
+    margin-top: 10%;
+    color: white;
+}
+
+.fpage_study h3{
+    font-weight: 600;
 }
 
 .fpage_footer{
     font-family: "Poppins", sans-serif;
-    margin-top: 8vh;
     text-align: center;
+    color: white;
+
 }
 
 .fpage_footer span{
     font-weight: 700;
 }
+
+
+
