@@ -27,9 +27,9 @@ export default function FirstPage() {
             <div className='main_section'>
                 <div className='fpage_content'>
                     <h2>
-                        An implementation research<br />study
+                        An implementation research study
                     </h2>
-                    <p>a High-quality patient centric integrated model for<br />emergency care systems in selected districts of India</p>
+                    <p>A High-quality patient centric integrated model for<br />emergency care systems in selected districts of India</p>
                     <div className='fpage_study'>
                         <h3>AN ICMR TASK FORCE STUDY</h3>
                     </div>
