@@ -1,4 +1,6 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect} from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
@@ -11,6 +13,9 @@ import DropDown from "../child-comp/DropDown.jsx"
 import { GJBRC_DH_00000, MPBHS_DH_22222, ORPUR_DH_11111, PBLDH_DH_33333, PYPDY_DH_44444 } from '../BlockItem/blockList.js';
 
 function FormA() {
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
   turnOffbutton();
   var forma = setLocalStorage("forma", { A1: "", A2: "", A3: "", A4: "", A5: "", A6: "", A7: "", A8: "", A9: "", A10: "", A11: "", A12: "" })
   const [formA, setFormA] = useState(JSON.parse(forma))
@@ -41,7 +46,7 @@ function FormA() {
       <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
       <section>
         <SidePanel id={"1"} />
-        <div className="siteInfo">
+        <div className="siteInfo"data-aos="fade-left">
 
           <div className="formhdr">
             <div>
