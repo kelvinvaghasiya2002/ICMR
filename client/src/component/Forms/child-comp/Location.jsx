@@ -1,4 +1,3 @@
-LocationButton.js
 import React, { useState } from 'react';
 // import './LocationButton.css';
 import '../Form.css'
