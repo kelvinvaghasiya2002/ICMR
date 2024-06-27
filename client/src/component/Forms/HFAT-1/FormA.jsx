@@ -9,6 +9,7 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
 import DropDown from "../child-comp/DropDown.jsx"
 import { GJBRC_DH_00000, MPBHS_DH_22222, ORPUR_DH_11111, PBLDH_DH_33333, PYPDY_DH_44444 } from '../BlockItem/blockList.js';
+import LocationButton from '../child-comp/Location.jsx';
 
 function FormA() {
   turnOffbutton();
@@ -79,6 +80,8 @@ function FormA() {
             <InputField name="A9" value={formA.A9} onChange={handleChange(setFormA)} h3="1A.9 : Email ID:" placeholder="Type here" />
 
             <InputField name="A10" value={formA.A10} onChange={handleChange(setFormA)} h3="1A.10 : GPS Coordinates:" placeholder="Type here" />
+            
+            <LocationButton />
 
             <Radio h3="1A.11 : Type of Health Care Facility?" CheckbobItems={["District Hospital (DH)", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
 
