@@ -144,6 +144,33 @@ section {
     font-weight: bold;
 }
 
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 15vw; /* same as block_selector width */
+}
+
+.dropdown-wrapper::after {
+    content: '▼'; /* Unicode for the down arrow symbol */
+    font-size: 0.8vw;
+    position: absolute;
+    top: 45%;
+    right: 1vw;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.block_selector{
+    border: 0.05vw solid #CCCCCC;
+    border-radius: 1.2vw;
+    padding: 0vw 0.7vw;
+    font-size: 0.9vw;
+    height: 2.3vw;
+    background-color: #F2F7FF;
+    width: 15vw;
+}
+
 .block {
     display: flex;
     align-items: baseline;
