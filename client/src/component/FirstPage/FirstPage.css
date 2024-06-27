@@ -74,8 +74,8 @@
 }
 
 .morepage button:hover{
-    color: #54b2ff;
-    border-bottom: solid 0.2vw #54b2ff;
+    /* color: #54b2ff; */
+    border-bottom: solid 0.1vw white;
 }
 
 
@@ -105,21 +105,24 @@
 
 
 .fpage_content h2{
+    margin-top: 15vh;
     font-size: 2.8vw;
     line-height: 3.5vw;
-    text-align: left;
+    text-align: center;
 }
 
 .fpage_content p{
+    text-align: center;
     font-size: 1.5vw;
-    font-weight: 250;
+    font-weight: 500;
     line-height: 2vw;
-    margin-top: -15px;
+    margin-top: -3vh;
+    color: #A7B5D2;
 }
 
 .fpage_content{
     text-align: left;
-    line-height: 4vh;
+    line-height: 3vh;
     color: white;
     margin-left: 5%;
     /* background-color: aqua; */
@@ -130,18 +133,19 @@
 }
 
 .hero img{
-    width: 30vw;
+    width: 28vw;
     /* background-color: pink; */
 }
 
 .fpage_study{
-    text-align: center;
-    margin-top: 10%;
-    color: white;
+    text-align: center;   
+    color: #CECECE;
 }
 
 .fpage_study h3{
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.35vw;
+
 }
 
 .fpage_footer{
