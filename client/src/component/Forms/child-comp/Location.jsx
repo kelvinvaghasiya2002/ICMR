@@ -45,26 +45,23 @@ const LocationButton = () => {
   };
 
   return (
-    // <div className="location-button-container">
-    //   <button className="location-button" onClick={getLocation}>
-    //     Get Current Location
-    //   </button>
-    //   {coordinates.latitude && coordinates.longitude && (
-    //     <div className="coordinates-display">
-    //       <p>Latitude: {coordinates.latitude}</p>
-    //       <p>Longitude: {coordinates.longitude}</p>
-    //     </div>
-    //   )}
-    //   {(locationDetails.district || locationDetails.state) && (
-    //     <div className="location-details-display">
-    //       <p>District: {locationDetails.district}</p>
-    //       <p>State: {locationDetails.state}</p>
-    //     </div>
-    //   )}
-    // </div>
-    <button>
-        Hello
-    </button>
+    <div className="location-button-container">
+      <button className="location-button" onClick={getLocation}>
+        Get Current Location
+      </button>
+      {coordinates.latitude && coordinates.longitude && (
+        <div className="coordinates-display">
+          <p>Latitude: {coordinates.latitude}</p>
+          <p>Longitude: {coordinates.longitude}</p>
+        </div>
+      )}
+      {(locationDetails.district || locationDetails.state) && (
+        <div className="location-details-display">
+          <p>District: {locationDetails.district}</p>
+          <p>State: {locationDetails.state}</p>
+        </div>
+      )}
+    </div>
   );
 };
 

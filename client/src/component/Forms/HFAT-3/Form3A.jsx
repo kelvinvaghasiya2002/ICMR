@@ -7,6 +7,7 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
+import LocationButton from '../child-comp/Location.jsx';
 function Form3A() {
 
   turnOffbutton();
@@ -54,7 +55,8 @@ function Form3A() {
 
             <InputField value={form3A.H3A8} onChange={handleChange(setForm3A)} name="H3A8" h3="3A.8 : Email ID :" placeholder="Type here" />
 
-            <InputField value={form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="3A.9 : GPS Coordinates :" placeholder="Type here" />
+            {/* <InputField value={form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="3A.9 : GPS Coordinates :" placeholder="Type here" /> */}
+            <LocationButton />
 
             <Radio byDefault={form3A.H3A10} onClick={handleChange(setForm3A)} name="H3A10" h3="3A.10 : What type of Health care facility is this?" CheckbobItems={["HWC-PHC", " Urban HWC-PHC", "Specialist UPHC/Polyclinic"]} />
 

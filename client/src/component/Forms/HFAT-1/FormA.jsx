@@ -79,7 +79,7 @@ function FormA() {
 
             <InputField name="A9" value={formA.A9} onChange={handleChange(setFormA)} h3="1A.9 : Email ID:" placeholder="Type here" />
 
-            <InputField name="A10" value={formA.A10} onChange={handleChange(setFormA)} h3="1A.10 : GPS Coordinates:" placeholder="Type here" />
+            {/* <InputField name="A10" value={formA.A10} onChange={handleChange(setFormA)} h3="1A.10 : GPS Coordinates:" placeholder="Type here" /> */}
             
             <LocationButton />
 

@@ -436,27 +436,33 @@ th {
   }
   
   .location-button {
-    background: linear-gradient(45deg, #6a11cb 30%, #2575fc 90%);
+    /* background: linear-gradient(45deg, #6a11cb 30%, #2575fc 90%); */
+    margin: 2vw;
+    background-color: white;
     border: none;
     border-radius: 25px;
-    color: white;
-    padding: 15px 30px;
-    font-size: 16px;
+    border: 0.1vw solid black;
+    /* color: white; */
+    color: black;
+    padding: 1vw;
+    font-size: 1vw;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
   }
   
   .location-button:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+     */
     transform: translateY(-2px);
   }
   
   .coordinates-display, .location-details-display {
-    margin-top: 20px;
-    font-size: 16px;
+    margin-bottom: 20px;
+    font-size: 1vw;
+    font-weight: 600;
     color: #333;
-    text-align: center;
+    /* text-align: center; */
   }
   
   

@@ -6,6 +6,7 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
+import LocationButton from '../child-comp/Location.jsx';
 
 function Form2A() {
   turnOffbutton();
@@ -57,7 +58,9 @@ function Form2A() {
 
           <InputField value={form2A.H2A8} onChange={handleChange(setForm2A)} h3="2A.8 : Email ID :" placeholder="Type here" name="H2A8" />
 
-          <InputField value={form2A.H2A9} onChange={handleChange(setForm2A)} h3="2A.9 : GPS Coordinates :" placeholder="Type here" name="H2A9" />
+          {/* <InputField value={form2A.H2A9} onChange={handleChange(setForm2A)} h3="2A.9 : GPS Coordinates :" placeholder="Type here" name="H2A9" /> */}
+
+          <LocationButton />
 
           <Radio byDefault={form2A.H2A10} onClick={handleChange(setForm2A)} h3="2A.10 : What type of CHC is this?" CheckbobItems={["Non-FRU – CHC (30 beds)", "FRU – CHC (30 beds)", "FRU – CHC (50 beds)", "FRU – UCHC (50 beds)", "FRU – UCHC (100 beds)"]} name="H2A10" />
 
