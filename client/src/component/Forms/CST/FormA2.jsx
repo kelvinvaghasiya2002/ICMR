@@ -10,7 +10,7 @@ import setLocalStorage from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading.jsx';
 
 function FormA2() {
-    var forma2 = setLocalStorage("forma2", {AB1 : "" , AB2: "", AB3: "", AB4 : "",AB5: "", AB6 : "" })
+    var forma2 = setLocalStorage("forma2", { AB1: "", AB2: "", AB3: "", AB4: "", AB5: "", AB6: "" })
     const [formA2, setFormA2] = useState(JSON.parse(forma2))
     turnOffbutton();
 
@@ -40,7 +40,7 @@ function FormA2() {
 
                         <InputField h3="AB.3  Name of PSU (Town/Village) :" placeholder="Type here" name="AB3" onChange={handleChange(setFormA2)} value={formA2.AB3} />
 
-                        <InputField h3="AB.4 GPS Co-ordinates :" placeholder="Type here" name="AB4" value={formA2.AB4} onChange={handleChange(setFormA2)}  />
+                        <InputField h3="AB.4 GPS Co-ordinates :" placeholder="Type here" name="AB4" value={formA2.AB4} onChange={handleChange(setFormA2)} />
 
                         <InputField h3="AB.5 Household ID Number :" placeholder="Type here" name="AB5" value={formA2.AB5} onChange={handleChange(setFormA2)} />
 
@@ -55,6 +55,6 @@ function FormA2() {
             </section>
         </div>
     )
-
+}
 
 export default FormA2
