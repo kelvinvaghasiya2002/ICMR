@@ -8,6 +8,7 @@ import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
 import DropDown from "../child-comp/DropDown.jsx"
+import { GJBRC_DH_00000, MPBHS_DH_22222, ORPUR_DH_11111, PBLDH_DH_33333, PYPDY_DH_44444 } from '../BlockItem/blockList.js';
 
 function FormA() {
   turnOffbutton();
@@ -21,15 +22,15 @@ function FormA() {
   const dropdownItems = useMemo(() => {
     switch (formA.A3) {
       case "GJBRC_DH_00000":
-        return ["Dabhoi", "Desar", "Karjan", "Padra", "Savali", "Sinor", "Vadodara", "Vaghodia"];
+        return GJBRC_DH_00000;
       case "ORPUR_DH_11111":
-        return ["Astarang", "Brahmagiri", "Delang", "Gop", "Kakatpur", "Kanas", "Krushnaprasad", "Nimapura"];
+        return ORPUR_DH_11111;
       case "MPBHS_DH_22222":
-        return ["Pipalkheda", "Gyaraspur", "Basoda", "Kurwai", "Sironj", "Lateri", "Nateran"];
+        return MPBHS_DH_22222;
       case "PBLDH_DH_33333":
-        return ["Ludhiana-1", "Ludhiana-2", "Jagraon", "Samrala", "Khanna", "Dehlon", "Doraha", "Maloudh", "Pakhowal", "Machhiwara", "Sidhwan Bet", "Sudhar", "Raikot"];
+        return PBLDH_DH_33333;
       case "PYPDY_DH_44444":
-          return ["Ludhiana-1", "Ludhiana-2", "Jagraon", "Samrala", "Khanna", "Dehlon", "Doraha", "Maloudh", "Pakhowal", "Machhiwara", "Sidhwan Bet", "Sudhar", "Raikot"];
+          return PYPDY_DH_44444;
       default: 
       return [];
     }
