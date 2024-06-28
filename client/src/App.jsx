@@ -63,6 +63,8 @@ import FormA14 from './component/Forms/CST/FormA14.jsx'
 import FormA15 from './component/Forms/CST/FormA15.jsx'
 import FormB16 from './component/Forms/CST/FormB16.jsx'
 import FormB17 from './component/Forms/CST/FormB17.jsx'
+import FormB18 from './component/Forms/CST/FormB18.jsx'
+import FormB19 from './component/Forms/CST/FormB19.jsx'
 
 const url = import.meta.env.VITE_SERVER;
 
@@ -152,7 +154,9 @@ function App() {
         <Route path='/others' element={<FormA14 />} />
         <Route path='/death' element={<FormA15 />} />
         <Route path='/socio-demographicprofileofthepatientinthehhwithemergencycondition' element={<FormB16 />} />
-        <Route path='/initialhealthcareseekingpathway' element={<FormB17 />} />
+        <Route path='/initialhealthcareseekingpathway-1' element={<FormB17 />} />
+        <Route path='/initialhealthcareseekingpathway-2' element={<FormB18 />} />
+        <Route path='/initialhealthcareseekingpathway-3' element={<FormB19 />} />
 
 
 
