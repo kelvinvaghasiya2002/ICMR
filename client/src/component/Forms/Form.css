@@ -10,7 +10,6 @@
     width: 24vw;
     overflow: hidden;
     background-color: #F2F7FF;
-
 }
 
 .sidePanel p {
@@ -33,6 +32,7 @@
 .innerdiv a {
     text-decoration: none;
     color: black;
+    cursor: not-allowed;
 }
 
 .siteInfo {
