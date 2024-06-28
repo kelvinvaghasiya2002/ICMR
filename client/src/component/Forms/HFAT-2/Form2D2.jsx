@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Checkbox from '../child-comp/Checkbox';
 import setLocalStorage from '../setLocalStorage';
 import { turnOffbutton } from '../helpers';
 import Heading from '../../Heading/Heading.jsx';
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function Form2D2() {
+    useEffect(()=> {
+        AOS.init({duration:2000})
+    }, []);
     turnOffbutton();
     var form2d2 = setLocalStorage("form2d2", { H2D2: [] });
     const [form2D2, setForm2D2] = useState(JSON.parse(form2d2));
@@ -18,7 +22,7 @@ function Form2D2() {
             <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
         <section>
             <SidePanel id={"4"} />
-            <div className="siteInfo">
+            <div className="siteInfo" data-aos="fade-left">
 
                 <div className="formhdr">
                     <div>

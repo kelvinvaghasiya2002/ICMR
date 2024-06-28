@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelAmbulance';
 import Buttons from '../child-comp/Buttons';
@@ -10,8 +10,13 @@ import AMB2 from './table/AMB2';
 import Heading from '../../Heading/Heading.jsx';
 import setLocalStorage from '../setLocalStorage.js';
 import LastButton from '../child-comp/LastButton.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function Facility() {
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
 
   turnOffbutton();
 
@@ -103,7 +108,7 @@ function Facility() {
       <Heading h2="Gap Assessment Tool – Ambulance at Facility Level"></Heading>
       <section>
         <SidePanel id={"1"} />
-        <div className="siteInfo">
+        <div className="siteInfo" data-aos="fade-left" >
 
           <div className="formhdr">
             <div>

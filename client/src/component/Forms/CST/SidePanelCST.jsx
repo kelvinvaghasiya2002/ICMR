@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react'
 import "../Form.css"
 import { Link } from 'react-router-dom';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function SidePanelCST({ id }) {
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
   // console.log(id);
   useEffect(() => {
     const link = document.getElementById(id);
@@ -14,7 +19,7 @@ function SidePanelCST({ id }) {
     }
   })
   return (
-    <div className='sidePanel'>
+    <div className='sidePanel'data-aos="fade-right" >
       <p>A Socio-demographic Characteristics</p>
       <div className='innerdiv'>
         <Link id='1' to=''><p>Site Information</p></Link>

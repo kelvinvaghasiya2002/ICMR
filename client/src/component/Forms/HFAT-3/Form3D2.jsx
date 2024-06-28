@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import setLocalStorage from '../setLocalStorage';
 import Checkbox from '../child-comp/Checkbox';
 import Heading from '../../Heading/Heading.jsx';
 import { turnOffbutton } from '../helpers.js';
-
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function FormD2() {
+    useEffect(()=> {
+        AOS.init({duration:2000})
+    }, []);
     turnOffbutton();
     var form3d2 = setLocalStorage("form3d2", { H3D2: [] });
     const [form3D2, setForm3D2] = useState(JSON.parse(form3d2));
@@ -17,7 +21,7 @@ function FormD2() {
             <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
         <section>
             <SidePanel id={"4"} />
-            <div className="siteInfo">
+            <div className="siteInfo" data-aos="fade-left">
 
                 <div className="formhdr">
                     <div>

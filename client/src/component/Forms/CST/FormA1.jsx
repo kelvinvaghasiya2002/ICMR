@@ -9,8 +9,15 @@ import InputField from '../child-comp/InputField.jsx';
 import { turnOffbutton, handleChange } from '../helpers.js';
 import setLocalStorage from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading'; 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function FormA1() {
+
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
+
   var forma1 = setLocalStorage("forma1", {AA1 : "" , AA2: "", AA3: "", AA4 : "" })
   turnOffbutton();
 
@@ -22,7 +29,7 @@ function FormA1() {
       <Heading h2="Community Survey Tool"></Heading>
       <section id='site-info'>
         <SidePanel id={"1"} />
-        <div className='siteInfo'>
+        <div className='siteInfo' data-aos="fade-left" >
           <div className="formhdr">
             <div>
               <h2>A Socio-demographic Characteristics</h2>

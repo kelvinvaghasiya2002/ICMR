@@ -12,9 +12,16 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 
 function FormB16() {
+
+useEffect(()=> {
+        AOS.init({duration:2000})
+    }, []);
+
   var formb16 = setLocalStorage("formb16", { B1: "", B2: "", B3: "", B4: "" })
   const [formB16, setFormB16] = useState(JSON.parse(formb16))
   turnOffbutton();
@@ -23,7 +30,7 @@ function FormB16() {
       <Heading h2="Community Survey Tool"></Heading>
       <section id='site-info'>
         <SidePanel id={"11"} />
-        <div className='siteInfo'>
+        <div className='siteInfo' data-aos="fade-left" >
           <div className="formhdr">
             <div>
               <h2>A Socio-demographic Characteristics</h2>

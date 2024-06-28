@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
@@ -7,7 +7,14 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
+
 function Form3F() {
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
     turnOffbutton();
 
     var form3f = setLocalStorage("form3f",
@@ -20,7 +27,7 @@ function Form3F() {
       <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
     <section>
     <SidePanel id={"6"} />
-    <div className="siteInfo">
+    <div className="siteInfo" data-aos="fade-left" >
 
       <div className="formhdr">
         <div>

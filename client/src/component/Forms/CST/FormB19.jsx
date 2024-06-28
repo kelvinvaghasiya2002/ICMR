@@ -12,9 +12,16 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 
 function FormB19() {
+
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
+
     var formb19 = setLocalStorage("formb19", { B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
 
     const [formB19, setFormB19] = useState(JSON.parse(formb19))
@@ -24,7 +31,7 @@ function FormB19() {
       <Heading h2="Community Survey Tool"></Heading>
         <section id='site-info'>
             <SidePanel id={"19"} />
-            <div className='siteInfo'>
+            <div className='siteInfo' data-aos="fade-left" >
                 <div className="formhdr">
                     <div>
                         <h2>A Socio-demographic Characteristics</h2>

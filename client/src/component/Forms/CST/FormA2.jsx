@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import { handleChange, turnOffbutton } from '../helpers'
 import SidePanel from './SidePanelCST.jsx';
 import DropDown from '../child-comp/DropDown';
@@ -8,8 +8,14 @@ import Buttons from '../child-comp/Buttons';
 import InputField from '../child-comp/InputField';
 import setLocalStorage from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function FormA2() {
+    useEffect(()=> {
+        AOS.init({duration:2000})
+    }, []);
+
     var forma2 = setLocalStorage("forma2", { AB1: "", AB2: "", AB3: "", AB4: "", AB5: "", AB6: "" })
     const [formA2, setFormA2] = useState(JSON.parse(forma2))
     turnOffbutton();
@@ -19,7 +25,7 @@ function FormA2() {
             <Heading h2="Community Survey Tool"></Heading>
             <section id='site-info'>
                 <SidePanel id={"2"} />
-                <div className='siteInfo'>
+                <div className='siteInfo' data-aos="fade-left" >
                     <div className="formhdr">
                         <div>
                             <h2>A Socio-demographic Characteristics</h2>

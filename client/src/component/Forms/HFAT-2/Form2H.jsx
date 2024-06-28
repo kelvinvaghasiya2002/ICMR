@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
@@ -7,9 +7,14 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 
 function Form2H() {
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
   var form2h = setLocalStorage("form2h" , {H2H1:"",H2H2:"",H2H3:"",H2H4:"",H2H5:"",H2H6:"",H2H7:"",H2H8:[""],H2H9:""});
 
   const [form2H , setForm2H] = useState(JSON.parse(form2h));
@@ -20,7 +25,7 @@ function Form2H() {
       <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"8"} />
-      <div className="siteInfo">
+      <div className="siteInfo" data-aos="fade-left">
 
         <div className="formhdr">
           <div>
