@@ -32,7 +32,7 @@ function FormA9() {
     <div>
       <Heading h2="Community Survey Tool"></Heading>
       <section id='site-info'>
-        <SidePanel id={"4"} />
+        <SidePanel id={"7"} />
         <div className='siteInfo'>
           <div className="formhdr">
             <div>

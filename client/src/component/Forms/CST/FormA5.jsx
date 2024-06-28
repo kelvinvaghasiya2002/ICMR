@@ -22,7 +22,7 @@ function FormA5() {
     <div>
       <Heading h2="Community Survey Tool"></Heading>
       <section id='site-info'>
-        <SidePanel id={"1"} />
+        <SidePanel id={"3"} />
         <div className='siteInfo'>
           <div className="formhdr">
             <div>
@@ -30,7 +30,7 @@ function FormA5() {
             </div>
             <div>
               <h3>
-                Line listing of Household members.
+                Line listing of Household members
               </h3>
             </div>
           </div>
@@ -38,14 +38,14 @@ function FormA5() {
           <div className="formcontent cont_extra">
             <Radio
               name="AC3"
-              h3="I am reading out all the names of individuals residing in this house. Just to make sure that I have a complete household listing: Are there any other persons such as small children or infants that we have not listed?"
+              h3="AC.3 I am reading out all the names of individuals residing in this house. Just to make sure that I have a complete household listing: Are there any other persons such as small children or infants that we have not listed?"
               CheckbobItems={["Yes", "No"]}
               onClick={handleChange(setFormA3)}
               byDefault={formA3.AC3}
             />
             <Radio
               name="AC4"
-              h3="Are there any other people who may not be members of your family such as domestic servants who usually live here?"
+              h3="AC.4 Are there any other people who may not be members of your family such as domestic servants who usually live here?"
               CheckbobItems={["Yes", "No"]}
               onClick={handleChange(setFormA3)}
               byDefault={formA3.AC4}
@@ -55,7 +55,7 @@ function FormA5() {
 
             <Radio
               name="AC5"
-              h3="In the past one year, did any member of this household have any health emergency that could have required any sort of medical attention or treatment?"
+              h3="AC.5 In the past one year, did any member of this household have any health emergency that could have required any sort of medical attention or treatment?"
               CheckbobItems={["Yes", "No"]}
               onClick={handleChange(setFormA3)}
               byDefault={formA3.AC5}

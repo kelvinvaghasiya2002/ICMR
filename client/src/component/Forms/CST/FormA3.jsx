@@ -22,7 +22,7 @@ function FormA3() {
     <div>
       <Heading h2="Community Survey Tool"></Heading>
       <section id='site-info'>
-        <SidePanel id={"1"} />
+        <SidePanel id={"3"} />
         <div className='siteInfo'>
           <div className="formhdr">
             <div>
@@ -30,7 +30,7 @@ function FormA3() {
             </div>
             <div>
               <h3>
-                Line listing of Household members.
+                Line listing of Household members
               </h3>
             </div>
           </div>

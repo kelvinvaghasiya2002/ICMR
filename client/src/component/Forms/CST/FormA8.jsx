@@ -27,7 +27,7 @@ function FormA8() {
         <div>
             <Heading h2="Community Survey Tool"></Heading>
             <section id='site-info'>
-                <SidePanel id={"8"} />
+                <SidePanel id={"6"} />
                 <div className='siteInfo'>
                     <div className="formhdr">
                         <div>
