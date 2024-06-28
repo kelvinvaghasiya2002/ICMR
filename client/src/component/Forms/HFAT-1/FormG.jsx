@@ -32,7 +32,7 @@ function FormG() {
           </div>
         </div>
 
-        <div className="formcontent">
+        <div className="formcontent cont_extra">
 
           <Radio byDefault={formG.H1G1} onClick={handleChange(setFormG)} name="H1G1" h3="1G.1 : Whether any untied fund is available at your hospital?" CheckbobItems={["Yes", "No"]} />
 

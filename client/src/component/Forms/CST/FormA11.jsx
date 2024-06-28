@@ -34,7 +34,7 @@ function FormA11() {
             </div>
           </div>
 
-          <div className="formcontent cont_extra">
+          <div className="formcontent">
             <Radio
               name="AC11_1"
               h3="AC.11.1  In the past one year, did any women in your household give birth to a child or had any episode of miscarriage/abortion?"
