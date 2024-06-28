@@ -62,7 +62,7 @@ export default function Navbar() {
 
             </div>
             {loggedIn && <> 
-             <div id='nav-buttons' className='buttons-grid'>
+             <div id='nav-buttons' className='buttons-grid' data-aos="fade-down">
                 <div className='nav-btn'>
                 <button id='but'><p>Aim</p></button>
                 <button><p>Objective</p></button>

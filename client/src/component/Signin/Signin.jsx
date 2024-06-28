@@ -8,10 +8,16 @@ import FacebookSI from './FacebookSI'
 import { useUserInfo } from '../../contexts/User'
 import axios from 'axios'
 import { Loader } from 'lucide-react'
+import React, {useEffect} from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Navbar from '../Navbar/Navbar'
 const url = import.meta.env.VITE_SERVER;
 
 export default function SignIn() {
+    useEffect(()=> {
+        AOS.init({duration:2000})
+    }, []);
     const { user, setUser, loggedIn, setloggedIn } = useUserInfo();
     const [signIn, setsignIn] = useState(false);
     const [loader, setLoader] = useState(false);
@@ -77,7 +83,7 @@ export default function SignIn() {
         <>
             {/* <Navbar /> */}
             <div className='main-signin-div'>
-                <section id='signin-form'>
+                <section id='signin-form' data-aos="fade-right">
                     <form>
                         <div className='welcome-back'>
                             <h2>WELCOME BACK!</h2>
@@ -157,7 +163,7 @@ export default function SignIn() {
                         </div>
                     </form>
                 </section>
-                <section id="signin-rightside-img">
+                <section id="signin-rightside-img" data-aos="fade-left">
                     <div>
                         <img src={SignIn_Img} alt="SignUp" />
                     </div>

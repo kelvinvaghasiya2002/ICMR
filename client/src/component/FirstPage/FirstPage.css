@@ -1,5 +1,5 @@
 .fpage_main{
-    background-color: #36517C;
+    background-color: #F2F7FF;
     height: 100vh;
 }
 
@@ -30,7 +30,7 @@
 .signin-up-buttons{
     height: 5vh;
     border: none;
-    background-color: #3177FF;
+    background-color: #152266;
     border-radius: 99px ;
     font-family: "Inter", sans-serif;
     font-weight: 600;
@@ -40,6 +40,9 @@
     font-size: 2vh;
 }
 
+.signin-up-buttons:hover {
+    background-color:#3f37c9
+}
 
 .xyz{
     background-color: black;
@@ -70,12 +73,12 @@
 }
 
 .morepage button{
-    color: white;
+    color: black;
 }
 
 .morepage button:hover{
-    color: #54b2ff;
-    border-bottom: solid 0.2vw #54b2ff;
+    /* color: #54b2ff; */
+    border-bottom: solid 0.1vw black;
 }
 
 
@@ -105,22 +108,25 @@
 
 
 .fpage_content h2{
+    margin-top: 15vh;
     font-size: 2.8vw;
     line-height: 3.5vw;
-    text-align: left;
+    text-align: center;
 }
 
 .fpage_content p{
+    text-align: center;
     font-size: 1.5vw;
-    font-weight: 250;
+    font-weight: 700;
     line-height: 2vw;
-    margin-top: -15px;
+    margin-top: -3vh;
+    color: #5F79AD;
 }
 
 .fpage_content{
     text-align: left;
-    line-height: 4vh;
-    color: white;
+    line-height: 3vh;
+    color: #152266;
     margin-left: 5%;
     /* background-color: aqua; */
 }
@@ -130,24 +136,25 @@
 }
 
 .hero img{
-    width: 30vw;
+    width: 28vw;
     /* background-color: pink; */
 }
 
 .fpage_study{
-    text-align: center;
-    margin-top: 10%;
-    color: white;
+    text-align: center;   
+    color: #544E4E;
 }
 
 .fpage_study h3{
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.35vw;
+
 }
 
 .fpage_footer{
     font-family: "Poppins", sans-serif;
     text-align: center;
-    color: white;
+    color: #474242;
 
 }
 

@@ -4,7 +4,7 @@ import "./HomePage.css"
 
 export default function HomePage() {
     return (
-        <div className="homePage">
+        <div className="homePage" data-aos="fade-right" >
             <section id="aim-section">
                 <div className="aim-parent">
                     <h2>AIM :</h2>

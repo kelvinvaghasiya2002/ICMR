@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{ useEffect }from 'react'
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Checkbox from '../child-comp/Checkbox';
@@ -6,8 +6,14 @@ import { useState } from 'react';
 import setLocalStorage from '../setLocalStorage';
 import { turnOffbutton } from '../helpers';
 import Heading from '../../Heading/Heading';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function FormD() {
+
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
   turnOffbutton();
 
   var formd = setLocalStorage("formd",
@@ -20,7 +26,7 @@ function FormD() {
       <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"4"} />
-      <div className="siteInfo">
+      <div className="siteInfo" data-aos="fade-left">
 
         <div className="formhdr">
           <div>

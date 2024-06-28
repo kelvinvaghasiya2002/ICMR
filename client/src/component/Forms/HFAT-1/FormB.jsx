@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
@@ -14,12 +16,15 @@ function FormB() {
 
   const [formB , setFormB] = useState(JSON.parse(formb));
   turnOffbutton();
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
     <section>
       <SidePanel id={"2"} />
-      <div className="siteInfo">
+      <div className="siteInfo" data-aos="fade-left">
 
         <div className="formhdr">
           <div>

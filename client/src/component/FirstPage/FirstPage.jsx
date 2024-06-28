@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom'
 import heroImg from "../../assets/cuate.png";
 import './FirstPage.css'
+import React, {useEffect} from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function FirstPage() {
-
+    useEffect(()=> {
+        AOS.init({duration:2000})
+    }, []);
     return (
         <div className='fpage_main'>
 
@@ -25,22 +30,22 @@ export default function FirstPage() {
 
 
             <div className='main_section'>
-                <div className='fpage_content'>
+                <div className='fpage_content'data-aos="fade-right">
                     <h2>
-                        An implementation research<br />study
+                        An Implementation Research Study
                     </h2>
-                    <p>a High-quality patient centric integrated model for<br />emergency care systems in selected districts of India</p>
+                    <p>A High-quality patient centric integrated model for<br />emergency care systems in selected districts of India  </p>
                     <div className='fpage_study'>
                         <h3>AN ICMR TASK FORCE STUDY</h3>
                     </div>
                 </div>
 
-                <div className='hero'>
+                <div className='hero' data-aos="fade-left">
                     <img src={heroImg} alt="hero_image" />
                 </div>
             </div>
            
-            <div className='fpage_footer'>
+            <div className='fpage_footer' data-aos="fade-up">
                 <p>Content Managed By <span>ICMR-New Delhi</span></p>
                 <p style={{marginTop : "0px"}}>Design & Developed By <span>Parul <span style={{color : "red"}}>University</span></span></p>
             </div>

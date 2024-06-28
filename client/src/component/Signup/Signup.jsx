@@ -8,6 +8,9 @@ import { useUserInfo } from '../../contexts/User.jsx';
 import axios from 'axios';
 import { Navigate, Link } from 'react-router-dom';
 import Navbar from "../Navbar/Navbar.jsx"
+// import React, {useEffect} from 'react'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 const url = import.meta.env.VITE_SERVER;
 
 
@@ -15,6 +18,9 @@ const url = import.meta.env.VITE_SERVER;
 
 
 export default function SignUp() {
+    useEffect(()=> {
+        AOS.init({duration:2000})
+    }, []);
     useEffect(()=>{
         document.getElementById("navigation").style.position = "sticky";
         document.getElementById("navigation").style.top = "0";
@@ -178,7 +184,7 @@ export default function SignUp() {
             {/* <Navbar /> */}
 
             <div className='main-signup-div'>
-                <section id='signup-form'>
+                <section id='signup-form' data-aos="fade-right">
                     <form>
 
                         <div className='heading-signup'>
@@ -342,7 +348,7 @@ export default function SignUp() {
 
                     </form>
                 </section>
-                <section id='signup-rightside-img'>
+                <section id='signup-rightside-img' data-aos="fade-left">
                     <div>
                         <img src={SignUpImg} alt="SignUp" />
                     </div>
