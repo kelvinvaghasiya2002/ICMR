@@ -8,9 +8,15 @@
     top: 10%;
     height: 75vh;
     width: 24vw;
-    overflow: hidden;
+    /* overflow: hidden; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* scrollbar-width: none; */
+    scrollbar-color: #888 transparent; /* Color the thumb and make the track transparent */
+    scrollbar-width: thin; /* Set the scrollbar width to thin */
     background-color: #F2F7FF;
 }
+
 
 .sidePanel p {
     line-height: 1.5vw;
@@ -61,6 +67,7 @@
     padding-left: 1.2vw;
     background-color: #152266;
     color: white;
+    z-index: 3;
 }
 
 .formhdr h3{
@@ -70,10 +77,13 @@
 .formcontent {
     padding: 0vw 1.20vw 1.20vw 1.20vw;
     width: -webkit-fill-available;
-    /* height: 100vh; */
     background-color: #F2F7FF;
     scrollbar-width: none;
     -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .formcontent::-webkit-scrollbar {
@@ -132,7 +142,8 @@ section {
 }
 
 .buttons {
-    margin-top: 5vh;
+    margin-top: auto;
+    /* margin-top: 5vh; */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -145,7 +156,7 @@ section {
 }
 
 .dropdown-wrapper {
-    position: relative;
+    position: relative;.0
     display: inline-block;
     width: 15vw; /* same as block_selector width */
 }
@@ -434,17 +445,22 @@ th {
     align-items: center;
     margin-top: 50px;
   }
+
+  .location-button-container h3{
+    font-size: 1.1vw;
+    display: inline;
+    /* font-weight: 750; */
+  }
   
   .location-button {
     /* background: linear-gradient(45deg, #6a11cb 30%, #2575fc 90%); */
     margin: 2vw;
-    background-color: white;
-    border: none;
-    border-radius: 25px;
-    border: 0.1vw solid black;
+    background-color: #F2F7FF;
+    border-radius: 30px;
+    border: 0.2vw solid #152266;
     /* color: white; */
-    color: black;
-    padding: 1vw;
+    color: #152266;
+    padding: 0.5vw 1vw;
     font-size: 1vw;
     font-weight: bold;
     cursor: pointer;
@@ -460,8 +476,8 @@ th {
   .coordinates-display, .location-details-display {
     margin-bottom: 20px;
     font-size: 1vw;
-    font-weight: 600;
-    color: #333;
+    font-weight: 350;
+    color: #4d4d4d;
     /* text-align: center; */
   }
   

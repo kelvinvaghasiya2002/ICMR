@@ -8,7 +8,11 @@ function DropDown({ dropdownItems, name, h3, onClick, byDefault }) {
                 <select onChange={onClick} name={name} className="block_selector" id="Block_Name">
                     {dropdownItems.map((item, index) => {
                         return (
-                            <option key={index} value={item} selected={byDefault === item}>{item}</option>
+                            // <option key={index} value={item} selected={byDefault === item}>{item}</option>
+                            (byDefault === item) ? 
+                                <option  key={index} value={item} selected>{item}</option>
+                                :
+                                <option  key={index} value={item}>{item}</option>
                         )
                     })}
                 </select>

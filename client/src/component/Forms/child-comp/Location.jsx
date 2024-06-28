@@ -46,6 +46,7 @@ const LocationButton = () => {
 
   return (
     <div className="location-button-container">
+      <h3>1A.10 : Location :</h3>
       <button className="location-button" onClick={getLocation}>
         Get Current Location
       </button>
