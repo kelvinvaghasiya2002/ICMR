@@ -20,7 +20,7 @@ function FormA10() {
                 return { ...prevValue, AC10_1_if: "", AC10_2: "" }
             })
         }
-    }, [formA3])
+    }, [formA3.AC10_1])
 
     turnOffbutton();
     return (

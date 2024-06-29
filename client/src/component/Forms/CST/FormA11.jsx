@@ -37,31 +37,58 @@ function FormA11() {
           <div className="formcontent">
             <Radio
               name="AC11_1"
-              h3="AC.11.1  In the past one year, did any women in your household give birth to a child or had any episode of miscarriage/abortion?"
+              h3="AC.11.1 : In the past one year, did any women in your household give birth to a child or had any episode of miscarriage/abortion?"
               CheckbobItems={["Yes", "No"]}
               onClick={handleChange(setFormA3)}
               byDefault={formA3.AC11_1}
             />
-            <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC11_1_if" value={formA3.AC11_1_if} />
-            <Radio
-              name="AC11_2"
-              h3="AC.11.2  If 'Yes' to AC.11.1, did the woman or mother suffer from any condition like vaginal bleeding requiring blood transfusion, sudden increase in blood pressure, decreased urine output, loss of fetal movements, loss of consciousness, seizure, or fits before/during/after delivery?"
-              CheckbobItems={["Yes", "No"]}
-              onClick={handleChange(setFormA3)}
-              byDefault={formA3.AC11_2}
-            />
-            <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC11_2_if" value={formA3.AC11_2_if} />
-            <DropDown h3="AC.11.3   If “Yes” to AC.11.2, could you please tell us who suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC11_3" onClick={handleChange(setFormA3)} byDefault={formA3.AC11_3} />
-            <Radio
-              name="AC11_4"
-              h3="AC.11.4  If 'Yes' to AC.11.1, at the time of birth, did the newborn cry/cry late/unable to breathe/have breathing difficulty that required hospitalization or admission to SNCU/appear cold or warm (fever) to touch/refuse to breastfeed/become nonresponsive to touch/have distended abdomen or minimal or abnormal limb movements/develop bluish discoloration or jaundice/pass loose stools/or develop any other condition that required admission/hospitalization or needed any medical attention within the first month of life?"
-              CheckbobItems={["Yes", "No"]}
-              onClick={handleChange(setFormA3)}
-              byDefault={formA3.AC11_4}
-            />
-            <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC11_4_if" value={formA3.AC11_4_if} />
-            <DropDown h3="AC.11.5  If “Yes” to AC.11.4, could you please tell us who suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC11_5" onClick={handleChange(setFormA3)} byDefault={formA3.AC11_5}/>
-            <Buttons formName={"forma3"} formData={formA3}  prev="/acuterespiratoryillness" next="/snakebite" prevText="Previous" nextText="Save & Next" />
+
+            {
+              (formA3.AC11_1 === "Yes") &&
+              <>
+                <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC11_1_if" value={formA3.AC11_1_if} />
+
+                <Radio
+                  name="AC11_2"
+                  h3="AC.11.2 :  If 'Yes' to AC.11.1, did the woman or mother suffer from any condition like vaginal bleeding requiring blood transfusion, sudden increase in blood pressure, decreased urine output, loss of fetal movements, loss of consciousness, seizure, or fits before/during/after delivery?"
+                  CheckbobItems={["Yes", "No"]}
+                  onClick={handleChange(setFormA3)}
+                  byDefault={formA3.AC11_2}
+                />
+              </>
+            }
+
+            {
+              (formA3.AC11_2 === "Yes" && formA3.AC11_1 === "Yes") &&
+              <>
+                <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC11_2_if" value={formA3.AC11_2_if} />
+
+                <DropDown h3="AC.11.3  : If “Yes” to AC.11.2, could you please tell us who suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC11_3" onClick={handleChange(setFormA3)} byDefault={formA3.AC11_3} />
+              </>
+            }
+
+            {
+              (formA3.AC11_1 === "Yes") &&
+              <>
+                <Radio
+                  name="AC11_4"
+                  h3="AC.11.4  If 'Yes' to AC.11.1, at the time of birth, did the newborn cry/cry late/unable to breathe/have breathing difficulty that required hospitalization or admission to SNCU/appear cold or warm (fever) to touch/refuse to breastfeed/become nonresponsive to touch/have distended abdomen or minimal or abnormal limb movements/develop bluish discoloration or jaundice/pass loose stools/or develop any other condition that required admission/hospitalization or needed any medical attention within the first month of life?"
+                  CheckbobItems={["Yes", "No"]}
+                  onClick={handleChange(setFormA3)}
+                  byDefault={formA3.AC11_4}
+                />
+              </>
+            }
+
+            {
+              (formA3.AC11_4 === "Yes" && formA3.AC11_1 === "Yes") &&
+              <>
+                <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC11_4_if" value={formA3.AC11_4_if} />
+
+                <DropDown h3="AC.11.5 : If “Yes” to AC.11.4, could you please tell us who suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC11_5" onClick={handleChange(setFormA3)} byDefault={formA3.AC11_5} />
+              </>}
+
+            <Buttons formName={"forma3"} formData={formA3} prev="/acuterespiratoryillness" next="/snakebite" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>

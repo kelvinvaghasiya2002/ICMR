@@ -8,14 +8,33 @@ import Buttons from '../child-comp/Buttons.jsx';
 import InputField from '../child-comp/InputField.jsx';
 import { turnOffbutton, handleChange } from '../helpers.js';
 import setLocalStorage from '../setLocalStorage.js';
-import Heading from '../../Heading/Heading'; 
+import Heading from '../../Heading/Heading';
+import ShortUniqueId from "short-unique-id"
+
+const uid = new ShortUniqueId({ length: 10 });
+console.log(uid.rnd());
 
 function FormA1() {
-  var forma1 = setLocalStorage("forma1", {AA1 : "" , AA2: "", AA3: "", AA4 : "" })
+  var forma1 = setLocalStorage("forma1", { AA1: "", AA2: "", AA3: "", AA4: "" })
   turnOffbutton();
 
   const date = new Date();
   const [formA1, setFormA1] = useState(JSON.parse(forma1))
+
+  useEffect(() => {
+    setFormA1((prevValue) => {
+      return (formA1.AA4 === "") ? (
+        {
+          ...prevValue,
+          AA4: uid.rnd()
+        }
+      ) : (
+        {
+          ...prevValue
+        }
+      )
+    })
+  }, [])
 
   return (
     <div>
@@ -44,7 +63,15 @@ function FormA1() {
 
             <InputField h3="AA.3 Name Of the Data Collector :" placeholder="Type here" name="AA3" value={formA1.AA3} onChange={handleChange(setFormA1)} />
 
-            <InputField h3="AA.4 Respondent ID: " placeholder="Type here" />
+            <div className='block'>
+              <h3 className='h3block'>AA.4 Respondent ID: </h3>
+              <input
+                className='blockinput'
+                value={formA1.AA4}
+                name="AA4"
+                readOnly
+              />
+            </div>
 
             <Buttons formName="forma1" formData={formA1} prevText="" nextText="Save & Next" next="/clusterinformation" />
           </div>

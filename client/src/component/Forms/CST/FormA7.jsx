@@ -56,7 +56,7 @@ function FormA7() {
             {
               (formA3.AC7_1 === "Yes") &&
               <>
-                <InputField onClick={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC7_1_if" value={formA3.AC7_1_if} />
+                <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC7_1_if" value={formA3.AC7_1_if} />
 
                 <DropDown h3="AC.7.2  If yes, could you please tell who all from your Household suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC7_2" onClick={handleChange(setFormA3)} byDefault={formA3.AC7_2} />
               </>

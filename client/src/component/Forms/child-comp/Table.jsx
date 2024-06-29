@@ -14,7 +14,7 @@ function Table({ tableName }) {
 
 
     function handlePlusClick() {
-        setRows([...rows, { name: '', age: '', sex: 'Male', relationship: '' }]);
+        setRows([...rows, { name: '', age: '', sex: 'Male', MemberID: '' }]);
     }
 
     function handleMinusClick() {
@@ -66,15 +66,16 @@ function Table({ tableName }) {
                                             <DropDown
                                                 dropdownItems={["Male", "Female", "Other"]}
                                                 name={"table_sex_field"}
-                                                value={item.sex}
-                                                onChange={(e) => handleInputChange(index, 'sex', e.target.value)}
+                                                byDefault={item.sex}
+                                                onClick={(e) => handleInputChange(index, 'sex', e.target.value)}
                                             />
                                         </td>
                                         <td>
                                             <input
                                                 className='tableinput'
-                                                value={item.relationship}
-                                                onChange={(e) => handleInputChange(index, 'relationship', e.target.value)}
+                                                value={item.MemberID}
+                                                style={{cursor : "not-allowed"}}
+                                                readOnly
                                             />
                                         </td>
                                     </tr>
