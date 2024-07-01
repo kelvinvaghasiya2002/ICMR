@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect} from 'react'
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
@@ -7,8 +7,13 @@ import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import LocationButton from '../child-comp/Location.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function Form2A() {
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
   turnOffbutton();
   var form2a = setLocalStorage("form2a",
   {H2A1:"",H2A2:"",H2A3:"",H2A4:"",H2A5:"",H2A6:"",H2A7:"",H2A8:"",H2A9:"",H2A10:"",H2A11 : ""})
@@ -20,7 +25,7 @@ function Form2A() {
       <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"1"} />
-      <div className="siteInfo">
+      <div className="siteInfo" data-aos="fade-left">
 
         <div className="formhdr">
           <div>

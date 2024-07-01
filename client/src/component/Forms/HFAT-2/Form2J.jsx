@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
@@ -6,8 +6,15 @@ import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import LastButton from '../child-comp/LastButton.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function Form2J() {
+
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
+
   var form2j = setLocalStorage("form2j" , {H2J1:"" , H2J2:""});
   const [form2J , setForm2J] = useState(JSON.parse(form2j));
 
@@ -17,7 +24,7 @@ function Form2J() {
       <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
     <section>
       <SidePanel id={"10"} />
-      <div className="siteInfo">
+      <div className="siteInfo" data-aos="fade-left" >
 
         <div className="formhdr">
           <div>
