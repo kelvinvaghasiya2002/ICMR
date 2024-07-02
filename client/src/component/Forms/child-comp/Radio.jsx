@@ -57,7 +57,8 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                                     style={st}
                                                     type="text" 
                                                     name={name}
-                                                    value={document.getElementById(item)?.checked ? otherSpecify : ""}
+                                                    // value={document.getElementById(item)?.checked ? otherSpecify : ""}
+                                                    value={byDefault}
                                                     id={`${item}otherInput`} 
                                                     disabled
                                                     />

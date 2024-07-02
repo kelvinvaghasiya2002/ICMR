@@ -43,7 +43,7 @@ function FormA12() {
                     <div className="formcontent cont_extra">
 
 
-                        <Radio onClick={handleChange(setFormA3)} h3="AC.12.1  In the past one year have you or anyone from your family member been bitten by a snake? " CheckbobItems={["Yes", "No"]} name="AC12_1" byDefault={formA3.AC12_1} />
+                        <Radio onClick={handleChange(setFormA3)} h3="AC.12.1  In the past one year have you or anyone from your family member been bitten by a snake?" CheckbobItems={["Yes", "No"]} name="AC12_1" byDefault={formA3.AC12_1} />
 
                         {
                             (formA3.AC12_1 === "Yes") &&
