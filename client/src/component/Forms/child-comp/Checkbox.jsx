@@ -9,7 +9,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             array = CheckbobItems.map(() => "");
             console.log(array);
         }else if(other && array.length === 1){
-            for(var i=0 ; i< CheckbobItems.length ; i++){
+            for(var i=0 ; i<= CheckbobItems.length ; i++){
                 array.push("");
             }
         }
@@ -52,7 +52,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             document.getElementById(name).disabled = false;
         } else {
             setOtherSpecify("");
-            array[0] = "";
+            array[array.length-1] = "";
             document.getElementById(name).disabled = true;
         }
     }
@@ -93,7 +93,12 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                     {
                         other &&
                         <>
-                            <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" />
+                            {
+                                (array[array.length-1] !== "")?
+                                <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" />
+                                :
+                                <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" checked/>
+                            }
                             <span style={{ fontSize: "1.1vw", color: "gray", paddingLeft: "0.2vw" }}>Other (Specify)</span>
                             <input
                                 className='others blockinput' onChange={handleChange} type="text" name="otherSpecify" value={array[array.length-1]} id={name} disabled />
