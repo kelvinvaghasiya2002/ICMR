@@ -1,27 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Buttons({ prevText, prev, nextText, next, formName, formData }) {
-    const handleSubmit = () => {
+function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm }) {
+    const handleSubmit = (e) => {
+        if (validateForm && !validateForm()) {
+            e.preventDefault();
+            return;
+        }
+        
         var CompleteForm = localStorage.getItem("CompleteForm");
         if (formName === "formac4") {
             var formac4 = localStorage.getItem("formac4");
-            formac4 = JSON.parse(formac4)
+            formac4 = JSON.parse(formac4);
 
             if (CompleteForm) {
-                CompleteForm = JSON.parse(CompleteForm)
+                CompleteForm = JSON.parse(CompleteForm);
                 const data = { ...CompleteForm, ...formac4 };
                 localStorage.setItem("CompleteForm", JSON.stringify(data));
             } else {
-                localStorage.setItem("CompleteForm", JSON.stringify(formac4))
+                localStorage.setItem("CompleteForm", JSON.stringify(formac4));
             }
         } else {
             if (CompleteForm) {
-                CompleteForm = JSON.parse(CompleteForm)
-                const data = { ...CompleteForm, ...formData }
-                localStorage.setItem("CompleteForm", JSON.stringify(data))
+                CompleteForm = JSON.parse(CompleteForm);
+                const data = { ...CompleteForm, ...formData };
+                localStorage.setItem("CompleteForm", JSON.stringify(data));
             } else {
-                localStorage.setItem("CompleteForm", JSON.stringify(formData))
+                localStorage.setItem("CompleteForm", JSON.stringify(formData));
             }
             localStorage.setItem(formName, JSON.stringify(formData));
         }
@@ -30,7 +35,7 @@ function Buttons({ prevText, prev, nextText, next, formName, formData }) {
     return (
         <div className='buttons'>
             <button className='prevbtn'><Link to={prev}>{prevText}</Link></button>
-            <button onClick={handleSubmit} className='nextbtn'><Link to={next}>{nextText}</Link></button>
+            <Link to={next} onClick={handleSubmit} className='nextbtn'>{nextText}</Link>
         </div>
     )
 }
