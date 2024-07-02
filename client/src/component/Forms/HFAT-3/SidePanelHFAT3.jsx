@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 import "../Form.css"
 import { Link } from 'react-router-dom';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function SidePanelHFAT3({id}) {
+  
   // console.log(id);
   useEffect(()=>{
+    AOS.init({duration:2000})
     const link = document.getElementById(id)
     if(link){
       const pElement = link.querySelector('p'); // Select the <p> inside the Link
@@ -14,7 +18,7 @@ function SidePanelHFAT3({id}) {
     } 
   })
   return (
-    <div className='sidePanel'>
+    <div className='sidePanel' data-aos="fade-right">
       <div className='innerdiv'>
         <Link id='1' to='/facilityinformation-3'><p>3A. Health Facility Information</p></Link>
         <Link id='2' to='/infrastructure-3'><p>3B. Infrastructure</p></Link>

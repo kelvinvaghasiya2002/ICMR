@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
@@ -6,8 +6,15 @@ import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import LastButton from '../child-comp/LastButton.jsx';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function Form3J() {
+
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
+
   turnOffbutton();
   var form3j = setLocalStorage("form3j",
     { H3J1: "", H3J2: "" })
@@ -19,7 +26,7 @@ function Form3J() {
       <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
       <section>
         <SidePanel id={"10"} />
-        <div className="siteInfo">
+        <div className="siteInfo" data-aos="fade-left" >
 
           <div className="formhdr">
             <div>
