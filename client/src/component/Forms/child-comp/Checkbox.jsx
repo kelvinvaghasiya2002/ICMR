@@ -5,10 +5,15 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
     const [otherSpecify, setOtherSpecify] = useState("");
 
     useEffect(() => {
-        if (array.length === 0) {
+        if (!other && array.length === 0) {
             array = CheckbobItems.map(() => "");
+            console.log(array);
+        }else if(other && array.length === 1){
+            for(var i=0 ; i< CheckbobItems.length ; i++){
+                array.push("");
+            }
         }
-        console.log(array);
+        
     }, [])
 
     const handleChange = (event) => {
@@ -91,7 +96,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                             <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" />
                             <span style={{ fontSize: "1.1vw", color: "gray", paddingLeft: "0.2vw" }}>Other (Specify)</span>
                             <input
-                                className='others blockinput' onChange={handleChange} type="text" name="otherSpecify" value={array[0]} id={name} disabled />
+                                className='others blockinput' onChange={handleChange} type="text" name="otherSpecify" value={array[array.length-1]} id={name} disabled />
                         </>
 
                     }

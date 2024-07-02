@@ -16,7 +16,7 @@ function FormF() {
 }, []);
   turnOffbutton();
   var formf = setLocalStorage("formf",
-   {H1F1:"",H1F2:"",H1F3:"",H1F4:"",H1F5:"",H1F6:[],H1F7:"",H1F8:"",H1F9:""})
+   {H1F1:"",H1F2:"",H1F3:"",H1F4:[],H1F5:"",H1F6:[],H1F7:"",H1F8:"",H1F9:""})
 
   const [formF, setFormF] = useState(JSON.parse(formf));
   return (
@@ -42,7 +42,7 @@ function FormF() {
 
           <InputField value={formF.H1F3} onChange={handleChange(setFormF)} name="H1F3" h3="1F.3 : How many personnel are available for managing information system?" placeholder="Type here" />
 
-          <Radio byDefault={formF.H1F4} onClick={handleChange(setFormF)} name="H1F4" h3="1F.4 : What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencieses", "Length of hospital stay", "Turnaround time", "Disposal time", "Number of deaths", "Number of Referrals (in-house referrals and to other hospitals)"]}  />
+          <Checkbox name="H1F4" h3="1F.4 : What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencieses", "Length of hospital stay", "Turnaround time", "Disposal time", "Number of deaths", "Number of Referrals (in-house referrals and to other hospitals)"]} StateValue={formF} setFunction={setFormF} array={formF.H1F4}  />
 
           <Radio byDefault={formF.H1F5} onClick={handleChange(setFormF)} name="H1F5" h3="1F.5 : Whether time bound management of common emergencies is captured in MIS. For example,
 Door to CT/ECG time, Door to needle time, Time to activate emergency alert team." CheckbobItems={["Yes", "No"]}  />
