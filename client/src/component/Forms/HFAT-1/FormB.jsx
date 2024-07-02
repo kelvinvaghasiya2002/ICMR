@@ -50,7 +50,7 @@ function FormB() {
 
           <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7","No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0,0,1,0]} byDefault={formB.B7} setter={setFormB} />
 
-          <Radio h3="1B.8 : Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} onClick={handleChange(setFormB)} byDefault={formB.B8} name="B8" />
+          <Radio h3="1B.8 : Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} onClick={handleChange(setFormB)} byDefault={formB.B8} name="B8" />
 
           <Radio h3="1B.9 : Is there a blood storage facility inside the emergency?" CheckbobItems={["Yes", "No"]} byDefault={formB.B9} onClick={handleChange(setFormB)} name="B9" />
 
