@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react'
 import "../Form.css"
 import { Link } from 'react-router-dom';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function SidePanelHFAT2({id}) {
+  useEffect(()=> {
+    AOS.init({duration:2000})
+}, []);
   // console.log(id);
   useEffect(()=>{
     const link = document.getElementById(id)
@@ -14,7 +19,7 @@ function SidePanelHFAT2({id}) {
     } 
   })
   return (
-    <div className='sidePanel'>
+    <div className='sidePanel' data-aos="fade-right">
       <div className='innerdiv'>
         <Link id='1' to='/facilityinformation-2'><p>2A. Health Facility Information</p></Link>
         <Link id='2' to='/infrastructure-2'><p>2B. Infrastructure</p></Link>
