@@ -23,6 +23,8 @@ function FormA() {
   const [formA, setFormA] = useState(JSON.parse(forma));
   const [errors, setErrors] = useState({});
 
+  
+
   const date = new Date();
 
   const dropdownItems = useMemo(() => {
@@ -75,16 +77,19 @@ function FormA() {
               required 
               error={errors.A1}
             />
+
             <div>
               <p className='datetime'>1A.2: Date & Time : <span className='datetime_current'>{date.toDateString()}  {date.getHours()}:{date.getMinutes()}</span></p>
             </div>
-            <Radio h3="1A.3 : Code :" onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH_00000", "ORPUR_DH_11111", "MPBHS_DH_22222", "PBLDH_DH_33333", "PYPDY_DH_44444"]} name="A3" />
+
+            <Radio h3="1A.3 : Code :" onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH", "ORPUR_DH", "MPBHS_DH", "PBLDH_DH", "PYPDY_DH"]} name="A3" />
             <DropDown
               name="A4" h3="1A.4 : Block Name:"
               byDefault={formA.A4}
               onClick={handleChange(setFormA)}
               dropdownItems={dropdownItems}
             />
+
             <InputField 
               name="A5" 
               value={formA.A5} 
@@ -137,7 +142,12 @@ function FormA() {
             <LocationButton />
             <Radio h3="1A.11 : Type of Health Care Facility?" CheckbobItems={["District Hospital (DH)", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
             <Radio style={{ display: "flex", flexDirection: "column" }} h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
-            <Buttons formName="forma" formData={formA} prevText="" nextText="Save & Next" prev="" next="/infrastructure" validateForm={validateForm} />
+
+            <Buttons
+             formName="forma" formData={formA} prevText="" 
+             nextText="Save & Next" prev="" next="/infrastructure" 
+            //  validateForm={validateForm} 1 `
+             />
           </div>
         </div>
       </section>
