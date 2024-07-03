@@ -10,7 +10,7 @@ import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
 import DropDown from "../child-comp/DropDown.jsx"
-import { GJBRC_DH_00000, MPBHS_DH_22222, ORPUR_DH_11111, PBLDH_DH_33333, PYPDY_DH_44444 } from '../BlockItem/blockList.js';
+import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
 import LocationButton from '../child-comp/Location.jsx';
 
 function FormA() {
@@ -29,16 +29,16 @@ function FormA() {
 
   const dropdownItems = useMemo(() => {
     switch (formA.A3) {
-      case "GJBRC_DH_00000":
-        return GJBRC_DH_00000;
-      case "ORPUR_DH_11111":
-        return ORPUR_DH_11111;
-      case "MPBHS_DH_22222":
-        return MPBHS_DH_22222;
-      case "PBLDH_DH_33333":
-        return PBLDH_DH_33333;
-      case "PYPDY_DH_44444":
-        return PYPDY_DH_44444;
+      case "GJBRC_DH":
+        return GJBRC_DH;
+      case "ORPUR_DH":
+        return ORPUR_DH;
+      case "MPBHS_DH":
+        return MPBHS_DH;
+      case "PBLDH_DH":
+        return PBLDH_DH;
+      case "PYPDY_DH":
+        return PYPDY_DH;
       default:
         return [];
     }
