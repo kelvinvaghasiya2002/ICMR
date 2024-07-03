@@ -12,6 +12,7 @@ import setLocalStorage from "../setLocalStorage.js";
 import Heading from '../../Heading/Heading.jsx';
 
 function FormC() {
+  
 
   useEffect(()=> {
     AOS.init({duration:2000})
@@ -170,7 +171,7 @@ function FormC() {
               "Annually",
               "Others(Specify)"
             ]}
-            other={true}
+            //other={true}
             otherArray={[0,0,0,0,1]}
             name="C5"
             setter={setFormC}
