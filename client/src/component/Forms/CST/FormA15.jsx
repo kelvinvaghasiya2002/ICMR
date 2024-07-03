@@ -65,7 +65,7 @@ function FormA15() {
               setFunction={handleChange(setFormA15)}
             /> */}
             <InputField h3="What were the symptoms reported by the deceased and first course of action?" placeholder="Type here" name="AC11_1_if" />
-            <Buttons prev="/others" next="/" prevText="Previous" nextText="Save & Next" />
+            <Buttons prev="/others" next="/socio-demographicprofileofthepatientinthehhwithemergencycondition" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>

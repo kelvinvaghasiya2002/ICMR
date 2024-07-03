@@ -15,8 +15,8 @@ import Table1 from '../child-comp/Table1.jsx';
 
 
 function FormB18() {
-    var formb18 = setLocalStorage("formb18", { B1: "", B2: "", B3: "", B4: "" })
-    const [formB18, setFormB18] = useState(JSON.parse(formb18))
+    var formb16 = setLocalStorage("formb16", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    const [formB16, setFormB16] = useState(JSON.parse(formb16))
     turnOffbutton();
     return (
         <div>
@@ -48,10 +48,11 @@ function FormB18() {
                             ]}
                             otherArray={[0, 0, 0, 0, 0, 1]}
                             name="B15"
-                            onClick={handleChange(setFormB18)} 
+                            onClick={handleChange(setFormB16)} 
+                            byDefault={formB16.B15}
                         />
 
-                        <Buttons prev="/initialhealthcareseekingpathway-1" next="/initialhealthcareseekingpathway-3" prevText="Previous" nextText="Save & Next" />
+                        <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-1" next="/initialhealthcareseekingpathway-3" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

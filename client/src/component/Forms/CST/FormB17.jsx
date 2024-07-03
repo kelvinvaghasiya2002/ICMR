@@ -15,8 +15,8 @@ import Table1 from '../child-comp/Table1.jsx';
 
 
 function FormB17() {
-  var formb17 = setLocalStorage("formb17", { B5: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "" })
-  const [formB17, setFormB17] = useState(JSON.parse(formb17))
+  var formb16 = setLocalStorage("formb16", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+  const [formB16, setFormB16] = useState(JSON.parse(formb16))
   turnOffbutton();
   return (
     <div>
@@ -37,7 +37,7 @@ function FormB17() {
 
           <div className="formcontent cont_extra">
             <h3>Now, I will be asking you about the emergency conditions and your approach for seeking healthcare during the entire event of healthcare emergency.</h3>
-            <InputField h3="B.5	When did this incident take place?" placeholder="Type here" name="B5_dt" type={"datetime-local"} />
+            <InputField onChange={handleChange(setFormB16)} h3="B.5	When did this incident take place?" placeholder="Type here" name="B5_dt" type={"datetime-local"} value={formB16.B5_dt}/>
             <Radio
               h3="B.6 How sure/confident are you about the time of Incident?"
               CheckbobItems={[
@@ -48,7 +48,8 @@ function FormB17() {
                 "Completely Confident"
               ]}
               name="B6"
-              onClick={handleChange(setFormB17)}
+              onClick={handleChange(setFormB16)}
+              byDefault={formB16.B6}
             />
             <Radio
               h3="B.7 Where did the medical emergency situation arise?"
@@ -60,14 +61,15 @@ function FormB17() {
               ]}
               otherArray={[0, 0, 0, 1]}
               name="B7"
-              onClick={handleChange(setFormB17)}
+              onClick={handleChange(setFormB16)}
+              byDefault={formB16.B7}
             />
-            <InputField h3="B.8	Which was the first symptom you/ or the person expressed or complaint of during emergency condition?" placeholder="Type here" name="B8" />
-            <InputField h3="B.9	When was the first symptom of a medical emergency recognised? [Time of onset of symptom]" placeholder="Type here" name="B9" />
-            <Radio h3="B.10	At the start of symptoms was any medication taken/ given at home to alleviate symptoms?" CheckbobItems={["Yes", "No"]} name="B10" onClick={handleChange(setFormB17)} />
+            <InputField onChange={handleChange(setFormB16)} h3="B.8	Which was the first symptom you/ or the person expressed or complaint of during emergency condition?" placeholder="Type here" name="B8" value={formB16.B8} />
+            <InputField onChange={handleChange(setFormB16)} h3="B.9	When was the first symptom of a medical emergency recognised? [Time of onset of symptom]" placeholder="Type here" name="B9" value={formB16.B9} />
+            <Radio h3="B.10	At the start of symptoms was any medication taken/ given at home to alleviate symptoms?" CheckbobItems={["Yes", "No"]} name="B10" onClick={handleChange(setFormB16)} byDefault={formB16.B10} />
 
-            <InputField h3="B.11	If yes, what medication was given?" placeholder="Type here" name="B11_if" />
-            <InputField h3="B.12	Which was the first symptom recognised as serious?" placeholder="Type here" name="B12" />
+            <InputField onChange={handleChange(setFormB16)} h3="B.11	If yes, what medication was given?" placeholder="Type here" name="B11_if" value={formB16.B11_if} />
+            <InputField onChange={handleChange(setFormB16)} h3="B.12	Which was the first symptom recognised as serious?" placeholder="Type here" name="B12" value={formB16.B12} />
             <Radio
               h3="B.13 Who first recognized the symptoms to be serious?"
               CheckbobItems={[
@@ -77,7 +79,8 @@ function FormB17() {
               ]}
               otherArray={[0, 0, 1]}
               name="B13"
-              onClick={handleChange(setFormB17)}
+              onClick={handleChange(setFormB16)}
+              byDefault={formB16.B13}
             />
             <Radio
               h3="B.14 What was your first course of action on identifying the emergency condition?"
@@ -91,9 +94,10 @@ function FormB17() {
                 "Did not visit health facility"
               ]}
               name="B14"
-              onClick={handleChange(setFormB17)}
+              onClick={handleChange(setFormB16)}
+              byDefault={formB16.B14}
             />
-            <Buttons prev="/socio-demographicprofileofthepatientinthehhwithemergencycondition" next="/initialhealthcareseekingpathway-2" prevText="Previous" nextText="Save & Next" />
+            <Buttons formName="formb16" formData={formB16} prev="/socio-demographicprofileofthepatientinthehhwithemergencycondition" next="/initialhealthcareseekingpathway-2" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>
