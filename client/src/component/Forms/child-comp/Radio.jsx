@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other, otherArray , setter, style ,st}) {
-    const [otherSpecify, setOtherSpecify] = useState("");
+    const [otherSpecify, setOtherSpecify] = useState();
 
 
     const handleRadioClick = (event) => {
@@ -50,7 +50,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                                             return (
                                                                 {
                                                                     ...prevValue,
-                                                                    [event.target.name] : `${event.target.value}`
+                                                                    [event.target.name] : `${item}:${event.target.value}`
                                                                 }
                                                             )
                                                         })
@@ -58,7 +58,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                                     style={st}
                                                     type="text" 
                                                     name={name}
-                                                    value={document.getElementById(item)?.checked ? byDefault : ""}
+                                                    value={document.getElementById(item)?.checked ? otherSpecify : ""}
                                                     id={`${item}otherInput`} 
                                                     disabled
                                                     />

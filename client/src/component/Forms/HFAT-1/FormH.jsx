@@ -49,7 +49,7 @@ function FormH() {
             <h3 style={{ color: "#3177FF" }}>Quality Improvement Plan :</h3>
 
 
-            <Radio h3="1H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes", "No"]} otherArray={[1,0]} setter={setFormH} name="H1H4" onClick={handleChange(setFormH)} byDefault={formH.H1H4}  />
+            <Radio h3="1H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes", "No"]} otherArray={[1,0]} setter={setFormH} name="H1H4" onClick={handleChange(setFormH)} byDefault={formH.H1H4} st={{  borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius:"0"}} />
 
             <InputField value={formH.H1H5} onChange={handleChange(setFormH)} name="H1H5" h3="1H.2.2 : How frequently does this committee meet in a year?" placeholder="Type here" />
 

@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import Checkbox from '../child-comp/Checkbox';
+// import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
@@ -19,13 +19,23 @@ function FormA() {
   }, []);
 
   turnOffbutton();
-  var forma = setLocalStorage("forma", { A1: "", A2: "", A3: "", A4: "", A5: "", A6: "", A7: "", A8: "", A9: "", A10: "", A11: "", A12: "" });
+  var forma = setLocalStorage("forma", { A1: "", A2: "", A3: "", A4: "", A5: "", A6: "", A7: "", A8: "", A9: "", A10: {}, A11: "", A12: "" });
   const [formA, setFormA] = useState(JSON.parse(forma));
   const [errors, setErrors] = useState({});
 
   
 
   const date = new Date();
+
+  useEffect(()=>{
+    setFormA((prevValue)=>{
+      return{
+        ...prevValue,
+        A2: (formA.A2=="")?`${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}`:formA.A2,
+
+      }
+    })
+  },[])
 
   const dropdownItems = useMemo(() => {
     switch (formA.A3) {
@@ -46,7 +56,7 @@ function FormA() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formA.A1) newErrors.A1 = 'Assessor’s Name is required';
+    if (!formA.A1) newErrors.A1 = "Assessor's Name is required";
     if (!formA.A5) newErrors.A5 = 'Healthcare Facility Name is required';
     if (!formA.A6) newErrors.A6 = 'Healthcare Facility Address is required';
     if (!formA.A7) newErrors.A7 = 'Name of the hospital Superintendent is required';
@@ -70,7 +80,7 @@ function FormA() {
           <div className="formcontent">
             <InputField 
               name="A1" 
-              h3="1A.1 : Assessor’s Name: " 
+              h3="1A.1 : Assessor's Name: " 
               onChange={handleChange(setFormA)} 
               value={formA.A1} 
               placeholder="Type here" 
@@ -79,7 +89,7 @@ function FormA() {
             />
 
             <div>
-              <p className='datetime'>1A.2: Date & Time : <span className='datetime_current'>{date.toDateString()}  {date.getHours()}:{date.getMinutes()}</span></p>
+              <p className='datetime'>1A.2: Date & Time : <span className='datetime_current'>{formA.A2}</span></p>
             </div>
 
             <Radio h3="1A.3 : Code :" onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH", "ORPUR_DH", "MPBHS_DH", "PBLDH_DH", "PYPDY_DH"]} name="A3" />
@@ -139,9 +149,13 @@ function FormA() {
               errorMsg="Invalid email format"
               error={errors.A9}
             />
-            <LocationButton />
+
+
+            <LocationButton setter={setFormA} name={"A10"} />
+
+
             <Radio h3="1A.11 : Type of Health Care Facility?" CheckbobItems={["District Hospital (DH)", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
-            <Radio style={{ display: "flex", flexDirection: "column" }} h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
+            <Radio style={{ display: "flex", flexDirection: "column" }} h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
 
             <Buttons
              formName="forma" formData={formA} prevText="" 
