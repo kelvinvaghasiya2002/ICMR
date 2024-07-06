@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other, otherArray , setter, style ,st}) {
-    const [otherSpecify, setOtherSpecify] = useState();
+    const [otherSpecify, setOtherSpecify] = useState("");
 
 
     const handleRadioClick = (event) => {

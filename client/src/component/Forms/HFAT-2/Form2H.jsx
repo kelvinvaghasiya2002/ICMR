@@ -49,7 +49,7 @@ function Form2H() {
 
           <h3 style={{ color: "#3177FF" }}>Quality Improvement Plan :</h3>
 
-          <Radio h3="2H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes", "No"]} name="H2H4" onClick={handleChange(setForm2H)} byDefault={form2H.H2H4} />
+          <Radio h3="2H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" CheckbobItems={["Yes", "No"]} otherArray={[1,0]} setter={setForm2H} name="H2H4" onClick={handleChange(setForm2H)} byDefault={form2H.H2H4} />
 
           {/* if yes show textbox */}
           <InputField h3="2H.2.2 : How frequently does this committee meet in a year?" placeholder="Type here" name="H2H5" onChange={handleChange(setForm2H)} value={form2H.H2H5}  />

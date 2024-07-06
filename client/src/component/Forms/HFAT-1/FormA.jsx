@@ -23,19 +23,32 @@ function FormA() {
   const [formA, setFormA] = useState(JSON.parse(forma));
   const [errors, setErrors] = useState({});
 
-  
+
 
   const date = new Date();
 
-  useEffect(()=>{
-    setFormA((prevValue)=>{
-      return{
+  useEffect(() => {
+    setFormA((prevValue) => {
+      return {
         ...prevValue,
-        A2: (formA.A2=="")?`${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}`:formA.A2,
+        A2: (formA.A2 == "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA.A2,
 
       }
     })
-  },[])
+  }, [])
+
+  useEffect(() => {
+    if (formA.A11 === "District Hospital (DH)") {
+      setFormA((prevValue) => {
+        return {
+          ...prevValue,
+          A12: ""
+
+        }
+      }
+      )
+    }
+  }, [formA.A11])
 
   const dropdownItems = useMemo(() => {
     switch (formA.A3) {
@@ -78,13 +91,13 @@ function FormA() {
             </div>
           </div>
           <div className="formcontent">
-            <InputField 
-              name="A1" 
-              h3="1A.1 : Assessor's Name: " 
-              onChange={handleChange(setFormA)} 
-              value={formA.A1} 
-              placeholder="Type here" 
-              required 
+            <InputField
+              name="A1"
+              h3="1A.1 : Assessor's Name: "
+              onChange={handleChange(setFormA)}
+              value={formA.A1}
+              placeholder="Type here"
+              required
               error={errors.A1}
             />
 
@@ -100,51 +113,51 @@ function FormA() {
               dropdownItems={dropdownItems}
             />
 
-            <InputField 
-              name="A5" 
-              value={formA.A5} 
-              onChange={handleChange(setFormA)} 
-              h3="1A.5 : Healthcare Facility Name:  " 
-              placeholder="Type here" 
-              required 
+            <InputField
+              name="A5"
+              value={formA.A5}
+              onChange={handleChange(setFormA)}
+              h3="1A.5 : Healthcare Facility Name:  "
+              placeholder="Type here"
+              required
               error={errors.A5}
             />
-            <InputField 
-              name="A6" 
-              value={formA.A6} 
-              onChange={handleChange(setFormA)} 
-              h3="1A.6 : Healthcare Facility Address:  " 
-              placeholder="Type here" 
-              required 
+            <InputField
+              name="A6"
+              value={formA.A6}
+              onChange={handleChange(setFormA)}
+              h3="1A.6 : Healthcare Facility Address:  "
+              placeholder="Type here"
+              required
               error={errors.A6}
             />
-            <InputField 
-              name="A7" 
-              value={formA.A7} 
-              onChange={handleChange(setFormA)} 
-              h3="1A.7 : Name of the hospital Superintendent:" 
-              placeholder="Type here" 
-              required 
+            <InputField
+              name="A7"
+              value={formA.A7}
+              onChange={handleChange(setFormA)}
+              h3="1A.7 : Name of the hospital Superintendent:"
+              placeholder="Type here"
+              required
               error={errors.A7}
             />
-            <InputField 
-              name="A8" 
-              value={formA.A8} 
-              onChange={handleChange(setFormA)} 
-              h3="1A.8 : Contact Number of the hospital Superintendent:" 
-              placeholder="Type here" 
-              required 
+            <InputField
+              name="A8"
+              value={formA.A8}
+              onChange={handleChange(setFormA)}
+              h3="1A.8 : Contact Number of the hospital Superintendent:"
+              placeholder="Type here"
+              required
               regex={/^[0-9]{10}$/}
               errorMsg="Contact number must be 10 digits"
               error={errors.A8}
             />
-            <InputField 
-              name="A9" 
-              value={formA.A9} 
-              onChange={handleChange(setFormA)} 
-              h3="1A.9 : Email ID:" 
-              placeholder="Type here" 
-              required 
+            <InputField
+              name="A9"
+              value={formA.A9}
+              onChange={handleChange(setFormA)}
+              h3="1A.9 : Email ID:"
+              placeholder="Type here"
+              required
               regex={/^\S+@\S+\.\S+$/}
               errorMsg="Invalid email format"
               error={errors.A9}
@@ -155,13 +168,17 @@ function FormA() {
 
 
             <Radio h3="1A.11 : Type of Health Care Facility?" CheckbobItems={["District Hospital (DH)", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
-            <Radio style={{ display: "flex", flexDirection: "column" }} h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
+
+            {
+              (formA.A11 === "Tertiary care center") &&
+              <Radio style={{ display: "flex", flexDirection: "column" }} h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
+            }
 
             <Buttons
-             formName="forma" formData={formA} prevText="" 
-             nextText="Save & Next" prev="" next="/infrastructure" 
+              formName="forma" formData={formA} prevText=""
+              nextText="Save & Next" prev="" next="/infrastructure"
             //  validateForm={validateForm} 1 `
-             />
+            />
           </div>
         </div>
       </section>

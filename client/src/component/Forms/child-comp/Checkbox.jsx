@@ -9,7 +9,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             array = CheckbobItems.map(() => "");
             console.log(array);
         } else if (other && array.length === 1) {
-            for (var i = 0; i <= CheckbobItems.length; i++) {
+            for (var i = 0; i < CheckbobItems.length; i++) {
                 array.push("");
             }
         }
