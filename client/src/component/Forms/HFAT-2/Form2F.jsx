@@ -23,6 +23,14 @@ function Form2F() {
     })
 
   const [form2F, setForm2F] = useState(JSON.parse(form2f));
+
+  useEffect(() => {
+    if (form2F.H2F1 === "No") {
+      setForm2F((prevValue) => {
+        return { ...prevValue, H2F2: "", H2F3: "", H2F4: [""], H2F5: "" }
+      })
+    }
+  }, [form2F.H2F1])
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
@@ -47,7 +55,10 @@ function Form2F() {
               onClick={handleChange(setForm2F)}
             />
 
-            <Radio
+           {
+            (form2F.H2F1 === 'Yes') &&
+            <>
+             <Radio
               h3="2F.2 : Does this facility do complete reporting of indicators on emergency care in HMIS?"
               CheckbobItems={["Yes", "No"]}
               name="H2F2"
@@ -85,6 +96,8 @@ function Form2F() {
               onClick={handleChange(setForm2F)}
             />
 
+            </>
+           }
             <Checkbox
               h3="2F.6 : Which of the following alert systems does your facility have?"
               CheckbobItems={[
