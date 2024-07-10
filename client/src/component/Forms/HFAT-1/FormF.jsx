@@ -17,16 +17,26 @@ function FormF() {
 
   const [formF, setFormF] = useState(JSON.parse(formf));
 
-  useEffect(()=>{
-    if(formF.H1F5 === "No"){
-      setFormF((prevValue)=>{
-        return{
+  useEffect(() => {
+    if (formF.H1F5 === "No") {
+      setFormF((prevValue) => {
+        return {
           ...prevValue,
           H1F6: []
         }
       })
     }
-  },[formF.H1F5])
+
+    if(formF.H1F1 === "No"){
+      setFormF((prevValue)=>{
+        return{
+          ...prevValue,
+          H1F2:"",
+          H1F7: ""
+        }
+      })
+    }
+  }, [formF.H1F5 , formF.H1F1])
 
 
   useEffect(() => {
@@ -53,21 +63,27 @@ function FormF() {
 
             <Radio byDefault={formF.H1F1} onClick={handleChange(setFormF)} name="H1F1" h3="1F.1 : Does the facility have a Hospital Management Information System (HMIS)" CheckbobItems={["Yes", "No"]} />
 
-            <Radio byDefault={formF.H1F2} onClick={handleChange(setFormF)} name="H1F2" h3="1F.2 : Does this facility do complete reporting of indicators on emergency care in HMIS?" CheckbobItems={["Yes", "No"]} />
+            {
+              (formF.H1F1 === "Yes") &&
+              <Radio byDefault={formF.H1F2} onClick={handleChange(setFormF)} name="H1F2" h3="1F.2 : Does this facility do complete reporting of indicators on emergency care in HMIS?" CheckbobItems={["Yes", "No"]} />
+            }
 
             <InputField value={formF.H1F3} onChange={handleChange(setFormF)} name="H1F3" h3="1F.3 : How many personnel are available for managing information system?" placeholder="Type here" />
 
             <Checkbox name="H1F4" h3="1F.4 : What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencieses", "Length of hospital stay", "Turnaround time", "Disposal time", "Number of deaths", "Number of Referrals (in-house referrals and to other hospitals)"]} StateValue={formF} setFunction={setFormF} array={formF.H1F4} />
 
             <Radio byDefault={formF.H1F5} onClick={handleChange(setFormF)} name="H1F5" h3="1F.5 : Whether time bound management of common emergencies is captured in MIS. For example,
-Door to CT/ECG time, Door to needle time, Time to activate emergency alert team." CheckbobItems={["Yes", "No"]} />
+Door to CT/ECG time, Door to needle time, Time to activate emergency alert team." CheckbobItems={["Yes", "No"]} />
 
             {
               (formF.H1F5 === "Yes") &&
               <Checkbox setFunction={setFormF} StateValue={formF} array={formF.H1F6} name="H1F6" h3="1F.6 : If yes, select all that apply and provide their value" CheckbobItems={["Door to CT/ECG time:-  ", "Door to needle time:- ", "Time to activate emergency alert team:- "]} time={true} />
             }
 
-            <Radio byDefault={formF.H1F7} onClick={handleChange(setFormF)} name="H1F7" h3="1F.7 : Whether hospital administrators/ Medical Superintendent uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]} />
+            {
+              (formF.H1F1 === "Yes") &&
+              <Radio byDefault={formF.H1F7} onClick={handleChange(setFormF)} name="H1F7" h3="1F.7 : Whether hospital administrators/ Medical Superintendent uses or reviews the data for quality improvement" CheckbobItems={["Yes", "No"]} />
+            }
 
             <Radio byDefault={formF.H1F8} onClick={handleChange(setFormF)} name="H1F8" h3="1F.8 : Do you get Pre-Hospital Notification during an emergency?" CheckbobItems={["Yes", "No"]} />
 

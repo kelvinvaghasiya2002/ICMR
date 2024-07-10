@@ -5,13 +5,10 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
     const [otherSpecify, setOtherSpecify] = useState("");
 
     useEffect(() => {
-        console.log(other , name , array.length);
         if (!other && array.length === 0) {
-            console.log("this is not other",name);
             array = CheckbobItems.map((item,index) => {
                 array[index]="";
             });
-            // console.log(array);
         } else if (other && array.length === 1) {
             for (var i = 0; i < CheckbobItems.length; i++) {
                 array.push("");
