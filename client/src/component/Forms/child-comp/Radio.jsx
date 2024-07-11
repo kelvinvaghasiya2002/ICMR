@@ -8,14 +8,15 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
         // const otherSpecifyRadio = document.getElementById(event.target.value);
             // document.getElementById(`${event.target.value}otherInput`).disabled = false;
 
-            if(document.getElementById(`${event.target.value}otherInput`)){
-                document.getElementById(`${event.target.value}otherInput`).disabled = false;
+            if(document.getElementById(`${event.target.value}${name}otherInput`)){
+                console.log(`${event.target.value}${name}otherInput`);
+                document.getElementById(`${event.target.value}${name}otherInput`).disabled = false;
             }
             
             CheckbobItems.forEach(element => {
                 if(element !== event.target.value){
-                    if(document.getElementById(`${element}otherInput`)){
-                        document.getElementById(`${element}otherInput`).disabled = true;
+                    if(document.getElementById(`${element}${name}otherInput`)){
+                        document.getElementById(`${element}${name}otherInput`).disabled = true;
                     }
                 }
             });
@@ -34,7 +35,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                         (otherArray && otherArray[index]) ?
                                             <>
                                                 <input
-                                                    id={item}
+                                                    id={`${item}${name}`}
                                                     onClick={handleRadioClick}
                                                     value={item}
                                                     type="radio"
@@ -58,8 +59,8 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                                     style={st}
                                                     type="text" 
                                                     name={name}
-                                                    value={document.getElementById(item)?.checked ? otherSpecify : ""}
-                                                    id={`${item}otherInput`} 
+                                                    value={document.getElementById(`${item}${name}`)?.checked ? otherSpecify : ""}
+                                                    id={`${item}${name}otherInput`} 
                                                     disabled
                                                     />
                                             </>

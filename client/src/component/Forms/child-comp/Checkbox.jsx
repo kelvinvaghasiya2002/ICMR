@@ -3,18 +3,20 @@ import React, { useEffect, useState } from 'react'
 function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValue, array }) {
     // console.log(name);
     const [otherSpecify, setOtherSpecify] = useState("");
+    console.log(CheckbobItems);
 
     useEffect(() => {
         if (!other && array.length === 0) {
-            array = CheckbobItems.map((item,index) => {
-                array[index]="";
-            });
+            for (var i = 0; i < CheckbobItems.length; i++) {
+                array.push("");
+            }
+            console.log(array);
         } else if (other && array.length === 1) {
             for (var i = 0; i < CheckbobItems.length; i++) {
                 array.push("");
             }
         }
-
+         
     }, [])
 
     const handleChange = (event) => {
@@ -26,7 +28,8 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
         return (
             (event) => {
                 const { value } = event.target;
-                if (array[index] === "") {
+                console.log(array);
+                if (array[index] === "" || !array[index]) {
                     // console.log(value);
                     // array = array.filter(item => {
                     //     return item !== value
@@ -62,7 +65,9 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
         <>
             <div className='block'>
                 <h3 className='h3block'>{h3}</h3>
-                <form>
+                <form onSubmit={(event)=>{
+                    event.preventDefault();
+                }}>
                     {
                         CheckbobItems.map((item, index) => {
                             return (
