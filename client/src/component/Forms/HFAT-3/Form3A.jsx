@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
@@ -8,6 +8,8 @@ import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import LocationButton from '../child-comp/Location.jsx';
+import DropDown from "../child-comp/DropDown.jsx"
+import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
 function Form3A() {
 
   turnOffbutton();
@@ -18,6 +20,23 @@ function Form3A() {
   const [form3A, setForm3A] = useState(JSON.parse(form3a));
 
   const date = new Date();
+
+  const dropdownItems = useMemo(() => {
+    switch (form3A.H3A2) {
+      case "GJBRC_CS_":
+        return GJBRC_DH;
+      case "ORPUR_CS_":
+        return ORPUR_DH;
+      case "MPBHS_CS_":
+        return MPBHS_DH;
+      case "PBLDH_CS_":
+        return PBLDH_DH;
+      case "PYPDY_CS_":
+        return PYPDY_DH;
+      default:
+        return [];
+    }
+  }, [form3A.H3A2]);
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
@@ -43,7 +62,13 @@ function Form3A() {
 
             <Radio byDefault={form3A.H3A2} onClick={handleChange(setForm3A)} name="H3A2" h3="3A.2 : State :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
 
-            <InputField value={form3A.H3A3} onChange={handleChange(setForm3A)} name="H3A3" h3="3A.3 : Block Name :" placeholder="Type here" />
+            <DropDown
+              name="H3A3"
+              value={form3A.H3A3} 
+              onClick={handleChange(setForm3A)}  
+              h3="3A.3 : Block Name :"
+              dropdownItems={dropdownItems}
+            />
 
             <InputField value={form3A.H3A4} onChange={handleChange(setForm3A)} name="H3A4" h3="3A.4 : Healthcare Facility Name :" placeholder="Type here" />
 

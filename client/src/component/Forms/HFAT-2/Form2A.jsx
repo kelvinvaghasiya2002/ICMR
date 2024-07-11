@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from 'react'
+import React, { useState,useEffect, useMemo} from 'react'
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
@@ -7,6 +7,8 @@ import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import LocationButton from '../child-comp/Location.jsx';
+import DropDown from "../child-comp/DropDown.jsx"
+import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -20,6 +22,24 @@ function Form2A() {
 
  const [form2A, setForm2A] = useState(JSON.parse(form2a));
   const date = new Date();
+
+  const dropdownItems = useMemo(() => {
+    switch (form2A.H2A2) {
+      case "GJBRC_CHC_":
+        return GJBRC_DH;
+      case "ORPUR_CHC_":
+        return ORPUR_DH;
+      case "MPBHS_CHC_":
+        return MPBHS_DH;
+      case "PBLDH_CHC_":
+        return PBLDH_DH;
+      case "PYPDY_CHC_":
+        return PYPDY_DH;
+      default:
+        return [];
+    }
+  }, [form2A.H2A2]);
+
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
@@ -50,8 +70,16 @@ function Form2A() {
             "PBLDH_CHC_",
             "PYPDY_CHC_"
           ]} byDefault={form2A.H2A2} onClick={handleChange(setForm2A)} name="H2A2" />
+          
+          <DropDown
+              name="H2A3" 
+              value={form2A.H2A3} 
+              onClick={handleChange(setForm2A)}  
+              h3="2A.3 : Block Name :"
+              dropdownItems={dropdownItems}
+            />
 
-          <InputField name="H2A3" value={form2A.H2A3} onChange={handleChange(setForm2A)}  h3="2A.3 : Block Name :" placeholder="Type here"  />
+          {/* <InputField name="H2A3" value={form2A.H2A3} onChange={handleChange(setForm2A)}  h3="2A.3 : Block Name :" placeholder="Type here"  /> */}
 
           <InputField value={form2A.H2A4} onChange={handleChange(setForm2A)}  h3="2A.4 : Healthcare Facility Name :" placeholder="Type here" name="H2A4" />
 

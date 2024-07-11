@@ -1,4 +1,4 @@
-export const GJBRC_DH = ["Dabhoi", "Desar", "Karjan", "Padra", "Savali", "Sinor", "Vadodara", "Vaghodia"]
+export const GJBRC_DH = ["Dabhoi", "Desar", "Karjan", "Padra", "Savali", "Sinor", "Vadodara", "Waghodia"]
 
 export const ORPUR_DH = ["Astarang", "Brahmagiri", "Delang", "Gop", "Kakatpur", "Kanas", "Krushnaprasad", "Nimapura"]
 

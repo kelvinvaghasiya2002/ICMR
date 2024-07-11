@@ -21,6 +21,22 @@ function Form2B() {
   {H2B1: "",H2B2: "",H2B3: "",H2B4: "",H2B5: "",H2B6: "",H2B7: [], H2B8: [""],H2B9: "",H2B10: ""})
 
  const [form2B, setForm2B] = useState(JSON.parse(form2b));
+
+
+ useEffect(() => {
+  if (form2B.H2B3 === "No") {
+    setForm2B((prevValue) => {
+      return { ...prevValue, H2B4: "" }
+    })
+  }
+
+  if (form2B.H2B9 === "No") {
+    setForm2B((prevValue) => {
+      return { ...prevValue, H2B10: "" }
+    })
+  }
+
+}, [form2B.H2B3, form2B.H2B9])
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
@@ -60,7 +76,10 @@ function Form2B() {
               onClick={handleChange(setForm2B)} 
           />
 
-          <InputField 
+          {
+            (form2B.H2B3 === "Yes") &&
+            <>
+              <InputField 
               h3="2B.4 : How many beds are available for emergency care?" 
               placeholder="Type here" 
               name="H2B4" 
@@ -68,6 +87,8 @@ function Form2B() {
               type={"number"}
               onChange={handleChange(setForm2B)} 
           />
+            </>
+          }
 
           <InputField 
               h3="2B.5 : What is the average number of patients presenting to OPD per month?" 
@@ -113,13 +134,18 @@ function Form2B() {
               onClick={handleChange(setForm2B)} 
           />
 
-          <InputField 
+          {
+            (form2B.H2B9 === 'Yes')  &&
+            <>
+              <InputField 
               h3="2B.10 : If ambulances are not there, how are patients transferred?" 
               placeholder="Type here" 
               name="H2B10" 
               value={form2B.H2B10} 
               onChange={handleChange(setForm2B)} 
           />
+            </>
+          }
 
 
           <Buttons formData={form2B} formName="form2b" prevText="Previous" nextText="Save & Next" prev="/facilityinformation-2" next="/humanresources-2" />
