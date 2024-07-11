@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT2';
 import Buttons from '../child-comp/Buttons';
@@ -13,9 +13,9 @@ import 'aos/dist/aos.css'
 
 function Form2C() {
 
-  useEffect(()=> {
-    AOS.init({duration:2000})
-}, []);
+  useEffect(() => {
+    AOS.init({ duration: 2000 })
+  }, [])
 
   turnOffbutton();
 
@@ -51,6 +51,13 @@ function Form2C() {
   ];
 
 
+  useEffect(() => {
+    if (form2C.H2C2 === "No") {
+      setForm2C((prevValue) => {
+        return { ...prevValue, H2C3: [""], H2C4: "", H2C5: "" }
+      })
+    }
+  }, [form2C.H2C2])
 
   return (
     <div>
@@ -76,42 +83,47 @@ function Form2C() {
             <Radio h3="2C.2 : Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H2C2"
               onClick={handleChange(setForm2C)} byDefault={form2C.H2C2} />
 
-            <Checkbox
-              h3="2C.3 : if Yes to 2C.2 , Which of the following emergency care trainings you have undergone?"
-              CheckbobItems={[
-                "Trauma & Accidental Injuries",
-                "Burns",
-                "Cardiac emergencies: acute chest pain, acute coronary syndrome (ACS)/ STEMI, Heart failure, Cardiac Arrest",
-                "Stroke",
-                "Acute Breathlessness",
-                "Seizures",
-                "Bites (Animal bite/snake bite/scorpion sting)",
-                "Choking/foreign body ingestion",
-                "Poisoning",
-                "PPH",
-                "Pre-Eclampsia",
-                "Neonatal emergencies"
-              ]}
-              other={true}
-              name="H2C3"
-              setFunction={setForm2C} StateValue={form2C} array={form2C.H2C3}
-            />
+            {
+              (form2C.H2C2 === 'Yes') &&
+              <>
+                <Checkbox
+                  h3="2C.3 : if Yes to 2C.2 , Which of the following emergency care trainings you have undergone?"
+                  CheckbobItems={[
+                    "Trauma & Accidental Injuries",
+                    "Burns",
+                    "Cardiac emergencies: acute chest pain, acute coronary syndrome (ACS)/ STEMI, Heart failure, Cardiac Arrest",
+                    "Stroke",
+                    "Acute Breathlessness",
+                    "Seizures",
+                    "Bites (Animal bite/snake bite/scorpion sting)",
+                    "Choking/foreign body ingestion",
+                    "Poisoning",
+                    "PPH",
+                    "Pre-Eclampsia",
+                    "Neonatal emergencies"
+                  ]}
+                  other={true}
+                  name="H2C3"
+                  setFunction={setForm2C} StateValue={form2C} array={form2C.H2C3}
+                />
 
-            <Radio
-              h3="2C.4 : if Yes, Frequency of training on emergency care in a year?"
-              CheckbobItems={[
-                "Every Month",
-                "Quarterly",
-                "Half Yearly",
-                "Annually",
-                "Other (Specify)"
-              ]}
-              other={true}
-              otherArray={[0,0,0,0,1]}
-              name="H2C4" onClick={handleChange(setForm2C)} setter={setForm2C} byDefault={form2C.H2C4}
-            />
+                <Radio
+                  h3="2C.4 : if Yes, Frequency of training on emergency care in a year?"
+                  CheckbobItems={[
+                    "Every Month",
+                    "Quarterly",
+                    "Half Yearly",
+                    "Annually",
+                    "Other (Specify)"
+                  ]}
+                  other={true}
+                  otherArray={[0, 0, 0, 0, 1]}
+                  name="H2C4" onClick={handleChange(setForm2C)} setter={setForm2C} byDefault={form2C.H2C4}
+                />
 
-            <InputField h3="2C.5 : When was the last training conducted?" placeholder="Type here" name="H2C5" value={form2C.H2C5} onChange={handleChange(setForm2C)} />
+                <InputField h3="2C.5 : When was the last training conducted?" placeholder="Type here" name="H2C5" value={form2C.H2C5} onChange={handleChange(setForm2C)} />
+              </>
+            }
 
             <Buttons formName={"form2c"} formData={form2C} prevText="Previous" nextText="Save & Next" prev="/infrastructure-2" next="/logistics-2" />
           </div>
