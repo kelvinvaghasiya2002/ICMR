@@ -11,11 +11,21 @@ import LocationButton from '../child-comp/Location.jsx';
 import DropDown from "../child-comp/DropDown.jsx"
 import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
 function Form3A() {
-
   turnOffbutton();
 
-  var form3a = setLocalStorage("form3a",
-    { H3A1: "", H3A2: "", H3A3: "", H3A4: "", H3A5: "", H3A6: "", H3A7: "", H3A8: "", H3A9: "", H3A10: "", H3A11: "" })
+  var form3a = setLocalStorage("form3a", {
+    H3A1: "",
+    H3A2: "",
+    H3A3: "",
+    H3A4: "",
+    H3A5: "",
+    H3A6: "",
+    H3A7: "",
+    H3A8: "",
+    H3A9: "",
+    H3A10: "",
+    H3A11: "",
+  });
 
   const [form3A, setForm3A] = useState(JSON.parse(form3a));
 
@@ -43,57 +53,120 @@ function Form3A() {
       <section>
         <SidePanel id={"1"} />
         <div className="siteInfo">
-
           <div className="formhdr">
             <div>
-              <h3>
-                3A. Facility Information
-              </h3>
+              <h3>3A. Facility Information</h3>
             </div>
           </div>
 
           <div className="formcontent">
-
-            <InputField value={form3A.H3A1} onChange={handleChange(setForm3A)} name="H3A1" h3="3A.1 : Assessor’s Name:" placeholder="Type here" />
-
-            <div>
-              <p className='datetime'>Date : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
-            </div>
-
-            <Radio byDefault={form3A.H3A2} onClick={handleChange(setForm3A)} name="H3A2" h3="3A.2 : State :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} />
-
-            <DropDown
-              name="H3A3"
-              value={form3A.H3A3} 
-              onClick={handleChange(setForm3A)}  
-              h3="3A.3 : Block Name :"
-              dropdownItems={dropdownItems}
+            <InputField
+              value={form3A.H3A1}
+              onChange={handleChange(setForm3A)}
+              name="H3A1"
+              h3="3A.1 : Assessor’s Name:"
+              placeholder="Type here"
             />
 
-            <InputField value={form3A.H3A4} onChange={handleChange(setForm3A)} name="H3A4" h3="3A.4 : Healthcare Facility Name :" placeholder="Type here" />
+            <div>
+              <p className="datetime">
+                Date : {date.toDateString()} {date.getHours()}:
+                {date.getMinutes()}
+              </p>
+            </div>
 
-            <InputField value={form3A.H3A5} onChange={handleChange(setForm3A)} name="H3A5" h3="3A.5 : Healthcare Facility Address :" placeholder="Type here" />
+            <Radio
+              byDefault={form3A.H3A2}
+              onClick={handleChange(setForm3A)}
+              name="H3A2"
+              h3="3A.2 : State :"
+              CheckbobItems={[
+                "GJBRC_CS",
+                "ORPUR_CS",
+                "MPBHS_CS",
+                "PBLDH_CS",
+                "PYPDY_CS",
+              ]}
+            />
 
-            <InputField value={form3A.H3A6} onChange={handleChange(setForm3A)} name="H3A6" h3="3A.6 : Name of the Medical Officer :" placeholder="Type here" />
+            <InputField value={form3A.H3A3} onChange={handleChange(setForm3A)} name="H3A3" h3="3A.3 : Block Name :" placeholder="Type here" />
 
-            <InputField value={form3A.H3A7} onChange={handleChange(setForm3A)} name="H3A7" h3="3A.7 : Contact Number of Medical Officer :" placeholder="Type here" />
+            <InputField
+              value={form3A.H3A4}
+              onChange={handleChange(setForm3A)}
+              name="H3A4"
+              h3="3A.4 : Healthcare Facility Name :"
+              placeholder="Type here"
+            />
 
-            <InputField value={form3A.H3A8} onChange={handleChange(setForm3A)} name="H3A8" h3="3A.8 : Email ID :" placeholder="Type here" />
+            <InputField
+              value={form3A.H3A5}
+              onChange={handleChange(setForm3A)}
+              name="H3A5"
+              h3="3A.5 : Healthcare Facility Address :"
+              placeholder="Type here"
+            />
+
+            <InputField
+              value={form3A.H3A6}
+              onChange={handleChange(setForm3A)}
+              name="H3A6"
+              h3="3A.6 : Name of the Medical Officer :"
+              placeholder="Type here"
+            />
+
+            <InputField
+              value={form3A.H3A7}
+              onChange={handleChange(setForm3A)}
+              name="H3A7"
+              h3="3A.7 : Contact Number of Medical Officer :"
+              placeholder="Type here"
+            />
+
+            <InputField
+              value={form3A.H3A8}
+              onChange={handleChange(setForm3A)}
+              name="H3A8"
+              h3="3A.8 : Email ID :"
+              placeholder="Type here"
+            />
 
             {/* <InputField value={form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="3A.9 : GPS Coordinates :" placeholder="Type here" /> */}
             <LocationButton />
 
-            <Radio byDefault={form3A.H3A10} onClick={handleChange(setForm3A)} name="H3A10" h3="3A.10 : What type of Health care facility is this?" CheckbobItems={["HWC-PHC", " Urban HWC-PHC", "Specialist UPHC/Polyclinic"]} />
+            <Radio
+              byDefault={form3A.H3A10}
+              onClick={handleChange(setForm3A)}
+              name="H3A10"
+              h3="3A.10 : What type of Health care facility is this?"
+              CheckbobItems={[
+                "HWC-PHC",
+                " Urban HWC-PHC",
+                "Specialist UPHC/Polyclinic",
+              ]}
+            />
 
-            <Radio byDefault={form3A.H3A11} onClick={handleChange(setForm3A)} name="H3A11" h3="3A.11 : The facility is coming under : " CheckbobItems={["Urban", "Rural"]} />
+            <Radio
+              byDefault={form3A.H3A11}
+              onClick={handleChange(setForm3A)}
+              name="H3A11"
+              h3="3A.11 : The facility is coming under : "
+              CheckbobItems={["Urban", "Rural"]}
+            />
 
-
-            <Buttons formName="form3a" formData={form3A} prevText="" nextText="Save & Next" prev="" next="/infrastructure-3" />
+            <Buttons
+              formName="form3a"
+              formData={form3A}
+              prevText=""
+              nextText="Save & Next"
+              prev=""
+              next="/infrastructure-3"
+            />
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default Form3A
+export default Form3A;
