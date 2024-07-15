@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import OnSubmitForm from "../../../utils/OnSubmitForm";
+import { OnSubmitForm, OnAMBSubmitForm } from "../../../utils/OnSubmitForm";
 
 function PopUp({ ifAmbulance, setPopUp, MainForm }) {
   const handleSubmit = () => {
@@ -49,6 +49,17 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
       );
 
       OnSubmitForm(completeform, table1, table2, table3, table4, MainForm);
+    } else if (MainForm == "AMBULANCE") {
+      const completeform = localStorage.getItem("CompleteForm");
+      const table1 = localStorage.getItem("AMB16");
+      const table2 = localStorage.getItem("AMB17");
+      console.log(
+        JSON.parse(completeform),
+        JSON.parse(table1),
+        JSON.parse(table2)
+      );
+      console.log("comming");
+      OnAMBSubmitForm(completeform, table1, table2, MainForm);
     }
 
     const localstorage = { ...localStorage };

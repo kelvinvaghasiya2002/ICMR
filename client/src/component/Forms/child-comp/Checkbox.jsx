@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValue, array }) {
     // console.log(name);
     const [otherSpecify, setOtherSpecify] = useState("");
+    const [otherSpecifyChecked, setOtherSpecifyChecked] = useState(false);
     console.log(CheckbobItems);
 
     useEffect(() => {
@@ -16,6 +17,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                 array.push("");
             }
         }
+        array[array.length - 1] != null ? setOtherSpecifyChecked(true) : setOtherSpecifyChecked(false);
          
     }, [])
 
@@ -54,11 +56,13 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
         if (otherSpecifyCheckBox.checked == true) {
             console.log(otherSpecifyCheckBox.checked);
             document.getElementById(name).disabled = false;
+            setOtherSpecifyChecked(!otherSpecifyChecked);
         } else {
             setOtherSpecify("");
             array[array.length - 1] = "";
             document.getElementById(name).disabled = true;
         }
+        setOtherSpecifyChecked(!otherSpecifyChecked);
     }
 
     return (
@@ -101,10 +105,10 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                         other &&
                         <>
 
-                            <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" />
+                            <input id={`${name}otherSpecifyCheckBox`} onChange={handleCheckboxClick} value={otherSpecify} type="checkbox" name="checkbox" checked={otherSpecifyChecked} />
                             <span style={{ fontSize: "1.1vw", color: "gray", paddingLeft: "0.2vw" }}>Other (Specify)</span>
                             <input
-                                className='others blockinput' onChange={handleChange} type="text" name="otherSpecify" value={array[array.length - 1]} id={name} disabled />
+                                className='others blockinput' onChange={handleChange} type="text" name="otherSpecify" value={array[array.length - 1]} id={name} disabled={!otherSpecifyChecked} />
                         </>
 
                     }
