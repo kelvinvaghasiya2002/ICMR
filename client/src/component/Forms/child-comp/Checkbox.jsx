@@ -4,14 +4,14 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
     // console.log(name);
     const [otherSpecify, setOtherSpecify] = useState("");
     const [otherSpecifyChecked, setOtherSpecifyChecked] = useState(false);
-    console.log(CheckbobItems);
+    // console.log(CheckbobItems);
 
     useEffect(() => {
         if (!other && array.length === 0) {
             for (var i = 0; i < CheckbobItems.length; i++) {
                 array.push("");
             }
-            console.log(array);
+            // console.log(array);
         } else if (other && array.length === 1) {
             for (var i = 0; i < CheckbobItems.length; i++) {
                 array.push("");

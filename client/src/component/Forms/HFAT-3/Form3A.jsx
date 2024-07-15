@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
@@ -25,23 +25,33 @@ function Form3A() {
     H3A9: "",
     H3A10: "",
     H3A11: "",
+    HFAT3_DATE:""
   });
 
   const [form3A, setForm3A] = useState(JSON.parse(form3a));
 
   const date = new Date();
 
+  useEffect(() => {
+    setForm3A((prevValue) => {
+      return {
+        ...prevValue,
+        HFAT3_DATE: (form3A.HFAT3_DATE == "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : form3A.HFAT3_DATE,
+      }
+    })
+  }, [])
+
   const dropdownItems = useMemo(() => {
     switch (form3A.H3A2) {
-      case "GJBRC_CS_":
+      case "GJBRC_CS":
         return GJBRC_DH;
-      case "ORPUR_CS_":
+      case "ORPUR_CS":
         return ORPUR_DH;
-      case "MPBHS_CS_":
+      case "MPBHS_CS":
         return MPBHS_DH;
-      case "PBLDH_CS_":
+      case "PBLDH_CS":
         return PBLDH_DH;
-      case "PYPDY_CS_":
+      case "PYPDY_CS":
         return PYPDY_DH;
       default:
         return [];
@@ -70,8 +80,9 @@ function Form3A() {
 
             <div>
               <p className="datetime">
-                Date : {date.toDateString()} {date.getHours()}:
-                {date.getMinutes()}
+                {
+                  form3A.HFAT3_DATE
+                }
               </p>
             </div>
 
@@ -89,7 +100,8 @@ function Form3A() {
               ]}
             />
 
-            <InputField value={form3A.H3A3} onChange={handleChange(setForm3A)} name="H3A3" h3="3A.3 : Block Name :" placeholder="Type here" />
+            {/* <InputField value={form3A.H3A3} onChange={handleChange(setForm3A)} name="H3A3" h3="3A.3 : Block Name :" placeholder="Type here" /> */}
+            <DropDown dropdownItems={dropdownItems} name="H3A3" h3="3A.3 : Block Name :" onClick={handleChange(setForm3A)} byDefault={form3A.H3A3}   />
 
             <InputField
               value={form3A.H3A4}
@@ -132,7 +144,7 @@ function Form3A() {
             />
 
             {/* <InputField value={form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="3A.9 : GPS Coordinates :" placeholder="Type here" /> */}
-            <LocationButton />
+            <LocationButton setter={setForm3A} name="H3A9" heading={"3A.9"} />
 
             <Radio
               byDefault={form3A.H3A10}
