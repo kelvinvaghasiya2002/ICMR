@@ -117,7 +117,6 @@ function FormB() {
                 "List of available drugs are displayed.",
                 "All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.",
                 "Important contact numbers including ambulance, blood bank, police and referral centers displayed."
-
               ]}
               other={true}
               name="B12"

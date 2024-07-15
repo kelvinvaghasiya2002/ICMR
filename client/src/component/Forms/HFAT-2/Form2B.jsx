@@ -135,7 +135,7 @@ function Form2B() {
           />
 
           {
-            (form2B.H2B9 === 'Yes')  &&
+            (form2B.H2B9 === 'No')  &&
             <>
               <InputField 
               h3="2B.10 : If ambulances are not there, how are patients transferred?" 

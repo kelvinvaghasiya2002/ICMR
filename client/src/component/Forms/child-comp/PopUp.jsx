@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import OnSubmitForm from "../../../utils/OnSubmitForm";
+import { OnSubmitForm, OnAMBSubmitForm } from "../../../utils/OnSubmitForm";
 
 function PopUp({ ifAmbulance, setPopUp, MainForm }) {
   const handleSubmit = () => {
@@ -21,10 +21,10 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
       OnSubmitForm(completeform, table1, table2, table3, table4, MainForm);
     } else if (MainForm == "HFAT-2") {
       const completeform = localStorage.getItem("CompleteForm");
-      const table1 = localStorage.getItem("C1");
-      const table2 = localStorage.getItem("E1");
-      const table3 = localStorage.getItem("E2");
-      const table4 = localStorage.getItem("I3");
+      const table1 = localStorage.getItem("H2C1");
+      const table2 = localStorage.getItem("H2E1");
+      const table3 = localStorage.getItem("H2E2");
+      const table4 = localStorage.getItem("H2I3");
       console.log(
         JSON.parse(completeform),
         JSON.parse(table1),
@@ -36,10 +36,10 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
       OnSubmitForm(completeform, table1, table2, table3, table4, MainForm);
     } else if (MainForm == "HFAT-3") {
       const completeform = localStorage.getItem("CompleteForm");
-      const table1 = localStorage.getItem("C1");
-      const table2 = localStorage.getItem("E1");
-      const table3 = localStorage.getItem("E2");
-      const table4 = localStorage.getItem("I3");
+      const table1 = localStorage.getItem("H3C1");
+      const table2 = localStorage.getItem("H3E1");
+      const table3 = localStorage.getItem("H3E2");
+      const table4 = localStorage.getItem("H3I3");
       console.log(
         JSON.parse(completeform),
         JSON.parse(table1),
@@ -49,6 +49,17 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
       );
 
       OnSubmitForm(completeform, table1, table2, table3, table4, MainForm);
+    } else if (MainForm == "AMBULANCE") {
+      const completeform = localStorage.getItem("CompleteForm");
+      const table1 = localStorage.getItem("AMB16");
+      const table2 = localStorage.getItem("AMB17");
+      console.log(
+        JSON.parse(completeform),
+        JSON.parse(table1),
+        JSON.parse(table2)
+      );
+      console.log("comming");
+      OnAMBSubmitForm(completeform, table1, table2, MainForm);
     }
 
     const localstorage = { ...localStorage };

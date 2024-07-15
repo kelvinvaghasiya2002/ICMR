@@ -73,7 +73,7 @@ function Form3B() {
             <Radio byDefault={form3B.H3B9} onClick={handleChange(setForm3B)} name="H3B9" h3="3B.9 : Does this facility provide ambulance services?" CheckbobItems={["Yes", "No"]} />
 
             {
-              (form3B.H3B9 === 'Yes') &&
+              (form3B.H3B9 === 'No') &&
               <>
                 <InputField value={form3B.H3B10} onChange={handleChange(setForm3B)} name="H3B10" h3="3B.10 : If ambulances are not there, how are patients transferred? " placeholder="Type here" />
               </>
