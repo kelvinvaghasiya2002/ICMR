@@ -337,6 +337,8 @@ function Facility() {
               CheckbobItems={[
                 "Portable or Mounted Suction Machine",
                 "Flexible suction catheters Fr. 5,8,12 and 14",
+                "Both of the above",
+                "None of the above",
               ]}
               name="AMB13"
               onClick={handleChange(setAmbulance)}
@@ -348,6 +350,8 @@ function Facility() {
               CheckbobItems={[
                 "Portable oxygen tank with regulator",
                 "Oxygen mask No. 2,3 and 4 (for new-born, infant and adult)",
+                "Both of the above",
+                "None of the above",
               ]}
               name="AMB14"
               onClick={handleChange(setAmbulance)}
