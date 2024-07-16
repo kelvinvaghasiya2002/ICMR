@@ -11,7 +11,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             for (var i = 0; i < CheckbobItems.length; i++) {
                 array.push("");
             }
-            console.log(array);
+            // console.log(array);
         } else if (other && array.length === 1) {
             for (var i = 0; i < CheckbobItems.length; i++) {
                 array.push("");

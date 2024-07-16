@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import './LocationButton.css';
 import '../Form.css'
 
-const LocationButton = ({ setter, name }) => {
+const LocationButton = ({ setter, name, heading }) => {
   const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
   const [locationDetails, setLocationDetails] = useState({ district: '', state: '' });
   const apiKey = 'APIKYEOVERHERE'; // Replace with your OpenCage API key
@@ -51,7 +51,7 @@ const LocationButton = ({ setter, name }) => {
 
   return (
     <div className="location-button-container">
-      <h3>1A.10 : Location :</h3>
+      <h3>{heading} : Location :</h3>
       <button className="location-button" onClick={getLocation}>
         Get Current Location
       </button>

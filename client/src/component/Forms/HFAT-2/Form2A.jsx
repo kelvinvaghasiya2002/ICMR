@@ -13,9 +13,6 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 function Form2A() {
-  useEffect(() => {
-    AOS.init({ duration: 2000 });
-  }, []);
   turnOffbutton();
   var form2a = setLocalStorage("form2a", {
     H2A1: "",
@@ -29,22 +26,37 @@ function Form2A() {
     H2A9: "",
     H2A10: "",
     H2A11: "",
+    HFAT2_DATE:""
   });
 
   const [form2A, setForm2A] = useState(JSON.parse(form2a));
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
+
   const date = new Date();
+
+
+  useEffect(() => {
+    setForm2A((prevValue) => {
+      return {
+        ...prevValue,
+        HFAT2_DATE: (form2A.HFAT2_DATE == "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : form2A.HFAT2_DATE,
+      }
+    })
+  }, [])
 
   const dropdownItems = useMemo(() => {
     switch (form2A.H2A2) {
-      case "GJBRC_CHC_":
+      case "GJBRC_CHC":
         return GJBRC_DH;
-      case "ORPUR_CHC_":
+      case "ORPUR_CHC":
         return ORPUR_DH;
-      case "MPBHS_CHC_":
+      case "MPBHS_CHC":
         return MPBHS_DH;
-      case "PBLDH_CHC_":
+      case "PBLDH_CHC":
         return PBLDH_DH;
-      case "PYPDY_CHC_":
+      case "PYPDY_CHC":
         return PYPDY_DH;
       default:
         return [];
@@ -74,20 +86,21 @@ function Form2A() {
 
             <div>
               <p className="datetime">
-                Date : {date.toDateString()} {date.getHours()}:
-                {date.getMinutes()}
+                Date : {form2A.HFAT2_DATE}
               </p>
             </div>
 
           <Radio h3="2A.2 : State :" CheckbobItems={[
-            "GJBRC_CHC_",
-            "ORPUR_CHC_",
-            "MPBHS_CHC_",
-            "PBLDH_CHC_",
-            "PYPDY_CHC_"
+            "GJBRC_CHC",
+            "ORPUR_CHC",
+            "MPBHS_CHC",
+            "PBLDH_CHC",
+            "PYPDY_CHC"
           ]} byDefault={form2A.H2A2} onClick={handleChange(setForm2A)} name="H2A2" />
 
-          <InputField name="H2A3" value={form2A.H2A3} onChange={handleChange(setForm2A)}  h3="2A.3 : Block Name :" placeholder="Type here"  />
+          {/* <InputField name="H2A3" value={form2A.H2A3} onChange={handleChange(setForm2A)}  h3="2A.3 : Block Name :" placeholder="Type here"  /> */}
+
+          <DropDown dropdownItems={dropdownItems} name="H2A3" h3="2A.3 : Block Name :" onClick={handleChange(setForm2A)} byDefault={form2A.H2A3} />
 
             <InputField
               value={form2A.H2A4}
@@ -131,7 +144,7 @@ function Form2A() {
 
             {/* <InputField value={form2A.H2A9} onChange={handleChange(setForm2A)} h3="2A.9 : GPS Coordinates :" placeholder="Type here" name="H2A9" /> */}
 
-            <LocationButton />
+            <LocationButton setter={setForm2A} name="H2A9" heading="2A.9" />
 
             <Radio
               byDefault={form2A.H2A10}

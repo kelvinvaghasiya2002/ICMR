@@ -27,7 +27,16 @@ function FormH() {
       setFormH((prevValue) => {
         return {
           ...prevValue,
-          H1H5: "", H1H6: "", H1H7: "", H1H9: ""
+          H1H5: "", H1H6: "", H1H7: "", H1H8: [""], H1H9: ""
+        }
+      })
+    }
+
+    if(formH.H1H6==="No"){
+      setFormH((prevValue) => {
+        return {
+          ...prevValue,
+          H1H7: "", H1H8: [""], H1H9: ""
         }
       })
     }
@@ -78,7 +87,7 @@ function FormH() {
                 <Radio byDefault={formH.H1H6} onClick={handleChange(setFormH)} name="H1H6" h3="1H.2.3 : Do you have regular audits related to emergency care in hospital?" CheckbobItems={["Yes", "No"]} />
 
                 {
-                  (formH.H1H6 !== "Yes") &&
+                  (formH.H1H6 === "Yes") &&
                   <>
                     <InputField value={formH.H1H7} onChange={handleChange(setFormH)} name="H1H7" h3="1H.2.4 : How frequently audits are conducted in a year?" placeholder="Type here" />
 

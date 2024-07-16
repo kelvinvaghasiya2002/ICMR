@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Checkbox from "../child-comp/Checkbox";
 import SidePanel from "./SidePanelAmbulance";
 import Buttons from "../child-comp/Buttons";
@@ -10,6 +10,7 @@ import AMB2 from "./table/AMB2";
 import Heading from "../../Heading/Heading.jsx";
 import setLocalStorage from "../setLocalStorage.js";
 import LastButton from "../child-comp/LastButton.jsx";
+import LocationButton from "../child-comp/Location.jsx";
 
 function Facility() {
   turnOffbutton();
@@ -17,6 +18,7 @@ function Facility() {
   var ambulance = setLocalStorage("ambulance", {
     AMB1: "",
     AMB2: "",
+    AMB3: "",
     AMB4: "",
     AMB5: "",
     AMB6: "",
@@ -33,6 +35,18 @@ function Facility() {
     AMB19: [""],
   });
   const [Ambulance, setAmbulance] = useState(JSON.parse(ambulance));
+
+  useEffect(() => {
+    setAmbulance((prevValue) => {
+      return {
+        ...prevValue,
+        AMB3: (Ambulance.AMB3 == "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : Ambulance.AMB3,
+      }
+    })
+  }, [])
+
+
+
 
   const columns1 = [
     { key: "Item", label: "Item", type: "text" },
@@ -239,18 +253,20 @@ function Facility() {
 
             <div>
               <p className="datetime">
-                Date : {date.toDateString()} {date.getHours()}:
-                {date.getMinutes()}
+                Date : {
+                  Ambulance.AMB3
+                }
               </p>
             </div>
 
-            <InputField
+            {/* <InputField
               h3="GPS Coordinates:"
               onChange={handleChange(setAmbulance)}
               value={Ambulance.AMB4}
               placeholder="Type here"
               name="AMB4"
-            />
+            /> */}
+            <LocationButton setter={setAmbulance} name={"AMB4"} />
 
             <Radio
               h3="1. Name of the Ambulance Service?"

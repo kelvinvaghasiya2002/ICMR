@@ -106,6 +106,7 @@ function FormA() {
             </div>
 
             <Radio h3="1A.3 : Code :" onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH", "ORPUR_DH", "MPBHS_DH", "PBLDH_DH", "PYPDY_DH"]} name="A3" />
+
             <DropDown
               name="A4" h3="1A.4 : Block Name:"
               byDefault={formA.A4}
@@ -164,7 +165,7 @@ function FormA() {
             />
 
 
-            <LocationButton setter={setFormA} name={"A10"} />
+            <LocationButton setter={setFormA} name={"A10"} heading={"1A.10"} />
 
 
             <Radio h3="1A.11 : Type of Health Care Facility?" CheckbobItems={["District Hospital (DH)", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
@@ -177,7 +178,7 @@ function FormA() {
             <Buttons
               formName="forma" formData={formA} prevText=""
               nextText="Save & Next" prev="" next="/infrastructure"
-            //  validateForm={validateForm} 1 `
+             validateForm={validateForm}
             />
           </div>
         </div>

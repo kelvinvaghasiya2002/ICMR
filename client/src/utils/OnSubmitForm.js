@@ -23,6 +23,16 @@ export const OnSubmitForm = async (
         "Unique Code",
         `${MainForm} : ${JSON.stringify(response.data.result.uniqueCode)}`
       );
+    } else if (response.data.result.H2B9 == "Yes") {
+      localStorage.setItem(
+        "Unique Code",
+        `${MainForm} : ${JSON.stringify(response.data.result.uniqueCode)}`
+      );
+    } else if (response.data.result.H3B9 == "Yes") {
+      localStorage.setItem(
+        "Unique Code",
+        `${MainForm} : ${JSON.stringify(response.data.result.uniqueCode)}`
+      );
     }
   } catch (error) {
     console.log(error);

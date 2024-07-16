@@ -58,7 +58,7 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
         JSON.parse(table1),
         JSON.parse(table2)
       );
-      console.log("comming");
+      // console.log("comming");
       OnAMBSubmitForm(completeform, table1, table2, MainForm);
     }
 
@@ -67,7 +67,7 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
       if (key === "token") {
         continue;
       } else {
-        console.log(localstorage[key]);
+        // console.log(localstorage[key]);
         localStorage.removeItem(key);
       }
     }
@@ -94,14 +94,15 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
           >
             Cancel
           </button>
-          <button className="nextbtn" onClick={handleSubmit}>
-            <Link
-              style={{ color: "white", textDecoration: "none" }}
-              to={ifAmbulance ? "/facilityinformation" : "/"}
-            >
-              Submit
-            </Link>
-          </button>
+
+          <Link
+            className="nextbtn" onClick={handleSubmit}
+            style={{ color: "white", textDecoration: "none" }}
+            to={ifAmbulance ? "/facilityinformation" : "/"}
+          >
+            Submit
+          </Link>
+
         </div>
       </div>
     </>
