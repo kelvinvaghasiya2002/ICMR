@@ -16,7 +16,28 @@ function FormI() {
 }, []);
   var formi = setLocalStorage('formi' , {I1 : []});
   const [formI , setFormI] = useState(JSON.parse(formi));
+  const [errors, setErrors] = useState({});
   turnOffbutton();
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (formI.I1.length === 0) {
+      newErrors.I1 = "Select at least one option";
+    }
+    if (!validateI2Table()) {
+      newErrors.I2 = "Please fill out all rows in the table";
+    }
+
+    setErrors(newErrors);
+    console.log("Validation Errors:", newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const validateI2Table = () => {
+    return formI.I2.every(row => row.SOP && row.FollowsSOP);
+  };
+
   const columns = [
     { key: 'EmergencyCondition', label: 'Emergency Condition', type: 'text' },
     { key: 'SOP', label: 'Have Specific SOP/STW', type: 'radio', options: ['Yes', 'No'] },
@@ -53,13 +74,19 @@ const initialRows = [
 
         <div className="formcontent">
 
-          <Checkbox h3="1I.1 : Indicate whether your hospital has the following documented protocols and systems (Select all that apply):" CheckbobItems={["Procedure for registration and admission of new emergency patients", "Procedure/Policy for receiving of referral patients", "Emergency Manual at the point of care", "Triage guidelines and protocol.", "Discharge summaries for all patients.", "Policy on handling cases of death (outside and inside hospital).", "Disaster management plan", "Triage policy/system at your emergency department.", "Alert system: Code Blue.", "Alert system: Trauma.", "Alert system: Chest Pain", "Alert system: Sepsis.", "Alert system: Stroke", "Alert system: Maternal Emergencies", "Alert system: Neonatal Emergencies", "Alert system: Acute Respiratory Emergencies", "Alert system: Snake bite and Poisoning"]} name="I1" setFunction={setFormI} StateValue={formI} array={formI.I1}   />
+          <Checkbox h3="1I.1 : Indicate whether your hospital has the following documented protocols and systems (Select all that apply):" CheckbobItems={["Procedure for registration and admission of new emergency patients", "Procedure/Policy for receiving of referral patients", "Emergency Manual at the point of care", "Triage guidelines and protocol.", "Discharge summaries for all patients.", "Policy on handling cases of death (outside and inside hospital).", "Disaster management plan", "Triage policy/system at your emergency department.", "Alert system: Code Blue.", "Alert system: Trauma.", "Alert system: Chest Pain", "Alert system: Sepsis.", "Alert system: Stroke", "Alert system: Maternal Emergencies", "Alert system: Neonatal Emergencies", "Alert system: Acute Respiratory Emergencies", "Alert system: Snake bite and Poisoning"]} name="I1" setFunction={setFormI} StateValue={formI} array={formI.I1} errorMsg={errors.I1}
+              required={true}  />
 
           <h3>1I.2 : Whether having Emergency condition specific SOP/STW for emergency care? </h3>
 
           <I2 columns={columns} initialRows={initialRows} tableName="I2" />
 
           <Buttons formName={"formi"} formData={formI} prevText="Previous" nextText="Save & Next" prev="/leadershipandgovernance" next="/referrallinkages" />
+          {Object.keys(errors).length > 0 && (
+              <div className="error-msg">
+                Please fill out all required fields before proceeding.
+              </div>
+            )}
         </div>
       </div>
     </section>

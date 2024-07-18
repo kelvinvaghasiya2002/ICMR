@@ -15,6 +15,7 @@ function FormC() {
 
   const formc = setLocalStorage("formc", { C2a: [], C2b: [], C3: "", C4: [""], C5: "", C6: "" });
   const [formC, setFormC] = useState(JSON.parse(formc));
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     AOS.init({ duration: 2000 })
@@ -83,6 +84,20 @@ function FormC() {
     { Manpower: 'Other', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' }
   ];
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (formC.C2a.length === 0) newErrors.C2a = "Select at least one option";
+    if (formC.C2b.length === 0) newErrors.C2b = "Select at least one option";
+    if (!formC.C3) newErrors.C3 = "This field is required";
+    if (formC.C3 === "Yes" && formC.C4.length === 0) newErrors.C4 = "Select at least one option";
+    if (formC.C3 === "Yes" && !formC.C5) newErrors.C5 = "This field is required";
+    if (!formC.C6) newErrors.C6 = "This field is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
@@ -123,6 +138,8 @@ function FormC() {
               ]}
               name="C2a"
               setFunction={setFormC} StateValue={formC} array={formC.C2a}
+              required={true}
+              errorMsg={errors.C2a}
             />
 
 
@@ -144,6 +161,8 @@ function FormC() {
               ]}
               name="C2b"
               setFunction={setFormC} StateValue={formC} array={formC.C2b}
+              required={true}
+              errorMsg={errors.C2b}
             />
 
             <Radio
@@ -152,6 +171,8 @@ function FormC() {
               name="C3"
               onClick={handleChange(setFormC)}
               byDefault={formC.C3}
+              required={true}
+              errorMsg={errors.C3}
             />
 
             {
@@ -175,6 +196,8 @@ function FormC() {
                   other={true}
                   name="C4"
                   setFunction={setFormC} StateValue={formC} array={formC.C4}
+                  required={true}
+              errorMsg={errors.C4}
                 />
 
                 <Radio
@@ -192,14 +215,22 @@ function FormC() {
                   setter={setFormC}
                   onClick={handleChange(setFormC)}
                   byDefault={formC.C5}
+                  required={true}
+              errorMsg={errors.C5}
                 />
               </>
             }
 
 
-            <InputField name="C6" h3="1C.6 : When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} />
+            <InputField name="C6" h3="1C.6 : When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} required={true}
+              errorMsg={errors.C6}/>
 
-            <Buttons formName={"formc"} formData={formC} prevText="Previous" nextText="Save & Next" prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" />
+            <Buttons formName={"formc"} formData={formC} prevText="Previous" nextText="Save & Next" prev="/infrastructure" next="/logisticsdrugsconsumablesequipment-1" validateForm={validateForm} />
+            {Object.keys(errors).length > 0 && (
+              <div className="error-msg">
+                Please fill out all required fields before proceeding.
+              </div>
+            )}
           </div>
         </div>
       </section>
