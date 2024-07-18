@@ -17,6 +17,8 @@ function FormB() {
   console.log("Hello");
 
   const [formB, setFormB] = useState(JSON.parse(formb));
+  const [errors, setErrors] = useState({});
+
   turnOffbutton();
 
   useEffect(() => {
@@ -32,6 +34,30 @@ function FormB() {
       setFormB({...formB, B15: ""})
     }
   } , [formB.B2 , formB.B14])
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formB.B1) newErrors.B1 = "This field is required";
+    if (!formB.B2) newErrors.B2 = "This field is required";
+    if (!formB.B3) newErrors.B3 = "This field is required";
+    if (!formB.B4) newErrors.B4 = "This field is required";
+    if (!formB.B5) newErrors.B5 = "This field is required";
+    if (!formB.B6) newErrors.B6 = "This field is required";
+    if (!formB.B7) newErrors.B7 = "This field is required";
+    if (!formB.B8) newErrors.B8 = "This field is required";
+    if (!formB.B9) newErrors.B9 = "This field is required";
+    if (!formB.B14) newErrors.B14 = "This field is required";
+    if (!formB.B15) newErrors.B15 = "This field is required";
+
+
+    if (formB.B10.length === 0) newErrors.B10 = "Select at least one option";
+    if (formB.B11.length === 0) newErrors.B11 = "Select at least one option";
+    if (formB.B12.length === 0) newErrors.B12 = "Select at least one option";
+    if (formB.B13.length === 0) newErrors.B13 = "Select at least one option";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   return (
     <div>
@@ -50,24 +76,26 @@ function FormB() {
 
           <div className="formcontent">
 
-            <InputField name="B1" h3="1B.1 : How many beds are available for the in-patient department (IPD)?" value={formB.B1} onChange={handleChange(setFormB)} placeholder="Type here" />
+            <InputField name="B1" h3="1B.1 : How many beds are available for the in-patient department (IPD)?" value={formB.B1} onChange={handleChange(setFormB)} placeholder="Type here" required={true} errorMsg={errors.B1}/>
 
             <Radio h3="1B.2 : Whether any dedicated bed present for emergency care?" CheckbobItems={["Yes", "No"]} byDefault={formB.B2} onClick={handleChange(setFormB)} name="B2" />
 
             {
               (formB.B2 === "Yes") &&
               <>
-                <InputField name="B3" onChange={handleChange(setFormB)} h3="1B.3 : How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" />
+                <InputField name="B3" onChange={handleChange(setFormB)} h3="1B.3 : How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" required={true} errorMsg={errors.B3}/>
 
                 <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={["Red", "Yellow", "Green"]} otherArray={[1, 1, 1]} setter={setFormB} name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} st={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius: "0" }} />
               </>
             }
 
-            <InputField name="B5" onChange={handleChange(setFormB)} h3="1B.5 : What is the average number of patients presenting to OPD per month?" value={formB.B5} placeholder="Type here" />
+            <InputField name="B5" onChange={handleChange(setFormB)} h3="1B.5 : What is the average number of patients presenting to OPD per month?" value={formB.B5} placeholder="Type here" required={true} errorMsg={errors.B5} />
 
-            <InputField name="B6" onChange={handleChange(setFormB)} value={formB.B6} p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" />
+            <InputField name="B6" onChange={handleChange(setFormB)} value={formB.B6} p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" required={true}
+              errorMsg={errors.B6} />
 
-            <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0, 0, 1, 0]} byDefault={formB.B7} setter={setFormB} />
+            <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0, 0, 1, 0]} byDefault={formB.B7} setter={setFormB} required={true}
+              errorMsg={errors.B7}/>
 
             <Checkbox h3="1B.8 : Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} setFunction={setFormB} StateValue={formB} array={formB.B8}  name="B8" />
 
@@ -80,7 +108,8 @@ function FormB() {
                 "Designated parking area for Ambulance, Staff and Public",
                 "Smooth entry area with adequate wheelchair, trolley and stretcher bay"
               ]}
-              name="B10" setFunction={setFormB} StateValue={formB} array={formB.B10}
+              name="B10" setFunction={setFormB} StateValue={formB} array={formB.B10}               required={true}
+              errorMsg={errors.B10}
             />
 
             <Checkbox
@@ -107,6 +136,8 @@ function FormB() {
               ]}
               name="B11"
               setFunction={setFormB} StateValue={formB} array={formB.B11}
+              required={true}
+              errorMsg={errors.B11}
             />
 
             <Checkbox
@@ -121,6 +152,8 @@ function FormB() {
               other={true}
               name="B12"
               setFunction={setFormB} StateValue={formB} array={formB.B12}
+              required={true}
+              errorMsg={errors.B12}
             />
 
             <Checkbox
@@ -140,6 +173,8 @@ function FormB() {
               ]}
               name="B13"
               setFunction={setFormB} StateValue={formB} array={formB.B13}
+                            required={true}
+              errorMsg={errors.B13}
             />
 
             <Radio
@@ -150,10 +185,16 @@ function FormB() {
 
             {
               (formB.B14 === "No") && 
-              <InputField name="B15" onChange={handleChange(setFormB)} h3="1B.15 : If ambulances are not there, how are patients transferred?" value={formB.B15} placeholder="Type here" />
+              <InputField name="B15" onChange={handleChange(setFormB)} h3="1B.15 : If ambulances are not there, how are patients transferred?" value={formB.B15} placeholder="Type here"               required={true}
+              errorMsg={errors.B15} />
             }
 
-            <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources" />
+            <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources" validateForm={validateForm} />
+            {Object.keys(errors).length > 0 && (
+              <div className="error-msg">
+                Please fill out all required fields before proceeding.
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -16,6 +16,7 @@ function FormF() {
     { H1F1: "", H1F2: "", H1F3: "", H1F4: [], H1F5: "", H1F6: [], H1F7: "", H1F8: "", H1F9: "" })
 
   const [formF, setFormF] = useState(JSON.parse(formf));
+  const [formError, setFormError] = useState("");
 
   useEffect(() => {
     if (formF.H1F5 === "No") {
@@ -44,6 +45,59 @@ function FormF() {
   }, []);
   turnOffbutton();
 
+  const validateForm = () => {
+    if (!formF.H1F1) {
+      setFormError("1F.1 is required");
+      return false;
+    }
+    if (!formF.H1F2) {
+      setFormError("1F.2 is required");
+      return false;
+    }
+    if (!formF.H1F3) {
+      setFormError("1F.3 is required");
+      return false;
+    }
+    if (formF.H1F4.filter(item => item !== "").length === 0) {
+      setFormError("Select at least one key indicator in section 1F.4");
+      return false;
+    }
+    if (!formF.H1F5) {
+      setFormError("1F.5 is required");
+      return false;
+    }
+    if (formF.H1F6.filter(item => item !== "").length === 0) {
+      setFormError("Select at least one time bound management option in section 1F.6");
+      return false;
+    }
+    if (!formF.H1F7) {
+      setFormError("1F.7 is required");
+      return false;
+    }
+    if (!formF.H1F8) {
+      setFormError("1F.8 is required");
+      return false;
+    }
+    if (!formF.H1F9) {
+      setFormError("1F.9 is required");
+      return false;
+    }
+    setFormError("");
+    return true;
+  };
+
+  const handleNext = () => {
+    if (validateForm()) {
+      // Proceed to next page logic here
+      console.log("Form is valid, proceed to next page");
+      // Implement navigation logic here
+    } else {
+      // Display errors or prevent navigation
+      console.error("Form validation failed");
+      // Optionally, display errors to the user
+    }
+  };
+
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
@@ -68,7 +122,7 @@ function FormF() {
               <Radio byDefault={formF.H1F2} onClick={handleChange(setFormF)} name="H1F2" h3="1F.2 : Does this facility do complete reporting of indicators on emergency care in HMIS?" CheckbobItems={["Yes", "No"]} />
             }
 
-            <InputField value={formF.H1F3} onChange={handleChange(setFormF)} name="H1F3" h3="1F.3 : How many personnel are available for managing information system?" placeholder="Type here" />
+            <InputField value={formF.H1F3} onChange={handleChange(setFormF)} name="H1F3" h3="1F.3 : How many personnel are available for managing information system?" placeholder="Type here" type='number' required={true}/>
 
             <Checkbox name="H1F4" h3="1F.4 : What key indicators are generated from the emergency management information system?" CheckbobItems={["Numbers by type of emergencieses", "Length of hospital stay", "Turnaround time", "Disposal time", "Number of deaths", "Number of Referrals (in-house referrals and to other hospitals)"]} StateValue={formF} setFunction={setFormF} array={formF.H1F4} />
 
@@ -89,7 +143,9 @@ Door to CT/ECG time, Door to needle time, Time to activate emergency alert team.
 
             <Radio byDefault={formF.H1F9} onClick={handleChange(setFormF)} name="H1F9" h3="1F.9 : Infrastructure for receiving internal communication?" CheckbobItems={["Yes", "No"]} />
 
-            <Buttons formName="formf" formData={formF} prevText="Previous" nextText="Save & Next" prev="/emergencycareservices" next="/finance" />
+            {formError && <p className="error-msg">{formError}</p>}
+
+            <Buttons formName="formf" formData={formF} prevText="Previous" nextText="Save & Next" prev="/emergencycareservices" next="/finance" onClick={handleNext} />
           </div>
         </div>
       </section>

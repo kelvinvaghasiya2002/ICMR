@@ -4,6 +4,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
     // console.log(name);
     const [otherSpecify, setOtherSpecify] = useState("");
     const [otherSpecifyChecked, setOtherSpecifyChecked] = useState(false);
+    const [error, setError] = useState("");
     // console.log(CheckbobItems);
 
     useEffect(() => {
@@ -24,6 +25,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
     const handleChange = (event) => {
         setOtherSpecify(event.target.value);
         array[array.length - 1] = event.target.value;
+        validateCheckboxGroup(array);
     }
 
     const handleClick = (index) => {
@@ -47,6 +49,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                     [event.target.name]: array
                 }
                 setFunction(StateValue)
+                validateCheckboxGroup(array);
             }
         )
     }
@@ -63,8 +66,24 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             document.getElementById(name).disabled = true;
         }
         setOtherSpecifyChecked(!otherSpecifyChecked);
+        validateCheckboxGroup(array);
     }
 
+     // Function to validate checkbox group
+     const validateCheckboxGroup = (newArray) => {
+        if (!other && newArray.every(item => item === "")) {
+            setError("Select at least one option");
+        } else if (other && newArray.slice(0, -1).every(item => item === "") && newArray[newArray.length - 1] === "") {
+            setError("Select at least one option or specify 'Other'");
+        } else {
+            setError("");
+        }
+    };
+
+    // useEffect to validate on mount and when StateValue changes
+    useEffect(() => {
+        validateCheckboxGroup(StateValue[name]);
+    }, [StateValue[name]]);
     return (
         <>
             <div className='block'>

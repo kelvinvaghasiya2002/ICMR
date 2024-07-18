@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-export default function InputField({ h3, placeholder, value, name, onChange, p, type, required, regex, errorMsg }) {
+export default function InputField({ h3, placeholder, value, name, onChange, p, type, required, regex, errorMsg, maxLength }) {
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { value } = e.target;
-    let errorMsg = '';
+    errorMsg = '';
 
     if (required && !value) {
       errorMsg = 'This field is required';
@@ -26,6 +26,7 @@ export default function InputField({ h3, placeholder, value, name, onChange, p, 
         placeholder={placeholder}
         value={value}
         name={name}
+        maxLength={maxLength}
         onChange={handleChange}
         type={type ? type : "text"}
       />

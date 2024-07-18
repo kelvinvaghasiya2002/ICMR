@@ -96,6 +96,7 @@ function FormA() {
               h3="1A.1 : Assessor's Name: "
               onChange={handleChange(setFormA)}
               value={formA.A1}
+              regex={/^[A-Za-z]+$/}
               placeholder="Type here"
               required
               error={errors.A1}
@@ -117,6 +118,7 @@ function FormA() {
             <InputField
               name="A5"
               value={formA.A5}
+              regex={/^[A-Za-z]+$/}
               onChange={handleChange(setFormA)}
               h3="1A.5 : Healthcare Facility Name:  "
               placeholder="Type here"
@@ -126,6 +128,7 @@ function FormA() {
             <InputField
               name="A6"
               value={formA.A6}
+              regex={/^[A-Za-z0-9_.-]+$/}
               onChange={handleChange(setFormA)}
               h3="1A.6 : Healthcare Facility Address:  "
               placeholder="Type here"
@@ -148,7 +151,8 @@ function FormA() {
               h3="1A.8 : Contact Number of the hospital Superintendent:"
               placeholder="Type here"
               required
-              regex={/^[0-9]{10}$/}
+              regex={/^[0-9]{10,10}$/}
+              maxLength={10}
               errorMsg="Contact number must be 10 digits"
               error={errors.A8}
             />
@@ -178,8 +182,13 @@ function FormA() {
             <Buttons
               formName="forma" formData={formA} prevText=""
               nextText="Save & Next" prev="" next="/infrastructure"
-             validateForm={validateForm}
+              validateForm={validateForm}
             />
+            {Object.keys(errors).length > 0 && (
+              <div className="error-msg">
+                Please fill out all required fields before proceeding.
+              </div>
+            )}
           </div>
         </div>
       </section>

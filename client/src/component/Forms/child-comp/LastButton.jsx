@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PopUp from "./PopUp.jsx";
 
-function LastButton({ prev, formName, formData, MainForm }) {
+function LastButton({ prev, formName, formData, MainForm, validateForm }) {
   const [popUp, setPopUp] = useState(false);
   const [ifAmbulance, setIfAmbulance] = useState(false);
   console.log(formData);
 
   const handleSubmit = () => {
+     // Validate the form before proceeding
+     if (validateForm && !validateForm()) {
+      return;
+  }
     var CompleteForm = localStorage.getItem("CompleteForm");
 
     if (CompleteForm) {

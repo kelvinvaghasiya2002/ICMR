@@ -19,6 +19,19 @@ function FormJ() {
     { H1J1: "", H1J2: "" })
 
   const [formJ, setFormJ] = useState(JSON.parse(formj));
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formJ.H1J1) newErrors.H1J1 = "This field is required";
+    if (!formJ.H1J2) newErrors.H1J2 = "This field is required";
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
@@ -36,12 +49,12 @@ function FormJ() {
 
           <div className="formcontent cont_extra">
 
-            <Radio byDefault={formJ.H1J1} onClick={handleChange(setFormJ)} name="H1J1" h3="1J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]} />
+            <Radio byDefault={formJ.H1J1} onClick={handleChange(setFormJ)} name="H1J1" h3="1J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?" CheckbobItems={["Yes", "No"]} errorMsg={errors.H1J1} />
 
 
-            <Radio byDefault={formJ.H1J2} onClick={handleChange(setFormJ)} name="H1J2" h3="1J.2 : Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]} />
+            <Radio byDefault={formJ.H1J2} onClick={handleChange(setFormJ)} name="H1J2" h3="1J.2 : Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?" CheckbobItems={["Yes", "No"]} errorMsg={errors.H1J2}/>
 
-            <LastButton formName="formj" formData={formJ} prev="/processpoliciessops" MainForm={"HFAT-1"} />
+            <LastButton formName="formj" formData={formJ} prev="/processpoliciessops" MainForm={"HFAT-1"} validateForm={validateForm}/>
 
           </div>
         </div>

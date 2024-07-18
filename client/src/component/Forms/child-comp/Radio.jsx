@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other, otherArray , setter, style ,st}) {
+export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other, otherArray , setter, style ,st, required, errorMsg}) {
     const [otherSpecify, setOtherSpecify] = useState("");
+    const [error, setError] = useState("");
 
 
     const handleRadioClick = (event) => {
@@ -20,7 +21,26 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                     }
                 }
             });
+
+            if (required) {
+                validateRadioSelection();
+            }
     }
+
+    useEffect(() => {
+        if (required) {
+            validateRadioSelection();
+        }
+    }, []);
+
+    const validateRadioSelection = () => {
+        const selected = CheckbobItems.some(item => document.getElementById(item)?.checked);
+        if (!selected) {
+            setError(errorMsg || "Please select an option");
+        } else {
+            setError("");
+        }
+    };
 
     return (
         <>
