@@ -109,13 +109,13 @@ function FormG() {
 
             {
               (formG.H1G3 === "Yes") &&
-              <InputField value={formG.H1G4} onChange={handleChange(setFormG)} name="H1G4" h3="1G.4 : If yes, which health schemes are covering your emergency care system?" placeholder="Type here"
+              <InputField value={formG.H1G4} onChange={handleChange(setFormG)} name="H1G4" h3="1G.4 : If yes, which health schemes are covering your emergency care system?" placeholder="Type here"  regex={/^[A-Za-z ]+$/}
                 errorMsg={errors.H1G4}
                 required={true} />
             }
 
             <InputField value={formG.H1G5} onChange={handleChange(setFormG)} name="H1G5" h3="1G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type here" errorMsg={errors.H1G5}
-              required={true} />
+              required={true}  />
 
             <Buttons
               formName="formg"

@@ -118,7 +118,6 @@ function FormF() {
               name="H1F3"
               h3="1F.3 : How many personnel are available for managing information system?"
               placeholder="Type here"
-              type='number'
               required={true}
             />
 

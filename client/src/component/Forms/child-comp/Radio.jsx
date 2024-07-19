@@ -3,9 +3,12 @@ import React, { useEffect, useState, useRef } from 'react';
 export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, other, otherArray, setter, style, st, required, errorMsg }) {
     const [otherSpecify, setOtherSpecify] = useState("");
     const [error, setError] = useState("");
+    const [selectedValue, setSelectedValue] = useState(byDefault || ""); // Track selected radio button
     const radioRefs = useRef([]);
 
     const handleRadioClick = (event) => {
+        const value = event.target.value;
+        setSelectedValue(value);
         const otherSpecifyRadio = document.getElementById(event.target.value);
         document.getElementById(`${event.target.value}otherInput`).disabled = false;
 
@@ -74,7 +77,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                         name={name}
                                         value={document.getElementById(`${item}${name}`)?.checked ? otherSpecify : ""}
                                         id={`${item}${name}otherInput`}
-                                        disabled
+                                        disabled={selectedValue !== item}
                                     />
                                 </>
                             ) : (
@@ -88,7 +91,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                         onClick={onClick}
                                         defaultChecked={byDefault === item}
                                     />
-                                    <label className='radio_labels' htmlFor={item}>{item}</label><br />
+                                    <label className='radio_labels' htmlFor={item}>{item}</label><br/>
                                 </>
                             )}
                         </div>

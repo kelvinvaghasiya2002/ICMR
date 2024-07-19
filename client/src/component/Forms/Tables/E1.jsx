@@ -23,10 +23,13 @@ function E1({ tableName }) {
     }
 
     const handleInputChange = (index, field, value) => {
-        const newRows = rows.map((row, i) => (
-            i === index ? { ...row, [field]: value } : row
-        ));
-        setRows(newRows);
+        
+        if (!isNaN(value) && /^\d*$/.test(value)) { // This line was added For Validation
+            const newRows = rows.map((row, i) => (
+                i === index ? { ...row, [field]: value } : row
+            ));
+            setRows(newRows);
+        }
     };
 
     return (
@@ -48,6 +51,7 @@ function E1({ tableName }) {
                                         <td>
                                             <input
                                                 className='tableinput'
+                                                type="number" // validation
                                                 value={item.Adult}
                                                 onChange={(e) => handleInputChange(index, 'Adult', e.target.value)}
                                             />
@@ -56,12 +60,14 @@ function E1({ tableName }) {
                                             <input
                                                 className='tableinput'
                                                 value={item.Pediatric}
+                                                type="number" //validation
                                                 onChange={(e) => handleInputChange(index, 'Pediatric', e.target.value)}
                                             />
                                         </td>
                                         <td>
                                             <input
                                                 className='tableinput'
+                                                type="number" //validation
                                                 value={item.Broughtdead	}
                                                 onChange={(e) => handleInputChange(index, 'Broughtdead', e.target.value)}
                                             />
@@ -69,6 +75,7 @@ function E1({ tableName }) {
                                         <td>
                                             <input
                                                 className='tableinput'
+                                                type="number" //validation
                                                 value={item.Deathafterarrival}
                                                 onChange={(e) => handleInputChange(index, 'Deathafterarrival', e.target.value)}
                                             />
@@ -76,6 +83,7 @@ function E1({ tableName }) {
                                         <td>
                                             <input
                                                 className='tableinput'
+                                                type="number" //validation
                                                 value={item.MLC}
                                                 onChange={(e) => handleInputChange(index, 'MLC', e.target.value)}
                                             />

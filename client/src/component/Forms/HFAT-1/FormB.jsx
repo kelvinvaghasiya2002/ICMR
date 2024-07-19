@@ -173,7 +173,7 @@ function FormB() {
               ]}
               name="B13"
               setFunction={setFormB} StateValue={formB} array={formB.B13}
-                            required={true}
+              required={true}
               errorMsg={errors.B13}
             />
 

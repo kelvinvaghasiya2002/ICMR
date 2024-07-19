@@ -7,51 +7,66 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
 
     // Function to handle changes in the 'Other' text input
     const handleChange = (event) => {
-        setOtherSpecify(event.target.value);
-        array[array.length - 1] = event.target.value;
-        validateCheckboxGroup(array);
+        const value = event.target.value;
+        setOtherSpecify(value);
+
+        const newArray = [...array];
+        if (otherSpecifyChecked) {
+            if (newArray.includes('Other (Specify)')) {
+                newArray[newArray.indexOf('Other (Specify)')] = value;
+            } else {
+                newArray.push(value);
+            }
+        }
+
+        setFunction({
+            ...StateValue,
+            [name]: newArray
+        });
+        validateCheckboxGroup(newArray);
     }
 
     // Function to handle checkbox click events
-    const handleClick = (index) => {
-        return (
-            (event) => {
-                const { value } = event.target;
-                if (array[index] === "") {
-                    array[index] = value;
-                } else {
-                    array[index] = "";
-                }
-                const updatedStateValue = {
-                    ...StateValue,
-                    [event.target.name]: array
-                }
-                setFunction(updatedStateValue);
-                validateCheckboxGroup(array);
-            }
-        )
+    const handleClick = (value) => {
+        return (event) => {
+            const { checked } = event.target;
+            const newArray = checked
+                ? [...array, value]
+                : array.filter(item => item !== value);
+
+            setFunction({
+                ...StateValue,
+                [name]: newArray
+            });
+            validateCheckboxGroup(newArray);
+        };
     }
 
     // Function to handle checkbox 'Other' checkbox click
     const handleCheckboxClick = () => {
         const otherSpecifyCheckBox = document.getElementById(`${name}otherSpecifyCheckBox`);
         if (otherSpecifyCheckBox.checked) {
-            document.getElementById(name).disabled = false;
             setOtherSpecifyChecked(true);
+            setFunction({
+                ...StateValue,
+                [name]: [...array, otherSpecify]
+            });
         } else {
             setOtherSpecify("");
-            array[array.length - 1] = "";
-            document.getElementById(name).disabled = true;
             setOtherSpecifyChecked(false);
+            setFunction({
+                ...StateValue,
+                [name]: array.filter(item => item !== otherSpecify)
+            });
         }
         validateCheckboxGroup(array);
     }
 
     // Function to validate checkbox group
     const validateCheckboxGroup = (newArray) => {
-        if (!other && newArray.every(item => item === "")) {
+        if (!other && newArray.length === 0) {
             setError("Select at least one option");
-        } else if (other && newArray.slice(0, -1).every(item => item === "") && newArray[newArray.length - 1] === "") {
+        } else if (other && newArray.slice(0, -1).length === 0 && newArray[newArray.length - 1] === "") {
             setError("Select at least one option or specify 'Other'");
         } else {
             setError("");
@@ -60,8 +75,19 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
 
     // useEffect to validate on mount and when StateValue changes
     useEffect(() => {
-        validateCheckboxGroup(StateValue[name]);
-    }, [StateValue[name]]);
+        if (!other && array.length === 0) {
+            for (var i = 0; i < CheckbobItems.length; i++) {
+                array.push("");
+            }
+            // console.log(array);
+        } else if (other && array.length === 1) {
+            for (var i = 0; i < CheckbobItems.length; i++) {
+                array.push("");
+            }
+        }
+        array[array.length - 1] === null || array[array.length - 1] === "" ? setOtherSpecifyChecked(false) : setOtherSpecifyChecked(true);
+         
+    }, [])
 
     return (
         <>
@@ -73,7 +99,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                     {CheckbobItems.map((item, index) => (
                         <div key={index} style={{ display: "flex", alignItems: "flex-start", marginBottom: "0.8vw" }}>
                             <input
-                                onChange={handleClick(index)}
+                                onChange={handleClick(item)}
                                 type="checkbox"
                                 id={item}
                                 name={name}
@@ -100,7 +126,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                                 onChange={handleChange}
                                 type="text"
                                 name="otherSpecify"
-                                value={array[array.length - 1]}
+                                value={otherSpecify}
                                 id={name}
                                 disabled={!otherSpecifyChecked}
                             />
