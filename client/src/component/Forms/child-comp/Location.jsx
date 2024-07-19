@@ -5,7 +5,7 @@ import '../Form.css'
 const LocationButton = ({ setter, name, heading }) => {
   const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
   const [locationDetails, setLocationDetails] = useState({ district: '', state: '' });
-  const apiKey = 'APIKYEOVERHERE'; // Replace with your OpenCage API key
+  const apiKey = '735aebe1626748f4ae1e2a4145fac884'; // Replace with your OpenCage API key
 
   const getLocation = () => {
     if (navigator.geolocation) {
