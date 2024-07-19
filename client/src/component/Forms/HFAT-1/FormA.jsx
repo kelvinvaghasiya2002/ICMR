@@ -1,7 +1,6 @@
-import React, { useMemo, useState, useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-// import Checkbox from '../child-comp/Checkbox';
+import React, { useMemo, useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
@@ -9,7 +8,7 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
-import DropDown from "../child-comp/DropDown.jsx"
+import DropDown from "../child-comp/DropDown.jsx";
 import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
 import LocationButton from '../child-comp/Location.jsx';
 
@@ -23,19 +22,16 @@ function FormA() {
   const [formA, setFormA] = useState(JSON.parse(forma));
   const [errors, setErrors] = useState({});
 
-
-
   const date = new Date();
 
   useEffect(() => {
     setFormA((prevValue) => {
       return {
         ...prevValue,
-        A2: (formA.A2 == "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA.A2,
-
-      }
-    })
-  }, [])
+        A2: (formA.A2 === "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA.A2,
+      };
+    });
+  }, []);
 
   useEffect(() => {
     if (formA.A11 === "District Hospital (DH)") {
@@ -43,12 +39,10 @@ function FormA() {
         return {
           ...prevValue,
           A12: ""
-
-        }
-      }
-      )
+        };
+      });
     }
-  }, [formA.A11])
+  }, [formA.A11]);
 
   const dropdownItems = useMemo(() => {
     switch (formA.A3) {
@@ -75,6 +69,12 @@ function FormA() {
     if (!formA.A7) newErrors.A7 = 'Name of the hospital Superintendent is required';
     if (!formA.A8) newErrors.A8 = 'Contact Number of the hospital Superintendent is required';
     if (!formA.A9) newErrors.A9 = 'Email ID is required';
+    
+    // Validate radio buttons
+    if (!formA.A3) newErrors.A3 = 'Code is required';
+    if (!formA.A11) newErrors.A11 = 'Type of Health Care Facility is required';
+    if (formA.A11 === "Tertiary care center" && !formA.A12) newErrors.A12 = 'Appropriate tertiary care center is required';
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -96,7 +96,7 @@ function FormA() {
               h3="1A.1 : Assessor's Name: "
               onChange={handleChange(setFormA)}
               value={formA.A1}
-              regex={/^[A-Za-z]+$/}
+              regex={/^[A-Za-z ]+$/}
               placeholder="Type here"
               required
               error={errors.A1}
@@ -106,10 +106,19 @@ function FormA() {
               <p className='datetime'>1A.2: Date & Time : <span className='datetime_current'>{formA.A2}</span></p>
             </div>
 
-            <Radio h3="1A.3 : Code :" onClick={handleChange(setFormA)} byDefault={formA.A3} CheckbobItems={["GJBRC_DH", "ORPUR_DH", "MPBHS_DH", "PBLDH_DH", "PYPDY_DH"]} name="A3" />
+            <Radio
+              h3="1A.3 : Code :"
+              onClick={handleChange(setFormA)}
+              byDefault={formA.A3}
+              CheckbobItems={["GJBRC_DH", "ORPUR_DH", "MPBHS_DH", "PBLDH_DH", "PYPDY_DH"]}
+              name="A3"
+              required
+              errorMsg={errors.A3}
+            />
 
             <DropDown
-              name="A4" h3="1A.4 : Block Name:"
+              name="A4"
+              h3="1A.4 : Block Name:"
               byDefault={formA.A4}
               onClick={handleChange(setFormA)}
               dropdownItems={dropdownItems}
@@ -118,7 +127,7 @@ function FormA() {
             <InputField
               name="A5"
               value={formA.A5}
-              regex={/^[A-Za-z]+$/}
+              regex={/^[A-Za-z ]+$/}
               onChange={handleChange(setFormA)}
               h3="1A.5 : Healthcare Facility Name:  "
               placeholder="Type here"
@@ -168,20 +177,38 @@ function FormA() {
               error={errors.A9}
             />
 
-
             <LocationButton setter={setFormA} name={"A10"} heading={"1A.10"} />
 
+            <Radio
+              h3="1A.11 : Type of Health Care Facility?"
+              CheckbobItems={["District Hospital (DH)", "Tertiary care center"]}
+              name="A11"
+              onClick={handleChange(setFormA)}
+              byDefault={formA.A11}
+              required
+              errorMsg={errors.A11}
+            />
 
-            <Radio h3="1A.11 : Type of Health Care Facility?" CheckbobItems={["District Hospital (DH)", "Tertiary care center"]} name="A11" onClick={handleChange(setFormA)} byDefault={formA.A11} />
-
-            {
-              (formA.A11 === "Tertiary care center") &&
-              <Radio style={{ display: "flex", flexDirection: "column" }} h3="1A.12 : If Tertiary care center, select the appropriate one." onClick={handleChange(setFormA)} CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]} name="A12" byDefault={formA.A12} />
-            }
+            {formA.A11 === "Tertiary care center" && (
+              <Radio
+                style={{ display: "flex", flexDirection: "column" }}
+                h3="1A.12 : If Tertiary care center, select the appropriate one."
+                onClick={handleChange(setFormA)}
+                CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]}
+                name="A12"
+                byDefault={formA.A12}
+                required
+                errorMsg={errors.A12}
+              />
+            )}
 
             <Buttons
-              formName="forma" formData={formA} prevText=""
-              nextText="Save & Next" prev="" next="/infrastructure"
+              formName="forma"
+              formData={formA}
+              prevText=""
+              nextText="Save & Next"
+              prev=""
+              next="/infrastructure"
               validateForm={validateForm}
             />
             {Object.keys(errors).length > 0 && (
@@ -193,7 +220,7 @@ function FormA() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
 export default FormA;

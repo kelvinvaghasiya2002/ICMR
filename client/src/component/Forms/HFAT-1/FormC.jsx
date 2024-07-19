@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Checkbox from '../child-comp/Checkbox';
 import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
@@ -33,7 +33,6 @@ function FormC() {
     }
   },[formC.C3])
 
-  
   turnOffbutton();
 
   const columns = [
@@ -46,55 +45,62 @@ function FormC() {
 
   const initialRows = [
     { Manpower: 'Faculty/Consultant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'CMO (casualty medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'SR (Senior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'JR (Junior Residents)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'MO (Medical officer)', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Nursing officer in charge / Team leader', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Staff Nurse/ Nursing Officer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Radiology technician/ Radiographer', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'OT. Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'H.A/ GDA/ Orderly (GDA)General Duty Assistant, SA- Sanitary Attendant, HA- Hospital Attendant', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'SA/ Housekeeping staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'EMT', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Security', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Registration staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'IT Staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Hospital Administrator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-
+  
     { Manpower: 'Other', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' }
   ];
 
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors = { ...errors };
 
-    if (formC.C2a.length === 0) newErrors.C2a = "Select at least one option";
-    if (formC.C2b.length === 0) newErrors.C2b = "Select at least one option";
-    if (!formC.C3) newErrors.C3 = "This field is required";
-    if (formC.C3 === "Yes" && formC.C4.length === 0) newErrors.C4 = "Select at least one option";
-    if (formC.C3 === "Yes" && !formC.C5) newErrors.C5 = "This field is required";
-    if (!formC.C6) newErrors.C6 = "This field is required";
+    if (formC.C2a.length === 0) {
+      newErrors.C2a = "Select at least one option";
+    } else {
+      delete newErrors.C2a; // Remove error if there's a selection
+    }
+
+    if (formC.C2b.length === 0) {
+      newErrors.C2b = "Select at least one option";
+    } else {
+      delete newErrors.C2b; // Remove error if there's a selection
+    }
 
     setErrors(newErrors);
+
+    // Check if there are no errors to allow navigation
     return Object.keys(newErrors).length === 0;
   };
 
@@ -197,7 +203,7 @@ function FormC() {
                   name="C4"
                   setFunction={setFormC} StateValue={formC} array={formC.C4}
                   required={true}
-              errorMsg={errors.C4}
+                  errorMsg={errors.C4}
                 />
 
                 <Radio
@@ -209,18 +215,16 @@ function FormC() {
                     "Annually",
                     "Others(Specify)"
                   ]}
-                  //other={true}
                   otherArray={[0, 0, 0, 0, 1]}
                   name="C5"
                   setter={setFormC}
                   onClick={handleChange(setFormC)}
                   byDefault={formC.C5}
                   required={true}
-              errorMsg={errors.C5}
+                  errorMsg={errors.C5}
                 />
               </>
             }
-
 
             <InputField name="C6" h3="1C.6 : When was the last training conducted ? " placeholder="Type here" value={formC.C6} onChange={handleChange(setFormC)} required={true}
               errorMsg={errors.C6}/>
@@ -238,4 +242,7 @@ function FormC() {
   )
 }
 
-export default FormC
+export default FormC;
+
+
+
