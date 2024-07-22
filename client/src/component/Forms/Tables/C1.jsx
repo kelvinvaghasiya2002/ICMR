@@ -48,7 +48,7 @@ const C1 = ({ columns, initialRows, tableName }) => {
                                 <td key={colIndex}>
                                     {
                                         col.type === 'text' && (
-                                            row[col.key] !== 'Other' ? <span><input type='checkbox' />{row[col.key]}</span> :
+                                            row[col.key] !== 'Other' ? <span><input type='checkbox'/>{row[col.key]}</span> :
                                                 <span>
                                                     <input type='checkbox' />
                                                     <span>Other (Please Specify)</span>

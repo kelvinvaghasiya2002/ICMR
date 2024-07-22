@@ -146,10 +146,10 @@ function FormH() {
                       required={true} />
 
                     <Checkbox setFunction={setFormH} array={formH.H1H8} StateValue={formH} name="H1H8" h3="1H.2.5 : Types of audits conducted?" CheckbobItems={["Mortality Audit", "Morbidity Audit"]} other={true} errorMsg={errors.H1H8}
-                      required={true} />
+                      required={true} regex={/^[A-Za-z ]+$/}/>
 
                     <InputField value={formH.H1H9} onChange={handleChange(setFormH)} name="H1H9" h3="1H.2.6 : Any action being taken on Audit report in the last one year?" placeholder="Type here" errorMsg={errors.H1H9}
-                      required={true} />
+                      required={true} regex={/^[A-Za-z ]+$/}/>
                   </>
                 }
               </>
