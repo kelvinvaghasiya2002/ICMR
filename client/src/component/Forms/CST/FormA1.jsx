@@ -26,11 +26,13 @@ function FormA1() {
       return (formA1.AA4 === "") ? (
         {
           ...prevValue,
+          AA1 : (formA1.AA1==="") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA1.AA1,
           AA4: uid.rnd()
         }
       ) : (
         {
-          ...prevValue
+          ...prevValue,
+          AA1 : (formA1.AA1==="") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA1.AA1
         }
       )
     })
@@ -55,11 +57,11 @@ function FormA1() {
 
           <div className="formcontent cont_extra">
             <div>
-              <p className='datetime'>AA.1  Date & Time : {date.toDateString()}  {date.getHours()}:{date.getMinutes()}</p>
+              <p className='datetime'>AA.1  Date & Time : {formA1.AA1}</p>
             </div>
 
 
-            <Radio h3="AA.2 Site :" CheckbobItems={["GJBRC_CS_", "ORPUR_CS_", "MPBHS_CS_", "PBLDH_CS_", "PYPDY_CS_"]} name="AA2" onClick={handleChange(setFormA1)} byDefault={formA1.AA2} />
+            <Radio h3="AA.2 Site :" CheckbobItems={["GJBRC_CS", "ORPUR_CS", "MPBHS_CS", "PBLDH_CS", "PYPDY_CS"]} name="AA2" onClick={handleChange(setFormA1)} byDefault={formA1.AA2} />
 
             <InputField h3="AA.3 Name Of the Data Collector :" placeholder="Type here" name="AA3" value={formA1.AA3} onChange={handleChange(setFormA1)} />
 

@@ -13,11 +13,7 @@ const LocationButton = ({ setter, name, heading }) => {
         (position) => {
           const { latitude, longitude } = position.coords;
           setCoordinates({ latitude, longitude });
-          setter((prev) => {
-            return {
-              ...prev, [name] : { "latitude" : latitude , "longitude" : longitude }
-            }
-          })
+          
           fetchLocationDetails(latitude, longitude);
         },
         (error) => {
@@ -41,6 +37,12 @@ const LocationButton = ({ setter, name, heading }) => {
           district: components.county || '',
           state: components.state || '',
         });
+
+        setter((prev) => {
+          return {
+            ...prev, [name] : { "latitude" : latitude , "longitude" : longitude , "district" : components.county , "state" : components.state }
+          }
+        })
       } else {
         console.error('No results found.');
       }
