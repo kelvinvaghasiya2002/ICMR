@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const E2 = ({ columns, initialRows, tableName }) => {
   const [rows, setRows] = useState(() => {
