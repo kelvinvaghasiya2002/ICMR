@@ -86,151 +86,26 @@ function FormC() {
     "Other",
   ];
 
-  const initialRows = [
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-
-    {
-      Manpower: "",
-      otherSpecify: "",
-      Number: "",
-      availability247: "",
-      onSiteAvailability: "",
-      onCallAvailability: "",
-    },
-  ];
+  const initialRows = labels.map((label) => {
+    if (label === "Other") {
+      return {
+        Manpower: "",
+        otherSpecify: "",
+        Number: "",
+        availability: "",
+        onSite: "",
+        onCall: "",
+      };
+    } else {
+      return {
+        Manpower: "",
+        Number: "",
+        Availability: "",
+        OnSite: "",
+        OnCall: "",
+      };
+    }
+  });
 
   const validateForm = () => {
     const newErrors = { ...errors };

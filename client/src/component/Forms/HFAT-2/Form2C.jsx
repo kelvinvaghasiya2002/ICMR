@@ -95,9 +95,9 @@ function Form2C() {
         Manpower: "",
         otherSpecify: "",
         Number: "",
-        availability247: "",
-        onSiteAvailability: "",
-        onCallAvailability: "",
+        availability: "",
+        onSite: "",
+        onCall: "",
       };
     } else {
       return {

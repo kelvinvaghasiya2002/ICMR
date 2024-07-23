@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 const C1 = ({ columns, initialRows, tableName, labels }) => {
-  const [rows, setRows] = useState(initialRows);
-  // let initialRows = [];
-  // initialRows = labels.map((label) => ({
-  //   Manpower: "",
-  //   Number: "",
-  //   Availability: "",
-  //   OnSite: "",
-  //   OnCall: "",
-  // }));
-  //   console.log(rows);
+  const [rows, setRows] = useState(() => {
+    const storedRows = localStorage.getItem(tableName);
+    return storedRows ? JSON.parse(storedRows) : initialRows;
+  });
   const [columnOptions, setColumnOptions] = useState(
     columns.reduce((acc, col) => {
       if (col.type === "radio" || col.type === "checkbox") {
@@ -20,61 +14,12 @@ const C1 = ({ columns, initialRows, tableName, labels }) => {
     }, {})
   );
 
-  // useEffect(() => {
-  //   // initialRows = labels.map((label) => ({
-  //   //   Manpower: "",
-  //   //   Number: "",
-  //   //   Availability: "",
-  //   //   OnSite: "",
-  //   //   OnCall: "",
-  //   // }));
-  //   for (let i = 0; i < labels.length; i++) {
-  //     if (labels[i] === "Other") {
-  //       initialRows.push({
-  //         Manpower: "",
-  //         otherSpecify: "",
-  //         Number: "",
-  //         availability247: "",
-  //         onSiteAvailability: "",
-  //         onCallAvailability: "",
-  //       });
-  //     } else {
-  //       initialRows.push({
-  //         Manpower: "",
-  //         Number: "",
-  //         availability247: "",
-  //         onSiteAvailability: "",
-  //         onCallAvailability: "",
-  //       });
-  //     }
-  //   }
-  //   console.log(initialRows);
-  //   setRows(initialRows);
-  //   setStorage(initialRows);
-  // }, []);
-
   useEffect(() => {
-    let data = localStorage.getItem(tableName);
-    if (data) {
-      setRows(JSON.parse(data));
-    } else {
-      setRows(initialRows);
-      setStorage();
-    }
-  }, []);
-
-  const setStorage = (newRows) => {
-    // setRows(localStorage.setItem(tableName, JSON.stringify(rows)));
-    localStorage.setItem(tableName, JSON.stringify(newRows ?? rows));
-  };
-
-  //   useEffect(() => {
-  //     // localStorage.setItem("H3C1",JSON.stringify(rows))
-  //     localStorage.setItem(tableName, JSON.stringify(rows));
-  //   }, [rows]);
+    // localStorage.setItem("H3C1",JSON.stringify(rows))
+    localStorage.setItem(tableName, JSON.stringify(rows));
+  }, [rows]);
 
   const handleInputChange = (rowIndex, columnKey, value) => {
-    console.log(rowIndex, columnKey, value);
     var newRows = [...rows];
     if (columnKey === "Manpower" && value === "") {
       if (rowIndex === labels.length - 1) {
@@ -82,24 +27,23 @@ const C1 = ({ columns, initialRows, tableName, labels }) => {
           Manpower: "",
           otherSpecify: "",
           Number: "",
-          availability247: "",
-          onSiteAvailability: "",
-          onCallAvailability: "",
+          availability: "",
+          onSite: "",
+          onCall: "",
         };
       } else {
         newRows[rowIndex] = {
           Manpower: "",
           Number: "",
-          availability247: "",
-          onSiteAvailability: "",
-          onCallAvailability: "",
+          availability: "",
+          onSite: "",
+          onCall: "",
         };
       }
     } else {
       newRows[rowIndex][columnKey] = value;
     }
     setRows(newRows);
-    setStorage(newRows);
   };
 
   const handleOptionChange = (columnKey, options) => {
