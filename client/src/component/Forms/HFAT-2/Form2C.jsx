@@ -1,61 +1,120 @@
-import React, { useState, useEffect } from 'react'
-import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT2';
-import Buttons from '../child-comp/Buttons';
-import Radio from '../child-comp/Radio';
-import InputField from '../child-comp/InputField';
-import C1 from '../Tables/C1';
-import setLocalStorage from '../setLocalStorage';
-import { handleChange, turnOffbutton } from '../helpers';
-import Heading from '../../Heading/Heading.jsx';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import React, { useState, useEffect } from "react";
+import Checkbox from "../child-comp/Checkbox";
+import SidePanel from "./SidePanelHFAT2";
+import Buttons from "../child-comp/Buttons";
+import Radio from "../child-comp/Radio";
+import InputField from "../child-comp/InputField";
+import C1 from "../Tables/C1";
+import setLocalStorage from "../setLocalStorage";
+import { handleChange, turnOffbutton } from "../helpers";
+import Heading from "../../Heading/Heading.jsx";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Form2C() {
-
   useEffect(() => {
-    AOS.init({ duration: 2000 })
-  }, [])
+    AOS.init({ duration: 2000 });
+  }, []);
 
   turnOffbutton();
 
-  var form2c = setLocalStorage("form2c", { H2C2: "", H2C3: [""], H2C4: "", H2C5: "" });
+  var form2c = setLocalStorage("form2c", {
+    H2C2: "",
+    H2C3: [""],
+    H2C4: "",
+    H2C5: "",
+  });
   const [form2C, setForm2C] = useState(JSON.parse(form2c));
   const [errors, setErrors] = useState({});
 
   const columns = [
-    { key: 'Manpower', label: 'Manpower', type: 'text' },
-    { key: 'Number', label: 'Number', type: 'input' },
-    { key: 'Availability', label: '24/7 Availability', type: 'radio', options: ['Yes', 'No'] },
-    { key: 'OnSite', label: '24/7 On-site Availability', type: 'radio', options: ['Yes', 'No'] },
-    { key: 'OnCall', label: '24/7 On-call Availability', type: 'radio', options: ['Yes', 'No'] },
+    { key: "Manpower", label: "Manpower", type: "text" },
+    { key: "Number", label: "Number", type: "input" },
+    {
+      key: "Availability",
+      label: "24/7 Availability",
+      type: "radio",
+      options: ["Yes", "No"],
+    },
+    {
+      key: "OnSite",
+      label: "24/7 On-site Availability",
+      type: "radio",
+      options: ["Yes", "No"],
+    },
+    {
+      key: "OnCall",
+      label: "24/7 On-call Availability",
+      type: "radio",
+      options: ["Yes", "No"],
+    },
   ];
 
-  const initialRows = [
-    { Manpower: 'Physician/Family Medicine Specialist', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Surgeon', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Obstetrician & Gynecologist', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Pediatrician', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Anesthesiologist', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Ophthalmologist', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Orthopaedician', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'ENT', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Microbiologist/Pathologist/Biochemist', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'GDMO', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Nurses', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Data entry operator', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'ECG technician', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'MLT', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Pharmacist', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Radiology technician', Number: '', Availability: '', OnSite: '', OnCall: '' },
-    { Manpower: 'Other', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  const labels = [
+    "Physician/Family Medicine Specialist",
+    "Surgeon",
+    "Obstetrician & Gynecologist",
+    "Pediatrician",
+    "Anesthesiologist",
+    "Ophthalmologist",
+    "Orthopaedician",
+    "ENT",
+    "Microbiologist/Pathologist/Biochemist",
+    "GDMO",
+    "Nurses",
+    "Data entry operator",
+    "ECG technician",
+    "MLT",
+    "Pharmacist",
+    "Radiology technician",
+    "Other",
   ];
+
+  // const initialRows = [
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  //   { Manpower: '', Number: '', Availability: '', OnSite: '', OnCall: '' },
+  // ];
+  const initialRows = labels.map((label) => {
+    if (label === "Other") {
+      return {
+        Manpower: "",
+        otherSpecify: "",
+        Number: "",
+        availability247: "",
+        onSiteAvailability: "",
+        onCallAvailability: "",
+      };
+    } else {
+      return {
+        Manpower: "",
+        Number: "",
+        Availability: "",
+        OnSite: "",
+        OnCall: "",
+      };
+    }
+  });
 
   useEffect(() => {
     if (form2C.H2C2 === "No") {
       setForm2C((prevValue) => {
-        return { ...prevValue, H2C3: [""], H2C4: "", H2C5: "" }
-      })
+        return { ...prevValue, H2C3: [""], H2C4: "", H2C5: "" };
+      });
     }
   }, [form2C.H2C2]);
 
@@ -76,26 +135,36 @@ function Form2C() {
       <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
       <section>
         <SidePanel id={"3"} />
-        <div className="siteInfo" data-aos="fade-left" >
-
+        <div className="siteInfo" data-aos="fade-left">
           <div className="formhdr">
             <div>
-              <h3>
-                2C. Human Resources
-              </h3>
+              <h3>2C. Human Resources</h3>
             </div>
           </div>
 
           <div className="formcontent">
-            <h3>2C.1 : Which of the following manpower is available at the CHC?
-              (Multiple answers possible also mention the number)</h3>
-            <C1 columns={columns} initialRows={initialRows} tableName="H2C1" />
+            <h3>
+              2C.1 : Which of the following manpower is available at the CHC?
+              (Multiple answers possible also mention the number)
+            </h3>
+            <C1
+              columns={columns}
+              initialRows={initialRows}
+              tableName="H2C1"
+              labels={labels}
+            />
 
-            <Radio h3="2C.2 : Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H2C2"
-              onClick={handleChange(setForm2C)} byDefault={form2C.H2C2} errorMsg={errors.H2C2} required={true} />
+            <Radio
+              h3="2C.2 : Whether training for emergency care management is being conducted for the staff in the institution?"
+              CheckbobItems={["Yes", "No"]}
+              name="H2C2"
+              onClick={handleChange(setForm2C)}
+              byDefault={form2C.H2C2}
+              errorMsg={errors.H2C2}
+              required={true}
+            />
 
-            {
-              (form2C.H2C2 === 'Yes') &&
+            {form2C.H2C2 === "Yes" && (
               <>
                 <Checkbox
                   h3="2C.3 : If Yes to 2C.2, Which of the following emergency care trainings you have undergone?"
@@ -111,11 +180,14 @@ function Form2C() {
                     "Poisoning",
                     "PPH",
                     "Pre-Eclampsia",
-                    "Neonatal emergencies"
+                    "Neonatal emergencies",
                   ]}
                   other={true}
                   name="H2C3"
-                  setFunction={setForm2C} StateValue={form2C} array={form2C.H2C3} errorMsg={errors.H2C3}
+                  setFunction={setForm2C}
+                  StateValue={form2C}
+                  array={form2C.H2C3}
+                  errorMsg={errors.H2C3}
                 />
 
                 <Radio
@@ -125,16 +197,27 @@ function Form2C() {
                     "Quarterly",
                     "Half Yearly",
                     "Annually",
-                    "Other (Specify)"
+                    "Other (Specify)",
                   ]}
                   other={true}
                   otherArray={[0, 0, 0, 0, 1]}
-                  name="H2C4" onClick={handleChange(setForm2C)} setter={setForm2C} byDefault={form2C.H2C4} errorMsg={errors.H2C4}
+                  name="H2C4"
+                  onClick={handleChange(setForm2C)}
+                  setter={setForm2C}
+                  byDefault={form2C.H2C4}
+                  errorMsg={errors.H2C4}
                 />
 
-                <InputField h3="2C.5 : When was the last training conducted?" placeholder="Type here" name="H2C5" value={form2C.H2C5} onChange={handleChange(setForm2C)} errorMsg={errors.H2C5} />
+                <InputField
+                  h3="2C.5 : When was the last training conducted?"
+                  placeholder="Type here"
+                  name="H2C5"
+                  value={form2C.H2C5}
+                  onChange={handleChange(setForm2C)}
+                  errorMsg={errors.H2C5}
+                />
               </>
-            }
+            )}
 
             {Object.keys(errors).length > 0 && (
               <div className="error-msg">
@@ -142,12 +225,20 @@ function Form2C() {
               </div>
             )}
 
-            <Buttons formName={"form2c"} formData={form2C} prevText="Previous" nextText="Save & Next" prev="/infrastructure-2" next="/logistics-2" validateForm={validateForm} />
+            <Buttons
+              formName={"form2c"}
+              formData={form2C}
+              prevText="Previous"
+              nextText="Save & Next"
+              prev="/infrastructure-2"
+              next="/logistics-2"
+              validateForm={validateForm}
+            />
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
 
 export default Form2C;
