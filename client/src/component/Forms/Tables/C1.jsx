@@ -2,15 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const C1 = ({ columns, initialRows, tableName, labels }) => {
   const [rows, setRows] = useState(initialRows);
-  // let initialRows = [];
-  // initialRows = labels.map((label) => ({
-  //   Manpower: "",
-  //   Number: "",
-  //   Availability: "",
-  //   OnSite: "",
-  //   OnCall: "",
-  // }));
-  //   console.log(rows);
   const [columnOptions, setColumnOptions] = useState(
     columns.reduce((acc, col) => {
       if (col.type === "radio" || col.type === "checkbox") {
@@ -19,39 +10,6 @@ const C1 = ({ columns, initialRows, tableName, labels }) => {
       return acc;
     }, {})
   );
-
-  // useEffect(() => {
-  //   // initialRows = labels.map((label) => ({
-  //   //   Manpower: "",
-  //   //   Number: "",
-  //   //   Availability: "",
-  //   //   OnSite: "",
-  //   //   OnCall: "",
-  //   // }));
-  //   for (let i = 0; i < labels.length; i++) {
-  //     if (labels[i] === "Other") {
-  //       initialRows.push({
-  //         Manpower: "",
-  //         otherSpecify: "",
-  //         Number: "",
-  //         availability247: "",
-  //         onSiteAvailability: "",
-  //         onCallAvailability: "",
-  //       });
-  //     } else {
-  //       initialRows.push({
-  //         Manpower: "",
-  //         Number: "",
-  //         availability247: "",
-  //         onSiteAvailability: "",
-  //         onCallAvailability: "",
-  //       });
-  //     }
-  //   }
-  //   console.log(initialRows);
-  //   setRows(initialRows);
-  //   setStorage(initialRows);
-  // }, []);
 
   useEffect(() => {
     let data = localStorage.getItem(tableName);
@@ -74,7 +32,6 @@ const C1 = ({ columns, initialRows, tableName, labels }) => {
   //   }, [rows]);
 
   const handleInputChange = (rowIndex, columnKey, value) => {
-    console.log(rowIndex, columnKey, value);
     var newRows = [...rows];
     if (columnKey === "Manpower" && value === "") {
       if (rowIndex === labels.length - 1) {
@@ -82,17 +39,17 @@ const C1 = ({ columns, initialRows, tableName, labels }) => {
           Manpower: "",
           otherSpecify: "",
           Number: "",
-          availability247: "",
-          onSiteAvailability: "",
-          onCallAvailability: "",
+          availability: "",
+          onSite: "",
+          onCall: "",
         };
       } else {
         newRows[rowIndex] = {
           Manpower: "",
           Number: "",
-          availability247: "",
-          onSiteAvailability: "",
-          onCallAvailability: "",
+          availability: "",
+          onSite: "",
+          onCall: "",
         };
       }
     } else {
