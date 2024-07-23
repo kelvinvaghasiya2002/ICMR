@@ -9,6 +9,8 @@ import emailRouter from "./Routers/sendEmail.js";
 import verifyEmailRouter from "./Routers/verifyEmail.js";
 import "./AuthRouters/passport.js";
 import localAuthRouter from "./AuthRouters/localAuth.js";
+
+import CSTROUTER from "./Routers/CST.js";
 import HFAT1ROUTER from "./Routers/HFAT-1.js";
 import HFAT3ROUTER from "./Routers/HFAT-3.js";
 import HFAT2ROUTER from "./Routers/HFAT-2.js";
@@ -60,6 +62,9 @@ app.use(HFAT1ROUTER);
 app.use(HFAT2ROUTER);
 app.use(HFAT3ROUTER);
 app.use(AMBULANCEROUTER);
+app.use(CSTROUTER);
+
+
 
 app.get("/", (req, res) => {
   res.json({

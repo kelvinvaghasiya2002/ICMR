@@ -27,3 +27,12 @@ export const handleChange = (setter) =>{
         }
     )
 } 
+
+
+export const fetchCstTableDetail = () => {
+    var forma3_table = localStorage.getItem("forma3_table");
+    forma3_table = JSON.parse(forma3_table)
+    console.log(typeof(forma3_table));
+    const NamesInTable = forma3_table?.map((item,index)=> item.name);
+    return NamesInTable;
+}

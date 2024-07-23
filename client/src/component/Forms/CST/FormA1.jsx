@@ -9,10 +9,6 @@ import InputField from '../child-comp/InputField.jsx';
 import { turnOffbutton, handleChange } from '../helpers.js';
 import setLocalStorage from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading';
-import ShortUniqueId from "short-unique-id"
-
-const uid = new ShortUniqueId({ length: 10 });
-console.log(uid.rnd());
 
 function FormA1() {
   var forma1 = setLocalStorage("forma1", { AA1: "", AA2: "", AA3: "", AA4: "" })
@@ -23,18 +19,10 @@ function FormA1() {
 
   useEffect(() => {
     setFormA1((prevValue) => {
-      return (formA1.AA4 === "") ? (
-        {
-          ...prevValue,
-          AA1 : (formA1.AA1==="") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA1.AA1,
-          AA4: uid.rnd()
-        }
-      ) : (
-        {
-          ...prevValue,
-          AA1 : (formA1.AA1==="") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA1.AA1
-        }
-      )
+      return {
+        ...prevValue,
+        AA1: (formA1.AA1 === "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA1.AA1
+      }
     })
   }, [])
 
@@ -69,7 +57,7 @@ function FormA1() {
               <h3 className='h3block'>AA.4 Respondent ID: </h3>
               <input
                 className='blockinput'
-                value={formA1.AA4}
+                // value={formA1.AA4}
                 name="AA4"
                 readOnly
               />

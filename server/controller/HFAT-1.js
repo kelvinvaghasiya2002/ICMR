@@ -30,6 +30,10 @@ export const HFAT1Controller = async (req, res) => {
         res.status(400).json({ error: "error for data save" });
       });
   });
+
+
+
+   
   // const hfat1 = req.body;
   // try {
   //   HFAT1.find({ A3: hfat1?.A3 }).then((response) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { handleChange, turnOffbutton } from '../helpers'
 import SidePanel from './SidePanelCST.jsx';
 import DropDown from '../child-comp/DropDown';
@@ -9,11 +9,31 @@ import InputField from '../child-comp/InputField';
 import setLocalStorage from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading.jsx';
 import LocationButton from '../child-comp/Location.jsx';
+import CSTLastButton from '../child-comp/CSTLastButton.jsx';
+import ShortUniqueId from "short-unique-id"
+
+const uid = new ShortUniqueId({ length: 10 });
+console.log(uid.rnd());
 
 function FormA2() {
     var forma2 = setLocalStorage("forma2", { AB1: "", AB2: "", AB3: "", AB4: {}, AB5: "", AB6: "" })
     const [formA2, setFormA2] = useState(JSON.parse(forma2))
     turnOffbutton();
+
+    useEffect(() => {
+        setFormA2((prevValue) => {
+            return (formA2.AB5 === "") ? (
+                {
+                    ...prevValue,
+                    AB5: uid.rnd()
+                }
+            ) : (
+                {
+                    ...prevValue,
+                }
+            )
+        })
+    }, [])
 
     return (
         <div>
@@ -44,14 +64,33 @@ function FormA2() {
                         {/* <InputField h3="AB.4 GPS Co-ordinates :" placeholder="Type here" name="AB4" value={formA2.AB4} onChange={handleChange(setFormA2)} /> */}
                         <LocationButton setter={setFormA2} name="AB4" heading={"AB.4"} />
 
-                        <InputField h3="AB.5 Household ID Number :" placeholder="Type here" name="AB5" value={formA2.AB5} onChange={handleChange(setFormA2)} />
+                        {/* <InputField h3="AB.5 Household ID Number :" placeholder="Type here" name="AB5" value={formA2.AB5} onChange={handleChange(setFormA2)} /> */}
+
+                        <div className='block'>
+                            <h3 className='h3block'>AB.5 Household ID Number :</h3>
+                            <input
+                                className='blockinput'
+                                value={formA2.AB5}
+                                name="AB5"
+                                readOnly
+                            />
+                        </div>
 
                         <Radio h3="AB.6 For how long have you been living in this city/ village with your family?" CheckbobItems={["< 1 year", "> 1 year"]} name="AB6" byDefault={formA2.AB6} onClick={handleChange(setFormA2)} />
 
 
-                        <h4><i>I would like to ask few questions pertaining to people staying in the same household including both family and non-family members for the last 1 year like servants included but paying guests not included.</i></h4>
+                        {
+                            (formA2.AB6 === "< 1 year")
+                                ?
+                                <CSTLastButton previous="/siteinformation" from="FormA2" lastForm={formA2} />
+                                :
 
-                        <Buttons formName={"forma2"} formData={formA2} prev="/siteinformation" next="/linelistingofhouseholdmembers-1" prevText="Previous" nextText="Save & Next" />
+                                <>
+                                    <h4><i>I would like to ask few questions pertaining to people staying in the same household including both family and non-family members for the last 1 year like servants included but paying guests not included.</i></h4>
+
+                                    <Buttons formName={"forma2"} formData={formA2} prev="/siteinformation" next="/linelistingofhouseholdmembers-1" prevText="Previous" nextText="Save & Next" />
+                                </>
+                        }
                     </div>
                 </div>
             </section>

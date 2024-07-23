@@ -1,26 +1,16 @@
 import React, { useState } from 'react'
-import { handleChange, turnOffbutton } from '../helpers'
+import setLocalStorage from '../setLocalStorage'
+import { handleChange, turnOffbutton } from '../helpers';
+import Heading from '../../Heading/Heading';
 import SidePanel from './SidePanelCST.jsx';
-import DropDown from '../child-comp/DropDown';
-import Radio from "../child-comp/Radio.jsx"
-import "../Form.css"
-import Buttons from '../child-comp/Buttons';
-import InputField from '../child-comp/InputField';
-import setLocalStorage from '../setLocalStorage.js';
-import Heading from '../../Heading/Heading.jsx';
+import Radio from '../child-comp/Radio.jsx';
+import Buttons from '../child-comp/Buttons.jsx';
 
-function FormA4() {
+function FormA5a() {
     var forma3 = setLocalStorage("forma3", { AC1: "", AC2_1: "", AC3: "", AC4: "", AC5: "", AC6_1: "", AC6_1_if: "", AC6_2: [], AC7_1: "", AC7_1_if: "", AC7_2: [], AC8_1: "", AC8_1_if: "", AC8_2: [], AC9_1: "", AC9_1_if: "", AC9_2: [], AC10_1: "", AC10_1_if: "", AC10_2: [], AC11_1: "", AC11_1_if: "", AC11_2: "", AC11_2_if: "", AC11_3: [], AC11_4: "", AC11_4_if: "", AC11_5: [], AC12_1: "", AC12_1_if: "", AC12_2: [], AC13_1: "", AC13_1_if: "", AC13_2: [], AC14_1: "", AC14_1_if: "", AC14_2: [], AC15_1: "", AC15_2: "", AC15_4: "" })
 
     const [formA3, setFormA3] = useState(JSON.parse(forma3))
     turnOffbutton();
-
-    var forma3_table = localStorage.getItem("forma3_table");
-    forma3_table = JSON.parse(forma3_table)
-    console.log(typeof(forma3_table));
-    const AC2_1_ITEMS = forma3_table?.map((item,index)=>{
-        return item.name
-    })
 
     return (
         <div>
@@ -41,15 +31,20 @@ function FormA4() {
 
                     <div className="formcontent cont_extra">
 
+                        <Radio
+                            name="AC5"
+                            h3="AC.5 In the past one year, did any member of this household have any health emergency that could have required any sort of medical attention or treatment?"
+                            CheckbobItems={["Yes", "No"]}
+                            onClick={handleChange(setFormA3)}
+                            byDefault={formA3.AC5}
+                        />
 
-                        <DropDown className='dropdown' dropdownItems={AC2_1_ITEMS} name={"AC2_1"} h3="AC.2.1  Name of the Respondent?" byDefault={formA3.AC2_1} onClick={handleChange(setFormA3)} />
-
-                        <Buttons formName={"forma3"} formData={formA3} prev="/linelistingofhouseholdmembers-1" next="/linelistingofhouseholdmembers-3" prevText="Previous" nextText="Save & Next" />
+                        <Buttons formName="forma3" formData={formA3} prevText="Previous" nextText="Save & Next" prev="/linelistingofhouseholdmembers-3" next={(formA3.AC5==="Yes")?"/trauma":"/death"} />
                     </div>
                 </div>
             </section>
         </div>
     )
+}
 
-    }
-export default FormA4
+export default FormA5a

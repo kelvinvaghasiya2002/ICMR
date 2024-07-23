@@ -26,43 +26,41 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
         validateCheckboxGroup(newArray);
     }
 
-    // Function to handle checkbox click events
-    const handleClick = (value) => {
-        return (event) => {
-            const { checked } = event.target;
-            const newArray = checked
-                ? [...array, value]
-                : array.filter(item => item !== value);
-
-            setFunction({
-                ...StateValue,
-                [name]: newArray
-            });
-            validateCheckboxGroup(newArray);
-        };
+    const handleClick = (index) => {
+        return (
+            (event) => {
+                const { value } = event.target;
+                console.log(array);
+                if (array[index] === "" || !array[index]) {
+                    array[index] = value;
+                } else {
+                    array[index] = "";
+                }
+                StateValue = {
+                    ...StateValue,
+                    [event.target.name]: array
+                }
+                setFunction(StateValue)
+            }
+        )
     }
 
-    // Function to handle checkbox 'Other' checkbox click
+
     const handleCheckboxClick = () => {
         const otherSpecifyCheckBox = document.getElementById(`${name}otherSpecifyCheckBox`);
-        if (otherSpecifyCheckBox.checked) {
-            setOtherSpecifyChecked(true);
-            setFunction({
-                ...StateValue,
-                [name]: [...array, otherSpecify]
-            });
+        if (otherSpecifyCheckBox.checked == true) {
+            console.log(otherSpecifyCheckBox.checked);
+            document.getElementById(name).disabled = false;
+            setOtherSpecifyChecked(!otherSpecifyChecked);
         } else {
             setOtherSpecify("");
-            setOtherSpecifyChecked(false);
-            setFunction({
-                ...StateValue,
-                [name]: array.filter(item => item !== otherSpecify)
-            });
+            array[array.length - 1] = "";
+            document.getElementById(name).disabled = true;
         }
-        validateCheckboxGroup(array);
+        setOtherSpecifyChecked(!otherSpecifyChecked);
     }
 
-    // Function to validate checkbox group
+
     const validateCheckboxGroup = (newArray) => {
         if (!other && newArray.length === 0) {
             setError("Select at least one option");
@@ -99,7 +97,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                     {CheckbobItems.map((item, index) => (
                         <div key={index} style={{ display: "flex", alignItems: "flex-start", marginBottom: "0.8vw" }}>
                             <input
-                                onChange={handleClick(item)}
+                                onChange={handleClick(index)}
                                 type="checkbox"
                                 id={item}
                                 name={name}
