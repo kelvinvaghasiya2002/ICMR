@@ -65,7 +65,7 @@ function FormA11() {
 
                 {/* <DropDown h3="AC.11.3  : If “Yes” to AC.11.2, could you please tell us who suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC11_3" onClick={handleChange(setFormA3)} byDefault={formA3.AC11_3} /> */}
 
-                <Checkbox CheckbobItems={fetchCstTableDetail} name="AC11_3" h3="AC.11.3  : If “Yes” to AC.11.2, could you please tell us who suffered with this condition?"  setFunction={setFormA3} StateValue={formA3} array={formA3.AC11_3} />
+                <Checkbox CheckbobItems={fetchCstTableDetail()} name="AC11_3" h3="AC.11.3  : If “Yes” to AC.11.2, could you please tell us who suffered with this condition?"  setFunction={setFormA3} StateValue={formA3} array={formA3.AC11_3} />
               </>
             }
 

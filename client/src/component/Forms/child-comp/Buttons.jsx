@@ -1,11 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import CreateEmergenciesTable from '../../../utils/CreateEmergenciesTable';
 
 function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm }) {
     const handleSubmit = (e) => {
         if (validateForm && !validateForm()) {
             e.preventDefault();
             return;
+        }
+
+        if(next === "/death"){
+            CreateEmergenciesTable();   
         }
         
         var CompleteForm = localStorage.getItem("CompleteForm");

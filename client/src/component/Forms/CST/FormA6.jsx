@@ -50,8 +50,6 @@ function FormA6() {
                             <>
                                 <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC6_1_if" value={formA3.AC6_1_if} />
 
-                                {/* <DropDown onClick={handleChange(setFormA3)} className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"AC6_2"} h3="AC6.2   If yes, could you please tell who all from your Household suffered with this condition?" byDefault={formA3.AC6_2} /> */}
-
                                 <Checkbox CheckbobItems={fetchCstTableDetail()} name={"AC6_2"} h3="AC6.2   If yes, could you please tell who all from your Household suffered with this condition?" setFunction={setFormA3} StateValue={formA3} array={formA3.AC6_2}  />
 
                             </>

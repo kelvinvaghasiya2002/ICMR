@@ -15,6 +15,7 @@ function FormA14() {
 
     const [formA3, setFormA3] = useState(JSON.parse(forma3))
     turnOffbutton();
+    console.log(fetchCstTableDetail());
 
     useEffect(() => {
         if (formA3.AC14_1 === "No") {
