@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormD24() {
-    var formd24 = setLocalStorage("formd24", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    var formd24 = setLocalStorage("formd24", { D1: []})
     const [formD24, setFormD24] = useState(JSON.parse(formd24))
     turnOffbutton();
     return (
@@ -29,13 +29,35 @@ function FormD24() {
                         </div>
                         <div>
                             <h3>
-                                Initial Healthcare Seeking Pathway
+                            Barriers and facilitators in seeking care
                             </h3>
                         </div>
                     </div>
 
                     <div className="formcontent cont_extra">
                        
+                    <Checkbox
+                            h3="D.1  Why did you NOT seek medical care at the facility during the emergency?"
+                            CheckbobItems={[
+                                "Lack of severity of symptoms",
+                                "Bad previous experience",
+                                "High cost of medical care",
+                                "Distant healthcare facilities",
+                                "Non-availability of transport",
+                                "Dissuaded by family/ friend/ neighbour",
+                                "Absence of accompanying member",
+                                "Doctors not taking care or visiting the patient after admission",
+                                "Unavailability of OTC drugs",
+                                "Over prescription of medicines",
+                                "Unnecessary investigations",
+                                "Cultural barrier",
+                                "Linguistic barrier",
+                                "Lack of trust",
+                                "Others"
+                                // other specify baaki 6
+                            ]}
+                            name="D1" setFunction={setFormD24} StateValue={formD24} array={formD24.D1} 
+                        />
 
                         <Buttons formName="formd24" formData={formd24} prev="/referral-facility4" next="/barriers-and-facilitators2" prevText="Previous" nextText="Save & Next" />
                     </div>

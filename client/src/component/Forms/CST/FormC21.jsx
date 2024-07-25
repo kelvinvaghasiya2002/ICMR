@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormC21() {
-    var formc21 = setLocalStorage("formc21", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    var formc21 = setLocalStorage("formc21", { C5: "", C6: "", C7: ""})
     const [formC21, setFormC21] = useState(JSON.parse(formc21))
     turnOffbutton();
     return (
@@ -29,13 +29,18 @@ function FormC21() {
                         </div>
                         <div>
                             <h3>
-                                Initial Healthcare Seeking Pathway
+                            Referral Facility
                             </h3>
                         </div>
                     </div>
 
                     <div className="formcontent cont_extra">
                        
+                    <Radio onClick={handleChange(setFormC21)} h3="C.5 How did you or the patient reach the referred health care facility?" CheckbobItems={["Own vehicle", "Hired vehicle ","Ambulance","Neighbour’s Vehicle","Passer-by’s Vehicle","Others"]} name="C5" otherArray={[0, 0,0,0,0,1]} byDefault={formC21.C5} />
+
+                    <Radio onClick={handleChange(setFormC21)} h3="C.6 What type of transport was used to reach the referred health care facility?" CheckbobItems={["Government ambulance", "Private ambulance","Two-Wheeler (Bicycle)","Two-Wheeler (Motorcycle)","Three-Wheeler (Manual Rickshaw, etc.)","Three-Wheeler (Auto Rickshaw/ E-rickshaw, etc.)","Four-Wheeler (Car/Jeep/ etc.)","Agricultural Vehicle (Tractor)","Others"]} name="C6" otherArray={[0, 0,0,0,0,0,0,0,1]} byDefault={formC21.C6} />
+
+                    <Radio onClick={handleChange(setFormC21)} h3="C.7  If Govt. Ambulance, Which ambulance service you opted for?" CheckbobItems={["102", "108","Other","Don’t know"]} name="C7" otherArray={[0, 0,1,0]} byDefault={formC21.C7} />
 
                         <Buttons formName="formc21" formData={formc21} prev="/referral-facility1" next="/referral-facility3" prevText="Previous" nextText="Save & Next" />
                     </div>
