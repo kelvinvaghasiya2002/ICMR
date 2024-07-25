@@ -29,13 +29,22 @@ function FormH31() {
                         </div>
                         <div>
                             <h3>
-                                Initial Healthcare Seeking Pathway
+                            Household Schedule:
                             </h3>
                         </div>
                     </div>
 
                     <div className="formcontent cont_extra">
-                       
+                       {/* 18 */}
+                       <Radio
+                            h3="H.18 Type of Family"
+                            CheckbobItems={[
+                                "Nuclear",
+                                "Joint",
+                                "Living alone/Single"
+                            ]}
+                            name="H18"
+                        />
 
                         <Buttons formName="formh31" formData={formh31} prev="/household-schedule1" next="" prevText="Previous" nextText="Save & Next" />
                     </div>

@@ -35,7 +35,8 @@ function FormG29() {
                     </div>
 
                     <div className="formcontent cont_extra">
-                       
+                    
+                    <InputField h3="G. Based on your experience what suggestion would you like to make to the government to improve the emergency services in your district? (Open-ended)" name="G1" placeholder="Type here"/>
 
                         <Buttons formName="formg29" formData={formg29} prev="/verbal-&-social-autopsy2" next="/household-schedule1" prevText="Previous" nextText="Save & Next" />
                     </div>
