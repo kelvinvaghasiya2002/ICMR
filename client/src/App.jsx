@@ -66,6 +66,18 @@ import FormB17 from './component/Forms/CST/FormB17.jsx'
 import FormB18 from './component/Forms/CST/FormB18.jsx'
 import FormB19 from './component/Forms/CST/FormB19.jsx'
 import FormA5a from './component/Forms/CST/FormA5a.jsx'
+import FormC20 from './component/Forms/CST/FormC20.jsx'
+import FormC21 from './component/Forms/CST/FormC21.jsx'
+import FormC22 from './component/Forms/CST/FormC22.jsx'
+import FormC23 from './component/Forms/CST/FormC23.jsx'
+import FormD24 from './component/Forms/CST/FormD24.jsx'
+import FormD25 from './component/Forms/CST/FormD25.jsx'
+import FormE26 from './component/Forms/CST/FormE26.jsx'
+import FormF27 from './component/Forms/CST/FormF27.jsx'
+import FormF28 from './component/Forms/CST/FormF28.jsx'
+import FormG29 from './component/Forms/CST/FormG29.jsx'
+import FormH30 from './component/Forms/CST/FormH30.jsx'
+import FormH31 from './component/Forms/CST/FormH31.jsx'
 
 const url = import.meta.env.VITE_SERVER;
 
@@ -159,6 +171,18 @@ function App() {
         <Route path='/initialhealthcareseekingpathway-1' element={<FormB17 />} />
         <Route path='/initialhealthcareseekingpathway-2' element={<FormB18 />} />
         <Route path='/initialhealthcareseekingpathway-3' element={<FormB19 />} />
+        <Route path='/referral-facility1' element={<FormC20 />} />
+        <Route path='/referral-facility2' element={<FormC21 />} />
+        <Route path='/referral-facility3' element={<FormC22 />} />
+        <Route path='/referral-facility4' element={<FormC23 />} />
+        <Route path='/barriers-and-facilitators1' element={<FormD24 />} />
+        <Route path='/barriers-and-facilitators2' element={<FormD25 />} />
+        <Route path='/costing' element={<FormE26 />} />
+        <Route path='/verbal-&-social-autopsy1' element={<FormF27 />} />
+        <Route path='/verbal-&-social-autopsy2' element={<FormF28 />} />
+        <Route path='/improve-emergency-services' element={<FormG29 />} />
+        <Route path='/household-schedule1' element={<FormH30 />} />
+        <Route path='/household-schedule2' element={<FormH31 />} />
 
 
 

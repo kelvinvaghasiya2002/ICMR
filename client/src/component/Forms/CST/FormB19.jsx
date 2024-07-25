@@ -99,7 +99,7 @@ function formB16() {
 
             <Radio onClick={handleChange(setFormB16)} h3="B.33 What was the final outcome of visiting the first facility or home visit by Doctor? " CheckbobItems={["Referred to higher facility", "Went against medical advice to different facility", "Partially recovered & discharged", "Fully Recovered & discharged", "Recovered with disability & discharged", "Self-Discharged", "Admitted in Hospital", "Death"]} name="B33" byDefault={formB16.B33} />
 
-            <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-2" next="" prevText="Previous" nextText="Save & Next" />
+            <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-2" next="/referral-facility1" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>
