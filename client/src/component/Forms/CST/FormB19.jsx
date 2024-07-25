@@ -81,6 +81,7 @@ function formB16() {
                 "ASHA/AWW",
                 "ANM",
                 "CHO"
+                // other specify baaki 6
               ]}
               name="B26" setFunction={setFormB16} StateValue={formB16} array={formB16.B26}
             />

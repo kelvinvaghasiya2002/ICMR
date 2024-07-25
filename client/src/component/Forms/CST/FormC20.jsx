@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormC20() {
-    var formc20 = setLocalStorage("formc20", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    var formc20 = setLocalStorage("formc20", { C1: "", C2: [], C3: "", C4: ""})
     const [formC20, setFormC20] = useState(JSON.parse(formc20))
     turnOffbutton();
     return (
@@ -29,13 +29,34 @@ function FormC20() {
                         </div>
                         <div>
                             <h3>
-                                Initial Healthcare Seeking Pathway
+                            Referral Facility
                             </h3>
                         </div>
                     </div>
 
                     <div className="formcontent cont_extra">
-                       
+
+                        <Radio onClick={handleChange(setFormC20)} h3="C.1  Who took the decision to refer/ shift the patient to another facility?  " CheckbobItems={["Medical team", "Self/family","Other"]} name="C1" otherArray={[0, 0,1]} byDefault={formC20.C1} />
+
+                        <Checkbox
+                            h3="C.2  If referral was suggested by the medical team, what was the reason given for referral? "
+                            CheckbobItems={[
+                                "Serious illness requiring higher centre",
+                                "Unavailability of doctor",
+                                "Unavailability of specialist",
+                                "Medicines unavailable",
+                                "Admission facility unavailable",
+                                "Unavailability of bed",
+                                "Inappropriate staff behaviour",
+                                "Others"
+                                // other specify baaki 6
+                            ]}
+                            name="C2" setFunction={setFormC20} StateValue={formC20} array={formC20.C2} 
+                        />
+
+                        <Radio onClick={handleChange(setFormC20)} h3="C.3  Which facility were you referred? " CheckbobItems={["SC/HWC", "PHC", "CHC", "District Headquarter Hospital/ Equivalent Facility", "Medical College","Private hospital","Private clinic"]} name="C3" byDefault={formC20.C3} />
+
+                        <Radio onClick={handleChange(setFormC20)} h3="C.4  If referred by a health facility, was a referral slip given?" CheckbobItems={["Yes", "No", "Don’t know"]} name="C4" byDefault={formC20.C4} />
 
                         <Buttons formName="formc20" formData={formc20} prev="/initialhealthcareseekingpathway-3" next="/referral-facility2" prevText="Previous" nextText="Save & Next" />
                     </div>

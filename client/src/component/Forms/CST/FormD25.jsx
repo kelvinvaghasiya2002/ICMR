@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormD25() {
-    var formd25 = setLocalStorage("formd25", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    var formd25 = setLocalStorage("formd25", { D2: [], D3: [], D4: [] })
     const [formD25, setFormD25] = useState(JSON.parse(formd25))
     turnOffbutton();
     return (
@@ -29,13 +29,63 @@ function FormD25() {
                         </div>
                         <div>
                             <h3>
-                                Initial Healthcare Seeking Pathway
+                                Barriers and facilitators in seeking care
                             </h3>
                         </div>
                     </div>
 
                     <div className="formcontent cont_extra">
-                       
+
+                        <Checkbox
+                            h3="D.2 During the last medical emergency, when you went to seek medical care what were the challenges faced."
+                            CheckbobItems={[
+                                "Difficulty in getting the transport to healthcare facilities",
+                                "Reaching health facility not treating the condition",
+                                "Unavailability of same clinicians",
+                                "Long waiting period",
+                                "Communication barrier",
+                                "Out of pocket expenditure",
+                                "Unavailability of OTC drugs",
+                                "Over prescription of medicines",
+                                "Doctors not taking care or visiting the patient after admission",
+                                "Unnecessary investigations",
+                                "Others",
+                                "None of the above"
+                                // other specify baaki 6
+                            ]}
+                            name="D2" setFunction={setFormD25} StateValue={formD25} array={formD25.D2}
+                        />
+
+                        <Checkbox
+                            h3="D.3 What motivated you for seeking care or taking the patient to the healthcare facility for emergency care?"
+                            CheckbobItems={[
+                               "Easy accessibility",
+                               "Skilled Healthcare provider",
+                               "Good Professional behaviour",
+                               "Insurance facility",
+                               "Affordable services",
+                               "Insurance Empanelled Health care facility",
+                               "Good ambience of HCF",
+                               "Immediate care",
+                                "Others"
+                                // other specify baaki 6
+                            ]}
+                            name="D3" setFunction={setFormD25} StateValue={formD25} array={formD25.D3}
+                        />
+
+                        <Checkbox
+                            h3="D.4 While choosing a healthcare facility, what influence your decision to seek care during any health emergency conditions?"
+                            CheckbobItems={[
+                                "Affordability",
+                                "Availability of Transport",
+                                "Availability of accompanying person",
+                                "Distance from facility",
+                                "Time delay",
+                                "Others"
+                                // other specify baaki 6
+                            ]}
+                            name="D4" setFunction={setFormD25} StateValue={formD25} array={formD25.D4}
+                        />
 
                         <Buttons formName="formd25" formData={formd25} prev="/barriers-and-facilitators1" next="/costing" prevText="Previous" nextText="Save & Next" />
                     </div>

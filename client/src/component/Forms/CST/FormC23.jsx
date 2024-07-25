@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormC23() {
-    var formc23 = setLocalStorage("formc23", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    var formc23 = setLocalStorage("formc23", { C20: "", C21: ""})
     const [formC23, setFormC23] = useState(JSON.parse(formc23))
     turnOffbutton();
     return (
@@ -29,13 +29,18 @@ function FormC23() {
                         </div>
                         <div>
                             <h3>
-                                Initial Healthcare Seeking Pathway
+                                Referral Facility
                             </h3>
                         </div>
                     </div>
 
                     <div className="formcontent cont_extra">
-                       
+
+                        <Radio onClick={handleChange(setFormC23)} h3="C.20  What was the final outcome of visiting the referral facility?" CheckbobItems={["Referred to higher facility", "Went against medical advice to different facility","Partially recovered & discharged","Fully Recovered & discharged","Recovered with disability & discharged","Self-Discharged","Admitted in Hospital","Death "]} name="C20" byDefault={formC23.C20} />
+
+                        <Radio onClick={handleChange(setFormC23)} h3="C.21  What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary?" CheckbobItems={["Specify"]} otherArray={[1]} name="C21" byDefault={formC23.C21} />
+
+                        {/* capture using tab camera */}
 
                         <Buttons formName="formc23" formData={formc23} prev="/referral-facility3" next="/barriers-and-facilitators1" prevText="Previous" nextText="Save & Next" />
                     </div>
