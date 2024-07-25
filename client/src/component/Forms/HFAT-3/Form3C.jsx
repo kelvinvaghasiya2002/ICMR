@@ -31,20 +31,56 @@ function Form3C() {
     { key: 'onCallAvailability', label: 'On-call Availability', type: 'radio', options: ['Yes', 'No'] }
   ];
 
-  const initialRows = [
-    { Manpower: 'MO MBBS', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Specialist for Medicine*', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Specialist for Pediatrics*', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Specialist for Ophthalmology*', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Specialist Obstetrics & Gynecologist*', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Staff Nurses', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Pharmacist', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Lab Technician', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Dressor', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Data entry operator', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Sanitation staff', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-    { Manpower: 'Other', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
-  ]
+  const labels = [
+    'MO MBBS',
+    'Specialist for Medicine*',
+    'Specialist for Pediatrics*',
+    'Specialist for Ophthalmology*',
+    'Specialist Obstetrics & Gynecologist*',
+    'Staff Nurses',
+    'Pharmacist',
+    'Lab Technician',
+    'Dressor',
+    'Data entry operator',
+    'Sanitation staff',
+    'Other',
+  ];
+
+  // const initialRows = [
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  //   { Manpower: '', Number: '', availability247: '', onSiteAvailability: '', onCallAvailability: '' },
+  // ]
+
+  const initialRows = labels.map((label) => {
+    if (label === "Other") {
+      return {
+        Manpower: "",
+        otherSpecify: "",
+        Number: "",
+        availability: "",
+        onSite: "",
+        onCall: "",
+      };
+    } else {
+      return {
+        Manpower: "",
+        Number: "",
+        Availability: "",
+        OnSite: "",
+        OnCall: "",
+      };
+    }
+  });
 
   return (
     <div>
@@ -63,7 +99,7 @@ function Form3C() {
 
           <div className="formcontent">
             <h3>3C.1 : Tick the manpower available in your emergency department and provide numbers</h3>
-            <C1 columns={columns} initialRows={initialRows} tableName={"H3C1"} />
+            <C1 columns={columns} initialRows={initialRows} tableName={"H3C1"} labels={labels} />
             <span style={{ fontSize: "1vw" }}>*1 Specialists are on rotation basis at polyclinics as per IPHS guideline for PHCs.</span>
 
             <Radio h3="3C.2 : Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H3C2" onClick={handleChange(setForm3C)} byDefault={form3C.H3C2} />

@@ -18,7 +18,20 @@ function FormA() {
   }, []);
 
   turnOffbutton();
-  var forma = setLocalStorage("forma", { A1: "", A2: "", A3: "", A4: "", A5: "", A6: "", A7: "", A8: "", A9: "", A10: {}, A11: "", A12: "" });
+  var forma = setLocalStorage("forma", {
+    A1: "",
+    A2: "",
+    A3: "",
+    A4: "",
+    A5: "",
+    A6: "",
+    A7: "",
+    A8: "",
+    A9: "",
+    A10: {},
+    A11: "",
+    A12: "",
+  });
   const [formA, setFormA] = useState(JSON.parse(forma));
   const [errors, setErrors] = useState({});
 
@@ -64,11 +77,13 @@ function FormA() {
   const validateForm = () => {
     const newErrors = {};
     if (!formA.A1) newErrors.A1 = "Assessor's Name is required";
+    if (!formA.A4) newErrors.A4 = "Block Name is required";
     if (!formA.A5) newErrors.A5 = 'Healthcare Facility Name is required';
     if (!formA.A6) newErrors.A6 = 'Healthcare Facility Address is required';
     if (!formA.A7) newErrors.A7 = 'Name of the hospital Superintendent is required';
     if (!formA.A8) newErrors.A8 = 'Contact Number of the hospital Superintendent is required';
     if (!formA.A9) newErrors.A9 = 'Email ID is required';
+    if (formA.A10 == {}) newErrors.A10 = "Location is required";
     
     // Validate radio buttons
     if (!formA.A3) newErrors.A3 = 'Code is required';
@@ -103,7 +118,10 @@ function FormA() {
             />
 
             <div>
-              <p className='datetime'>1A.2: Date & Time : <span className='datetime_current'>{formA.A2}</span></p>
+              <p className="datetime">
+                1A.2 : Date & Time :{" "}
+                <span className="datetime_current">{formA.A2}</span>
+              </p>
             </div>
 
             <Radio
@@ -122,6 +140,7 @@ function FormA() {
               byDefault={formA.A4}
               onClick={handleChange(setFormA)}
               dropdownItems={dropdownItems}
+              error={errors.A4}
             />
 
             <InputField
@@ -177,7 +196,12 @@ function FormA() {
               error={errors.A9}
             />
 
-            <LocationButton setter={setFormA} name={"A10"} heading={"1A.10"} />
+            <LocationButton
+              setter={setFormA}
+              name={"A10"}
+              heading={"1A.10"}
+              error={errors.A10}
+            />
 
             <Radio
               h3="1A.11 : Type of Health Care Facility?"
@@ -185,8 +209,6 @@ function FormA() {
               name="A11"
               onClick={handleChange(setFormA)}
               byDefault={formA.A11}
-              required
-              errorMsg={errors.A11}
             />
 
             {formA.A11 === "Tertiary care center" && (
@@ -194,11 +216,13 @@ function FormA() {
                 style={{ display: "flex", flexDirection: "column" }}
                 h3="1A.12 : If Tertiary care center, select the appropriate one."
                 onClick={handleChange(setFormA)}
-                CheckbobItems={["Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College", "Semi govt. hospital", "Private: Medical College/ Corporate hospital/NGO Hospital"]}
+                CheckbobItems={[
+                  "Public: ESI Hospital/ Railway Hospital/Trust Hospital/ Medical College",
+                  "Semi govt. hospital",
+                  "Private: Medical College/ Corporate hospital/NGO Hospital",
+                ]}
                 name="A12"
                 byDefault={formA.A12}
-                required
-                errorMsg={errors.A12}
               />
             )}
 

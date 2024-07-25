@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 const AMB2 = ({ columns, initialRows, name }) => {
-  const [rows, setRows] = useState(initialRows);
+  const [rows, setRows] = useState(() => {
+    const storedRows = localStorage.getItem(name);
+    return storedRows ? JSON.parse(storedRows) : initialRows;
+  });
   const [columnOptions, setColumnOptions] = useState(
     columns.reduce((acc, col) => {
       if (col.type === "radio" || col.type === "checkbox") {

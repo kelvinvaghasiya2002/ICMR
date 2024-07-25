@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 // import './LocationButton.css';
-import '../Form.css'
+import "../Form.css";
 
-const LocationButton = ({ setter, name, heading }) => {
-  const [coordinates, setCoordinates] = useState({ latitude: null, longitude: null });
-  const [locationDetails, setLocationDetails] = useState({ district: '', state: '' });
-  const apiKey = '735aebe1626748f4ae1e2a4145fac884'; // Replace with your OpenCage API key
+const LocationButton = ({ setter, name, heading, error }) => {
+  const [coordinates, setCoordinates] = useState({
+    latitude: null,
+    longitude: null,
+  });
+  const [locationDetails, setLocationDetails] = useState({
+    district: "",
+    state: "",
+  });
+  const apiKey = "735aebe1626748f4ae1e2a4145fac884"; // Replace with your OpenCage API key
+
+  useEffect(() => {
+    let location = localStorage.getItem("CompleteForm");
+    location = JSON.parse(location);
+    setCoordinates(location?.A10 ?? "");
+    setLocationDetails(location?.A10 ?? "");
+  }, []);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -13,15 +26,15 @@ const LocationButton = ({ setter, name, heading }) => {
         (position) => {
           const { latitude, longitude } = position.coords;
           setCoordinates({ latitude, longitude });
-          
+
           fetchLocationDetails(latitude, longitude);
         },
         (error) => {
-          console.error('Error fetching location:', error);
+          console.error("Error fetching location:", error);
         }
       );
     } else {
-      console.error('Geolocation is not supported by this browser.');
+      console.error("Geolocation is not supported by this browser.");
     }
   };
 
@@ -34,20 +47,36 @@ const LocationButton = ({ setter, name, heading }) => {
       if (data.results.length > 0) {
         const components = data.results[0].components;
         setLocationDetails({
-          district: components.county || '',
-          state: components.state || '',
+          district: components.county || "",
+          state: components.state || "",
+        });
+        setter((prev) => {
+          return {
+            ...prev,
+            [name]: {
+              ...prev[name],
+              district: components.county || "",
+              state: components.state || "",
+            },
+          };
         });
 
         setter((prev) => {
           return {
-            ...prev, [name] : { "latitude" : latitude , "longitude" : longitude , "district" : components.county , "state" : components.state }
-          }
-        })
+            ...prev,
+            [name]: {
+              latitude: latitude,
+              longitude: longitude,
+              district: components.county,
+              state: components.state,
+            },
+          };
+        });
       } else {
-        console.error('No results found.');
+        console.error("No results found.");
       }
     } catch (error) {
-      console.error('Error fetching location details:', error);
+      console.error("Error fetching location details:", error);
     }
   };
 
@@ -57,6 +86,7 @@ const LocationButton = ({ setter, name, heading }) => {
       <button className="location-button" onClick={getLocation}>
         Get Current Location
       </button>
+      {error && <p className="error">{error}</p>}
       {coordinates.latitude && coordinates.longitude && (
         <div className="coordinates-display">
           <p>Latitude: {coordinates.latitude}</p>

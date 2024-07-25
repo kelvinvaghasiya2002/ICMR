@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 const AMB1 = ({ columns, initialRows, name }) => {
-  const [rows, setRows] = useState(initialRows);
+  const [rows, setRows] = useState(() => {
+    const storedRows = localStorage.getItem(name);
+    return storedRows ? JSON.parse(storedRows) : initialRows;
+  });
   const [columnOptions, setColumnOptions] = useState(
     columns.reduce((acc, col) => {
       if (col.type === "radio" || col.type === "checkbox") {
@@ -68,6 +71,7 @@ const AMB1 = ({ columns, initialRows, name }) => {
                     <input
                       className="tableinput"
                       type="text"
+                      disabled={row["Functional"] == "No" || !row["Functional"]}
                       value={row[col.key]}
                       onChange={(e) =>
                         handleInputChange(rowIndex, col.key, e.target.value)
