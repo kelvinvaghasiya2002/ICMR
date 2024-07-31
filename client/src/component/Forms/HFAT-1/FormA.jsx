@@ -11,6 +11,8 @@ import Heading from '../../Heading/Heading';
 import DropDown from "../child-comp/DropDown.jsx";
 import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
 import LocationButton from '../child-comp/Location.jsx';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function FormA() {
   useEffect(() => {
@@ -34,17 +36,48 @@ function FormA() {
   });
   const [formA, setFormA] = useState(JSON.parse(forma));
   const [errors, setErrors] = useState({});
-
+  const [showOverlay, setShowOverlay] = useState(false);
   const date = new Date();
 
   useEffect(() => {
     setFormA((prevValue) => {
       return {
         ...prevValue,
-        A2: (formA.A2 === "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : formA.A2,
+        A2: (prevValue.A2 === "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : prevValue.A2,
       };
     });
   }, []);
+
+  const validateForm = () => {
+    const newErrors = {};
+    newErrors.A1 = validateName(formA.A1) || validateRequired(formA.A1);
+    newErrors.A5 = validateRequired(formA.A5);
+    newErrors.A6 = validateRequired(formA.A6);
+    newErrors.A7 = validateRequired(formA.A7) || validateName(formA.A7);
+    newErrors.A8 = validateNumber(formA.A8) || validateRequired(formA.A8);
+    newErrors.A9 = validateEmail(formA.A9) || validateRequired(formA.A9);
+
+    if (!formA.A3) newErrors.A3 = 'Code is required';
+    if (!formA.A11) newErrors.A11 = 'Type of Health Care Facility is required';
+    if (formA.A11 === "Tertiary care center" && !formA.A12) newErrors.A12 = 'Appropriate tertiary care center is required';
+
+    setErrors(newErrors);
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(formA[field]);
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [formA]);
 
   useEffect(() => {
     if (formA.A11 === "District Hospital (DH)") {
@@ -74,24 +107,83 @@ function FormA() {
     }
   }, [formA.A3]);
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formA.A1) newErrors.A1 = "Assessor's Name is required";
-    if (!formA.A4) newErrors.A4 = "Block Name is required";
-    if (!formA.A5) newErrors.A5 = 'Healthcare Facility Name is required';
-    if (!formA.A6) newErrors.A6 = 'Healthcare Facility Address is required';
-    if (!formA.A7) newErrors.A7 = 'Name of the hospital Superintendent is required';
-    if (!formA.A8) newErrors.A8 = 'Contact Number of the hospital Superintendent is required';
-    if (!formA.A9) newErrors.A9 = 'Email ID is required';
-    if (formA.A10 == {}) newErrors.A10 = "Location is required";
-    
-    // Validate radio buttons
-    if (!formA.A3) newErrors.A3 = 'Code is required';
-    if (!formA.A11) newErrors.A11 = 'Type of Health Care Facility is required';
-    if (formA.A11 === "Tertiary care center" && !formA.A12) newErrors.A12 = 'Appropriate tertiary care center is required';
+  const isFormValid = () => {
+    const requiredFields = ['A1', 'A3', 'A5', 'A6', 'A7', 'A8', 'A9', 'A11'];
+    if (formA.A11 === "Tertiary care center") {
+      requiredFields.push('A12');
+    }
+    const missingFields = requiredFields.filter(field => !formA[field] || formA[field].trim() === '');
+    return { isValid: missingFields.length === 0, missingFields };
+  };
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [formA]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      case 'A1':
+      case 'A5':
+      case 'A6':
+      case 'A7':
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formA[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      case 'A8':
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formA[name];
+          e.preventDefault();
+        }
+        break;
+      case 'A9':
+        // For email, we'll allow typing and validate on blur or submit
+        validatedValue = value;
+        break;
+      default:
+        break;
+    }
+
+    setFormA(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case 'A1':
+      case 'A5':
+      case 'A6':
+      case 'A7':
+      case 'A8':
+        error = error || validateRequired(validatedValue);
+        break;
+      case 'A9':
+        error = validateEmail(validatedValue) || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
   };
 
   return (
@@ -109,9 +201,9 @@ function FormA() {
             <InputField
               name="A1"
               h3="1A.1 : Assessor's Name: "
-              onChange={handleChange(setFormA)}
+              onChange={handleChangeWithValidation}
               value={formA.A1}
-              regex={/^[A-Za-z ]+$/}
+              // regex={/^[A-Za-z ]+$/}
               placeholder="Type here"
               required
               error={errors.A1}
@@ -146,8 +238,8 @@ function FormA() {
             <InputField
               name="A5"
               value={formA.A5}
-              regex={/^[A-Za-z ]+$/}
-              onChange={handleChange(setFormA)}
+              // regex={/^[A-Za-z ]+$/}
+              onChange={handleChangeWithValidation}
               h3="1A.5 : Healthcare Facility Name:  "
               placeholder="Type here"
               required
@@ -156,8 +248,8 @@ function FormA() {
             <InputField
               name="A6"
               value={formA.A6}
-              regex={/^[A-Za-z0-9_.-]+$/}
-              onChange={handleChange(setFormA)}
+              // regex={/^[A-Za-z0-9_.-]+$/}
+              onChange={handleChangeWithValidation}
               h3="1A.6 : Healthcare Facility Address:  "
               placeholder="Type here"
               required
@@ -166,7 +258,7 @@ function FormA() {
             <InputField
               name="A7"
               value={formA.A7}
-              onChange={handleChange(setFormA)}
+              onChange={handleChangeWithValidation}
               h3="1A.7 : Name of the hospital Superintendent:"
               placeholder="Type here"
               required
@@ -175,11 +267,11 @@ function FormA() {
             <InputField
               name="A8"
               value={formA.A8}
-              onChange={handleChange(setFormA)}
+              onChange={handleChangeWithValidation}
               h3="1A.8 : Contact Number of the hospital Superintendent:"
               placeholder="Type here"
               required
-              regex={/^[0-9]{10,10}$/}
+              // regex={/^[0-9]{10,10}$/}
               maxLength={10}
               errorMsg="Contact number must be 10 digits"
               error={errors.A8}
@@ -187,20 +279,27 @@ function FormA() {
             <InputField
               name="A9"
               value={formA.A9}
-              onChange={handleChange(setFormA)}
+              onChange={handleChangeWithValidation}
               h3="1A.9 : Email ID:"
               placeholder="Type here"
               required
-              regex={/^\S+@\S+\.\S+$/}
+              // regex={/^\S+@\S+\.\S+$/}
               errorMsg="Invalid email format"
               error={errors.A9}
             />
 
             <LocationButton
-              setter={setFormA}
-              name={"A10"}
+              // setter={setFormA}
+              // name={"A10"}
               heading={"1A.10"}
-              error={errors.A10}
+              // error={errors.A10}
+              setForm={setFormA}
+              form={formA}
+              placeHolder1="Latitude"
+              placeHolder2="Longitude"
+              label1="Lat"
+              label2="Lng"
+              name="A10"
             />
 
             <Radio
@@ -226,20 +325,21 @@ function FormA() {
               />
             )}
 
-            <Buttons
-              formName="forma"
-              formData={formA}
-              prevText=""
-              nextText="Save & Next"
-              prev=""
-              next="/infrastructure"
-              validateForm={validateForm}
-            />
-            {Object.keys(errors).length > 0 && (
-              <div className="error-msg">
-                Please fill out all required fields before proceeding.
-              </div>
-            )}
+            <div className="button-container">
+              <Buttons
+                formName="forma"
+                formData={formA}
+                prevText=""
+                nextText="Save & Next"
+                prev=""
+                next="/infrastructure"
+                validateForm={validateForm}
+              />
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div>
         </div>
       </section>

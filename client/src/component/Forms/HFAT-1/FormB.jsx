@@ -9,6 +9,8 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function FormB() {
   var formb = setLocalStorage("formb", { B1: "", B2: "", B3: "", B4: "", B5: "", B6: "", B7: "", B8: [], B9: "", B10: [], B11: [], B12: [""], B13: [], B14: "", B15: "" }
@@ -18,6 +20,7 @@ function FormB() {
 
   const [formB, setFormB] = useState(JSON.parse(formb));
   const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
   turnOffbutton();
 
@@ -25,39 +28,149 @@ function FormB() {
     AOS.init({ duration: 2000 })
   }, []);
 
-  useEffect(()=>{
-    if(formB.B2 === "No"){
-      setFormB({...formB, B3: "" , B4 : ""})
+  useEffect(() => {
+    if (formB.B2 === "No") {
+      setFormB({ ...formB, B3: "", B4: "" })
     }
 
-    if(formB.B14 === "Yes"){
-      setFormB({...formB, B15: ""})
+    if (formB.B14 === "Yes") {
+      setFormB({ ...formB, B15: "" })
     }
-  } , [formB.B2 , formB.B14])
+  }, [formB.B2, formB.B14])
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formB.B1) newErrors.B1 = "This field is required";
-    if (!formB.B2) newErrors.B2 = "This field is required";
-    if (!formB.B3) newErrors.B3 = "This field is required";
-    if (!formB.B4) newErrors.B4 = "This field is required";
-    if (!formB.B5) newErrors.B5 = "This field is required";
-    if (!formB.B6) newErrors.B6 = "This field is required";
-    if (!formB.B7) newErrors.B7 = "This field is required";
-    if (!formB.B8) newErrors.B8 = "This field is required";
-    if (!formB.B9) newErrors.B9 = "This field is required";
-    if (!formB.B14) newErrors.B14 = "This field is required";
-    if (!formB.B15) newErrors.B15 = "This field is required";
+    // if (!formB.B1) newErrors.B1 = "This field is required";
+    // if (!formB.B2) newErrors.B2 = "This field is required";
+    // if (!formB.B3) newErrors.B3 = "This field is required";
+    // if (!formB.B4) newErrors.B4 = "This field is required";
+    // if (!formB.B5) newErrors.B5 = "This field is required";
+    // if (!formB.B6) newErrors.B6 = "This field is required";
+    // if (!formB.B7) newErrors.B7 = "This field is required";
+    // if (!formB.B8) newErrors.B8 = "This field is required";
+    // if (!formB.B9) newErrors.B9 = "This field is required";
+    // if (!formB.B14) newErrors.B14 = "This field is required";
+    // if (!formB.B15) newErrors.B15 = "This field is required";
 
 
-    if (formB.B10.length === 0) newErrors.B10 = "Select at least one option";
-    if (formB.B11.length === 0) newErrors.B11 = "Select at least one option";
-    if (formB.B12.length === 0) newErrors.B12 = "Select at least one option";
-    if (formB.B13.length === 0) newErrors.B13 = "Select at least one option";
+    // if (formB.B10.length === 0) newErrors.B10 = "Select at least one option";
+    // if (formB.B11.length === 0) newErrors.B11 = "Select at least one option";
+    // if (formB.B12.length === 0) newErrors.B12 = "Select at least one option";
+    // if (formB.B13.length === 0) newErrors.B13 = "Select at least one option";
+
+    // setErrors(newErrors);
+    // return Object.keys(newErrors).length === 0;
+
+    newErrors.B1 = validateNumber(formB.B1) || validateRequired(formB.B1);
+    newErrors.B3 = validateNumber(formB.B3) || validateRequired(formB.B1);
+    newErrors.B5 = validateNumber(formB.B5) || validateRequired(formB.B5);
+    newErrors.B6 = validateNumber(formB.B6) || validateRequired(formB.B6);
+    newErrors.B15 = validateRequired(formB.B6);
+
+    if (!formB.B2) newErrors.B2 = 'Whether bed present for emergency care is required';
+    if (formB.B2 === "Yes" && !formB.B3 && !formB.B4) {
+      newErrors.B3 = validateNumber(formB.B6) || validateRequired(formB.B6);
+      newErrors.B3 = 'Beds available for emergency care is required';
+      newErrors.B4 = validateRequired(formB.B4);
+    }
+    if (formB.B14 === "No" && !formB.B15) {
+      newErrors.B15 = validateName(formB.B15) || validateRequired(formB.B15);
+      newErrors.B15 = "How patients are transfered is required";
+    }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
   };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(formB[field]);
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [formB]);
+
+  const isFormValid = () => {
+    const requiredFields = ['B1', 'B2', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12', 'B13', 'B14'];
+    if (formB.B2 === "Yes") {
+      requiredFields.push('B3');
+      requiredFields.push('B4');
+    }
+    if (formB.B14 === "No") {
+      requiredFields.push('B15');
+    }
+    const missingFields = requiredFields.filter(field => !formB[field] || (typeof formB[field] === 'string' && formB[field].trim() === ''));
+    return { isValid: missingFields.length === 0, missingFields };
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [formB]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      case 'B15':
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formB[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      case 'B1':
+      case 'B3':
+      case 'B5':
+      case 'B6':
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formB[name];
+          e.preventDefault();
+        }
+        break;
+      default:
+        break;
+    }
+
+    setFormB(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case 'B1':
+      case 'B5':
+      case 'B6':
+      case 'B15':
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+  };
+
 
   return (
     <div>
@@ -76,28 +189,27 @@ function FormB() {
 
           <div className="formcontent">
 
-            <InputField name="B1" h3="1B.1 : How many beds are available for the in-patient department (IPD)?" value={formB.B1} onChange={handleChange(setFormB)} placeholder="Type here" required={true} errorMsg={errors.B1}/>
+            <InputField name="B1" h3="1B.1 : How many beds are available for the in-patient department (IPD)?" value={formB.B1} onChange={handleChangeWithValidation} placeholder="Type here" required errorMsg={errors.B1} />
 
             <Radio h3="1B.2 : Whether any dedicated bed present for emergency care?" CheckbobItems={["Yes", "No"]} byDefault={formB.B2} onClick={handleChange(setFormB)} name="B2" />
 
             {
               (formB.B2 === "Yes") &&
               <>
-                <InputField name="B3" onChange={handleChange(setFormB)} h3="1B.3 : How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" required={true} errorMsg={errors.B3}/>
+                <InputField name="B3" onChange={handleChangeWithValidation} h3="1B.3 : How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" required={true} errorMsg={errors.B3} />
 
-                <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={["Red", "Yellow", "Green"]} otherArray={[1, 1, 1]} setter={setFormB} name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} st={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius: "0" }} />
+                <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={["Red", "Yellow", "Green"]} otherArray={[1, 1, 1]}  name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} st={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius: "0" }} />
               </>
             }
 
-            <InputField name="B5" onChange={handleChange(setFormB)} h3="1B.5 : What is the average number of patients presenting to OPD per month?" value={formB.B5} placeholder="Type here" required={true} errorMsg={errors.B5} />
+            <InputField name="B5" onChange={handleChangeWithValidation} h3="1B.5 : What is the average number of patients presenting to OPD per month?" value={formB.B5} placeholder="Type here" required={true} errorMsg={errors.B5} />
 
-            <InputField name="B6" onChange={handleChange(setFormB)} value={formB.B6} p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" required={true}
+            <InputField name="B6" onChange={handleChangeWithValidation} value={formB.B6} p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" required={true}
               errorMsg={errors.B6} />
 
-            <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0, 0, 1, 0]} byDefault={formB.B7} setter={setFormB} required={true}
-              errorMsg={errors.B7}/>
+            <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0, 0, 1, 0]} byDefault={formB.B7}  />
 
-            <Checkbox h3="1B.8 : Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} setFunction={setFormB} StateValue={formB} array={formB.B8}  name="B8" />
+            <Checkbox h3="1B.8 : Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} setFunction={setFormB} StateValue={formB} array={formB.B8} name="B8" />
 
             <Radio h3="1B.9 : Is there a blood storage facility inside the emergency?" CheckbobItems={["Yes", "No"]} byDefault={formB.B9} onClick={handleChange(setFormB)} name="B9" />
 
@@ -108,7 +220,8 @@ function FormB() {
                 "Designated parking area for Ambulance, Staff and Public",
                 "Smooth entry area with adequate wheelchair, trolley and stretcher bay"
               ]}
-              name="B10" setFunction={setFormB} StateValue={formB} array={formB.B10}               required={true}
+              name="B10" setFunction={setFormB} StateValue={formB} array={formB.B10} 
+              // required={true}
               errorMsg={errors.B10}
             />
 
@@ -136,7 +249,7 @@ function FormB() {
               ]}
               name="B11"
               setFunction={setFormB} StateValue={formB} array={formB.B11}
-              required={true}
+              // required={true}
               errorMsg={errors.B11}
             />
 
@@ -184,17 +297,20 @@ function FormB() {
             />
 
             {
-              (formB.B14 === "No") && 
-              <InputField name="B15" onChange={handleChange(setFormB)} h3="1B.15 : If ambulances are not there, how are patients transferred?" value={formB.B15} placeholder="Type here"               required={true}
-              errorMsg={errors.B15} />
+              (formB.B14 === "No") &&
+              <InputField name="B15" onChange={handleChangeWithValidation} h3="1B.15 : If ambulances are not there, how are patients transferred?" value={formB.B15} placeholder="Type here" required={true}
+                errorMsg={errors.B15} />
             }
 
-            <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources" validateForm={validateForm} />
-            {Object.keys(errors).length > 0 && (
-              <div className="error-msg">
-                Please fill out all required fields before proceeding.
-              </div>
-            )}
+            <div className="button-container">
+              <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources" 
+              //validateForm={validateForm}
+               />
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div>
         </div>
       </section>

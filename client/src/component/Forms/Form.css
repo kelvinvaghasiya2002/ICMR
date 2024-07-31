@@ -480,5 +480,15 @@ th {
     color: #4d4d4d;
     /* text-align: center; */
   }
-  
+
+  .button-container {
+    position: relative;
+    display: inline-block;
+  }
+
+.error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
   
