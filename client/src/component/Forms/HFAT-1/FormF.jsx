@@ -9,13 +9,16 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function FormF() {
   var formf = setLocalStorage("formf",
     { H1F1: "", H1F2: "", H1F3: "", H1F4: [], H1F5: "", H1F6: [], H1F7: "", H1F8: "", H1F9: "" });
 
   const [formF, setFormF] = useState(JSON.parse(formf));
-  const [formError, setFormError] = useState("");
+  const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
     if (formF.H1F5 === "No") {
@@ -41,43 +44,129 @@ function FormF() {
   turnOffbutton();
 
   const validateForm = () => {
-    let error = "";
+    const newErrors = {};
 
-    if (!formF.H1F1) {
-      error = "1F.1 is required";
-    } else if (formF.H1F1 === "Yes" && !formF.H1F2) {
-      error = "1F.2 is required";
-    } else if (!formF.H1F3) {
-      error = "1F.3 is required";
-    } else if (formF.H1F4.filter(item => item !== "").length === 0) {
-      error = "Select at least one key indicator in section 1F.4";
-    } else if (!formF.H1F5) {
-      error = "1F.5 is required";
-    } else if (formF.H1F5 === "Yes" && formF.H1F6.filter(item => item !== "").length === 0) {
-      error = "Select at least one time bound management option in section 1F.6";
-    } else if (formF.H1F1 === "Yes" && !formF.H1F7) {
-      error = "1F.7 is required";
-    } else if (!formF.H1F8) {
-      error = "1F.8 is required";
-    } else if (!formF.H1F9) {
-      error = "1F.9 is required";
+    if (!formF.H1F1) newErrors.H1F1 = 'Required to check the facility have a Hospital Management Information System (HMIS)';
+    if (formF.H1F1 === 'Yes' && !formF.H1F2 && !formF.H1F7) {
+      newErrors.H1F2 = 'Required to check facility do complete reporting of indicators on emergency care in HMIS';
+      newErrors.H1F7 = 'Required to check Whether hospital administrators/ Medical Superintendent uses or reviews the data for quality improvement';
     }
 
-    setFormError(error);
-    return !error;
+    newErrors.H1F3 = validateNumber(formF.H1F3) || validateRequired(formF.H1F3)
+
+    if (!formF.H1F5) newErrors.H1F5 = 'Time bound is required';
+    if (formF.H1F5 === 'Yes' && !formF.H1F6) newErrors.H1F6 = 'Required to add Time and Date';
+
+    setErrors(newErrors);
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+    // let error = "";
+
+    // if (!formF.H1F1) {
+    //   error = "1F.1 is required";
+    // } else if (formF.H1F1 === "Yes" && !formF.H1F2) {
+    //   error = "1F.2 is required";
+    // } else if (!formF.H1F3) {
+    //   error = "1F.3 is required";
+    // } else if (formF.H1F4.filter(item => item !== "").length === 0) {
+    //   error = "Select at least one key indicator in section 1F.4";
+    // } else if (!formF.H1F5) {
+    //   error = "1F.5 is required";
+    // } else if (formF.H1F5 === "Yes" && formF.H1F6.filter(item => item !== "").length === 0) {
+    //   error = "Select at least one time bound management option in section 1F.6";
+    // } else if (formF.H1F1 === "Yes" && !formF.H1F7) {
+    //   error = "1F.7 is required";
+    // } else if (!formF.H1F8) {
+    //   error = "1F.8 is required";
+    // } else if (!formF.H1F9) {
+    //   error = "1F.9 is required";
+    // }
+
+    // setFormError(error);
+    // return !error;
   };
 
-  const handleNext = () => {
-    if (validateForm()) {
-      // Proceed to next page logic here
-      console.log("Form is valid, proceed to next page");
-      // Implement navigation logic here
+  // const handleNext = () => {
+  //   if (validateForm()) {
+  //     // Proceed to next page logic here
+  //     console.log("Form is valid, proceed to next page");
+  //     // Implement navigation logic here
+  //   } else {
+  //     // Display errors or prevent navigation
+  //     console.error("Form validation failed");
+  //     // Optionally, display errors to the user
+  //   }
+  // };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(formF[field]);
+      });
+      setErrors(newErrors);
     } else {
-      // Display errors or prevent navigation
-      console.error("Form validation failed");
-      // Optionally, display errors to the user
+      setErrors({});
     }
+  }, [formF]);
+
+  const isFormValid = () => {
+    const requiredFields = ['H1F1', 'H1F3', 'H1F4', 'H1F5', 'H1F6', 'H1F8', 'H1F9'];
+    if (formF.H1F5 === "Yes") {
+      requiredFields.push('H1F6');
+    }
+    const missingFields = requiredFields.filter(field => !formF[field] || (typeof formF[field] === 'string' && formF[field].trim() === ''));
+    return { isValid: missingFields.length === 0, missingFields };
   };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [formF]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      case 'H1F3':
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formF[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      default:
+        break;
+    }
+
+    setFormF(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case 'H1F3':
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+  };
+
 
   return (
     <div>
@@ -114,11 +203,11 @@ function FormF() {
 
             <InputField
               value={formF.H1F3}
-              onChange={handleChange(setFormF)}
+              onChange={handleChangeWithValidation}
               name="H1F3"
               h3="1F.3 : How many personnel are available for managing information system?"
               placeholder="Type here"
-              required={true}
+              required
             />
 
             <Checkbox
@@ -176,8 +265,7 @@ function FormF() {
               CheckbobItems={["Yes", "No"]}
             />
 
-            {formError && <p className="error-msg">{formError}</p>}
-
+            <div className="button-container">
             <Buttons
               formName="formf"
               formData={formF}
@@ -185,8 +273,12 @@ function FormF() {
               nextText="Save & Next"
               prev="/emergencycareservices"
               next="/finance"
-              onClick={handleNext}
             />
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div>
         </div>
       </section>

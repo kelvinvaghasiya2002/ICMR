@@ -8,6 +8,8 @@ import LastButton from '../child-comp/LastButton';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function FormJ() {
   useEffect(() => {
@@ -18,13 +20,71 @@ function FormJ() {
   const formj = setLocalStorage("formj", { H1J1: "", H1J2: "" });
   const [formJ, setFormJ] = useState(JSON.parse(formj));
   const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formJ.H1J1) newErrors.H1J1 = "This field is required";
-    if (!formJ.H1J2) newErrors.H1J2 = "This field is required";
+    // if (!formJ.H1J1) newErrors.H1J1 = "This field is required";
+    // if (!formJ.H1J2) newErrors.H1J2 = "This field is required";
+    // setErrors(newErrors);
+    // return Object.keys(newErrors).length === 0;
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(formJ[field]);
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [formJ]);
+
+  const isFormValid = () => {
+    const requiredFields = ['H1J1', 'H1J2'];
+    const missingFields = requiredFields.filter(field => !formJ[field] || (typeof formJ[field] === 'string' && formJ[field].trim() === ''));
+    return { isValid: missingFields.length === 0, missingFields };
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [formJ]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      default:
+        break;
+    }
+
+    setFormJ(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
   };
 
   return (
@@ -46,7 +106,6 @@ function FormJ() {
               h3="1J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?"
               CheckbobItems={["Yes", "No"]}
               errorMsg={errors.H1J1}
-              required={true}
             />
             <Radio
               byDefault={formJ.H1J2}
@@ -55,20 +114,21 @@ function FormJ() {
               h3="1J.2 : Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?"
               CheckbobItems={["Yes", "No"]}
               errorMsg={errors.H1J2}
-              required={true}
             />
+<div className="button-container">
             <LastButton
               formName="formj"
               formData={formJ}
               prev="/processpoliciessops"
               MainForm={"HFAT-1"}
-              validateForm={validateForm}
+              // validateForm={validateForm}
             />
-            {Object.keys(errors).length > 0 && (
-              <div className="error-msg">
-                Please fill out all required fields before proceeding.
-              </div>
-            )}
+
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div> 
         </div>
       </section>
