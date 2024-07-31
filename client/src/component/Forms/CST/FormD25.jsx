@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import FormC23 from './FormC23.jsx';
 
 function FormD25() {
     var formd25 = setLocalStorage("formd25", { D2: [], D3: [], D4: [] })
@@ -87,7 +88,7 @@ function FormD25() {
                             name="D4" setFunction={setFormD25} StateValue={formD25} array={formD25.D4}
                         />
 
-                        <Buttons formName="formd25" formData={formd25} prev="/barriers-and-facilitators1" next="/costing" prevText="Previous" nextText="Save & Next" />
+                        <Buttons formName="formd25" formData={formD25} prev={(FormC23.C21==="") ?"/barriers-and-facilitators1" :"/referral-facility4"} next="/costing" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

@@ -17,6 +17,12 @@ function FormC21() {
     var formc21 = setLocalStorage("formc21", { C5: "", C6: "", C7: ""})
     const [formC21, setFormC21] = useState(JSON.parse(formc21))
     turnOffbutton();
+
+    useEffect(() => {
+        if (formC21.C6 !== "Government ambulance") {
+          setFormC21({ ...formC21,  C7: "" })
+        }
+      }, [formC21.C6])
     return (
         <div>
             <Heading h2="Community Survey Tool"></Heading>
@@ -40,9 +46,14 @@ function FormC21() {
 
                     <Radio onClick={handleChange(setFormC21)} h3="C.6 What type of transport was used to reach the referred health care facility?" CheckbobItems={["Government ambulance", "Private ambulance","Two-Wheeler (Bicycle)","Two-Wheeler (Motorcycle)","Three-Wheeler (Manual Rickshaw, etc.)","Three-Wheeler (Auto Rickshaw/ E-rickshaw, etc.)","Four-Wheeler (Car/Jeep/ etc.)","Agricultural Vehicle (Tractor)","Others"]} name="C6" otherArray={[0, 0,0,0,0,0,0,0,1]} byDefault={formC21.C6} />
 
-                    <Radio onClick={handleChange(setFormC21)} h3="C.7  If Govt. Ambulance, Which ambulance service you opted for?" CheckbobItems={["102", "108","Other","Don’t know"]} name="C7" otherArray={[0, 0,1,0]} byDefault={formC21.C7} />
+                    {
+                     (formC21.C6==="Government ambulance") &&
+                        <>
+                         <Radio onClick={handleChange(setFormC21)} h3="C.7  If Govt. Ambulance, Which ambulance service you opted for?" CheckbobItems={["102", "108","Other","Don’t know"]} name="C7" otherArray={[0, 0,1,0]} byDefault={formC21.C7} />
+                        </>
+                    }
 
-                        <Buttons formName="formc21" formData={formc21} prev="/referral-facility1" next="/referral-facility3" prevText="Previous" nextText="Save & Next" />
+                        <Buttons formName="formc21" formData={formC21} prev="/referral-facility1" next="/referral-facility3" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

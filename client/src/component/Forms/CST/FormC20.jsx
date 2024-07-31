@@ -17,6 +17,12 @@ function FormC20() {
     var formc20 = setLocalStorage("formc20", { C1: "", C2: [], C3: "", C4: ""})
     const [formC20, setFormC20] = useState(JSON.parse(formc20))
     turnOffbutton();
+
+    useEffect(() => {
+        if (formC20.C1 !== "Medical team") {
+          setFormC20({ ...formC20, C2: [], C3: "", C4: "" })
+        }
+      }, [formC20.C1])
     return (
         <div>
             <Heading h2="Community Survey Tool"></Heading>
@@ -38,7 +44,10 @@ function FormC20() {
 
                         <Radio onClick={handleChange(setFormC20)} h3="C.1  Who took the decision to refer/ shift the patient to another facility?  " CheckbobItems={["Medical team", "Self/family","Other"]} name="C1" otherArray={[0, 0,1]} byDefault={formC20.C1} />
 
-                        <Checkbox
+                        {
+                            (formC20.C1 === "Medical team") &&
+                            <>
+                             <Checkbox
                             h3="C.2  If referral was suggested by the medical team, what was the reason given for referral? "
                             CheckbobItems={[
                                 "Serious illness requiring higher centre",
@@ -58,7 +67,10 @@ function FormC20() {
 
                         <Radio onClick={handleChange(setFormC20)} h3="C.4  If referred by a health facility, was a referral slip given?" CheckbobItems={["Yes", "No", "Don’t know"]} name="C4" byDefault={formC20.C4} />
 
-                        <Buttons formName="formc20" formData={formc20} prev="/initialhealthcareseekingpathway-3" next="/referral-facility2" prevText="Previous" nextText="Save & Next" />
+                            </>
+                        }
+
+                        <Buttons formName="formc20" formData={formC20} prev="/initialhealthcareseekingpathway-3" next="/referral-facility2" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

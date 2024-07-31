@@ -17,6 +17,13 @@ function FormC22() {
     var formc22 = setLocalStorage("formc22", { C8: "", C9_1: "",C9_2:"", C10_1: "",C10_2:"", C11: "", C12: "", C13: "", C14: "", C15: "", C16: "", C17: "", C18: "", C19: "" })
     const [formC22, setFormC22] = useState(JSON.parse(formc22))
     turnOffbutton();
+
+    useEffect(() => {
+        if (formC22.C18 !== "Yes") {
+          setFormC22({ ...formC22, C19: "" })
+        }
+    
+      }, [formC22.C18])
     return (
         <div>
             <Heading h2="Community Survey Tool"></Heading>
@@ -66,9 +73,16 @@ function FormC22() {
 
                         <Radio onClick={handleChange(setFormC22)} h3="C.18  Were any laboratory &/or radiology investigations done at the HCF?" CheckbobItems={["Yes", "No","Do not know"]} name="C18" byDefault={formC22.C18} />
 
-                        <Radio onClick={handleChange(setFormC22)} h3="C.19  How much time was spent in investigations at referral HCF?" CheckbobItems={["Less than 30 minutes", "30 minutes to 1 hour","More than 1 hour","Do not Know"]} name="C19" byDefault={formC22.C19} />
+                        {
+                            (formC22.C18==="Yes") &&
+                            <>
+                             <Radio onClick={handleChange(setFormC22)} h3="C.19  How much time was spent in investigations at referral HCF?" CheckbobItems={["Less than 30 minutes", "30 minutes to 1 hour","More than 1 hour","Do not Know"]} name="C19" byDefault={formC22.C19} />
+                            </>
+                        }
 
-                        <Buttons formName="formc22" formData={formc22} prev="/referral-facility2" next="/referral-facility4" prevText="Previous" nextText="Save & Next" />
+                       
+
+                        <Buttons formName="formc22" formData={formC22} prev="/referral-facility2" next="/referral-facility4" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

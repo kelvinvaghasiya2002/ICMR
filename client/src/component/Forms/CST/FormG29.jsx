@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormG29() {
-    var formg29 = setLocalStorage("formg29", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    var formg29 = setLocalStorage("formg29", {G1:"" })
     const [formG29, setFormG29] = useState(JSON.parse(formg29))
     turnOffbutton();
     return (
@@ -36,9 +36,9 @@ function FormG29() {
 
                     <div className="formcontent cont_extra">
                     
-                    <InputField h3="G. Based on your experience what suggestion would you like to make to the government to improve the emergency services in your district? (Open-ended)" name="G1" placeholder="Type here"/>
+                    <InputField h3="G. Based on your experience what suggestion would you like to make to the government to improve the emergency services in your district? (Open-ended)" name="G1" placeholder="Type here"  value={formG29.G1} onChange={handleChange(setFormG29)} />
 
-                        <Buttons formName="formg29" formData={formg29} prev="/verbal-&-social-autopsy2" next="/household-schedule1" prevText="Previous" nextText="Save & Next" />
+                        <Buttons formName="formg29" formData={formG29} prev="/verbal-&-social-autopsy2" next="/household-schedule1" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

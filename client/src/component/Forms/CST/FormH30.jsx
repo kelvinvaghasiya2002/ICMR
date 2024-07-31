@@ -14,9 +14,16 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormH30() {
-    var formh30 = setLocalStorage("formh30", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "", B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "", B17_2: "", B18: "", B19: "", B20: "", B21: "", B22_1: "", B22_2: "", B23_1: "", B23_2: "", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    var formh30 = setLocalStorage("formh30", { H1:"",H2:"",H3:"",H4:"",H4:"",H5:"",H6:"",H7:"",H8:"",H9:"",H10:[],H11:"",H12:[],H13:"",H14:"",H15:"",H16:"",H17:""})
     const [formH30, setFormH30] = useState(JSON.parse(formh30))
     turnOffbutton();
+
+    useEffect(() => {
+        if (formH30.H16 !== "Yes") {
+          setFormH30({ ...formH30, H17:"" })
+        }
+    
+      }, [formH30.H16])
     return (
         <div>
             <Heading h2="Community Survey Tool"></Heading>
@@ -36,8 +43,8 @@ function FormH30() {
 
                     <div className="formcontent cont_extra">
                         {/* 1 to 17 */}
-                        <InputField h3="H.1	Name of the Head of the Household: " name="H1" placeholder="Type here" />
-                        <InputField h3="H.2	Age (in Years): " name="H2" placeholder="Type here" />
+                        <InputField h3="H.1	Name of the Head of the Household: " name="H1" placeholder="Type here"  value={formH30.H1} onChange={handleChange(setFormH30)}  />
+                        <InputField h3="H.2	Age (in Years): " name="H2" placeholder="Type here" value={formH30.H2} onChange={handleChange(setFormH30)} />
                         <Radio
                             h3="H.3 Sex:"
                             CheckbobItems={[
@@ -47,6 +54,8 @@ function FormH30() {
                             ]}
                             otherArray={[0, 0, 1]}
                             name="H3"
+                            byDefault={formH30.H3}
+                            onClick={handleChange(setFormH30)}
                         />
 
                         <Radio
@@ -66,6 +75,8 @@ function FormH30() {
                             ]}
                             otherArray={[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]}
                             name="H4"
+                            byDefault={formH30.H4}
+                            onClick={handleChange(setFormH30)}
                         />
 
                         <Radio
@@ -80,6 +91,8 @@ function FormH30() {
                                 "Prefer not to disclose/ Refuse"
                             ]}
                             name="H5"
+                            byDefault={formH30.H5}
+                            onClick={handleChange(setFormH30)}
                         />
 
                         <Radio
@@ -94,6 +107,8 @@ function FormH30() {
                                 "Prefer not to disclose/ Refuse"
                             ]}
                             name="H6"
+                            byDefault={formH30.H6}
+                            onClick={handleChange(setFormH30)}
                         />
 
                         <Radio
@@ -109,6 +124,8 @@ function FormH30() {
                                 "Prefer not to disclose/ Refuse"
                             ]}
                             name="H7"
+                            byDefault={formH30.H7}
+                            onClick={handleChange(setFormH30)}
                         />
 
                         <Radio
@@ -128,6 +145,8 @@ function FormH30() {
                                 "Prefer not to disclose/ Refuse"
                             ]}
                             name="H8"
+                            byDefault={formH30.H8}
+                            onClick={handleChange(setFormH30)}
                         />
 
                         <Radio
@@ -138,9 +157,11 @@ function FormH30() {
                             ]}
                             otherArray={[1, 0]}
                             name="H9"
+                            byDefault={formH30.H9}
+                            onClick={handleChange(setFormH30)}
                         />
 
-                        {/* <Checkbox
+                        <Checkbox
                             h3="H.10 What type of Transport facility available at home:"
                             CheckbobItems={[
                                 "None",
@@ -153,7 +174,8 @@ function FormH30() {
                             ]}
                             otherArray={[0, 0, 0, 0, 0, 0, 1]}
                             name="H10"
-                        /> */}
+                            setFunction={setFormH30} StateValue={formH30} array={formH30.H10}
+                        />
 
                         <Radio
                             h3="H.11 Do you have any medical insurance?"
@@ -163,9 +185,11 @@ function FormH30() {
                                 "Not aware"
                             ]}
                             name="H11"
+                            byDefault={formH30.H11}
+                            onClick={handleChange(setFormH30)}
                         />
 
-                        {/* <Checkbox
+                        <Checkbox
                             h3="H.12 If Yes, which of the following Household Medical Insurance coverage do you have?"
                             CheckbobItems={[
                                 "Private Insurance",
@@ -175,7 +199,8 @@ function FormH30() {
                                 "Employee based Insurance (ESI / CGHS/others)"
                             ]}
                             name="H12"
-                        /> */}
+                            setFunction={setFormH30} StateValue={formH30} array={formH30.H12}
+                        />
 
                         <Radio
                             h3="H.13 Are all your family members enrolled with the same Health Insurance coverage?"
@@ -184,9 +209,11 @@ function FormH30() {
                                 "No"
                             ]}
                             name="H13"
+                            byDefault={formH30.H13}
+                            onClick={handleChange(setFormH30)}
                         />
 
-                        <InputField h3="H.14 How many of you or your family members have an individual medical/ health insurance scheme?" name="H14" placeholder="Type here" />
+                        <InputField h3="H.14 How many of you or your family members have an individual medical/ health insurance scheme?" name="H14" placeholder="Type here" value={formH30.H14} onChange={handleChange(setFormH30)}/>
 
                         <Radio
                             h3="H.15 Do you have a BPL card? Note: Request to show the related cards/document if any."
@@ -195,6 +222,8 @@ function FormH30() {
                                 "No"
                             ]}
                             name="H15"
+                            byDefault={formH30.H15}
+                            onClick={handleChange(setFormH30)}
                         />
 
                         <Radio
@@ -204,11 +233,20 @@ function FormH30() {
                                 "No"
                             ]}
                             name="H16"
+                            byDefault={formH30.H16}
+                            onClick={handleChange(setFormH30)}
                         />
 
-                        <InputField h3="H.17 How many of your family members are enrolled with ABHA id?" name="H17" placeholder="Type here" />
+                        {
+                            (formH30.H16==="Yes") &&
+                            <>
+                            <InputField h3="H.17 How many of your family members are enrolled with ABHA id?" name="H17" placeholder="Type here" value={formH30.H17} onChange={handleChange(setFormH30)}/>
+                            </>
+                        }
 
-                        <Buttons formName="formh30" formData={formh30} prev="/improve-emergency-services" next="/household-schedule2" prevText="Previous" nextText="Save & Next" />
+                        
+
+                        <Buttons formName="formh30" formData={formH30} prev="/improve-emergency-services" next="/household-schedule2" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>
