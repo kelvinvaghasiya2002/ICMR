@@ -59,7 +59,7 @@ function FormD24() {
                             name="D1" setFunction={setFormD24} StateValue={formD24} array={formD24.D1} 
                         />
 
-                        <Buttons formName="formd24" formData={formD24} prev="/referral-facility4" next="/barriers-and-facilitators2" prevText="Previous" nextText="Save & Next" />
+                        <Buttons formName="formd24" formData={formD24} prev="" next="/barriers-and-facilitators2" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

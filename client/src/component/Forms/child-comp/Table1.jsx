@@ -44,7 +44,7 @@ function Table1({ tableName }) {
 
                         </tr>
                         {
-                            rows.map((item, index) => {
+                            rows?.map((item, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{index + 1}</td>

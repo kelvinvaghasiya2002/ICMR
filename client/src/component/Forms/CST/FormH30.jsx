@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormH30() {
-    var formh30 = setLocalStorage("formh30", { H1:"",H2:"",H3:"",H4:"",H4:"",H5:"",H6:"",H7:"",H8:"",H9:"",H10:[],H11:"",H12:[],H13:"",H14:"",H15:"",H16:"",H17:""})
+    var formh30 = setLocalStorage("formh30", { H1:"",H2:"",H3:"",H4:"",H5:"",H6:"",H7:"",H8:"",H9:"",H10:[],H11:"",H12:[],H13:"",H14:"",H15:"",H16:"",H17:""})
     const [formH30, setFormH30] = useState(JSON.parse(formh30))
     turnOffbutton();
 

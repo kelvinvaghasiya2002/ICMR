@@ -54,8 +54,6 @@ function FormA14() {
 
                                 <p style={{ fontSize: "0.8vw" }}>(<b>Note:</b> Acute Abdominal Pain, Epilepsy attack, Sudden faint, Foreign body ingestion, Infections or sepsis, Acute Hypoglycaemic attack, Severe Hypotension, loss of consciousness, Cerebromeningeal infections, acute blindness, acute fever etc.) </p>
 
-                                {/* <DropDown onClick={handleChange(setFormA3)} className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"AC14_2"} h3="AC.14.2  If Yes, Could you please tell who all suffered with this condition?" byDefault={formA3.AC14_2} /> */}
-
                                 <Checkbox CheckbobItems={fetchCstTableDetail()} name={"AC14_2"} h3="AC.14.2  If Yes, Could you please tell who all suffered with this condition?" setFunction={setFormA3} StateValue={formA3} array={formA3.AC14_2} />
                             </>
                         }

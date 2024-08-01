@@ -65,6 +65,7 @@ import FormB16 from './component/Forms/CST/FormB16.jsx'
 import FormB17 from './component/Forms/CST/FormB17.jsx'
 import FormB18 from './component/Forms/CST/FormB18.jsx'
 import FormB19 from './component/Forms/CST/FormB19.jsx'
+import FormB19b from './component/Forms/CST/FormB19b.jsx'
 import FormA5a from './component/Forms/CST/FormA5a.jsx'
 import FormC20 from './component/Forms/CST/FormC20.jsx'
 import FormC21 from './component/Forms/CST/FormC21.jsx'
@@ -171,6 +172,7 @@ function App() {
         <Route path='/initialhealthcareseekingpathway-1' element={<FormB17 />} />
         <Route path='/initialhealthcareseekingpathway-2' element={<FormB18 />} />
         <Route path='/initialhealthcareseekingpathway-3' element={<FormB19 />} />
+        <Route path='/initialhealthcareseekingpathway-4' element={<FormB19b />}  />
         <Route path='/referral-facility1' element={<FormC20 />} />
         <Route path='/referral-facility2' element={<FormC21 />} />
         <Route path='/referral-facility3' element={<FormC22 />} />

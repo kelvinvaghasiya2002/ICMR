@@ -15,9 +15,32 @@ import Table1 from '../child-comp/Table1.jsx';
 
 
 function formB16() {
-  var formb16 = setLocalStorage("formb16", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: [], B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+  var formb16 = setLocalStorage("formb16", { B0: "", B1: "", B2: "", B3: "", B4: [], B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "", B17_2: "", B18: "", B19: "", B20: "", B21: "", B22_1: "", B22_2: "", B23_1: "", B23_2: "", B24: "", B25: "", B26: [], B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
   const [formB16, setFormB16] = useState(JSON.parse(formb16))
   turnOffbutton();
+
+  useEffect(() => {
+    if (formB16.B19 !== "Government ambulance") {
+      setFormB16((prevValue) => {
+        return ({
+          ...prevValue,
+          B20: ""
+        })
+      })
+    }
+
+    if (formB16.B30 !== "Yes") {
+      setFormB16((prevValue) => {
+        return ({
+          ...prevValue,
+          B31: ""
+        })
+      })
+    }
+
+
+  }, [formB16.B19 , formB16.B30])
+
   return (
     <div>
       <Heading h2="Community Survey Tool"></Heading>
@@ -50,7 +73,10 @@ function formB16() {
 
             <Radio onClick={handleChange(setFormB16)} h3="B.19  What type of transport was used to reach the first health care facility? " CheckbobItems={["Government ambulance", "Private ambulance", "Two-Wheeler (Bicycle)", "Two-Wheeler (Motorcycle)", "Three-Wheeler (Manual Rickshaw, etc.)", "Three-Wheeler (Auto Rickshaw/ E-rickshaw, etc.)", "Four-Wheeler (Car/Jeep/ etc.)", "Agricultural Vehicle (Tractor)", "Others (Specify)"]} name="B19" otherArray={[0, 0, 0, 0, 0, 0, 0, 0, 1]} byDefault={formB16.B19} />
 
-            <Radio onClick={handleChange(setFormB16)} h3="B.20  If Govt. Ambulance, Which ambulance service you opted for? " CheckbobItems={["102", "108", "Others (Specify)", "Don't know"]} name="B20" otherArray={[0, 0, 1, 0]} byDefault={formB16.B20} />
+            {
+              formB16.B19 === "Government ambulance" &&
+              <Radio onClick={handleChange(setFormB16)} h3="B.20  If Govt. Ambulance, Which ambulance service you opted for? " CheckbobItems={["102", "108", "Others (Specify)", "Don't know"]} name="B20" otherArray={[0, 0, 1, 0]} byDefault={formB16.B20} />
+            }
 
             <Radio onClick={handleChange(setFormB16)} h3="B.21  Were there any problems in arranging for transport of the patient?  (Describe) " CheckbobItems={["Yes (Specify)", "No"]} name="B21" otherArray={[1, 0]} byDefault={formB16.B21} />
 
@@ -94,13 +120,14 @@ function formB16() {
 
             <Radio onClick={handleChange(setFormB16)} h3="B.30  Were any laboratory &/or radiology investigations done at the HCF? " CheckbobItems={["Yes", "No", "Do not know"]} name="B30" byDefault={formB16.B30} />
 
-            <Radio onClick={handleChange(setFormB16)} h3="B.31  How much time was spent in investigations? " CheckbobItems={["Less than 30 minutes", "30 minutes to 1 hour", "More than 1 hour", "Do not Know"]} name="B31" byDefault={formB16.B31} />
+            {
+              formB16.B30 === "Yes" &&
+              <Radio onClick={handleChange(setFormB16)} h3="B.31  How much time was spent in investigations? " CheckbobItems={["Less than 30 minutes", "30 minutes to 1 hour", "More than 1 hour", "Do not Know"]} name="B31" byDefault={formB16.B31} />
+            }
 
             <Radio onClick={handleChange(setFormB16)} h3="B.32 Was the patient shifted to ICU/ CCU/ HDU at HCF? " CheckbobItems={["Yes", "No"]} name="B32" byDefault={formB16.B32} />
 
-            <Radio onClick={handleChange(setFormB16)} h3="B.33 What was the final outcome of visiting the first facility or home visit by Doctor? " CheckbobItems={["Referred to higher facility", "Went against medical advice to different facility", "Partially recovered & discharged", "Fully Recovered & discharged", "Recovered with disability & discharged", "Self-Discharged", "Admitted in Hospital", "Death"]} name="B33" byDefault={formB16.B33} />
-
-            <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-2" next="/referral-facility1" prevText="Previous" nextText="Save & Next" />
+            <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-1" next="/initialhealthcareseekingpathway-4" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>
