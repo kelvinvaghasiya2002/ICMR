@@ -13,12 +13,14 @@ const LocationButton = ({ setter, name, heading, error }) => {
   });
   const apiKey = "735aebe1626748f4ae1e2a4145fac884"; // Replace with your OpenCage API key
 
-  useEffect(() => {
-    let location = localStorage.getItem("CompleteForm");
-    location = JSON.parse(location);
-    setCoordinates(location?.A10 ?? "");
-    setLocationDetails(location?.A10 ?? "");
-  }, []);
+  // useEffect(() => {
+  //   let location = localStorage.getItem("CompleteForm");
+  //   if (location) {
+  //     location = JSON.parse(location);
+  //     setCoordinates(location?.A10 ?? "");
+  //     setLocationDetails(location?.A10 ?? "");
+  //   }
+  // }, []);
 
   const getLocation = () => {
     if (navigator.geolocation) {
