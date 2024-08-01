@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormH31() {
-    var formh31 = setLocalStorage("formh31", { B0: "", B0_d: "", B1: "", B2: "", B3: "", B4: "",  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: "", B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
+    var formh31 = setLocalStorage("formh31", { H18:"" })
     const [formH31, setFormH31] = useState(JSON.parse(formh31))
     turnOffbutton();
     return (
@@ -44,9 +44,11 @@ function FormH31() {
                                 "Living alone/Single"
                             ]}
                             name="H18"
+                            byDefault={formH31.H18}
+                            onClick={handleChange(setFormH31)}
                         />
 
-                        <Buttons formName="formh31" formData={formh31} prev="/household-schedule1" next="" prevText="Previous" nextText="Save & Next" />
+                        <Buttons formName="formh31" formData={formH31} prev="/household-schedule1" next="" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>
