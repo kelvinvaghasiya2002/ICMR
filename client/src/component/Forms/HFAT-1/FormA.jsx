@@ -333,7 +333,7 @@ function FormA() {
                 nextText="Save & Next"
                 prev=""
                 next="/infrastructure"
-                validateForm={validateForm}
+                // validateForm={validateForm}
               />
               <OverlayCard
                 isVisible={showOverlay}
