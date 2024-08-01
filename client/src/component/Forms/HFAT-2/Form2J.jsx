@@ -8,6 +8,8 @@ import Heading from '../../Heading/Heading.jsx';
 import LastButton from '../child-comp/LastButton.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function Form2J() {
     useEffect(() => {
@@ -17,26 +19,88 @@ function Form2J() {
     var form2j = setLocalStorage("form2j", { H2J1: "", H2J2: "" });
     const [form2J, setForm2J] = useState(JSON.parse(form2j));
     const [errors, setErrors] = useState({});
+    const [showOverlay, setShowOverlay] = useState(false);
 
     turnOffbutton();
 
     const validateForm = () => {
-        let errors = {};
-        let isValid = true;
+        const newErrors = {};
 
-        // Validate radio buttons
-        if (form2J.H2J1 === "") {
-            errors.H2J1 = "This field is required.";
-            isValid = false;
-        }
-        if (form2J.H2J2 === "") {
-            errors.H2J2 = "This field is required.";
-            isValid = false;
-        }
+        setErrors(newErrors);
+        setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+        // let errors = {};
+        // let isValid = true;
 
-        setErrors(errors);
-        return isValid;
+        // // Validate radio buttons
+        // if (form2J.H2J1 === "") {
+        //     errors.H2J1 = "This field is required.";
+        //     isValid = false;
+        // }
+        // if (form2J.H2J2 === "") {
+        //     errors.H2J2 = "This field is required.";
+        //     isValid = false;
+        // }
+
+        // setErrors(errors);
+        // return isValid;
     };
+
+
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                newErrors[field] = validateRequired(form2J[field]);
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
+        }
+    }, [form2J]);
+
+    const isFormValid = () => {
+        const requiredFields = ['H2J1', 'H2J2'];
+        const missingFields = requiredFields.filter(field => !form2J[field] || (typeof form2J[field] === 'string' && form2J[field].trim() === ''));
+        return { isValid: missingFields.length === 0, missingFields };
+    };
+
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                newErrors[field] = 'This field is required';
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
+        }
+    }, [form2J]);
+
+    const handleChangeWithValidation = (e) => {
+        const { name, value } = e.target;
+        let validatedValue = value;
+        let error = '';
+
+        switch (name) {
+            default:
+                break;
+        }
+
+        setForm2J(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+        // Perform additional required validation
+        switch (name) {
+            default:
+                break;
+        }
+
+        setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+    };
+
 
     return (
         <div>
@@ -60,7 +124,6 @@ function Form2J() {
                             onClick={handleChange(setForm2J)}
                             byDefault={form2J.H2J1}
                         />
-                        {errors.H2J1 && <div className="error-msg">{errors.H2J1}</div>}
 
                         <Radio
                             h3="2J.2 : Does this facility have any policies and procedures which guide the transfer-out/referral of stable and unstable patients after stabilization to another facility with documentation?"
@@ -69,15 +132,23 @@ function Form2J() {
                             onClick={handleChange(setForm2J)}
                             byDefault={form2J.H2J2}
                         />
-                        {errors.H2J2 && <div className="error-msg">{errors.H2J2}</div>}
 
-                        <LastButton
-                            prev="/processpoliciessops-2"
-                            formName="form2j"
-                            formData={form2J}
-                            MainForm={"HFAT-2"}
-                            validateForm={validateForm}
-                        />
+
+                        <div className="button-container">
+                            <LastButton
+                                prev="/processpoliciessops-2"
+                                formName="form2j"
+                                formData={form2J}
+                                MainForm={"HFAT-2"}
+                                // validateForm={validateForm}
+                            />
+
+
+                            <OverlayCard
+                                isVisible={showOverlay}
+                                message="Please fill all required fields to proceed."
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
