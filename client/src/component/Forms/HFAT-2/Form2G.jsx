@@ -107,7 +107,7 @@ function Form2G() {
     const isFormValid = () => {
         const requiredFields = ['H2G1', 'H2G3', 'H2G6'];
         if (form2G.H2G1 === "Yes") {
-            requiredFields.push('H1G2');
+            requiredFields.push('H2G2');
         }
         if (form2G.H2G3 === "Yes") {
             requiredFields.push('H2G4');
