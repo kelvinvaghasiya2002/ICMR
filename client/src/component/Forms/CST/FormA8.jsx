@@ -18,10 +18,10 @@ function FormA8() {
     useEffect(()=>{
         if(formA3.AC8_1 === "No") {
             setFormA3((prevValue)=>{
-                return {...prevValue, AC8_1_if: "" , AC8_2 : ""}
+                return {...prevValue, AC8_1_if: "" , AC8_2 : []}
             })
         }
-    },[formA3])
+    },[formA3.AC8_1])
 
     turnOffbutton();
     return (
@@ -50,8 +50,6 @@ function FormA8() {
                             (formA3.AC8_1 === "Yes") && 
                             <>
                                 <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC8_1_if" value={formA3.AC8_1_if} />
-
-                                {/* <DropDown onClick={handleChange(setFormA3)} className='dropdown' dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"AC8_2"} h3="AC.8.2  If yes, could you please tell who all from your Household suffered with this condition?" byDefault={formA3.AC8_2} /> */}
 
                                 <Checkbox CheckbobItems={fetchCstTableDetail()} name={"AC8_2"} h3="AC.8.2  If yes, could you please tell who all from your Household suffered with this condition?"  setFunction={setFormA3} StateValue={formA3} array={formA3.AC8_2} />
 
