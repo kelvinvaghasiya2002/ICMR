@@ -8,12 +8,16 @@ import C1 from '../Tables/C1.jsx'
 import { turnOffbutton, handleChange } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 
 function Form3C() {
   turnOffbutton();
   var form3c = setLocalStorage("form3c", { H3C2: "", H3C3: [""], H3C4: "", H3C5: "" })
   const [form3C, setForm3C] = useState(JSON.parse(form3c))
+  const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
     if (form3C.H3C2 === "No") {
@@ -82,6 +86,96 @@ function Form3C() {
     }
   });
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!form3C.H3C2) newErrors.C2 = ' Whether training for emergency care management is being conducted for the staff in the institution is required'
+
+    if (form3C.H3C2 === "Yes" && !form3C.H3C4 && !form3C.H3C5) {
+      newErrors.H3C4 = validateRequired(form3C.H3C4);
+      newErrors.H3C4 = 'Frequency of training on emergency care in a year is required';
+      newErrors.H3C5 = validateRequired(form3C.H3C5);
+      newErrors.H3C5 = 'Required to fill last training conducted';
+
+    }
+    setErrors(newErrors);
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(form3C[field]);
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form3C]);
+
+  const isFormValid = () => {
+    const requiredFields = ['H3C2'];
+    if (form3C.H3C2 === "Yes") {
+      requiredFields.push('H3C4');
+      requiredFields.push('H3C5');
+    }
+
+    const missingFields = requiredFields.filter(field => !form3C[field] || (typeof form3C[field] === 'string' && form3C[field].trim() === ''));
+    return { isValid: missingFields.length === 0, missingFields };
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form3C]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      case 'H3C5':
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = form3C[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      default:
+        break;
+    }
+
+    setForm3C(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case 'H3C5':
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+  };
+
+
   return (
     <div>
       <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
@@ -102,7 +196,9 @@ function Form3C() {
             <C1 columns={columns} initialRows={initialRows} tableName={"H3C1"} labels={labels} />
             <span style={{ fontSize: "1vw" }}>*1 Specialists are on rotation basis at polyclinics as per IPHS guideline for PHCs.</span>
 
-            <Radio h3="3C.2 : Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H3C2" onClick={handleChange(setForm3C)} byDefault={form3C.H3C2} />
+            <Radio h3="3C.2 : Whether training for emergency care management is being conducted for the staff in the institution?" CheckbobItems={["Yes", "No"]} name="H3C2" onClick={handleChange(setForm3C)} byDefault={form3C.H3C2}
+              errorMsg={errors.H3C2}
+              required />
 
             {
               (form3C.H3C2 === 'Yes') &&
@@ -124,13 +220,20 @@ function Form3C() {
                   "Quarterly",
                   "Half Yearly",
                   "Annually",
-                  "Others (Specify)"]} setter={setForm3C} otherArray={[0, 0, 0, 0, 1]} name="H3C4" h3="3C.4 : If Yes, Frequency of training on emergency care in a year?" other={true} byDefault={form3C.H3C4} onClick={handleChange(setForm3C)} />
+                  "Others (Specify)"]} setter={setForm3C} otherArray={[0, 0, 0, 0, 1]} name="H3C4" h3="3C.4 : If Yes, Frequency of training on emergency care in a year?" other={true} byDefault={form3C.H3C4} onClick={handleChange(setForm3C)} errorMsg={errors.H3C4} />
 
-                <InputField h3="3C.5 : When was the last training conducted?" placeholder="Type here" value={form3C.H3C5} name={"H3C5"} onChange={handleChange(setForm3C)} />
+                <InputField h3="3C.5 : When was the last training conducted?" placeholder="Type here" value={form3C.H3C5} name={"H3C5"} onChange={handleChangeWithValidation} errorMsg={errors.H3C5} />
               </>
             }
 
-            <Buttons formName={"form3c"} formData={form3C} prevText="Previous" nextText="Save & Next" prev="/infrastructure-3" next="/logistics-3" />
+            <div className="button-container">
+              <Buttons formName={"form3c"} formData={form3C} prevText="Previous" nextText="Save & Next" prev="/infrastructure-3" next="/logistics-3" />
+
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div>
         </div>
       </section>

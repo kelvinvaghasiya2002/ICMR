@@ -11,6 +11,8 @@ import Heading from "../../Heading/Heading.jsx";
 import setLocalStorage from "../setLocalStorage.js";
 import LastButton from "../child-comp/LastButton.jsx";
 import LocationButton from "../child-comp/Location.jsx";
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function Facility() {
   turnOffbutton();
@@ -35,8 +37,11 @@ function Facility() {
     AMB19: [""],
   });
   const [Ambulance, setAmbulance] = useState(JSON.parse(ambulance));
+  const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
+    const date = new Date();
     setAmbulance((prevValue) => {
       return {
         ...prevValue,
@@ -215,7 +220,104 @@ function Facility() {
     { Item: "Betadine", Available: "" },
   ];
 
-  const date = new Date();
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    newErrors.AMB2 = validateName(Ambulance.AMB2) || validateRequired(Ambulance.AMB2);
+    newErrors.AMB6 = validateName(Ambulance.AMB6) || validateRequired(Ambulance.AMB6);
+    newErrors.AMB9 = validateNumber(Ambulance.AMB9) || validateRequired(Ambulance.AMB9);
+    newErrors.AMB10 = validateNumber(Ambulance.AMB10) || validateRequired(Ambulance.AMB10);
+    newErrors.AMB11 = validateName(Ambulance.AMB11) || validateRequired(Ambulance.AMB11);
+
+    setErrors(newErrors);
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+  }
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(Ambulance[field]);
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [Ambulance]);
+
+  const isFormValid = () => {
+    const requiredFields = ['AMB1', 'AMB2', 'AMB4', 'AMB5', 'AMB6', 'AMB7', 'AMB8', 'AMB9', 'AMB10', 'AMB11', 'AMB12', 'AMB13', 'AMB14', 'AMB15', 'AMB18', 'AMB19'];
+
+    const missingFields = requiredFields.filter(field => !Ambulance[field] || (typeof Ambulance[field] === 'string' && Ambulance[field].trim() === ''));
+    return { isValid: missingFields.length === 0, missingFields };
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [Ambulance]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      case 'AMB2':
+      case 'AMB6':
+      case 'AMB11':
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = form2B[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      case 'AMB9':
+      case 'AMB10':
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formB[name];
+          e.preventDefault();
+        }
+        break;
+      default:
+        break;
+    }
+
+    setAmbulance(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case 'AMB2':
+      case 'AMB6':
+      case 'AMB9':
+      case 'AMB10':
+      case 'AMB11':
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+  };
+
   return (
     <div>
       <Heading h2="Gap Assessment Tool – Ambulance at Facility Level"></Heading>
@@ -245,10 +347,12 @@ function Facility() {
 
             <InputField
               h3="Name of the data collector:"
-              onChange={handleChange(setAmbulance)}
+              onChange={handleChangeWithValidation}
               value={Ambulance.AMB2}
               placeholder="Type here"
               name="AMB2"
+              required
+              errorMsg={errors.AMB2}
             />
 
             <div>
@@ -266,7 +370,7 @@ function Facility() {
               placeholder="Type here"
               name="AMB4"
             /> */}
-            <LocationButton setter={setAmbulance} name={"AMB4"} />
+            <LocationButton setter={setAmbulance} name={"AMB4"} required errorMsg={errors.AMB4} />
 
             <Radio
               h3="1. Name of the Ambulance Service?"
@@ -298,6 +402,8 @@ function Facility() {
               onClick={handleChange(setAmbulance)}
               CheckbobItems={["Type A", "Type B", "Type C", "Type D"]}
               name="AMB7"
+              required
+              errorMsg={errors.AMB7}
             />
 
             <Radio
@@ -306,30 +412,38 @@ function Facility() {
               onClick={handleChange(setAmbulance)}
               CheckbobItems={["Yes", "No"]}
               name="AMB8"
+              required
+              errorMsg={errors.AMB8}
             />
 
             <InputField
               h3="5. How many cases do you transport per day on an a average"
-              onChange={handleChange(setAmbulance)}
+              onChange={handleChangeWithValidation}
               value={Ambulance.AMB9}
               placeholder="Type here"
               name="AMB9"
+              required
+              errorMsg={errors.AMB9}
             />
 
             <InputField
               h3="6. How many emergency cases do you transport per day on an a average"
-              onChange={handleChange(setAmbulance)}
+              onChange={handleChangeWithValidation}
               value={Ambulance.AMB10}
               placeholder="Type here"
               name="AMB10"
+              required
+              errorMsg={errors.AMB10}
             />
 
             <InputField
               h3="7. How much area to you cater to ?"
-              onChange={handleChange(setAmbulance)}
+              onChange={handleChangeWithValidation}
               value={Ambulance.AMB11}
               placeholder="Km radius"
               name="AMB11"
+              required
+              errorMsg={errors.AMB11}
             />
 
             <Checkbox
@@ -359,6 +473,8 @@ function Facility() {
               name="AMB13"
               onClick={handleChange(setAmbulance)}
               byDefault={Ambulance.AMB13}
+              required
+              errorMsg={errors.AMB13}
             />
 
             <Radio
@@ -372,6 +488,8 @@ function Facility() {
               name="AMB14"
               onClick={handleChange(setAmbulance)}
               byDefault={Ambulance.AMB14}
+              required
+              errorMsg={errors.AMB14}
             />
 
             <Radio
@@ -380,6 +498,8 @@ function Facility() {
               name="AMB15"
               onClick={handleChange(setAmbulance)}
               byDefault={Ambulance.AMB15}
+              required
+              errorMsg={errors.AMB15}
             />
 
             <h3>9.4 : Whether it’s available or not</h3>
@@ -431,13 +551,21 @@ function Facility() {
               array={Ambulance.AMB19}
             />
 
-            <LastButton
-              prev=""
-              formName="ambulance"
-              formData={Ambulance}
-              next="/"
-              MainForm="AMBULANCE"
-            />
+            <div className="button-container">
+              <LastButton
+                prev=""
+                formName="ambulance"
+                formData={Ambulance}
+                next="/"
+                MainForm="AMBULANCE"
+              />
+
+
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div>
         </div>
       </section>
