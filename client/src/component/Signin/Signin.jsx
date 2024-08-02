@@ -164,7 +164,7 @@ export default function SignIn() {
                     </form>
                 </section>
                 <section id="signin-rightside-img" data-aos="fade-left">
-                    <div>
+                    <div class="signin_img">
                         <img src={SignIn_Img} alt="SignUp" />
                     </div>
                 </section>
@@ -175,3 +175,5 @@ export default function SignIn() {
         </>
     )
 }
+
+

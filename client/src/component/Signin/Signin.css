@@ -15,7 +15,7 @@
     margin: auto;
     /* align-items: center;
     justify-content: center; */
-    width: 350px
+    width: 350px;
 }
 
 .signintitle h4 {
@@ -105,40 +105,6 @@
     margin-bottom: 15px;
 }
 
-.webimg_con {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.webimg img {
-    aspect-ratio: 3 / 2;
-    width: 60px;
-}
-
-.signin_img {
-    width: 50%;
-    text-align: center;
-    /* background-color: black; */
-}
-
-/* .signin_img{
-    text-align: center;
-} */
-
-.signin_img div img {
-    width: 500px;
-    height: 500px;
-}
-
-
-
-
-
-
-
-
-
-
 
 /* ------------------------------------   NEW CSS FILE  ------------------------------------ */
 
@@ -148,7 +114,8 @@
 
 .main-signin-div {
     display: flex;
-    margin: 7vh 0 2vh 0;
+    justify-content: space-between;
+    margin: 5vw 15vw 1vw 0;
     /* background-color: #3177FF; */
 }
 
@@ -166,12 +133,11 @@
     justify-content: center;
     /* background-color: antiquewhite; */
     font-family: "Nunito", sans-serif;
-    /* background-color: aliceblue; */
 }
 
 
 #signin-form form {
-    /* background-color: aliceblue; */
+    /* background-color: rgb(56, 103, 144); */
     width: 25vw;
 }
 
@@ -343,8 +309,6 @@ a {
     margin-left: .75em;
 }
 
-
-
 .separator p{
     font-size: 1vw;
 }
@@ -377,32 +341,130 @@ a {
     aspect-ratio: 102.48/68.32;
 }
 
-
-
-
-
-
-
-
-
-#signin-rightside-img{
-    display: flex;
-    width: 50vw;
-    height: 70vh;
-    justify-content: center;
-    align-items: center;
-    /* background-color: antiquewhite; */
-}
-
-
-
-#signin-rightside-img div{
-    height: 80vh;
-}
-
-
-
 #signin-rightside-img img{
-    height: 80%;
-    aspect-ratio: 826/826;
+    height: 30vw;
+    /* aspect-ratio: 826/826; */
+}
+
+
+
+
+/* ######################################################################## */
+
+@media (max-width: 1024px) {
+
+    #signin-rightside-img{
+        display: none;
+    }
+
+    .main-signin-div {
+        display: block;
+        margin: 0;
+        margin-top: 8vh;
+        /* background-color: #3177FF; */
+    }
+
+    #signin-form h2 {
+        font-family: "Overpass", sans-serif;
+        font-size: 2.2vw;
+        letter-spacing: 0.1vw;
+    }
+
+    #signin-form {
+        margin: auto;
+        font-family: "Nunito", sans-serif;
+    }
+
+    #signin-form form {
+        /* background-color: rgb(56, 103, 144); */
+        width: 60vw;
+    }
+
+    
+    .welcome-back {
+        margin-bottom: 3vw;
+    }
+
+    .welcome-back h2,
+    p {
+        margin: 1.5vw 0;
+    }
+
+    .welcome-back p {
+        font-size: 1.75vw;
+        font-weight: 600;
+    }
+
+    .welcome-back a {
+        font-size: 1.75vw;
+        font-weight: 600;
+    }
+
+        
+
+    #signin-form label {
+        font-size: 1.5vw;
+        font-weight: 700;
+    }
+
+
+
+    .form-signin-inputs input {
+        font-size: 1.5vw;
+        font-weight: 500;
+        margin-top: 0.85vw;
+        margin-bottom: 2vh;
+        border: 0.15vw solid #152266;
+        border-radius: 99px;
+        padding: 0 2vw;
+        width: 100%;
+        height: 5vw;
+    }
+
+    
+
+    .signin-button button {
+        border-radius: 99px;
+        height: 5vw;
+        width: 100%;
+        margin: 2.75vh 0;
+        font-size: 1.75vw;
+        font-weight: 600;
+        letter-spacing: 0.1vh;
+        cursor: pointer;
+        border: 0.2vh solid #152266;
+    }
+
+        
+    .remember-me p,
+    a {
+        font-size: 1.5vw;
+        letter-spacing: 0.05vw;
+    }
+
+    .remember-me a {
+        font-weight: 600;
+    }
+
+    .radio-btn input {
+        width: 2vw;
+        margin: 0 0.5vw 0 0;
+    }
+     
+    .continue-with{
+        margin-bottom: 2vw;
+    }
+
+    .separator p{
+        font-size: 1.25vw;
+    }
+
+
+    .o-auth-icons div img{
+        width: 7.5vw;
+        aspect-ratio: 102.48/68.32;
+    }
+
+
+
 }

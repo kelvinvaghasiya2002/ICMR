@@ -39,7 +39,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
     const validateRadioSelection = () => {
         const selected = radioRefs.current.some(ref => ref && ref.checked);
         if (!selected) {
-            setError(errorMsg || "Please select an option");
+            setError(errorMsg || "(Please select an option)");
         } else {
             setError("");
         }

@@ -1,9 +1,11 @@
 .navbar{
     display: flex;
-    height: 17vh;
+    /* height: 17vh; */
+    height: 7vw;
     /* width: 100vw; */
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
     padding-left: 7%;
     padding-right: 7%;
     background-color: white;
@@ -14,18 +16,20 @@
 
 
 .ICMRLogo img{
-    height: 13vh;
+    /* height: 13vh; */
+    height: 6.5vw;
     aspect-ratio: 3.2 / 1.32;
 }
 
 .PUIcon img{
-    height: 10vh;
+    /* height: 10vh; */
+    height: 4vw;
     aspect-ratio: 3 / 0.58;
 }
 
 .secondLogo img{
-    height: 13vh;
-    /* width: 13vh; */
+    /* height: 13vh; */
+    height: 6.75vw;
 }
 
 
@@ -143,9 +147,6 @@
     font-size: 1.5vw;
 }
 
-/* .logout p{
-    font-size: 2vw;
-} */
 
 .container{
     border: 1 px solid black;
@@ -166,3 +167,10 @@
 .container a :hover{
     color:#152266;
 }
+
+
+/* ################################## TAB VIEW CSS ###################################### */
+
+ @media (max-width: 1024px) {
+
+ }
