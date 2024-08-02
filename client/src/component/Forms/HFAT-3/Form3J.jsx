@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SidePanel from './SidePanelHFAT3';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
@@ -6,6 +6,8 @@ import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import LastButton from '../child-comp/LastButton.jsx';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function Form3J() {
   turnOffbutton();
@@ -13,6 +15,72 @@ function Form3J() {
     { H3J1: "", H3J2: "" })
 
   const [form3J, setForm3J] = useState(JSON.parse(form3j));
+  const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
+
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    setErrors(newErrors);
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+  };
+
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(form3J[field]);
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form3J]);
+
+  const isFormValid = () => {
+    const requiredFields = ['H3J1', 'H3J2'];
+    const missingFields = requiredFields.filter(field => !form3J[field] || (typeof form3J[field] === 'string' && form3J[field].trim() === ''));
+    return { isValid: missingFields.length === 0, missingFields };
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form3J]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      default:
+        break;
+    }
+
+    setForm3J(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+  };
 
   return (
     <div>
@@ -38,7 +106,16 @@ function Form3J() {
 
 
             {/* <Buttons formName="form3j" formData={form3J} prevText="Previous" nextText="Submit" prev="/processpoliciessops-3" next="" /> */}
-            <LastButton prev="/processpoliciessops-3" formName="form3j" formData={form3J} MainForm={"HFAT-3"} />
+
+
+            <div className="button-container">
+              <LastButton prev="/processpoliciessops-3" formName="form3j" formData={form3J} MainForm={"HFAT-3"} />
+
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div>
         </div>
       </section>
