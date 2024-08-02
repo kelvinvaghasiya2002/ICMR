@@ -55,8 +55,6 @@
     /* overflow: hidden; */
     scrollbar-width: none;
     -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
-    
-    
 }
 
 .formhdr {
@@ -83,7 +81,6 @@
 
     display: flex;
     flex-direction: column;
-    
 }
 
 .formcontent::-webkit-scrollbar {
@@ -93,6 +90,12 @@
 
 .cont_extra{
     height: 100%;
+}
+
+.fbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 section {
@@ -994,7 +997,7 @@ th {
 
     /* position: absolute; */
     display: block;
-    margin-left: 2.5vw;
+    margin-left: 1vw;
 }
  
   /* ######################################################################## from here tab view */

@@ -26,9 +26,32 @@ function FormC() {
   const [errors, setErrors] = useState({});
   const [showOverlay, setShowOverlay] = useState(false);
 
-  useEffect(() => {
-    AOS.init({ duration: 2000 });
-  }, []);
+    // --toggle--
+    const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
+    const toggleSidebar = () => {
+      setSidebarVisible(!isSidebarVisible);
+    };
+    const handleResize = () => {
+      if (window.innerWidth >= 1025) {
+        setSidebarVisible(true);
+      }
+    };
+  
+    // useEffect(() => {
+    //   window.addEventListener('resize', handleResize);
+    //   return () => {
+    //     window.removeEventListener('resize', handleResize);
+    //   };
+    // }, []);
+    // --toggle end--
+
+    useEffect(() => {
+      window.addEventListener('resize', handleResize);
+      AOS.init({ duration: 2000 })
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
 
   useEffect(() => {
     if (formC.C3 === "No") {
@@ -222,9 +245,20 @@ function FormC() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
-      <section>
-        <SidePanel id={"3"} />
+      <div className="header">
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      </div>
+      <section className="form-main">
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"3"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
+        {/* <SidePanel id={"3"} /> */}
         <div className="siteInfo" data-aos="fade-left">
           <div className="formhdr">
             <div>
@@ -376,7 +410,7 @@ function FormC() {
             />
               <OverlayCard
                 isVisible={showOverlay}
-                message="Please fill all required fields to proceed."
+                message="(Please fill all required fields to proceed)"
               />
             </div>
           </div>

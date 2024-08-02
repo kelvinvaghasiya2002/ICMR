@@ -62,7 +62,8 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                         type="radio"
                                         name={name}
                                     />
-                                    <span style={{ fontSize: "1.2vw" }}>{item}</span>
+                                    <label className='radio_labels' htmlFor={item} >{item}</label><br/>
+                                    {/* <span style={{ fontSize: "1.2vw" }}>{item}</span> */}
                                     <input
                                         className='others blockinput'
                                         onChange={(event) => {
@@ -91,7 +92,7 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                         onClick={onClick}
                                         defaultChecked={byDefault === item}
                                     />
-                                    <label className='radio_labels' htmlFor={item}>{item}</label><br/>
+                                    <label className='radio_labels' htmlFor={item} >{item}</label><br/>
                                 </>
                             )}
                         </div>

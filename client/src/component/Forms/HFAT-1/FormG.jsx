@@ -13,6 +13,25 @@ import OverlayCard from '../OverlayCard.jsx';
 
 function FormG() {
 
+    // --toggle--
+    const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
+    const toggleSidebar = () => {
+      setSidebarVisible(!isSidebarVisible);
+    };
+    const handleResize = () => {
+      if (window.innerWidth >= 1025) {
+        setSidebarVisible(true);
+      }
+    };
+  
+    // useEffect(() => {
+    //   window.addEventListener('resize', handleResize);
+    //   return () => {
+    //     window.removeEventListener('resize', handleResize);
+    //   };
+    // }, []);
+    // --toggle end--
+
   var formg = setLocalStorage("formg",
     { H1G1: "", H1G2: "", H1G3: "", H1G4: "", H1G5: "" })
 
@@ -21,7 +40,11 @@ function FormG() {
   const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
+    window.addEventListener('resize', handleResize);
     AOS.init({ duration: 2000 })
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -179,9 +202,20 @@ function FormG() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
-      <section>
-        <SidePanel id={"7"} />
+      <div className="header">
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      </div>
+      <section className="form-main">
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"7"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
+        {/* <SidePanel id={"7"} /> */}
         <div className="siteInfo" data-aos="fade-left">
 
           <div className="formhdr">
@@ -191,27 +225,30 @@ function FormG() {
             </div>
           </div>
 
-          <div className="formcontent cont_extra">
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
+              <Radio byDefault={formG.H1G1} onClick={handleChange(setFormG)} name="H1G1" h3="1G.1 : Whether any untied fund is available at your hospital?" CheckbobItems={["Yes", "No"]} errorMsg={errors.H1G1} />
 
-            <Radio byDefault={formG.H1G1} onClick={handleChange(setFormG)} name="H1G1" h3="1G.1 : Whether any untied fund is available at your hospital?" CheckbobItems={["Yes", "No"]} errorMsg={errors.H1G1} />
+              {
+                (formG.H1G1 === "Yes") &&
+                <Radio byDefault={formG.H1G2} onClick={handleChange(setFormG)} name="H1G2" h3="1G.2 : If yes, whether this fund is utilized for providing emergency care services?" CheckbobItems={["Yes", "No"]}
+                  errorMsg={errors.H1G2} />
+              }
 
-            {
-              (formG.H1G1 === "Yes") &&
-              <Radio byDefault={formG.H1G2} onClick={handleChange(setFormG)} name="H1G2" h3="1G.2 : If yes, whether this fund is utilized for providing emergency care services?" CheckbobItems={["Yes", "No"]}
-                errorMsg={errors.H1G2} />
-            }
+              <Radio byDefault={formG.H1G3} onClick={handleChange(setFormG)} name="H1G3" h3="1G.3 : Whether any fund is available for emergency care?" CheckbobItems={["Yes", "No"]}
+                errorMsg={errors.H1G3} />
 
-            <Radio byDefault={formG.H1G3} onClick={handleChange(setFormG)} name="H1G3" h3="1G.3 : Whether any fund is available for emergency care?" CheckbobItems={["Yes", "No"]}
-              errorMsg={errors.H1G3} />
+              {
+                (formG.H1G3 === "Yes") &&
+                <InputField value={formG.H1G4} onChange={handleChangeWithValidation} name="H1G4" h3="1G.4 : If yes, which health schemes are covering your emergency care system?" placeholder="Type here" regex={/^[A-Za-z ]+$/}
+                  errorMsg={errors.H1G4} />
+              }
 
-            {
-              (formG.H1G3 === "Yes") &&
-              <InputField value={formG.H1G4} onChange={handleChangeWithValidation} name="H1G4" h3="1G.4 : If yes, which health schemes are covering your emergency care system?" placeholder="Type here" regex={/^[A-Za-z ]+$/}
-                errorMsg={errors.H1G4} />
-            }
+              <InputField value={formG.H1G5} onChange={handleChangeWithValidation} name="H1G5" h3="1G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type here" errorMsg={errors.H1G5}
+                required={true} />
+            </div>
 
-            <InputField value={formG.H1G5} onChange={handleChangeWithValidation} name="H1G5" h3="1G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type here" errorMsg={errors.H1G5}
-              required={true} />
+
 
 
             <div className="button-container">
@@ -226,7 +263,7 @@ function FormG() {
               />
               <OverlayCard
                 isVisible={showOverlay}
-                message="Please fill all required fields to proceed."
+                message="(Please fill all required fields to proceed)"
               />
             </div>
           </div>
