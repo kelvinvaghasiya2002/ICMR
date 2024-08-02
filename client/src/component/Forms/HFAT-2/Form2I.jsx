@@ -9,6 +9,8 @@ import setLocalStorage from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function Form2I() {
     useEffect(() => {
@@ -18,6 +20,7 @@ function Form2I() {
     var form2i = setLocalStorage("form2i", { H2I1: [""], H2I2: [], H2I4: "" });
     const [form2I, setForm2I] = useState(JSON.parse(form2i));
     const [errors, setErrors] = useState({});
+    const [showOverlay, setShowOverlay] = useState(false);
 
     turnOffbutton();
 
@@ -41,37 +44,110 @@ function Form2I() {
     ];
 
     const validateForm = () => {
-        let errors = {};
-        let isValid = true;
+        const newErrors = {};
 
-        // Validate checkboxes
-        if (form2I.H2I1.length === 0 || form2I.H2I1.every(item => item === "")) {
-            errors.H2I1 = "At least one register must be selected.";
-            isValid = false;
+        setErrors(newErrors);
+        setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+        // let errors = {};
+        // let isValid = true;
+
+        // // Validate checkboxes
+        // if (form2I.H2I1.length === 0 || form2I.H2I1.every(item => item === "")) {
+        //     errors.H2I1 = "At least one register must be selected.";
+        //     isValid = false;
+        // }
+        // if (form2I.H2I2.length === 0 || form2I.H2I2.every(item => item === "")) {
+        //     errors.H2I2 = "At least one SOP must be selected.";
+        //     isValid = false;
+        // }
+
+        // // Validate radio button
+        // if (form2I.H2I4 === "") {
+        //     errors.H2I4 = "Emergency condition procedure information is required.";
+        //     isValid = false;
+        // }
+
+        // // Table validation: Ensure at least one SOP and Follows SOP are selected for each row
+        // const invalidRows = initialRows.some(row => {
+        //     return row.SOP === "" || row.FollowsSOP === "";
+        // });
+
+        // if (invalidRows) {
+        //     errors.H2I3 = "All rows must have SOP and Follows SOP values.";
+        //     isValid = false;
+        // }
+
+        // setErrors(errors);
+        // return isValid;
+    };
+
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                newErrors[field] = validateRequired(form2I[field]);
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
         }
-        if (form2I.H2I2.length === 0 || form2I.H2I2.every(item => item === "")) {
-            errors.H2I2 = "At least one SOP must be selected.";
-            isValid = false;
+    }, [form2I]);
+
+    const isFormValid = () => {
+        const requiredFields = ['H2I4'];
+
+        const missingFields = requiredFields.filter(field => !form2I[field] || (typeof form2I[field] === 'string' && form2I[field].trim() === ''));
+
+        return { isValid: missingFields.length === 0, missingFields };
+    };
+
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                newErrors[field] = 'This field is required';
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
+        }
+    }, [form2I]);
+
+    const handleChangeWithValidation = (e) => {
+        const { name, value } = e.target;
+        let validatedValue = value;
+        let error = '';
+
+        switch (name) {
+            case 'H2I4':
+                error = validateRequired(value);
+                if (!error) {
+                    validatedValue = value;
+                } else {
+                    validatedValue = form2A[name];
+                    e.preventDefault(); // Prevent default behavior if the input was invalid
+                }
+                break;
+            default:
+                break;
         }
 
-        // Validate radio button
-        if (form2I.H2I4 === "") {
-            errors.H2I4 = "Emergency condition procedure information is required.";
-            isValid = false;
+        setForm2A(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+        // Perform additional required validation
+        switch (name) {
+            case 'H2I4':
+                error = error || validateRequired(validatedValue);
+                break;
+            default:
+                break;
         }
 
-        // Table validation: Ensure at least one SOP and Follows SOP are selected for each row
-        const invalidRows = initialRows.some(row => {
-            return row.SOP === "" || row.FollowsSOP === "";
-        });
-
-        if (invalidRows) {
-            errors.H2I3 = "All rows must have SOP and Follows SOP values.";
-            isValid = false;
-        }
-
-        setErrors(errors);
-        return isValid;
+        setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
     };
 
     return (
@@ -98,7 +174,6 @@ function Form2I() {
                             StateValue={form2I}
                             array={form2I.H2I1}
                         />
-                        {errors.H2I1 && <div className="error-msg">{errors.H2I1}</div>}
 
                         <Checkbox
                             h3="2I.2 : Which of the following SOPs for the management of common medical emergencies are followed at your CHC?"
@@ -108,7 +183,6 @@ function Form2I() {
                             StateValue={form2I}
                             array={form2I.H2I2}
                         />
-                        {errors.H2I2 && <div className="error-msg">{errors.H2I2}</div>}
 
                         <h3>Whether having Emergency condition specific SOP/STW for emergency care?</h3>
 
@@ -117,7 +191,6 @@ function Form2I() {
                             initialRows={initialRows}
                             tableName="H2I3"
                         />
-                        {errors.H2I3 && <div className="error-msg">{errors.H2I3}</div>}
 
                         <Radio
                             h3="2I.4 : Does the facility have defined and established procedure for informing patients about their medical condition, involving them in treatment planning and facilitating informed decision making?"
@@ -126,17 +199,25 @@ function Form2I() {
                             onClick={handleChange(setForm2I)}
                             byDefault={form2I.H2I4}
                         />
-                        {errors.H2I4 && <div className="error-msg">{errors.H2I4}</div>}
 
-                        <Buttons
-                            formName={"form2i"}
-                            formData={form2I}
-                            prevText="Previous"
-                            nextText="Save & Next"
-                            prev="/leadershipandgovernance-2"
-                            next="/referrallinkages-2"
-                            validateForm={validateForm}
-                        />
+
+
+                        <div className="button-container">
+                            <Buttons
+                                formName={"form2i"}
+                                formData={form2I}
+                                prevText="Previous"
+                                nextText="Save & Next"
+                                prev="/leadershipandgovernance-2"
+                                next="/referrallinkages-2"
+                            // validateForm={validateForm}
+                            />
+
+                            <OverlayCard
+                                isVisible={showOverlay}
+                                message="Please fill all required fields to proceed."
+                            />
+                        </div>
                     </div>
 
                 </div>

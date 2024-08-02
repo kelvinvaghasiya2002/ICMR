@@ -10,6 +10,8 @@ import { handleChange, turnOffbutton } from "../helpers";
 import Heading from "../../Heading/Heading.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function Form2C() {
   useEffect(() => {
@@ -26,6 +28,7 @@ function Form2C() {
   });
   const [form2C, setForm2C] = useState(JSON.parse(form2c));
   const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const columns = [
     { key: "Manpower", label: "Manpower", type: "text" },
@@ -120,14 +123,99 @@ function Form2C() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!form2C.H2C2) newErrors.H2C2 = "This field is required";
-    if (form2C.H2C2 === "Yes") {
-      if (form2C.H2C3.length === 0) newErrors.H2C3 = "This field is required";
-      if (!form2C.H2C4) newErrors.H2C4 = "This field is required";
-      if (!form2C.H2C5) newErrors.H2C5 = "This field is required";
+
+    if (!form2C.H2C2) newErrors.C2 = ' Whether training for emergency care management is being conducted for the staff in the institution is required'
+
+    if (form2C.H2C2 === "Yes" && !form2C.H2C4 && !form2C.H2C5) {
+      newErrors.H2C4 = validateRequired(form2C.H2C4);
+      newErrors.H2C4 = 'Frequency of training on emergency care in a year is required';
+      newErrors.H2C5 = validateRequired(form2C.H2C5);
+      newErrors.H2C5 = 'Required to fill last training conducted';
+
     }
+
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+    // if (!form2C.H2C2) newErrors.H2C2 = "This field is required";
+    // if (form2C.H2C2 === "Yes") {
+    //   if (form2C.H2C3.length === 0) newErrors.H2C3 = "This field is required";
+    //   if (!form2C.H2C4) newErrors.H2C4 = "This field is required";
+    //   if (!form2C.H2C5) newErrors.H2C5 = "This field is required";
+    // }
+    // setErrors(newErrors);
+    // return Object.keys(newErrors).length === 0;
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(form2C[field]);
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form2C]);
+
+  const isFormValid = () => {
+    const requiredFields = ['H2C2'];
+    if (form2C.H2C2 === "Yes") {
+      requiredFields.push('H2C4');
+      requiredFields.push('H2C5');
+    }
+
+    const missingFields = requiredFields.filter(field => !form2C[field] || (typeof form2C[field] === 'string' && form2C[field].trim() === ''));
+    return { isValid: missingFields.length === 0, missingFields };
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form2C]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      case 'H2C5':
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = form2C[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      default:
+        break;
+    }
+
+    setForm2C(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case 'H2C5':
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
   };
 
   return (
@@ -161,7 +249,7 @@ function Form2C() {
               onClick={handleChange(setForm2C)}
               byDefault={form2C.H2C2}
               errorMsg={errors.H2C2}
-              required={true}
+              required
             />
 
             {form2C.H2C2 === "Yes" && (
@@ -203,7 +291,7 @@ function Form2C() {
                   otherArray={[0, 0, 0, 0, 1]}
                   name="H2C4"
                   onClick={handleChange(setForm2C)}
-                  setter={setForm2C}
+                  // setter={setForm2C}
                   byDefault={form2C.H2C4}
                   errorMsg={errors.H2C4}
                 />
@@ -213,27 +301,29 @@ function Form2C() {
                   placeholder="Type here"
                   name="H2C5"
                   value={form2C.H2C5}
-                  onChange={handleChange(setForm2C)}
+                  onChange={handleChangeWithValidation}
                   errorMsg={errors.H2C5}
                 />
               </>
             )}
 
-            {Object.keys(errors).length > 0 && (
-              <div className="error-msg">
-                Please fill out all required fields before proceeding.
-              </div>
-            )}
 
-            <Buttons
-              formName={"form2c"}
-              formData={form2C}
-              prevText="Previous"
-              nextText="Save & Next"
-              prev="/infrastructure-2"
-              next="/logistics-2"
-              validateForm={validateForm}
-            />
+
+            <div className="button-container">
+              <Buttons
+                formName={"form2c"}
+                formData={form2C}
+                prevText="Previous"
+                nextText="Save & Next"
+                prev="/infrastructure-2"
+                next="/logistics-2"
+                // validateForm={validateForm}
+              />
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div>
         </div>
       </section>

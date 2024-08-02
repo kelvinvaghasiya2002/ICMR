@@ -15,7 +15,7 @@ function FormJ() {
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
-  
+
   turnOffbutton();
   const formj = setLocalStorage("formj", { H1J1: "", H1J2: "" });
   const [formJ, setFormJ] = useState(JSON.parse(formj));
@@ -115,21 +115,21 @@ function FormJ() {
               CheckbobItems={["Yes", "No"]}
               errorMsg={errors.H1J2}
             />
-<div className="button-container">
-            <LastButton
-              formName="formj"
-              formData={formJ}
-              prev="/processpoliciessops"
-              MainForm={"HFAT-1"}
+            <div className="button-container">
+              <LastButton
+                formName="formj"
+                formData={formJ}
+                prev="/processpoliciessops"
+                MainForm={"HFAT-1"}
               // validateForm={validateForm}
-            />
+              />
 
               <OverlayCard
                 isVisible={showOverlay}
                 message="Please fill all required fields to proceed."
               />
             </div>
-          </div> 
+          </div>
         </div>
       </section>
     </div>

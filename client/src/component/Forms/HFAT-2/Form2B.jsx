@@ -9,6 +9,8 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function Form2B() {
 
@@ -22,6 +24,7 @@ function Form2B() {
 
   const [form2B, setForm2B] = useState(JSON.parse(form2b));
   const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
     if (form2B.H2B3 === "No") {
@@ -39,18 +42,126 @@ function Form2B() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!form2B.H2B1) newErrors.H2B1 = "This field is required";
-    if (!form2B.H2B2) newErrors.H2B2 = "This field is required";
-    if (!form2B.H2B3) newErrors.H2B3 = "This field is required";
-    if (form2B.H2B3 === "Yes" && !form2B.H2B4) newErrors.H2B4 = "This field is required";
-    if (!form2B.H2B5) newErrors.H2B5 = "This field is required";
-    if (!form2B.H2B6) newErrors.H2B6 = "This field is required";
-    if (form2B.H2B7.length === 0) newErrors.H2B7 = "This field is required";
-    if (form2B.H2B8.length === 0 || (form2B.H2B8.includes("Other") && !form2B.H2B8Other)) newErrors.H2B8 = "This field is required";
-    if (!form2B.H2B9) newErrors.H2B9 = "This field is required";
-    if (form2B.H2B9 === "No" && !form2B.H2B10) newErrors.H2B10 = "This field is required";
+
+    newErrors.H2B2 = validateNumber(form2B.H2B2) || validateRequired(form2B.H2B2);
+    newErrors.H2B5 = validateNumber(form2B.H2B5) || validateRequired(form2B.H2B5);
+    newErrors.H2B6 = validateNumber(form2B.H2B6) || validateRequired(form2B.H2B6);
+    newErrors.H2B10 = validateName(form2B.H2B10) || validateRequired(form2B.H2B10);
+
+    if(form2B.H2B3 === "Yes" && !form2B.H2B4){
+      newErrors.H2B4 = validateNumber(form2B.H2B4) || validateRequired(form2B.H2B4);
+      newErrors.H2B4 = "Required to fill numbers of beds are available for emergency care";
+    }
+
+    if(form2B.H2B9 === "No" && !form2B.H2B10){
+      newErrors.H2B10 = validateRequired(form2B.H2B10);
+      newErrors.H2B10 = "Required to fill numbers of beds are available for emergency care";
+    }
+
+
+    // if (!form2B.H2B1) newErrors.H2B1 = "This field is required";
+    // if (!form2B.H2B2) newErrors.H2B2 = "This field is required";
+    // if (!form2B.H2B3) newErrors.H2B3 = "This field is required";
+    // if (form2B.H2B3 === "Yes" && !form2B.H2B4) newErrors.H2B4 = "This field is required";
+    // if (!form2B.H2B5) newErrors.H2B5 = "This field is required";
+    // if (!form2B.H2B6) newErrors.H2B6 = "This field is required";
+    // if (form2B.H2B7.length === 0) newErrors.H2B7 = "This field is required";
+    // if (form2B.H2B8.length === 0 || (form2B.H2B8.includes("Other") && !form2B.H2B8Other)) newErrors.H2B8 = "This field is required";
+    // if (!form2B.H2B9) newErrors.H2B9 = "This field is required";
+    // if (form2B.H2B9 === "No" && !form2B.H2B10) newErrors.H2B10 = "This field is required";
+    // setErrors(newErrors);
+    // return Object.keys(newErrors).length === 0;
+
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = validateRequired(form2B[field]);
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form2B]);
+
+  const isFormValid = () => {
+    const requiredFields = ['H2B1', 'H2B2', 'H2B3', 'H2B5', 'H2B6', 'H2B7', 'H2B8', 'H2B9'];
+    if (form2B.H2B3 === "Yes") {
+      requiredFields.push('H2B4');
+    }
+    if (form2B.H2B9 === "No") {
+      requiredFields.push('H2B10');
+    }
+    const missingFields = requiredFields.filter(field => !form2B[field] || (typeof form2B[field] === 'string' && form2B[field].trim() === ''));
+    return { isValid: missingFields.length === 0, missingFields };
+  };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form2B]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = '';
+
+    switch (name) {
+      case 'H2B10':
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = form2B[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      case 'H2B2':
+      case 'H2B4':
+      case 'H2B5':
+      case 'H2B6':
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formB[name];
+          e.preventDefault();
+        }
+        break;
+      default:
+        break;
+    }
+
+    setForm2B(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case 'H2B2':
+      case 'H2B4':
+      case 'H2B5':
+      case 'H2B6':
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
   };
 
   return (
@@ -72,8 +183,8 @@ function Form2B() {
               name="H2B1" 
               byDefault={form2B.H2B1} 
               onClick={handleChange(setForm2B)} 
-              required
-              errorMsg={errors.H2B1}
+              // required
+              // errorMsg={errors.H2B1}
             />
 
             <InputField 
@@ -81,8 +192,8 @@ function Form2B() {
               placeholder="Type here" 
               name="H2B2" 
               value={form2B.H2B2} 
-              type={"number"}
-              onChange={handleChange(setForm2B)} 
+              // type={"number"}
+              onChange={handleChangeWithValidation} 
               required
               errorMsg={errors.H2B2}
             />
@@ -93,8 +204,8 @@ function Form2B() {
               name="H2B3" 
               byDefault={form2B.H2B3} 
               onClick={handleChange(setForm2B)} 
-              required
-              errorMsg={errors.H2B3}
+              // required
+              // errorMsg={errors.H2B3}
             />
 
             {
@@ -105,8 +216,8 @@ function Form2B() {
                 name="H2B4" 
                 value={form2B.H2B4} 
                 type={"number"}
-                onChange={handleChange(setForm2B)} 
-                required
+                onChange={handleChangeWithValidation} 
+                // required
                 errorMsg={errors.H2B4}
               />
             }
@@ -116,7 +227,7 @@ function Form2B() {
               placeholder="Type here" 
               name="H2B5" 
               value={form2B.H2B5} 
-              onChange={handleChange(setForm2B)} 
+              onChange={handleChangeWithValidation} 
               required
               errorMsg={errors.H2B5}
             />
@@ -127,7 +238,7 @@ function Form2B() {
               placeholder="Type here" 
               name="H2B6" 
               value={form2B.H2B6} 
-              onChange={handleChange(setForm2B)} 
+              onChange={handleChangeWithValidation} 
               required
               errorMsg={errors.H2B6}
             />
@@ -139,7 +250,7 @@ function Form2B() {
               setFunction={setForm2B}
               StateValue={form2B}
               array={form2B.H2B7}
-              required
+              // required
               errorMsg={errors.H2B7}
             />
 
@@ -151,7 +262,7 @@ function Form2B() {
               setFunction={setForm2B}
               StateValue={form2B}
               array={form2B.H2B8} 
-              required
+              // required
               errorMsg={errors.H2B8}
             />
 
@@ -161,8 +272,8 @@ function Form2B() {
               name="H2B9" 
               byDefault={form2B.H2B9} 
               onClick={handleChange(setForm2B)} 
-              required
-              errorMsg={errors.H2B9}
+              // required
+              // errorMsg={errors.H2B9}
             />
 
             {
@@ -172,19 +283,23 @@ function Form2B() {
                 placeholder="Type here" 
                 name="H2B10" 
                 value={form2B.H2B10} 
-                onChange={handleChange(setForm2B)} 
-                required
+                onChange={handleChangeWithValidation} 
+                // required
                 errorMsg={errors.H2B10}
               />
             }
 
-            {Object.keys(errors).length > 0 && (
-              <div className="error-msg">
-                Please fill out all required fields before proceeding.
-              </div>
-            )}
 
-            <Buttons formData={form2B} formName="form2b" prevText="Previous" nextText="Save & Next" prev="/facilityinformation-2" next="/humanresources-2" validateForm={validateForm} />
+            <div className="button-container">
+            <Buttons formData={form2B} formName="form2b" prevText="Previous" nextText="Save & Next" prev="/facilityinformation-2" next="/humanresources-2" 
+            //validateForm={validateForm} 
+            />
+
+              <OverlayCard
+                isVisible={showOverlay}
+                message="Please fill all required fields to proceed."
+              />
+            </div>
           </div>
         </div>
       </section>

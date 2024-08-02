@@ -9,6 +9,8 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function Form2F() {
     useEffect(() => {
@@ -21,7 +23,8 @@ function Form2F() {
     });
 
     const [form2F, setForm2F] = useState(JSON.parse(form2f));
-    const [formError, setFormError] = useState("");
+    const [errors, setErrors] = useState({});
+    const [showOverlay, setShowOverlay] = useState(false);
 
     useEffect(() => {
         if (form2F.H2F1 === "No") {
@@ -32,54 +35,142 @@ function Form2F() {
     }, [form2F.H2F1]);
 
     const validateForm = () => {
-        // Basic validation for required fields
-        if (form2F.H2F1 === "") {
-            setFormError("Field 2F.1 is required.");
-            return false;
+
+        const newErrors = {};
+
+        if (!form2F.H2F1 === 'Yes' && !form2F.H2F2 && !form2F.H2F3 && !form2F.H2F5) {
+            newErrors.H2F2 = "Required to fill facility do complete reporting of indicators on emergency care in HMIS";
+            newErrors.H2F3 = validateNumber(form2F.H2F3) || validateRequired(form2F.H2F3);
+            newErrors.H2F5 = "Required to time bound management of common emergencies is captured in MIS.";
         }
 
-        if (form2F.H2F1 === "Yes") {
-            if (form2F.H2F2 === "") {
-                setFormError("Field 2F.2 is required.");
-                return false;
-            }
-            if (form2F.H2F3 === "") {
-                setFormError("Field 2F.3 is required.");
-                return false;
-            }
-            if (form2F.H2F4.length === 0) {
-                setFormError("Field 2F.4 is required.");
-                return false;
-            }
-            if (form2F.H2F5 === "") {
-                setFormError("Field 2F.5 is required.");
-                return false;
-            }
-        }
 
-        if (form2F.H2F6.length === 0) {
-            setFormError("Field 2F.6 is required.");
-            return false;
-        }
+        // // Basic validation for required fields
+        // if (form2F.H2F1 === "") {
+        //     seterrors("Field 2F.1 is required.");
+        //     return false;
+        // }
 
-        if (form2F.H2F7 === "") {
-            setFormError("Field 2F.7 is required.");
-            return false;
-        }
+        // if (form2F.H2F1 === "Yes") {
+        //     if (form2F.H2F2 === "") {
+        //         seterrors("Field 2F.2 is required.");
+        //         return false;
+        //     }
+        //     if (form2F.H2F3 === "") {
+        //         seterrors("Field 2F.3 is required.");
+        //         return false;
+        //     }
+        //     if (form2F.H2F4.length === 0) {
+        //         seterrors("Field 2F.4 is required.");
+        //         return false;
+        //     }
+        //     if (form2F.H2F5 === "") {
+        //         seterrors("Field 2F.5 is required.");
+        //         return false;
+        //     }
+        // }
 
-        if (form2F.H2F8 === "") {
-            setFormError("Field 2F.8 is required.");
-            return false;
-        }
+        // if (form2F.H2F6.length === 0) {
+        //     seterrors("Field 2F.6 is required.");
+        //     return false;
+        // }
 
-        if (form2F.H2F9 === "") {
-            setFormError("Field 2F.9 is required.");
-            return false;
-        }
+        // if (form2F.H2F7 === "") {
+        //     seterrors("Field 2F.7 is required.");
+        //     return false;
+        // }
 
-        setFormError("");
-        return true;
+        // if (form2F.H2F8 === "") {
+        //     seterrors("Field 2F.8 is required.");
+        //     return false;
+        // }
+
+        // if (form2F.H2F9 === "") {
+        //     seterrors("Field 2F.9 is required.");
+        //     return false;
+        // }
+
+        // seterrors("");
+        // return true;
+
+        setErrors(newErrors);
+        setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
     };
+
+
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                newErrors[field] = validateRequired(form2F[field]);
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
+        }
+    }, [form2F]);
+
+
+    const isFormValid = () => {
+        const requiredFields = ['H2F1', 'H2F7', 'H2F8', 'H2F9'];
+        if (form2F.H2F1 === "Yes") {
+            requiredFields.push('H2F2');
+            requiredFields.push('H2F3');
+            requiredFields.push('H2F5');
+        }
+        const missingFields = requiredFields.filter(field => !form2F[field] || (typeof form2F[field] === 'string' && form2F[field].trim() === ''));
+        return { isValid: missingFields.length === 0, missingFields };
+    };
+
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                newErrors[field] = 'This field is required';
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
+        }
+    }, [form2F]);
+
+    const handleChangeWithValidation = (e) => {
+        const { name, value } = e.target;
+        let validatedValue = value;
+        let error = '';
+
+        switch (name) {
+            case 'H2F3':
+                error = validateNumber(value);
+                if (!error) {
+                    validatedValue = value;
+                } else {
+                    validatedValue = form2F[name];
+                    e.preventDefault(); // Prevent default behavior if the input was invalid
+                }
+                break;
+            default:
+                break;
+        }
+
+        setForm2F(prevValue => ({ ...prevValue, [name]: validatedValue }));
+
+        // Perform additional required validation
+        switch (name) {
+            case 'H2F3':
+                error = error || validateRequired(validatedValue);
+                break;
+            default:
+                break;
+        }
+
+        setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+    };
+
 
     return (
         <div>
@@ -121,7 +212,7 @@ function Form2F() {
                                     placeholder="Type here"
                                     name="H2F3"
                                     value={form2F.H2F3}
-                                    onChange={handleChange(setForm2F)}
+                                    onChange={handleChangeWithValidation}
                                 />
 
                                 <Checkbox
@@ -184,17 +275,23 @@ function Form2F() {
                             onClick={handleChange(setForm2F)}
                         />
 
-                        {formError && <div className="error-msg">{formError}</div>}
 
-                        <Buttons
-                            formName="form2f"
-                            formData={form2F}
-                            prevText="Previous"
-                            nextText="Save & Next"
-                            prev="/emergencycareservices-2"
-                            next="/finance-2"
-                            validateForm={validateForm}
-                        />
+                        <div className="button-container">
+                            <Buttons
+                                formName="form2f"
+                                formData={form2F}
+                                prevText="Previous"
+                                nextText="Save & Next"
+                                prev="/emergencycareservices-2"
+                                next="/finance-2"
+                            // validateForm={validateForm}
+                            />
+
+                            <OverlayCard
+                                isVisible={showOverlay}
+                                message="Please fill all required fields to proceed."
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
