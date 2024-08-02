@@ -19,7 +19,7 @@ function FormA12() {
     useEffect(() => {
         if (formA3.AC12_1 === "No") {
             setFormA3((prevValue) => {
-                return { ...prevValue, AC12_1_if: "", AC12_2: "" }
+                return { ...prevValue, AC12_1_if: "", AC12_2: [] }
             })
         }
     }, [formA3.AC12_1])

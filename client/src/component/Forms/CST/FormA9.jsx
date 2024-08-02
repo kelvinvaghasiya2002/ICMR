@@ -21,10 +21,10 @@ function FormA9() {
   useEffect(() => {
     if (formA3.AC9_1 === "No") {
       setFormA3((prevValue) => {
-        return { ...prevValue, AC9_1_if: "", AC9_2: "" }
+        return { ...prevValue, AC9_1_if: "", AC9_2: [] }
       })
     }
-  }, [formA3])
+  }, [formA3.AC9_1])
 
 
   turnOffbutton();
