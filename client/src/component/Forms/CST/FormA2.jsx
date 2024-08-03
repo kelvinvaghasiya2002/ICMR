@@ -11,6 +11,7 @@ import Heading from '../../Heading/Heading.jsx';
 import LocationButton from '../child-comp/Location.jsx';
 import CSTLastButton from '../child-comp/CSTLastButton.jsx';
 import ShortUniqueId from "short-unique-id"
+import LastButton from '../child-comp/LastButton.jsx';
 
 const uid = new ShortUniqueId({ length: 10 });
 console.log(uid.rnd());
@@ -61,11 +62,6 @@ function FormA2() {
 
                         <InputField h3="AB.3  Name of PSU (Town/Village) :" placeholder="Type here" name="AB3" onChange={handleChange(setFormA2)} value={formA2.AB3} />
 
-                        {/* <InputField h3="AB.4 GPS Co-ordinates :" placeholder="Type here" name="AB4" value={formA2.AB4} onChange={handleChange(setFormA2)} /> */}
-                        <LocationButton setter={setFormA2} name="AB4" heading={"AB.4"} />
-
-                        {/* <InputField h3="AB.5 Household ID Number :" placeholder="Type here" name="AB5" value={formA2.AB5} onChange={handleChange(setFormA2)} /> */}
-
                         <div className='block'>
                             <h3 className='h3block'>AB.5 Household ID Number :</h3>
                             <input
@@ -82,7 +78,7 @@ function FormA2() {
                         {
                             (formA2.AB6 === "< 1 year")
                                 ?
-                                <CSTLastButton previous="/siteinformation" from="FormA2" lastForm={formA2} />
+                                <LastButton prev="/siteinformation" formName="forma2" formData={formA2} MainForm={"CST"} />
                                 :
 
                                 <>
