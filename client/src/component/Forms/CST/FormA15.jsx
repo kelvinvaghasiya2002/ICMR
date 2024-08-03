@@ -14,7 +14,7 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 
 function FormA15() {
-  var forma15 = setLocalStorage("forma15", { AC15_1: "", AC15_2 : "" , AC15_4 : [""]})
+  var forma15 = setLocalStorage("forma15", { AC15_1: "", AC15_2: "", AC15_4: [""] })
   const [formA15, setFormA15] = useState(JSON.parse(forma15))
   turnOffbutton();
   return (
@@ -43,7 +43,7 @@ function FormA15() {
               byDefault={formA15.AC15_1}
             />
 
-            <InputField h3="AC.15.2  If yes, how many members in your household lost his/her life due to any health emergency condition (Specify)" placeholder="Type here" name="AC15_2" onChange={handleChange(setFormA15)} value={formA15.AC15_2}/>
+            <InputField h3="AC.15.2  If yes, how many members in your household lost his/her life due to any health emergency condition (Specify)" placeholder="Type here" name="AC15_2" onChange={handleChange(setFormA15)} value={formA15.AC15_2} />
 
             <h3>AC.15.3  If yes, could you please tell about the deceased persons?</h3>
 
@@ -61,14 +61,13 @@ function FormA15() {
                 "Neonatal Emergency: The newborn cry/cry late/unable to breathe/have breathing difficulty that requires hospitalization or admission to SNCU/appear cold or warm (fever) to touch/refuse to breastfeed/become nonresponsive to touch/have distended abdomen or minimal or abnormal limb movements/develop bluish discoloration or jaundice/pass loose stools/or develop any other condition that requires admission/hospitalization or needs any medical attention within the first month of life?",
                 "Snake bite",
                 "Poisoning: Accidental/intentional ingestion of poison/ingestion or exposure to pesticides/insecticides/ingestion of rat poison/poisonous seed/phenyl any hazardous substance/chemical substance or any other substance that could have required any sort of medical attention or treatment?",
-                "Others (Specify)"
               ]}
               other={true}
-              setFunction={handleChange(setFormA15)}
-              StateValue={formA15} 
+              setFunction={setFormA15}
+              StateValue={formA15}
               array={formA15.AC15_4}
-            /> 
-            
+            />
+
             <Buttons prev="/others" next="/socio-demographicprofileofthepatientinthehhwithemergencycondition" prevText="Previous" nextText="Save & Next" formName="forma15" formData={formA15} />
           </div>
         </div>

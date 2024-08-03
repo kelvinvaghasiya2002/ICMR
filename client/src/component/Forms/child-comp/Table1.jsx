@@ -5,7 +5,7 @@ function Table1({ tableName }) {
     // console.log(JSON.parse(localStorage.getItem("CompleteForm"))[1]);
     const [rows, setRows] = useState(() => {
         const storedRows = localStorage.getItem(tableName);
-        return storedRows ? JSON.parse(storedRows) : [];
+        return storedRows ? JSON.parse(storedRows) : [{ name: '', age: '', sex: 'Male' }];
     });
 
     useEffect(() => {
@@ -14,7 +14,7 @@ function Table1({ tableName }) {
 
 
     function handlePlusClick() {
-        setRows([...rows, { name: '', age: '', sex: 'Male', relationship: '' }]);
+        setRows([...rows, { name: '', age: '', sex: 'Male' }]);
     }
 
     function handleMinusClick() {

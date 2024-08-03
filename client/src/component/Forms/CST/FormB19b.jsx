@@ -39,7 +39,16 @@ function formB16() {
 
             <Radio onClick={handleChange(setFormB16)} h3="B.33 What was the final outcome of visiting the first facility or home visit by Doctor? " CheckbobItems={["Referred to higher facility", "Went against medical advice to different facility", "Partially recovered & discharged", "Fully Recovered & discharged", "Recovered with disability & discharged", "Self-Discharged", "Admitted in Hospital", "Death"]} name="B33" byDefault={formB16.B33} />
 
-            <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-3" next="/referral-facility1" prevText="Previous" nextText="Save & Next" />
+            {
+              (formB16.B33 === "Partially recovered & discharged" || formB16.B33 === "Fully Recovered & discharged" || formB16.B33 === "Recovered with disability & discharged" || formB16.B33 === "Self-Discharged" || formB16.B33 === "Admitted in Hospital") 
+              &&
+              <InputField h3="B.34 : What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary? (Specify)" placeholder="Type Here" value={formB16.B34} name="B34" onChange={handleChange(setFormB16)} />
+            }
+
+            <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-3" 
+            // next="/referral-facility1" 
+            next={(formB16.B33 === "Death" ? "/verbal-&-social-autopsy1" : (formB16.B33 === "Referred to higher facility" || formB16.B33 === "Went against medical advice to different facility") ? "/referral-facility1" :  "/barriers-and-facilitators2")}
+            prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>

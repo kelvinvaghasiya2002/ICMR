@@ -53,7 +53,7 @@ function FormA5() {
 
             <h4><i>Now, I would like to get some information related to the medical emergency conditions your household had been through in the past one year.</i></h4>
 
-            <Buttons formName="forma3" formData={formA3} prevText="Previous" nextText="Save & Next" prev="/linelistingofhouseholdmembers-2" next="/linelistingofhouseholdmembers-4" />
+            <Buttons formName="forma3" formData={formA3} prevText="Previous" nextText="Save & Next" prev="/linelistingofhouseholdmembers-2" next={(formA3.AC4 === "Yes" || formA3.AC3 === "Yes" ? "/linelistingofhouseholdmembers-1" : "/linelistingofhouseholdmembers-4")} />
           </div>
         </div>
       </section>
