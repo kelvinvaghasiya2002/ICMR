@@ -9,8 +9,31 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 function FormD2() {
+    // --toggle--
+    const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
+    const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+    };
+    const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+        setSidebarVisible(true);
+        }
+    };
+
+    // useEffect(() => {
+    //   window.addEventListener('resize', handleResize);
+    //   return () => {
+    //     window.removeEventListener('resize', handleResize);
+    //   };
+    // }, []);
+    // --toggle end--
+    
     useEffect(() => {
-        AOS.init({ duration: 2000 });
+        window.addEventListener('resize', handleResize);
+        AOS.init({ duration: 2000 })
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     turnOffbutton();
@@ -46,9 +69,20 @@ function FormD2() {
 
     return (
         <div>
-            <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)" />
-            <section>
-                <SidePanel id={"4"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
+            </div>
+            <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"4"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
+                {/* <SidePanel id={"4"} /> */}
                 <div className="siteInfo" data-aos="fade-left">
                     <div className="formhdr">
                         <div>

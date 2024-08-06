@@ -12,8 +12,33 @@ import { validateName, validateNumber, validateRequired, validateEmail } from '.
 import OverlayCard from '../OverlayCard.jsx';
 
 function FormJ() {
+
+  
+  // --toggle--
+  const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  // useEffect(() => {
+  //   window.addEventListener('resize', handleResize);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
+  // --toggle end--
+
   useEffect(() => {
-    AOS.init({ duration: 2000 });
+    window.addEventListener('resize', handleResize);
+    AOS.init({ duration: 2000 })
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   turnOffbutton();
@@ -89,32 +114,46 @@ function FormJ() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)" />
-      <section>
-        <SidePanel id={"10"} />
+      <div className="header">
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      </div>
+      <section className="form-main">
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"10"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
+        {/* <SidePanel id={"10"} /> */}
         <div className="siteInfo" data-aos="fade-left">
           <div className="formhdr">
             <div>
               <h3>1J. Referral Linkages</h3>
             </div>
           </div>
-          <div className="formcontent cont_extra">
-            <Radio
-              byDefault={formJ.H1J1}
-              onClick={handleChange(setFormJ)}
-              name="H1J1"
-              h3="1J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?"
-              CheckbobItems={["Yes", "No"]}
-              errorMsg={errors.H1J1}
-            />
-            <Radio
-              byDefault={formJ.H1J2}
-              onClick={handleChange(setFormJ)}
-              name="H1J2"
-              h3="1J.2 : Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?"
-              CheckbobItems={["Yes", "No"]}
-              errorMsg={errors.H1J2}
-            />
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
+              <Radio
+                byDefault={formJ.H1J1}
+                onClick={handleChange(setFormJ)}
+                name="H1J1"
+                h3="1J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?"
+                CheckbobItems={["Yes", "No"]}
+                errorMsg={errors.H1J1}
+              />
+              <Radio
+                byDefault={formJ.H1J2}
+                onClick={handleChange(setFormJ)}
+                name="H1J2"
+                h3="1J.2 : Does this facility have any policies and procedures which guide the transfer- out/referral of stable and unstable patients after stabilization to another facility with documentation?"
+                CheckbobItems={["Yes", "No"]}
+                errorMsg={errors.H1J2}
+              />
+            </div>
+
             <div className="button-container">
               <LastButton
                 formName="formj"
@@ -126,7 +165,7 @@ function FormJ() {
 
               <OverlayCard
                 isVisible={showOverlay}
-                message="Please fill all required fields to proceed."
+                message="(Please fill all required fields to proceed)"
               />
             </div>
           </div>

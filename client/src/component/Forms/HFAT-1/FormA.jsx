@@ -39,13 +39,36 @@ function FormA() {
   const [showOverlay, setShowOverlay] = useState(false);
   const date = new Date();
 
+  // --toggle--
+  const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  // useEffect(() => {
+  //   window.addEventListener('resize', handleResize);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
+  // --toggle end--
+
   useEffect(() => {
+    window.addEventListener('resize', handleResize);
     setFormA((prevValue) => {
       return {
         ...prevValue,
         A2: (prevValue.A2 === "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : prevValue.A2,
       };
     });
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const validateForm = () => {
@@ -188,9 +211,20 @@ function FormA() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
-      <section>
-        <SidePanel id={"1"} />
+      <div className="header">
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      </div>
+      <section className="form-main">
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"1"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
+        {/* <SidePanel id={"1"} /> */}
         <div className="siteInfo" data-aos="fade-left">
           <div className="formhdr">
             <div>
@@ -337,7 +371,7 @@ function FormA() {
               />
               <OverlayCard
                 isVisible={showOverlay}
-                message="Please fill all required fields to proceed."
+                message="(Please fill all required fields to proceed)"
               />
             </div>
           </div>

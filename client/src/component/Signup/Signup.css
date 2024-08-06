@@ -10,29 +10,9 @@
 }
 
 .signup_content{
-    padding: 10px;
+    /* padding: 10px; */
     margin: auto;
-    width:50%
-}
-
-
-/* 
-.signup_main input{
-    box-sizing: border-box;
-    padding: 0 2vh;
-} */
-
-
-
-.webimgsignup_con{
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.webimgsignup_con div img{
-    aspect-ratio: 3 / 2;
-    width: 5vw;
+    width:350px;
 }
 
 
@@ -161,19 +141,22 @@
 
 .main-signup-div{
     display: flex;
-    margin: 5vh 0 2vh 2vw;
+    justify-content: space-between;
+    margin: 3vw 15vw 1vw 0;
+    /* margin: 5vh 0 2vh 2vw; */
 }
 
 
 #signup-form{
-    width: 43vw;
+    width: 40vw;
     display: flex;
     justify-content: center;
+    font-family: "Nunito", sans-serif;
 }
 
 
 #signup-form form{
-    width: 23vw;
+    width: 25vw;
 }
 
 
@@ -191,16 +174,10 @@
     margin-bottom: 3vh;
 }
 
-
-
-
 .oauth-div div img{
     width: 5.5vw;
     aspect-ratio: 102.48/68.32;
 }
-
-
-
 
 .parent-name-field{
     margin-top: 4vh;
@@ -244,6 +221,7 @@
     box-sizing: border-box;
     font-family: "Nunito", sans-serif;
     outline: none;
+    /* background-color: #F2F7FF; */
 }
 
  
@@ -260,15 +238,16 @@ select {
     font-size: 1vw;
     font-family: "Nunito", sans-serif;
     color: #444B59;
+    font-weight: 600;
 }
 
 
 
-.site-label{
+/* .site-label{
     font-size: 1vw;
     font-family: "Nunito", sans-serif;
     color: #444B59;
-}
+} */
 
 
 
@@ -281,10 +260,12 @@ select {
     height: 5.6vh;
     width: 100%;
     background-color: #152266;
-    margin: 2vh 0;
+    margin: 2.5vh 0;
     font-size: 2vh;
-    font-family: "Inter", sans-serif;
+    font-family: "Nunito", sans-serif;
+    /* font-family: "Inter", sans-serif; */
     letter-spacing: 0.1vh;
+    font-weight: 700;
     cursor: pointer;
     border: 0.2vh solid #152266;
     color: white;
@@ -296,13 +277,15 @@ select {
     display: flex;
     gap: 1vw;
     margin: 3vh 0;
-    opacity: 0.6;
+    opacity: 0.8;
     font-weight: 600;
     text-decoration: none;
 }
 
 .terms-conditions-field a{
     text-decoration: none;
+    color: #152266;
+    font-size: 1.2vw;
 }
 
 .terms-conditions-field div{
@@ -312,6 +295,7 @@ select {
 
 .terms-conditions-field p{
     margin: 0;
+    font-size: 1.2vw;
 }
 
 .terms-conditions-field  input{
@@ -329,18 +313,23 @@ select {
 
 .sign-in-link{
     text-align: center;
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 
 
 .sign-in-link div p{
-    margin: 0.8vh;
+    margin: 0.5vh;
     font-weight: 600;
-    opacity: 0.6;
+    font-size: 1vw;
+    color: #444B59;
+    /* opacity: 0.6; */
 }
 
-.sign-in-link div p a{
+.sign-in-link div a{
     text-decoration: none;
+    font-weight: 800;
+    color: #152266;
+    font-size: 1.2vw;
 }
 
 
@@ -357,31 +346,11 @@ select {
 /* ---------------------     CSS FOR RIGHT SIDE IMAGE     -------------------- */
 
 
-
-
-
-#signup-rightside-img{
-    position: sticky;
-    top: 22vh;
-    display: flex;
-    width: 50vw;
-    height: 56vh;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-
-#signup-rightside-img div{
-    height: 50vh;
-}
-
-
-
 #signup-rightside-img img{
-    height: 115%;
-    aspect-ratio: 566/521.21;
+    /* height: 115%;
+    aspect-ratio: 566/521.21; */
+    height: 28vw;
+    margin-top: 3vw;
 }
 
 
@@ -398,4 +367,101 @@ select {
     to {
         transform: rotate(360deg);
     }
+}
+
+
+
+/* ######################################################################## */
+
+@media (max-width: 1024px) {
+
+    .heading-signup h2{
+        font-size: 3vw;
+        font-weight: 650;
+    }
+
+    #signup-rightside-img img{
+        display: none;
+    }
+
+    
+    .main-signup-div{
+        display: block;
+        margin: 0;
+        margin-top: 8vh;
+    }
+
+    
+    #signup-form{
+        margin: auto;
+        font-family: "Nunito", sans-serif;
+    }
+
+    #signup-form form{
+        width: 60vw;
+    }
+
+    
+
+    
+    .form-inputs label{
+        font-size: 1.5vw;
+        font-weight: 700;
+    }    
+
+    .form-inputs input,select{
+        font-size: 1.5vw;
+        font-weight: 500;
+        margin-top: 0.85vw;
+        margin-bottom: 2vh;
+        border: 0.15vw solid #152266;
+        border-radius: 99px;
+        padding: 0 2vw;
+        width: 100%;
+        height: 5vw;
+    }
+
+    
+
+    .sign-up-btns button{
+        border-radius: 99px;
+        height: 5vw;
+        width: 100%;
+        margin: 2.75vh 0;
+        font-size: 1.75vw;
+        font-weight: 600;
+        letter-spacing: 0.1vh;
+        cursor: pointer;
+        border: 0.2vh solid #152266;
+    }
+
+    .sign-in-link div p{
+        font-weight: 600;
+        font-size: 1.25vw;
+    }
+    
+    .sign-in-link div a{
+        font-size: 1.5vw;
+    }
+
+    
+    .oauth-div{
+        justify-content: space-around;
+    }
+
+    .oauth-div div img{
+        width: 7.5vw;
+        aspect-ratio: 102.48/68.32;
+    }
+
+    .terms-conditions-field a{
+        font-size: 1.5vw;
+        /* opacity: 0.6; */
+    }
+    
+    .terms-conditions-field p{
+        font-size: 1.5vw;
+        opacity: 0.6;
+    }
+
 }
