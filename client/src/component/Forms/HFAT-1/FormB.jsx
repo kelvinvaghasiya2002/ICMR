@@ -98,10 +98,10 @@ function FormB() {
 
   const isFormValid = () => {
     const requiredFields = ['B1', 'B2', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12', 'B13', 'B14'];
-    if (formB.B2 === "Yes") {
-      requiredFields.push('B3');
-      requiredFields.push('B4');
-    }
+    // if (formB.B2 === "Yes") {
+    //   requiredFields.push('B3');
+    //   requiredFields.push('B4');
+    // }
     if (formB.B14 === "No") {
       requiredFields.push('B15');
     }
@@ -304,7 +304,6 @@ function FormB() {
 
             <div className="button-container">
               <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources" 
-              //validateForm={validateForm}
                />
               <OverlayCard
                 isVisible={showOverlay}
