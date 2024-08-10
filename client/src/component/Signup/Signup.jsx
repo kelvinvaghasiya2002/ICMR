@@ -224,7 +224,7 @@ export default function SignUp() {
 
                         <div className='parent-username-field form-inputs'>
                             <div>
-                                <label htmlFor='username'>Username</label>
+                                <label htmlFor='username'>Email</label>
                             </div>
                             <div>
                                 <input
@@ -326,7 +326,7 @@ export default function SignUp() {
                                         <input type='checkbox' />
                                     </div>
                                     <div>
-                                        <p> I agree with <a href='#'>Terms</a> and <a href='#'>Privacy</a> </p>
+                                        <p> I agree with <a href='#'>Terms</a> and <a href='#'>Privacy Policy</a> </p>
                                     </div>
                                 </div>
 

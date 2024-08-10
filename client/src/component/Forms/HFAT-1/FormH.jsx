@@ -14,6 +14,25 @@ import OverlayCard from '../OverlayCard.jsx';
 
 function FormH() {
 
+    // --toggle--
+    const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
+    const toggleSidebar = () => {
+      setSidebarVisible(!isSidebarVisible);
+    };
+    const handleResize = () => {
+      if (window.innerWidth >= 1025) {
+        setSidebarVisible(true);
+      }
+    };
+  
+    // useEffect(() => {
+    //   window.addEventListener('resize', handleResize);
+    //   return () => {
+    //     window.removeEventListener('resize', handleResize);
+    //   };
+    // }, []);
+    // --toggle end--
+
   var formh = setLocalStorage("formh",
     { H1H1: "", H1H2: "", H1H3: "", H1H4: "", H1H5: "", H1H6: "", H1H7: "", H1H8: [""], H1H9: "" })
 
@@ -23,7 +42,11 @@ function FormH() {
   console.log(formH.H1H4);
 
   useEffect(() => {
+    window.addEventListener('resize', handleResize);
     AOS.init({ duration: 2000 })
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -214,9 +237,20 @@ function FormH() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
-      <section>
-        <SidePanel id={"8"} />
+      <div className="header">
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Health Facility Assessment Tool 1: District Hospital/Tertiary Care (Public or Private)"></Heading>
+      </div>
+      <section className="form-main">
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"8"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
+        {/* <SidePanel id={"8"} /> */}
         <div className="siteInfo" data-aos="fade-left">
 
           <div className="formhdr">
@@ -290,7 +324,7 @@ function FormH() {
 
               <OverlayCard
                 isVisible={showOverlay}
-                message="Please fill all required fields to proceed."
+                message="(Please fill all required fields to proceed)"
               />
             </div>
           </div>

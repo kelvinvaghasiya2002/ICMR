@@ -45,7 +45,7 @@ export default function FirstPage() {
                 </div>
             </div>
            
-            <div className='fpage_footer' data-aos="fade-up">
+            <div className='fpage_footer' >
                 <p>Content Managed By <span>ICMR-New Delhi</span></p>
                 <p style={{marginTop : "0px"}}>Design & Developed By <span>Parul <span style={{color : "red"}}>University</span></span></p>
             </div>

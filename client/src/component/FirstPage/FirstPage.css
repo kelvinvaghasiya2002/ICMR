@@ -1,6 +1,7 @@
 .fpage_main{
     background-color: #F2F7FF;
-    height: 100vh;
+    /* height: 100vh; */
+    min-height: 100vh;
 }
 
 
@@ -96,7 +97,7 @@
 }
 
 
-
+/* CSS FOR MAIN SECTION */
 
 .main_section{
     display: flex;
@@ -108,7 +109,8 @@
 
 
 .fpage_content h2{
-    margin-top: 15vh;
+    margin-top: 9vw;
+    margin-bottom: 0;
     font-size: 2.8vw;
     line-height: 3.5vw;
     text-align: center;
@@ -119,13 +121,13 @@
     font-size: 1.5vw;
     font-weight: 700;
     line-height: 2vw;
-    margin-top: -3vh;
+    margin-top: 0.75vw;
+    margin-bottom: 0;
     color: #5F79AD;
 }
 
 .fpage_content{
     text-align: left;
-    line-height: 3vh;
     color: #152266;
     margin-left: 5%;
     /* background-color: aqua; */
@@ -148,7 +150,7 @@
 .fpage_study h3{
     font-weight: 700;
     font-size: 1.35vw;
-
+    margin-top: 1vw;
 }
 
 .fpage_footer{
@@ -164,3 +166,152 @@
 
 
 
+/* ########################################### */
+
+@media (max-width: 1024px) {
+    .fpage_main{
+        height: 100%;
+    }
+
+    .fpage_navbar{
+        padding: 0 2.5%;
+    }
+    
+    
+    /* CSS FOR FOR SIGN-IN AND SIGN-UP buttons */
+    
+    
+    .signin-up-buttons{
+        font-weight: 600;
+        font-size: 2vh;
+    }
+    
+
+    /* CSS FOR NAV(MORE) BUTTONS */
+  
+    .morepage{
+        gap: 1vw;
+    }
+
+
+    .morepage-buttons{
+        font-weight: 650;
+        /* font-size: 1.5vw; */
+        font-size: 1.5vw;
+    }
+
+    /* CSS FOR MAIN SECTION */
+
+        
+    .main_section{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0 2vw;
+        padding-top: 2vw;
+    }
+
+
+    .fpage_content h2{
+        margin-top: 1vw;
+        margin-bottom: 0;
+        font-weight: 850;
+        font-size: 6vw;
+        line-height: 5.5vw;
+        text-align: left;
+    }
+
+    .fpage_content p{
+        text-align: justify;
+        font-size: 3vw;
+        font-weight: 500;
+        letter-spacing: 0.25px;
+        line-height: 4vw;
+        margin-top: 3vw;
+        margin-bottom: 0;
+        color: #5F79AD;
+    }
+
+    .fpage_content{
+        padding: 5vw;
+        text-align: left;
+        color: #152266;
+        margin-left: 0;
+        /* background-color: aqua; */
+    }
+
+    .hero{
+        margin-right: 0;
+    }
+
+    .hero img{
+        width: 50vw;
+        /* background-color: pink; */
+    }
+
+    .fpage_study{
+        text-align: center;   
+        color: #696464;
+    }
+
+    .fpage_study h3{
+        font-weight: 600;
+        font-size: 2.75vw;
+        margin-top: 8vw;
+    }
+
+    .fpage_footer{
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        color: #474242;
+        /* margin-bottom: 5vw; */
+    }
+
+    .fpage_footer p{
+        font-size: 1.75vw;
+    }
+
+    .fpage_footer span{
+        font-weight: 700;
+    }
+
+
+
+
+
+
+
+}
+
+
+
+@media (max-width: 800px) {
+
+    .fpage_main{
+        height: 100%;
+    }
+    
+    /* CSS FOR FOR SIGN-IN AND SIGN-UP buttons */
+    .signin-up-buttons{
+        height: 4vh;
+        font-weight: 450;
+        font-size: 1.75vh;
+    }
+    
+
+    /* CSS FOR NAV(MORE) BUTTONS */
+  
+    .morepage{
+        gap: 1.5vw;
+    }
+
+
+    .morepage-buttons{
+        font-weight: 550;
+        /* font-size: 1.5vw; */
+        font-size: 1.75vw;
+    }
+
+    
+    
+}

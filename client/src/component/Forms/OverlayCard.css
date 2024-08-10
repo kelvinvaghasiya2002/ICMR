@@ -1,15 +1,21 @@
 .overlay {
   position: absolute;
-  top: -55%;
+  /* top: -55%;
   left: 85%;
   right: -1%;
-  bottom: -55%;
-  background-color: rgba(0, 0, 0, 0.676);
-  color: rgb(246, 246, 246);
+  bottom: -55%; */
+
+  /* bottom: -20%; */
+  bottom: 0vw;
+  right: -0.5vw;
+
+  width: 50%;
+  /* background-color: rgba(211, 32, 32, 0.676); */
+  color: red;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
+  /* align-items: center; */
+  /* justify-content: left; */
+  justify-content: right;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-in-out, visibility 0.2s;
@@ -21,8 +27,15 @@
   visibility: visible;
 }
 
+.overlay div{
+  /* background-color: rgba(0, 0, 0, 0.676); */
+  margin-right: 10vw;
+}
+
 .overlay p {
   margin: 0;
-  padding: 10px;
+  padding: 1.2vw;
+  padding-bottom: 0.2vw;
   text-align: center;
+  font-size: 1.1vw;
 }
