@@ -1,18 +1,29 @@
-import React, { useMemo, useState, useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import SidePanel from './SidePanelHFAT1';
-import Buttons from '../child-comp/Buttons';
-import Radio from '../child-comp/Radio';
-import InputField from '../child-comp/InputField';
-import { handleChange, turnOffbutton } from '../helpers';
-import setLocalStorage from '../setLocalStorage';
-import Heading from '../../Heading/Heading';
+import React, { useMemo, useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import SidePanel from "./SidePanelHFAT1";
+import Buttons from "../child-comp/Buttons";
+import Radio from "../child-comp/Radio";
+import InputField from "../child-comp/InputField";
+import { handleChange, turnOffbutton } from "../helpers";
+import setLocalStorage from "../setLocalStorage";
+import Heading from "../../Heading/Heading";
 import DropDown from "../child-comp/DropDown.jsx";
-import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
-import LocationButton from '../child-comp/Location.jsx';
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
-import OverlayCard from '../OverlayCard.jsx';
+import {
+  GJBRC_DH,
+  MPBHS_DH,
+  ORPUR_DH,
+  PBLDH_DH,
+  PYPDY_DH,
+} from "../BlockItem/blockList.js";
+import LocationButton from "../child-comp/Location.jsx";
+import {
+  validateName,
+  validateNumber,
+  validateRequired,
+  validateEmail,
+} from "../fv.js";
+import OverlayCard from "../OverlayCard.jsx";
 
 function FormA() {
   useEffect(() => {
@@ -40,7 +51,9 @@ function FormA() {
   const date = new Date();
 
   // --toggle--
-  const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
   const toggleSidebar = () => {
     setSidebarVisible(!isSidebarVisible);
   };
@@ -59,15 +72,18 @@ function FormA() {
   // --toggle end--
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     setFormA((prevValue) => {
       return {
         ...prevValue,
-        A2: (prevValue.A2 === "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : prevValue.A2,
+        A2:
+          prevValue.A2 === ""
+            ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}`
+            : prevValue.A2,
       };
     });
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -80,12 +96,15 @@ function FormA() {
     newErrors.A8 = validateNumber(formA.A8) || validateRequired(formA.A8);
     newErrors.A9 = validateEmail(formA.A9) || validateRequired(formA.A9);
 
-    if (!formA.A3) newErrors.A3 = 'Code is required';
-    if (!formA.A11) newErrors.A11 = 'Type of Health Care Facility is required';
-    if (formA.A11 === "Tertiary care center" && !formA.A12) newErrors.A12 = 'Appropriate tertiary care center is required';
+    if (!formA.A3) newErrors.A3 = "Code is required";
+    if (!formA.A11) newErrors.A11 = "Type of Health Care Facility is required";
+    if (formA.A11 === "Tertiary care center" && !formA.A12)
+      newErrors.A12 = "Appropriate tertiary care center is required";
 
     setErrors(newErrors);
-    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+    setShowOverlay(
+      Object.keys(newErrors).some((key) => newErrors[key] !== undefined)
+    );
   };
 
   useEffect(() => {
@@ -93,7 +112,7 @@ function FormA() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
+      missingFields.forEach((field) => {
         newErrors[field] = validateRequired(formA[field]);
       });
       setErrors(newErrors);
@@ -107,7 +126,7 @@ function FormA() {
       setFormA((prevValue) => {
         return {
           ...prevValue,
-          A12: ""
+          A12: "",
         };
       });
     }
@@ -131,11 +150,13 @@ function FormA() {
   }, [formA.A3]);
 
   const isFormValid = () => {
-    const requiredFields = ['A1', 'A3', 'A5', 'A6', 'A7', 'A8', 'A9', 'A11'];
+    const requiredFields = ["A1", "A3","A4", "A5", "A6", "A7", "A8", "A9", "A11"];
     if (formA.A11 === "Tertiary care center") {
-      requiredFields.push('A12');
+      requiredFields.push("A12");
     }
-    const missingFields = requiredFields.filter(field => !formA[field] || formA[field].trim() === '');
+    const missingFields = requiredFields.filter(
+      (field) => !formA[field] || formA[field].trim() === ""
+    );
     return { isValid: missingFields.length === 0, missingFields };
   };
 
@@ -144,8 +165,8 @@ function FormA() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
-        newErrors[field] = 'This field is required';
+      missingFields.forEach((field) => {
+        newErrors[field] = "This field is required";
       });
       setErrors(newErrors);
     } else {
@@ -156,13 +177,13 @@ function FormA() {
   const handleChangeWithValidation = (e) => {
     const { name, value } = e.target;
     let validatedValue = value;
-    let error = '';
+    let error = "";
 
     switch (name) {
-      case 'A1':
-      case 'A5':
-      case 'A6':
-      case 'A7':
+      case "A1":
+      case "A5":
+      // case 'A6':   // Should be allowed to type digits and special characters
+      case "A7":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
@@ -171,7 +192,7 @@ function FormA() {
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
-      case 'A8':
+      case "A8":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
@@ -180,7 +201,7 @@ function FormA() {
           e.preventDefault();
         }
         break;
-      case 'A9':
+      case "A9":
         // For email, we'll allow typing and validate on blur or submit
         validatedValue = value;
         break;
@@ -188,25 +209,30 @@ function FormA() {
         break;
     }
 
-    setFormA(prevValue => ({ ...prevValue, [name]: validatedValue }));
+    setFormA((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case 'A1':
-      case 'A5':
-      case 'A6':
-      case 'A7':
-      case 'A8':
+      case "A1":
+      case "A5":
+      case "A6":
+      case "A7":
+      case "A8":
         error = error || validateRequired(validatedValue);
         break;
-      case 'A9':
-        error = validateEmail(validatedValue) || validateRequired(validatedValue);
+      case "A4":
+        handleChange(setFormA);
+        error = error || validateRequired(validatedValue);
+        break;
+      case "A9":
+        error =
+          validateEmail(validatedValue) || validateRequired(validatedValue);
         break;
       default:
         break;
     }
 
-    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
 
   return (
@@ -254,9 +280,15 @@ function FormA() {
               h3="1A.3 : Code :"
               onClick={handleChange(setFormA)}
               byDefault={formA.A3}
-              CheckbobItems={["GJBRC_DH", "ORPUR_DH", "MPBHS_DH", "PBLDH_DH", "PYPDY_DH"]}
+              CheckbobItems={[
+                "GJBRC_DH",
+                "ORPUR_DH",
+                "MPBHS_DH",
+                "PBLDH_DH",
+                "PYPDY_DH",
+              ]}
               name="A3"
-              required
+              // required
               errorMsg={errors.A3}
             />
 
@@ -264,9 +296,11 @@ function FormA() {
               name="A4"
               h3="1A.4 : Block Name:"
               byDefault={formA.A4}
-              onClick={handleChange(setFormA)}
+              onClick={handleChangeWithValidation}
+              // onClick={handleChange(setFormA)}
               dropdownItems={dropdownItems}
               error={errors.A4}
+              errorMsg={errors.A4}
             />
 
             <InputField

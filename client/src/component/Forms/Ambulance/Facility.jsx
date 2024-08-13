@@ -11,8 +11,14 @@ import Heading from "../../Heading/Heading.jsx";
 import setLocalStorage from "../setLocalStorage.js";
 import LastButton from "../child-comp/LastButton.jsx";
 import LocationButton from "../child-comp/Location.jsx";
-import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
-import OverlayCard from '../OverlayCard.jsx';
+import {
+  validateName,
+  validateNumber,
+  validateRequired,
+  validateEmail,
+  validateCheckBox,
+} from "../fv.js";
+import OverlayCard from "../OverlayCard.jsx";
 
 function Facility() {
   turnOffbutton();
@@ -45,13 +51,13 @@ function Facility() {
     setAmbulance((prevValue) => {
       return {
         ...prevValue,
-        AMB3: (Ambulance.AMB3 == "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : Ambulance.AMB3,
-      }
-    })
-  }, [])
-
-
-
+        AMB3:
+          Ambulance.AMB3 == ""
+            ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}`
+            : Ambulance.AMB3,
+      };
+    });
+  }, []);
 
   const columns1 = [
     { key: "Item", label: "Item", type: "text" },
@@ -220,31 +226,37 @@ function Facility() {
     { Item: "Betadine", Available: "" },
   ];
 
-
   const validateForm = () => {
     const newErrors = {};
 
-    newErrors.AMB2 = validateName(Ambulance.AMB2) || validateRequired(Ambulance.AMB2);
-    newErrors.AMB6 = validateName(Ambulance.AMB6) || validateRequired(Ambulance.AMB6);
-    newErrors.AMB9 = validateNumber(Ambulance.AMB9) || validateRequired(Ambulance.AMB9);
-    newErrors.AMB10 = validateNumber(Ambulance.AMB10) || validateRequired(Ambulance.AMB10);
-    newErrors.AMB11 = validateName(Ambulance.AMB11) || validateRequired(Ambulance.AMB11);
+    newErrors.AMB2 =
+      validateName(Ambulance.AMB2) || validateRequired(Ambulance.AMB2);
+    newErrors.AMB6 =
+      validateName(Ambulance.AMB6) || validateRequired(Ambulance.AMB6);
+    newErrors.AMB9 =
+      validateNumber(Ambulance.AMB9) || validateRequired(Ambulance.AMB9);
+    newErrors.AMB10 =
+      validateNumber(Ambulance.AMB10) || validateRequired(Ambulance.AMB10);
+    newErrors.AMB11 =
+      validateName(Ambulance.AMB11) || validateRequired(Ambulance.AMB11);
 
     setErrors(newErrors);
-    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
-  }
+    setShowOverlay(
+      Object.keys(newErrors).some((key) => newErrors[key] !== undefined)
+    );
+  };
 
   useEffect(() => {
     const { isValid, missingFields } = isFormValid();
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
+      missingFields.forEach((field) => {
         console.log(field + "field");
-        if(Array.isArray(Ambulance[field])){
+        if (Array.isArray(Ambulance[field])) {
           console.log(Ambulance[field]);
           newErrors[field] = validateCheckBox(Ambulance[field]);
-        }else{
+        } else {
           newErrors[field] = validateRequired(Ambulance[field]);
         }
       });
@@ -255,13 +267,37 @@ function Facility() {
   }, [Ambulance]);
 
   const isFormValid = () => {
-    const requiredFields = ['AMB1', 'AMB2', 'AMB4', 'AMB5', 'AMB6', 'AMB7', 'AMB8', 'AMB9', 'AMB10', 'AMB11', 'AMB12', 'AMB13', 'AMB14', 'AMB15', 'AMB18', 'AMB19'];
+    const requiredFields = [
+      "AMB1",
+      "AMB2",
+      // "AMB4",    // SSL
+      "AMB5",
+      "AMB6",
+      "AMB7",
+      "AMB8",
+      "AMB9",
+      "AMB10",
+      "AMB11",
+      "AMB12",
+      "AMB13",
+      "AMB14",
+      "AMB15",
+      "AMB18",
+      "AMB19",
+    ];
 
-    const missingFields = requiredFields.filter(field => {
+    const missingFields = requiredFields.filter((field) => {
       if (Array.isArray(Ambulance[field])) {
-      return Ambulance[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+        return Ambulance[field].every(
+          (item) =>
+            item === "" || (typeof item === "string" && item.trim() === "")
+        );
       } else {
-      return !Ambulance[field] || (typeof Ambulance[field] === 'string' && Ambulance[field].trim() === '');
+        return (
+          !Ambulance[field] ||
+          (typeof Ambulance[field] === "string" &&
+            Ambulance[field].trim() === "")
+        );
       }
     });
     return { isValid: missingFields.length === 0, missingFields };
@@ -272,8 +308,8 @@ function Facility() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
-        newErrors[field] = 'This field is required';
+      missingFields.forEach((field) => {
+        newErrors[field] = "This field is required";
       });
       setErrors(newErrors);
     } else {
@@ -284,12 +320,12 @@ function Facility() {
   const handleChangeWithValidation = (e) => {
     const { name, value } = e.target;
     let validatedValue = value;
-    let error = '';
+    let error = "";
 
     switch (name) {
-      case 'AMB2':
-      case 'AMB6':
-      case 'AMB11':
+      case "AMB2":
+      case "AMB6":
+      case "AMB11":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
@@ -298,8 +334,8 @@ function Facility() {
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
-      case 'AMB9':
-      case 'AMB10':
+      case "AMB9":
+      case "AMB10":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
@@ -312,22 +348,22 @@ function Facility() {
         break;
     }
 
-    setAmbulance(prevValue => ({ ...prevValue, [name]: validatedValue }));
+    setAmbulance((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case 'AMB2':
-      case 'AMB6':
-      case 'AMB9':
-      case 'AMB10':
-      case 'AMB11':
+      case "AMB2":
+      case "AMB6":
+      case "AMB9":
+      case "AMB10":
+      case "AMB11":
         error = error || validateRequired(validatedValue);
         break;
       default:
         break;
     }
 
-    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
 
   return (
@@ -368,11 +404,7 @@ function Facility() {
             />
 
             <div>
-              <p className="datetime">
-                Date : {
-                  Ambulance.AMB3
-                }
-              </p>
+              <p className="datetime">Date : {Ambulance.AMB3}</p>
             </div>
 
             {/* <InputField
@@ -382,7 +414,12 @@ function Facility() {
               placeholder="Type here"
               name="AMB4"
             /> */}
-            <LocationButton setter={setAmbulance} name={"AMB4"} required errorMsg={errors.AMB4} />
+            <LocationButton
+              setter={setAmbulance}
+              name={"AMB4"}
+              required
+              errorMsg={errors.AMB4}
+            />
 
             <Radio
               h3="1. Name of the Ambulance Service?"
@@ -571,7 +608,6 @@ function Facility() {
                 next="/"
                 MainForm="AMBULANCE"
               />
-
 
               <OverlayCard
                 isVisible={showOverlay}

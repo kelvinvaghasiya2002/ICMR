@@ -1,18 +1,29 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import SidePanel from './SidePanelHFAT2';
-import Buttons from '../child-comp/Buttons';
-import Radio from '../child-comp/Radio';
-import InputField from '../child-comp/InputField';
-import { handleChange, turnOffbutton } from '../helpers';
-import setLocalStorage from '../setLocalStorage';
-import Heading from '../../Heading/Heading.jsx';
-import LocationButton from '../child-comp/Location.jsx';
+import React, { useState, useEffect, useMemo } from "react";
+import SidePanel from "./SidePanelHFAT2";
+import Buttons from "../child-comp/Buttons";
+import Radio from "../child-comp/Radio";
+import InputField from "../child-comp/InputField";
+import { handleChange, turnOffbutton } from "../helpers";
+import setLocalStorage from "../setLocalStorage";
+import Heading from "../../Heading/Heading.jsx";
+import LocationButton from "../child-comp/Location.jsx";
 import DropDown from "../child-comp/DropDown.jsx";
-import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
-import OverlayCard from '../OverlayCard.jsx';
+import {
+  GJBRC_DH,
+  MPBHS_DH,
+  ORPUR_DH,
+  PBLDH_DH,
+  PYPDY_DH,
+} from "../BlockItem/blockList.js";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import {
+  validateName,
+  validateNumber,
+  validateRequired,
+  validateEmail,
+} from "../fv.js";
+import OverlayCard from "../OverlayCard.jsx";
 
 function Form2A() {
   turnOffbutton();
@@ -28,7 +39,7 @@ function Form2A() {
     H2A9: "",
     H2A10: "",
     H2A11: "",
-    HFAT2_DATE: ""
+    HFAT2_DATE: "",
   };
   const form2a = setLocalStorage("form2a", initialState);
 
@@ -45,7 +56,10 @@ function Form2A() {
   useEffect(() => {
     setForm2A((prevValue) => ({
       ...prevValue,
-      HFAT2_DATE: form2A.HFAT2_DATE === "" ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : form2A.HFAT2_DATE,
+      HFAT2_DATE:
+        form2A.HFAT2_DATE === ""
+          ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}`
+          : form2A.HFAT2_DATE,
     }));
   }, [form2A.HFAT2_DATE]);
 
@@ -73,12 +87,12 @@ function Form2A() {
     newErrors.H2A4 = validateName(form2A.H2A4) || validateRequired(form2A.H2A4);
     newErrors.H2A5 = validateName(form2A.H2A5) || validateRequired(form2A.H2A5);
     newErrors.H2A6 = validateName(form2A.H2A6) || validateRequired(form2A.H2A6);
-    newErrors.H2A7 = validateNumber(form2A.H2A7) || validateRequired(form2A.H2A7);
-    newErrors.H2A8 = validateEmail(form2A.H2A8) || validateRequired(form2A.H2A8);
+    newErrors.H2A7 =
+      validateNumber(form2A.H2A7) || validateRequired(form2A.H2A7);
+    newErrors.H2A8 =
+      validateEmail(form2A.H2A8) || validateRequired(form2A.H2A8);
 
-    if(!form2A.H2A2) newErrors.H2A2 = 'Code is Required';
-
-
+    if (!form2A.H2A2) newErrors.H2A2 = "Code is Required";
 
     // if (!form2A.H2A1) newErrors.H2A1 = "This field is required";
     // if (!form2A.H2A2) newErrors.H2A2 = "This field is required";
@@ -95,7 +109,9 @@ function Form2A() {
     // return Object.keys(newErrors).length === 0;
 
     setErrors(newErrors);
-    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+    setShowOverlay(
+      Object.keys(newErrors).some((key) => newErrors[key] !== undefined)
+    );
   };
 
   useEffect(() => {
@@ -103,7 +119,7 @@ function Form2A() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
+      missingFields.forEach((field) => {
         newErrors[field] = validateRequired(form2A[field]);
       });
       setErrors(newErrors);
@@ -113,9 +129,25 @@ function Form2A() {
   }, [form2A]);
 
   const isFormValid = () => {
-    const requiredFields = ['H2A1', 'H2A2', 'H2A4', 'H2A5', 'H2A6', 'H2A7', 'H2A8', 'H2A9', 'H2A10', 'H2A11'];
+    const requiredFields = [
+      "H2A1",
+      "H2A2",
+      "H2A3",
+      "H2A4",
+      "H2A5",
+      "H2A6",
+      "H2A7",
+      "H2A8",
+      // "H2A9",    //Removed becasuse currently SSL Certificate is not available
+      "H2A10",
+      "H2A11",
+    ];
 
-    const missingFields = requiredFields.filter(field => !form2A[field] || (typeof form2A[field] === 'string' && form2A[field].trim() === ''));
+    const missingFields = requiredFields.filter(
+      (field) =>
+        !form2A[field] ||
+        (typeof form2A[field] === "string" && form2A[field].trim() === "")
+    );
 
     return { isValid: missingFields.length === 0, missingFields };
   };
@@ -125,8 +157,8 @@ function Form2A() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
-        newErrors[field] = 'This field is required';
+      missingFields.forEach((field) => {
+        newErrors[field] = "This field is required";
       });
       setErrors(newErrors);
     } else {
@@ -137,13 +169,13 @@ function Form2A() {
   const handleChangeWithValidation = (e) => {
     const { name, value } = e.target;
     let validatedValue = value;
-    let error = '';
+    let error = "";
 
     switch (name) {
-      case 'H2A1':
-      case 'H2A4':
-      case 'H2A5':
-      case 'H2A6':
+      case "H2A1":
+      case "H2A4":
+      // case "H2A5":
+      case "H2A6":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
@@ -152,7 +184,7 @@ function Form2A() {
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
-      case 'H2A7':
+      case "H2A7":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
@@ -161,7 +193,7 @@ function Form2A() {
           e.preventDefault();
         }
         break;
-      case 'H2A8':
+      case "H2A8":
         // For email, we'll allow typing and validate on blur or submit
         validatedValue = value;
         break;
@@ -169,25 +201,31 @@ function Form2A() {
         break;
     }
 
-    setForm2A(prevValue => ({ ...prevValue, [name]: validatedValue }));
+    setForm2A((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case 'H2A1':
-      case 'H2A4':
-      case 'H2A5':
-      case 'H2A6':
-      case 'H2A7':
+      case "H2A1":
+      case "H2A4":
+      case "H2A5":
+      case "H2A6":
+      case "H2A7":
         error = error || validateRequired(validatedValue);
         break;
-      case 'H2A8':
-        error = validateEmail(validatedValue) || validateRequired(validatedValue);
+
+      case "H2A3":
+        handleChange(setFormA);
+        error = error || validateRequired(validatedValue);
+        break;
+      case "H2A8":
+        error =
+          validateEmail(validatedValue) || validateRequired(validatedValue);
         break;
       default:
         break;
     }
 
-    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
 
   return (
@@ -215,9 +253,7 @@ function Form2A() {
             />
 
             <div>
-              <p className="datetime">
-                Date : {form2A.HFAT2_DATE}
-              </p>
+              <p className="datetime">Date : {form2A.HFAT2_DATE}</p>
             </div>
 
             <Radio
@@ -227,12 +263,12 @@ function Form2A() {
                 "ORPUR_CHC",
                 "MPBHS_CHC",
                 "PBLDH_CHC",
-                "PYPDY_CHC"
+                "PYPDY_CHC",
               ]}
               byDefault={form2A.H2A2}
               onClick={handleChange(setForm2A)}
               name="H2A2"
-              required
+              // required
               errorMsg={errors.H2A2}
             />
 
@@ -240,7 +276,8 @@ function Form2A() {
               dropdownItems={dropdownItems}
               name="H2A3"
               h3="2A.3 : Block Name :"
-              onClick={handleChange(setForm2A)}
+              // onClick={handleChange(setForm2A)}
+              onClick={handleChangeWithValidation}
               byDefault={form2A.H2A3}
               // required
               error={errors.H2A3}
@@ -322,8 +359,8 @@ function Form2A() {
                 "FRU – UCHC (100 beds)",
               ]}
               name="H2A10"
-            // required
-            // errorMsg={errors.H2A10}
+              // required
+              // errorMsg={errors.H2A10}
             />
 
             <Radio
@@ -332,8 +369,8 @@ function Form2A() {
               h3="2A.11 : Type of locality:"
               CheckbobItems={["Urban", "Rural"]}
               name="H2A11"
-            // required
-            // errorMsg={errors.H2A11}
+              // required
+              // errorMsg={errors.H2A11}
             />
 
             <div className="button-container">
@@ -357,7 +394,6 @@ function Form2A() {
       </section>
     </div>
   );
-
 }
 
 export default Form2A;

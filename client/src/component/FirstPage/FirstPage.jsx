@@ -24,7 +24,7 @@ export default function FirstPage() {
 
                 <div className='signin-up'>
                     <Link to="/sign-in"><button className='signin-up-buttons'>Sign In</button></Link>
-                    <Link to="/sign-up"><button className='signin-up-buttons xyz'>Sign Up</button></Link>
+                    {/* <Link to="/sign-up"><button className='signin-up-buttons xyz'>Sign Up</button></Link> */}
                 </div>
             </div>
 

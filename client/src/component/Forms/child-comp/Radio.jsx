@@ -85,14 +85,14 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                 <>
                                     <input
                                         type="radio"
-                                        id={item}
+                                        id={`${item}${name}`}
                                         ref={el => radioRefs.current[index] = el}
                                         name={name}
                                         value={item}
                                         onClick={onClick}
                                         defaultChecked={byDefault === item}
                                     />
-                                    <label className='radio_labels' htmlFor={item} >{item}</label><br/>
+                                    <label className='radio_labels' htmlFor={`${item}${name}`} >{item}</label><br/>
                                 </>
                             )}
                         </div>

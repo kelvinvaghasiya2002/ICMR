@@ -350,7 +350,7 @@ function FormC() {
               name="C3"
               onClick={handleChange(setFormC)}
               byDefault={formC.C3}
-              required
+              // required
               errorMsg={errors.C3}
             />
 

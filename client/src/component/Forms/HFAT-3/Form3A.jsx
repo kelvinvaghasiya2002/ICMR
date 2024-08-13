@@ -1,17 +1,28 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT3';
-import Buttons from '../child-comp/Buttons';
-import Radio from '../child-comp/Radio';
-import InputField from '../child-comp/InputField';
-import { handleChange, turnOffbutton } from '../helpers';
-import setLocalStorage from '../setLocalStorage';
-import Heading from '../../Heading/Heading.jsx';
-import LocationButton from '../child-comp/Location.jsx';
-import DropDown from "../child-comp/DropDown.jsx"
-import { GJBRC_DH, MPBHS_DH, ORPUR_DH, PBLDH_DH, PYPDY_DH } from '../BlockItem/blockList.js';
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
-import OverlayCard from '../OverlayCard.jsx';
+import React, { useEffect, useMemo, useState } from "react";
+import Checkbox from "../child-comp/Checkbox";
+import SidePanel from "./SidePanelHFAT3";
+import Buttons from "../child-comp/Buttons";
+import Radio from "../child-comp/Radio";
+import InputField from "../child-comp/InputField";
+import { handleChange, turnOffbutton } from "../helpers";
+import setLocalStorage from "../setLocalStorage";
+import Heading from "../../Heading/Heading.jsx";
+import LocationButton from "../child-comp/Location.jsx";
+import DropDown from "../child-comp/DropDown.jsx";
+import {
+  GJBRC_DH,
+  MPBHS_DH,
+  ORPUR_DH,
+  PBLDH_DH,
+  PYPDY_DH,
+} from "../BlockItem/blockList.js";
+import {
+  validateName,
+  validateNumber,
+  validateRequired,
+  validateEmail,
+} from "../fv.js";
+import OverlayCard from "../OverlayCard.jsx";
 
 function Form3A() {
   turnOffbutton();
@@ -28,7 +39,7 @@ function Form3A() {
     H3A9: "",
     H3A10: "",
     H3A11: "",
-    HFAT3_DATE: ""
+    HFAT3_DATE: "",
   });
 
   const [form3A, setForm3A] = useState(JSON.parse(form3a));
@@ -41,10 +52,13 @@ function Form3A() {
     setForm3A((prevValue) => {
       return {
         ...prevValue,
-        HFAT3_DATE: (form3A.HFAT3_DATE == "") ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}` : form3A.HFAT3_DATE,
-      }
-    })
-  }, [])
+        HFAT3_DATE:
+          form3A.HFAT3_DATE == ""
+            ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}`
+            : form3A.HFAT3_DATE,
+      };
+    });
+  }, []);
 
   const dropdownItems = useMemo(() => {
     switch (form3A.H3A2) {
@@ -63,7 +77,6 @@ function Form3A() {
     }
   }, [form3A.H3A2]);
 
-
   const validateForm = () => {
     const newErrors = {};
 
@@ -71,14 +84,17 @@ function Form3A() {
     newErrors.H3A4 = validateName(form3A.H3A4) || validateRequired(form3A.H3A4);
     newErrors.H3A5 = validateName(form3A.H3A5) || validateRequired(form3A.H3A5);
     newErrors.H3A6 = validateName(form3A.H3A6) || validateRequired(form3A.H3A6);
-    newErrors.H3A7 = validateNumber(form3A.H3A7) || validateRequired(form3A.H3A7);
-    newErrors.H3A8 = validateEmail(form3A.H3A8) || validateRequired(form3A.H3A8);
+    newErrors.H3A7 =
+      validateNumber(form3A.H3A7) || validateRequired(form3A.H3A7);
+    newErrors.H3A8 =
+      validateEmail(form3A.H3A8) || validateRequired(form3A.H3A8);
 
-    if (!form3A.H3A2) newErrors.H3A2 = 'Code is Required';
-
+    if (!form3A.H3A2) newErrors.H3A2 = "Code is Required";
 
     setErrors(newErrors);
-    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+    setShowOverlay(
+      Object.keys(newErrors).some((key) => newErrors[key] !== undefined)
+    );
   };
 
   useEffect(() => {
@@ -86,7 +102,7 @@ function Form3A() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
+      missingFields.forEach((field) => {
         newErrors[field] = validateRequired(form3A[field]);
       });
       setErrors(newErrors);
@@ -96,9 +112,25 @@ function Form3A() {
   }, [form3A]);
 
   const isFormValid = () => {
-    const requiredFields = ['H3A1', 'H3A2', 'H3A4', 'H3A5', 'H3A6', 'H3A7', 'H3A8', 'H3A9', 'H3A10', 'H3A11'];
+    const requiredFields = [
+      "H3A1",
+      "H3A2",
+      "H3A3",
+      "H3A4",
+      "H3A5",
+      "H3A6",
+      "H3A7",
+      "H3A8",
+      // "H3A9",    // Because SSL 
+      "H3A10",
+      "H3A11",
+    ];
 
-    const missingFields = requiredFields.filter(field => !form3A[field] || (typeof form3A[field] === 'string' && form3A[field].trim() === ''));
+    const missingFields = requiredFields.filter(
+      (field) =>
+        !form3A[field] ||
+        (typeof form3A[field] === "string" && form3A[field].trim() === "")
+    );
 
     return { isValid: missingFields.length === 0, missingFields };
   };
@@ -108,8 +140,8 @@ function Form3A() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
-        newErrors[field] = 'This field is required';
+      missingFields.forEach((field) => {
+        newErrors[field] = "This field is required";
       });
       setErrors(newErrors);
     } else {
@@ -120,13 +152,13 @@ function Form3A() {
   const handleChangeWithValidation = (e) => {
     const { name, value } = e.target;
     let validatedValue = value;
-    let error = '';
+    let error = "";
 
     switch (name) {
-      case 'H3A1':
-      case 'H3A4':
-      case 'H3A5':
-      case 'H3A6':
+      case "H3A1":
+      case "H3A4":
+      // case 'H3A5':
+      case "H3A6":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
@@ -135,7 +167,7 @@ function Form3A() {
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
-      case 'H3A7':
+      case "H3A7":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
@@ -144,7 +176,7 @@ function Form3A() {
           e.preventDefault();
         }
         break;
-      case 'H3A8':
+      case "H3A8":
         // For email, we'll allow typing and validate on blur or submit
         validatedValue = value;
         break;
@@ -152,25 +184,30 @@ function Form3A() {
         break;
     }
 
-    setForm3A(prevValue => ({ ...prevValue, [name]: validatedValue }));
+    setForm3A((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case 'H3A1':
-      case 'H3A4':
-      case 'H3A5':
-      case 'H3A6':
-      case 'H3A7':
+      case "H3A1":
+      case "H3A4":
+      case "H3A5":
+      case "H3A6":
+      case "H3A7":
         error = error || validateRequired(validatedValue);
         break;
-      case 'H3A8':
-        error = validateEmail(validatedValue) || validateRequired(validatedValue);
+      case "H3A3":
+        handleChange(setFormA);
+        error = error || validateRequired(validatedValue);
+        break;
+      case "H3A8":
+        error =
+          validateEmail(validatedValue) || validateRequired(validatedValue);
         break;
       default:
         break;
     }
 
-    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
   return (
     <div>
@@ -196,11 +233,7 @@ function Form3A() {
             />
 
             <div>
-              <p className="datetime">
-                {
-                  form3A.HFAT3_DATE
-                }
-              </p>
+              <p className="datetime">{form3A.HFAT3_DATE}</p>
             </div>
 
             <Radio
@@ -215,12 +248,19 @@ function Form3A() {
                 "PBLDH_CS",
                 "PYPDY_CS",
               ]}
-              required
+              // required
               errorMsg={errors.H3A2}
             />
 
             {/* <InputField value={form3A.H3A3} onChange={handleChange(setForm3A)} name="H3A3" h3="3A.3 : Block Name :" placeholder="Type here" /> */}
-            <DropDown dropdownItems={dropdownItems} name="H3A3" h3="3A.3 : Block Name :" onClick={handleChange(setForm3A)} byDefault={form3A.H3A3} error={errors.H3A3} />
+            <DropDown
+              dropdownItems={dropdownItems}
+              name="H3A3"
+              h3="3A.3 : Block Name :"
+              onClick={handleChange(setForm3A)}
+              byDefault={form3A.H3A3}
+              error={errors.H3A3}
+            />
 
             <InputField
               value={form3A.H3A4}
@@ -273,8 +313,13 @@ function Form3A() {
             />
 
             {/* <InputField value={form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="3A.9 : GPS Coordinates :" placeholder="Type here" /> */}
-            <LocationButton setter={setForm3A} name="H3A9" heading={"3A.9"} required
-              errorMsg={errors.H3A9} />
+            <LocationButton
+              setter={setForm3A}
+              name="H3A9"
+              heading={"3A.9"}
+              required
+              errorMsg={errors.H3A9}
+            />
 
             <Radio
               byDefault={form3A.H3A10}
