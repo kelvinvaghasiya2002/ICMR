@@ -11,7 +11,7 @@ import Heading from "../../Heading/Heading.jsx";
 import setLocalStorage from "../setLocalStorage.js";
 import LastButton from "../child-comp/LastButton.jsx";
 import LocationButton from "../child-comp/Location.jsx";
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
 import OverlayCard from '../OverlayCard.jsx';
 
 function Facility() {
@@ -240,7 +240,13 @@ function Facility() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        newErrors[field] = validateRequired(Ambulance[field]);
+        console.log(field + "field");
+        if(Array.isArray(Ambulance[field])){
+          console.log(Ambulance[field]);
+          newErrors[field] = validateCheckBox(Ambulance[field]);
+        }else{
+          newErrors[field] = validateRequired(Ambulance[field]);
+        }
       });
       setErrors(newErrors);
     } else {
@@ -251,7 +257,13 @@ function Facility() {
   const isFormValid = () => {
     const requiredFields = ['AMB1', 'AMB2', 'AMB4', 'AMB5', 'AMB6', 'AMB7', 'AMB8', 'AMB9', 'AMB10', 'AMB11', 'AMB12', 'AMB13', 'AMB14', 'AMB15', 'AMB18', 'AMB19'];
 
-    const missingFields = requiredFields.filter(field => !Ambulance[field] || (typeof Ambulance[field] === 'string' && Ambulance[field].trim() === ''));
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(Ambulance[field])) {
+      return Ambulance[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !Ambulance[field] || (typeof Ambulance[field] === 'string' && Ambulance[field].trim() === '');
+      }
+    });
     return { isValid: missingFields.length === 0, missingFields };
   };
 
@@ -292,7 +304,7 @@ function Facility() {
         if (!error) {
           validatedValue = value;
         } else {
-          validatedValue = formB[name];
+          validatedValue = Ambulance[name];
           e.preventDefault();
         }
         break;

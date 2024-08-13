@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValue, array }) {
+function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValue, array,errorMsg }) {
     const [otherSpecify, setOtherSpecify] = useState("");
     const [otherSpecifyChecked, setOtherSpecifyChecked] = useState(false);
     const [error, setError] = useState("");
@@ -23,6 +23,8 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             ...StateValue,
             [name]: newArray
         });
+        console.log("onChange");
+        
         validateCheckboxGroup(newArray);
     }
 
@@ -41,6 +43,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                     [event.target.name]: array
                 }
                 setFunction(StateValue)
+                validateCheckboxGroup(array);
             }
         )
     }
@@ -58,15 +61,25 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
             document.getElementById(name).disabled = true;
         }
         setOtherSpecifyChecked(!otherSpecifyChecked);
+        // validateCheckboxGroup(newArray);
     }
 
 
+    // const validateCheckboxGroup = (newArray) => {
+    //     if (!other && newArray.length === 0) {
+    //         setError("Select at least one option");
+    //     } else if (other && newArray.slice(0, -1).length === 0 && newArray[newArray.length - 1] === "") {
+    //         setError("Select at least one option or specify 'Other'");
+    //     } else {
+    //         setError("");
+    //     }
+    // };
     const validateCheckboxGroup = (newArray) => {
-        if (!other && newArray.length === 0) {
-            setError("Select at least one option");
-        } else if (other && newArray.slice(0, -1).length === 0 && newArray[newArray.length - 1] === "") {
-            setError("Select at least one option or specify 'Other'");
-        } else {
+        if (!other && newArray.every((item) => item === "")) {
+            setError(errorMsg ||"Select at least one option");
+        } else if(other && newArray.slice(0, -1).every((item) => item === "") && newArray[newArray.length - 1] === "" && otherSpecify===''){
+            setError(errorMsg ||"Select at least one option or specify 'Other'");
+        }else {
             setError("");
         }
     };
@@ -131,6 +144,7 @@ function Checkbox({ CheckbobItems, name, h3, other, time, setFunction, StateValu
                         </>
                     )}
                 </form>
+                {/* <div className="error-msg">{error}Hello</div> */}
                 {error && <div className="error-msg">{error}</div>}
             </div>
         </>
