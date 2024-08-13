@@ -10,7 +10,7 @@ import { handleChange, turnOffbutton } from "../helpers";
 import Heading from "../../Heading/Heading.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
 import OverlayCard from '../OverlayCard.jsx';
 
 function Form2C() {
@@ -152,7 +152,13 @@ function Form2C() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        newErrors[field] = validateRequired(form2C[field]);
+        console.log(field + "field");
+        if(Array.isArray(form2C[field])){
+          console.log(form2C[field]);
+          newErrors[field] = validateCheckBox(form2C[field]);
+        }else{
+          newErrors[field] = validateRequired(form2C[field]);
+        }
       });
       setErrors(newErrors);
     } else {
@@ -163,11 +169,18 @@ function Form2C() {
   const isFormValid = () => {
     const requiredFields = ['H2C2'];
     if (form2C.H2C2 === "Yes") {
+      requiredFields.push('H2C3');
       requiredFields.push('H2C4');
       requiredFields.push('H2C5');
     }
 
-    const missingFields = requiredFields.filter(field => !form2C[field] || (typeof form2C[field] === 'string' && form2C[field].trim() === ''));
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(form2C[field])) {
+      return form2C[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !form2C[field] || (typeof form2C[field] === 'string' && form2C[field].trim() === '');
+      }
+    });
     return { isValid: missingFields.length === 0, missingFields };
   };
 

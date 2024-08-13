@@ -9,7 +9,7 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
 import OverlayCard from '../OverlayCard.jsx';
 
 function Form2B() {
@@ -82,7 +82,13 @@ function Form2B() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        newErrors[field] = validateRequired(form2B[field]);
+        console.log(field + "field");
+        if(Array.isArray(form2B[field])){
+          console.log(form2B[field]);
+          newErrors[field] = validateCheckBox(form2B[field]);
+        }else{
+          newErrors[field] = validateRequired(form2B[field]);
+        }
       });
       setErrors(newErrors);
     } else {
@@ -98,7 +104,13 @@ function Form2B() {
     if (form2B.H2B9 === "No") {
       requiredFields.push('H2B10');
     }
-    const missingFields = requiredFields.filter(field => !form2B[field] || (typeof form2B[field] === 'string' && form2B[field].trim() === ''));
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(form2B[field])) {
+      return form2B[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !form2B[field] || (typeof form2B[field] === 'string' && form2B[field].trim() === '');
+      }
+    });
     return { isValid: missingFields.length === 0, missingFields };
   };
 
@@ -139,7 +151,7 @@ function Form2B() {
         if (!error) {
           validatedValue = value;
         } else {
-          validatedValue = formB[name];
+          validatedValue = form2B[name];
           e.preventDefault();
         }
         break;
