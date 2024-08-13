@@ -52,7 +52,13 @@ useEffect(() => {
     if (!isValid) {
         const newErrors = {};
         missingFields.forEach(field => {
+          console.log(field + "field");
+          if(Array.isArray(form3F[field])){
+            console.log(form3F[field]);
+            newErrors[field] = validateCheckBox(form3F[field]);
+          }else{
             newErrors[field] = validateRequired(form3F[field]);
+          }
         });
         setErrors(newErrors);
     } else {
@@ -69,7 +75,13 @@ const isFormValid = () => {
         requiredFields.push('H3F4');
         requiredFields.push('H3F5');
     }
-    const missingFields = requiredFields.filter(field => !form3F[field] || (typeof form3F[field] === 'string' && form3F[field].trim() === ''));
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(form3F[field])) {
+      return form3F[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !form3F[field] || (typeof form3F[field] === 'string' && form3F[field].trim() === '');
+      }
+    });
     return { isValid: missingFields.length === 0, missingFields };
 };
 
