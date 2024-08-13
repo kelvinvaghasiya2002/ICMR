@@ -122,7 +122,7 @@ function App() {
       <Routes>
         <Route path='/' element={!loggedIn ? <FirstPage /> : <HomePage />} />
         <Route path='/sign-in' element={<SignIn />} />
-        <Route path='/sign-up' element={<SignUp />} />
+        {/* <Route path='/sign-up' element={<SignUp />} /> */}
         <Route path='/protected' element={loggedIn ? <Protected /> : <SignIn />} />
         <Route path="/aboutus" element={<InformationPage />} />
         <Route path='/project-sites' element={<Map />} />

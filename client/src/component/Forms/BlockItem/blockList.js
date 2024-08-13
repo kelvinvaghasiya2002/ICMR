@@ -1,6 +1,6 @@
 export const GJBRC_DH = ["Dabhoi", "Desar", "Karjan", "Padra", "Savali", "Sinor", "Vadodara", "Waghodia"]
 
-export const ORPUR_DH = ["Astarang", "Brahmagiri", "Delang", "Gop", "Kakatpur", "Kanas", "Krushnaprasad", "Nimapura"]
+export const ORPUR_DH = ["Astarang","Brahmagiri","Delang","Gop","Kakatpur","Kanas","Krushnaprasad","Nimapara","Pipili","Puri Sadar","Satyabadi"]
 
 export const MPBHS_DH = ["Pipalkheda", "Gyaraspur", "Basoda", "Kurwai", "Sironj", "Lateri", "Nateran"]
 
