@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 
 function FormB17() {
@@ -97,7 +98,7 @@ function FormB17() {
               onClick={handleChange(setFormB16)}
               byDefault={formB16.B14}
             />
-            <Buttons formName="formb16" formData={formB16} prev="/socio-demographicprofileofthepatientinthehhwithemergencycondition" next={formB16.B14 == "Visited allopathic health care facility"?"/initialhealthcareseekingpathway-3" : formB16.B14 == "Home visit by a doctor" ? "/initialhealthcareseekingpathway-2" : "/barriers-and-facilitators1"} prevText="Previous" nextText="Save & Next" />
+            <CSTButton formName="formb16" formData={formB16} prev="/socio-demographicprofileofthepatientinthehhwithemergencycondition" next={formB16.B14 == "Visited allopathic health care facility"?"/initialhealthcareseekingpathway-3" : formB16.B14 == "Home visit by a doctor" ? "/initialhealthcareseekingpathway-2" : "/barriers-and-facilitators1"} prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>

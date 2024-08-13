@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 function FormF28() {
     var formf28 = setLocalStorage("formf28", { F5:"",F6:""})
@@ -70,7 +71,7 @@ function FormF28() {
 
 
 
-                        <Buttons formName="formf28" formData={formF28} prev="/verbal-&-social-autopsy1" next="/improve-emergency-services" prevText="Previous" nextText="Save & Next" />
+                        <CSTButton formName="formf28" formData={formF28} prev="/verbal-&-social-autopsy1" next="/improve-emergency-services" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

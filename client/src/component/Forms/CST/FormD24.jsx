@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 function FormD24() {
     var formd24 = setLocalStorage("formd24", { D1: []})
@@ -59,7 +60,7 @@ function FormD24() {
                             name="D1" setFunction={setFormD24} StateValue={formD24} array={formD24.D1} 
                         />
 
-                        <Buttons formName="formd24" formData={formD24} prev="" next="/barriers-and-facilitators2" prevText="Previous" nextText="Save & Next" />
+                        <CSTButton formName="formd24" formData={formD24} prev="" next="/barriers-and-facilitators2" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

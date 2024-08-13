@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 function FormH30() {
     var formh30 = setLocalStorage("formh30", { H1:"",H2:"",H3:"",H4:"",H5:"",H6:"",H7:"",H8:"",H9:"",H10:[],H11:"",H12:[],H13:"",H14:"",H15:"",H16:"",H17:""})
@@ -246,7 +247,7 @@ function FormH30() {
 
                         
 
-                        <Buttons formName="formh30" formData={formH30} prev="/improve-emergency-services" next="/household-schedule2" prevText="Previous" nextText="Save & Next" />
+                        <CSTButton formName="formh30" formData={formH30} prev="/improve-emergency-services" next="/household-schedule2" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

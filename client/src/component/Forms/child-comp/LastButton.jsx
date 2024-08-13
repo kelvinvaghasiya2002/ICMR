@@ -8,10 +8,10 @@ function LastButton({ prev, formName, formData, MainForm, validateForm }) {
   console.log(formData);
 
   const handleSubmit = () => {
-     // Validate the form before proceeding
-     if (validateForm && !validateForm()) {
+    // Validate the form before proceeding
+    if (validateForm && !validateForm()) {
       return;
-  }
+    }
     var CompleteForm = localStorage.getItem("CompleteForm");
 
     if (CompleteForm) {

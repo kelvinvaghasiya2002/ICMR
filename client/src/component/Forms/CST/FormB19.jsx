@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 
 function formB16() {
@@ -127,7 +128,7 @@ function formB16() {
 
             <Radio onClick={handleChange(setFormB16)} h3="B.32 Was the patient shifted to ICU/ CCU/ HDU at HCF? " CheckbobItems={["Yes", "No"]} name="B32" byDefault={formB16.B32} />
 
-            <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-1" next="/initialhealthcareseekingpathway-4" prevText="Previous" nextText="Save & Next" />
+            <CSTButton formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-1" next="/initialhealthcareseekingpathway-4" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>

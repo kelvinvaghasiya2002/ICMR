@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 function FormG29() {
     var formg29 = setLocalStorage("formg29", {G1:"" })
@@ -38,7 +39,7 @@ function FormG29() {
                     
                     <InputField h3="G. Based on your experience what suggestion would you like to make to the government to improve the emergency services in your district? (Open-ended)" name="G1" placeholder="Type here"  value={formG29.G1} onChange={handleChange(setFormG29)} />
 
-                        <Buttons formName="formg29" formData={formG29} prev="/verbal-&-social-autopsy2" next="/household-schedule1" prevText="Previous" nextText="Save & Next" />
+                        <CSTButton formName="formg29" formData={formG29} prev="/verbal-&-social-autopsy2" next="/household-schedule1" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

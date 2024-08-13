@@ -1,44 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from "axios"
-const server = import.meta.env.VITE_SERVER;
+import CSTPopUp from './CSTPopUp';
 
-function CSTLastButton({ previous, from, lastForm }) {
 
-    const navigate = useNavigate();
-    const handleSubmit = async () => {
-        if (from === "FormA2") {
-            var CompleteForm = JSON.parse(localStorage.getItem("CompleteForm"));
-            CompleteForm = { ...CompleteForm, ...lastForm };
 
-            try {
-                const response = await axios.post(`${server}/cstdata`, {
-                    CompleteForm: CompleteForm
-                })
-                console.log(response.data)
-                navigate("/")
-            } catch (error) {
-                console.log(error);
-            }
+function CSTLastButton({ prev, from, formName, formData }) {
+    const [popup, setPopup] = useState(false);
 
-            const localstorage = { ...localStorage };
-            for (var key in localstorage) {
-                if (key === "token") {
-                    continue;
-                } else {
-                    // console.log(localstorage[key]);
-                    localStorage.removeItem(key);
-                }
-            }
-
+    const handleSubmit = () => {
+        var CompleteForm = localStorage.getItem("CompleteForm");
+        if (CompleteForm) {
+            CompleteForm = JSON.parse(CompleteForm);
+            const data = { ...CompleteForm, ...formData };
+            localStorage.setItem("CSTCompleteForm", JSON.stringify(data));
+        } else {
+            localStorage.setItem("CSTCompleteForm", JSON.stringify(formData));
         }
+        localStorage.setItem(formName, JSON.stringify(formData));
+
+        if (formName === "formh31") {
+            var Name_and_Emergencies = JSON.parse(localStorage.getItem("Name_and_Emergencies"));
+            Name_and_Emergencies = Name_and_Emergencies.filter((item, index) => index !== 0);
+            localStorage.setItem("Name_and_Emergencies", JSON.stringify(Name_and_Emergencies));
+
+            var PartBLoop = JSON.parse(localStorage.getItem("PartBLoop"));
+            PartBLoop = {...PartBLoop , ...formData};
+            localStorage.setItem("PartBLoop",JSON.stringify(PartBLoop));
+        }
+        setPopup(true);
     }
+
 
     return (
         <div className="buttons">
 
             <button className="prevbtn">
-                <Link to={previous}>Previous</Link>
+                <Link to={prev}>Previous</Link>
             </button>
 
             <button
@@ -48,6 +45,14 @@ function CSTLastButton({ previous, from, lastForm }) {
             >
                 Submit
             </button>
+            {popup && (
+                <CSTPopUp
+                    setPopup={setPopup}
+                    formName={formName}
+                    lastForm={formData}
+                    from={from}
+                />
+            )}
         </div>
     )
 }

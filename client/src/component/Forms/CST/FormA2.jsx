@@ -78,9 +78,8 @@ function FormA2() {
                         {
                             (formA2.AB6 === "< 1 year")
                                 ?
-                                <LastButton prev="/siteinformation" formName="forma2" formData={formA2} MainForm={"CST"} />
+                                <CSTLastButton previous="/siteinformation" formName={"forma2"} formData={formA2}  />
                                 :
-
                                 <>
                                     <h4><i>I would like to ask few questions pertaining to people staying in the same household including both family and non-family members for the last 1 year like servants included but paying guests not included.</i></h4>
 

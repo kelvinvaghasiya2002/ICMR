@@ -13,6 +13,7 @@ import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 import LastButton from '../child-comp/LastButton.jsx';
+import CSTLastButton from '../child-comp/CSTLastButton.jsx';
 
 function FormH31() {
     var formh31 = setLocalStorage("formh31", { H18:"" })
@@ -51,7 +52,7 @@ function FormH31() {
 
                         {/* <Buttons formName="formh31" formData={formH31} prev="/household-schedule1" next="" prevText="Previous" nextText="Save & Next" /> */}
 
-                        <LastButton prev="/household-schedule1" formName="formh31" formData={formH31} MainForm={"CST"}/>
+                        <CSTLastButton prev="/household-schedule1" formName="formh31" formData={formH31} MainForm={"CST"}/>
                     </div>
                 </div>
             </section>

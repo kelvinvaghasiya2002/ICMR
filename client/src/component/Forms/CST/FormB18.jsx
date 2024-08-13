@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 
 function FormB18() {
@@ -52,7 +53,7 @@ function FormB18() {
                             byDefault={formB16.B15}
                         />
 
-                        <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-1" next="/initialhealthcareseekingpathway-4" prevText="Previous" nextText="Save & Next" />
+                        <CSTButton formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-1" next="/initialhealthcareseekingpathway-4" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

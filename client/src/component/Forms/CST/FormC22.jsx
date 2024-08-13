@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 function FormC22() {
     var formc22 = setLocalStorage("formc22", { C8: "", C9_1: "",C9_2:"", C10_1: "",C10_2:"", C11: "", C12: "", C13: "", C14: "", C15: "", C16: "", C17: "", C18: "", C19: "" })
@@ -82,7 +83,7 @@ function FormC22() {
 
                        
 
-                        <Buttons formName="formc22" formData={formC22} prev="/referral-facility2" next="/referral-facility4" prevText="Previous" nextText="Save & Next" />
+                        <CSTButton formName="formc22" formData={formC22} prev="/referral-facility2" next="/referral-facility4" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

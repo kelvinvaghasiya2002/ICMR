@@ -12,12 +12,17 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 
 function FormB16() {
   var formb16 = setLocalStorage("formb16", { B0: "", B1: "", B2: "", B3: "", B4: [],  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: [], B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
   const [formB16, setFormB16] = useState(JSON.parse(formb16))
   turnOffbutton();
+
+  const Name_and_Emergencies = JSON.parse(localStorage.getItem("Name_and_Emergencies"));
+  
+
   return (
     <div>
       <Heading h2="Community Survey Tool"></Heading>
@@ -36,7 +41,14 @@ function FormB16() {
           </div>
 
           <div className="formcontent cont_extra">
-            <h3>Note: PART-B to be filled for each individual who were selected for emergency conditions or deaths.</h3>
+            <h3>Note: PART-B to be filled for each individual who were selected for emergency conditions or deaths.
+
+            <br />
+            <br /> 
+
+            Name : {Name_and_Emergencies[0]?.Name} <br /> Emergency condition : {Name_and_Emergencies[0]?.Emergency} 
+            
+            </h3>
 
             <InputField  name={"B0"} h3="B.0 When did the Patient suffered with this condition?" placeholder="Type here" type={"date"} onChange={handleChange(setFormB16)} value={formB16.B0} />
 
@@ -114,9 +126,8 @@ function FormB16() {
               array={formB16.B4}
             />
 
+            <CSTButton formName="formb16" formData={formB16} prev="/death" next="/initialhealthcareseekingpathway-1" prevText="Previous" nextText="Save & Next" />
 
-
-            <Buttons formName="formb16" formData={formB16} prev="/death" next="/initialhealthcareseekingpathway-1" prevText="Previous" nextText="Save & Next" />
           </div>
         </div>
       </section>

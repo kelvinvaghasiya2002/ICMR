@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading.jsx';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 
 function formB16() {
@@ -45,7 +46,7 @@ function formB16() {
               <InputField h3="B.34 : What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary? (Specify)" placeholder="Type Here" value={formB16.B34} name="B34" onChange={handleChange(setFormB16)} />
             }
 
-            <Buttons formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-3" 
+            <CSTButton formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-3" 
             // next="/referral-facility1" 
             next={(formB16.B33 === "Death" ? "/verbal-&-social-autopsy1" : (formB16.B33 === "Referred to higher facility" || formB16.B33 === "Went against medical advice to different facility") ? "/referral-facility1" :  "/barriers-and-facilitators2")}
             prevText="Previous" nextText="Save & Next" />

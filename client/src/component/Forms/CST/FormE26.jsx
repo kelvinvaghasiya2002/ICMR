@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 function FormE26() {
     var forme26 = setLocalStorage("forme26", { E1:"",E2:[],E3:"",E4:"" })
@@ -59,7 +60,7 @@ function FormE26() {
                         <InputField h3="E.4	What was the approximate overall money spent on the availing the emergency care? (INR)" placeholder="Type here" name="E4"  value={formE26.E4} onChange={handleChange(setFormE26)}  />
 
 
-                        <Buttons formName="forme26" formData={formE26} prev="/barriers-and-facilitators2" next="/verbal-&-social-autopsy1" prevText="Previous" nextText="Save & Next" />
+                        <CSTButton formName="forme26" formData={formE26} prev="/barriers-and-facilitators2" next="/verbal-&-social-autopsy1" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

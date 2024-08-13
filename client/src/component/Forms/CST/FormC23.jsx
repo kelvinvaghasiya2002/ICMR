@@ -12,6 +12,7 @@ import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
+import CSTButton from '../child-comp/CSTButton.jsx';
 
 function FormC23() {
     var formc23 = setLocalStorage("formc23", { C20: "", C21: "" })
@@ -56,7 +57,7 @@ function FormC23() {
 
                         {/* capture using tab camera */}
 
-                        <Buttons formName="formc23" formData={formC23} prev="/referral-facility3"
+                        <CSTButton formName="formc23" formData={formC23} prev="/referral-facility3"
                         //  next={(formC23.C21 === "") ? "/barriers-and-facilitators1" : "/barriers-and-facilitators2"} 
                         next = {
                             ((formC23.C20 === "Partially recovered & discharged") || (formC23.C20 === "Fully Recovered & discharged") || (formC23.C20 === "Recovered with disability & discharged") || (formC23.C20 === "Self-Discharged") || (formC23.C20 === "Admitted in Hospital") || (formC23.C20 === "Death")) 
