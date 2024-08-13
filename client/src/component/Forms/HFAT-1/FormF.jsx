@@ -9,7 +9,7 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import { validateName, validateNumber, validateRequired, validateCheckBox } from '../fv.js';
 import OverlayCard from '../OverlayCard.jsx';
 
 function FormF() {
@@ -127,7 +127,13 @@ function FormF() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        newErrors[field] = validateRequired(formF[field]);
+        console.log(field + "field");
+        if(Array.isArray(formF[field])){
+          console.log(formF[field]);
+          newErrors[field] = validateCheckBox(formF[field]);
+        }else{
+          newErrors[field] = validateRequired(formF[field]);
+        }
       });
       setErrors(newErrors);
     } else {
@@ -136,11 +142,17 @@ function FormF() {
   }, [formF]);
 
   const isFormValid = () => {
-    const requiredFields = ['H1F1', 'H1F3', 'H1F4', 'H1F5', 'H1F6', 'H1F8', 'H1F9'];
+    const requiredFields = ['H1F1', 'H1F3', 'H1F4', 'H1F5', 'H1F8', 'H1F9'];
     if (formF.H1F5 === "Yes") {
       requiredFields.push('H1F6');
     }
-    const missingFields = requiredFields.filter(field => !formF[field] || (typeof formF[field] === 'string' && formF[field].trim() === ''));
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(formF[field])) {
+      return formF[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !formF[field] || (typeof formF[field] === 'string' && formF[field].trim() === '');
+      }
+    });
     return { isValid: missingFields.length === 0, missingFields };
   };
 
