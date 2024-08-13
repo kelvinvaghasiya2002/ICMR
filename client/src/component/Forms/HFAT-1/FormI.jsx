@@ -8,6 +8,8 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import OverlayCard from '../OverlayCard.jsx';
+import { validateCheckBox, validateRequired } from '../fv.js';
 
 function FormI() {
 
@@ -42,6 +44,7 @@ function FormI() {
   const formi = setLocalStorage('formi', { I1: [], I2: [] });
   const [formI, setFormI] = useState(JSON.parse(formi));
   const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
   
   turnOffbutton();
 
@@ -85,6 +88,54 @@ function FormI() {
     { EmergencyCondition: 'Neonatal Emergencies', SOP: '', FollowsSOP: '' },
     { EmergencyCondition: 'Acute Respiratory Illness', SOP: '', FollowsSOP: '' },
     ];
+
+    useEffect(() => {
+      const { isValid, missingFields } = isFormValid();
+      setShowOverlay(!isValid);
+      if (!isValid) {
+        const newErrors = {};
+        missingFields.forEach(field => {
+          console.log(field + "field");
+          if(Array.isArray(formI[field])){
+            console.log(formI[field]);
+            newErrors[field] = validateCheckBox(formI[field]);
+          }else{
+            newErrors[field] = validateRequired(formI[field]);
+          }
+        });
+        setErrors(newErrors);
+      } else {
+        setErrors({});
+      }
+    }, [formI]);
+  
+    const isFormValid = () => {
+      const requiredFields = ['I1'];
+
+      const missingFields = requiredFields.filter(field => {
+        if (Array.isArray(formI[field])) {
+        return formI[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+        } else {
+        return !formI[field] || (typeof formI[field] === 'string' && formI[field].trim() === '');
+        }
+      });
+      return { isValid: missingFields.length === 0, missingFields };
+    };
+  
+    useEffect(() => {
+      const { isValid, missingFields } = isFormValid();
+      setShowOverlay(!isValid);
+      if (!isValid) {
+        const newErrors = {};
+        missingFields.forEach(field => {
+          newErrors[field] = 'This field is required';
+        });
+        setErrors(newErrors);
+      } else {
+        setErrors({});
+      }
+    }, [formI]);
+  
 
   return (
     <div>
@@ -142,6 +193,7 @@ function FormI() {
             <h3>1I.2 : Whether having Emergency condition specific SOP/STW for emergency care?</h3>
             <I2 columns={columns} initialRows={initialRows} tableName="I2" />
 
+                        <div className="button-container">
             <Buttons
               formName={"formi"}
               formData={formI}
@@ -149,13 +201,13 @@ function FormI() {
               nextText="Save & Next"
               prev="/leadershipandgovernance"
               next="/referrallinkages"
-              validateForm={validateForm}
             />
-            {Object.keys(errors).length > 0 && (
-              <div className="error-msg">
-                (Please fill out all required fields before proceeding)
-              </div>
-            )}
+
+              <OverlayCard
+                isVisible={showOverlay}
+                message="(Please fill all required fields to proceed)"
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -9,7 +9,7 @@ import InputField from '../child-comp/InputField';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import { validateName, validateNumber, validateRequired, validateCheckBox } from '../fv.js';
 import OverlayCard from '../OverlayCard.jsx';
 
 function FormH() {
@@ -140,7 +140,13 @@ function FormH() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        newErrors[field] = validateRequired(formH[field]);
+        console.log(field + "field");
+        if(Array.isArray(formH[field])){
+          console.log(formH[field]);
+          newErrors[field] = validateCheckBox(formH[field]);
+        }else{
+          newErrors[field] = validateRequired(formH[field]);
+        }
       });
       setErrors(newErrors);
     } else {
@@ -156,9 +162,16 @@ function FormH() {
     }
     if (formH.H1H6 === "Yes") {
       requiredFields.push('H1H7');
+      requiredFields.push('H1H8');
       requiredFields.push('H1H9');
     }
-    const missingFields = requiredFields.filter(field => !formH[field] || (typeof formH[field] === 'string' && formH[field].trim() === ''));
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(formH[field])) {
+      return formH[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !formH[field] || (typeof formH[field] === 'string' && formH[field].trim() === '');
+      }
+    });
     return { isValid: missingFields.length === 0, missingFields };
   };
 

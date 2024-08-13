@@ -8,7 +8,7 @@ import { handleChange, turnOffbutton } from '../helpers';
 import I1 from '../Tables/I1.jsx'
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading.jsx';
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
 import OverlayCard from '../OverlayCard.jsx';
 
 function Form3I() {
@@ -50,7 +50,13 @@ function Form3I() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        newErrors[field] = validateRequired(form3I[field]);
+        console.log(field + "field");
+        if(Array.isArray(form3I[field])){
+          console.log(form3I[field]);
+          newErrors[field] = validateCheckBox(form3I[field]);
+        }else{
+          newErrors[field] = validateRequired(form3I[field]);
+        }
       });
       setErrors(newErrors);
     } else {
@@ -59,9 +65,15 @@ function Form3I() {
   }, [form3I]);
 
   const isFormValid = () => {
-    const requiredFields = ['H3I4'];
+    const requiredFields = ['H3I1', 'H3I2', 'H3I4'];
 
-    const missingFields = requiredFields.filter(field => !form3I[field] || (typeof form3I[field] === 'string' && form3I[field].trim() === ''));
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(form3I[field])) {
+      return form3I[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !form3I[field] || (typeof form3I[field] === 'string' && form3I[field].trim() === '');
+      }
+    });
 
     return { isValid: missingFields.length === 0, missingFields };
   };
@@ -72,7 +84,13 @@ function Form3I() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        newErrors[field] = 'This field is required';
+        console.log(field + "field");
+        if(Array.isArray(form3I[field])){
+          console.log(form3I[field]);
+          newErrors[field] = validateCheckBox(form3I[field]);
+        }else{
+          newErrors[field] = validateRequired(form3I[field]);
+        }
       });
       setErrors(newErrors);
     } else {

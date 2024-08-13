@@ -7,6 +7,8 @@ import { turnOffbutton } from '../helpers';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import OverlayCard from '../OverlayCard.jsx';
+import { validateCheckBox } from '../fv.js';
 
 function Form2D() {
   useEffect(() => {
@@ -17,16 +19,55 @@ function Form2D() {
 
   var form2d = setLocalStorage("form2d", { H2D1: [] });
   const [form2D, setForm2D] = useState(JSON.parse(form2d));
-  const [formError, setFormError] = useState("");
+  const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
-  const validateForm = () => {
-    if (form2D.H2D1.filter(item => item !== "").length === 0) {
-      setFormError("Select at least one drug option");
-      return false;
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        console.log(field + "field");
+        if (Array.isArray(form2D[field])) {
+          console.log(form2D[field]);
+          newErrors[field] = validateCheckBox(form2D[field]);
+        } else {
+          newErrors[field] = validateRequired(form2D[field]);
+        }
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
     }
-    setFormError("");
-    return true;
+  }, [form2D]);
+
+  const isFormValid = () => {
+    const requiredFields = ['H2D1'];
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(form2D[field])) {
+        return form2D[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+        return !form2D[field] || (typeof form2D[field] === 'string' && form2D[field].trim() === '');
+      }
+    });
+    return { isValid: missingFields.length === 0, missingFields };
   };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [form2D]);
+
 
   return (
     <div>
@@ -43,34 +84,39 @@ function Form2D() {
           <div className="formcontent">
             <h3>2D.1 : Which of the following emergency drugs are available at the CHC? (Multiple answers possible)?</h3>
             <h3>Drug Name:</h3>
-            <Checkbox 
-              setFunction={setForm2D} 
-              StateValue={form2D} 
-              array={form2D.H2D1} 
-              name="H2D1" 
+            <Checkbox
+              setFunction={setForm2D}
+              StateValue={form2D}
+              array={form2D.H2D1}
+              name="H2D1"
               CheckbobItems={[
-                "Oxygen medicinal gas", "Atropine", "Diazepam/Lorazepam", "Adrenaline", "Charcoal activated", 
-                "Antisnake venom", "Pralidoxime (PAM)", "Magnesium sulphate", "Tetanus immunoglobulin", 
-                "Neostigmine", "Aspirin", "Clopidogrel", "Atorvastatin", "Misoprostol", "Labetalol IV", 
-                "Phenobarbitone", "Phenytoin (inj)", "Plasma volume expander", "3% Saline", "Dobutamine", 
-                "Streptokinase", "Tenecteplase", "Oxytocin", "Salbutamol sulphate", "Glucose/ 25 % dextrose", 
+                "Oxygen medicinal gas", "Atropine", "Diazepam/Lorazepam", "Adrenaline", "Charcoal activated",
+                "Antisnake venom", "Pralidoxime (PAM)", "Magnesium sulphate", "Tetanus immunoglobulin",
+                "Neostigmine", "Aspirin", "Clopidogrel", "Atorvastatin", "Misoprostol", "Labetalol IV",
+                "Phenobarbitone", "Phenytoin (inj)", "Plasma volume expander", "3% Saline", "Dobutamine",
+                "Streptokinase", "Tenecteplase", "Oxytocin", "Salbutamol sulphate", "Glucose/ 25 % dextrose",
                 "Tranexamic acid", "tPA IV", "Methergine", "Carboprost"
-              ]} 
+              ]}
               required={true}
               errorMsg="Select at least one drug"
             />
 
-            {formError && <p className="error-msg">{formError}</p>}
 
-            <Buttons 
-              formName="form2d" 
-              formData={form2D} 
-              prevText="Previous" 
-              nextText="Save & Next" 
-              prev="/humanresources-2" 
-              next="/logistics-2-1" 
-              validateForm={validateForm}
-            />
+            <div className="button-container">
+              <Buttons
+                formName="form2d"
+                formData={form2D}
+                prevText="Previous"
+                nextText="Save & Next"
+                prev="/humanresources-2"
+                next="/logistics-2-1"
+              />
+
+              <OverlayCard
+                isVisible={showOverlay}
+                message="(Please fill all required fields to proceed)"
+              />
+            </div>
           </div>
         </div>
       </section>

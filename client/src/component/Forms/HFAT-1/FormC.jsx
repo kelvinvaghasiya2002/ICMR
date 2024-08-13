@@ -10,7 +10,7 @@ import C1 from "../Tables/C1.jsx";
 import { handleChange, turnOffbutton } from "../helpers";
 import setLocalStorage from "../setLocalStorage.js";
 import Heading from "../../Heading/Heading.jsx";
-import { validateName, validateNumber, validateRequired, validateEmail } from '../fv.js';
+import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
 import OverlayCard from '../OverlayCard.jsx';
 
 function FormC() {
@@ -176,7 +176,13 @@ function FormC() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        newErrors[field] = validateRequired(formC[field]);
+        console.log(field + "field");
+        if(Array.isArray(formC[field])){
+          console.log(formC[field]);
+          newErrors[field] = validateCheckBox(formC[field]);
+        }else{
+          newErrors[field] = validateRequired(formC[field]);
+        }
       });
       setErrors(newErrors);
     } else {
@@ -191,7 +197,13 @@ function FormC() {
       requiredFields.push('C5');
     }
 
-    const missingFields = requiredFields.filter(field => !formC[field] || (typeof formC[field] === 'string' && formC[field].trim() === ''));
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(formC[field])) {
+      return formC[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !formC[field] || (typeof formC[field] === 'string' && formC[field].trim() === '');
+      }
+    });
     return { isValid: missingFields.length === 0, missingFields };
   };
 

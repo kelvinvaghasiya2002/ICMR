@@ -7,6 +7,8 @@ import { turnOffbutton } from '../helpers';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import OverlayCard from '../OverlayCard.jsx';
+import { validateCheckBox, validateRequired } from '../fv.js';
 
 function Form2D2() {
     useEffect(() => {
@@ -17,29 +19,55 @@ function Form2D2() {
 
     var form2d2 = setLocalStorage("form2d2", { H2D2: [] });
     const [form2D2, setForm2D2] = useState(JSON.parse(form2d2));
-    const [formError, setFormError] = useState("");
+    const [errors, setErrors] = useState({});
+    const [showOverlay, setShowOverlay] = useState(false);
 
-    const validateForm = () => {
-        if (form2D2.H2D2.filter(item => item !== "").length === 0) {
-            setFormError("Select at least one equipment option");
-            return false;
-        }
-        setFormError("");
-        return true;
-    };
-
-    const handleNext = () => {
-        console.log("Hello");
-        if (validateForm()) {
-            // Proceed to next page logic here
-            console.log("Form is valid, proceed to next page");
-            // Implement navigation logic here
-            // For example, you can use a router to navigate to the next page
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                console.log(field + "field");
+                if (Array.isArray(form2D2[field])) {
+                    console.log(form2D2[field]);
+                    newErrors[field] = validateCheckBox(form2D2[field]);
+                } else {
+                    newErrors[field] = validateRequired(form2D2[field]);
+                }
+            });
+            setErrors(newErrors);
         } else {
-            // Display errors or prevent navigation
-            console.error("Form validation failed");
+            setErrors({});
         }
+    }, [form2D2]);
+
+    const isFormValid = () => {
+        const requiredFields = ['H2D2'];
+        const missingFields = requiredFields.filter(field => {
+            if (Array.isArray(form2D2[field])) {
+                return form2D2[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+            } else {
+                return !form2D2[field] || (typeof form2D2[field] === 'string' && form2D2[field].trim() === '');
+            }
+        });
+        return { isValid: missingFields.length === 0, missingFields };
     };
+
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                newErrors[field] = 'This field is required';
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
+        }
+    }, [form2D2]);
+
 
     return (
         <div>
@@ -59,40 +87,44 @@ function Form2D2() {
                     <div className="formcontent">
                         <h3>2D.2 : Which of the following emergency equipment is available at the CHC? (Multiple answers possible)</h3>
 
-                        <Checkbox 
-                        required={true}
-                        errorMsg="Select at least one equipment"
-                        other={true}
-                          CheckbobItems={[
-                            'Mobile bed for Resuscitation', 'Crash Cart (specialized cart for resuscitation)', 
-                            'Hard Cervical Collar', 'Oxygen Cylinder/Central Oxygen Supply', 'Suction Machine', 
-                            'Multipara Monitor (To monitor Heart rate, BP, SPO2[Essential] ECG, Respiration Rate [Desirable] etc)', 
-                            'Defibrillator with or without external pacer', 'Toothed Forceps, Kocher Forceps, Magill\'s forceps, Artery forceps', 
-                            'AMBU Bag for adult and Paediatric', 'Basic airway equipment like oropharyngeal nasopharyngeal airway, LMA for adult and pediatric', 
-                            'Advanced laryngoscope and endotracheal tube or other similar device', 'Tourniquet', 'Pelvic binder or bed sheets with clips', 
-                            'Laryngoscope with all sized blades', 'Endotracheal Tubes of all sizes', 'Laryngeal Mask Airway (LMA)', 
-                            'Chest Tubes with Water seal drain', 'ECG Machine', 'Nebulizer', 'Fluid Warmer', 'Infusion pump and Syringe Drivers', 
-                            'Spine board with sling and scotch tapes', 'Splints for all types of fracture', 'Non-invasive Ventilators', 
-                            'Invasive Ventilators', 'Incubators'
-                          ]}
-                          name={"H2D2"} 
-                          setFunction={setForm2D2} 
-                          StateValue={form2D2} 
-                          array={form2D2.H2D2} 
-                          
+                        <Checkbox
+                            required={true}
+                            errorMsg="Select at least one equipment"
+                            other={true}
+                            CheckbobItems={[
+                                'Mobile bed for Resuscitation', 'Crash Cart (specialized cart for resuscitation)',
+                                'Hard Cervical Collar', 'Oxygen Cylinder/Central Oxygen Supply', 'Suction Machine',
+                                'Multipara Monitor (To monitor Heart rate, BP, SPO2[Essential] ECG, Respiration Rate [Desirable] etc)',
+                                'Defibrillator with or without external pacer', 'Toothed Forceps, Kocher Forceps, Magill\'s forceps, Artery forceps',
+                                'AMBU Bag for adult and Paediatric', 'Basic airway equipment like oropharyngeal nasopharyngeal airway, LMA for adult and pediatric',
+                                'Advanced laryngoscope and endotracheal tube or other similar device', 'Tourniquet', 'Pelvic binder or bed sheets with clips',
+                                'Laryngoscope with all sized blades', 'Endotracheal Tubes of all sizes', 'Laryngeal Mask Airway (LMA)',
+                                'Chest Tubes with Water seal drain', 'ECG Machine', 'Nebulizer', 'Fluid Warmer', 'Infusion pump and Syringe Drivers',
+                                'Spine board with sling and scotch tapes', 'Splints for all types of fracture', 'Non-invasive Ventilators',
+                                'Invasive Ventilators', 'Incubators'
+                            ]}
+                            name={"H2D2"}
+                            setFunction={setForm2D2}
+                            StateValue={form2D2}
+                            array={form2D2.H2D2}
+
                         />
 
-                        {formError && <p className="error-msg">{formError}</p>}
+                        <div className="button-container">
+                            <Buttons
+                                formName={"form2d2"}
+                                formData={form2D2}
+                                prevText="Previous"
+                                nextText="Save & Next"
+                                prev="/logistics-2"
+                                next="/emergencycareservices-2"
+                            />
 
-                        <Buttons 
-                          formName={"form2d2"} 
-                          formData={form2D2} 
-                          prevText="Previous" 
-                          nextText="Save & Next" 
-                          prev="/logistics-2" 
-                          next="/emergencycareservices-2" 
-                          validateForm={validateForm}
-                        />
+                            <OverlayCard
+                                isVisible={showOverlay}
+                                message="(Please fill all required fields to proceed)"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

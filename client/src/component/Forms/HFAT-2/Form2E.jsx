@@ -9,6 +9,8 @@ import { turnOffbutton } from '../helpers';
 import Heading from '../../Heading/Heading.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import OverlayCard from '../OverlayCard.jsx';
+import { validateCheckBox } from '../fv.js';
 
 function Form2E() {
     useEffect(() => {
@@ -17,7 +19,8 @@ function Form2E() {
 
     var form2e = setLocalStorage("form2e", { H2E3: [] });
     const [form2E, setForm2E] = useState(JSON.parse(form2e));
-    const [formError, setFormError] = useState("");
+    const [errors, setErrors] = useState({});
+    const [showOverlay, setShowOverlay] = useState(false);
 
     turnOffbutton();
 
@@ -39,14 +42,52 @@ function Form2E() {
         { Type: 'Acute Respiratory Illness', Attended: '', Death: '' },
     ];
 
-    const validateForm = () => {
-        if (form2E.H2E3.length === 0) {
-            setFormError("Select at least one emergency service");
-            return false;
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                console.log(field + "field");
+                if (Array.isArray(form2E[field])) {
+                    console.log(form2E[field]);
+                    newErrors[field] = validateCheckBox(form2E[field]);
+                } else {
+                    newErrors[field] = validateRequired(form2E[field]);
+                }
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
         }
-        setFormError("");
-        return true;
+    }, [form2E]);
+
+    const isFormValid = () => {
+        const requiredFields = ['H2E3'];
+        const missingFields = requiredFields.filter(field => {
+            if (Array.isArray(form2E[field])) {
+                return form2E[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+            } else {
+                return !form2E[field] || (typeof form2E[field] === 'string' && form2E[field].trim() === '');
+            }
+        });
+        return { isValid: missingFields.length === 0, missingFields };
     };
+
+    useEffect(() => {
+        const { isValid, missingFields } = isFormValid();
+        setShowOverlay(!isValid);
+        if (!isValid) {
+            const newErrors = {};
+            missingFields.forEach(field => {
+                newErrors[field] = 'This field is required';
+            });
+            setErrors(newErrors);
+        } else {
+            setErrors({});
+        }
+    }, [form2E]);
+
 
     return (
         <div>
@@ -73,26 +114,29 @@ function Form2E() {
 
                         <E2 columns={columns2} initialRows={initialRows2} tableName={"H2E2"} />
 
-                        <Checkbox 
-                          h3="2E.3 : Which of the following emergency services are delivered at the CHC? " 
-                          CheckbobItems={["Triage", "Resuscitation", "Medico Legal Reporting"]} 
-                          name={"H2E3"} 
-                          setFunction={setForm2E} 
-                          StateValue={form2E} 
-                          array={form2E.H2E3} 
+                        <Checkbox
+                            h3="2E.3 : Which of the following emergency services are delivered at the CHC? "
+                            CheckbobItems={["Triage", "Resuscitation", "Medico Legal Reporting"]}
+                            name={"H2E3"}
+                            setFunction={setForm2E}
+                            StateValue={form2E}
+                            array={form2E.H2E3}
                         />
 
-                        {formError && <p className="error-msg">{formError}</p>}
-
-                        <Buttons 
-                          formName={"form2e"} 
-                          formData={form2E} 
-                          prevText="Previous" 
-                          nextText="Save & Next" 
-                          prev="/logistics-2-1" 
-                          next="/informationsystem-2" 
-                          validateForm={validateForm}
-                        />
+                        <div className="button-container">
+                            <Buttons
+                                formName={"form2e"}
+                                formData={form2E}
+                                prevText="Previous"
+                                nextText="Save & Next"
+                                prev="/logistics-2-1"
+                                next="/informationsystem-2"
+                            />
+                            <OverlayCard
+                                isVisible={showOverlay}
+                                message="(Please fill all required fields to proceed)"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

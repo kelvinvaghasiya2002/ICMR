@@ -9,6 +9,8 @@ import E2 from '../Tables/E2';
 import { turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
+import OverlayCard from '../OverlayCard.jsx';
+import { validateCheckBox } from '../fv.js';
 
 function FormE() {
   
@@ -41,7 +43,8 @@ function FormE() {
 
   var forme = setLocalStorage("forme", { E3: [""], E4: [""] });
   const [formE, setFormE] = useState(JSON.parse(forme));
-  const [formError, setFormError] = useState("");
+  const [errors, setErrors] = useState({});
+  const [showOverlay, setShowOverlay] = useState(false);
 
   turnOffbutton();
 
@@ -64,18 +67,52 @@ function FormE() {
     { Type: 'Acute Respiratory Illness', Attended: '', Death: '' },
   ];
 
-  const validateForm = () => {
-    if (formE.E3.filter(item => item !== "").length === 0) {
-      setFormError("Select at least one emergency care service option in section 1E.3");
-      return false;
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        console.log(field + "field");
+        if(Array.isArray(formE[field])){
+          console.log(formE[field]);
+          newErrors[field] = validateCheckBox(formE[field]);
+        }else{
+          newErrors[field] = validateRequired(formE[field]);
+        }
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
     }
-    if (formE.E4.filter(item => item !== "").length === 0) {
-      setFormError("Select at least one emergency diagnostic facility option in section 1E.4");
-      return false;
-    }
-    setFormError("");
-    return true;
+  }, [formE]);
+
+  const isFormValid = () => {
+    const requiredFields = ['E3', 'E4'];
+    const missingFields = requiredFields.filter(field => {
+      if (Array.isArray(formE[field])) {
+      return formE[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+      } else {
+      return !formE[field] || (typeof formE[field] === 'string' && formE[field].trim() === '');
+      }
+    });
+    return { isValid: missingFields.length === 0, missingFields };
   };
+
+  useEffect(() => {
+    const { isValid, missingFields } = isFormValid();
+    setShowOverlay(!isValid);
+    if (!isValid) {
+      const newErrors = {};
+      missingFields.forEach(field => {
+        newErrors[field] = 'This field is required';
+      });
+      setErrors(newErrors);
+    } else {
+      setErrors({});
+    }
+  }, [formE]);
+
 
   return (
     <div>
@@ -155,9 +192,15 @@ function FormE() {
             />
 
 
-            {formError && <p className="error-msg">{formError}</p>}
 
-            <Buttons formName={'forme'} formData={formE} prevText="Previous" nextText="Save & Next" prev="/logisticsdrugsconsumablesequipment-2" next="/informationsystem" validateForm={validateForm} />
+            <div className="button-container">
+            <Buttons formName={'forme'} formData={formE} prevText="Previous" nextText="Save & Next" prev="/logisticsdrugsconsumablesequipment-2" next="/informationsystem"  />
+
+              <OverlayCard
+                isVisible={showOverlay}
+                message="(Please fill all required fields to proceed)"
+              />
+            </div>
 
           </div>
         </div>

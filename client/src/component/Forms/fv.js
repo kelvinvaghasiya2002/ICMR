@@ -28,3 +28,28 @@ export function validateEmail(email) {
     }
     return '';
 }
+
+
+export function validateCheckBox(newArray) {
+    // const emptyArray = newArray.every(item => item === "");
+
+    if(!newArray.every(item => item === "")){
+        return 'Select atleast one option'
+    }
+        return '';
+}
+
+// export function validateCheckBox(newArray) {
+//     for(let i = 0; i < newArray.length; i++){
+
+//     }
+// }
+// export function validateCheckBox(newArray) {
+//     if (newArray.length === 0) {
+//         return "Select at least one option";
+//     } else if (newArray.slice(0, -1).length === 0 && newArray[newArray.length - 1] === "") {
+//         return "Select at least one option or specify 'Other'";
+//     } else {
+//         return "";
+//     }
+// }
