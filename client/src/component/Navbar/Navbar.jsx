@@ -27,6 +27,7 @@ export default function Navbar() {
         try {
             const response = await axios.get(`${VITE_SERVER}/logout`)
             console.log(response);
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }
@@ -73,7 +74,7 @@ export default function Navbar() {
                 <button onClick={handleClick}><p>Data Collection</p></button>
                 </div>
                 <div>
-                <button className='logout'><p>Logout</p></button>
+                <button className='logout' onClick={handleLogOut}><p>Logout</p></button>
                 </div>
             </div>
 
