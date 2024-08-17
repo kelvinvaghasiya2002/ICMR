@@ -81,6 +81,7 @@ function Form3H() {
 
   const isFormValid = () => {
     const requiredFields = ['H3H1', 'H3H2', 'H3H3', 'H3H4', 'H3H6'];
+    // const requiredFields = ['H3H1', 'H3H2', 'H3H3', 'H3H4', 'H3H6'];
     if (form3H.H3H4 === "Yes") {
       requiredFields.push('H3H5');
     }
@@ -203,7 +204,7 @@ function Form3H() {
             <h3 style={{ color: "#3177FF" }}>Quality Improvement Plan :</h3>
 
 
-            <Radio byDefault={form3H.H3H4} onClick={handleChange(setForm3H)} name="H3H4" h3="3H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" otherArray={[1, 0]} CheckbobItems={["Yes", "No"]} />
+            <Radio byDefault={form3H.H3H4} onClick={handleChange(setForm3H)} name="H3H4" h3="3H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" otherArray={[1, 0]} setter={setForm3H} CheckbobItems={["Yes", "No"]} />
 
             {form3H.H3H4 !== 'No' &&
               <>

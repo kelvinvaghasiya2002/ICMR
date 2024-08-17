@@ -325,17 +325,17 @@ function Facility() {
     switch (name) {
       case "AMB2":
       case "AMB6":
-      case "AMB11":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
         } else {
-          validatedValue = form2B[name];
+          validatedValue = Ambulance[name];
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
       case "AMB9":
       case "AMB10":
+      case "AMB11":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
