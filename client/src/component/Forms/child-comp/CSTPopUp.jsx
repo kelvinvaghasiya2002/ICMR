@@ -13,21 +13,49 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
 
         if (formName === "formh31") {
             var Name_and_Emergencies = JSON.parse(localStorage.getItem("Name_and_Emergencies"));
-            var PartBLoop =  JSON.parse(localStorage.getItem("PartBLoop"));
+            var PartBLoop = JSON.parse(localStorage.getItem("PartBLoop"));
 
             var Emergency_Data = CompleteForm.Emergency_Data;
+            if (Emergency_Data) {
+                CompleteForm.Emergency_Data = [...Emergency_Data, PartBLoop]
+            } else {
+                Emergency_Data = [PartBLoop];
+                CompleteForm = { ...CompleteForm, Emergency_Data };
+            }
+            localStorage.setItem("CompleteForm", JSON.stringify(CompleteForm));
 
             if (Name_and_Emergencies?.length === 0) {
-                //make a request to backend to store data
-                if(Emergency_Data){
-                    CompleteForm.Emergency_Data = [...Emergency_Data , PartBLoop]
-                }else{
-                    Emergency_Data = [PartBLoop];
-                    CompleteForm = {...CompleteForm , Emergency_Data};
+                try {
+                    const response = await axios.post(`${server}/cstdata`, {
+                        CompleteForm: CompleteForm
+                    })
+                    console.log(response.data)
+                    const localstorage = { ...localStorage };
+                    for (var key in localstorage) {
+                        if (key === "token") {
+                            continue;
+                        } else {
+                            localStorage.removeItem(key);
+                        }
+                    }
+                    navigate("/")
+                } catch (error) {
+                    console.log(error);
                 }
-                localStorage.setItem("CompleteForm" , JSON.stringify(CompleteForm));
-                setLinkPath("/");
+
             } else {
+
+                const localstorage = { ...localStorage };
+                for (var key in localstorage) {
+                    if (key === "token" || key === "forma1" || key === "CompleteForm" || key === "forma2" || key === "forma3" || key === "forma3_table" || key === "Name_and_Emergencies" || key === "forma15" || key === "forma15_table" || key === "CSTCompleteForm") {
+                        continue;
+                    } else {
+                        // console.log(localstorage[key]);
+                        localStorage.removeItem(key);
+                    }
+                }
+
+
                 setLinkPath("/socio-demographicprofileofthepatientinthehhwithemergencycondition");
             }
         } else {
@@ -36,21 +64,23 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
                     CompleteForm: CompleteForm
                 })
                 console.log(response.data)
+                const localstorage = { ...localStorage };
+                for (var key in localstorage) {
+                    if (key === "token") {
+                        continue;
+                    } else {
+                        // console.log(localstorage[key]);
+                        localStorage.removeItem(key);
+                    }
+                }
                 navigate("/")
+
             } catch (error) {
                 console.log(error);
             }
         }
 
-        // const localstorage = { ...localStorage };
-        // for (var key in localstorage) {
-        //     if (key === "token") {
-        //         continue;
-        //     } else {
-        //         // console.log(localstorage[key]);
-        //         localStorage.removeItem(key);
-        //     }
-        // }
+
     }
 
 
