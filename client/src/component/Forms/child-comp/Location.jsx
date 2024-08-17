@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import './LocationButton.css';
 import "../Form.css";
+const apiKey = import.meta.env.VITE_LOCATION_API_KEY; // Replace with your OpenCage API key
 
 const LocationButton = ({ setter, name, heading, error }) => {
   const [coordinates, setCoordinates] = useState({
@@ -11,7 +12,6 @@ const LocationButton = ({ setter, name, heading, error }) => {
     district: "",
     state: "",
   });
-  const apiKey = "735aebe1626748f4ae1e2a4145fac884"; // Replace with your OpenCage API key
 
   // useEffect(() => {
   //   let location = localStorage.getItem("CompleteForm");
