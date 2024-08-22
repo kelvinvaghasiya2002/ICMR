@@ -1,22 +1,43 @@
-import React, { useState, useEffect } from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import Checkbox from '../child-comp/Checkbox';
-import SidePanel from './SidePanelHFAT1';
-import Buttons from '../child-comp/Buttons';
-import Radio from '../child-comp/Radio';
-import InputField from '../child-comp/InputField';
-import CheckboxWithInput from '../child-comp/CheckboxWithInput.jsx';
-import { handleChange, turnOffbutton } from '../helpers';
-import setLocalStorage from '../setLocalStorage';
-import Heading from '../../Heading/Heading';
-import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
-import OverlayCard from '../OverlayCard.jsx';
-import MultiCheckbox from '../child-comp/MultiCheckbox.jsx';
+import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Checkbox from "../child-comp/Checkbox";
+import SidePanel from "./SidePanelHFAT1";
+import Buttons from "../child-comp/Buttons";
+import Radio from "../child-comp/Radio";
+import InputField from "../child-comp/InputField";
+import CheckboxWithInput from "../child-comp/CheckboxWithInput.jsx";
+import { handleChange, turnOffbutton } from "../helpers";
+import setLocalStorage from "../setLocalStorage";
+import Heading from "../../Heading/Heading";
+import {
+  validateName,
+  validateNumber,
+  validateRequired,
+  validateEmail,
+  validateCheckBox,
+} from "../fv.js";
+import OverlayCard from "../OverlayCard.jsx";
+import MultiCheckbox from "../child-comp/MultiCheckbox.jsx";
 
 function FormB() {
-  var formb = setLocalStorage("formb", { B1: "", B2: "", B3: "", B4: [], B5: "", B6: "", B7: "", B8: [], B9: "", B10: [], B11: [], B12: [""], B13: [], B14: "", B15: "" }
-  )
+  var formb = setLocalStorage("formb", {
+    B1: "",
+    B2: "",
+    B3: "",
+    B4: [],
+    B5: "",
+    B6: "",
+    B7: "",
+    B8: [],
+    B9: "",
+    B10: [],
+    B11: [],
+    B12: [""],
+    B13: [],
+    B14: "",
+    B15: "",
+  });
 
   const [formB, setFormB] = useState(JSON.parse(formb));
   const [errors, setErrors] = useState({});
@@ -126,7 +147,7 @@ function FormB() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
+      missingFields.forEach((field) => {
         // console.log(field + "field");
         if (Array.isArray(formB[field])) {
           // console.log(formB[field]);
@@ -166,9 +187,15 @@ function FormB() {
     }
     const missingFields = requiredFields.filter((field) => {
       if (Array.isArray(formB[field])) {
-        return formB[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+        return formB[field].every(
+          (item) =>
+            item === "" || (typeof item === "string" && item.trim() === "")
+        );
       } else {
-        return !formB[field] || (typeof formB[field] === 'string' && formB[field].trim() === '');
+        return (
+          !formB[field] ||
+          (typeof formB[field] === "string" && formB[field].trim() === "")
+        );
       }
     });
     return { isValid: missingFields.length === 0, missingFields };
@@ -195,7 +222,6 @@ function FormB() {
 
     switch (name) {
       case "B15":
-      case "B15":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
@@ -204,10 +230,6 @@ function FormB() {
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
-      case "B1":
-      case "B3":
-      case "B5":
-      case "B6":
       case "B1":
       case "B3":
       case "B5":
@@ -229,10 +251,6 @@ function FormB() {
 
     // Perform additional required validation
     switch (name) {
-      case "B1":
-      case "B5":
-      case "B6":
-      case "B15":
       case "B1":
       case "B5":
       case "B6":
@@ -299,7 +317,6 @@ function FormB() {
               name="B2"
             />
 
-
             {formB.B2 === "Yes" && (
               <>
                 <InputField
@@ -311,7 +328,7 @@ function FormB() {
                   required={true}
                   errorMsg={errors.B3}
                 />
-                
+
                 {/* <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={["Red", "Yellow", "Green"]} otherArray={[1, 1, 1]}  name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} st={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius: "0" }} /> */}
                 <CheckboxWithInput
                   h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):"
@@ -367,7 +384,19 @@ function FormB() {
               errorMsg={errors.B6}
             />
 
-            <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0, 0, 1, 0]} byDefault={formB.B7} />
+            <Radio
+              h3="1B.7 : Does the facility have a licensed in-house blood bank?"
+              onClick={handleChange(setFormB)}
+              CheckbobItems={[
+                "Yes, it is available 24/7",
+                "Yes, but it is not available 24/7",
+                "No, but there is a tie up with external Blood bank facility  (Specify) ",
+                "No",
+              ]}
+              name="B7"
+              otherArray={[0, 0, 1, 0]}
+              byDefault={formB.B7}
+            />
 
             <Checkbox
               h3="1B.8 : Which of these does the blood bank have among the following?"
@@ -409,7 +438,10 @@ function FormB() {
                 "Smooth entry area with adequate wheelchair, trolley and stretcher bay",
                 "Smooth entry area with adequate wheelchair, trolley and stretcher bay",
               ]}
-              name="B10" setFunction={setFormB} StateValue={formB} array={formB.B10}
+              name="B10"
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B10}
               // required={true}
               errorMsg={errors.B10}
             />
@@ -441,9 +473,6 @@ function FormB() {
               setFunction={setFormB}
               StateValue={formB}
               array={formB.B11}
-              setFunction={setFormB}
-              StateValue={formB}
-              array={formB.B11}
               // required={true}
               errorMsg={errors.B11}
             />
@@ -460,9 +489,6 @@ function FormB() {
               ]}
               other={true}
               name="B12"
-              setFunction={setFormB}
-              StateValue={formB}
-              array={formB.B12}
               setFunction={setFormB}
               StateValue={formB}
               array={formB.B12}
@@ -490,9 +516,6 @@ function FormB() {
               setFunction={setFormB}
               StateValue={formB}
               array={formB.B13}
-              setFunction={setFormB}
-              StateValue={formB}
-              array={formB.B13}
               required={true}
               errorMsg={errors.B13}
             />
@@ -500,9 +523,6 @@ function FormB() {
             <Radio
               h3="1B.14 : Does the hospital provide ambulance services?"
               CheckbobItems={["Yes", "No"]}
-              name="B14"
-              onClick={handleChange(setFormB)}
-              byDefault={formB.B14}
               name="B14"
               onClick={handleChange(setFormB)}
               byDefault={formB.B14}
@@ -532,7 +552,13 @@ function FormB() {
             )}
 
             <div className="button-container">
-              <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources"
+              <Buttons
+                formName={"formb"}
+                formData={formB}
+                prevText="Previous"
+                nextText="Save & Next"
+                prev="/healthfacilityinformation"
+                next="/humanresources"
               />
               <OverlayCard
                 isVisible={showOverlay}
@@ -547,4 +573,3 @@ function FormB() {
 }
 
 export default FormB;
-

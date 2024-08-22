@@ -7,15 +7,6 @@ import InformationPage from "./component/InformationPage/InformationPage.jsx";
 import ContactUs from "./component/ContactUs/ContactUs.jsx";
 import HomePage from "./component/HomePage/HomePage.jsx";
 import Map from "./component/Map/Map.jsx";
-import { useEffect } from "react";
-import Navbar from "./component/Navbar/Navbar";
-import axios from "axios";
-import FirstPage from "./component/FirstPage/FirstPage";
-import { useUserInfo } from "./contexts/User.jsx";
-import InformationPage from "./component/InformationPage/InformationPage.jsx";
-import ContactUs from "./component/ContactUs/ContactUs.jsx";
-import HomePage from "./component/HomePage/HomePage.jsx";
-import Map from "./component/Map/Map.jsx";
 import { Routes, Route } from "react-router-dom";
 import SignIn from "./component/Signin/Signin.jsx";
 import SignUp from "./component/Signup/Signup.jsx";
@@ -106,9 +97,6 @@ function App() {
       const { data } = await axios.get(`${url}/login/success`, {
         withCredentials: true,
       });
-      const { data } = await axios.get(`${url}/login/success`, {
-        withCredentials: true,
-      });
       setUser(data.user._json);
       setloggedIn(true);
       setloggedIn(true);
@@ -127,11 +115,9 @@ function App() {
       }
     }
   };
-  };
 
   useEffect(() => {
     getUser();
-  }, []);
   }, []);
 
   return (
@@ -378,9 +364,6 @@ function App() {
       </Routes>
     </>
   );
-  );
 }
-
-export default App;
 
 export default App;
