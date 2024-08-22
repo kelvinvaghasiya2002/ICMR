@@ -315,7 +315,7 @@ function Form3A() {
             {/* <InputField value={form3A.H3A9} onChange={handleChange(setForm3A)} name="H3A9" h3="3A.9 : GPS Coordinates :" placeholder="Type here" /> */}
             <LocationButton
               setter={setForm3A}
-              name="H3A9"
+              Name="H3A9"
               heading={"3A.9"}
               required
               errorMsg={errors.H3A9}

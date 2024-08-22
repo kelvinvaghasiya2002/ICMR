@@ -50,7 +50,6 @@ function FormA() {
   const [showOverlay, setShowOverlay] = useState(false);
   const date = new Date();
 
-  // --toggle--
   const [isSidebarVisible, setSidebarVisible] = useState(
     window.innerWidth > 1024
   );
@@ -62,14 +61,6 @@ function FormA() {
       setSidebarVisible(true);
     }
   };
-
-  // useEffect(() => {
-  //   window.addEventListener('resize', handleResize);
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
-  // --toggle end--
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -367,7 +358,7 @@ function FormA() {
               placeHolder2="Longitude"
               label1="Lat"
               label2="Lng"
-              name="A10"
+              Name="A10"
             />
 
             <Radio

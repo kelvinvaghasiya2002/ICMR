@@ -341,7 +341,7 @@ function Form2A() {
 
             <LocationButton
               setter={setForm2A}
-              name="H2A9"
+              Name="H2A9"
               heading="2A.9"
               required
               errorMsg={errors.H2A9}

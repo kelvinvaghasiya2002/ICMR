@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
-// import './LocationButton.css';
 import "../Form.css";
 const apiKey = import.meta.env.VITE_LOCATION_API_KEY; // Replace with your OpenCage API key
 
-const LocationButton = ({ setter, name, heading, error }) => {
+const LocationButton = ({ setter, Name, heading, error }) => {
   const [coordinates, setCoordinates] = useState({
-    latitude: null,
-    longitude: null,
+    latitude: "",
+    longitude: "",
   });
   const [locationDetails, setLocationDetails] = useState({
     district: "",
     state: "",
   });
-
-  const [button, setButton] = useState(true);
-  const [manualLocation, setManualLocation] = useState("");
+  const [manualEntry, setManualEntry] = useState(false);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -22,7 +19,6 @@ const LocationButton = ({ setter, name, heading, error }) => {
         (position) => {
           const { latitude, longitude } = position.coords;
           setCoordinates({ latitude, longitude });
-
           fetchLocationDetails(latitude, longitude);
         },
         (error) => {
@@ -49,18 +45,7 @@ const LocationButton = ({ setter, name, heading, error }) => {
         setter((prev) => {
           return {
             ...prev,
-            [name]: {
-              ...prev[name],
-              district: components.county || "",
-              state: components.state || "",
-            },
-          };
-        });
-
-        setter((prev) => {
-          return {
-            ...prev,
-            [name]: {
+            [Name]: {
               latitude: latitude,
               longitude: longitude,
               district: components.county,
@@ -76,48 +61,96 @@ const LocationButton = ({ setter, name, heading, error }) => {
     }
   };
 
-  const handleLocationChange = (event) => {
-    setManualLocation(event.target.value);
-    setter((prev)=>{
-      return { location: event.target.value }
-    });
-  }
+  const handleManualInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "latitude" || name === "longitude") {
+      setCoordinates((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
 
+      setter((prev) => ({
+        ...prev,
+        [Name]: {
+          ...prev[Name],
+          [name]: value
+        },
+      }));
+
+    } else {
+      const { name, value } = e.target;
+      setLocationDetails((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+
+      setter((prev) => ({
+        ...prev,
+        [Name]: {
+          ...prev[Name],
+          [name]: value
+        },
+      }));
+    }
+
+    
+  };
 
   return (
     <div className="location-button-container">
       <h3>{heading} : Location :</h3>
-      {
-
-        button &&
-
-        <button className="location-button" onClick={getLocation}>
-          Get Current Location
-        </button>
-      }
-
-      {
-        !button &&
-
-        <input className="location-input" onChange={handleLocationChange} value={manualLocation} name="manualLocation" />
-
-      }
-
-      <button className="location-button" onClick={()=>{
-        setButton(!button)
-      }}>{ button ? "Enter manually" : "Get it online"}</button>
-
+      <button className="location-button" onClick={getLocation}>
+        Get Current Location
+      </button>
+      <button
+        className="location-button"
+        onClick={() => setManualEntry(!manualEntry)}
+      >
+        Enter Manually
+      </button>
       {error && <p className="error">{error}</p>}
-      {coordinates.latitude && coordinates.longitude && button && (
+      {coordinates.latitude && coordinates.longitude && !manualEntry && (
         <div className="coordinates-display">
           <p>Latitude: {coordinates.latitude}</p>
           <p>Longitude: {coordinates.longitude}</p>
         </div>
       )}
-      {(locationDetails.district || locationDetails.state) && button &&(
+      {(locationDetails.district || locationDetails.state) && !manualEntry && (
         <div className="location-details-display">
           <p>District: {locationDetails.district}</p>
           <p>State: {locationDetails.state}</p>
+        </div>
+      )}
+      {manualEntry && (
+        <div className="manual-entry-fields">
+          <input
+            type="text"
+            name="latitude"
+            placeholder="Latitude"
+            value={coordinates.latitude}
+            onChange={handleManualInputChange}
+          />
+          <input
+            type="text"
+            name="longitude"
+            placeholder="Longitude"
+            value={coordinates.longitude}
+            onChange={handleManualInputChange}
+          />
+          <input
+            type="text"
+            name="district"
+            placeholder="District"
+            value={locationDetails.district}
+            onChange={handleManualInputChange}
+          />
+          <input
+            type="text"
+            name="state"
+            placeholder="State"
+            value={locationDetails.state}
+            onChange={handleManualInputChange}
+          />
         </div>
       )}
     </div>

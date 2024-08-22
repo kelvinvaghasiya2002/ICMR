@@ -416,7 +416,7 @@ function Facility() {
             /> */}
             <LocationButton
               setter={setAmbulance}
-              name={"AMB4"}
+              Name={"AMB4"}
               required
               errorMsg={errors.AMB4}
             />
