@@ -6,6 +6,7 @@ import SidePanel from './SidePanelHFAT1';
 import Buttons from '../child-comp/Buttons';
 import Radio from '../child-comp/Radio';
 import InputField from '../child-comp/InputField';
+import CheckboxWithInput from '../child-comp/CheckboxWithInput.jsx';
 import { handleChange, turnOffbutton } from '../helpers';
 import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
@@ -22,7 +23,10 @@ function FormB() {
   const [showOverlay, setShowOverlay] = useState(false);
 
   // --toggle--
-  const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
   const toggleSidebar = () => {
     setSidebarVisible(!isSidebarVisible);
   };
@@ -43,22 +47,27 @@ function FormB() {
   turnOffbutton();
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    AOS.init({ duration: 2000 })
+    window.addEventListener("resize", handleResize);
+    AOS.init({ duration: 2000 });
+    window.addEventListener("resize", handleResize);
+    AOS.init({ duration: 2000 });
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   useEffect(() => {
     if (formB.B2 === "No") {
-      setFormB({ ...formB, B3: "", B4: "" })
+      setFormB({ ...formB, B3: "", B4: [] });
+      setFormB({ ...formB, B3: "", B4: [] });
     }
 
     if (formB.B14 === "Yes") {
-      setFormB({ ...formB, B15: "" })
+      setFormB({ ...formB, B15: "" });
+      setFormB({ ...formB, B15: "" });
     }
-  }, [formB.B2, formB.B14])
+  }, [formB.B2, formB.B14]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -74,7 +83,6 @@ function FormB() {
     // if (!formB.B14) newErrors.B14 = "This field is required";
     // if (!formB.B15) newErrors.B15 = "This field is required";
 
-
     // if (formB.B10.length === 0) newErrors.B10 = "Select at least one option";
     // if (formB.B11.length === 0) newErrors.B11 = "Select at least one option";
     // if (formB.B12.length === 0) newErrors.B12 = "Select at least one option";
@@ -89,10 +97,14 @@ function FormB() {
     newErrors.B6 = validateNumber(formB.B6) || validateRequired(formB.B6);
     newErrors.B15 = validateRequired(formB.B6);
 
-    if (!formB.B2) newErrors.B2 = 'Whether bed present for emergency care is required';
+    if (!formB.B2)
+      newErrors.B2 = "Whether bed present for emergency care is required";
+    if (!formB.B2)
+      newErrors.B2 = "Whether bed present for emergency care is required";
     if (formB.B2 === "Yes" && !formB.B3 && !formB.B4) {
       newErrors.B3 = validateNumber(formB.B6) || validateRequired(formB.B6);
-      newErrors.B3 = 'Beds available for emergency care is required';
+      newErrors.B3 = "Beds available for emergency care is required";
+      newErrors.B3 = "Beds available for emergency care is required";
       newErrors.B4 = validateRequired(formB.B4);
     }
     if (formB.B14 === "No" && !formB.B15) {
@@ -101,7 +113,12 @@ function FormB() {
     }
 
     setErrors(newErrors);
-    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+    setShowOverlay(
+      Object.keys(newErrors).some((key) => newErrors[key] !== undefined)
+    );
+    setShowOverlay(
+      Object.keys(newErrors).some((key) => newErrors[key] !== undefined)
+    );
   };
 
   useEffect(() => {
@@ -125,15 +142,29 @@ function FormB() {
   }, [formB]);
 
   const isFormValid = () => {
-    const requiredFields = ['B1', 'B2', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12', 'B13', 'B14'];
+    const requiredFields = [
+      "B1",
+      "B2",
+      "B5",
+      "B6",
+      "B7",
+      "B8",
+      "B9",
+      "B10",
+      "B11",
+      "B12",
+      "B13",
+      "B14",
+    ];
     // if (formB.B2 === "Yes") {
     //   requiredFields.push('B3');
     //   requiredFields.push('B4');
     // }
     if (formB.B14 === "No") {
-      requiredFields.push('B15');
+      requiredFields.push("B15");
+      requiredFields.push("B15");
     }
-    const missingFields = requiredFields.filter(field => {
+    const missingFields = requiredFields.filter((field) => {
       if (Array.isArray(formB[field])) {
         return formB[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
       } else {
@@ -148,8 +179,8 @@ function FormB() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
-        newErrors[field] = 'This field is required';
+      missingFields.forEach((field) => {
+        newErrors[field] = "This field is required";
       });
       setErrors(newErrors);
     } else {
@@ -160,10 +191,11 @@ function FormB() {
   const handleChangeWithValidation = (e) => {
     const { name, value } = e.target;
     let validatedValue = value;
-    let error = '';
+    let error = "";
 
     switch (name) {
-      case 'B15':
+      case "B15":
+      case "B15":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
@@ -172,10 +204,14 @@ function FormB() {
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
-      case 'B1':
-      case 'B3':
-      case 'B5':
-      case 'B6':
+      case "B1":
+      case "B3":
+      case "B5":
+      case "B6":
+      case "B1":
+      case "B3":
+      case "B5":
+      case "B6":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
@@ -188,23 +224,28 @@ function FormB() {
         break;
     }
 
-    setFormB(prevValue => ({ ...prevValue, [name]: validatedValue }));
+    setFormB((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+    setFormB((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case 'B1':
-      case 'B5':
-      case 'B6':
-      case 'B15':
+      case "B1":
+      case "B5":
+      case "B6":
+      case "B15":
+      case "B1":
+      case "B5":
+      case "B6":
+      case "B15":
         error = error || validateRequired(validatedValue);
         break;
       default:
         break;
     }
 
-    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
-
 
   return (
     <div>
@@ -223,27 +264,66 @@ function FormB() {
         )}
         {/* <SidePanel id={"2"} /> */}
         <div className="siteInfo" data-aos="fade-left">
-
           <div className="formhdr">
             <div>
-              <h3>
-                1B. Infrastructure
-              </h3>
+              <h3>1B. Infrastructure</h3>
+              <h3>1B. Infrastructure</h3>
             </div>
           </div>
 
           <div className="formcontent">
+            <InputField
+              name="B1"
+              h3="1B.1 : How many beds are available for the in-patient department (IPD)?"
+              value={formB.B1}
+              onChange={handleChangeWithValidation}
+              placeholder="Type here"
+              required
+              errorMsg={errors.B1}
+            />
+            <InputField
+              name="B1"
+              h3="1B.1 : How many beds are available for the in-patient department (IPD)?"
+              value={formB.B1}
+              onChange={handleChangeWithValidation}
+              placeholder="Type here"
+              required
+              errorMsg={errors.B1}
+            />
 
-            <InputField name="B1" h3="1B.1 : How many beds are available for the in-patient department (IPD)?" value={formB.B1} onChange={handleChangeWithValidation} placeholder="Type here" required errorMsg={errors.B1} />
+            <Radio
+              h3="1B.2 : Whether any dedicated bed present for emergency care?"
+              CheckbobItems={["Yes", "No"]}
+              byDefault={formB.B2}
+              onClick={handleChange(setFormB)}
+              name="B2"
+            />
 
-            <Radio h3="1B.2 : Whether any dedicated bed present for emergency care?" CheckbobItems={["Yes", "No"]} byDefault={formB.B2} onClick={handleChange(setFormB)} name="B2" />
 
-            {
-              (formB.B2 === "Yes") &&
+            {formB.B2 === "Yes" && (
               <>
-                <InputField name="B3" onChange={handleChangeWithValidation} h3="1B.3 : How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" required={true} errorMsg={errors.B3} />
-
-                <MultiCheckbox
+                <InputField
+                  name="B3"
+                  onChange={handleChangeWithValidation}
+                  h3="1B.3 : How many beds are available for emergency care?"
+                  value={formB.B3}
+                  placeholder="Type here"
+                  required={true}
+                  errorMsg={errors.B3}
+                />
+                
+                {/* <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={["Red", "Yellow", "Green"]} otherArray={[1, 1, 1]}  name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} st={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius: "0" }} /> */}
+                <CheckboxWithInput
+                  h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):"
+                  CheckbobItems={["Red", "Yellow", "Green"]}
+                  name="B4"
+                  otherArray={[1, 0, 1]}
+                  setFunction={setFormB}
+                  StateValue={formB}
+                  array={formB.B4}
+                  errorMsg="Please select and specify the number of beds for at least one severity level."
+                />
+                {/* <MultiCheckbox
                   h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" checkboxitems={["Red", "Yellow", "Green"]}
                   otherArray={[1, 1, 1]}
                   name="B4"
@@ -252,27 +332,82 @@ function FormB() {
                   setFunction={setFormB}
                   StateValue={formB}
                   array={formB.B4}
-                />
+                /> */}
               </>
-            }
+            )}
 
-            <InputField name="B5" onChange={handleChangeWithValidation} h3="1B.5 : What is the average number of patients presenting to OPD per month?" value={formB.B5} placeholder="Type here" required={true} errorMsg={errors.B5} />
+            <InputField
+              name="B5"
+              onChange={handleChangeWithValidation}
+              h3="1B.5 : What is the average number of patients presenting to OPD per month?"
+              value={formB.B5}
+              placeholder="Type here"
+              required={true}
+              errorMsg={errors.B5}
+            />
 
-            <InputField name="B6" onChange={handleChangeWithValidation} value={formB.B6} p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" required={true}
-              errorMsg={errors.B6} />
+            <InputField
+              name="B6"
+              onChange={handleChangeWithValidation}
+              value={formB.B6}
+              p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)"
+              h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?"
+              placeholder="Type here"
+              required={true}
+              errorMsg={errors.B6}
+            />
+            <InputField
+              name="B6"
+              onChange={handleChangeWithValidation}
+              value={formB.B6}
+              p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)"
+              h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?"
+              placeholder="Type here"
+              required={true}
+              errorMsg={errors.B6}
+            />
 
             <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0, 0, 1, 0]} byDefault={formB.B7} />
 
-            <Checkbox h3="1B.8 : Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} setFunction={setFormB} StateValue={formB} array={formB.B8} name="B8" />
+            <Checkbox
+              h3="1B.8 : Which of these does the blood bank have among the following?"
+              CheckbobItems={["Component facility", "O -ve Blood availability"]}
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B8}
+              name="B8"
+            />
+            <Checkbox
+              h3="1B.8 : Which of these does the blood bank have among the following?"
+              CheckbobItems={["Component facility", "O -ve Blood availability"]}
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B8}
+              name="B8"
+            />
 
-            <Radio h3="1B.9 : Is there a blood storage facility inside the emergency?" CheckbobItems={["Yes", "No"]} byDefault={formB.B9} onClick={handleChange(setFormB)} name="B9" />
+            <Radio
+              h3="1B.9 : Is there a blood storage facility inside the emergency?"
+              CheckbobItems={["Yes", "No"]}
+              byDefault={formB.B9}
+              onClick={handleChange(setFormB)}
+              name="B9"
+            />
+            <Radio
+              h3="1B.9 : Is there a blood storage facility inside the emergency?"
+              CheckbobItems={["Yes", "No"]}
+              byDefault={formB.B9}
+              onClick={handleChange(setFormB)}
+              name="B9"
+            />
 
             <Checkbox
               h3="1B.10 : Which of the following does your facility have to provide easy access for emergency care?"
               CheckbobItems={[
                 "No vehicles parked on the way/in front of emergency department",
                 "Designated parking area for Ambulance, Staff and Public",
-                "Smooth entry area with adequate wheelchair, trolley and stretcher bay"
+                "Smooth entry area with adequate wheelchair, trolley and stretcher bay",
+                "Smooth entry area with adequate wheelchair, trolley and stretcher bay",
               ]}
               name="B10" setFunction={setFormB} StateValue={formB} array={formB.B10}
               // required={true}
@@ -299,10 +434,16 @@ function FormB() {
                 "Ambulance driver’s room",
                 "Dedicated LaQshya certified labor room",
                 "Child-friendly service based on MusQan",
-                "NABH Accreditation"
+                "NABH Accreditation",
+                "NABH Accreditation",
               ]}
               name="B11"
-              setFunction={setFormB} StateValue={formB} array={formB.B11}
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B11}
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B11}
               // required={true}
               errorMsg={errors.B11}
             />
@@ -314,11 +455,17 @@ function FormB() {
                 "Names of doctor and nursing staff on duty are displayed and updated.",
                 "List of available drugs are displayed.",
                 "All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.",
-                "Important contact numbers including ambulance, blood bank, police and referral centers displayed."
+                "Important contact numbers including ambulance, blood bank, police and referral centers displayed.",
+                "Important contact numbers including ambulance, blood bank, police and referral centers displayed.",
               ]}
               other={true}
               name="B12"
-              setFunction={setFormB} StateValue={formB} array={formB.B12}
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B12}
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B12}
               required={true}
               errorMsg={errors.B12}
             />
@@ -336,10 +483,16 @@ function FormB() {
                 "Police post available within the premises.",
                 "Alarm bell in Emergency / Code announcement available for extra help.",
                 "Disease outbreak management plan",
-                "Surge capacity in your hospital"
+                "Surge capacity in your hospital",
+                "Surge capacity in your hospital",
               ]}
               name="B13"
-              setFunction={setFormB} StateValue={formB} array={formB.B13}
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B13}
+              setFunction={setFormB}
+              StateValue={formB}
+              array={formB.B13}
               required={true}
               errorMsg={errors.B13}
             />
@@ -347,28 +500,51 @@ function FormB() {
             <Radio
               h3="1B.14 : Does the hospital provide ambulance services?"
               CheckbobItems={["Yes", "No"]}
-              name="B14" onClick={handleChange(setFormB)} byDefault={formB.B14}
+              name="B14"
+              onClick={handleChange(setFormB)}
+              byDefault={formB.B14}
+              name="B14"
+              onClick={handleChange(setFormB)}
+              byDefault={formB.B14}
             />
 
-            {
-              (formB.B14 === "No") &&
-              <InputField name="B15" onChange={handleChangeWithValidation} h3="1B.15 : If ambulances are not there, how are patients transferred?" value={formB.B15} placeholder="Type here" required={true}
-                errorMsg={errors.B15} />
-            }
+            {formB.B14 === "No" && (
+              <InputField
+                name="B15"
+                onChange={handleChangeWithValidation}
+                h3="1B.15 : If ambulances are not there, how are patients transferred?"
+                value={formB.B15}
+                placeholder="Type here"
+                required={true}
+                errorMsg={errors.B15}
+              />
+            )}
+            {formB.B14 === "No" && (
+              <InputField
+                name="B15"
+                onChange={handleChangeWithValidation}
+                h3="1B.15 : If ambulances are not there, how are patients transferred?"
+                value={formB.B15}
+                placeholder="Type here"
+                required={true}
+                errorMsg={errors.B15}
+              />
+            )}
 
             <div className="button-container">
               <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources"
               />
-              {/* <OverlayCard
+              <OverlayCard
                 isVisible={showOverlay}
                 message="(Please fill all required fields to proceed)"
-              /> */}
+              />
             </div>
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default FormB
+export default FormB;
+

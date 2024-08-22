@@ -82,7 +82,7 @@ const AMB2 = ({ columns, initialRows, name }) => {
                       <label className="lable" key={optionIndex}>
                         <input
                           type="radio"
-                          name={`${col.key}-${rowIndex}`}
+                          name={`${name}-${col.key}-${rowIndex}`}
                           value={option}
                           checked={row[col.key] === option}
                           onChange={(e) =>
