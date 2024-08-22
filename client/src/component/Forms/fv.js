@@ -15,7 +15,7 @@ export function validateNumber(number) {
 }
 
 export function validateRequired(value) {
-    if (value.trim() === '') {
+    if (value?.trim() === '') {
         return 'This field is required.';
     }
     return '';

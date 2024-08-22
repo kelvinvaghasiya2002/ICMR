@@ -469,6 +469,19 @@ th {
     cursor: pointer;
     transition: all 0.3s ease;
   }
+
+  .location-input {
+    height: 3vh;
+    padding: 0.5vw 1vw;
+    background-color: #F2F7FF;
+    margin: 2vw;
+  }
+
+  .location-input:focus{
+    background-color: #F2F7FF;
+    outline: none;
+    border: 1.5px solid black;
+  }
   
   .location-button:hover {
     /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);

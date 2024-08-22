@@ -357,7 +357,7 @@ function FormA() {
             />
 
             <LocationButton
-              // setter={setFormA}
+              setter={setFormA}
               // name={"A10"}
               heading={"1A.10"}
               // error={errors.A10}

@@ -13,14 +13,8 @@ const LocationButton = ({ setter, name, heading, error }) => {
     state: "",
   });
 
-  // useEffect(() => {
-  //   let location = localStorage.getItem("CompleteForm");
-  //   if (location) {
-  //     location = JSON.parse(location);
-  //     setCoordinates(location?.A10 ?? "");
-  //     setLocationDetails(location?.A10 ?? "");
-  //   }
-  // }, []);
+  const [button, setButton] = useState(true);
+  const [manualLocation, setManualLocation] = useState("");
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -82,20 +76,45 @@ const LocationButton = ({ setter, name, heading, error }) => {
     }
   };
 
+  const handleLocationChange = (event) => {
+    setManualLocation(event.target.value);
+    setter((prev)=>{
+      return { location: event.target.value }
+    });
+  }
+
+
   return (
     <div className="location-button-container">
       <h3>{heading} : Location :</h3>
-      <button className="location-button" onClick={getLocation}>
-        Get Current Location
-      </button>
+      {
+
+        button &&
+
+        <button className="location-button" onClick={getLocation}>
+          Get Current Location
+        </button>
+      }
+
+      {
+        !button &&
+
+        <input className="location-input" onChange={handleLocationChange} value={manualLocation} name="manualLocation" />
+
+      }
+
+      <button className="location-button" onClick={()=>{
+        setButton(!button)
+      }}>{ button ? "Enter manually" : "Get it online"}</button>
+
       {error && <p className="error">{error}</p>}
-      {coordinates.latitude && coordinates.longitude && (
+      {coordinates.latitude && coordinates.longitude && button && (
         <div className="coordinates-display">
           <p>Latitude: {coordinates.latitude}</p>
           <p>Longitude: {coordinates.longitude}</p>
         </div>
       )}
-      {(locationDetails.district || locationDetails.state) && (
+      {(locationDetails.district || locationDetails.state) && button &&(
         <div className="location-details-display">
           <p>District: {locationDetails.district}</p>
           <p>State: {locationDetails.state}</p>
