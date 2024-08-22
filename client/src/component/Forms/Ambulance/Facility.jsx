@@ -324,7 +324,6 @@ function Facility() {
 
     switch (name) {
       case "AMB2":
-      case "AMB6":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
@@ -333,6 +332,7 @@ function Facility() {
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
+      case "AMB6":
       case "AMB9":
       case "AMB10":
       case "AMB11":
@@ -439,7 +439,8 @@ function Facility() {
 
             <InputField
               h3="2. Which Location/Area does your ambulance operate in?"
-              onChange={handleChange(setAmbulance)}
+              // onChange={handleChange(setAmbulance)}
+              onChange={handleChangeWithValidation}
               value={Ambulance.AMB6}
               placeholder="Type here"
               name="AMB6"
@@ -451,7 +452,7 @@ function Facility() {
               onClick={handleChange(setAmbulance)}
               CheckbobItems={["Type A", "Type B", "Type C", "Type D"]}
               name="AMB7"
-              required
+              // required
               errorMsg={errors.AMB7}
             />
 
@@ -461,7 +462,7 @@ function Facility() {
               onClick={handleChange(setAmbulance)}
               CheckbobItems={["Yes", "No"]}
               name="AMB8"
-              required
+              // required
               errorMsg={errors.AMB8}
             />
 
@@ -522,7 +523,7 @@ function Facility() {
               name="AMB13"
               onClick={handleChange(setAmbulance)}
               byDefault={Ambulance.AMB13}
-              required
+              // required
               errorMsg={errors.AMB13}
             />
 
@@ -537,7 +538,7 @@ function Facility() {
               name="AMB14"
               onClick={handleChange(setAmbulance)}
               byDefault={Ambulance.AMB14}
-              required
+              // required
               errorMsg={errors.AMB14}
             />
 
@@ -547,7 +548,7 @@ function Facility() {
               name="AMB15"
               onClick={handleChange(setAmbulance)}
               byDefault={Ambulance.AMB15}
-              required
+              // required
               errorMsg={errors.AMB15}
             />
 

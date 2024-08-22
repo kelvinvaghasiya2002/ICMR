@@ -86,8 +86,15 @@ const AMB1 = ({ columns, initialRows, name }) => {
                           name={`${col.key}-${rowIndex}`}
                           value={option}
                           checked={row[col.key] === option}
-                          onChange={(e) =>
+                          disabled={col.key === "Functional" && row['Available'] === "No" || col.key === "Functional" && !row["Available"]}
+                          onChange={(e) =>{
+
                             handleInputChange(rowIndex, col.key, e.target.value)
+                            col.key == "Available" && e.target.value == "No" ? handleInputChange(rowIndex, "Functional", "")  : ""
+                            col.key == "Available" && e.target.value == "No" ? handleInputChange(rowIndex, "LastUsed", "")  : ""
+                            col.key == "Functional" && e.target.value == "No" ? handleInputChange(rowIndex, "LastUsed", "") : ""
+                            // console.log(col.key === "Functional" && e.target.value === "No");
+                          }
                           }
                         />
                         {option}
