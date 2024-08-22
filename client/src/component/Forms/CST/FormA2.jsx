@@ -66,8 +66,6 @@ function FormA2() {
                             setter={setFormA2}
                             Name="AB4"
                             heading={"AB.4  GPS Co-ordinates"}
-                            required
-                            errorMsg={errors.H3A9}
                         />
 
                         <div className='block'>
