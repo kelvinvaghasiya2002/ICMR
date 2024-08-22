@@ -3,16 +3,17 @@ import React, { useEffect, useState } from 'react'
 function MultiCheckbox({ checkboxitems, name, h3, otherArray, setFunction, StateValue, array }) {
 
     useEffect(() => {
-        if (!otherArray && array.length === 0) {
+        if (array.length === 0) {
             for (var i = 0; i < checkboxitems.length; i++) {
                 array.push("");
             }
             // console.log(array);
-        } else if (otherArray && array.length === 1) {
-            for (var i = 0; i < checkboxitems.length; i++) {
-                array.push("");
-            }
-        }
+        } 
+        // else if (otherArray && array.length === 1) {
+        //     for (var i = 0; i < checkboxitems.length; i++) {
+        //         array.push("");
+        //     }
+        // }
         // array[array.length - 1] === null || array[array.length - 1] === "" ? setOtherSpecifyChecked(false) : setOtherSpecifyChecked(true);
 
     }, [])
@@ -92,7 +93,6 @@ function MultiCheckbox({ checkboxitems, name, h3, otherArray, setFunction, State
                         />
 
                         <label style={{ fontSize: "1.1vw", fontWeight: "400", marginLeft: "0.25vw", color: "gray" }} htmlFor={item}>{item}</label>
-                        <br />
 
                         <input
                             className='others blockinput'
