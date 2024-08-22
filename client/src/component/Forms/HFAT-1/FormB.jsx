@@ -11,12 +11,11 @@ import setLocalStorage from '../setLocalStorage';
 import Heading from '../../Heading/Heading';
 import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
 import OverlayCard from '../OverlayCard.jsx';
+import MultiCheckbox from '../child-comp/MultiCheckbox.jsx';
 
 function FormB() {
-  var formb = setLocalStorage("formb", { B1: "", B2: "", B3: "", B4: "", B5: "", B6: "", B7: "", B8: [], B9: "", B10: [], B11: [], B12: [""], B13: [], B14: "", B15: "" }
+  var formb = setLocalStorage("formb", { B1: "", B2: "", B3: "", B4: [], B5: "", B6: "", B7: "", B8: [], B9: "", B10: [], B11: [], B12: [""], B13: [], B14: "", B15: "" }
   )
-
-  console.log("Hello");
 
   const [formB, setFormB] = useState(JSON.parse(formb));
   const [errors, setErrors] = useState({});
@@ -111,11 +110,11 @@ function FormB() {
     if (!isValid) {
       const newErrors = {};
       missingFields.forEach(field => {
-        console.log(field + "field");
-        if(Array.isArray(formB[field])){
-          console.log(formB[field]);
+        // console.log(field + "field");
+        if (Array.isArray(formB[field])) {
+          // console.log(formB[field]);
           newErrors[field] = validateCheckBox(formB[field]);
-        }else{
+        } else {
           newErrors[field] = validateRequired(formB[field]);
         }
       });
@@ -136,9 +135,9 @@ function FormB() {
     }
     const missingFields = requiredFields.filter(field => {
       if (Array.isArray(formB[field])) {
-      return formB[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+        return formB[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
       } else {
-      return !formB[field] || (typeof formB[field] === 'string' && formB[field].trim() === '');
+        return !formB[field] || (typeof formB[field] === 'string' && formB[field].trim() === '');
       }
     });
     return { isValid: missingFields.length === 0, missingFields };
@@ -244,7 +243,16 @@ function FormB() {
               <>
                 <InputField name="B3" onChange={handleChangeWithValidation} h3="1B.3 : How many beds are available for emergency care?" value={formB.B3} placeholder="Type here" required={true} errorMsg={errors.B3} />
 
-                <Radio h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" CheckbobItems={["Red", "Yellow", "Green"]} otherArray={[1, 1, 1]}  name="B4" onClick={handleChange(setFormB)} byDefault={formB.B4} st={{ borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderBottom: '1px solid black', borderRadius: "0" }} />
+                <MultiCheckbox
+                  h3="1B.4 : Number of Beds by Emergency Severity Index (ESI):" checkboxitems={["Red", "Yellow", "Green"]}
+                  otherArray={[1, 1, 1]}
+                  name="B4"
+                  // onClick={handleChange(setFormB)}
+                  // byDefault={formB.B4}
+                  setFunction={setFormB}
+                  StateValue={formB}
+                  array={formB.B4}
+                />
               </>
             }
 
@@ -253,7 +261,7 @@ function FormB() {
             <InputField name="B6" onChange={handleChangeWithValidation} value={formB.B6} p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries ,poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" h3="1B.6 : What is the average number of patients presenting with emergency conditions daily?" placeholder="Type here" required={true}
               errorMsg={errors.B6} />
 
-            <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0, 0, 1, 0]} byDefault={formB.B7}  />
+            <Radio h3="1B.7 : Does the facility have a licensed in-house blood bank?" onClick={handleChange(setFormB)} CheckbobItems={["Yes, it is available 24/7", "Yes, but it is not available 24/7", "No, but there is a tie up with external Blood bank facility  (Specify) ", "No"]} name="B7" otherArray={[0, 0, 1, 0]} byDefault={formB.B7} />
 
             <Checkbox h3="1B.8 : Which of these does the blood bank have among the following?" CheckbobItems={["Component facility", "O -ve Blood availability"]} setFunction={setFormB} StateValue={formB} array={formB.B8} name="B8" />
 
@@ -266,7 +274,7 @@ function FormB() {
                 "Designated parking area for Ambulance, Staff and Public",
                 "Smooth entry area with adequate wheelchair, trolley and stretcher bay"
               ]}
-              name="B10" setFunction={setFormB} StateValue={formB} array={formB.B10} 
+              name="B10" setFunction={setFormB} StateValue={formB} array={formB.B10}
               // required={true}
               errorMsg={errors.B10}
             />
@@ -349,12 +357,12 @@ function FormB() {
             }
 
             <div className="button-container">
-              <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources" 
-               />
-              <OverlayCard
+              <Buttons formName={"formb"} formData={formB} prevText="Previous" nextText="Save & Next" prev="/healthfacilityinformation" next="/humanresources"
+              />
+              {/* <OverlayCard
                 isVisible={showOverlay}
                 message="(Please fill all required fields to proceed)"
-              />
+              /> */}
             </div>
           </div>
         </div>
