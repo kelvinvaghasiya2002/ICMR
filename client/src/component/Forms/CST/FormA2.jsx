@@ -62,6 +62,14 @@ function FormA2() {
 
                         <InputField h3="AB.3  Name of PSU (Town/Village) :" placeholder="Type here" name="AB3" onChange={handleChange(setFormA2)} value={formA2.AB3} />
 
+                        <LocationButton
+                            setter={setFormA2}
+                            Name="AB4"
+                            heading={"AB.4  GPS Co-ordinates"}
+                            required
+                            errorMsg={errors.H3A9}
+                        />
+
                         <div className='block'>
                             <h3 className='h3block'>AB.5 Household ID Number :</h3>
                             <input
@@ -78,7 +86,7 @@ function FormA2() {
                         {
                             (formA2.AB6 === "< 1 year")
                                 ?
-                                <CSTLastButton previous="/siteinformation" formName={"forma2"} formData={formA2}  />
+                                <CSTLastButton previous="/siteinformation" formName={"forma2"} formData={formA2} />
                                 :
                                 <>
                                     <h4><i>I would like to ask few questions pertaining to people staying in the same household including both family and non-family members for the last 1 year like servants included but paying guests not included.</i></h4>
