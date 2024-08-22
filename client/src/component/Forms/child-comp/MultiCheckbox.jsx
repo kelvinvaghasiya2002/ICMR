@@ -106,9 +106,7 @@ function MultiCheckbox({ checkboxitems, name, h3, otherArray, setFunction, State
                     </div>
             ))}
         </div>
-      )}
-    </div>
-  );
+    )
 }
 
-export default MultiCheckbox;
+export default MultiCheckbox
