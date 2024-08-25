@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function InputField({ h3, placeholder, value, name, onChange, p, type, required, regex, errorMsg, maxLength }) {
+export default function InputField({ h3, placeholder, value, name, onChange, p, type, required, regex, errorMsg, maxLength,minLength }) {
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
@@ -27,6 +27,7 @@ export default function InputField({ h3, placeholder, value, name, onChange, p, 
         value={value}
         name={name}
         maxLength={maxLength}
+        minLength={minLength}
         onChange={handleChange}
         type={type ? type : "text"}
       />

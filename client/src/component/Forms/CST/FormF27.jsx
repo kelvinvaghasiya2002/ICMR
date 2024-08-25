@@ -57,10 +57,10 @@ function FormF27() {
                             byDefault={formF27.F2}
                             onClick={handleChange(setFormF27)}
                         />
-
+{/* 
                         {
                             (formF27.F2 === "Hospital") &&
-                            <>
+                            <> */}
 
                                 <InputField h3="F.3	If death in hospital, Name & Address of the Hospital" name="F3" value={formF27.F3} onChange={handleChange(setFormF27)} />
 
@@ -75,8 +75,8 @@ function FormF27() {
                                     onClick={handleChange(setFormF27)}
                                 />
 
-                            </>
-                        }
+                            {/* </>
+                        } */}
 
                         <CSTButton formName="formf27" formData={formF27} prev="/costing" next="/verbal-&-social-autopsy2" prevText="Previous" nextText="Save & Next" />
                     </div>
