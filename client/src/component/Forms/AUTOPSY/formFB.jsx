@@ -13,29 +13,35 @@ import OverlayCard from "../OverlayCard";
 import { validateNumber, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
-function FormFA() {
+function FormFB() {
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
 
   turnOffbutton();
-  var formfa = setLocalStorage("formfa", {
-    FA1: "",
-    FA2: "",
-    FA3: "",
-    FA4: "",
-    FA5: "",
-    FA6: "",
+  var formfb = setLocalStorage("formfb", {
+    FB1: "",
+    FB2: "",
+    FB3: "",
+    FB4: "",
+    FB5: "",
+    FB6: "",
+    FB7: "",
+    FB8: "",
+    FB9: "",
   });
-  const [formFA, setFormFA] = useState(JSON.parse(formfa));
+  const [formFB, setFormFB] = useState(JSON.parse(formfb));
   // const [errors, setErrors] = useState({});
-  const { isValid, errors, setErrors } = useFormValidation(formFA, [
-    "FA1",
-    "FA2",
-    "FA3",
-    "FA4",
-    "FA5",
-    "FA6",
+  const { isValid, errors, setErrors } = useFormValidation(formFB, [
+    "FB1",
+    "FB2",
+    "FB3",
+    "FB4",
+    "FB5",
+    "FB6",
+    "FB7",
+    "FB8",
+    "FB9",
   ]);
   const [showOverlay, setShowOverlay] = useState(false);
 
@@ -65,12 +71,12 @@ function FormFA() {
     let error = "";
 
     switch (name) {
-      case "FA5":
+      case "FB4":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
         } else {
-          validatedValue = formFA[name];
+          validatedValue = formFB[nBme];
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
@@ -78,16 +84,19 @@ function FormFA() {
         break;
     }
 
-    setFormFA((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+    setFormFB((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case "FA1":
-      case "FA2":
-      case "FA3":
-      case "FA4":
-      case "FA5":
-      case "FA6":
+      case "FB1":
+      case "FB2":
+      case "FB3":
+      case "FB4":
+      case "FB5":
+      case "FB6":
+      case "FB7":
+      case "FB8":
+      case "FB9":
         error = error || validateRequired(validatedValue);
         break;
       default:
@@ -109,7 +118,7 @@ function FormFA() {
         {isSidebarVisible && (
           <>
             {/* <SidePanelCST id={"1"} /> */}
-            <SidePanelAutopsy id={"1"} />
+            <SidePanelAutopsy id={"2"} />
             <div className="grayedover" onClick={toggleSidebar}></div>
           </>
         )}
@@ -117,86 +126,106 @@ function FormFA() {
         <div className="siteInfo" data-aos="fade-left">
           <div className="formhdr">
             <div>
-              <h3>FA. Details of Respondent</h3>
+              <h3>FB. Neonatal Death</h3>
             </div>
           </div>
           <div className="formcontent">
             <InputField
-              name="FA1"
-              h3="FA.1 : Name of Respondent:"
+              name="FB1"
+              h3="FB.1 : Name of the Head of the household:"
               onChange={handleChangeWithValidation}
-              value={formFA.FA1}
+              value={formFB.FB1}
               placeholder="Type here"
-                required
-              //   error={errors.A1}
+              required
+              error={errors.FB1}
             />
             <InputField
               name="FA2"
-              h3="FA.2 : Respondient ID:"
+              h3="FA.2 : Full name of the deceased:"
               onChange={handleChangeWithValidation}
-              value={formFA.FA2}
+              value={formFB.FB2}
               placeholder="Type here"
               required
-              //   error={errors.A1}
-            />
-            <Radio
-              name="FA3"
-              h3="FA.3 : Relationship of respondent with deceased:"
-              CheckbobItems={[
-                "Brother/Sister",
-                "Mother",
-                "Father",
-                "Grandfather",
-                "Grandmother",
-                "Other relative",
-                "Neighbour/No relation",
-                "Unknown",
-              ]}
-              byDefault={formFA.FA3}
-              onClick={handleChange(setFormFA)}
-              //   error={errors.A1}
-            />
-            <Radio
-              name="FA4"
-              h3="FA.4 : Did the respondent live with the deceased during the events that led to death?:"
-              onClick={handleChange(setFormFA)}
-              value={formFA.FA4}
-              placeholder="Type here"
-              // required
-              CheckbobItems={["Yes", "No"]}
-              byDefault={formFA.FA4}
-              //   error={errors.A1}
+              error={errors.FB2}
             />
             <InputField
-              name="FA5"
-              h3="FA.5 : Respondent&#39;s age in completed years"
+              name="FA3"
+              h3="FA.3 : Name of mother of the deceased:"
               onChange={handleChangeWithValidation}
-              value={formFA.FA5}
-              // regex={/^[A-Za-z ]+$/}
+              value={formFB.FB3}
               placeholder="Type here"
-              // regex={/^\d{10}$/}
-              minLength={1}
-              maxLength={3}
-              max={120}
               required
-              //   error={errors.A1}
+              error={errors.FB3}
+            />
+            <InputField
+              name="FA4"
+              h3="FA.4 : Age in days:"
+              onChange={handleChangeWithValidation}
+              value={formFB.FB4}
+              placeholder="Type here"
+              required
+              error={errors.FB4}
             />
             <Radio
-              name="FA6"
-              h3="FA.6 : Repondent's sex:"
-              onClick={handleChange(setFormFA)}
+              name="FA5"
+              h3="FA.5 : Repondent's sex:"
+              onClick={handleChange(setFormFB)}
               CheckbobItems={["Male", "Female"]}
-              byDefault={formFA.FA6}
+              byDefault={formFB.FB5}
               // required
+              error={errors.FB4}
+            />
+            <InputField
+              name="FA6"
+              h3="FA.6 : House address of the deceased (include PIN)"
+              onChange={handleChangeWithValidation}
+              value={formFB.FB6}
+              placeholder="Type here"
+              required
+              error={errors.FB6}
+            />
+            <InputField
+              name="FA7"
+              h3="FA.7 : Date of death:"
+              type={"date"}
+              onChange={handleChangeWithValidation}
+              value={formFB.FB7}
+              placeholder="Type here"
+              required
+              error={errors.FB7}
+            />
+            <Radio
+              name="FA38"
+              h3="FA.8 : Place of death:"
+              CheckbobItems={[
+                "Home",
+                "Health facility",
+                "Other place (Specify)",
+                "Unknown",
+              ]}
+              other={[0, 0, 1, 0]}
+              byDefault={formFB.FB8}
+              onClick={handleChange(setFormFB)}
+              error={errors.FB8}
+            />
+            <InputField
+              name="FA9"
+              h3="FA.9 : What did the respondent think this person die of?:"
+              p="(Allow the respondent to tell the illness in his or her own words)"
+              onChange={handleChangeWithValidation}
+              value={formFB.FB9}
+              placeholder="Type here"
+              required
+              error={errors.FB9}
             />
             <div className="button-container">
               <Buttons
                 formName="formfa"
-                formData={formFA}
-                prevText=""
+                formData={formFB}
+                prevText="Previous"
                 nextText="Save & Next"
-                prev=""
-                next="/formFB"
+                prev="formFA"
+                next="/formFC"
                 // validateForm={validateForm}
               />
               <OverlayCard
@@ -211,4 +240,4 @@ function FormFA() {
   );
 }
 
-export default FormFA;
+export default FormFB;

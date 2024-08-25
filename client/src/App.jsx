@@ -82,7 +82,13 @@ import FormH31 from "./component/Forms/CST/FormH31.jsx";
 
 import NotFound from "./NotFound.jsx"; // For Not Found Page
 
-import FormFA from "./component/Forms/AUTOPSY/formFA.jsx";
+import Autopsy from "./component/Forms/Autopsy/autopsy.jsx";
+import FormFA from "./component/Forms/Autopsy/formFA.jsx";
+import FormFB from "./component/Forms/Autopsy/formFB.jsx";
+import FormFC from "./component/Forms/Autopsy/formFC.jsx";
+import FormFD from "./component/Forms/Autopsy/formFD.jsx";
+import FormFE from "./component/Forms/Autopsy/formFE.jsx";
+import FormFF from "./component/Forms/Autopsy/formFF.jsx";
 
 const url = import.meta.env.VITE_SERVER;
 
@@ -357,7 +363,13 @@ function App() {
 
         {/* Bellow Are Verbal Autopsy Took*/}
         {/* Details of Responent */}
-        <Route path="/formfa" element={<FormFA />} />
+        <Route path="/autopsy" element={<Autopsy />} />
+        <Route path="/formFA" element={<FormFA />} />
+        <Route path="/formFB" element={<FormFB />} />
+        <Route path="/formFC" element={<FormFC />} />
+        <Route path="/formFD" element={<FormFD />} />
+        <Route path="/formFE" element={<FormFE />} />
+        <Route path="/formFF" element={<FormFF />} />
 
         {/* Not Found Page */}
         <Route path="*" element={<NotFound />} />
