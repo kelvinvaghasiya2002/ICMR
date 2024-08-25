@@ -82,7 +82,7 @@ import FormH31 from "./component/Forms/CST/FormH31.jsx";
 
 import NotFound from "./NotFound.jsx"; // For Not Found Page
 
-import Autopsy from "./component/Forms/Autopsy/autopsy.jsx";
+// import Autopsy from "./component/Forms/Autopsy/autopsy.jsx";
 import FormFA from "./component/Forms/Autopsy/formFA.jsx";
 import FormFB from "./component/Forms/Autopsy/formFB.jsx";
 import FormFC from "./component/Forms/Autopsy/formFC.jsx";
@@ -363,7 +363,7 @@ function App() {
 
         {/* Bellow Are Verbal Autopsy Took*/}
         {/* Details of Responent */}
-        <Route path="/autopsy" element={<Autopsy />} />
+        {/* <Route path="/autopsy" element={<Autopsy />} /> */}
         <Route path="/formFA" element={<FormFA />} />
         <Route path="/formFB" element={<FormFB />} />
         <Route path="/formFC" element={<FormFC />} />
