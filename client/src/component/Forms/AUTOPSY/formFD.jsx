@@ -158,7 +158,7 @@ function FormFD() {
               CheckbobItems={["Yes", "No", "Unknown"]}
               byDefault={formFD.FD1}
               onClick={handleChange(setFormFD)}
-              error={errors.FD1}
+              errorMsg={errors.FD1}
             />
             <Radio
               name="FD2"
@@ -166,7 +166,7 @@ function FormFD() {
               CheckbobItems={["Yes", "No", "Unknown"]}
               byDefault={formFD.FD2}
               onClick={handleChange(setFormFD)}
-              error={errors.FD2}
+              errorMsg={errors.FD2}
             />
             <Radio
               name="FD3"
@@ -174,7 +174,7 @@ function FormFD() {
               CheckbobItems={["Yes", "No", "Unknown"]}
               byDefault={formFD.FD3}
               onClick={handleChange(setFormFD)}
-              error={errors.FD3}
+              errorMsg={errors.FD3}
             />
             <Radio
               name="FD4"
@@ -188,7 +188,7 @@ function FormFD() {
               ]}
               byDefault={formFD.FD4}
               onClick={handleChange(setFormFD)}
-              error={errors.FD4}
+              errorMsg={errors.FD4}
             />
             <Radio
               name="FD5"
@@ -196,7 +196,7 @@ function FormFD() {
               CheckbobItems={["Yes", "No", "Unknown"]}
               byDefault={formFD.FD5}
               onClick={handleChange(setFormFD)}
-              error={errors.FD5}
+              errorMsg={errors.FD5}
             />
             {formFD.FD5 !== "No" && formFD.FD5 && (
               <>
@@ -206,7 +206,7 @@ function FormFD() {
                   CheckbobItems={["Yes", "No", "Unknown"]}
                   byDefault={formFD.FD6}
                   onClick={handleChange(setFormFD)}
-                  error={errors.FD6}
+                  errorMsg={errors.FD6}
                 />
 
                 {formFD.FD6 !== "No" && formFD.FD6 && (
@@ -217,7 +217,7 @@ function FormFD() {
                     value={formFD.FD7}
                     placeholder="Type here"
                     required
-                    error={errors.FD7}
+                    errorMsg={errors.FD7}
                   />
                 )}
               </>
@@ -228,7 +228,7 @@ function FormFD() {
               CheckbobItems={["Yes", "No", "Unknown"]}
               byDefault={formFD.FD8}
               onClick={handleChange(setFormFD)}
-              error={errors.FD8}
+              errorMsg={errors.FD8}
             />
             {formFD.FD8 !== "No" && formFD.FD8 && (
               <>
@@ -238,7 +238,7 @@ function FormFD() {
                   CheckbobItems={["Yes", "No", "Unknown"]}
                   byDefault={formFD.FD9}
                   onClick={handleChange(setFormFD)}
-                  error={errors.FD9}
+                  errorMsg={errors.FD9}
                 />
                 {formFD.FD9 !== "No" && formFD.FD9 && (
                   <InputField
@@ -247,7 +247,7 @@ function FormFD() {
                     onChange={handleChange(setFormFD)}
                     value={formFD.FD10}
                     placeholder="Type here"
-                    error={errors.FD10}
+                    errorMsg={errors.FD10}
                   />
                 )}
               </>

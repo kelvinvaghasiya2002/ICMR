@@ -10,23 +10,34 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber,validateRequired } from "../fv";
+import { validateNumber, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
-function FormFF() {
+function FormGA() {
   useEffect(() => {
     AOS.init({ duration: 2000 });
   }, []);
 
   turnOffbutton();
-  var formF = getLocalStorage("formfc");
-  var formff = setLocalStorage("formff", {
-    FF1: "",
+  var formga = setLocalStorage("formga", {
+    GA1: "",
+    GA2: "",
+    GA3: "",
+    GA4: "",
+    GA5: "",
+    GA6: "",
   });
-  const [formFF, setFormFF] = useState(JSON.parse(formff));
+  const [formGA, setFormGA] = useState(JSON.parse(formga));
   // const [errors, setErrors] = useState({});
   // for validation
-  const { isValid, errors, setErrors } = useFormValidation(formFF, ["FF1"]);
+  const { isValid, errors, setErrors } = useFormValidation(formGA, [
+    "GA1",
+    "GA2",
+    "GA3",
+    "GA4",
+    "GA5",
+    "GA6",
+  ]);
 
   // useEffect(() => {
   //   if (formFE.FE1 === "No") {
@@ -64,11 +75,16 @@ function FormFF() {
     let validatedValue = value;
     let error = "";
 
-    setFormFF((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+    setFormGA((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case "FF1":
+      case "GA1":
+      case "GA2":
+      case "GA3":
+      case "GA4":
+      case "GA5":
+      case "GA6":
         error = error || validateRequired(validatedValue);
         break;
       default:
@@ -90,7 +106,7 @@ function FormFF() {
         {isSidebarVisible && (
           <>
             {/* <SidePanelCST id={"1"} /> */}
-            <SidePanelAutopsy id={"6"} />
+            <SidePanelAutopsy id={"7"} />
             <div className="grayedover" onClick={toggleSidebar}></div>
           </>
         )}
@@ -98,31 +114,79 @@ function FormFF() {
         <div className="siteInfo" data-aos="fade-left">
           <div className="formhdr">
             <div>
-              <h3>FF. Written narrative in local language</h3>
+              <h3>GA. Details of respondent and deceased</h3>
             </div>
           </div>
           <div className="formcontent">
             <InputField
-              name="FF1"
-              h3="FF.1 : Written narrative in local language:"
-              p={
-                "(Please describe the symptoms in order of appearance, doctor consulted or hospitalization, history of similar episodes, enter the results from reports of the investigations if available.)"
-              }
+              name="GA1"
+              h3="GA1. Name of the respondent"
+              value={formGA.GA1}
               onChange={handleChangeWithValidation}
-              value={formFF.FF1}
-              placeholder="Type here"
               required
-              error={errors.FF1}
+              errorMsg={errors.GA1}
+            />
+            <InputField
+              name="GA2"
+              h3="GA2. Respondent ID:"
+              value={formGA.GA2}
+              onChange={handleChangeWithValidation}
+              required
+              errorMsg={errors.GA2}
+            />
+            <Radio
+              name="GA3"
+              h3="GA3. Relationship of respondent with deceased:"
+              CheckbobItems={[
+                "Brother/Sister",
+                "Mother",
+                "Father",
+                "Grandfather",
+                "Grandmother",
+                "Other relative",
+                "Neighbour/No relation",
+                "Unknown",
+              ]}
+              byDefault={formGA.GA3}
+              onClick={handleChange(setFormGA)}
+              // required
+              errorMsg={errors.GA3}
+            />
+            <Radio
+              name="GA4"
+              h3="GA4. Did the respondent live with the deceased during the events that led to death?"
+              CheckbobItems={["Yes", "No"]}
+              byDefault={formGA.GA4}
+              onClick={handleChange(setFormGA)}
+              // required
+              errorMsg={errors.GA4}
+            />
+
+            <InputField
+              name="GA5"
+              h3="GA5. Respondent's age in completed years"
+              value={formGA.GA5}
+              onChange={handleChangeWithValidation}
+              required
+              errorMsg={errors.GA5}
+            />
+            <Radio
+              name="GA6"
+              h3="GA6. Respondent's sex"
+              CheckbobItems={["Male", "Female"]}
+              byDefault={formGA.GA6}
+              onClick={handleChange(setFormGA)}
+              errorMsg={errors.GA6}
             />
 
             <div className="button-container">
               <Buttons
-                formName="formfd"
-                formData={formFF}
+                formName="formga"
+                formData={formGA}
                 prevText="Previous"
                 nextText="Save & Next"
-                prev={formF?.FC1 !== "No" ? "/formFC" : "/formFE"}
-                next="/formGA"
+                prev="/formFF"
+                next="/formGB"
                 // validateForm={validateForm}
               />
               <OverlayCard
@@ -137,4 +201,4 @@ function FormFF() {
   );
 }
 
-export default FormFF;
+export default FormGA;

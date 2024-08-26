@@ -82,13 +82,19 @@ import FormH31 from "./component/Forms/CST/FormH31.jsx";
 
 import NotFound from "./NotFound.jsx"; // For Not Found Page
 
-// import Autopsy from "./component/Forms/Autopsy/autopsy.jsx";
+// Importing Verbal Autopsy Tool
 import FormFA from "./component/Forms/Autopsy/formFA.jsx";
 import FormFB from "./component/Forms/Autopsy/formFB.jsx";
 import FormFC from "./component/Forms/Autopsy/formFC.jsx";
 import FormFD from "./component/Forms/Autopsy/formFD.jsx";
 import FormFE from "./component/Forms/Autopsy/formFE.jsx";
 import FormFF from "./component/Forms/Autopsy/formFF.jsx";
+import FormGA from "./component/Forms/Autopsy/formGA.jsx";
+import FormGB from "./component/Forms/Autopsy/formGB.jsx";
+import FormGC from "./component/Forms/Autopsy/formGC.jsx";
+import FormGD from "./component/Forms/Autopsy/formGD.jsx";
+import FormGE from "./component/Forms/Autopsy/formGE.jsx";
+import FormGF from "./component/Forms/Autopsy/formGF.jsx";
 
 const url = import.meta.env.VITE_SERVER;
 
@@ -361,15 +367,19 @@ function App() {
         {/* Ambulance */}
         <Route path="/facilityinformation" element={<Facility />} />
 
-        {/* Bellow Are Verbal Autopsy Took*/}
-        {/* Details of Responent */}
-        {/* <Route path="/autopsy" element={<Autopsy />} /> */}
+        {/* Bellow Are Verbal Autopsy Tool*/}
         <Route path="/formFA" element={<FormFA />} />
         <Route path="/formFB" element={<FormFB />} />
         <Route path="/formFC" element={<FormFC />} />
         <Route path="/formFD" element={<FormFD />} />
         <Route path="/formFE" element={<FormFE />} />
         <Route path="/formFF" element={<FormFF />} />
+        <Route path="/formGA" element={<FormGA />} />
+        <Route path="/formGB" element={<FormGB />} />
+        <Route path="/formGC" element={<FormGC />} />
+        <Route path="/formGD" element={<FormGD />} />
+        <Route path="/formGE" element={<FormGE />} />
+        <Route path="/formGF" element={<FormGF />} />
 
         {/* Not Found Page */}
         <Route path="*" element={<NotFound />} />
