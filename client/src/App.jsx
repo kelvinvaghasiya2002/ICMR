@@ -95,6 +95,14 @@ import FormGC from "./component/Forms/Autopsy/formGC.jsx";
 import FormGD from "./component/Forms/Autopsy/formGD.jsx";
 import FormGE from "./component/Forms/Autopsy/formGE.jsx";
 import FormGF from "./component/Forms/Autopsy/formGF.jsx";
+import FormHA from "./component/Forms/Autopsy/formHA.jsx";
+import FormHB from "./component/Forms/Autopsy/formHB.jsx";
+import FormHC from "./component/Forms/Autopsy/formHC.jsx";
+import FormHD from "./component/Forms/Autopsy/formHD.jsx";
+import FormHE from "./component/Forms/Autopsy/formHE.jsx";
+import FormIA from "./component/Forms/Autopsy/formIA.jsx";
+import FormIB from "./component/Forms/Autopsy/formIB.jsx";
+import FormIC from "./component/Forms/Autopsy/formIC.jsx";
 
 const url = import.meta.env.VITE_SERVER;
 
@@ -380,6 +388,14 @@ function App() {
         <Route path="/formGD" element={<FormGD />} />
         <Route path="/formGE" element={<FormGE />} />
         <Route path="/formGF" element={<FormGF />} />
+        <Route path="/formHA" element={<FormHA />} />
+        <Route path="/formHB" element={<FormHB />} />
+        <Route path="/formHC" element={<FormHC />} />
+        <Route path="/formHD" element={<FormHD />} />
+        <Route path="/formHE" element={<FormHE />} />
+        <Route path="/formIA" element={<FormIA />} />
+        <Route path="/formIB" element={<FormIB />} />
+        <Route path="/formIC" element={<FormIC />} />
 
         {/* Not Found Page */}
         <Route path="*" element={<NotFound />} />

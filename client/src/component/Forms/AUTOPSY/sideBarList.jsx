@@ -61,5 +61,54 @@ export default [
       },
     ],
   },
-  // Add more sections as needed
+  {
+    title: "H. Adult death",
+    subtitles: [
+      {
+        id: "13",
+        label: "HA : Details of respondent and deceased",
+        link: "/formHA",
+      },
+      {
+        id: "14",
+        label: "HB : Details of deceased",
+        link: "/formHB",
+      },
+      {
+        id: "15",
+        label: "HC : Past history",
+        link: "/formHC",
+      },
+      {
+        id: "16",
+        label: "HD : Tobacco, Alcohol and Diet",
+        link: "/formHD",
+      },
+      {
+        id: "17",
+        label: "HE : narrative in local language",
+        link: "/formHE",
+      },
+    ],
+  },
+  {
+    title: "I : Maternal death",
+    subtitles: [
+      {
+        id: "18",
+        label: "IA : Details of respondent and deceased",
+        link: "/formIA",
+      },
+      {
+        id: "19",
+        label: "IB :",
+        link: "/formIB",
+      },
+      {
+        id: "20",
+        label: "IC : narrative in local language",
+        link: "/formIC",
+      },
+    ],
+  },
 ];
