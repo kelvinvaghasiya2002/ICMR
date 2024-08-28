@@ -83,26 +83,26 @@ import FormH31 from "./component/Forms/CST/FormH31.jsx";
 import NotFound from "./NotFound.jsx"; // For Not Found Page
 
 // Importing Verbal Autopsy Tool
-import FormFA from "./component/Forms/Autopsy/formFA.jsx";
-import FormFB from "./component/Forms/Autopsy/formFB.jsx";
-import FormFC from "./component/Forms/Autopsy/formFC.jsx";
-import FormFD from "./component/Forms/Autopsy/formFD.jsx";
-import FormFE from "./component/Forms/Autopsy/formFE.jsx";
-import FormFF from "./component/Forms/Autopsy/formFF.jsx";
-import FormGA from "./component/Forms/Autopsy/formGA.jsx";
-import FormGB from "./component/Forms/Autopsy/formGB.jsx";
-import FormGC from "./component/Forms/Autopsy/formGC.jsx";
-import FormGD from "./component/Forms/Autopsy/formGD.jsx";
-import FormGE from "./component/Forms/Autopsy/formGE.jsx";
-import FormGF from "./component/Forms/Autopsy/formGF.jsx";
-import FormHA from "./component/Forms/Autopsy/formHA.jsx";
-import FormHB from "./component/Forms/Autopsy/formHB.jsx";
-import FormHC from "./component/Forms/Autopsy/formHC.jsx";
-import FormHD from "./component/Forms/Autopsy/formHD.jsx";
-import FormHE from "./component/Forms/Autopsy/formHE.jsx";
-import FormIA from "./component/Forms/Autopsy/formIA.jsx";
-import FormIB from "./component/Forms/Autopsy/formIB.jsx";
-import FormIC from "./component/Forms/Autopsy/formIC.jsx";
+import FormFA from "./component/Forms/AUTOPSY/formFA.jsx";
+import FormFB from "./component/Forms/AUTOPSY/formFB.jsx";
+import FormFC from "./component/Forms/AUTOPSY/formFC.jsx";
+import FormFD from "./component/Forms/AUTOPSY/formFD.jsx";
+import FormFE from "./component/Forms/AUTOPSY/formFE.jsx";
+import FormFF from "./component/Forms/AUTOPSY/formFF.jsx";
+import FormGA from "./component/Forms/AUTOPSY/formGA.jsx";
+import FormGB from "./component/Forms/AUTOPSY/formGB.jsx";
+import FormGC from "./component/Forms/AUTOPSY/formGC.jsx";
+import FormGD from "./component/Forms/AUTOPSY/formGD.jsx";
+import FormGE from "./component/Forms/AUTOPSY/formGE.jsx";
+import FormGF from "./component/Forms/AUTOPSY/formGF.jsx";
+import FormHA from "./component/Forms/AUTOPSY/formHA.jsx";
+import FormHB from "./component/Forms/AUTOPSY/formHB.jsx";
+import FormHC from "./component/Forms/AUTOPSY/formHC.jsx";
+import FormHD from "./component/Forms/AUTOPSY/formHD.jsx";
+import FormHE from "./component/Forms/AUTOPSY/formHE.jsx";
+import FormIA from "./component/Forms/AUTOPSY/formIA.jsx";
+import FormIB from "./component/Forms/AUTOPSY/formIB.jsx";
+import FormIC from "./component/Forms/AUTOPSY/formIC.jsx";
 
 const url = import.meta.env.VITE_SERVER;
 
