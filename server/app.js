@@ -15,6 +15,7 @@ import HFAT1ROUTER from "./Routers/HFAT-1.js";
 import HFAT3ROUTER from "./Routers/HFAT-3.js";
 import HFAT2ROUTER from "./Routers/HFAT-2.js";
 import AMBULANCEROUTER from "./Routers/Ambulance.js";
+import AutopsyRouter from "./Routers/Autopsy.js";
 const mongoURL = process.env.MONGO_URL;
 const client = process.env.CLIENT_URL;
 
@@ -63,6 +64,7 @@ app.use(HFAT2ROUTER);
 app.use(HFAT3ROUTER);
 app.use(AMBULANCEROUTER);
 app.use(CSTROUTER);
+app.use(AutopsyRouter)
 
 
 

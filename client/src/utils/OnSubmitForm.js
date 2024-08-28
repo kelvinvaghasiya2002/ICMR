@@ -60,3 +60,14 @@ export const OnAMBSubmitForm = async (
 };
 
 // export default {OnSubmitForm};
+
+export const OnAutopsySubmitForm = async (completeform) => {
+  try {
+    const response = await axios.post(`${serevr}/Autopsy`, {
+      completeform,
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};

@@ -308,22 +308,27 @@ Did she die within 42 days of abortion?
               )}
 
             <div className="button-container">
-              {/* <Buttons
-                formName="formhd"
-                formData={formHD}
-                prevText="Previous"
-                nextText="Save & Next"
-                prev="/formHB"
-                next="/formHD"
-                // validateForm={validateForm}
-              /> */}
-              <LastButton
-                formName="formhd"
-                formData={formHD}
-                prev="/formHC"
-                MainForm={"Autopsy"}
-                // validateForm={validateForm}
-              />
+              {formhb?.HB3 >= 15 &&
+              formhb?.HB3 <= 49 &&
+              formhb?.HB4 === "Female" ? (
+                <Buttons
+                  formName="formhd"
+                  formData={formHD}
+                  prevText="Previous"
+                  nextText="Save & Next"
+                  prev="/formHB"
+                  next="/formHD"
+                  // validateForm={validateForm}
+                />
+              ) : (
+                <LastButton
+                  formName="formhd"
+                  formData={formHD}
+                  prev="/formHC"
+                  MainForm={"Autopsy"}
+                  // validateForm={validateForm}
+                />
+              )}
 
               <OverlayCard
                 isVisible={!isValid}

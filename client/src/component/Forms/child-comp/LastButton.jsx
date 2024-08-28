@@ -55,6 +55,9 @@ function LastButton({ prev, formName, formData, MainForm, validateForm }) {
     if (MainForm == "CST") {
       setPopUp(true);
     }
+    if (MainForm == "Autopsy") {
+      setPopUp(true);
+    }
   };
 
   return (

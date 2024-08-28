@@ -10,7 +10,7 @@ export function setLocalStorage(formName, formData) {
 // get the form data from local storage
 export function getLocalStorage(formName) {
   var form = localStorage.getItem(formName);
-  return JSON.parse(form);
+  return JSON.parse(form || "{}");
 }
 
 export default setLocalStorage;

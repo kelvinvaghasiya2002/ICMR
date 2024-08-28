@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { OnSubmitForm, OnAMBSubmitForm } from "../../../utils/OnSubmitForm";
+import {
+  OnSubmitForm,
+  OnAMBSubmitForm,
+  OnAutopsySubmitForm,
+} from "../../../utils/OnSubmitForm";
 
 function PopUp({ ifAmbulance, setPopUp, MainForm }) {
   const handleSubmit = () => {
@@ -60,6 +64,10 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
       );
       // console.log("comming");
       OnAMBSubmitForm(completeform, table1, table2, MainForm);
+    } else if (MainForm == "Autopsy") {
+      const completeform = localStorage.getItem("CompleteForm");
+      console.log(JSON.parse(completeform));
+      OnAutopsySubmitForm(completeform);
     }
 
     const localstorage = { ...localStorage };
@@ -96,13 +104,13 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
           </button>
 
           <Link
-            className="nextbtn" onClick={handleSubmit}
+            className="nextbtn"
+            onClick={handleSubmit}
             style={{ color: "white", textDecoration: "none" }}
             to={ifAmbulance ? "/facilityinformation" : "/"}
           >
             Submit
           </Link>
-
         </div>
       </div>
     </>
