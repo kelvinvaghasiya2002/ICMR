@@ -60,7 +60,7 @@ function FormB16() {
                 "Currently Married",
                 "Separated",
                 "Divorced",
-                "Widow",
+                "Widow / Widower",
                 "Cohabitating",
                 "Prefer not to disclose/ Refuse",
                 "Not Applicable"
@@ -115,10 +115,11 @@ function FormB16() {
                 "Private reimbursement",
                 "Central Health Insurance Scheme (Ayushmaan Bharat/ CGHS / etc.)",
                 "State Health Insurance Scheme",
+                "Co-Payment",
                 "Community Health Insurance Programme",
                 "None",
                 "Prefer not to disclose/ Refuse",
-                "Don’t Know"
+                "Don't Know"
               ]}
               name="B4"
               StateValue={formB16}

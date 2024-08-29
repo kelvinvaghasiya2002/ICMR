@@ -60,7 +60,7 @@ function FormC22() {
 
                         <Radio onClick={handleChange(setFormC22)} h3="C.11  Did the patient go to the referred facility?" CheckbobItems={["Yes", "No"]} name="C11" byDefault={formC22.C11} />
 
-                        <Radio onClick={handleChange(setFormC22)} h3="C.12  Which type of facility did you or the patient shifted?" CheckbobItems={["SC/HWC", "PHC"," CHC","District Headquarter ","Medical College","Private hospital","Private clinic","ESI/railway/other Govt. Hospital","Others"]} name="C12" otherArray={[0,0,0,0,0,0,0,0,1]} byDefault={formC22.C12} />
+                        <Radio onClick={handleChange(setFormC22)} h3="C.12  Which type of facility did you or the patient shifted?" CheckbobItems={["SC/HWC/(Ayushman Arogya Mandir)", "PHC"," CHC","District Headquarter ","Medical College","Private hospital","Private clinic","ESI/railway/other Govt. Hospital","Others"]} name="C12" otherArray={[0,0,0,0,0,0,0,0,1]} byDefault={formC22.C12} />
 
                         <InputField onChange={handleChange(setFormC22)} h3="C.13  What was the name of the facility the patient shifted?" placeholder="Type here" name="C13" value={formC22.C13} />
 

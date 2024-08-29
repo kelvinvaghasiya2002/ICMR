@@ -48,6 +48,7 @@ function FormE26() {
                                 "Private reimbursement",
                                 "Central Health Insurance Scheme (Ayushmaan Bharat/ CGHS / etc.)",
                                 "State Health Insurance Scheme",
+                                "Co-Payment",
                                 "Community Health Insurance Programme",
                                 "None"
                             ]}
@@ -57,7 +58,7 @@ function FormE26() {
 
                         {/* E3 new component required */}
 
-                        <InputField h3="E.4	What was the approximate overall money spent on the availing the emergency care? (INR)" placeholder="Type here" name="E4"  value={formE26.E4} onChange={handleChange(setFormE26)}  />
+                        <InputField h3="E.4	What was the approximate overall money spent on the availing the emergency care service? Direct Medical Cost" placeholder="Type here" name="E4"  value={formE26.E4} onChange={handleChange(setFormE26)}  />
 
 
                         <CSTButton formName="forme26" formData={formE26} prev="/barriers-and-facilitators2" next="/verbal-&-social-autopsy1" prevText="Previous" nextText="Save & Next" />

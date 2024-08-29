@@ -64,7 +64,7 @@ function FormC20() {
                             name="C2" setFunction={setFormC20} StateValue={formC20} array={formC20.C2} 
                         />
 
-                        <Radio onClick={handleChange(setFormC20)} h3="C.3  Which facility were you referred? " CheckbobItems={["SC/HWC", "PHC", "CHC", "District Headquarter Hospital/ Equivalent Facility", "Medical College","Private hospital","Private clinic"]} name="C3" byDefault={formC20.C3} />
+                        <Radio onClick={handleChange(setFormC20)} h3="C.3  Which facility were you referred? " CheckbobItems={["SC/HWC/(Ayushman Arogya Mandir)", "PHC", "CHC", "District Headquarter Hospital/ Equivalent Facility", "Medical College","Private hospital","Private clinic"]} name="C3" byDefault={formC20.C3} />
 
                         <Radio onClick={handleChange(setFormC20)} h3="C.4  If referred by a health facility, was a referral slip given?" CheckbobItems={["Yes", "No", "Don’t know"]} name="C4" byDefault={formC20.C4} />
 

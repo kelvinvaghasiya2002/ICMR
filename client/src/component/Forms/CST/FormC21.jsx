@@ -45,7 +45,8 @@ function FormC21() {
                        
                     <Radio onClick={handleChange(setFormC21)} h3="C.5 How did you or the patient reach the referred health care facility?" CheckbobItems={["Own vehicle", "Hired vehicle ","Ambulance","Neighbour’s Vehicle","Passer-by’s Vehicle","Others"]} name="C5" otherArray={[0, 0,0,0,0,1]} byDefault={formC21.C5} />
 
-                    <Radio onClick={handleChange(setFormC21)} h3="C.6 What type of transport was used to reach the referred health care facility?" CheckbobItems={["Government ambulance", "Private ambulance","Two-Wheeler (Bicycle)","Two-Wheeler (Motorcycle)","Three-Wheeler (Manual Rickshaw, etc.)","Three-Wheeler (Auto Rickshaw/ E-rickshaw, etc.)","Four-Wheeler (Car/Jeep/ etc.)","Agricultural Vehicle (Tractor)","Others"]} name="C6" otherArray={[0, 0,0,0,0,0,0,0,1]} byDefault={formC21.C6} />
+                    <Radio onClick={handleChange(setFormC21)} h3="C.6 What type of transport was used to reach the referred health care facility?" CheckbobItems={["Government ambulance", "Private ambulance",
+                    "Ambulance service provided by NGO","Two-Wheeler (Bicycle)","Two-Wheeler (Motorcycle)","Three-Wheeler (Manual Rickshaw, etc.)","Three-Wheeler (Auto Rickshaw/ E-rickshaw, etc.)","Four-Wheeler (Car/Jeep/ etc.)","Agricultural Vehicle (Tractor)","Others"]} name="C6" otherArray={[0, 0,0,0,0,0,0,0,1]} byDefault={formC21.C6} />
 
                     {
                      (formC21.C6==="Government ambulance") &&

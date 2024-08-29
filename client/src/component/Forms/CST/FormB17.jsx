@@ -66,7 +66,9 @@ function FormB17() {
               byDefault={formB16.B7}
             />
             <InputField onChange={handleChange(setFormB16)} h3="B.8	Which was the first symptom you/ or the person expressed or complaint of during emergency condition?" placeholder="Type here" name="B8" value={formB16.B8} />
-            <InputField onChange={handleChange(setFormB16)} h3="B.9	When was the first symptom of a medical emergency recognised? [Time of onset of symptom]" placeholder="Type here" name="B9" value={formB16.B9} />
+
+            <InputField onChange={handleChange(setFormB16)} h3="B.9	When was the first symptom of a medical emergency recognised? [Time of onset of symptom]" placeholder="Type here" type={"time"} name="B9" value={formB16.B9} />
+
             <Radio h3="B.10	At the start of symptoms was any medication taken/ given at home to alleviate symptoms?" CheckbobItems={["Yes", "No"]} name="B10" onClick={handleChange(setFormB16)} byDefault={formB16.B10} />
 
             <InputField onChange={handleChange(setFormB16)} h3="B.11	If yes, what medication was given?" placeholder="Type here" name="B11_if" value={formB16.B11_if} />

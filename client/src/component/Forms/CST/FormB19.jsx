@@ -40,7 +40,7 @@ function formB16() {
     }
 
 
-  }, [formB16.B19 , formB16.B30])
+  }, [formB16.B19, formB16.B30])
 
   return (
     <div>
@@ -72,14 +72,14 @@ function formB16() {
 
             <Radio onClick={handleChange(setFormB16)} h3="B.18  How did you or the patient reach the first health care facility? " CheckbobItems={["Own vehicle", "Hired vehicle ", "Ambulance", "Neighbour’s Vehicle", "Passer-by’s Vehicle", "Others (Specify)"]} name="B18" otherArray={[0, 0, 0, 0, 0, 1]} byDefault={formB16.B18} />
 
-            <Radio onClick={handleChange(setFormB16)} h3="B.19  What type of transport was used to reach the first health care facility? " CheckbobItems={["Government ambulance", "Private ambulance", "Two-Wheeler (Bicycle)", "Two-Wheeler (Motorcycle)", "Three-Wheeler (Manual Rickshaw, etc.)", "Three-Wheeler (Auto Rickshaw/ E-rickshaw, etc.)", "Four-Wheeler (Car/Jeep/ etc.)", "Agricultural Vehicle (Tractor)", "Others (Specify)"]} name="B19" otherArray={[0, 0, 0, 0, 0, 0, 0, 0, 1]} byDefault={formB16.B19} />
+            <Radio onClick={handleChange(setFormB16)} h3="B.19  What type of transport was used to reach the first health care facility? " CheckbobItems={["Government ambulance", "Private ambulance", "Ambulance service provided by NGO", "Two - Wheeler(Bicycle)", "Two - Wheeler(Motorcycle)", "Three - Wheeler(Manual Rickshaw, etc.)", "Three - Wheeler(Auto Rickshaw / E - rickshaw, etc.)", "Four - Wheeler(Car / Jeep / etc.)", "Agricultural Vehicle(Tractor)", "Others(Specify)"]} name="B19" otherArray={[0, 0, 0, 0, 0, 0, 0, 0, 1]} byDefault={formB16.B19} />
 
             {
               formB16.B19 === "Government ambulance" &&
               <Radio onClick={handleChange(setFormB16)} h3="B.20  If Govt. Ambulance, Which ambulance service you opted for? " CheckbobItems={["102", "108", "Others (Specify)", "Don't know"]} name="B20" otherArray={[0, 0, 1, 0]} byDefault={formB16.B20} />
             }
 
-            <Radio onClick={handleChange(setFormB16)} h3="B.21  Were there any problems in arranging for transport of the patient?  (Describe) " CheckbobItems={["Yes (Specify)", "No"]} name="B21" otherArray={[1, 0]} byDefault={formB16.B21} />
+            < Radio onClick={handleChange(setFormB16)} h3="B.21  Were there any problems in arranging for transport of the patient?  (Describe) " CheckbobItems={["Yes (Specify)", "No"]} name="B21" otherArray={[1, 0]} byDefault={formB16.B21} />
 
             <h3>B.22  How much time the ambulance/ any transport took to reach the point of incident? (In Min/Hour)</h3>
 
@@ -95,7 +95,7 @@ function formB16() {
 
 
 
-            <Radio onClick={handleChange(setFormB16)} h3="B.24  Which type of facility did you visit first? " CheckbobItems={["SC/HWC", "PHC", "CHC", "District Headquarter Hospital ", "Medical College", "Private hospital", "Private clinic", "ESI/railway/other Govt. Hospital", "Others(Specify)"]} name="B24" otherArray={[0, 0, 0, 0, 0, 0, 0, 0, 1]} byDefault={formB16.B24} />
+            <Radio onClick={handleChange(setFormB16)} h3="B.24  Which type of facility did you visit first? " CheckbobItems={["SC/HWC/AAM (Ayushman Arogya Mandir)", "PHC", "CHC", "District Headquarter Hospital ", "Medical College", "Private hospital", "Private clinic", "ESI/railway/other Govt. Hospital", "Others(Specify)"]} name="B24" otherArray={[0, 0, 0, 0, 0, 0, 0, 0, 1]} byDefault={formB16.B24} />
 
             <InputField onChange={handleChange(setFormB16)} h3="B.25  What was the name of the facility?" placeholder="Type here" name="B25" value={formB16.B25} />
 
@@ -126,7 +126,7 @@ function formB16() {
               <Radio onClick={handleChange(setFormB16)} h3="B.31  How much time was spent in investigations? " CheckbobItems={["Less than 30 minutes", "30 minutes to 1 hour", "More than 1 hour", "Do not Know"]} name="B31" byDefault={formB16.B31} />
             }
 
-            <Radio onClick={handleChange(setFormB16)} h3="B.32 Was the patient shifted to ICU/ CCU/ HDU at HCF? " CheckbobItems={["Yes", "No"]} name="B32" byDefault={formB16.B32} />
+            < Radio onClick={handleChange(setFormB16)} h3="B.32 Was the patient shifted to ICU/ CCU/ HDU at HCF? " CheckbobItems={["Yes", "No"]} name="B32" byDefault={formB16.B32} />
 
             <CSTButton formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-1" next="/initialhealthcareseekingpathway-4" prevText="Previous" nextText="Save & Next" />
           </div>
