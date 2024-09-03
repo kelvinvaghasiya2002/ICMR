@@ -332,7 +332,7 @@ function Facility() {
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
-      case "AMB6":
+      // case "AMB6":
       case "AMB9":
       case "AMB10":
       case "AMB11":

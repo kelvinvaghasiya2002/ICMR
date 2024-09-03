@@ -66,6 +66,7 @@ function PopUp({ ifAmbulance, setPopUp, MainForm }) {
       OnAMBSubmitForm(completeform, table1, table2, MainForm);
     } else if (MainForm == "Autopsy") {
       const completeform = localStorage.getItem("CompleteForm");
+      console.log(completeform);
       console.log(JSON.parse(completeform));
       OnAutopsySubmitForm(completeform);
     }

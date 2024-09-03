@@ -140,8 +140,8 @@ function FormFB() {
               error={errors.FB1}
             />
             <InputField
-              name="FA2"
-              h3="FA.2 : Full name of the deceased:"
+              name="FB2"
+              h3="FB.2 : Full name of the deceased:"
               onChange={handleChangeWithValidation}
               value={formFB.FB2}
               placeholder="Type here"
@@ -149,8 +149,8 @@ function FormFB() {
               error={errors.FB2}
             />
             <InputField
-              name="FA3"
-              h3="FA.3 : Name of mother of the deceased:"
+              name="FB3"
+              h3="FB.3 : Name of mother of the deceased:"
               onChange={handleChangeWithValidation}
               value={formFB.FB3}
               placeholder="Type here"
@@ -158,8 +158,8 @@ function FormFB() {
               error={errors.FB3}
             />
             <InputField
-              name="FA4"
-              h3="FA.4 : Age in days:"
+              name="FB4"
+              h3="FB.4 : Age in days:"
               onChange={handleChangeWithValidation}
               value={formFB.FB4}
               placeholder="Type here"
@@ -167,8 +167,8 @@ function FormFB() {
               error={errors.FB4}
             />
             <Radio
-              name="FA5"
-              h3="FA.5 : Repondent's sex:"
+              name="FB5"
+              h3="FB.5 : Repondent's sex:"
               onClick={handleChange(setFormFB)}
               CheckbobItems={["Male", "Female"]}
               byDefault={formFB.FB5}
@@ -176,8 +176,8 @@ function FormFB() {
               error={errors.FB4}
             />
             <InputField
-              name="FA6"
-              h3="FA.6 : House address of the deceased (include PIN)"
+              name="FB6"
+              h3="FB.6 : House address of the deceased (include PIN)"
               onChange={handleChangeWithValidation}
               value={formFB.FB6}
               placeholder="Type here"
@@ -185,8 +185,8 @@ function FormFB() {
               error={errors.FB6}
             />
             <InputField
-              name="FA7"
-              h3="FA.7 : Date of death:"
+              name="FB7"
+              h3="FB.7 : Date of death:"
               type={"date"}
               onChange={handleChangeWithValidation}
               value={formFB.FB7}
@@ -195,8 +195,8 @@ function FormFB() {
               error={errors.FB7}
             />
             <Radio
-              name="FA38"
-              h3="FA.8 : Place of death:"
+              name="FB38"
+              h3="FB.8 : Place of death:"
               CheckbobItems={[
                 "Home",
                 "Health facility",
@@ -209,8 +209,8 @@ function FormFB() {
               error={errors.FB8}
             />
             <InputField
-              name="FA9"
-              h3="FA.9 : What did the respondent think this person die of?:"
+              name="FB9"
+              h3="FB.9 : What did the respondent think this person die of?:"
               p="(Allow the respondent to tell the illness in his or her own words)"
               onChange={handleChangeWithValidation}
               value={formFB.FB9}

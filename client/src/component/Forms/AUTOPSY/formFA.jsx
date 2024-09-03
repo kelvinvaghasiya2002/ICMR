@@ -132,7 +132,7 @@ function FormFA() {
             />
             <InputField
               name="FA2"
-              h3="FA.2 : Respondient ID:"
+              h3="FA.2 : Respondent ID:"
               onChange={handleChangeWithValidation}
               value={formFA.FA2}
               placeholder="Type here"
