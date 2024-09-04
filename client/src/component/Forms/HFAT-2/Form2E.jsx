@@ -13,9 +13,32 @@ import OverlayCard from '../OverlayCard.jsx';
 import { validateCheckBox } from '../fv.js';
 
 function Form2E() {
-    useEffect(() => {
+
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
         AOS.init({ duration: 2000 });
-    }, []);
+        
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
+    // useEffect(() => {
+    //     AOS.init({ duration: 2000 });
+    // }, []);
 
     var form2e = setLocalStorage("form2e", { H2E3: [] });
     const [form2E, setForm2E] = useState(JSON.parse(form2e));
@@ -91,9 +114,20 @@ function Form2E() {
 
     return (
         <div>
-            <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
-            <section>
-                <SidePanel id={"5"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
+            </div>
+            <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"5"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
+
                 <div className="siteInfo" data-aos="fade-left">
 
                     <div className="formhdr">

@@ -12,9 +12,32 @@ import { validateName, validateNumber, validateRequired, validateEmail } from '.
 import OverlayCard from '../OverlayCard.jsx';
 
 function Form2J() {
-    useEffect(() => {
+
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
         AOS.init({ duration: 2000 });
-    }, []);
+        
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
+    // useEffect(() => {
+    //     AOS.init({ duration: 2000 });
+    // }, []);
 
     var form2j = setLocalStorage("form2j", { H2J1: "", H2J2: "" });
     const [form2J, setForm2J] = useState(JSON.parse(form2j));
@@ -104,9 +127,19 @@ function Form2J() {
 
     return (
         <div>
-            <Heading h2="Health Facility Assessment Tool 2: Community Health Centre" />
-            <section>
-                <SidePanel id={"10"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
+            </div>
+            <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"10"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
                 <div className="siteInfo" data-aos="fade-left">
 
                     <div className="formhdr">
@@ -115,23 +148,25 @@ function Form2J() {
                         </div>
                     </div>
 
-                    <div className="formcontent cont_extra">
+                    <div className="formcontent cont_extra fbox">
+                        <div className="fbox1">
 
-                        <Radio
-                            h3="2J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?"
-                            CheckbobItems={["Yes", "No"]}
-                            name={"H2J1"}
-                            onClick={handleChange(setForm2J)}
-                            byDefault={form2J.H2J1}
-                        />
+                            <Radio
+                                h3="2J.1 : Does this facility have policies and procedures which guide the referral of patients from other hospitals?"
+                                CheckbobItems={["Yes", "No"]}
+                                name={"H2J1"}
+                                onClick={handleChange(setForm2J)}
+                                byDefault={form2J.H2J1}
+                            />
 
-                        <Radio
-                            h3="2J.2 : Does this facility have any policies and procedures which guide the transfer-out/referral of stable and unstable patients after stabilization to another facility with documentation?"
-                            CheckbobItems={["Yes", "No"]}
-                            name={"H2J2"}
-                            onClick={handleChange(setForm2J)}
-                            byDefault={form2J.H2J2}
-                        />
+                            <Radio
+                                h3="2J.2 : Does this facility have any policies and procedures which guide the transfer-out/referral of stable and unstable patients after stabilization to another facility with documentation?"
+                                CheckbobItems={["Yes", "No"]}
+                                name={"H2J2"}
+                                onClick={handleChange(setForm2J)}
+                                byDefault={form2J.H2J2}
+                            />
+                        </div>
 
 
                         <div className="button-container">
@@ -146,9 +181,10 @@ function Form2J() {
 
                             <OverlayCard
                                 isVisible={showOverlay}
-                                message="Please fill all required fields to proceed."
+                                message="(Please fill all required fields to proceed)"
                             />
                         </div>
+
                     </div>
                 </div>
             </section>

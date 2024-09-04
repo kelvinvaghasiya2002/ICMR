@@ -13,9 +13,32 @@ import { validateName, validateNumber, validateRequired, validateEmail } from '.
 import OverlayCard from '../OverlayCard.jsx';
 
 function Form2G() {
-    useEffect(() => {
+
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
         AOS.init({ duration: 2000 });
-    }, []);
+        
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
+    // useEffect(() => {
+    //     AOS.init({ duration: 2000 });
+    // }, []);
 
     turnOffbutton();
     var form2g = setLocalStorage("form2g", {
@@ -165,9 +188,19 @@ function Form2G() {
     };
     return (
         <div>
-            <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
-            <section>
-                <SidePanel id={"7"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
+            </div>
+            <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"7"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
                 <div className="siteInfo" data-aos="fade-left">
 
                     <div className="formhdr">
@@ -178,68 +211,70 @@ function Form2G() {
                         </div>
                     </div>
 
-                    <div className="formcontent">
+                    <div className="formcontent cont_extra fbox">
+                        <div className="fbox1">
 
-                        <Radio
-                            byDefault={form2G.H2G1}
-                            onClick={handleChange(setForm2G)}
-                            h3="2G.1 : Whether any untied fund is available at your hospital?"
-                            CheckbobItems={["Yes", "No"]}
-                            name="H2G1"
-                        />
-
-
-                        {form2G.H2G1 === "Yes" &&
-                            <>
-                                <Radio
-                                    byDefault={form2G.H2G2}
-                                    onClick={handleChange(setForm2G)}
-                                    h3="2G.2 : If Yes, Whether this fund is utilized for providing emergency care services?"
-                                    CheckbobItems={["Yes", "No"]}
-                                    name="H2G2"
-                                />
-
-                            </>
-                        }
-
-                        <Radio
-                            byDefault={form2G.H2G3}
-                            onClick={handleChange(setForm2G)}
-                            h3="2G.3 : Whether any fund is available for emergency care?"
-                            CheckbobItems={["Yes", "No"]}
-                            name="H2G3"
-                        />
+                            <Radio
+                                byDefault={form2G.H2G1}
+                                onClick={handleChange(setForm2G)}
+                                h3="2G.1 : Whether any untied fund is available at your hospital?"
+                                CheckbobItems={["Yes", "No"]}
+                                name="H2G1"
+                            />
 
 
-                        {form2G.H2G3 === "Yes" &&
-                            <>
-                                <Radio
-                                    byDefault={form2G.H2G4}
-                                    onClick={handleChange(setForm2G)}
-                                    h3="2G.4 : If funds are available, which health protection schemes are covering your emergency care system?"
-                                    CheckbobItems={["PMJAY", "RKS", "Other (Specify)"]}
-                                    otherArray={[0, 0, 1]}
-                                    name="H2G4"
-                                />
+                            {form2G.H2G1 === "Yes" &&
+                                <>
+                                    <Radio
+                                        byDefault={form2G.H2G2}
+                                        onClick={handleChange(setForm2G)}
+                                        h3="2G.2 : If Yes, Whether this fund is utilized for providing emergency care services?"
+                                        CheckbobItems={["Yes", "No"]}
+                                        name="H2G2"
+                                    />
+
+                                </>
+                            }
+
+                            <Radio
+                                byDefault={form2G.H2G3}
+                                onClick={handleChange(setForm2G)}
+                                h3="2G.3 : Whether any fund is available for emergency care?"
+                                CheckbobItems={["Yes", "No"]}
+                                name="H2G3"
+                            />
 
 
-                                <InputField
-                                    value={form2G.H2G5}
-                                    onChange={handleChangeWithValidation}
-                                    h3="2G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme."
-                                    placeholder="Type here"
-                                    name="H2G5"
-                                />
-                            </>
-                        }
+                            {form2G.H2G3 === "Yes" &&
+                                <>
+                                    <Radio
+                                        byDefault={form2G.H2G4}
+                                        onClick={handleChange(setForm2G)}
+                                        h3="2G.4 : If funds are available, which health protection schemes are covering your emergency care system?"
+                                        CheckbobItems={["PMJAY", "RKS", "Other (Specify)"]}
+                                        otherArray={[0, 0, 1]}
+                                        name="H2G4"
+                                    />
 
-                        <Radio
-                            byDefault={form2G.H2G6}
-                            onClick={handleChange(setForm2G)}
-                            h3="2G.6 : Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?"
-                            CheckbobItems={["Yes", "No"]}
-                            name="H2G6"
-                        />
+
+                                    <InputField
+                                        value={form2G.H2G5}
+                                        onChange={handleChangeWithValidation}
+                                        h3="2G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme."
+                                        placeholder="Type here"
+                                        name="H2G5"
+                                    />
+                                </>
+                            }
+
+                            <Radio
+                                byDefault={form2G.H2G6}
+                                onClick={handleChange(setForm2G)}
+                                h3="2G.6 : Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?"
+                                CheckbobItems={["Yes", "No"]}
+                                name="H2G6"
+                            />
+                        </div>
 
 
                         <div className="button-container">
@@ -255,7 +290,7 @@ function Form2G() {
 
                             <OverlayCard
                                 isVisible={showOverlay}
-                                message="Please fill all required fields to proceed."
+                                message="(Please fill all required fields to proceed)"
                             />
                         </div>
                     </div>

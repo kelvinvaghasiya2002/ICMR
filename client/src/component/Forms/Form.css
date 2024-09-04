@@ -337,6 +337,8 @@ th, td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    font-size: 1.12vw !important;
+ 
     /* text-align: center; */
 }
 
@@ -755,6 +757,7 @@ table {
 
 .tableinput {
     border: none;
+    width: 100%;
 }
 
 .tableinput:focus {
@@ -843,7 +846,8 @@ table {
 th, td {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    /* padding: 8px; */
+    padding: 1vw;
     /* text-align: center; */
 }
 

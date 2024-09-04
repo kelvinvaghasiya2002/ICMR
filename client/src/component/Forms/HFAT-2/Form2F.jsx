@@ -13,9 +13,32 @@ import { validateName, validateNumber, validateRequired, validateEmail, validate
 import OverlayCard from '../OverlayCard.jsx';
 
 function Form2F() {
-    useEffect(() => {
+
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
         AOS.init({ duration: 2000 });
-    }, []);
+        
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
+    // useEffect(() => {
+    //     AOS.init({ duration: 2000 });
+    // }, []);
 
     turnOffbutton();
     var form2f = setLocalStorage("form2f", {
@@ -187,9 +210,19 @@ function Form2F() {
 
     return (
         <div>
-            <Heading h2="Health Facility Assessment Tool 2: Community Health Centre" />
-            <section>
-                <SidePanel id={"6"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
+            </div>
+            <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"6"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
                 <div className="siteInfo" data-aos="fade-left">
 
                     <div className="formhdr">
@@ -200,93 +233,95 @@ function Form2F() {
                         </div>
                     </div>
 
-                    <div className="formcontent">
-                        <Radio
-                            h3="2F.1 : Does the facility have a Hospital Management Information System (HMIS)"
-                            CheckbobItems={["Yes", "No"]}
-                            name="H2F1"
-                            byDefault={form2F.H2F1}
-                            onClick={handleChange(setForm2F)}
-                        />
+                    <div className="formcontent cont_extra fbox">
+                        <div className="fbox1">
+                            <Radio
+                                h3="2F.1 : Does the facility have a Hospital Management Information System (HMIS)"
+                                CheckbobItems={["Yes", "No"]}
+                                name="H2F1"
+                                byDefault={form2F.H2F1}
+                                onClick={handleChange(setForm2F)}
+                            />
 
-                        {
-                            (form2F.H2F1 === 'Yes') &&
-                            <>
-                                <Radio
-                                    h3="2F.2 : Does this facility do complete reporting of indicators on emergency care in HMIS?"
-                                    CheckbobItems={["Yes", "No"]}
-                                    name="H2F2"
-                                    byDefault={form2F.H2F2}
-                                    onClick={handleChange(setForm2F)}
-                                />
+                            {
+                                (form2F.H2F1 === 'Yes') &&
+                                <>
+                                    <Radio
+                                        h3="2F.2 : Does this facility do complete reporting of indicators on emergency care in HMIS?"
+                                        CheckbobItems={["Yes", "No"]}
+                                        name="H2F2"
+                                        byDefault={form2F.H2F2}
+                                        onClick={handleChange(setForm2F)}
+                                    />
 
-                                <InputField
-                                    h3="2F.3 : How many personnel are available for managing information system?"
-                                    placeholder="Type here"
-                                    name="H2F3"
-                                    value={form2F.H2F3}
-                                    onChange={handleChangeWithValidation}
-                                />
+                                    <InputField
+                                        h3="2F.3 : How many personnel are available for managing information system?"
+                                        placeholder="Type here"
+                                        name="H2F3"
+                                        value={form2F.H2F3}
+                                        onChange={handleChangeWithValidation}
+                                    />
 
-                                <Checkbox
-                                    h3="2F.4 : What key indicators are generated from the emergency management information system?"
-                                    CheckbobItems={[
-                                        "Numbers by type of emergencies",
-                                        "Length of hospital stay",
-                                        "Turnaround time",
-                                        "Disposal time",
-                                        "Number of deaths",
-                                        "Number of Referrals"
-                                    ]}
-                                    name="H2F4"
-                                    setFunction={setForm2F} StateValue={form2F} array={form2F.H2F4}
-                                />
+                                    <Checkbox
+                                        h3="2F.4 : What key indicators are generated from the emergency management information system?"
+                                        CheckbobItems={[
+                                            "Numbers by type of emergencies",
+                                            "Length of hospital stay",
+                                            "Turnaround time",
+                                            "Disposal time",
+                                            "Number of deaths",
+                                            "Number of Referrals"
+                                        ]}
+                                        name="H2F4"
+                                        setFunction={setForm2F} StateValue={form2F} array={form2F.H2F4}
+                                    />
 
-                                <Radio
-                                    h3="2F.5 : Whether time bound management of common emergencies is captured in MIS."
-                                    CheckbobItems={["Yes", "No"]}
-                                    name="H2F5"
-                                    byDefault={form2F.H2F5}
-                                    onClick={handleChange(setForm2F)}
-                                />
-                            </>
-                        }
+                                    <Radio
+                                        h3="2F.5 : Whether time bound management of common emergencies is captured in MIS."
+                                        CheckbobItems={["Yes", "No"]}
+                                        name="H2F5"
+                                        byDefault={form2F.H2F5}
+                                        onClick={handleChange(setForm2F)}
+                                    />
+                                </>
+                            }
 
-                        <Checkbox
-                            h3="2F.6 : Which of the following alert systems does your facility have?"
-                            CheckbobItems={[
-                                "Code blue alert system.",
-                                "NSTEMI alert system",
-                                "Stroke alert system.",
-                                "Trauma alert system"
-                            ]}
-                            name="H2F6"
-                            setFunction={setForm2F} StateValue={form2F} array={form2F.H2F6}
-                        />
+                            <Checkbox
+                                h3="2F.6 : Which of the following alert systems does your facility have?"
+                                CheckbobItems={[
+                                    "Code blue alert system.",
+                                    "NSTEMI alert system",
+                                    "Stroke alert system.",
+                                    "Trauma alert system"
+                                ]}
+                                name="H2F6"
+                                setFunction={setForm2F} StateValue={form2F} array={form2F.H2F6}
+                            />
 
-                        <Radio
-                            h3="2F.7 : Whether Medical Officer In charge (MO/IC) uses or reviews the data for quality improvement"
-                            CheckbobItems={["Yes", "No"]}
-                            name="H2F7"
-                            byDefault={form2F.H2F7}
-                            onClick={handleChange(setForm2F)}
-                        />
+                            <Radio
+                                h3="2F.7 : Whether Medical Officer In charge (MO/IC) uses or reviews the data for quality improvement"
+                                CheckbobItems={["Yes", "No"]}
+                                name="H2F7"
+                                byDefault={form2F.H2F7}
+                                onClick={handleChange(setForm2F)}
+                            />
 
-                        <Radio
-                            h3="2F.8 : Do you get Pre-Hospital Notification during an emergency?"
-                            CheckbobItems={["Yes", "No"]}
-                            name="H2F8"
-                            byDefault={form2F.H2F8}
-                            onClick={handleChange(setForm2F)}
-                        />
+                            <Radio
+                                h3="2F.8 : Do you get Pre-Hospital Notification during an emergency?"
+                                CheckbobItems={["Yes", "No"]}
+                                name="H2F8"
+                                byDefault={form2F.H2F8}
+                                onClick={handleChange(setForm2F)}
+                            />
 
-                        <Radio
-                            h3="2F.9 : Infrastructure for receiving external communication?"
-                            CheckbobItems={["Yes", "No"]}
-                            name="H2F9"
-                            byDefault={form2F.H2F9}
-                            onClick={handleChange(setForm2F)}
-                        />
+                            <Radio
+                                h3="2F.9 : Infrastructure for receiving external communication?"
+                                CheckbobItems={["Yes", "No"]}
+                                name="H2F9"
+                                byDefault={form2F.H2F9}
+                                onClick={handleChange(setForm2F)}
+                            />
+                        </div>
 
 
                         <div className="button-container">
@@ -302,7 +337,7 @@ function Form2F() {
 
                             <OverlayCard
                                 isVisible={showOverlay}
-                                message="Please fill all required fields to proceed."
+                                message="(Please fill all required fields to proceed)"
                             />
                         </div>
                     </div>
