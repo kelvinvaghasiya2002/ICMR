@@ -10,7 +10,7 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import { validateName, validateNumber, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
 function FormHB() {
@@ -76,6 +76,28 @@ function FormHB() {
     const { name, value } = e.target;
     let validatedValue = value;
     let error = "";
+
+    switch (name) {
+      case "HB1":
+      case "HB2":
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formHB[name];
+        }
+        break;
+      case "HA3":
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formHA[name];
+        }
+        break;
+      default:
+        break;
+    }
 
     setFormHB((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 

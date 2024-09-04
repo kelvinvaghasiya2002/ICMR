@@ -93,12 +93,13 @@ function FormFD() {
     let error = "";
 
     switch (name) {
-      case "FD6":
+      case "FD7":
+      case "FD10":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
         } else {
-          validatedValue = formFD[nBme];
+          validatedValue = formFD[name];
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
@@ -243,8 +244,9 @@ function FormFD() {
                 {formFD.FD9 !== "No" && formFD.FD9 && (
                   <InputField
                     name="FD10"
+                    type={"number"}
                     h3="FD.10 : If yes, how long (days) after birth did he/she stop sucking?:"
-                    onChange={handleChange(setFormFD)}
+                    onChange={handleChangeWithValidation}
                     value={formFD.FD10}
                     placeholder="Type here"
                     errorMsg={errors.FD10}

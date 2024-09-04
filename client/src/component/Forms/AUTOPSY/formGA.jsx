@@ -10,7 +10,12 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import {
+  validateName,
+  validateNumber,
+  validateNumberRange,
+  validateRequired,
+} from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
 function FormGA() {
@@ -75,6 +80,27 @@ function FormGA() {
     let validatedValue = value;
     let error = "";
 
+    switch (name) {
+      case "GA1":
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formGA[name];
+        }
+        break;
+      case "GA5":
+        error = validateNumberRange(value, 0, 150);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formGA[name];
+        }
+        break;
+      default:
+        break;
+    }
+
     setFormGA((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
@@ -120,15 +146,17 @@ function FormGA() {
           <div className="formcontent">
             <InputField
               name="GA1"
-              h3="GA1. Name of the respondent"
+              h3="GA.1 Name of the respondent"
               value={formGA.GA1}
               onChange={handleChangeWithValidation}
+              placeholder={"Type here"}
               required
               errorMsg={errors.GA1}
             />
             <InputField
               name="GA2"
-              h3="GA2. Respondent ID:"
+              h3="GA.2 Respondent ID:"
+              placeholder={"Type here"}
               value={formGA.GA2}
               onChange={handleChangeWithValidation}
               required
@@ -136,7 +164,7 @@ function FormGA() {
             />
             <Radio
               name="GA3"
-              h3="GA3. Relationship of respondent with deceased:"
+              h3="GA.3 Relationship of respondent with deceased:"
               CheckbobItems={[
                 "Brother/Sister",
                 "Mother",
@@ -154,7 +182,7 @@ function FormGA() {
             />
             <Radio
               name="GA4"
-              h3="GA4. Did the respondent live with the deceased during the events that led to death?"
+              h3="GA.4 Did the respondent live with the deceased during the events that led to death?"
               CheckbobItems={["Yes", "No"]}
               byDefault={formGA.GA4}
               onClick={handleChange(setFormGA)}
@@ -164,7 +192,7 @@ function FormGA() {
 
             <InputField
               name="GA5"
-              h3="GA5. Respondent's age in completed years"
+              h3="GA.5 Respondent's age in completed years"
               value={formGA.GA5}
               onChange={handleChangeWithValidation}
               required
@@ -172,7 +200,7 @@ function FormGA() {
             />
             <Radio
               name="GA6"
-              h3="GA6. Respondent's sex"
+              h3="GA.6 Respondent's sex"
               CheckbobItems={["Male", "Female"]}
               byDefault={formGA.GA6}
               onClick={handleChange(setFormGA)}

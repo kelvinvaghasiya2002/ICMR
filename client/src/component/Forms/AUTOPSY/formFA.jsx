@@ -10,7 +10,12 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import {
+  validateName,
+  validateNumber,
+  validateNumberRange,
+  validateRequired,
+} from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
 function FormFA() {
@@ -65,8 +70,17 @@ function FormFA() {
     let error = "";
 
     switch (name) {
+      case "FA1":
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formFA[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
       case "FA5":
-        error = validateNumber(value);
+        error = validateNumberRange(value, 0, 150);
         if (!error) {
           validatedValue = value;
         } else {
@@ -127,7 +141,7 @@ function FormFA() {
               onChange={handleChangeWithValidation}
               value={formFA.FA1}
               placeholder="Type here"
-                required
+              required
               //   error={errors.A1}
             />
             <InputField

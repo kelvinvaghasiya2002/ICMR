@@ -106,12 +106,15 @@ function FormFE() {
     let error = "";
 
     switch (name) {
-      case "FE6":
+      case "FE1":
+      case "FE3":
+      case "FE5":
+      case "FE13":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
         } else {
-          validatedValue = formFE[nBme];
+          validatedValue = formFE[name];
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;
@@ -357,14 +360,6 @@ function FormFE() {
               error={errors.FE22}
             />
 
-            <Radio
-              name="FE5"
-              h3="FE.5 : Was he/she able to breath immediately after birth?:"
-              CheckbobItems={["Yes", "No", "Unknown"]}
-              byDefault={formFE.FE5}
-              onClick={handleChange(setFormFE)}
-              error={errors.FE5}
-            />
             <div className="button-container">
               <Buttons
                 formName="formfe"

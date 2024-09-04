@@ -10,7 +10,7 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import { validateNumber, validateNumberRange, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
 function FormFC() {
@@ -99,11 +99,11 @@ function FormFC() {
 
     switch (name) {
       case "FC6":
-        error = validateNumber(value);
+        error = validateNumberRange(value, 0, 12);
         if (!error) {
           validatedValue = value;
         } else {
-          validatedValue = formFC[nBme];
+          validatedValue = formFC[name];
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;

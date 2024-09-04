@@ -10,7 +10,7 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import { validateName, validateNumber, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 import LastButton from "../child-comp/LastButton";
 
@@ -74,6 +74,30 @@ function FormIA() {
     const { name, value } = e.target;
     let validatedValue = value;
     let error = "";
+
+    switch (name) {
+      case "IA1":
+      case "IA2":
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formIA[name];
+        }
+        break;
+      case "IA4":
+      case "IA7":
+      case "IA8":
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formIA[name];
+        }
+        break;
+      default:
+        break;
+    }
 
     setFormIA((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 

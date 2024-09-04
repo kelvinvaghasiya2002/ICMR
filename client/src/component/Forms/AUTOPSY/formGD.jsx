@@ -10,7 +10,7 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import { validateNumber, validateNumberRange, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
 function FormGD() {
@@ -75,6 +75,19 @@ function FormGD() {
     const { name, value } = e.target;
     let validatedValue = value;
     let error = "";
+
+    switch (name) {
+      case "GD3":
+        error = validateNumberRange(value, 0, 12);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formGD[name];
+        }
+        break;
+      default:
+        break;
+    }
 
     setFormGD((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
@@ -150,6 +163,7 @@ function FormGD() {
                 h3="GD.3 : If yes, after how many months of pregnancy?:"
                 value={formGD.GD3}
                 onChange={handleChangeWithValidation}
+                placeholder={"Type here"}
                 required
                 errorMsg={errors.GD3}
               />
