@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CreateEmergenciesTable from '../../../utils/CreateEmergenciesTable';
 
-function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm,onClick }) {
+function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm, onClick }) {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = React.useState(false);
 
@@ -13,14 +13,14 @@ function Buttons({ prevText, prev, nextText, next, formName, formData, validateF
             setIsLoading(false);
             return;
         }
-        if(onClick){
+        if (onClick) {
             await onClick();
         }
 
-        if(next === "/death"){
-            CreateEmergenciesTable();   
+        if (next === "/death") {
+            CreateEmergenciesTable();
         }
-        
+
         var CompleteForm = localStorage.getItem("CompleteForm");
         if (formName === "formac4") {
             var formac4 = localStorage.getItem("formac4");
@@ -42,6 +42,24 @@ function Buttons({ prevText, prev, nextText, next, formName, formData, validateF
                 localStorage.setItem("CompleteForm", JSON.stringify(formData));
             }
             localStorage.setItem(formName, JSON.stringify(formData));
+        }
+
+        if (formName === "forma3") {
+            const forma3_table = JSON.parse(localStorage.getItem("forma3_table"));
+            localStorage.setItem("forma3_table_duplicate", JSON.stringify(forma3_table));
+        }
+
+        if (formName === "forma15") {
+            const emergency_table = JSON.parse(localStorage.getItem("forma3_table_duplicate"));
+            const death_table = JSON.parse(localStorage.getItem("forma15_table"));
+            const MemberID = JSON.parse(localStorage.getItem("forma2")).AB5;
+            console.log(MemberID);
+
+
+            for (let i = 0; i < death_table.length; i++) {
+                emergency_table.push({ name: death_table[i].name, age: death_table[i].age, sex: death_table[i].sex, MemberID: `${MemberID}_${emergency_table.length + 1}` })
+            }
+            localStorage.setItem("forma3_table", JSON.stringify(emergency_table));
         }
 
         navigate(next); // navigate is a function that navigates to the next page
