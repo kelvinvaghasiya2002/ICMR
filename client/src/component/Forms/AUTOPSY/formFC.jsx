@@ -253,8 +253,7 @@ function FormFC() {
                       "Waters broke one or more days before contractions started",
                       "Prolonged/difficult labour (12 hours or more)",
                       "Operative delivery",
-                      "Mother had fever",
-                      "by delivered bottom or feet first",
+                      "Mother had fever baby delivered bottom or feet first",
                       "Baby had cord around neck",
                       "Unknown",
                     ]}

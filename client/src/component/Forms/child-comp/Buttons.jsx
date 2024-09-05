@@ -2,11 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import CreateEmergenciesTable from '../../../utils/CreateEmergenciesTable';
 
-function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm }) {
-    const handleSubmit = (e) => {
+function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm,onClick }) {
+    const handleSubmit = async (e) => {
         if (validateForm && !validateForm()) {
             e.preventDefault();
             return;
+        }
+        if(onClick){
+            await onClick();
         }
 
         if(next === "/death"){

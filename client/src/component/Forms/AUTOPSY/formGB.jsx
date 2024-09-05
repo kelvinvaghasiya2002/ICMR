@@ -190,8 +190,8 @@ function FormGB() {
               errorMsg={errors.GB4}
             />
             <Radio
-              name="GA5"
-              h3="GA.5 : Respondent's sex:"
+              name="GB5"
+              h3="GB.5 : Respondent's sex:"
               CheckbobItems={["Male", "Female"]}
               byDefault={formGB.GB5}
               onClick={handleChange(setFormGB)}

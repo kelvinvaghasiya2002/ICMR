@@ -9,13 +9,7 @@ import setLocalStorage from "../setLocalStorage";
 import Heading from "../../Heading/Heading.jsx";
 import LocationButton from "../child-comp/Location.jsx";
 import DropDown from "../child-comp/DropDown.jsx";
-import {
-  GJBRC_DH,
-  MPBHS_DH,
-  ORPUR_DH,
-  PBLDH_DH,
-  PYPDY_DH,
-} from "../BlockItem/blockList.js";
+import { GJBRC, MPBHS, ORPUR, PBLDH, PYPDY } from "../BlockItem/blockList.js";
 import {
   validateName,
   validateNumber,
@@ -62,16 +56,16 @@ function Form3A() {
 
   const dropdownItems = useMemo(() => {
     switch (form3A.H3A2) {
-      case "GJBRC_CS":
-        return GJBRC_DH;
-      case "ORPUR_CS":
-        return ORPUR_DH;
-      case "MPBHS_CS":
-        return MPBHS_DH;
-      case "PBLDH_CS":
-        return PBLDH_DH;
-      case "PYPDY_CS":
-        return PYPDY_DH;
+      case "GJBRC_PHC":
+        return GJBRC;
+      case "ORPUR_PHC":
+        return ORPUR;
+      case "MPBHS_PHC":
+        return MPBHS;
+      case "PBLDH_PHC":
+        return PBLDH;
+      case "PYPDY_PHC":
+        return PYPDY;
       default:
         return [];
     }
@@ -121,7 +115,7 @@ function Form3A() {
       "H3A6",
       "H3A7",
       "H3A8",
-      // "H3A9",    // Because SSL 
+      "H3A9",
       "H3A10",
       "H3A11",
     ];
@@ -242,11 +236,11 @@ function Form3A() {
               name="H3A2"
               h3="3A.2 : State :"
               CheckbobItems={[
-                "GJBRC_CS",
-                "ORPUR_CS",
-                "MPBHS_CS",
-                "PBLDH_CS",
-                "PYPDY_CS",
+                "GJBRC_PHC",
+                "ORPUR_PHC",
+                "MPBHS_PHC",
+                "PBLDH_PHC",
+                "PYPDY_PHC",
               ]}
               // required
               errorMsg={errors.H3A2}

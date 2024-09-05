@@ -8,13 +8,7 @@ import setLocalStorage from "../setLocalStorage";
 import Heading from "../../Heading/Heading.jsx";
 import LocationButton from "../child-comp/Location.jsx";
 import DropDown from "../child-comp/DropDown.jsx";
-import {
-  GJBRC_DH,
-  MPBHS_DH,
-  ORPUR_DH,
-  PBLDH_DH,
-  PYPDY_DH,
-} from "../BlockItem/blockList.js";
+import { GJBRC, MPBHS, ORPUR, PBLDH, PYPDY } from "../BlockItem/blockList.js";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {
@@ -88,15 +82,15 @@ function Form2A() {
   const dropdownItems = useMemo(() => {
     switch (form2A.H2A2) {
       case "GJBRC_CHC":
-        return GJBRC_DH;
+        return GJBRC;
       case "ORPUR_CHC":
-        return ORPUR_DH;
+        return ORPUR;
       case "MPBHS_CHC":
-        return MPBHS_DH;
+        return MPBHS;
       case "PBLDH_CHC":
-        return PBLDH_DH;
+        return PBLDH;
       case "PYPDY_CHC":
-        return PYPDY_DH;
+        return PYPDY;
       default:
         return [];
     }
@@ -160,7 +154,7 @@ function Form2A() {
       "H2A6",
       "H2A7",
       "H2A8",
-      // "H2A9",    //Removed becasuse currently SSL Certificate is not available
+      "H2A9",
       "H2A10",
       "H2A11",
     ];

@@ -6,7 +6,7 @@ import Radio from "../child-comp/Radio.jsx"
 import "../Form.css"
 import Buttons from '../child-comp/Buttons';
 import InputField from '../child-comp/InputField';
-import setLocalStorage from '../setLocalStorage.js';
+import setLocalStorage, { getLocalStorage } from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading.jsx';
 import LocationButton from '../child-comp/Location.jsx';
 import CSTLastButton from '../child-comp/CSTLastButton.jsx';
@@ -18,15 +18,18 @@ console.log(uid.rnd());
 
 function FormA2() {
     var forma2 = setLocalStorage("forma2", { AB1: "", AB2: "", AB3: "", AB4: {}, AB5: "", AB6: "" })
+    let CSTuniqueCode = getLocalStorage("CSTuniqueCode") ?? "";
+    
     const [formA2, setFormA2] = useState(JSON.parse(forma2))
     turnOffbutton();
+    
 
     useEffect(() => {
         setFormA2((prevValue) => {
             return (formA2.AB5 === "") ? (
                 {
                     ...prevValue,
-                    AB5: uid.rnd()
+                    AB5: `${CSTuniqueCode.Household_ID}`
                 }
             ) : (
                 {
@@ -35,6 +38,8 @@ function FormA2() {
             )
         })
     }, [])
+
+
 
     return (
         <div>
