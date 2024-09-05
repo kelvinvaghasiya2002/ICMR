@@ -21,5 +21,3 @@ const AutopsyConroller = (req, res) => {
 };
 
 export default AutopsyConroller;
-
-// TypeError: First argument to `Model` constructor must be an object, **not** a string. Make sure you're calling `mongoose.model()`, not `mongoose.Model()`.

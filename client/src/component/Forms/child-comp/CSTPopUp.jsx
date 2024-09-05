@@ -8,8 +8,9 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
+        var uniqueCode = JSON.parse(localStorage.getItem("CSTuniqueCode"));
         var CompleteForm = JSON.parse(localStorage.getItem("CompleteForm"));
-        CompleteForm = { ...CompleteForm, ...lastForm };
+        CompleteForm = { ...uniqueCode,...CompleteForm, ...lastForm };
 
         if (formName === "formh31") {
             var Name_and_Emergencies = JSON.parse(localStorage.getItem("Name_and_Emergencies"));
