@@ -13,6 +13,8 @@ import OverlayCard from "../OverlayCard";
 import useFormValidation from "../../../utils/custom_validation_hook.js";
 import axios from "axios";
 
+const server = import.meta.env.VITE_SERVER;
+
 function FormA1() {
   var forma1 = setLocalStorage("forma1", {
     AA1: "",
@@ -48,12 +50,9 @@ function FormA1() {
   const handleSaveAndNext = async () => {
     try {
       if (localStorage.getItem("CSTuniqueCode") === null) {
-        const { data } = await axios.post(
-          "http://localhost:3000/cstuniquecodegenrate",
-          {
-            code: formA1.AA2,
-          }
-        );
+        const { data } = await axios.post(`${server}/cstuniquecodegenrate`, {
+          code: formA1.AA2,
+        });
         const { uniqueCode } = data;
         setLocalStorage("CSTuniqueCode", uniqueCode);
 

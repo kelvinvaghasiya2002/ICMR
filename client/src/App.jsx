@@ -280,10 +280,10 @@ function App() {
         <Route path="/barriers-and-facilitators2" element={<FormD25 />} />
         <Route path="/costing" element={<FormE26 />} />
         <Route path="/verbal-&-social-autopsy1" element={<FormF27 />} />
-        <Route path="/verbal-&-social-autopsy2" element={<FormF28 />} />
+        {/* <Route path="/verbal-&-social-autopsy2" element={<FormF28 />} />
         <Route path="/improve-emergency-services" element={<FormG29 />} />
         <Route path="/household-schedule1" element={<FormH30 />} />
-        <Route path="/household-schedule2" element={<FormH31 />} />
+        <Route path="/household-schedule2" element={<FormH31 />} /> */}
 
         {/* BELOW are HFAT-1 */}
 
