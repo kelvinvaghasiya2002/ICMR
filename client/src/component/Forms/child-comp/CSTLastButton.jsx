@@ -18,15 +18,15 @@ function CSTLastButton({ prev, from, formName, formData }) {
         }
         localStorage.setItem(formName, JSON.stringify(formData));
 
-        if (formName === "formh31") {
-            var Name_and_Emergencies = JSON.parse(localStorage.getItem("Name_and_Emergencies"));
-            Name_and_Emergencies = Name_and_Emergencies.filter((item, index) => index !== 0);
-            localStorage.setItem("Name_and_Emergencies", JSON.stringify(Name_and_Emergencies));
+        // if (formName === "formh31") {
+        //     var Name_and_Emergencies = JSON.parse(localStorage.getItem("Name_and_Emergencies"));
+        //     Name_and_Emergencies = Name_and_Emergencies.filter((item, index) => index !== 0);
+        //     localStorage.setItem("Name_and_Emergencies", JSON.stringify(Name_and_Emergencies));
 
-            var PartBLoop = JSON.parse(localStorage.getItem("PartBLoop"));
-            PartBLoop = {...PartBLoop , ...formData};
-            localStorage.setItem("PartBLoop",JSON.stringify(PartBLoop));
-        }
+        //     var PartBLoop = JSON.parse(localStorage.getItem("PartBLoop"));
+        //     PartBLoop = {...PartBLoop , ...formData};
+        //     localStorage.setItem("PartBLoop",JSON.stringify(PartBLoop));
+        // }
         setPopup(true);
     }
 

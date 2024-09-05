@@ -3,10 +3,11 @@ import DropDown from './DropDown';
 
 function Table({ tableName }) {
     // console.log(JSON.parse(localStorage.getItem("CompleteForm"))[1]);
+    const forma1 = JSON.parse(localStorage.getItem("forma1"));
     const forma2 = JSON.parse(localStorage.getItem("forma2"));
     const [rows, setRows] = useState(() => {
         const storedRows = localStorage.getItem(tableName);
-        return storedRows ? JSON.parse(storedRows) : [{ name: '', age: '', sex: 'Male', MemberID: `${forma2?.AB5}_${1}` }];
+        return storedRows ? JSON.parse(storedRows) : [{ name: '', age: '', sex: 'Male', MemberID: `${forma1?.AA2}_${forma2?.AB5}_${1}` }];
     });
 
     useEffect(() => {
@@ -14,7 +15,7 @@ function Table({ tableName }) {
     }, [rows]);
 
     function handlePlusClick() {
-        setRows([...rows, { name: '', age: '', sex: 'Male', MemberID: `${forma2.AB5}_${rows.length+1}` }]);
+        setRows([...rows, { name: '', age: '', sex: 'Male', MemberID: `${forma1?.AA2}_${forma2.AB5}_${rows.length+1}` }]);
     }
 
     function handleMinusClick() {
