@@ -54,7 +54,7 @@ function FormGE() {
     GE32: "",
     GE33: "",
     GE34: "",
-    GE35: "",
+    GE35: [],
     GE36: "",
     GE37: "",
     GE38: "",
@@ -183,6 +183,25 @@ function FormGE() {
     let validatedValue = value;
     let error = "";
 
+    switch (name) {
+      case "GE1":
+      case "GE3":
+      case "GE10":
+      case "GE14":
+      case "GE17":
+      case "GE26":
+      case "GE34":
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formGE[name];
+        }
+        break;
+      default:
+        break;
+    }
+
     setFormGE((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
@@ -193,6 +212,39 @@ function FormGE() {
       case "GE4":
       case "GE5":
       case "GE6":
+      case "GE7":
+      case "GE8":
+      case "GE9":
+      case "GE10":
+      case "GE11":
+      case "GE12":
+      case "GE13":
+      case "GE14":
+      case "GE15":
+      case "GE16":
+      case "GE17":
+      case "GE18":
+      case "GE19":
+      case "GE20":
+      case "GE21":
+      case "GE22":
+      case "GE23":
+      case "GE24":
+      case "GE25":
+      case "GE26":
+      case "GE27":
+      case "GE28":
+      case "GE29":
+      case "GE30":
+      case "GE31":
+      case "GE32":
+      case "GE33":
+      case "GE34":
+      case "GE35":
+      case "GE36":
+      case "GE37":
+      case "GE38":
+      case "GE39":
         error = error || validateRequired(validatedValue);
         break;
       default:
@@ -844,8 +896,9 @@ If yes, did he/she receive an injection for measles (use local term)?
                     "Other",
                     "Unknown",
                   ]}
-                  byDefault={formGE.GE35}
-                  onClick={handleChange(setFormGE)}
+                  setFunction={setFormGE}
+                  StateValue={formGE}
+                  array={formGE.GE35}
                   error={errors.GE35}
                 />
               </>

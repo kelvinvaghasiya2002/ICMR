@@ -1,42 +1,53 @@
 export function validateName(name) {
-    const nameRegex = /^[a-zA-Z\s]*$/;
-    if (!nameRegex.test(name)) {
-        return 'Enter letters only';
-    }
-    return '';
+  const nameRegex = /^[a-zA-Z\s]*$/;
+  if (!nameRegex.test(name)) {
+    return "Enter letters only";
+  }
+  return "";
 }
 
 export function validateNumber(number) {
-    const numberRegex = /^\d*$/;
-    if (!numberRegex.test(number)) {
-        return 'Enter numbers only';
-    }
-    return '';
+  const numberRegex = /^\d*$/;
+  if (!numberRegex.test(number)) {
+    return "Enter numbers only";
+  }
+  return "";
+}
+
+// validateNumberRange function is used to validate the number range and only number also
+export function validateNumberRange(number, min, max) {
+  const numberRegex = /^\d*$/;
+  if (!numberRegex.test(number)) {
+    return "Enter numbers only";
+  }
+  if (number < min || number > max) {
+    return `Enter a number between ${min} and ${max}`;
+  }
+  return "";
 }
 
 export function validateRequired(value) {
-    if (value?.trim() === '') {
-        return 'This field is required.';
-    }
-    return '';
+  if (value?.trim() === "") {
+    return "This field is required.";
+  }
+  return "";
 }
 
 export function validateEmail(email) {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(email)) {
-        return 'Enter a valid email address';
-    }
-    return '';
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailRegex.test(email)) {
+    return "Enter a valid email address";
+  }
+  return "";
 }
 
-
 export function validateCheckBox(newArray) {
-    // const emptyArray = newArray.every(item => item === "");
+  // const emptyArray = newArray.every(item => item === "");
 
-    if(!newArray.every(item => item === "")){
-        return 'Select atleast one option'
-    }
-        return '';
+  if (!newArray.every((item) => item === "")) {
+    return "Select atleast one option";
+  }
+  return "";
 }
 
 // export function validateCheckBox(newArray) {

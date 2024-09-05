@@ -10,7 +10,7 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import { validateName, validateNumber, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 import LastButton from "../child-comp/LastButton";
 
@@ -78,6 +78,19 @@ function FormHD() {
     const { name, value } = e.target;
     let validatedValue = value;
     let error = "";
+
+    switch (name) {
+      case "HD2":
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formHD[name];
+        }
+        break;
+      default:
+        break;
+    }
 
     setFormHD((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 

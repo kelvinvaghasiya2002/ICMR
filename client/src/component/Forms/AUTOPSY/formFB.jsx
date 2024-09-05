@@ -10,7 +10,7 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import { validateName, validateNumber, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
 function FormFB() {
@@ -71,12 +71,23 @@ function FormFB() {
     let error = "";
 
     switch (name) {
+      case "FB1":
+      case "FB2":
+      case "FB3":
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formFB[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
       case "FB4":
         error = validateNumber(value);
         if (!error) {
           validatedValue = value;
         } else {
-          validatedValue = formFB[nBme];
+          validatedValue = formFB[name];
           e.preventDefault(); // Prevent default behavior if the input was invalid
         }
         break;

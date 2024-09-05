@@ -10,7 +10,7 @@ import Checkbox from "../child-comp/Checkbox";
 import Radio from "../child-comp/Radio";
 import Buttons from "../child-comp/Buttons";
 import OverlayCard from "../OverlayCard";
-import { validateNumber, validateRequired } from "../fv";
+import { validateName, validateNumber, validateRequired } from "../fv";
 import useFormValidation from "../../../utils/custom_validation_hook";
 
 function FormGB() {
@@ -83,16 +83,43 @@ function FormGB() {
     let validatedValue = value;
     let error = "";
 
+    switch (name) {
+      case "GB1":
+      case "GB2":
+      case "GB3":
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formGB[name];
+        }
+        break;
+      case "GB4":
+        error = validateNumber(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formGB[name];
+        }
+        break;
+      default:
+        break;
+    }
+
     setFormGB((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case "GA1":
-      case "GA2":
-      case "GA3":
-      case "GA4":
-      case "GA5":
-      case "GA6":
+      case "GB1":
+      case "GB2":
+      case "GB3":
+      case "GB4":
+      case "GB5":
+      case "GB6":
+      case "GB7":
+      case "GB8":
+      case "GB9":
+      case "GB10":
         error = error || validateRequired(validatedValue);
         break;
       default:
@@ -131,6 +158,7 @@ function FormGB() {
               h3="GB.1 : Name of the Head of the household:"
               value={formGB.GB1}
               onChange={handleChangeWithValidation}
+              placeholder={"Type here"}
               required
               errorMsg={errors.GB1}
             />
@@ -138,6 +166,7 @@ function FormGB() {
               name="GB2"
               h3="GB.2 : Full name of the deceased:"
               value={formGB.GB2}
+              placeholder={"Type here"}
               onChange={handleChangeWithValidation}
               required
               errorMsg={errors.GB2}
@@ -145,6 +174,7 @@ function FormGB() {
             <InputField
               name="GB3"
               h3="GB3. Name of mother of the deceased:"
+              placeholder={"Type here"}
               value={formGB.GB3}
               onChange={handleChangeWithValidation}
               required
@@ -154,6 +184,7 @@ function FormGB() {
               name="GB4"
               h3="GB.4 : Age in Months or Years:"
               value={formGB.GB4}
+              placeholder={"Type here"}
               onChange={handleChangeWithValidation}
               required
               errorMsg={errors.GB4}
@@ -189,6 +220,7 @@ function FormGB() {
               h3="GB.7 : House address of the deceased (include PIN):"
               value={formGB.GB7}
               onChange={handleChangeWithValidation}
+              placeholder={"Type here"}
               required
               errorMsg={errors.GB7}
             />
@@ -222,6 +254,7 @@ function FormGB() {
               p="(Allow the respondent to tell the illness in his or her own words)"
               value={formGB.GB10}
               onChange={handleChangeWithValidation}
+              placeholder={"Type here"}
               required
               errorMsg={errors.GB10}
             />
