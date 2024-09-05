@@ -13,9 +13,32 @@ import { validateName, validateNumber, validateRequired, validateEmail, validate
 import OverlayCard from '../OverlayCard.jsx';
 
 function Form2I() {
-    useEffect(() => {
+
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
         AOS.init({ duration: 2000 });
-    }, []);
+        
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
+    // useEffect(() => {
+    //     AOS.init({ duration: 2000 });
+    // }, []);
 
     var form2i = setLocalStorage("form2i", { H2I1: [""], H2I2: [], H2I4: "" });
     const [form2I, setForm2I] = useState(JSON.parse(form2i));
@@ -164,9 +187,19 @@ function Form2I() {
 
     return (
         <div>
-            <Heading h2="Health Facility Assessment Tool 2: Community Health Centre" />
-            <section>
-                <SidePanel id={"9"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
+            </div>
+            <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"9"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
                 <div className="siteInfo" data-aos="fade-left">
 
                     <div className="formhdr">
@@ -227,7 +260,7 @@ function Form2I() {
 
                             <OverlayCard
                                 isVisible={showOverlay}
-                                message="Please fill all required fields to proceed."
+                                message="(Please fill all required fields to proceed)"
                             />
                         </div>
                     </div>

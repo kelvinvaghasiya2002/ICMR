@@ -13,9 +13,32 @@ import { validateName, validateNumber, validateRequired, validateEmail, validate
 import OverlayCard from '../OverlayCard.jsx';
 
 function Form2H() {
+
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
   useEffect(() => {
+    window.addEventListener("resize", handleResize);
     AOS.init({ duration: 2000 });
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  // useEffect(() => {
+  //   AOS.init({ duration: 2000 });
+  // }, []);
 
   var form2h = setLocalStorage("form2h", { H2H1: "", H2H2: "", H2H3: "", H2H4: "", H2H5: "", H2H6: "", H2H7: "", H2H8: [""], H2H9: "" });
 
@@ -223,12 +246,22 @@ function Form2H() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 2: Community Health Centre" ></Heading>
-      <section>
-        <SidePanel id={"8"} />
+      <div className="header">
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Health Facility Assessment Tool 2: Community Health Centre"></Heading>
+      </div>
+      <section className="form-main">
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"8"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
         <div className="siteInfo" data-aos="fade-left">
 
-          <div className="form2Hdr">
+          <div className="formhdr">
             <div>
               <h3>2H. Leadership and Governance</h3>
             </div>
@@ -283,7 +316,7 @@ function Form2H() {
 
               <OverlayCard
                 isVisible={showOverlay}
-                message="Please fill all required fields to proceed."
+                message="(Please fill all required fields to proceed)"
               />
             </div>
           </div>
