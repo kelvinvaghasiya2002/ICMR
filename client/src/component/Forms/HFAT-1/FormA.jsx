@@ -9,13 +9,7 @@ import { handleChange, turnOffbutton } from "../helpers";
 import setLocalStorage from "../setLocalStorage";
 import Heading from "../../Heading/Heading";
 import DropDown from "../child-comp/DropDown.jsx";
-import {
-  GJBRC_DH,
-  MPBHS_DH,
-  ORPUR_DH,
-  PBLDH_DH,
-  PYPDY_DH,
-} from "../BlockItem/blockList.js";
+import { GJBRC, MPBHS, ORPUR, PBLDH, PYPDY } from "../BlockItem/blockList.js";
 import LocationButton from "../child-comp/Location.jsx";
 import {
   validateName,
@@ -126,22 +120,32 @@ function FormA() {
   const dropdownItems = useMemo(() => {
     switch (formA.A3) {
       case "GJBRC_DH":
-        return GJBRC_DH;
+        return GJBRC;
       case "ORPUR_DH":
-        return ORPUR_DH;
+        return ORPUR;
       case "MPBHS_DH":
-        return MPBHS_DH;
+        return MPBHS;
       case "PBLDH_DH":
-        return PBLDH_DH;
+        return PBLDH;
       case "PYPDY_DH":
-        return PYPDY_DH;
+        return PYPDY;
       default:
         return [];
     }
   }, [formA.A3]);
 
   const isFormValid = () => {
-    const requiredFields = ["A1", "A3","A4", "A5", "A6", "A7", "A8", "A9", "A11"];
+    const requiredFields = [
+      "A1",
+      "A3",
+      "A4",
+      "A5",
+      "A6",
+      "A7",
+      "A8",
+      "A9",
+      "A11",
+    ];
     if (formA.A11 === "Tertiary care center") {
       requiredFields.push("A12");
     }

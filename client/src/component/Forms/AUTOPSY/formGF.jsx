@@ -113,7 +113,7 @@ function FormGF() {
                 prevText="Previous"
                 nextText="Save & Next"
                 prev={formG?.FC1 !== "No" ? "/formGC" : "/formGE"}
-                next="/formGA"
+                next="/formHA"
                 // validateForm={validateForm}
               />
               <OverlayCard
