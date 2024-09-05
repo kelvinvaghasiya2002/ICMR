@@ -1,21 +1,43 @@
 import { CSTFORM } from "../Database/CST.js";
 
-export const CSTConroller = (req, res) => {
+export const CSTConroller = async (req, res) => {
   const { CompleteForm } = req.body;
-  CSTFORM.create(CompleteForm)
-    .then((response) => {
-      res.status(200).json({
-        success: "Data submitted successfully!",
-        response: response,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: "Error occured in saving data.",
-      });
-    });
+  try {
+    const form = await CSTFORM.findOneAndUpdate(
+      {
+        _id: CompleteForm._id,
+        Household_ID: CompleteForm.Household_ID,
+        Respondent_ID: CompleteForm.Respondent_ID,
+      },
+      CompleteForm,
+      { new: true }
+    );
+    if (!form) {
+      return res.status(404).json({ error: "Form ID not found" });
+    }
+    res.json({ message: "Form submitted successfully", form });
+  } catch (error) {
+    res.status(500).json({ error: "Error submitting form" });
+  }
 };
+
+//
+// export const CSTConroller = (req, res) => {
+//   const { CompleteForm } = req.body;
+//   CSTFORM.create(CompleteForm)
+//     .then((response) => {
+//       res.status(200).json({
+//         success: "Data submitted successfully!",
+//         response: response,
+//       });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json({
+//         error: "Error occured in saving data.",
+//       });
+//     });
+// };
 
 const UniqueCode = async (uniqueCode) => {
   try {

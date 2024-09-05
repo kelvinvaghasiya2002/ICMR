@@ -51,7 +51,7 @@ function Buttons({ prevText, prev, nextText, next, formName, formData, validateF
         <div className='buttons'>
             <button className='prevbtn'><Link to={prev}>{prevText}</Link></button>
             {/* <Link to={next} onClick={handleSubmit} className='nextbtn'>{nextText}</Link> */}
-            <button onClick={handleSubmit} className='nextbtn'>{isLoading ? "Loading..." : nextText}</button>
+            <button onClick={handleSubmit} className='nextbtn' disabled={isLoading} >{isLoading ? "Loading..." : nextText}</button>
         </div>
     )
 }
