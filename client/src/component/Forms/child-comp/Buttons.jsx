@@ -1,11 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CreateEmergenciesTable from '../../../utils/CreateEmergenciesTable';
 
 function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm,onClick }) {
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = React.useState(false);
+
     const handleSubmit = async (e) => {
+        setIsLoading(true);
         if (validateForm && !validateForm()) {
             e.preventDefault();
+            setIsLoading(false);
             return;
         }
         if(onClick){
@@ -38,12 +43,15 @@ function Buttons({ prevText, prev, nextText, next, formName, formData, validateF
             }
             localStorage.setItem(formName, JSON.stringify(formData));
         }
+
+        navigate(next); // navigate is a function that navigates to the next page
     }
 
     return (
         <div className='buttons'>
             <button className='prevbtn'><Link to={prev}>{prevText}</Link></button>
-            <Link to={next} onClick={handleSubmit} className='nextbtn'>{nextText}</Link>
+            {/* <Link to={next} onClick={handleSubmit} className='nextbtn'>{nextText}</Link> */}
+            <button onClick={handleSubmit} className='nextbtn'>{isLoading ? "Loading..." : nextText}</button>
         </div>
     )
 }
