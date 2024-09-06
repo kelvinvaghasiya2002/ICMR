@@ -3,18 +3,29 @@ import DropDown from './DropDown';
 
 function Table1({ tableName }) {
     // console.log(JSON.parse(localStorage.getItem("CompleteForm"))[1]);
+    const forma1 = JSON.parse(localStorage.getItem("forma1"));
+    const forma2 = JSON.parse(localStorage.getItem("forma2"));
+    const forma3_table = JSON.parse(localStorage.getItem("forma3_table"));
     const [rows, setRows] = useState(() => {
         const storedRows = localStorage.getItem(tableName);
-        return storedRows ? JSON.parse(storedRows) : [{ name: '', age: '', sex: 'Male' }];
+        return storedRows ? JSON.parse(storedRows) : [{ name: '', age: '', sex: 'Male', MemberID: `${forma1?.AA2}_${forma2?.AB5}_${forma3_table.length}` }];
     });
 
     useEffect(() => {
         localStorage.setItem(tableName, JSON.stringify(rows));
     }, [rows]);
 
+    // check count of forma3_table and update member id accordingly
+    useEffect(() => {
+        const newRows = rows.map((row, i) => (
+            { ...row, MemberID: `${forma1?.AA2}_${forma2?.AB5}_${forma3_table.length + i + 1}` }
+        ));
+        setRows(newRows);
+
+    }, [forma3_table.length]);
 
     function handlePlusClick() {
-        setRows([...rows, { name: '', age: '', sex: 'Male' }]);
+        setRows([...rows, { name: '', age: '', sex: 'Male', MemberID: `${forma1?.AA2}_${forma2.AB5}_${forma3_table.length + rows.length + 1}` }]);
     }
 
     function handleMinusClick() {
@@ -41,10 +52,10 @@ function Table1({ tableName }) {
                             <th>Name</th>
                             <th>Age (years)</th>
                             <th>Sex</th>
-
+                            <th>Member ID</th>
                         </tr>
                         {
-                            rows?.map((item, index) => {
+                            rows.map((item, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{index + 1}</td>
@@ -66,11 +77,18 @@ function Table1({ tableName }) {
                                             <DropDown
                                                 dropdownItems={["Male", "Female", "Other"]}
                                                 name={"table_sex_field"}
-                                                value={item.sex}
-                                                onChange={(e) => handleInputChange(index, 'sex', e.target.value)}
+                                                byDefault={item.sex}
+                                                onClick={(e) => handleInputChange(index, 'sex', e.target.value)}
                                             />
                                         </td>
-
+                                        <td>
+                                            <input
+                                                className='tableinput'
+                                                value={item.MemberID}
+                                                style={{cursor : "not-allowed"}}
+                                                readOnly
+                                            />
+                                        </td>
                                     </tr>
                                 )
                             })

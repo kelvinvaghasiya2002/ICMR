@@ -49,17 +49,27 @@ function FormA1() {
 
   const handleSaveAndNext = async () => {
     try {
-      if (localStorage.getItem("CSTuniqueCode") === null) {
+      if (
+        localStorage.getItem("CSTuniqueCode") === null 
+        // || localStorage.getItem("CSTuniqueCode").AA2 !== formA1.AA2
+      ) {
         const { data } = await axios.post(`${server}/cstuniquecodegenrate`, {
           code: formA1.AA2,
         });
         const { uniqueCode } = data;
+        // localStorage.removeItem("CSTuniqueCode");
         setLocalStorage("CSTuniqueCode", uniqueCode);
 
+        // update setFormA1 only if the unique code is generated successfully otherwise create a new one
         setFormA1((prevValue) => ({
           ...prevValue,
           AA4: uniqueCode.Respondent_ID,
         }));
+
+        // setFormA1((prevValue) => ({
+        //   ...prevValue,
+        //   AA4: uniqueCode.Respondent_ID,
+        // }));
       }
     } catch (error) {
       console.error("Error generating unique code", error);

@@ -44,23 +44,23 @@ function Buttons({ prevText, prev, nextText, next, formName, formData, validateF
             localStorage.setItem(formName, JSON.stringify(formData));
         }
 
-        if (formName === "forma3") {
-            const forma3_table = JSON.parse(localStorage.getItem("forma3_table"));
-            localStorage.setItem("forma3_table_duplicate", JSON.stringify(forma3_table));
-        }
+        // if (formName === "forma3") {
+        //     const forma3_table = JSON.parse(localStorage.getItem("forma3_table"));
+        //     localStorage.setItem("forma3_table_duplicate", JSON.stringify(forma3_table));
+        // }
 
-        if (formName === "forma15") {
-            const emergency_table = JSON.parse(localStorage.getItem("forma3_table_duplicate"));
-            const death_table = JSON.parse(localStorage.getItem("forma15_table"));
-            const MemberID = JSON.parse(localStorage.getItem("forma2")).AB5;
-            console.log(MemberID);
+        // if (formName === "forma15") {
+        //     const emergency_table = JSON.parse(localStorage.getItem("forma3_table_duplicate"));
+        //     const death_table = JSON.parse(localStorage.getItem("forma15_table"));
+        //     const MemberID = JSON.parse(localStorage.getItem("forma2")).AB5;
+        //     console.log(MemberID);
 
 
-            for (let i = 0; i < death_table.length; i++) {
-                emergency_table.push({ name: death_table[i].name, age: death_table[i].age, sex: death_table[i].sex, MemberID: `${MemberID}_${emergency_table.length + 1}` })
-            }
-            localStorage.setItem("forma3_table", JSON.stringify(emergency_table));
-        }
+        //     for (let i = 0; i < death_table.length; i++) {
+        //         emergency_table.push({ name: death_table[i].name, age: death_table[i].age, sex: death_table[i].sex, MemberID: `${MemberID}_${emergency_table.length + 1}` })
+        //     }
+        //     localStorage.setItem("forma3_table", JSON.stringify(emergency_table));
+        // }
 
         navigate(next); // navigate is a function that navigates to the next page
     }
