@@ -47,6 +47,7 @@ function FormA15() {
 
             <h3>AC.15.3  If yes, could you please tell about the deceased persons?</h3>
 
+            {/* <Table tableName={"forma15_table"} /> */}
             <Table1 tableName={"forma15_table"} />
 
             <Checkbox
