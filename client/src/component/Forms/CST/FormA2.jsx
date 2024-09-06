@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { handleChange, turnOffbutton } from '../helpers'
 import SidePanel from './SidePanelCST.jsx';
 import DropDown from '../child-comp/DropDown';
@@ -12,6 +12,7 @@ import LocationButton from '../child-comp/Location.jsx';
 import CSTLastButton from '../child-comp/CSTLastButton.jsx';
 import ShortUniqueId from "short-unique-id"
 import LastButton from '../child-comp/LastButton.jsx';
+import { GJBRC, MPBHS, ORPUR, PBLDH, PYPDY } from "../BlockItem/blockList.js";
 
 const uid = new ShortUniqueId({ length: 10 });
 console.log(uid.rnd());
@@ -19,12 +20,33 @@ console.log(uid.rnd());
 function FormA2() {
     var forma2 = setLocalStorage("forma2", { AB1: "", AB2: "", AB3: "", AB4: {}, AB5: "", AB6: "" })
     let CSTuniqueCode = getLocalStorage("CSTuniqueCode") ?? "";
+    let formA1 = getLocalStorage("forma1");
     
     const [formA2, setFormA2] = useState(JSON.parse(forma2))
+    // const [dropdownItems, setDropdownItems] = useState(["em"]);
+
     turnOffbutton();
+
+    const dropdownItems = useMemo(() => {
+        switch (formA1.AA2) {
+          case "GJBRC_CS":
+            return GJBRC;
+          case "ORPUR_CS":
+            return ORPUR;
+          case "MPBHS_CS":
+            return MPBHS;
+          case "PBLDH_CS":
+            return PBLDH;
+          case "PYPDY_CS":
+            return PYPDY;
+          default:
+            return [];
+        }
+      }, [formA1.AA2]);
     
 
     useEffect(() => {
+        dropdownItems
         setFormA2((prevValue) => {
             return (formA2.AB5 === "") ? (
                 {
@@ -60,7 +82,9 @@ function FormA2() {
 
                     <div className="formcontent cont_extra">
 
-                        <DropDown className='dropdown' onClick={handleChange(setFormA2)} dropdownItems={["Bhagat Singh Bhavan", "C V Raman"]} name={"AB1"} h3="AB.1 Block :" byDefault={formA2.AB1} />
+                        <DropDown className='dropdown' onClick={handleChange(setFormA2)} name={"AB1"} h3="AB.1 Block :" byDefault={formA2.AB1} 
+                        dropdownItems={dropdownItems}
+                        />
 
 
                         <Radio h3="AB.2 Type of PSU :" CheckbobItems={["Rural", "Urban"]} name="AB2" onClick={handleChange(setFormA2)} byDefault={formA2.AB2} />
