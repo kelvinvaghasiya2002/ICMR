@@ -112,6 +112,7 @@ function FormB17() {
               name="B7"
               onClick={handleChange(setFormB16)}
               byDefault={formB16.B7}
+              setter={setFormB16}
             />
             <InputField
               onChange={handleChange(setFormB16)}
@@ -150,14 +151,15 @@ function FormB17() {
               onClick={handleChange(setFormB16)}
               byDefault={formB16.B11}
             />
-
-            <InputField
-              onChange={handleChange(setFormB16)}
-              h3="B.12	If yes, what medication was given?"
-              placeholder="Type here"
-              name="B12_if"
-              value={formB16.B12_if}
-            />
+            {formB16.B11 == "Yes" && formB16.B11 && (
+              <InputField
+                onChange={handleChange(setFormB16)}
+                h3="B.12	If yes, what medication was given?"
+                placeholder="Type here"
+                name="B12_if"
+                value={formB16.B12_if}
+              />
+            )}
             <InputField
               onChange={handleChange(setFormB16)}
               h3="B.13	Which was the first symptom recognised as serious?"
@@ -170,6 +172,7 @@ function FormB17() {
               CheckbobItems={["Family member", "Patient", "Others (Specify)"]}
               otherArray={[0, 0, 1]}
               name="B14"
+              setter={setFormB16}
               onClick={handleChange(setFormB16)}
               byDefault={formB16.B14}
             />

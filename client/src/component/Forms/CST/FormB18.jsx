@@ -86,6 +86,7 @@ function FormB18() {
               ]}
               otherArray={[0, 0, 0, 0, 0, 1]}
               name="B16"
+              setter={setFormB16}
               onClick={handleChange(setFormB16)}
               byDefault={formB16.B16}
             />

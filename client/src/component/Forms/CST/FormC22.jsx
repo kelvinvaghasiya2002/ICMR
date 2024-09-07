@@ -44,7 +44,7 @@ function FormC22() {
 
                     <div className="formcontent cont_extra">
 
-                        <Radio onClick={handleChange(setFormC22)} h3="C.8 Were there any problems in arranging for transport of the patient?  (Describe)" CheckbobItems={["Yes (Specify)", "No"]} name="C8" otherArray={[1, 0]} byDefault={formC22.C8} />
+                        <Radio onClick={handleChange(setFormC22)} h3="C.8 Were there any problems in arranging for transport of the patient?  (Describe)" CheckbobItems={["Yes (Specify)", "No"]} name="C8" setter={setFormC22} otherArray={[1, 0]} byDefault={formC22.C8} />
 
                         <h3>C.9  How much time the ambulance/ any transport took to reach the referring facility? (In Min/Hour)</h3>
 
@@ -60,11 +60,11 @@ function FormC22() {
 
                         <Radio onClick={handleChange(setFormC22)} h3="C.11  Did the patient go to the referred facility?" CheckbobItems={["Yes", "No"]} name="C11" byDefault={formC22.C11} />
 
-                        <Radio onClick={handleChange(setFormC22)} h3="C.12  Which type of facility did you or the patient shifted?" CheckbobItems={["SC/HWC/(Ayushman Arogya Mandir)", "PHC"," CHC","District Headquarter ","Medical College","Private hospital","Private clinic","ESI/railway/other Govt. Hospital","Others"]} name="C12" otherArray={[0,0,0,0,0,0,0,0,1]} byDefault={formC22.C12} />
+                        <Radio onClick={handleChange(setFormC22)} h3="C.12  Which type of facility did you or the patient shifted?" CheckbobItems={["SC/HWC/(Ayushman Arogya Mandir)", "PHC"," CHC","District Headquarter ","Medical College","Private hospital","Private clinic","ESI/railway/other Govt. Hospital","Others"]} name="C12" setter={setFormC22} otherArray={[0,0,0,0,0,0,0,0,1]} byDefault={formC22.C12} />
 
                         <InputField onChange={handleChange(setFormC22)} h3="C.13  What was the name of the facility the patient shifted?" placeholder="Type here" name="C13" value={formC22.C13} />
 
-                        <Radio onClick={handleChange(setFormC22)} h3="C.14  Who suggested you visit the above mentioned facility for further emergency care?" CheckbobItems={["Self/ Family members", "Neighbour","FLHW (ASHA/ AWW/ ANM/ CHO)","Doctor","Others"]} name="C14"   otherArray={[0,0,0,0,1]} byDefault={formC22.C14} />
+                        <Radio onClick={handleChange(setFormC22)} h3="C.14  Who suggested you visit the above mentioned facility for further emergency care?" CheckbobItems={["Self/ Family members", "Neighbour","FLHW (ASHA/ AWW/ ANM/ CHO)","Doctor","Others"]} name="C14" setter={setFormC22}  otherArray={[0,0,0,0,1]} byDefault={formC22.C14} />
 
                         <Radio onClick={handleChange(setFormC22)} h3="C.15 How long after reaching the referral HCF (in emergency) was the patient attended?" CheckbobItems={["Immediately", "5-10 mins","10-30 mins",">30mins"," Do not know"]} name="C15" byDefault={formC22.C15} />
 

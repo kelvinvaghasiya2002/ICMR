@@ -95,7 +95,8 @@ function formB16() {
               formB16.B34 === "Fully Recovered & discharged" ||
               formB16.B34 === "Recovered with disability & discharged" ||
               formB16.B34 === "Self-Discharged" ||
-              formB16.B34 === "Admitted in Hospital") && (
+              formB16.B34 === "Admitted in Hospital" ||
+              formB16.B34 === "Death") && (
               <InputField
                 h3="B.35 : What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary? (Specify)"
                 placeholder="Type Here"

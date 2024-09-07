@@ -107,6 +107,7 @@ function formB16() {
               ]}
               name="B17"
               otherArray={[0, 0, 0, 0, 1]}
+              setter={setFormB16}
               byDefault={formB16.B17}
             />
 
@@ -145,6 +146,7 @@ function formB16() {
               ]}
               name="B19"
               otherArray={[0, 0, 0, 0, 0, 1]}
+              setter={setFormB16}
               byDefault={formB16.B19}
             />
 
@@ -165,6 +167,7 @@ function formB16() {
               ]}
               name="B20"
               otherArray={[0, 0, 0, 0, 0, 0, 0, 0, 1]}
+              setter={setFormB16}
               byDefault={formB16.B20}
             />
 
@@ -175,6 +178,7 @@ function formB16() {
                 CheckbobItems={["102", "108", "Others (Specify)", "Don't know"]}
                 name="B21"
                 otherArray={[0, 0, 1, 0]}
+                setter={setFormB16}
                 byDefault={formB16.B21}
               />
             )}
@@ -185,6 +189,7 @@ function formB16() {
               CheckbobItems={["Yes (Specify)", "No"]}
               name="B22"
               otherArray={[1, 0]}
+              setter={setFormB16}
               byDefault={formB16.B22}
             />
 
@@ -246,6 +251,7 @@ function formB16() {
               ]}
               name="B25"
               otherArray={[0, 0, 0, 0, 0, 0, 0, 0, 1]}
+              setter={setFormB16}
               byDefault={formB16.B25}
             />
 

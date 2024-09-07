@@ -43,7 +43,7 @@ function FormC20() {
 
                     <div className="formcontent cont_extra">
 
-                        <Radio onClick={handleChange(setFormC20)} h3="C.1  Who took the decision to refer/ shift the patient to another facility?  " CheckbobItems={["Medical team", "Self/family","Other"]} name="C1" otherArray={[0, 0,1]} byDefault={formC20.C1} />
+                        <Radio onClick={handleChange(setFormC20)} h3="C.1  Who took the decision to refer/ shift the patient to another facility?  " CheckbobItems={["Medical team", "Self/family","Other"]} name="C1" otherArray={[0, 0,1]} setter={setFormC20} byDefault={formC20.C1} />
 
                         {
                             (formC20.C1 === "Medical team") &&

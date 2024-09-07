@@ -60,17 +60,17 @@ function FormE26() {
                             E.3 : How much amount was spent on the following while availing the emergency care service?
                             Direct Medical Cost
                         </h3>
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_a" h3="a. Drugs" onClick={handleChange(setFormE26)} byDefault={formE26.E3_a} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_a" h3="a. Drugs" onClick={handleChange(setFormE26)} byDefault={formE26.E3_a}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_b" h3="b. Consultation" onClick={handleChange(setFormE26)} byDefault={formE26.E3_b} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_b" h3="b. Consultation" onClick={handleChange(setFormE26)} byDefault={formE26.E3_b}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_c" h3="c. Diagnostics" onClick={handleChange(setFormE26)} byDefault={formE26.E3_c} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_c" h3="c. Diagnostics" onClick={handleChange(setFormE26)} byDefault={formE26.E3_c}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_d" h3="d. Implants and devices etc." onClick={handleChange(setFormE26)} byDefault={formE26.E3_d} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_d" h3="d. Implants and devices etc." onClick={handleChange(setFormE26)} byDefault={formE26.E3_d}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_e" h3="e. Hospital stay" onClick={handleChange(setFormE26)} byDefault={formE26.E3_e} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_e" h3="e. Hospital stay" onClick={handleChange(setFormE26)} byDefault={formE26.E3_e}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_f" h3="f. Other (Specify):" onClick={handleChange(setFormE26)} byDefault={formE26.E3_f} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E3_f" h3="f. Other (Specify):" onClick={handleChange(setFormE26)} byDefault={formE26.E3_f}  otherArray={[1, 0]} setter={setFormE26} />
 
 
 
@@ -82,15 +82,15 @@ function FormE26() {
                             E.5 : How much extra amount was spent on the following while availing the emergency care service?
                             Direct Non-Medical Cost
                         </h3>
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_a" h3="a. Transportation" onClick={handleChange(setFormE26)} byDefault={formE26.E5_a} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_a" h3="a. Transportation" onClick={handleChange(setFormE26)} byDefault={formE26.E5_a}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_b" h3="b. Boarding/ lodging" onClick={handleChange(setFormE26)} byDefault={formE26.E5_b} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_b" h3="b. Boarding/ lodging" onClick={handleChange(setFormE26)} byDefault={formE26.E5_b}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_c" h3="c. Nursing attendant" onClick={handleChange(setFormE26)} byDefault={formE26.E5_c} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_c" h3="c. Nursing attendant" onClick={handleChange(setFormE26)} byDefault={formE26.E5_c}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_d" h3="d. Food" onClick={handleChange(setFormE26)} byDefault={formE26.E5_d} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_d" h3="d. Food" onClick={handleChange(setFormE26)} byDefault={formE26.E5_d}  otherArray={[1, 0]} setter={setFormE26} />
 
-                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_e" h3="e. Other (Specify)" onClick={handleChange(setFormE26)} byDefault={formE26.E5_e} otherArray={[1, 0]} setter={setFormE26} />
+                        <Radio CheckbobItems={["INR :", "Can't Recall"]} name="E5_e" h3="e. Other (Specify)" onClick={handleChange(setFormE26)} byDefault={formE26.E5_e}  otherArray={[1, 0]} setter={setFormE26} />
 
                         <InputField h3="E.6	What was the approximate overall money spent on the availing the emergency care service? Direct Non-Medical Cost" placeholder="Insert Number " name="E6" value={formE26.E6} onChange={handleChange(setFormE26)} />
 
