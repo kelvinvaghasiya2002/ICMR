@@ -1,60 +1,130 @@
-import SidePanel from './SidePanelCST.jsx';
-import Checkbox from '../child-comp/Checkbox.jsx';
-import Radio from '../child-comp/Radio.jsx';
-import { Link } from 'react-router-dom';
-import "../Form.css"
-import React, { useEffect, useState } from 'react'
-import Buttons from '../child-comp/Buttons.jsx';
-import InputField from '../child-comp/InputField.jsx';
-import { turnOffbutton, handleChange } from '../helpers.js';
-import setLocalStorage from '../setLocalStorage.js';
-import Heading from '../../Heading/Heading.jsx';
-import Table from '../child-comp/Table.jsx'
-import DropDown from '../child-comp/DropDown.jsx';
-import Table1 from '../child-comp/Table1.jsx';
-import CSTButton from '../child-comp/CSTButton.jsx';
-
+import SidePanel from "./SidePanelCST.jsx";
+import Checkbox from "../child-comp/Checkbox.jsx";
+import Radio from "../child-comp/Radio.jsx";
+import { Link } from "react-router-dom";
+import "../Form.css";
+import React, { useEffect, useState } from "react";
+import Buttons from "../child-comp/Buttons.jsx";
+import InputField from "../child-comp/InputField.jsx";
+import { turnOffbutton, handleChange } from "../helpers.js";
+import setLocalStorage from "../setLocalStorage.js";
+import Heading from "../../Heading/Heading.jsx";
+import Table from "../child-comp/Table.jsx";
+import DropDown from "../child-comp/DropDown.jsx";
+import Table1 from "../child-comp/Table1.jsx";
+import CSTButton from "../child-comp/CSTButton.jsx";
 
 function formB16() {
-  var formb16 = setLocalStorage("formb16", { B0: "", B1: "", B2: "", B3: "", B4: [],  B5_dt: "", B6: "", B7: "", B8: "", B9: "", B10: "", B11_if: "", B12: "", B13: "", B14: "", B15: "", B16: "", B17_1: "",B17_2:"",B18:"", B19: "", B20: "", B21: "", B22_1: "",B22_2:"", B23_1: "",B23_2:"", B24: "", B25: "", B26: [], B27: "", B28: "", B29: "", B30: "", B31: "", B32: "", B33: "", B34: "" })
-  const [formB16, setFormB16] = useState(JSON.parse(formb16))
+  var formb16 = setLocalStorage("formb16", {
+    B0: "",
+    B1: "",
+    B2: "",
+    B3: "",
+    B4: [],
+    B5_dt: "",
+    B6: "",
+    B7: "",
+    B8: "",
+    B9: "",
+    B10: "",
+    B11_if: "",
+    B12: "",
+    B13: "",
+    B14: "",
+    B15: "",
+    B16: "",
+    B17: "",
+    B18_1: "",
+    B18_2: "",
+    B19: "",
+    B20: "",
+    B21: "",
+    B22: "",
+    B23_1: "",
+    B23_2: "",
+    B24_1: "",
+    B24_2: "",
+    B25: "",
+    B26: "",
+    B27: [],
+    B28: "",
+    B29: "",
+    B30: "",
+    B31: "",
+    B32: "",
+    B33: "",
+    B34: "",
+    B35: "",
+  });
+  const [formB16, setFormB16] = useState(JSON.parse(formb16));
   turnOffbutton();
   return (
     <div>
       <Heading h2="Community Survey Tool"></Heading>
-      <section id='site-info'>
+      <section id="site-info">
         <SidePanel id={"19"} />
-        <div className='siteInfo'>
+        <div className="siteInfo">
           <div className="formhdr">
             <div>
               <h2>A Socio-demographic Characteristics</h2>
             </div>
             <div>
-              <h3>
-                Initial Healthcare Seeking Pathway
-              </h3>
+              <h3>Initial Healthcare Seeking Pathway</h3>
             </div>
           </div>
 
           <div className="formcontent cont_extra">
+            <Radio
+              onClick={handleChange(setFormB16)}
+              h3="B.34 What was the final outcome of visiting the first facility or home visit by Doctor? "
+              CheckbobItems={[
+                "Referred to higher facility",
+                "Went against medical advice to different facility",
+                "Partially recovered & discharged",
+                "Fully Recovered & discharged",
+                "Recovered with disability & discharged",
+                "Self-Discharged",
+                "Admitted in Hospital",
+                "Death",
+              ]}
+              name="B34"
+              byDefault={formB16.B34}
+            />
 
-            <Radio onClick={handleChange(setFormB16)} h3="B.33 What was the final outcome of visiting the first facility or home visit by Doctor? " CheckbobItems={["Referred to higher facility", "Went against medical advice to different facility", "Partially recovered & discharged", "Fully Recovered & discharged", "Recovered with disability & discharged", "Self-Discharged", "Admitted in Hospital", "Death"]} name="B33" byDefault={formB16.B33} />
+            {(formB16.B34 === "Partially recovered & discharged" ||
+              formB16.B34 === "Fully Recovered & discharged" ||
+              formB16.B34 === "Recovered with disability & discharged" ||
+              formB16.B34 === "Self-Discharged" ||
+              formB16.B34 === "Admitted in Hospital") && (
+              <InputField
+                h3="B.35 : What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary? (Specify)"
+                placeholder="Type Here"
+                value={formB16.B35}
+                name="B35"
+                onChange={handleChange(setFormB16)}
+              />
+            )}
 
-            {
-              (formB16.B33 === "Partially recovered & discharged" || formB16.B33 === "Fully Recovered & discharged" || formB16.B33 === "Recovered with disability & discharged" || formB16.B33 === "Self-Discharged" || formB16.B33 === "Admitted in Hospital") 
-              &&
-              <InputField h3="B.34 : What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary? (Specify)" placeholder="Type Here" value={formB16.B34} name="B34" onChange={handleChange(setFormB16)} />
-            }
-
-            <CSTButton formName="formb16" formData={formB16} prev="/initialhealthcareseekingpathway-3" 
-            // next="/referral-facility1" 
-            next={(formB16.B33 === "Death" ? "/verbal-&-social-autopsy1" : (formB16.B33 === "Referred to higher facility" || formB16.B33 === "Went against medical advice to different facility") ? "/referral-facility1" :  "/barriers-and-facilitators2")}
-            prevText="Previous" nextText="Save & Next" />
+            <CSTButton
+              formName="formb16"
+              formData={formB16}
+              prev="/initialhealthcareseekingpathway-3"
+              // next="/referral-facility1"
+              next={
+                formB16.B34 === "Referred to higher facility" ||
+                formB16.B34 ===
+                  "Went against medical advice to different facility"
+                  ? "/referral-facility1"
+                  : "/barriers-and-facilitators2"
+              }
+              prevText="Previous"
+              nextText="Save & Next"
+            />
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default formB16
+export default formB16;

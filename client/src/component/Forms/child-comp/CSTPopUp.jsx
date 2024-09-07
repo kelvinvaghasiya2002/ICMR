@@ -12,7 +12,7 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
     var CompleteForm = JSON.parse(localStorage.getItem("CompleteForm"));
     CompleteForm = { ...uniqueCode, ...CompleteForm, ...lastForm };
 
-    if (formName === "formf27") {
+    if (formName === "formf27" || formName === "formb16") {
       var Name_and_Emergencies = JSON.parse(
         localStorage.getItem("Name_and_Emergencies")
       );
