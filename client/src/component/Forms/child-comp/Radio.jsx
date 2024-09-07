@@ -61,12 +61,15 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                         value={item}
                                         type="radio"
                                         name={name}
+                                        defaultChecked={byDefault.split(":")[0] === item}
                                     />
                                     <label className='radio_labels' htmlFor={item} >{item}</label><br/>
                                     {/* <span style={{ fontSize: "1.2vw" }}>{item}</span> */}
                                     <input
                                         className='others blockinput'
                                         onChange={(event) => {
+                                            console.log(event.target.value);
+                                            
                                             setOtherSpecify(event.target.value);
                                             setter(prevValue => ({
                                                 ...prevValue,
@@ -76,7 +79,8 @@ export default function Radio({ CheckbobItems, name, h3, onClick, byDefault, oth
                                         style={st}
                                         type="text"
                                         name={name}
-                                        value={document.getElementById(`${item}${name}`)?.checked ? otherSpecify : ""}
+                                        value={byDefault.split(":")[0] === item ? byDefault.split(":")[1] : ""}
+                                        // value={document.getElementById(`${item}${name}`)?.checked ? otherSpecify : ""}
                                         id={`${item}${name}otherInput`}
                                         disabled={selectedValue !== item}
                                     />
