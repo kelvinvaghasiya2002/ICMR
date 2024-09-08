@@ -58,13 +58,13 @@ function FormC23() {
                         {/* capture using tab camera */}
 
                         <CSTButton formName="formc23" formData={formC23} prev="/referral-facility3"
-                        //  next={(formC23.C21 === "") ? "/barriers-and-facilitators1" : "/barriers-and-facilitators2"} 
-                        next = {
-                            ((formC23.C20 === "Partially recovered & discharged") || (formC23.C20 === "Fully Recovered & discharged") || (formC23.C20 === "Recovered with disability & discharged") || (formC23.C20 === "Self-Discharged") || (formC23.C20 === "Admitted in Hospital") || (formC23.C20 === "Death")) 
-                            ?
-                            "/barriers-and-facilitators2" : "/referral-facility1"
-                        }
-                         prevText="Previous" nextText="Save & Next" />
+                            //  next={(formC23.C21 === "") ? "/barriers-and-facilitators1" : "/barriers-and-facilitators2"} 
+                            next={
+                                ((formC23.C20 === "Partially recovered & discharged") || (formC23.C20 === "Fully Recovered & discharged") || (formC23.C20 === "Recovered with disability & discharged") || (formC23.C20 === "Self-Discharged") || (formC23.C20 === "Admitted in Hospital") || (formC23.C20 === "Death"))
+                                    ?
+                                    "/barriers-and-facilitators2" : "/referral-facility1"
+                            }
+                            prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

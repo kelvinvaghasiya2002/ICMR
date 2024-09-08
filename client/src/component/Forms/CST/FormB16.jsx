@@ -198,7 +198,7 @@ function FormB16() {
 
             {!lessThen6Months ? (
               <CSTLastButton
-                prev="/costing"
+                prev="/death"
                 formName="formb16"
                 formData={formB16}
                 MainForm={"CST"}
