@@ -28,6 +28,10 @@ function CSTButton({ prevText, prev, nextText, next, formName, formData, validat
                 PartBLoop.PartCLoop = [PartCLoop];
             }
             localStorage.setItem("PartBLoop", JSON.stringify(PartBLoop));
+            localStorage.removeItem("formc20");
+            localStorage.removeItem("formc21");
+            localStorage.removeItem("formc22");
+            localStorage.removeItem("formc23");
         }else{
             if(formName === "formb16"){
                 const Name_and_Emergencies = JSON.parse(localStorage.getItem("Name_and_Emergencies"));

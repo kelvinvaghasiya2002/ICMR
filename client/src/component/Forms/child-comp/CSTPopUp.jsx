@@ -67,9 +67,16 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
           }
         }
 
-        setLinkPath(
+        if (
+          window.location.pathname ===
           "/socio-demographicprofileofthepatientinthehhwithemergencycondition"
-        );
+        ) {
+          window.location.reload();
+        } else {
+          setLinkPath(
+            "/socio-demographicprofileofthepatientinthehhwithemergencycondition"
+          );
+        }
       }
     } else {
       try {
