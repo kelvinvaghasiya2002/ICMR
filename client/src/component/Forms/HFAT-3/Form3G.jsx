@@ -19,6 +19,28 @@ function Form3G() {
   const [errors, setErrors] = useState({});
   const [showOverlay, setShowOverlay] = useState(false);
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (form3G.H3G1 === "No") {
       setForm3G((prevValue) => {
@@ -124,9 +146,20 @@ const handleChangeWithValidation = (e) => {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
-      <section>
-        <SidePanel id={"7"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
+      </div>
+      <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"7"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
+
         <div className="siteInfo">
 
           <div className="formhdr">
@@ -137,30 +170,31 @@ const handleChangeWithValidation = (e) => {
             </div>
           </div>
 
-          <div className="formcontent">
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
 
-            <Radio byDefault={form3G.H3G1} onClick={handleChange(setForm3G)} name="H3G1" h3="3G.1 : Whether any untied fund is available at your hospital?" CheckbobItems={["Yes", "No"]} />
+              <Radio byDefault={form3G.H3G1} onClick={handleChange(setForm3G)} name="H3G1" h3="3G.1 : Whether any untied fund is available at your hospital?" CheckbobItems={["Yes", "No"]} />
 
-            {
-              (form3G.H3G1 === 'Yes') &&
-              <>
-                <Radio byDefault={form3G.H3G2} onClick={handleChange(setForm3G)} name="H3G2" h3="3G.2 : If yes, whether this fund is utilized for providing emergency care services?" CheckbobItems={["Yes", "No"]} />
-              </>
-            }
+              {
+                (form3G.H3G1 === 'Yes') &&
+                <>
+                  <Radio byDefault={form3G.H3G2} onClick={handleChange(setForm3G)} name="H3G2" h3="3G.2 : If yes, whether this fund is utilized for providing emergency care services?" CheckbobItems={["Yes", "No"]} />
+                </>
+              }
 
-            <Radio byDefault={form3G.H3G3} onClick={handleChange(setForm3G)} name="H3G3" h3="3G.3 : Whether any fund is available for emergency care?" CheckbobItems={["Yes", "No"]} />
+              <Radio byDefault={form3G.H3G3} onClick={handleChange(setForm3G)} name="H3G3" h3="3G.3 : Whether any fund is available for emergency care?" CheckbobItems={["Yes", "No"]} />
 
-            {
-              (form3G.H3G3 === 'Yes') &&
-              <>
-                <Radio byDefault={form3G.H3G4} onClick={handleChange(setForm3G)} name="H3G4" h3="3G.4 : If funds are available, which health protection schemes are covering your emergency care system?" CheckbobItems={["PMJAY", "RKS", "Others (Specify)"]} otherArray={[0, 0, 1]} setter={setForm3G} other={true} />
+              {
+                (form3G.H3G3 === 'Yes') &&
+                <>
+                  <Radio byDefault={form3G.H3G4} onClick={handleChange(setForm3G)} name="H3G4" h3="3G.4 : If funds are available, which health protection schemes are covering your emergency care system?" CheckbobItems={["PMJAY", "RKS", "Others (Specify)"]} otherArray={[0, 0, 1]} setter={setForm3G} other={true} />
 
-                <InputField value={form3G.H3G5} onChange={handleChangeWithValidation} name="H3G5" h3="3G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type family member" />
-              </>
-            }
+                  <InputField value={form3G.H3G5} onChange={handleChangeWithValidation} name="H3G5" h3="3G.5 : Out of total patients being provided emergency care, how many were provided services under PMJAY scheme/ any other insurance scheme." placeholder="Type family member" />
+                </>
+              }
 
-            <Radio byDefault={form3G.H3G6} onClick={handleChange(setForm3G)} name="H3G6" h3="3G.6 : Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?" CheckbobItems={["Yes", "No"]} />
-
+              <Radio byDefault={form3G.H3G6} onClick={handleChange(setForm3G)} name="H3G6" h3="3G.6 : Is the facility providing free emergency services to pregnant women, mothers, and neonates as per prevalent government schemes?" CheckbobItems={["Yes", "No"]} />
+            </div>
 
             <div className="button-container">
             <Buttons formName="form3g" formData={form3G} prevText="Previous" nextText="Save & Next" prev="/informationsystem-3" next="/leadershipandgovernance-3" />
