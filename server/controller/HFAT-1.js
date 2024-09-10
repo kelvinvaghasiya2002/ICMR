@@ -12,7 +12,7 @@ export const HFAT1Controller = async (req, res) => {
   table3 = JSON.parse(table3);
   table4 = JSON.parse(table4);
 
-  HFAT1.find({ A3: completeform?.A3 }).then((response) => {
+  HFAT1.countDocuments({ A3: completeform?.A3 }).then((response) => {
     console.log(response);
     const combinedData = {
       ...completeform,

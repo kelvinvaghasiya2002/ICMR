@@ -17,21 +17,14 @@ export const OnSubmitForm = async (
       table3,
       table4,
     });
-    console.log(response);
-    if (response.data.result.B14 == "Yes") {
+    if (
+      response.data.result.B14 == "Yes" ||
+      response.data.result.H2B9 == "Yes" ||
+      response.data.result.H3B9 == "Yes"
+    ) {
       localStorage.setItem(
         "Unique Code",
-        `${MainForm} : ${JSON.stringify(response.data.result.uniqueCode)}`
-      );
-    } else if (response.data.result.H2B9 == "Yes") {
-      localStorage.setItem(
-        "Unique Code",
-        `${MainForm} : ${JSON.stringify(response.data.result.uniqueCode)}`
-      );
-    } else if (response.data.result.H3B9 == "Yes") {
-      localStorage.setItem(
-        "Unique Code",
-        `${MainForm} : ${JSON.stringify(response.data.result.uniqueCode)}`
+        `${MainForm} : ${response.data.result.uniqueCode}`
       );
     }
   } catch (error) {

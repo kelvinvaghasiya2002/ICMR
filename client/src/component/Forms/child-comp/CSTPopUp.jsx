@@ -26,11 +26,15 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
         CompleteForm = { ...CompleteForm, Emergency_Data };
       }
       localStorage.setItem("CompleteForm", JSON.stringify(CompleteForm));
+      var AC3_table = JSON.parse(localStorage.getItem("forma3_table"));
+      var AC15_table = JSON.parse(localStorage.getItem("forma15_table"));
 
       if (Name_and_Emergencies?.length === 0) {
         try {
           const response = await axios.post(`${server}/cstdata`, {
             CompleteForm: CompleteForm,
+            AC3_table,
+            AC15_table
           });
           console.log(response.data);
           const localstorage = { ...localStorage };
@@ -54,10 +58,10 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
             key === "CompleteForm" ||
             key === "forma2" ||
             key === "forma3" ||
-            key === "forma3_table" ||
+            // key === "forma3_table" ||
             key === "Name_and_Emergencies" ||
             key === "forma15" ||
-            key === "forma15_table" ||
+            // key === "forma15_table" ||
             key === "CSTCompleteForm"
           ) {
             continue;
@@ -82,6 +86,8 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
       try {
         const response = await axios.post(`${server}/cstdata`, {
           CompleteForm: CompleteForm,
+          AC3_table,
+          AC15_table
         });
         console.log(response.data);
         const localstorage = { ...localStorage };

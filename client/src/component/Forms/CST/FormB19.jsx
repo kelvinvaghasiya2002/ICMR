@@ -14,7 +14,7 @@ import DropDown from "../child-comp/DropDown.jsx";
 import Table1 from "../child-comp/Table1.jsx";
 import CSTButton from "../child-comp/CSTButton.jsx";
 
-function formB16() {
+function FormB19() {
   var formb16 = setLocalStorage("formb16", {
     B0: "",
     B1: "",
@@ -395,4 +395,4 @@ function formB16() {
   );
 }
 
-export default formB16;
+export default FormB19;
