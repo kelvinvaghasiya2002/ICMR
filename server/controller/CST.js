@@ -1,7 +1,7 @@
 import { CSTFORM } from "../Database/CST.js";
 
 export const CSTConroller = async (req, res) => {
-  const { CompleteForm } = req.body;
+  const { CompleteForm, AC3_table, AC15_table } = req.body;
   try {
     const form = await CSTFORM.findOneAndUpdate(
       {
@@ -9,7 +9,7 @@ export const CSTConroller = async (req, res) => {
         Household_ID: CompleteForm.Household_ID,
         Respondent_ID: CompleteForm.Respondent_ID,
       },
-      CompleteForm,
+      { ...CompleteForm, AC3_table, AC15_table },
       { new: true }
     );
     if (!form) {
@@ -62,7 +62,6 @@ const UniqueCode = async (uniqueCode) => {
 
 // create contoller to genrate unique code
 export const CSTUniqueCodeGenrator = async (req, res) => {
-  console.log("code");
   try {
     const { code } = req.body;
 
@@ -71,7 +70,7 @@ export const CSTUniqueCodeGenrator = async (req, res) => {
     }
 
     // Find all documents with the same 'AA2' value
-    const existingRecords = await CSTFORM.find({ AA2: code });
+    const existingRecords = await CSTFORM.countDocuments({ AA2: code });
 
     // Generate the unique code by appending the count of existing records
     const Respondent_ID = `${code}_${existingRecords.length + 1}`;

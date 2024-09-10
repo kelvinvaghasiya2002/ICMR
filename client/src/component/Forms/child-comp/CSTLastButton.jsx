@@ -11,7 +11,10 @@ function CSTLastButton({ prev, from, formName, formData }) {
         var CompleteForm = localStorage.getItem("CompleteForm");
         if (CompleteForm) {
             CompleteForm = JSON.parse(CompleteForm);
-            const data = { ...CompleteForm, ...formData };
+            var AC3_table = JSON.parse(localStorage.getItem("forma3_table"));
+            var AC15_table = JSON.parse(localStorage.getItem("forma15_table"));
+            var data = { ...CompleteForm, ...formData , AC3_table, AC15_table };
+            localStorage.setItem("CompleteForm", JSON.stringify(data))
             localStorage.setItem("CSTCompleteForm", JSON.stringify(data));
         } else {
             localStorage.setItem("CSTCompleteForm", JSON.stringify(formData));

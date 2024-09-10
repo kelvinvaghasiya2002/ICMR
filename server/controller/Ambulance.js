@@ -10,7 +10,7 @@ export const AMBULANCEController = async (req, res) => {
   table1 = JSON.parse(table1);
   table2 = JSON.parse(table2);
 
-  AMBULANCE.find({ AMB1: completeform?.AMB1 }).then((response) => {
+  AMBULANCE.countDocuments({ AMB1: completeform?.AMB1 }).then((response) => {
     console.log(response);
     const combinedData = {
       ...completeform,
