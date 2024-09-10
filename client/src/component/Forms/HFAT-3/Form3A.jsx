@@ -42,7 +42,23 @@ function Form3A() {
 
   const date = new Date();
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
   useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+
     setForm3A((prevValue) => {
       return {
         ...prevValue,
@@ -52,7 +68,24 @@ function Form3A() {
             : form3A.HFAT3_DATE,
       };
     });
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+
+  // useEffect(() => {
+  //   setForm3A((prevValue) => {
+  //     return {
+  //       ...prevValue,
+  //       HFAT3_DATE:
+  //         form3A.HFAT3_DATE == ""
+  //           ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}`
+  //           : form3A.HFAT3_DATE,
+  //     };
+  //   });
+  // }, []);
 
   const dropdownItems = useMemo(() => {
     switch (form3A.H3A2) {
@@ -205,9 +238,20 @@ function Form3A() {
   };
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
-      <section>
-        <SidePanel id={"1"} />
+      <div className="header">
+                  <div className="burger-menu" onClick={toggleSidebar}>
+                  &#9776;
+                  </div>
+                  <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
+      </div>
+      <section className="form-main">
+                  {isSidebarVisible && (
+                  <>
+                      <SidePanel id={"1"} />
+                      <div className="grayedover" onClick={toggleSidebar}></div>
+                  </>
+                  )}
+                  
         <div className="siteInfo">
           <div className="formhdr">
             <div>

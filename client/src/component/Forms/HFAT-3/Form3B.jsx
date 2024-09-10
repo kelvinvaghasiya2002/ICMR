@@ -20,6 +20,28 @@ function Form3B() {
   const [errors, setErrors] = useState({});
   const [showOverlay, setShowOverlay] = useState(false);
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (form3B.H3B3 === "No") {
       setForm3B((prevValue) => {
@@ -160,9 +182,19 @@ function Form3B() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
-      <section>
-        <SidePanel id={"2"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
+            </div>
+      <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"2"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className="siteInfo">
 
           <div className="formhdr">

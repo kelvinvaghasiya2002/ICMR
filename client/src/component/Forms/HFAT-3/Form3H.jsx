@@ -21,6 +21,28 @@ function Form3H() {
   const [errors, setErrors] = useState({});
   const [showOverlay, setShowOverlay] = useState(false);
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (form3H.H3H4 === "No") {
       setForm3H((prevValue) => {
@@ -178,9 +200,19 @@ function Form3H() {
 
   return (
     <div>
-      <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
-      <section>
-        <SidePanel id={"8"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
+      </div>
+      <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"8"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className="siteInfo">
 
           <div className="formhdr">
@@ -191,43 +223,45 @@ function Form3H() {
             </div>
           </div>
 
-          <div className="formcontent">
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
 
-            <h3 style={{ color: "#3177FF" }}>Disaster management plan :</h3>
+              <h3 style={{ color: "#3177FF" }}>Disaster management plan :</h3>
 
-            <Radio byDefault={form3H.H3H1} onClick={handleChange(setForm3H)} name="H3H1" h3="3H.1.1 : Do you have any disaster management plans if any catastrophe takes place at PHC (fire, building collapse, earthquake, etc. affecting the PHC)?" CheckbobItems={["Yes", "No"]} />
+              <Radio byDefault={form3H.H3H1} onClick={handleChange(setForm3H)} name="H3H1" h3="3H.1.1 : Do you have any disaster management plans if any catastrophe takes place at PHC (fire, building collapse, earthquake, etc. affecting the PHC)?" CheckbobItems={["Yes", "No"]} />
 
-            <Radio byDefault={form3H.H3H2} onClick={handleChange(setForm3H)} name="H3H2" h3="3H.1.2 : Do you have a redistribution plan (management plan in case human resource/ logistics scarcity)?" CheckbobItems={["Yes", "No"]} />
+              <Radio byDefault={form3H.H3H2} onClick={handleChange(setForm3H)} name="H3H2" h3="3H.1.2 : Do you have a redistribution plan (management plan in case human resource/ logistics scarcity)?" CheckbobItems={["Yes", "No"]} />
 
-            <Radio byDefault={form3H.H3H3} onClick={handleChange(setForm3H)} name="H3H3" h3="3H.1.3 : Do you have any evacuation plan?" CheckbobItems={["Yes", "No"]} />
+              <Radio byDefault={form3H.H3H3} onClick={handleChange(setForm3H)} name="H3H3" h3="3H.1.3 : Do you have any evacuation plan?" CheckbobItems={["Yes", "No"]} />
 
-            <h3 style={{ color: "#3177FF" }}>Quality Improvement Plan :</h3>
-
-
-            <Radio byDefault={form3H.H3H4} onClick={handleChange(setForm3H)} name="H3H4" h3="3H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" otherArray={[1, 0]} setter={setForm3H} CheckbobItems={["Yes", "No"]} />
-
-            {form3H.H3H4 !== 'No' &&
-              <>
-                <InputField value={form3H.H3H5} onChange={handleChangeWithValidation} name="H3H5" h3="3H.2.2 : How frequently does this committee meet in a year?" placeholder="Type here" errorMsg={errors.H1H5} />
-              </>
-            }
+              <h3 style={{ color: "#3177FF" }}>Quality Improvement Plan :</h3>
 
 
+              <Radio byDefault={form3H.H3H4} onClick={handleChange(setForm3H)} name="H3H4" h3="3H.2.1 : Do you have a Quality Improvement Committee? (if yes, collect detail of Committee)" otherArray={[1, 0]} setter={setForm3H} CheckbobItems={["Yes", "No"]} />
 
-            <Radio byDefault={form3H.H3H6} onClick={handleChange(setForm3H)} name="H3H6" h3="3H.2.3 : Do you have regular audits related to emergency care in hospital?" CheckbobItems={["Yes", "No"]} />
-
-            {
-              (form3H.H3H6 === 'Yes') &&
-              <>
-                <InputField value={form3H.H3H7} onChange={handleChangeWithValidation} name="H3H7" h3="3H.2.4 : How frequently audits are conducted in a year?" placeholder="Type here" errorMsg={errors.H1H7} />
-
-
-                <Checkbox setFunction={setForm3H} StateValue={form3H} array={form3H.H3H8} name="H3H8" h3="3H.2.5 : Types of audits conducted?" CheckbobItems={["Mortality Audit", "Morbidity Audit"]} other={true} />
+              {form3H.H3H4 !== 'No' &&
+                <>
+                  <InputField value={form3H.H3H5} onChange={handleChangeWithValidation} name="H3H5" h3="3H.2.2 : How frequently does this committee meet in a year?" placeholder="Type here" errorMsg={errors.H1H5} />
+                </>
+              }
 
 
-                <Radio onClick={handleChange(setForm3H)} name="H3H9" h3="3H.2.6 : Any action being taken on Audit report in the last one year?" byDefault={form3H.H3H9} CheckbobItems={["Yes", "No"]} />
-              </>
-            }
+
+              <Radio byDefault={form3H.H3H6} onClick={handleChange(setForm3H)} name="H3H6" h3="3H.2.3 : Do you have regular audits related to emergency care in hospital?" CheckbobItems={["Yes", "No"]} />
+
+              {
+                (form3H.H3H6 === 'Yes') &&
+                <>
+                  <InputField value={form3H.H3H7} onChange={handleChangeWithValidation} name="H3H7" h3="3H.2.4 : How frequently audits are conducted in a year?" placeholder="Type here" errorMsg={errors.H1H7} />
+
+
+                  <Checkbox setFunction={setForm3H} StateValue={form3H} array={form3H.H3H8} name="H3H8" h3="3H.2.5 : Types of audits conducted?" CheckbobItems={["Mortality Audit", "Morbidity Audit"]} other={true} />
+
+
+                  <Radio onClick={handleChange(setForm3H)} name="H3H9" h3="3H.2.6 : Any action being taken on Audit report in the last one year?" byDefault={form3H.H3H9} CheckbobItems={["Yes", "No"]} />
+                </>
+              }
+            </div>
 
             <div className="button-container">
               <Buttons formData={form3H} formName="form3h" prevText="Previous" nextText="Save & Next" prev="/finance-3" next="/processpoliciessops-3" />
