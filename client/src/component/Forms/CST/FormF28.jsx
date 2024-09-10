@@ -18,11 +18,44 @@ function FormF28() {
     var formf28 = setLocalStorage("formf28", { F5:"",F6:""})
     const [formF28, setFormF28] = useState(JSON.parse(formf28))
     turnOffbutton();
+
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        // AOS.init({ duration: 2000 });
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
     return (
         <div>
-            <Heading h2="Community Survey Tool"></Heading>
-            <section id='site-info'>
-                <SidePanel id={"28"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+            </div>
+            <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"28"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
+
                 <div className='siteInfo'>
                     <div className="formhdr">
                         <div>

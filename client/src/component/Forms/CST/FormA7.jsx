@@ -17,6 +17,27 @@ function FormA7() {
 
   const [formA3, setFormA3] = useState(JSON.parse(forma3))
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (formA3.AC7_1 === "No") {
       setFormA3((prevValue) => {
@@ -28,9 +49,19 @@ function FormA7() {
   turnOffbutton();
   return (
     <div>
-      <Heading h2="Community Survey Tool"></Heading>
-      <section id='site-info'>
-        <SidePanel id={"5"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+      </div>
+      <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"5"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className='siteInfo'>
           <div className="formhdr">
             <div>
@@ -43,27 +74,28 @@ function FormA7() {
             </div>
           </div>
 
-          <div className="formcontent cont_extra">
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
 
-            <Radio
-              name="AC7_1"
-              h3="AC.7.1 In the past one year, did you or any member of this household suffer from severe/minor burns etc. that required medical attention?"
-              CheckbobItems={["Yes", "No"]}
-              onClick={handleChange(setFormA3)}
-              byDefault={formA3.AC7_1}
-            />
+              <Radio
+                name="AC7_1"
+                h3="AC.7.1 In the past one year, did you or any member of this household suffer from severe/minor burns etc. that required medical attention?"
+                CheckbobItems={["Yes", "No"]}
+                onClick={handleChange(setFormA3)}
+                byDefault={formA3.AC7_1}
+              />
 
-            {
-              (formA3.AC7_1 === "Yes") &&
-              <>
-                <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC7_1_if" value={formA3.AC7_1_if} />
+              {
+                (formA3.AC7_1 === "Yes") &&
+                <>
+                  <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC7_1_if" value={formA3.AC7_1_if} />
 
 
-                <Checkbox CheckbobItems={fetchCstTableDetail()} name="AC7_2" h3="AC.7.2  If yes, could you please tell who all from your Household suffered with this condition?"  setFunction={setFormA3} StateValue={formA3} array={formA3.AC7_2} />
-              
-              </>
-            }
-
+                  <Checkbox CheckbobItems={fetchCstTableDetail()} name="AC7_2" h3="AC.7.2  If yes, could you please tell who all from your Household suffered with this condition?"  setFunction={setFormA3} StateValue={formA3} array={formA3.AC7_2} />
+                
+                </>
+              }
+            </div>
 
             <Buttons formName="forma3" formData={formA3} prev="/trauma" next="/stemi" prevText="Previous" nextText="Save & Next" />
           </div>

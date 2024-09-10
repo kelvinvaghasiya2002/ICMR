@@ -19,17 +19,48 @@ function FormC23() {
     const [formC23, setFormC23] = useState(JSON.parse(formc23))
     turnOffbutton();
 
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        // AOS.init({ duration: 2000 });
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
     useEffect(() => {
         if ((formC23.C20 !== "Partially recovered & discharged") && (formC23.C20 !== "Fully Recovered & discharged") && (formC23.C20 !== "Recovered with disability & discharged") && (formC23.C20 !== "Self-Discharged") && (formC23.C20 !== "Admitted in Hospital") && (formC23.C20 !== "Death")) {
             setFormC23({ ...formC23, C21: "" })
         }
-
     }, [formC23.C20])
+
     return (
         <div>
-            <Heading h2="Community Survey Tool"></Heading>
-            <section id='site-info'>
-                <SidePanel id={"23"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+            </div>
+            <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"23"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
                 <div className='siteInfo'>
                     <div className="formhdr">
                         <div>

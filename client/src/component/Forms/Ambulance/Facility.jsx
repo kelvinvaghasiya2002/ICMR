@@ -23,6 +23,28 @@ import OverlayCard from "../OverlayCard.jsx";
 function Facility() {
   turnOffbutton();
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   var ambulance = setLocalStorage("ambulance", {
     AMB1: "",
     AMB2: "",
@@ -368,9 +390,19 @@ function Facility() {
 
   return (
     <div>
-      <Heading h2="Gap Assessment Tool – Ambulance at Facility Level"></Heading>
-      <section>
-        <SidePanel id={"1"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Gap Assessment Tool – Ambulance at Facility Level"></Heading>
+      </div>
+      <section className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"1"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>

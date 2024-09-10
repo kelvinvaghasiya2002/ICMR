@@ -61,6 +61,27 @@ function FormB16() {
   var [lessThen6Months, setLessThen6Months] = useState(false);
   turnOffbutton();
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const Name_and_Emergencies = JSON.parse(
     localStorage.getItem("Name_and_Emergencies")
   );
@@ -81,9 +102,19 @@ function FormB16() {
 
   return (
     <div>
-      <Heading h2="Community Survey Tool"></Heading>
-      <section id="site-info">
-        <SidePanel id={"11"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+      </div>
+      <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"11"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -97,104 +128,109 @@ function FormB16() {
             </div>
           </div>
 
-          <div className="formcontent cont_extra">
-            <h3>
-              Note: PART-B to be filled for each individual who were selected
-              for emergency conditions or deaths.
-              <br />
-              <br />
-              Name : {Name_and_Emergencies[0]?.Name} <br /> Emergency condition
-              : {Name_and_Emergencies[0]?.Emergency}
-            </h3>
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
+              <h3>
+                Note: PART-B to be filled for each individual who were selected
+                for emergency conditions or deaths.
+                <br />
+                <br />
+                Name : {Name_and_Emergencies[0]?.Name} <br /> Emergency condition
+                : {Name_and_Emergencies[0]?.Emergency}
+              </h3>
 
-            <InputField
-              name={"B0"}
-              h3="B.0 When did the Patient suffered with this condition?"
-              placeholder="Type here"
-              type={"date"}
-              onChange={handleChange(setFormB16)}
-              value={formB16.B0}
-            />
-            {/* <h5>Note: If emergency conditions is within ≤ 6 months, continue to B.2 else skip to next patient in the list. If none of the patient in the list had any condition under ≤ 6 months then skip to section H.</h5> */}
+              <InputField
+                name={"B0"}
+                h3="B.0 When did the Patient suffered with this condition?"
+                placeholder="Type here"
+                type={"date"}
+                onChange={handleChange(setFormB16)}
+                value={formB16.B0}
+              />
+              {/* <h5>Note: If emergency conditions is within ≤ 6 months, continue to B.2 else skip to next patient in the list. If none of the patient in the list had any condition under ≤ 6 months then skip to section H.</h5> */}
 
-            {/* check date(B0) is less then 6 months == true then show other question */}
+              {/* check date(B0) is less then 6 months == true then show other question */}
 
-            {lessThen6Months == true && (
-              <>
-                <Radio
-                  h3="B.1 Marital status"
-                  CheckbobItems={[
-                    "Never married",
-                    "Currently Married",
-                    "Separated",
-                    "Divorced",
-                    "Widow / Widower",
-                    "Cohabitating",
-                    "Prefer not to disclose/ Refuse",
-                    "Not Applicable",
-                  ]}
-                  name="B1"
-                  onClick={handleChange(setFormB16)}
-                  byDefault={formB16.B1}
-                />
-                <Radio
-                  h3="B.2 Level of education"
-                  CheckbobItems={[
-                    "Illiterate",
-                    "Primary School",
-                    "Middle School",
-                    "High School",
-                    "Intermediate/ Diploma",
-                    "Graduate",
-                    "Professional Degree",
-                    "Prefer not to disclose/ Refuse",
-                    "Not Applicable",
-                  ]}
-                  name="B2"
-                  onClick={handleChange(setFormB16)}
-                  byDefault={formB16.B2}
-                />
-                <Radio
-                  h3="B.3 Occupation"
-                  CheckbobItems={[
-                    "Unemployed",
-                    "Housewife/ Homemaker",
-                    "Elementary Occupation",
-                    "Plant & Machine Operators and Assemblers",
-                    "Craft & Related Trade Workers",
-                    "Skilled Agricultural Fishery Workers",
-                    "Skilled Workers and Shop & Market Sales Workers",
-                    "Clerks",
-                    "Technicians & Associate Professionals",
-                    "Professionals",
-                    "Legislators, Senior Officers & Managers",
-                    "Prefer not to disclose/ Refuse",
-                    "Not Applicable",
-                  ]}
-                  name="B3"
-                  onClick={handleChange(setFormB16)}
-                  byDefault={formB16.B3}
-                />
-                <Checkbox
-                  h3="B.4 Which of the following Health Insurance coverage you or the person with emergency condition or the deceased had?"
-                  CheckbobItems={[
-                    "Private cashless",
-                    "Private reimbursement",
-                    "Central Health Insurance Scheme (Ayushmaan Bharat/ CGHS / etc.)",
-                    "State Health Insurance Scheme",
-                    "Co-Payment",
-                    "Community Health Insurance Programme",
-                    "None",
-                    "Prefer not to disclose/ Refuse",
-                    "Don't Know",
-                  ]}
-                  name="B4"
-                  StateValue={formB16}
-                  setFunction={setFormB16}
-                  array={formB16.B4}
-                />
-              </>
-            )}
+              {lessThen6Months == true && (
+                <>
+                  <Radio
+                    h3="B.1 Marital status"
+                    CheckbobItems={[
+                      "Never married",
+                      "Currently Married",
+                      "Separated",
+                      "Divorced",
+                      "Widow / Widower",
+                      "Cohabitating",
+                      "Prefer not to disclose/ Refuse",
+                      "Not Applicable",
+                    ]}
+                    name="B1"
+                    onClick={handleChange(setFormB16)}
+                    byDefault={formB16.B1}
+                  />
+                  <Radio
+                    h3="B.2 Level of education"
+                    CheckbobItems={[
+                      "Illiterate",
+                      "Primary School",
+                      "Middle School",
+                      "High School",
+                      "Intermediate/ Diploma",
+                      "Graduate",
+                      "Professional Degree",
+                      "Prefer not to disclose/ Refuse",
+                      "Not Applicable",
+                    ]}
+                    name="B2"
+                    onClick={handleChange(setFormB16)}
+                    byDefault={formB16.B2}
+                  />
+                  <Radio
+                    h3="B.3 Occupation"
+                    CheckbobItems={[
+                      "Unemployed",
+                      "Housewife/ Homemaker",
+                      "Elementary Occupation",
+                      "Plant & Machine Operators and Assemblers",
+                      "Craft & Related Trade Workers",
+                      "Skilled Agricultural Fishery Workers",
+                      "Skilled Workers and Shop & Market Sales Workers",
+                      "Clerks",
+                      "Technicians & Associate Professionals",
+                      "Professionals",
+                      "Legislators, Senior Officers & Managers",
+                      "Prefer not to disclose/ Refuse",
+                      "Not Applicable",
+                    ]}
+                    name="B3"
+                    onClick={handleChange(setFormB16)}
+                    byDefault={formB16.B3}
+                  />
+                  <Checkbox
+                    h3="B.4 Which of the following Health Insurance coverage you or the person with emergency condition or the deceased had?"
+                    CheckbobItems={[
+                      "Private cashless",
+                      "Private reimbursement",
+                      "Central Health Insurance Scheme (Ayushmaan Bharat/ CGHS / etc.)",
+                      "State Health Insurance Scheme",
+                      "Co-Payment",
+                      "Community Health Insurance Programme",
+                      "None",
+                      "Prefer not to disclose/ Refuse",
+                      "Don't Know",
+                    ]}
+                    name="B4"
+                    StateValue={formB16}
+                    setFunction={setFormB16}
+                    array={formB16.B4}
+                  />
+                </>
+              )}
+
+            </div>
+
+            <div className="button-container">
 
             {!lessThen6Months ? (
               <CSTLastButton
@@ -213,6 +249,7 @@ function FormB16() {
                 nextText="Save & Next"
               />
             )}
+            </div>
           </div>
         </div>
       </section>

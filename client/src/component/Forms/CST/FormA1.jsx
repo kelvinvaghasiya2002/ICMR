@@ -27,18 +27,38 @@ function FormA1() {
   const date = new Date();
   const [formA1, setFormA1] = useState(JSON.parse(forma1));
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
   useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
     setFormA1((prevValue) => {
       return {
         ...prevValue,
-        AA1:
+        AA1: 
           formA1.AA1 === ""
             ? `${date.toDateString()}  ${date.getHours()}:${date.getMinutes()}`
             : formA1.AA1,
         AA4: getLocalStorage("CSTuniqueCode").Respondent_ID ?? "",
       };
     });
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
 
   const { isValid, errors, setErrors } = useFormValidation(formA1, [
     "AA1",
@@ -112,9 +132,19 @@ function FormA1() {
 
   return (
     <div>
-      <Heading h2="Community Survey Tool"></Heading>
-      <section id="site-info">
-        <SidePanel id={"1"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+            </div>
+      <section id="site-info" className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"1"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -125,41 +155,44 @@ function FormA1() {
             </div>
           </div>
 
-          <div className="formcontent cont_extra">
-            <div>
-              <p className="datetime">AA.1 Date & Time : {formA1.AA1}</p>
-            </div>
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
 
-            <Radio
-              h3="AA.2 Site :"
-              CheckbobItems={[
-                "GJBRC_CS",
-                "ORPUR_CS",
-                "MPBHS_CS",
-                "PBLDH_CS",
-                "PYPDY_CS",
-              ]}
-              name="AA2"
-              onClick={handleChange(setFormA1)}
-              byDefault={formA1.AA2}
-            />
+              <div>
+                <p className="datetime">AA.1 Date & Time : {formA1.AA1}</p>
+              </div>
 
-            <InputField
-              h3="AA.3 Name Of the Data Collector :"
-              placeholder="Type here"
-              name="AA3"
-              value={formA1.AA3}
-              onChange={handleChangeWithValidation}
-            />
-
-            <div className="block">
-              <h3 className="h3block">AA.4 Respondent ID: </h3>
-              <input
-                className="blockinput"
-                value={formA1.AA4}
-                name="AA4"
-                readOnly
+              <Radio
+                h3="AA.2 Site :"
+                CheckbobItems={[
+                  "GJBRC_CS",
+                  "ORPUR_CS",
+                  "MPBHS_CS",
+                  "PBLDH_CS",
+                  "PYPDY_CS",
+                ]}
+                name="AA2"
+                onClick={handleChange(setFormA1)}
+                byDefault={formA1.AA2}
               />
+
+              <InputField
+                h3="AA.3 Name Of the Data Collector :"
+                placeholder="Type here"
+                name="AA3"
+                value={formA1.AA3}
+                onChange={handleChangeWithValidation}
+              />
+
+              <div className="block">
+                <h3 className="h3block">AA.4 Respondent ID: </h3>
+                <input
+                  className="blockinput"
+                  value={formA1.AA4}
+                  name="AA4"
+                  readOnly
+                />
+              </div>
             </div>
 
             <div className="button-container">

@@ -23,6 +23,27 @@ function FormA15() {
   const [formA15, setFormA15] = useState(JSON.parse(forma15));
   turnOffbutton();
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (formA15.AC15_1 === "No") {
       setFormA15({ ...formA15, AC15_2: "", AC15_4: [""] });
@@ -31,9 +52,19 @@ function FormA15() {
   }, [formA15.AC15_1]);
   return (
     <div>
-      <Heading h2="Community Survey Tool"></Heading>
-      <section id="site-info">
-        <SidePanel id={"13"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+      </div>
+      <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"13"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -44,7 +75,8 @@ function FormA15() {
             </div>
           </div>
 
-          <div className="formcontent cont_extra">
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
             <Radio
               name="AC15_1"
               h3="AC.15.1  In the last one year, did any member in your household lose his/her life due to any health emergency condition?"
@@ -91,6 +123,8 @@ function FormA15() {
                 />
               </>
             )}
+
+            </div>
 
             <Buttons
               prev={

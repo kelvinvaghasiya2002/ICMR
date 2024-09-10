@@ -18,11 +18,43 @@ function FormE26() {
     var forme26 = setLocalStorage("forme26", { E1: "", E2: [], E3_a: "", E3_b: "", E3_c: "", E3_d: "", E3_e: "", E3_f: "", E4: "", E5_a: "", E5_b: "", E5_c: "", E5_d: "", E5_e: "", E6: "", E7: "", E8: "", E9_a: "", E9_b: "", E9_c: "", E9_d: "", E9_e: "", E9_f: "", E9_g: "", E9_h: "", E9_i: "", E9_j: "", E10: "" })
     const [formE26, setFormE26] = useState(JSON.parse(forme26))
     turnOffbutton();
+
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        // AOS.init({ duration: 2000 });
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
     return (
         <div>
-            <Heading h2="Community Survey Tool"></Heading>
-            <section id='site-info'>
-                <SidePanel id={"26"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+            </div>
+            <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"26"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
                 <div className='siteInfo'>
                     <div className="formhdr">
                         <div>
@@ -35,7 +67,7 @@ function FormE26() {
                         </div>
                     </div>
 
-                    <div className="formcontent cont_extra">
+                    <div className="formcontent ">
 
                         <Radio h3="E.1	Was the patient covered by any insurance?" CheckbobItems={['Yes', 'No']} name="E1"
                             byDefault={formE26.E1}

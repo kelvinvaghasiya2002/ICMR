@@ -19,16 +19,49 @@ function FormC21() {
     const [formC21, setFormC21] = useState(JSON.parse(formc21))
     turnOffbutton();
 
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        // AOS.init({ duration: 2000 });
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
     useEffect(() => {
         if (formC21.C6 !== "Government ambulance") {
           setFormC21({ ...formC21,  C7: "" })
         }
       }, [formC21.C6])
+
     return (
         <div>
-            <Heading h2="Community Survey Tool"></Heading>
-            <section id='site-info'>
-                <SidePanel id={"21"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+            </div>
+            <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"21"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
+
                 <div className='siteInfo'>
                     <div className="formhdr">
                         <div>
@@ -41,7 +74,7 @@ function FormC21() {
                         </div>
                     </div>
 
-                    <div className="formcontent cont_extra">
+                    <div className="formcontent ">
                        
                     <Radio onClick={handleChange(setFormC21)} h3="C.5 How did you or the patient reach the referred health care facility?" CheckbobItems={["Own vehicle", "Hired vehicle ","Ambulance","Neighbour’s Vehicle","Passer-by’s Vehicle","Others"]} name="C5" setter={setFormC21} otherArray={[0, 0,0,0,0,1]} byDefault={formC21.C5} />
 
