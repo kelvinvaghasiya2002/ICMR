@@ -16,6 +16,27 @@ function FormA13() {
     const [formA3, setFormA3] = useState(JSON.parse(forma3))
     turnOffbutton();
 
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        // AOS.init({ duration: 2000 });
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
     useEffect(() => {
         if (formA3.AC13_1 === "No") {
             setFormA3((prevValue) => {
@@ -26,9 +47,19 @@ function FormA13() {
 
     return (
         <div>
-            <Heading h2="Community Survey Tool"></Heading>
-            <section id='site-info'>
-                <SidePanel id={"11"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+            </div>
+            <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"11"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
                 <div className='siteInfo'>
                     <div className="formhdr">
                         <div>

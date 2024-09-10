@@ -97,6 +97,10 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.fbox1{
+    background-color: #F2F7FF;
+
+}
 
 section {
     display: flex;
@@ -150,6 +154,7 @@ section {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    background-color: #F2F7FF;
 }
 
 .datetime {
@@ -605,6 +610,7 @@ th {
 
 .cont_extra{
     height: 100%;
+    background-color: #F2F7FF;
 }
 
 section {

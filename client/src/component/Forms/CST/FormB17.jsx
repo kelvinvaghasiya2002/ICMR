@@ -58,11 +58,43 @@ function FormB17() {
   });
   const [formB16, setFormB16] = useState(JSON.parse(formb16));
   turnOffbutton();
+
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div>
-      <Heading h2="Community Survey Tool"></Heading>
-      <section id="site-info">
-        <SidePanel id={"11"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+      </div>
+      <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"11"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -73,7 +105,8 @@ function FormB17() {
             </div>
           </div>
 
-          <div className="formcontent cont_extra">
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
             <h3>
               Now, I will be asking you about the emergency conditions and your
               approach for seeking healthcare during the entire event of
@@ -191,6 +224,8 @@ function FormB17() {
               onClick={handleChange(setFormB16)}
               byDefault={formB16.B15}
             />
+
+            </div>
             <CSTButton
               formName="formb16"
               formData={formB16}

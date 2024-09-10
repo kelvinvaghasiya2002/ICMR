@@ -59,6 +59,27 @@ function formB16() {
   const [formB16, setFormB16] = useState(JSON.parse(formb16));
   turnOffbutton();
 
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    // AOS.init({ duration: 2000 });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (formB16.B20 !== "Government ambulance") {
       setFormB16((prevValue) => {
@@ -81,9 +102,19 @@ function formB16() {
 
   return (
     <div>
-      <Heading h2="Community Survey Tool"></Heading>
-      <section id="site-info">
-        <SidePanel id={"19"} />
+      <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+      </div>
+      <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"19"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -94,7 +125,8 @@ function formB16() {
             </div>
           </div>
 
-          <div className="formcontent cont_extra">
+          <div className="formcontent cont_extra fbox">
+            <div className="fbox1">
             <Radio
               onClick={handleChange(setFormB16)}
               h3="B.17  Who suggested you visit the healthcare facility for emergency care? "
@@ -345,6 +377,8 @@ function formB16() {
               name="B33"
               byDefault={formB16.B33}
             />
+
+            </div>
 
             <CSTButton
               formName="formb16"

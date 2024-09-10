@@ -19,17 +19,49 @@ function FormC22() {
     const [formC22, setFormC22] = useState(JSON.parse(formc22))
     turnOffbutton();
 
+    const [isSidebarVisible, setSidebarVisible] = useState(
+        window.innerWidth > 1024
+      );
+    
+      const toggleSidebar = () => {
+        setSidebarVisible(!isSidebarVisible);
+      };
+      const handleResize = () => {
+        if (window.innerWidth >= 1025) {
+          setSidebarVisible(true);
+        }
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+        // AOS.init({ duration: 2000 });
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
     useEffect(() => {
         if (formC22.C18 !== "Yes") {
           setFormC22({ ...formC22, C19: "" })
-        }
-    
+        }  
       }, [formC22.C18])
+
     return (
         <div>
-            <Heading h2="Community Survey Tool"></Heading>
-            <section id='site-info'>
-                <SidePanel id={"22"} />
+            <div className="header">
+                <div className="burger-menu" onClick={toggleSidebar}>
+                &#9776;
+                </div>
+                <Heading h2="Community Survey Tool"></Heading>
+            </div>
+            <section id='site-info' className="form-main">
+                {isSidebarVisible && (
+                <>
+                    <SidePanel id={"22"} />
+                    <div className="grayedover" onClick={toggleSidebar}></div>
+                </>
+                )}
+
                 <div className='siteInfo'>
                     <div className="formhdr">
                         <div>
@@ -42,7 +74,7 @@ function FormC22() {
                         </div>
                     </div>
 
-                    <div className="formcontent cont_extra">
+                    <div className="formcontent ">
 
                         <Radio onClick={handleChange(setFormC22)} h3="C.8 Were there any problems in arranging for transport of the patient?  (Describe)" CheckbobItems={["Yes (Specify)", "No"]} name="C8" setter={setFormC22} otherArray={[1, 0]} byDefault={formC22.C8} />
 
