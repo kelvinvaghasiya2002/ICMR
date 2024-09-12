@@ -73,9 +73,9 @@ export const CSTUniqueCodeGenrator = async (req, res) => {
     const existingRecords = await CSTFORM.countDocuments({ AA2: code });
 
     // Generate the unique code by appending the count of existing records
-    const Respondent_ID = `${code}_${existingRecords.length + 1}`;
+    const Respondent_ID = `${code}_${existingRecords + 1}`;
     const Household_ID = `${await UniqueCode(code)}_${
-      existingRecords.length + 1
+      existingRecords + 1
     }`;
     const uniqueCode = {
       AA2: code,

@@ -4,20 +4,18 @@ import { AMBULANCE } from "../Database/Ambulance.js";
 const app = express();
 
 export const AMBULANCEController = async (req, res) => {
-  console.log("Comming");
   var { completeform, table1, table2, uniqueCode } = req.body;
   completeform = JSON.parse(completeform);
   table1 = JSON.parse(table1);
   table2 = JSON.parse(table2);
 
   AMBULANCE.countDocuments({ AMB1: completeform?.AMB1 }).then((response) => {
-    console.log(response);
     const combinedData = {
       ...completeform,
       table1,
       table2,
       formUniqueCode: uniqueCode,
-      uniqueCode: `${completeform.AMB1}_${response.length + 1}`,
+      uniqueCode: `${completeform.AMB1}_${response + 1}`,
     };
     AMBULANCE.create(combinedData)
       .then((result) => {

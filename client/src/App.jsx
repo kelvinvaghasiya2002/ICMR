@@ -231,59 +231,13 @@ function App() {
         <Route path="/barriers-and-facilitators1" element={<FormD24 />} />
         <Route path="/barriers-and-facilitators2" element={<FormD25 />} />
         <Route path="/costing" element={<FormE26 />} />
-        <Route path="/verbal-&-social-autopsy1" element={<FormF27 />} />
-        <Route path="/verbal-&-social-autopsy2" element={<FormF28 />} />
-        <Route path="/improve-emergency-services" element={<FormG29 />} />
-        <Route path="/household-schedule1" element={<FormH30 />} />
-        <Route path="/household-schedule2" element={<FormH31 />} />
-        <Route path="/siteinformation" element={<FormA1 />} />
-        <Route path="/clusterinformation" element={<FormA2 />} />
-        <Route path="/linelistingofhouseholdmembers-1" element={<FormA3 />} />
-        <Route path="/linelistingofhouseholdmembers-2" element={<FormA4 />} />
-        <Route path="/linelistingofhouseholdmembers-3" element={<FormA5 />} />
-        <Route path="/linelistingofhouseholdmembers-4" element={<FormA5a />} />
-        <Route path="/trauma" element={<FormA6 />} />
-        <Route path="/burn" element={<FormA7 />} />
-        <Route path="/stemi" element={<FormA8 />} />
-        <Route path="/stroke" element={<FormA9 />} />
-        <Route path="/acuterespiratoryillness" element={<FormA10 />} />
-        <Route path="/maternalneonatalemergency" element={<FormA11 />} />
-        <Route path="/snakebite" element={<FormA12 />} />
-        <Route path="/poisoning" element={<FormA13 />} />
-        <Route path="/others" element={<FormA14 />} />
-        <Route path="/death" element={<FormA15 />} />
-        <Route
-          path="/socio-demographicprofileofthepatientinthehhwithemergencycondition"
-          element={<FormB16 />}
-        />
-        <Route
-          path="/initialhealthcareseekingpathway-1"
-          element={<FormB17 />}
-        />
-        <Route
-          path="/initialhealthcareseekingpathway-2"
-          element={<FormB18 />}
-        />
-        <Route
-          path="/initialhealthcareseekingpathway-3"
-          element={<FormB19 />}
-        />
-        <Route
-          path="/initialhealthcareseekingpathway-4"
-          element={<FormB19b />}
-        />
-        <Route path="/referral-facility1" element={<FormC20 />} />
-        <Route path="/referral-facility2" element={<FormC21 />} />
-        <Route path="/referral-facility3" element={<FormC22 />} />
-        <Route path="/referral-facility4" element={<FormC23 />} />
-        <Route path="/barriers-and-facilitators1" element={<FormD24 />} />
-        <Route path="/barriers-and-facilitators2" element={<FormD25 />} />
-        <Route path="/costing" element={<FormE26 />} />
-        <Route path="/verbal-&-social-autopsy1" element={<FormF27 />} />
+        <Route path="/household-schedule" element={<FormF27 />} />
+        {/* <Route path="/verbal-&-social-autopsy1" element={<FormF27 />} /> */}
         {/* <Route path="/verbal-&-social-autopsy2" element={<FormF28 />} />
         <Route path="/improve-emergency-services" element={<FormG29 />} />
         <Route path="/household-schedule1" element={<FormH30 />} />
         <Route path="/household-schedule2" element={<FormH31 />} /> */}
+        
 
         {/* BELOW are HFAT-1 */}
 

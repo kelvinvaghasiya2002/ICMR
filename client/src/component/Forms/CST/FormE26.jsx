@@ -160,7 +160,7 @@ function FormE26() {
                         <InputField h3="E.10 Based on your experience what suggestion would you like to make to the government to improve the emergency services in your district? " placeholder="Type here" name="E10" value={formE26.E10} onChange={handleChange(setFormE26)} />
 
 
-                        <CSTButton formName="forme26" formData={formE26} prev="/barriers-and-facilitators2" next="/verbal-&-social-autopsy1" prevText="Previous" nextText="Save & Next" />
+                        <CSTButton formName="forme26" formData={formE26} prev="/barriers-and-facilitators2" next="/household-schedule" prevText="Previous" nextText="Save & Next" />
                     </div>
                 </div>
             </section>

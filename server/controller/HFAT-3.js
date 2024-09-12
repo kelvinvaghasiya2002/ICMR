@@ -11,13 +11,15 @@ export const HFAT3Controller = async (req, res) => {
   table4 = JSON.parse(table4);
 
   HFAT3.countDocuments({ H3A2: completeform?.H3A2 }).then((response) => {
+    console.log(typeof response);
+
     const combinedData = {
       ...completeform,
       table1,
       table2,
       table3,
       table4,
-      uniqueCode: `${completeform.H3A2}_${response.length + 1}`,
+      uniqueCode: `${completeform.H3A2}_${response + 1}`,
     };
     HFAT3.create(combinedData)
       .then((result) => {

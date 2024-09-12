@@ -20,7 +20,7 @@ export const HFAT1Controller = async (req, res) => {
       table2,
       table3,
       table4,
-      uniqueCode: `${completeform.A3}_${response.length + 1}`,
+      uniqueCode: `${completeform.A3}_${response + 1}`,
     };
     HFAT1.create(combinedData)
       .then((result) => {
@@ -31,9 +31,6 @@ export const HFAT1Controller = async (req, res) => {
       });
   });
 
-
-
-   
   // const hfat1 = req.body;
   // try {
   //   HFAT1.find({ A3: hfat1?.A3 }).then((response) => {
