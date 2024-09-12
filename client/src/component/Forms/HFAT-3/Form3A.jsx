@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Checkbox from "../child-comp/Checkbox";
 import SidePanel from "./SidePanelHFAT3";
 import Buttons from "../child-comp/Buttons";
@@ -244,7 +246,7 @@ function Form3A() {
                   </div>
                   <Heading h2="Health Facility Assessment Tool 3: Primary Health Centre"></Heading>
       </div>
-      <section className="form-main">
+      <section className="form-main">  
                   {isSidebarVisible && (
                   <>
                       <SidePanel id={"1"} />
@@ -252,7 +254,7 @@ function Form3A() {
                   </>
                   )}
                   
-        <div className="siteInfo">
+        <div className="siteInfo" data-aos="fade-left" >
           <div className="formhdr">
             <div>
               <h3>3A. Facility Information</h3>
