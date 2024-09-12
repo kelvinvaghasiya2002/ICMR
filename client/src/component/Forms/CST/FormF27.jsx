@@ -16,6 +16,7 @@ import CSTButton from "../child-comp/CSTButton.jsx";
 import CSTLastButton from "../child-comp/CSTLastButton.jsx";
 
 function FormF27() {
+  localStorage.removeItem("formf27");
   var formf27 = setLocalStorage("formf27", {
     F1: "",
     F2: "",
@@ -26,7 +27,7 @@ function FormF27() {
     F7: "",
     F8: "",
     F9: "",
-    F10: "",
+    F10: [],
     F11: "",
     F12: [],
     F13: "",
@@ -63,18 +64,18 @@ function FormF27() {
   return (
     <div>
       <div className="header">
-                <div className="burger-menu" onClick={toggleSidebar}>
-                &#9776;
-                </div>
-                <Heading h2="Community Survey Tool"></Heading>
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Community Survey Tool"></Heading>
       </div>
       <section id='site-info' className="form-main">
-                {isSidebarVisible && (
-                <>
-                    <SidePanel id={"13"} />
-                    <div className="grayedover" onClick={toggleSidebar}></div>
-                </>
-                )}
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"13"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
 
         <div className="siteInfo">
           <div className="formhdr">
@@ -91,12 +92,14 @@ function FormF27() {
               name="F1"
               h3="F.1 Name of the Head of the Household:"
               value={formF27.F1}
+              placeholder="Type here"
               onChange={handleChange(setFormF27)}
             />
             <InputField
               name="F2"
               h3="F.2 Age (in Years):"
               value={formF27.F2}
+              placeholder="Type here"
               onChange={handleChange(setFormF27)}
             />
             <Radio
@@ -200,9 +203,10 @@ function FormF27() {
               CheckbobItems={["INR", "Prefer not to disclose/ Refuse"]}
               otherArray={[1, 0]}
               byDefault={formF27.F9}
+              setter={setFormF27}
               onClick={handleChange(setFormF27)}
             />
-            <Radio
+            <Checkbox
               name="F10"
               h3="F.10 What type of Transport facility available at home:"
               CheckbobItems={[
@@ -214,9 +218,9 @@ function FormF27() {
                 "Agricultural Vehicle (Tractor)",
                 "Others",
               ]}
-              otherArray={[0, 0, 0, 0, 0, 0, 1]}
-              byDefault={formF27.F10}
-              onClick={handleChange(setFormF27)}
+              setFunction={setFormF27}
+              StateValue={formF27}
+              array={formF27.F10}
             />
             <Radio
               name="F11"
@@ -251,6 +255,7 @@ function FormF27() {
               name="F14"
               h3="F.14 How many of you or your family members have an individual medical/ health insurance scheme?"
               value={formF27.F14}
+              placeholder="Type here"
               onChange={handleChange(setFormF27)}
             />
             <Radio

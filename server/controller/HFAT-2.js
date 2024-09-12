@@ -19,7 +19,7 @@ export const HFAT2Controller = async (req, res) => {
       table2,
       table3,
       table4,
-      uniqueCode: `${completeform?.H2A2}_${response.length + 1}`,
+      uniqueCode: `${completeform?.H2A2}_${response + 1}`,
     };
     HFAT2.create(combinedData)
       .then((result) => {

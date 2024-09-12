@@ -120,15 +120,15 @@ export default function SignIn() {
               </div>
             </div>
 
-            <div className="remember-me">
+            {/* <div className="remember-me">
               <div className="radio-btn">
                 <input type="radio"></input>
                 <p>Remember me</p>
               </div>
-              {/* <div>
+              <div>
                                 <p><Link to="#">Forget password?</Link></p>
-                            </div> */}
-            </div>
+                            </div> 
+            </div>*/}
 
             {/* {loader ? ( <Loa)} */}
             <div className="signin-button">
