@@ -10,8 +10,14 @@ import C1 from "../Tables/C1.jsx";
 import { handleChange, turnOffbutton } from "../helpers";
 import setLocalStorage from "../setLocalStorage.js";
 import Heading from "../../Heading/Heading.jsx";
-import { validateName, validateNumber, validateRequired, validateEmail, validateCheckBox } from '../fv.js';
-import OverlayCard from '../OverlayCard.jsx';
+import {
+  validateName,
+  validateNumber,
+  validateRequired,
+  validateEmail,
+  validateCheckBox,
+} from "../fv.js";
+import OverlayCard from "../OverlayCard.jsx";
 
 function FormC() {
   const formc = setLocalStorage("formc", {
@@ -26,32 +32,34 @@ function FormC() {
   const [errors, setErrors] = useState({});
   const [showOverlay, setShowOverlay] = useState(false);
 
-    // --toggle--
-    const [isSidebarVisible, setSidebarVisible] = useState(window.innerWidth > 1024);
-    const toggleSidebar = () => {
-      setSidebarVisible(!isSidebarVisible);
-    };
-    const handleResize = () => {
-      if (window.innerWidth >= 1025) {
-        setSidebarVisible(true);
-      }
-    };
-  
-    // useEffect(() => {
-    //   window.addEventListener('resize', handleResize);
-    //   return () => {
-    //     window.removeEventListener('resize', handleResize);
-    //   };
-    // }, []);
-    // --toggle end--
+  // --toggle--
+  const [isSidebarVisible, setSidebarVisible] = useState(
+    window.innerWidth > 1024
+  );
+  const toggleSidebar = () => {
+    setSidebarVisible(!isSidebarVisible);
+  };
+  const handleResize = () => {
+    if (window.innerWidth >= 1025) {
+      setSidebarVisible(true);
+    }
+  };
 
-    useEffect(() => {
-      window.addEventListener('resize', handleResize);
-      AOS.init({ duration: 2000 })
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
+  // useEffect(() => {
+  //   window.addEventListener('resize', handleResize);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
+  // --toggle end--
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    AOS.init({ duration: 2000 });
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (formC.C3 === "No") {
@@ -71,19 +79,19 @@ function FormC() {
     { key: "Manpower", label: "Manpower", type: "text" },
     { key: "Number", label: "Number", type: "input" },
     {
-      key: "availability247",
+      key: "Availability",
       label: "24/7 Availability",
       type: "radio",
       options: ["Yes", "No"],
     },
     {
-      key: "onSiteAvailability",
+      key: "OnSite",
       label: "On-site Availability",
       type: "radio",
       options: ["Yes", "No"],
     },
     {
-      key: "onCallAvailability",
+      key: "OnCall",
       label: "On-call Availability",
       type: "radio",
       options: ["Yes", "No"],
@@ -118,9 +126,9 @@ function FormC() {
         Manpower: "",
         otherSpecify: "",
         Number: "",
-        availability: "",
-        onSite: "",
-        onCall: "",
+        Availability: "",
+        OnSite: "",
+        OnCall: "",
       };
     } else {
       return {
@@ -136,8 +144,6 @@ function FormC() {
   const validateForm = () => {
     // const newErrors = { ...errors };
     const newErrors = {};
-
-
 
     // if (formC.C2a.length === 0) {
     //   newErrors.C2a = "Select at least one option";
@@ -156,18 +162,21 @@ function FormC() {
     // // Check if there are no errors to allow navigation
     // return Object.keys(newErrors).length === 0;
 
-    if(!formC.C3) newErrors.C3 = ' Whether training for emergency care management is being conducted for the staff in the institution is required'
+    if (!formC.C3)
+      newErrors.C3 =
+        " Whether training for emergency care management is being conducted for the staff in the institution is required";
 
-    if(formC.C3 === "Yes" && !formC.C4 && !formC.C5){
+    if (formC.C3 === "Yes" && !formC.C4 && !formC.C5) {
       newErrors.C4 = validateRequired(formC.C4);
-      newErrors.C4 = 'Fill the emergency care trainings you have undergone';
+      newErrors.C4 = "Fill the emergency care trainings you have undergone";
       newErrors.C5 = validateRequired(formC.C5);
-      newErrors.C5 = 'Frequency of trainig is required';
-
+      newErrors.C5 = "Frequency of trainig is required";
     }
 
     setErrors(newErrors);
-    setShowOverlay(Object.keys(newErrors).some(key => newErrors[key] !== undefined));
+    setShowOverlay(
+      Object.keys(newErrors).some((key) => newErrors[key] !== undefined)
+    );
   };
 
   useEffect(() => {
@@ -175,12 +184,12 @@ function FormC() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
+      missingFields.forEach((field) => {
         console.log(field + "field");
-        if(Array.isArray(formC[field])){
+        if (Array.isArray(formC[field])) {
           console.log(formC[field]);
           newErrors[field] = validateCheckBox(formC[field]);
-        }else{
+        } else {
           newErrors[field] = validateRequired(formC[field]);
         }
       });
@@ -191,17 +200,23 @@ function FormC() {
   }, [formC]);
 
   const isFormValid = () => {
-    const requiredFields = ['C2a', 'C2b', 'C3', 'C6'];
+    const requiredFields = ["C2a", "C2b", "C3", "C6"];
     if (formC.C3 === "Yes") {
-      requiredFields.push('C4');
-      requiredFields.push('C5');
+      requiredFields.push("C4");
+      requiredFields.push("C5");
     }
 
-    const missingFields = requiredFields.filter(field => {
+    const missingFields = requiredFields.filter((field) => {
       if (Array.isArray(formC[field])) {
-      return formC[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+        return formC[field].every(
+          (item) =>
+            item === "" || (typeof item === "string" && item.trim() === "")
+        );
       } else {
-      return !formC[field] || (typeof formC[field] === 'string' && formC[field].trim() === '');
+        return (
+          !formC[field] ||
+          (typeof formC[field] === "string" && formC[field].trim() === "")
+        );
       }
     });
     return { isValid: missingFields.length === 0, missingFields };
@@ -212,8 +227,8 @@ function FormC() {
     setShowOverlay(!isValid);
     if (!isValid) {
       const newErrors = {};
-      missingFields.forEach(field => {
-        newErrors[field] = 'This field is required';
+      missingFields.forEach((field) => {
+        newErrors[field] = "This field is required";
       });
       setErrors(newErrors);
     } else {
@@ -224,10 +239,10 @@ function FormC() {
   const handleChangeWithValidation = (e) => {
     const { name, value } = e.target;
     let validatedValue = value;
-    let error = '';
+    let error = "";
 
     switch (name) {
-      case 'C6':
+      case "C6":
         error = validateName(value);
         if (!error) {
           validatedValue = value;
@@ -240,20 +255,19 @@ function FormC() {
         break;
     }
 
-    setFormC(prevValue => ({ ...prevValue, [name]: validatedValue }));
+    setFormC((prevValue) => ({ ...prevValue, [name]: validatedValue }));
 
     // Perform additional required validation
     switch (name) {
-      case 'C6':
+      case "C6":
         error = error || validateRequired(validatedValue);
         break;
       default:
         break;
     }
 
-    setErrors(prevErrors => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
   };
-
 
   return (
     <div>
@@ -410,16 +424,16 @@ function FormC() {
               errorMsg={errors.C6}
             />
 
-<div className="button-container">
-<Buttons
-              formName={"formc"}
-              formData={formC}
-              prevText="Previous"
-              nextText="Save & Next"
-              prev="/infrastructure"
-              next="/logisticsdrugsconsumablesequipment-1"
-              // validateForm={validateForm}
-            />
+            <div className="button-container">
+              <Buttons
+                formName={"formc"}
+                formData={formC}
+                prevText="Previous"
+                nextText="Save & Next"
+                prev="/infrastructure"
+                next="/logisticsdrugsconsumablesequipment-1"
+                // validateForm={validateForm}
+              />
               <OverlayCard
                 isVisible={showOverlay}
                 message="(Please fill all required fields to proceed)"

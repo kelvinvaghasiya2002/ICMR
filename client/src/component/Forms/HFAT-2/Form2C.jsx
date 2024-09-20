@@ -121,9 +121,9 @@ function Form2C() {
         Manpower: "",
         otherSpecify: "",
         Number: "",
-        availability: "",
-        onSite: "",
-        onCall: "",
+        Availability: "",
+        OnSite: "",
+        OnCall: "",
       };
     } else {
       return {

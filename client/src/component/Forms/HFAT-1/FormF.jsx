@@ -143,6 +143,9 @@ function FormF() {
 
   const isFormValid = () => {
     const requiredFields = ['H1F1', 'H1F3', 'H1F4', 'H1F5', 'H1F8', 'H1F9'];
+    if (formF.H1F1 === "Yes") {
+      requiredFields.push('H1F2', 'H1F7');
+    }
     if (formF.H1F5 === "Yes") {
       requiredFields.push('H1F6');
     }
@@ -281,7 +284,7 @@ function FormF() {
                 array={formF.H1F6}
                 name="H1F6"
                 h3="1F.6 : If yes, select all that apply and provide their value"
-                CheckbobItems={["Door to CT/ECG time:-  ", "Door to needle time:- ", "Time to activate emergency alert team:- "]}
+                CheckbobItems={["Door to CT/ECG time", "Door to needle time", "Time to activate emergency alert team"]}
                 time={true}
               />
             )}
