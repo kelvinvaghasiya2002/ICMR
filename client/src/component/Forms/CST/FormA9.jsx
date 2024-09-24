@@ -11,6 +11,9 @@ import setLocalStorage from '../setLocalStorage.js';
 import Heading from '../../Heading/Heading';
 import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
+import useFormValidation from '../../../utils/custom_validation_hook.js';
+import { validateName, validateRequired } from '../fv.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 
 function FormA9() {
@@ -49,6 +52,48 @@ function FormA9() {
 
 
   turnOffbutton();
+
+  const { isValid, errors, setErrors } = useFormValidation(formA3, [ 
+    "AC9_1", 
+    ...(formA3.AC9_1 === "Yes" ? ["AC9_1_if", "AC9_2"] : []) 
+  ]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = "";
+
+    switch (name) {
+      case "A9_1_if":
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formA3[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      default:
+        break;
+    }
+
+    setFormA3((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case "AC9_1":
+      case "AC9_1_if":
+      case "AC9_2":
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+  };
+
+    
   return (
     <div>
       <div className="header">
@@ -88,7 +133,7 @@ function FormA9() {
             {
               (formA3.AC9_1 === "Yes") &&
               <>
-                <InputField onChange={handleChange(setFormA3)} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC9_1_if" value={formA3.AC9_1_if} />
+                <InputField onChange={handleChangeWithValidation} h3="If Yes, What were the symptoms of emergency conditions and first course of action?" placeholder="Type here" name="AC9_1_if" value={formA3.AC9_1_if} />
 
                 {/* <DropDown h3="AC.9.2  If yes, could you please tell who all from your Household suffered with this condition?" dropdownItems={["< 1 year", "> 1 year"]} name="AC9_2" onClick={handleChange(setFormA3)} byDefault={formA3.AC9_2} /> */}
 
@@ -96,7 +141,13 @@ function FormA9() {
               </>
             }
 
+            <div className="button-container">
             <Buttons formName={"forma3"} formData={formA3} prev="/stemi" next="/acuterespiratoryillness" prevText="Previous" nextText="Save & Next" />
+            <OverlayCard
+              isVisible={isValid}
+              message="(Please fill all required fields to proceed)"
+              />
+            </div>
           </div>
         </div>
       </section>
