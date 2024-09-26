@@ -13,6 +13,9 @@ import Table from "../child-comp/Table.jsx";
 import DropDown from "../child-comp/DropDown.jsx";
 import Table1 from "../child-comp/Table1.jsx";
 import CSTButton from "../child-comp/CSTButton.jsx";
+import OverlayCard from "../OverlayCard.jsx";
+import useFormValidation from "../../../utils/custom_validation_hook.js";
+import { validateName, validateRequired } from "../fv.js";
 
 function formB16() {
   var formb16 = setLocalStorage("formb16", {
@@ -80,21 +83,68 @@ function formB16() {
     };
   }, []);
 
+  const { isValid, errors, setErrors } = useFormValidation(formB16, [
+    "B34",
+    ...(formB16.B34 === "Partially recovered & discharged" ||
+      formB16.B34 === "Fully Recovered & discharged" ||
+      formB16.B34 === "Recovered with disability & discharged" ||
+      formB16.B34 === "Self-Discharged" ||
+      formB16.B34 === "Admitted in Hospital" ||
+      formB16.B34 === "Death"
+      ? ["B35"]
+      : []),
+  ]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = "";
+
+    switch (name) {
+      case "B35":
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formB16[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      default:
+        break;
+    }
+
+    setFormB16((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case "B34":
+      case "B35":
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+  };
+
+
   return (
     <div>
       <div className="header">
-                <div className="burger-menu" onClick={toggleSidebar}>
-                &#9776;
-                </div>
-                <Heading h2="Community Survey Tool"></Heading>
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Community Survey Tool"></Heading>
       </div>
       <section id='site-info' className="form-main">
-                {isSidebarVisible && (
-                <>
-                    <SidePanel id={"19"} />
-                    <div className="grayedover" onClick={toggleSidebar}></div>
-                </>
-                )}
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"19"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -129,15 +179,16 @@ function formB16() {
               formB16.B34 === "Self-Discharged" ||
               formB16.B34 === "Admitted in Hospital" ||
               formB16.B34 === "Death") && (
-              <InputField
-                h3="B.35 : What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary? (Specify)"
-                placeholder="Type Here"
-                value={formB16.B35}
-                name="B35"
-                onChange={handleChange(setFormB16)}
-              />
-            )}
+                <InputField
+                  h3="B.35 : What was the final diagnosis on consultation with the doctor or mentioned in the final discharge summary? (Specify)"
+                  placeholder="Type Here"
+                  value={formB16.B35}
+                  name="B35"
+                  onChange={handleChangeWithValidation}
+                />
+              )}
 
+            <div className="button-container">
             <CSTButton
               formName="formb16"
               formData={formB16}
@@ -145,7 +196,7 @@ function formB16() {
               // next="/referral-facility1"
               next={
                 formB16.B34 === "Referred to higher facility" ||
-                formB16.B34 ===
+                  formB16.B34 ===
                   "Went against medical advice to different facility"
                   ? "/referral-facility1"
                   : "/barriers-and-facilitators2"
@@ -153,6 +204,11 @@ function formB16() {
               prevText="Previous"
               nextText="Save & Next"
             />
+              <OverlayCard
+                isVisible={!isValid}
+                message="(Please fill all required fields to proceed)"
+              />
+            </div>
           </div>
         </div>
       </section>

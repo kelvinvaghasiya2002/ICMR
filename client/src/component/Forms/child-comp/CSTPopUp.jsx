@@ -6,8 +6,10 @@ const server = import.meta.env.VITE_SERVER;
 function CSTPopUp({ setPopup, lastForm, from, formName }) {
   const [linkPath, setLinkPath] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
+    setLoading(true);
     var uniqueCode = JSON.parse(localStorage.getItem("CSTuniqueCode"));
     var CompleteForm = JSON.parse(localStorage.getItem("CompleteForm"));
     CompleteForm = { ...uniqueCode, ...CompleteForm, ...lastForm };
@@ -129,8 +131,9 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
             onClick={handleSubmit}
             style={{ color: "white", textDecoration: "none" }}
             to={linkPath}
+            disabled={loading}
           >
-            Submit
+            {loading ? "loading..." : "Submit"}
           </Link>
         </div>
       </div>
