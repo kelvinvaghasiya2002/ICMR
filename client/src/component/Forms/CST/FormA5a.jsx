@@ -80,7 +80,7 @@ function FormA5a() {
                         <div className="button-container">
                             <Buttons formName="forma3" formData={formA3} prevText="Previous" nextText="Save & Next" prev="/linelistingofhouseholdmembers-3" next={(formA3.AC5 === "Yes") ? "/trauma" : "/death"} />
                             <OverlayCard
-                                isVisible={isValid}
+                                isVisible={!isValid}
                                 message="(Please fill all required fields to proceed)"
                             />
                         </div>

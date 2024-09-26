@@ -98,7 +98,7 @@ function FormA5() {
             <Buttons formName="forma3" formData={formA3} prevText="Previous" nextText="Save & Next" prev="/linelistingofhouseholdmembers-2" next={(formA3.AC4 === "Yes" || formA3.AC3 === "Yes" ? "/linelistingofhouseholdmembers-1" : "/linelistingofhouseholdmembers-4")} />
 
               <OverlayCard
-                isVisible={isValid}
+                isVisible={!isValid}
                 message="(Please fill all required fields to proceed)"
               />
             </div>

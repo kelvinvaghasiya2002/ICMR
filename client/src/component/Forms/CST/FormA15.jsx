@@ -12,6 +12,9 @@ import Heading from "../../Heading/Heading";
 import Table from "../child-comp/Table.jsx";
 import DropDown from "../child-comp/DropDown.jsx";
 import Table1 from "../child-comp/Table1.jsx";
+import useFormValidation from "../../../utils/custom_validation_hook.js";
+import OverlayCard from "../OverlayCard.jsx";
+import { validateName, validateRequired } from "../fv.js";
 
 function FormA15() {
   var forma3 = getLocalStorage("forma3");
@@ -51,6 +54,44 @@ function FormA15() {
       localStorage.removeItem("forma15_table");
     }
   }, [formA15.AC15_1]);
+
+  const { isValid, errors, setErrors } = useFormValidation(formA15, [
+    "AC15_1",
+    ...(formA15.AC15_1 === "Yes" ? ["AC15_2"] : []),
+  ]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = "";
+
+    switch (name) {
+      case "A15_2":
+        error = validateName(value);
+        if (!error) {
+          validatedValue = value;
+        } else {
+          validatedValue = formA3[name];
+          e.preventDefault(); // Prevent default behavior if the input was invalid
+        }
+        break;
+      default:
+        break;
+    }
+
+    setFormA15((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case "AC15_2":
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+  };
   return (
     <div>
       <div className="header">
@@ -92,7 +133,7 @@ function FormA15() {
                     h3="AC.15.2  If yes, how many members in your household lost his/her life due to any health emergency condition (Specify)"
                     placeholder="Type here"
                     name="AC15_2"
-                    onChange={handleChange(setFormA15)}
+                    onChange={handleChangeWithValidation}
                     value={formA15.AC15_2}
                   />
 
@@ -125,23 +166,29 @@ function FormA15() {
                 </>
               )}
             </div>
+            <div className="button-container">
 
-            <Buttons
-              prev={
-                forma3.AC5 == "No"
-                  ? "/linelistingofhouseholdmembers-4"
-                  : "/others"
-              }
-              next={
-                forma3.AC5 == "No" && formA15.AC15_1 == "No"
-                  ? "/household-schedule"
-                  : "/socio-demographicprofileofthepatientinthehhwithemergencycondition"
-              }
-              prevText="Previous"
-              nextText="Save & Next"
-              formName="forma15"
-              formData={formA15}
-            />
+              <Buttons
+                prev={
+                  forma3.AC5 == "No"
+                    ? "/linelistingofhouseholdmembers-4"
+                    : "/others"
+                }
+                next={
+                  forma3.AC5 == "No" && formA15.AC15_1 == "No"
+                    ? "/household-schedule"
+                    : "/socio-demographicprofileofthepatientinthehhwithemergencycondition"
+                }
+                prevText="Previous"
+                nextText="Save & Next"
+                formName="forma15"
+                formData={formA15}
+              />
+              <OverlayCard
+                isVisible={!isValid}
+                message="(Please fill all required fields to proceed)"
+              />
+            </div>
           </div>
         </div>
       </section>

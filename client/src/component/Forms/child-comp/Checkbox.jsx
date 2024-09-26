@@ -140,7 +140,7 @@ function Checkbox({
                 id={item}
                 name={name}
                 value={item}
-                checked={array.includes(item) || array[index].startsWith(item)}
+                checked={array.includes(item) || array[index]?.startsWith(item)}
               />
               <label
                 style={{

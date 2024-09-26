@@ -360,6 +360,7 @@ function FormB() {
               name="B7"
               otherArray={[0, 0, 1, 0]}
               byDefault={formB.B7}
+              setter={setFormB}
             />
 
             <Checkbox

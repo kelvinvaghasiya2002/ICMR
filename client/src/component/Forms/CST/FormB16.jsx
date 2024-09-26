@@ -14,6 +14,9 @@ import DropDown from "../child-comp/DropDown.jsx";
 import Table1 from "../child-comp/Table1.jsx";
 import CSTButton from "../child-comp/CSTButton.jsx";
 import CSTLastButton from "../child-comp/CSTLastButton.jsx";
+import OverlayCard from "../OverlayCard.jsx";
+import useFormValidation from "../../../utils/custom_validation_hook.js";
+import { validateRequired } from "../fv.js";
 
 function FormB16() {
   var formb16 = setLocalStorage("formb16", {
@@ -100,21 +103,51 @@ function FormB16() {
     }
   }, [formB16.B0]);
 
+  const { isValid, errors, setErrors } = useFormValidation(formB16, [
+    "B0",
+    ...(lessThen6Months
+      ? ["B1", "B2", "B3", "B4"]
+      : []),
+  ]);
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = "";
+
+    setFormB16((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+      case "B0":
+      case "B1":
+      case "B2":
+      case "B3":
+      case "B4":
+        error = error || validateRequired(validatedValue);
+        break;
+      default:
+        break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+  };
+
   return (
     <div>
       <div className="header">
-                <div className="burger-menu" onClick={toggleSidebar}>
-                &#9776;
-                </div>
-                <Heading h2="Community Survey Tool"></Heading>
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Community Survey Tool"></Heading>
       </div>
       <section id='site-info' className="form-main">
-                {isSidebarVisible && (
-                <>
-                    <SidePanel id={"11"} />
-                    <div className="grayedover" onClick={toggleSidebar}></div>
-                </>
-                )}
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"11"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -144,7 +177,7 @@ function FormB16() {
                 h3="B.0 When did the Patient suffered with this condition?"
                 placeholder="Type here"
                 type={"date"}
-                onChange={handleChange(setFormB16)}
+                onChange={handleChangeWithValidation}
                 value={formB16.B0}
               />
               {/* <h5>Note: If emergency conditions is within ≤ 6 months, continue to B.2 else skip to next patient in the list. If none of the patient in the list had any condition under ≤ 6 months then skip to section H.</h5> */}
@@ -232,23 +265,27 @@ function FormB16() {
 
             <div className="button-container">
 
-            {!lessThen6Months ? (
-              <CSTLastButton
-                prev="/death"
-                formName="formb16"
-                formData={formB16}
-                MainForm={"CST"}
+              {!lessThen6Months ? (
+                <CSTLastButton
+                  prev="/death"
+                  formName="formb16"
+                  formData={formB16}
+                  MainForm={"CST"}
+                />
+              ) : (
+                <CSTButton
+                  formName="formb16"
+                  formData={formB16}
+                  prev="/death"
+                  next="/initialhealthcareseekingpathway-1"
+                  prevText="Previous"
+                  nextText="Save & Next"
+                />
+              )}
+              <OverlayCard
+                isVisible={!isValid}
+                message="(Please fill all required fields to proceed)"
               />
-            ) : (
-              <CSTButton
-                formName="formb16"
-                formData={formB16}
-                prev="/death"
-                next="/initialhealthcareseekingpathway-1"
-                prevText="Previous"
-                nextText="Save & Next"
-              />
-            )}
             </div>
           </div>
         </div>

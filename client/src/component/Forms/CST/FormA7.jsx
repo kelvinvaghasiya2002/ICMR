@@ -140,7 +140,7 @@ function FormA7() {
               <div className="button-container">
                 <Buttons formName="forma3" formData={formA3} prev="/trauma" next="/stemi" prevText="Previous" nextText="Save & Next" />
                 <OverlayCard
-                  isVisible={isValid}
+                  isVisible={!isValid}
                   message="(Please fill all required fields to proceed)"
                 />
               </div>
