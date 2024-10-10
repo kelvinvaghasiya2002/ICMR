@@ -13,6 +13,9 @@ import Table from "../child-comp/Table.jsx";
 import DropDown from "../child-comp/DropDown.jsx";
 import Table1 from "../child-comp/Table1.jsx";
 import CSTButton from "../child-comp/CSTButton.jsx";
+import OverlayCard from "../OverlayCard.jsx";
+import useFormValidation from "../../../utils/custom_validation_hook.js";
+import { validateName, validateRequired } from "../fv.js";
 
 function FormB17() {
   var formb16 = setLocalStorage("formb16", {
@@ -80,21 +83,83 @@ function FormB17() {
     };
   }, []);
 
+  const { isValid, errors, setErrors } = useFormValidation(formB16, [
+    "B5_dt",
+    "B6",
+    "B7",
+    "B8",
+    "B9",
+    "B10",
+    "B11",
+    ...(formB16.B11 === "Yes" ? ["B12_if"] : []),
+    "B13",
+    "B14",
+    "B15",
+  ]);
+
+
+  const handleChangeWithValidation = (e) => {
+    const { name, value } = e.target;
+    let validatedValue = value;
+    let error = "";
+
+    switch (name) {
+        case "B8":
+        case "B12_if":
+        case "B13":
+            error = validateName(value);
+            if (!error) {
+                validatedValue = value;
+            } else {
+                validatedValue = formA3[name];
+                e.preventDefault(); // Prevent default behavior if the input was invalid
+            }
+            break;
+        default:
+            break;
+    }
+
+    setFormB16((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+
+    // Perform additional required validation
+    switch (name) {
+        case "B5_dt":
+        case "B6":
+        case "B7":
+        case "B8":
+        case "B9":
+        case "B10":
+        case "B11":
+        case "B12_if":
+        case "B13":
+        case "B14":
+        case "B15":
+            error = error || validateRequired(validatedValue);
+            break;
+        default:
+            break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+};
+
+
+
   return (
     <div>
       <div className="header">
-                <div className="burger-menu" onClick={toggleSidebar}>
-                &#9776;
-                </div>
-                <Heading h2="Community Survey Tool"></Heading>
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Community Survey Tool"></Heading>
       </div>
       <section id='site-info' className="form-main">
-                {isSidebarVisible && (
-                <>
-                    <SidePanel id={"11"} />
-                    <div className="grayedover" onClick={toggleSidebar}></div>
-                </>
-                )}
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"11"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -107,139 +172,145 @@ function FormB17() {
 
           <div className="formcontent cont_extra fbox">
             <div className="fbox1">
-            <h3>
-              Now, I will be asking you about the emergency conditions and your
-              approach for seeking healthcare during the entire event of
-              healthcare emergency.
-            </h3>
-            <InputField
-              onChange={handleChange(setFormB16)}
-              h3="B.5	When did this incident take place?"
-              placeholder="Type here"
-              name="B5_dt"
-              type={"datetime-local"}
-              value={formB16.B5_dt}
-            />
-            <Radio
-              h3="B.6 How sure/confident are you about the time of Incident?"
-              CheckbobItems={[
-                "Not confident at all",
-                "Slightly confident",
-                "Somewhat confident",
-                "Fairly confident",
-                "Completely Confident",
-              ]}
-              name="B6"
-              onClick={handleChange(setFormB16)}
-              byDefault={formB16.B6}
-            />
-            <Radio
-              h3="B.7 Where did the medical emergency situation arise?"
-              CheckbobItems={[
-                "At home",
-                "At work",
-                "While travelling",
-                "Others (specify)",
-              ]}
-              otherArray={[0, 0, 0, 1]}
-              name="B7"
-              onClick={handleChange(setFormB16)}
-              byDefault={formB16.B7}
-              setter={setFormB16}
-            />
-            <InputField
-              onChange={handleChange(setFormB16)}
-              h3="B.8	Which was the first symptom you/ or the person expressed or complaint of during emergency condition?"
-              placeholder="Type here"
-              name="B8"
-              value={formB16.B8}
-            />
-
-            <InputField
-              onChange={handleChange(setFormB16)}
-              h3="B.9	When was the first symptom of a medical emergency recognised? [Time of onset of symptom]"
-              placeholder="Type here"
-              type={"time"}
-              name="B9"
-              value={formB16.B9}
-            />
-
-            <Radio
-              h3="B.10	How sure/confident are you about the time of Incident?"
-              CheckbobItems={[
-                "Not confident at all",
-                "Slightly confident",
-                "Somewhat confident",
-                "Fairly confident",
-                "ompletely Confident",
-              ]}
-              name="B10"
-              onClick={handleChange(setFormB16)}
-              byDefault={formB16.B10}
-            />
-            <Radio
-              h3="B.11	At the start of symptoms was any medication taken/ given at home to alleviate symptoms?"
-              CheckbobItems={["Yes", "No"]}
-              name="B11"
-              onClick={handleChange(setFormB16)}
-              byDefault={formB16.B11}
-            />
-            {formB16.B11 == "Yes" && formB16.B11 && (
+              <h3>
+                Now, I will be asking you about the emergency conditions and your
+                approach for seeking healthcare during the entire event of
+                healthcare emergency.
+              </h3>
               <InputField
-                onChange={handleChange(setFormB16)}
-                h3="B.12	If yes, what medication was given?"
+                onChange={handleChangeWithValidation}
+                h3="B.5	When did this incident take place?"
                 placeholder="Type here"
-                name="B12_if"
-                value={formB16.B12_if}
+                name="B5_dt"
+                type={"datetime-local"}
+                value={formB16.B5_dt}
               />
-            )}
-            <InputField
-              onChange={handleChange(setFormB16)}
-              h3="B.13	Which was the first symptom recognised as serious?"
-              placeholder="Type here"
-              name="B13"
-              value={formB16.B13}
-            />
-            <Radio
-              h3="B.14 Who first recognized the symptoms to be serious?"
-              CheckbobItems={["Family member", "Patient", "Others (Specify)"]}
-              otherArray={[0, 0, 1]}
-              name="B14"
-              setter={setFormB16}
-              onClick={handleChange(setFormB16)}
-              byDefault={formB16.B14}
-            />
-            <Radio
-              h3="B.15 What was your first course of action on identifying the emergency condition?"
-              CheckbobItems={[
-                "Visited allopathic health care facility",
-                "Home visit by a doctor",
-                "Consulted traditional healers/ spiritual healers",
-                "Local remedy/ Self-medication at home",
-                "AYUSH facility",
-                "Home consultation",
-                "Did not visit health facility",
-              ]}
-              name="B15"
-              onClick={handleChange(setFormB16)}
-              byDefault={formB16.B15}
-            />
+              <Radio
+                h3="B.6 How sure/confident are you about the time of Incident?"
+                CheckbobItems={[
+                  "Not confident at all",
+                  "Slightly confident",
+                  "Somewhat confident",
+                  "Fairly confident",
+                  "Completely Confident",
+                ]}
+                name="B6"
+                onClick={handleChange(setFormB16)}
+                byDefault={formB16.B6}
+              />
+              <Radio
+                h3="B.7 Where did the medical emergency situation arise?"
+                CheckbobItems={[
+                  "At home",
+                  "At work",
+                  "While travelling",
+                  "Others (specify)",
+                ]}
+                otherArray={[0, 0, 0, 1]}
+                name="B7"
+                onClick={handleChange(setFormB16)}
+                byDefault={formB16.B7}
+                setter={setFormB16}
+              />
+              <InputField
+                onChange={handleChangeWithValidation}
+                h3="B.8	Which was the first symptom you/ or the person expressed or complaint of during emergency condition?"
+                placeholder="Type here"
+                name="B8"
+                value={formB16.B8}
+              />
+
+              <InputField
+                onChange={handleChangeWithValidation}
+                h3="B.9	When was the first symptom of a medical emergency recognised? [Time of onset of symptom]"
+                placeholder="Type here"
+                type={"time"}
+                name="B9"
+                value={formB16.B9}
+              />
+
+              <Radio
+                h3="B.10	How sure/confident are you about the time of Incident?"
+                CheckbobItems={[
+                  "Not confident at all",
+                  "Slightly confident",
+                  "Somewhat confident",
+                  "Fairly confident",
+                  "ompletely Confident",
+                ]}
+                name="B10"
+                onClick={handleChange(setFormB16)}
+                byDefault={formB16.B10}
+              />
+              <Radio
+                h3="B.11	At the start of symptoms was any medication taken/ given at home to alleviate symptoms?"
+                CheckbobItems={["Yes", "No"]}
+                name="B11"
+                onClick={handleChange(setFormB16)}
+                byDefault={formB16.B11}
+              />
+              {formB16.B11 == "Yes" && formB16.B11 && (
+                <InputField
+                  onChange={handleChangeWithValidation}
+                  h3="B.12	If yes, what medication was given?"
+                  placeholder="Type here"
+                  name="B12_if"
+                  value={formB16.B12_if}
+                />
+              )}
+              <InputField
+                onChange={handleChangeWithValidation}
+                h3="B.13	Which was the first symptom recognised as serious?"
+                placeholder="Type here"
+                name="B13"
+                value={formB16.B13}
+              />
+              <Radio
+                h3="B.14 Who first recognized the symptoms to be serious?"
+                CheckbobItems={["Family member", "Patient", "Others (Specify)"]}
+                otherArray={[0, 0, 1]}
+                name="B14"
+                setter={setFormB16}
+                onClick={handleChange(setFormB16)}
+                byDefault={formB16.B14}
+              />
+              <Radio
+                h3="B.15 What was your first course of action on identifying the emergency condition?"
+                CheckbobItems={[
+                  "Visited allopathic health care facility",
+                  "Home visit by a doctor",
+                  "Consulted traditional healers/ spiritual healers",
+                  "Local remedy/ Self-medication at home",
+                  "AYUSH facility",
+                  "Home consultation",
+                  "Did not visit health facility",
+                ]}
+                name="B15"
+                onClick={handleChange(setFormB16)}
+                byDefault={formB16.B15}
+              />
 
             </div>
-            <CSTButton
-              formName="formb16"
-              formData={formB16}
-              prev="/socio-demographicprofileofthepatientinthehhwithemergencycondition"
-              next={
-                formB16.B15 == "Visited allopathic health care facility"
-                  ? "/initialhealthcareseekingpathway-3"
-                  : formB16.B15 == "Home visit by a doctor"
-                  ? "/initialhealthcareseekingpathway-2"
-                  : "/barriers-and-facilitators1"
-              }
-              prevText="Previous"
-              nextText="Save & Next"
-            />
+            <div className="button-container">
+              <CSTButton
+                formName="formb16"
+                formData={formB16}
+                prev="/socio-demographicprofileofthepatientinthehhwithemergencycondition"
+                next={
+                  formB16.B15 == "Visited allopathic health care facility"
+                    ? "/initialhealthcareseekingpathway-3"
+                    : formB16.B15 == "Home visit by a doctor"
+                      ? "/initialhealthcareseekingpathway-2"
+                      : "/barriers-and-facilitators1"
+                }
+                prevText="Previous"
+                nextText="Save & Next"
+              />
+              <OverlayCard
+                isVisible={!isValid}
+                message="(Please fill all required fields to proceed)"
+              />
+            </div>
           </div>
         </div>
       </section>

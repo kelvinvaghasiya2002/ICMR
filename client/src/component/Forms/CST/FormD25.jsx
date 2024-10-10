@@ -14,6 +14,8 @@ import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 import FormC23 from './FormC23.jsx';
 import CSTButton from '../child-comp/CSTButton.jsx';
+import useFormValidation from '../../../utils/custom_validation_hook.js';
+import OverlayCard from '../OverlayCard.jsx';
 
 function FormD25() {
     var formd25 = setLocalStorage("formd25", { D2: [], D3: [], D4: [] })
@@ -22,39 +24,45 @@ function FormD25() {
 
     const [isSidebarVisible, setSidebarVisible] = useState(
         window.innerWidth > 1024
-      );
-    
-      const toggleSidebar = () => {
+    );
+
+    const toggleSidebar = () => {
         setSidebarVisible(!isSidebarVisible);
-      };
-      const handleResize = () => {
+    };
+    const handleResize = () => {
         if (window.innerWidth >= 1025) {
-          setSidebarVisible(true);
+            setSidebarVisible(true);
         }
-      };
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         window.addEventListener("resize", handleResize);
         // AOS.init({ duration: 2000 });
         return () => {
-          window.removeEventListener("resize", handleResize);
+            window.removeEventListener("resize", handleResize);
         };
-      }, []);
+    }, []);
+
+    const { isValid, errors, setErrors } = useFormValidation(formD25, [
+        "D2",
+        "D3",
+        "D4"
+    ]);
 
     return (
         <div>
             <div className="header">
                 <div className="burger-menu" onClick={toggleSidebar}>
-                &#9776;
+                    &#9776;
                 </div>
                 <Heading h2="Community Survey Tool"></Heading>
             </div>
             <section id='site-info' className="form-main">
                 {isSidebarVisible && (
-                <>
-                    <SidePanel id={"25"} />
-                    <div className="grayedover" onClick={toggleSidebar}></div>
-                </>
+                    <>
+                        <SidePanel id={"25"} />
+                        <div className="grayedover" onClick={toggleSidebar}></div>
+                    </>
                 )}
 
 
@@ -95,14 +103,14 @@ function FormD25() {
                         <Checkbox
                             h3="D.3 What motivated you for seeking care or taking the patient to the healthcare facility for emergency care?"
                             CheckbobItems={[
-                               "Easy accessibility",
-                               "Skilled Healthcare provider",
-                               "Good Professional behaviour",
-                               "Insurance facility",
-                               "Affordable services",
-                               "Insurance Empanelled Health care facility",
-                               "Good ambience of HCF",
-                               "Immediate care",
+                                "Easy accessibility",
+                                "Skilled Healthcare provider",
+                                "Good Professional behaviour",
+                                "Insurance facility",
+                                "Affordable services",
+                                "Insurance Empanelled Health care facility",
+                                "Good ambience of HCF",
+                                "Immediate care",
                                 "Others"
                                 // other specify baaki 6
                             ]}
@@ -123,7 +131,13 @@ function FormD25() {
                             name="D4" setFunction={setFormD25} StateValue={formD25} array={formD25.D4}
                         />
 
-                        <CSTButton formName="formd25" formData={formD25} prev={(FormC23.C21==="") ?"/barriers-and-facilitators1" :"/referral-facility4"} next="/costing" prevText="Previous" nextText="Save & Next" />
+                        <div className="button-container">
+                            <CSTButton formName="formd25" formData={formD25} prev={(FormC23.C21 === "") ? "/barriers-and-facilitators1" : "/referral-facility4"} next="/costing" prevText="Previous" nextText="Save & Next" />
+                            <OverlayCard
+                                isVisible={!isValid}
+                                message="(Please fill all required fields to proceed)"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
