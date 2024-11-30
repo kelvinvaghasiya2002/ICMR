@@ -154,7 +154,7 @@ function Form2A() {
       "H2A6",
       "H2A7",
       "H2A8",
-      "H2A9",
+      // "H2A9",
       "H2A10",
       "H2A11",
     ];
@@ -230,7 +230,7 @@ function Form2A() {
         break;
 
       case "H2A3":
-        handleChange(setFormA);
+        handleChange(setForm2A);
         error = error || validateRequired(validatedValue);
         break;
       case "H2A8":
@@ -408,6 +408,7 @@ function Form2A() {
                 prev=""
                 next="/infrastructure-2"
                 // validateForm={validateForm}
+                formType="hfat2"
               />
 
               <OverlayCard

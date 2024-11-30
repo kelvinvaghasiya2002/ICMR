@@ -340,6 +340,7 @@ Did she die within 42 days of abortion?
                   prev="/formHC"
                   MainForm={"Autopsy"}
                   // validateForm={validateForm}
+                  formType="autopsy"
                 />
               )}
 

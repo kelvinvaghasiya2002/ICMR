@@ -433,6 +433,7 @@ function FormC() {
                 prev="/infrastructure"
                 next="/logisticsdrugsconsumablesequipment-1"
                 // validateForm={validateForm}
+                formType="hfat1"
               />
               <OverlayCard
                 isVisible={showOverlay}

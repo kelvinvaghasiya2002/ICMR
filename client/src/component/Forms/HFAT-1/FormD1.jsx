@@ -145,6 +145,7 @@ function FormD2() {
                                 nextText="Save & Next"
                                 prev="/logisticsdrugsconsumablesequipment-1"
                                 next="/emergencycareservices"
+                                formType="hfat1"
                             />
 
                             <OverlayCard

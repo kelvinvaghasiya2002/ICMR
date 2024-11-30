@@ -115,6 +115,7 @@ function FormHE() {
                 prev={formG?.FC1 !== "No" ? "/formGC" : "/formGE"}
                 next="/formGA"
                 // validateForm={validateForm}
+                formType="autopsy"
               />
               <OverlayCard
                 isVisible={!isValid}

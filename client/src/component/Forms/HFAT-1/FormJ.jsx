@@ -161,6 +161,7 @@ function FormJ() {
                 prev="/processpoliciessops"
                 MainForm={"HFAT-1"}
               // validateForm={validateForm}
+                formType="hfat1"
               />
 
               <OverlayCard

@@ -286,6 +286,7 @@ function Form2G() {
                                 prev="/informationsystem-2"
                                 next="/leadershipandgovernance-2"
                             // validateForm={validateForm}
+                            formType="hfat2"
                             />
 
                             <OverlayCard

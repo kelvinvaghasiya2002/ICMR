@@ -364,6 +364,7 @@ function Form2C() {
                 prev="/infrastructure-2"
                 next="/logistics-2"
                 // validateForm={validateForm}
+                formType="hfat2"
               />
               <OverlayCard
                 isVisible={showOverlay}

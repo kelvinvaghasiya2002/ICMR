@@ -151,6 +151,7 @@ function Form2D2() {
                                 nextText="Save & Next"
                                 prev="/logistics-2"
                                 next="/emergencycareservices-2"
+                                formType="hfat2"
                             />
 
                             <OverlayCard

@@ -260,6 +260,7 @@ function FormG() {
                 prev="/informationsystem"
                 next="/leadershipandgovernance"
                 // validateForm={validateForm}
+                formType="hfat1"
               />
               <OverlayCard
                 isVisible={showOverlay}

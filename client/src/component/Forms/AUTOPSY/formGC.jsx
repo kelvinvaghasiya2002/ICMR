@@ -121,6 +121,7 @@ function FormGC() {
                 prev="/formGB"
                 next={formGC.GC1 !== "No" ? "/formGF" : "/formGD"}
                 // validateForm={validateForm}
+                formType="autopsy"
               />
               <OverlayCard
                 isVisible={!isValid}

@@ -176,6 +176,7 @@ function Form2J() {
                                 formData={form2J}
                                 MainForm={"HFAT-2"}
                                 // validateForm={validateForm}
+                                formType="hfat2"
                             />
 
 

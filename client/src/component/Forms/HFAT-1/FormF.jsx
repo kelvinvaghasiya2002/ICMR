@@ -323,6 +323,7 @@ function FormF() {
               nextText="Save & Next"
               prev="/emergencycareservices"
               next="/finance"
+              formType="hfat1"
             />
               <OverlayCard
                 isVisible={showOverlay}

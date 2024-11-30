@@ -241,6 +241,7 @@ function FormIB() {
                 prev="/formHC"
                 MainForm={"Autopsy"}
                 // validateForm={validateForm}
+                formType="autopsy"
               />
 
               <OverlayCard

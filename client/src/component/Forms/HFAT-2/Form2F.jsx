@@ -333,6 +333,7 @@ function Form2F() {
                                 prev="/emergencycareservices-2"
                                 next="/finance-2"
                             // validateForm={validateForm}
+                            formType="hfat2"
                             />
 
                             <OverlayCard

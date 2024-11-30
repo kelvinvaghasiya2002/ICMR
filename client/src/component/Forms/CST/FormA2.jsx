@@ -200,7 +200,8 @@ function FormA2() {
 
 
                                     <div className="button-container">
-                                        <Buttons formName={"forma2"} formData={formA2} prev="/siteinformation" next="/linelistingofhouseholdmembers-1" prevText="Previous" nextText="Save & Next" />
+                                        <Buttons formName={"forma2"} formData={formA2} prev="/siteinformation" next="/linelistingofhouseholdmembers-1" prevText="Previous" nextText="Save & Next"
+                                        formType="cst" />
                                         <OverlayCard
                                             isVisible={!isValid}
                                             message="(Please fill all required fields to proceed)"

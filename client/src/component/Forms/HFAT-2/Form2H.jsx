@@ -312,6 +312,7 @@ function Form2H() {
                 prev="/finance-2"
                 next="/processpoliciessops-2"
               // validateForm={validateForm}
+              formType="hfat2"
               />
 
               <OverlayCard

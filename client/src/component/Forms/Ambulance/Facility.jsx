@@ -640,6 +640,7 @@ function Facility() {
                 formData={Ambulance}
                 next="/"
                 MainForm="AMBULANCE"
+                formType="ambulance"
               />
 
               <OverlayCard

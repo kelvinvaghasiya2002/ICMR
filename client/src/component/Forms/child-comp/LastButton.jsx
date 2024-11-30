@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PopUp from "./PopUp.jsx";
 
-function LastButton({ prev, formName, formData, MainForm, validateForm }) {
+function LastButton({ prev, formName, formData, MainForm, validateForm, formType }) {
   const [popUp, setPopUp] = useState(false);
   const [ifAmbulance, setIfAmbulance] = useState(false);
   console.log(formData);
@@ -12,19 +12,49 @@ function LastButton({ prev, formName, formData, MainForm, validateForm }) {
     if (validateForm && !validateForm()) {
       return;
     }
-    var CompleteForm = localStorage.getItem("CompleteForm");
+    // var CompleteForm = localStorage.getItem("CompleteForm");
 
-    if (CompleteForm) {
-      CompleteForm = JSON.parse(CompleteForm);
-      const data = { ...CompleteForm, ...formData };
-      localStorage.setItem("CompleteForm", JSON.stringify(data));
-    } else {
-      localStorage.setItem("CompleteForm", JSON.stringify(formData));
+    let targetFormType;
+
+    switch (formType) {
+        case "hfat1":
+            targetFormType = "completeFormHfat1";
+            break;
+        case "hfat2":
+            targetFormType = "completeFormHfat2";
+            break;
+        case "hfat3":
+            targetFormType = "completeFormHfat3";
+            break;
+        case "cst":
+            targetFormType = "completeFormCST";
+            break;
+        case "autopsy":
+            targetFormType = "completeFormAutopsy";
+            break;
+        case "ambulance":
+            targetFormType = "completeFormAmbulance";
+            break;
+        default:
+            targetFormType = "CompleteForm";
     }
+
+    // if (targetFormType) {
+    //   targetFormType = JSON.parse(targetFormType);
+    //   const data = { ...targetFormType, ...formData };
+    //   localStorage.setItem(targetFormType, JSON.stringify(data));
+    // } else {
+    //   localStorage.setItem(targetFormType, JSON.stringify(formData));
+    // }
+    // localStorage.setItem(formName, JSON.stringify(formData));
+
+    const existingData = localStorage.getItem(targetFormType);
+    const data = existingData ? { ...JSON.parse(existingData), ...formData } : formData;
+    localStorage.setItem(targetFormType, JSON.stringify(data));
     localStorage.setItem(formName, JSON.stringify(formData));
 
     if (MainForm == "HFAT-1") {
-      var completeform = localStorage.getItem("CompleteForm");
+      var completeform = localStorage.getItem("completeFormHfat1");
       setPopUp(true);
       setIfAmbulance(JSON.parse(completeform).B14);
       JSON.parse(completeform).B14 === "Yes"
@@ -33,7 +63,7 @@ function LastButton({ prev, formName, formData, MainForm, validateForm }) {
     }
 
     if (MainForm == "HFAT-2") {
-      var completeform = localStorage.getItem("CompleteForm");
+      var completeform = localStorage.getItem("completeFormHfat2");
       setPopUp(true);
       JSON.parse(completeform).H2B9 === "Yes"
         ? setIfAmbulance(true)
@@ -41,7 +71,7 @@ function LastButton({ prev, formName, formData, MainForm, validateForm }) {
     }
 
     if (MainForm == "HFAT-3") {
-      var completeform = localStorage.getItem("CompleteForm");
+      var completeform = localStorage.getItem("completeFormHfat3");
       setPopUp(true);
       JSON.parse(completeform).H3B9 === "Yes"
         ? setIfAmbulance(true)

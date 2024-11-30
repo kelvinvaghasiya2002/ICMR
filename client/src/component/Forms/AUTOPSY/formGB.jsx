@@ -268,6 +268,7 @@ function FormGB() {
                 prev="/formGA"
                 next="/formGC"
                 // validateForm={validateForm}
+                formType="autopsy"
               />
               <OverlayCard
                 isVisible={!isValid}

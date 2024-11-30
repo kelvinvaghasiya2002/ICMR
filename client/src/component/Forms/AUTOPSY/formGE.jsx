@@ -949,6 +949,7 @@ If yes, did he/she receive an injection for measles (use local term)?
                 prev="/formGB"
                 next="/formGF"
                 // validateForm={validateForm}
+                formType="autopsy"
               />
               <OverlayCard
                 isVisible={!isValid}

@@ -283,6 +283,7 @@ function FormFC() {
                 prev="/formFB"
                 next={formFC.FC1 !== "No" ? "/formFF" : "/formFD"}
                 // validateForm={validateForm}
+                formType="autopsy"
               />
               <OverlayCard
                 isVisible={!isValid}

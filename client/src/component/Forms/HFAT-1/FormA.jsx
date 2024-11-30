@@ -397,6 +397,7 @@ function FormA() {
                 prev=""
                 next="/infrastructure"
                 // validateForm={validateForm}
+                formType="hfat1"
               />
               <OverlayCard
                 isVisible={showOverlay}
