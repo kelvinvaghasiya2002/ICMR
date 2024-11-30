@@ -203,6 +203,7 @@ function FormA1() {
                 nextText="Save & Next"
                 next="/clusterinformation"
                 onClick={handleSaveAndNext}
+                formType="cst"
               />
               <OverlayCard
                 isVisible={!isValid}

@@ -134,7 +134,8 @@ function FormD() {
 
 
             <div className="button-container">
-            <Buttons formName="formd" formData={formD} prevText="Previous" nextText="Save & Next" prev="/humanresources" next="/logisticsdrugsconsumablesequipment-2"  />
+            <Buttons formName="formd" formData={formD} prevText="Previous" nextText="Save & Next" prev="/humanresources" next="/logisticsdrugsconsumablesequipment-2" 
+            formType="hfat1" />
 
               <OverlayCard
                 isVisible={showOverlay}

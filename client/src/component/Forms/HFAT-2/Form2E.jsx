@@ -165,6 +165,7 @@ function Form2E() {
                                 nextText="Save & Next"
                                 prev="/logistics-2-1"
                                 next="/informationsystem-2"
+                                formType="hfat2"
                             />
                             <OverlayCard
                                 isVisible={showOverlay}

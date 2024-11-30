@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-function CSTButton({ prevText, prev, nextText, next, formName, formData, validateForm }) {
+function CSTButton({ prevText, prev, nextText, next, formName, formData, validateForm, formType }) {
 
 
     const handleSubmit = (e) => {
@@ -9,6 +9,29 @@ function CSTButton({ prevText, prev, nextText, next, formName, formData, validat
             e.preventDefault();
             return;
         }
+
+        let targetFormType;
+
+        switch (formType) {
+            case "haft1":
+                targetFormType = "completeFormHfat1";
+                break;
+            case "haft2":
+                targetFormType = "completeFormHfat2";
+                break;
+            case "haft3":
+                targetFormType = "completeFormHfat3";
+                break;
+            case "cst":
+                targetFormType = "completeFormCST";
+                break;
+            case "autopsy":
+                targetFormType = "completeFormAutopsy";
+                break;
+            default:
+                targetFormType = "CompleteForm";
+        }
+        
         localStorage.setItem(formName, JSON.stringify(formData));
 
         if(formName === "formc23"){

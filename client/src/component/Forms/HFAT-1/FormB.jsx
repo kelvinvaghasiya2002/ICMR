@@ -494,6 +494,7 @@ function FormB() {
                 nextText="Save & Next"
                 prev="/healthfacilityinformation"
                 next="/humanresources"
+                formType="hfat1"
               />
               <OverlayCard
                 isVisible={showOverlay}

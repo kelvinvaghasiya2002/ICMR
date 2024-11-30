@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CreateEmergenciesTable from '../../../utils/CreateEmergenciesTable';
 
-function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm, onClick }) {
+function Buttons({ prevText, prev, nextText, next, formName, formData, validateForm, onClick, formType }) {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = React.useState(false);
 
@@ -21,46 +21,94 @@ function Buttons({ prevText, prev, nextText, next, formName, formData, validateF
             CreateEmergenciesTable();
         }
 
-        var CompleteForm = localStorage.getItem("CompleteForm");
-        if (formName === "formac4") {
-            var formac4 = localStorage.getItem("formac4");
-            formac4 = JSON.parse(formac4);
+        // let targetFormType = localStorage.getItem("CompleteForm");
+        let targetFormType;
 
-            if (CompleteForm) {
-                CompleteForm = JSON.parse(CompleteForm);
-                const data = { ...CompleteForm, ...formac4 };
-                localStorage.setItem("CompleteForm", JSON.stringify(data));
-            } else {
-                localStorage.setItem("CompleteForm", JSON.stringify(formac4));
-            }
+        // switch (formType) {
+        //     case "hfat1":
+        //         targetFormType = localStorage.getItem("completeFormHfat1");
+        //         break;
+        //     case "hfat2":
+        //         targetFormType = localStorage.getItem("completeFormHfat2");
+        //         break;
+        //     case "hfat3":
+        //         targetFormType = localStorage.getItem("completeFormHfat3");
+        //         break;
+        //     case "cst":
+        //         targetFormType = localStorage.getItem("completeFormCST");
+        //         break;
+        //     case "autopsy":
+        //         targetFormType = localStorage.getItem("completeFormAutopsy");
+        //         break;
+        //     default:
+        //         targetFormType = localStorage.getItem("CompleteForm")
+        //         break;
+        // }
+
+        switch (formType) {
+            case "hfat1":
+                targetFormType = "completeFormHfat1";
+                break;
+            case "hfat2":
+                targetFormType = "completeFormHfat2";
+                break;
+            case "hfat3":
+                targetFormType = "completeFormHfat3";
+                break;
+            case "cst":
+                targetFormType = "completeFormCST";
+                break;
+            case "autopsy":
+                targetFormType = "completeFormAutopsy";
+                break;
+            default:
+                targetFormType = "letsee";
+        }
+
+        
+        // if (formName === "formac4") {
+        //     var formac4 = localStorage.getItem("formac4");
+        //     formac4 = JSON.parse(formac4);
+
+        //     if (targetFormType) {
+        //         targetFormType = JSON.parse(targetFormType);
+        //         const data = { ...targetFormType, ...formac4 };
+        //         localStorage.setItem(targetFormType, JSON.stringify(data));
+        //     } else {
+        //         localStorage.setItem(targetFormType, JSON.stringify(formac4));
+        //     }
+        // } else {
+        //     if (targetFormType) {
+        //         targetFormType = JSON.parse(targetFormType);
+        //         const data = { ...targetFormType, ...formData };
+        //         localStorage.setItem(targetFormType, JSON.stringify(data));
+        //     } else {
+        //         localStorage.setItem(targetFormType, JSON.stringify(formData));
+        //     }
+        //     localStorage.setItem(formName, JSON.stringify(formData));
+        // }
+
+
+        
+        if (formName === "formac4") {
+            let formac4 = localStorage.getItem("formac4");
+            formac4 = formac4 ? JSON.parse(formac4) : {};
+
+            let storedData = localStorage.getItem(targetFormType);
+            storedData = storedData ? JSON.parse(storedData) : {};
+
+            const data = { ...storedData, ...formac4 };
+            localStorage.setItem(targetFormType, JSON.stringify(data));
         } else {
-            if (CompleteForm) {
-                CompleteForm = JSON.parse(CompleteForm);
-                const data = { ...CompleteForm, ...formData };
-                localStorage.setItem("CompleteForm", JSON.stringify(data));
-            } else {
-                localStorage.setItem("CompleteForm", JSON.stringify(formData));
-            }
+            let storedData = localStorage.getItem(targetFormType);
+            storedData = storedData ? JSON.parse(storedData) : {};
+
+            const data = { ...storedData, ...formData };
+            localStorage.setItem(targetFormType, JSON.stringify(data));
             localStorage.setItem(formName, JSON.stringify(formData));
         }
 
-        // if (formName === "forma3") {
-        //     const forma3_table = JSON.parse(localStorage.getItem("forma3_table"));
-        //     localStorage.setItem("forma3_table_duplicate", JSON.stringify(forma3_table));
-        // }
-
-        // if (formName === "forma15") {
-        //     const emergency_table = JSON.parse(localStorage.getItem("forma3_table_duplicate"));
-        //     const death_table = JSON.parse(localStorage.getItem("forma15_table"));
-        //     const MemberID = JSON.parse(localStorage.getItem("forma2")).AB5;
-        //     console.log(MemberID);
-
-
-        //     for (let i = 0; i < death_table.length; i++) {
-        //         emergency_table.push({ name: death_table[i].name, age: death_table[i].age, sex: death_table[i].sex, MemberID: `${MemberID}_${emergency_table.length + 1}` })
-        //     }
-        //     localStorage.setItem("forma3_table", JSON.stringify(emergency_table));
-        // }
+      
         setIsLoading(false);
 
         navigate(next); // navigate is a function that navigates to the next page

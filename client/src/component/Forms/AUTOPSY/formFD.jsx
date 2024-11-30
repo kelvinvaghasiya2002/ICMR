@@ -263,6 +263,7 @@ function FormFD() {
                 prev="/formFC"
                 next="/formFE"
                 // validateForm={validateForm}
+                formType="autopsy"
               />
               <OverlayCard
                 isVisible={!isValid}

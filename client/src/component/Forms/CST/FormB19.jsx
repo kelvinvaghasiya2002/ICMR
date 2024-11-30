@@ -109,7 +109,7 @@ function FormB19() {
     "B18_2",
     "B19",
     "B20",
-    "B21",
+    ...(formB16.B20 === "Government ambulance" ? ["B21"] : []),
     "B22",
     "B23_1",
     "B23_2",

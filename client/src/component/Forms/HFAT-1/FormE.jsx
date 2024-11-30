@@ -194,7 +194,8 @@ function FormE() {
 
 
             <div className="button-container">
-            <Buttons formName={'forme'} formData={formE} prevText="Previous" nextText="Save & Next" prev="/logisticsdrugsconsumablesequipment-2" next="/informationsystem"  />
+            <Buttons formName={'forme'} formData={formE} prevText="Previous" nextText="Save & Next" prev="/logisticsdrugsconsumablesequipment-2" next="/informationsystem"
+            formType="hfat1"  />
 
               <OverlayCard
                 isVisible={showOverlay}

@@ -4,22 +4,28 @@ import { HFAT2 } from "../Database/HFAT-2.js";
 const app = express();
 
 export const HFAT2Controller = async (req, res) => {
-  var { completeform, table1, table2, table3, table4 } = req.body;
-  completeform = JSON.parse(completeform);
-  table1 = JSON.parse(table1);
-  table2 = JSON.parse(table2);
-  table3 = JSON.parse(table3);
-  table4 = JSON.parse(table4);
+  var { completeFormHfat2, table1, table2, table3, table4 } = req.body;
+  // completeFormHfat2 = JSON.parse(completeFormHfat2);
+  // table1 = JSON.parse(table1);
+  // table2 = JSON.parse(table2);
+  // table3 = JSON.parse(table3);
+  // table4 = JSON.parse(table4);
 
-  HFAT2.countDocuments({ H2A2: completeform?.H2A2 }).then((response) => {
+
+  completeFormHfat2 = completeFormHfat2 ? JSON.parse(completeFormHfat2) : {};
+  table1 = table1 ? JSON.parse(table1) : {};
+  table2 = table2 ? JSON.parse(table2) : {};
+  table3 = table3 ? JSON.parse(table3) : {};
+  table4 = table4 ? JSON.parse(table4) : {};
+  HFAT2.countDocuments({ H2A2: completeFormHfat2?.H2A2 }).then((response) => {
     console.log(response);
     const combinedData = {
-      ...completeform,
+      ...completeFormHfat2,
       table1,
       table2,
       table3,
       table4,
-      uniqueCode: `${completeform?.H2A2}_${response + 1}`,
+      uniqueCode: `${completeFormHfat2?.H2A2}_${response + 1}`,
     };
     HFAT2.create(combinedData)
       .then((result) => {

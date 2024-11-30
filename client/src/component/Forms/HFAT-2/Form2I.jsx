@@ -256,6 +256,7 @@ function Form2I() {
                                 prev="/leadershipandgovernance-2"
                                 next="/referrallinkages-2"
                             // validateForm={validateForm}
+                            formType="hfat2"
                             />
 
                             <OverlayCard

@@ -30,7 +30,7 @@ function Form2B() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     AOS.init({ duration: 2000 });
-    
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -42,7 +42,7 @@ function Form2B() {
 
   turnOffbutton();
   var form2b = setLocalStorage("form2b",
-  {H2B1: "",H2B2: "",H2B3: "",H2B4: "",H2B5: "",H2B6: "",H2B7: [], H2B8: [""],H2B9: "",H2B10: ""})
+    { H2B1: "", H2B2: "", H2B3: "", H2B4: "", H2B5: "", H2B6: "", H2B7: [], H2B8: [""], H2B9: "", H2B10: "" })
 
   const [form2B, setForm2B] = useState(JSON.parse(form2b));
   const [errors, setErrors] = useState({});
@@ -70,12 +70,12 @@ function Form2B() {
     newErrors.H2B6 = validateNumber(form2B.H2B6) || validateRequired(form2B.H2B6);
     newErrors.H2B10 = validateName(form2B.H2B10) || validateRequired(form2B.H2B10);
 
-    if(form2B.H2B3 === "Yes" && !form2B.H2B4){
+    if (form2B.H2B3 === "Yes" && !form2B.H2B4) {
       newErrors.H2B4 = validateNumber(form2B.H2B4) || validateRequired(form2B.H2B4);
       newErrors.H2B4 = "Required to fill numbers of beds are available for emergency care";
     }
 
-    if(form2B.H2B9 === "No" && !form2B.H2B10){
+    if (form2B.H2B9 === "No" && !form2B.H2B10) {
       newErrors.H2B10 = validateRequired(form2B.H2B10);
       newErrors.H2B10 = "Required to fill numbers of beds are available for emergency care";
     }
@@ -105,10 +105,10 @@ function Form2B() {
       const newErrors = {};
       missingFields.forEach(field => {
         console.log(field + "field");
-        if(Array.isArray(form2B[field])){
+        if (Array.isArray(form2B[field])) {
           console.log(form2B[field]);
           newErrors[field] = validateCheckBox(form2B[field]);
-        }else{
+        } else {
           newErrors[field] = validateRequired(form2B[field]);
         }
       });
@@ -128,9 +128,9 @@ function Form2B() {
     }
     const missingFields = requiredFields.filter(field => {
       if (Array.isArray(form2B[field])) {
-      return form2B[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
+        return form2B[field].every(item => item === '' || (typeof item === 'string' && item.trim() === ''));
       } else {
-      return !form2B[field] || (typeof form2B[field] === 'string' && form2B[field].trim() === '');
+        return !form2B[field] || (typeof form2B[field] === 'string' && form2B[field].trim() === '');
       }
     });
     return { isValid: missingFields.length === 0, missingFields };
@@ -222,76 +222,76 @@ function Form2B() {
           </div>
 
           <div className="formcontent">
-            <Radio 
-              h3="2B.1 : Is the CHC 24/7?" 
-              CheckbobItems={["Yes", "No"]} 
-              name="H2B1" 
-              byDefault={form2B.H2B1} 
-              onClick={handleChange(setForm2B)} 
-              // required
-              // errorMsg={errors.H2B1}
+            <Radio
+              h3="2B.1 : Is the CHC 24/7?"
+              CheckbobItems={["Yes", "No"]}
+              name="H2B1"
+              byDefault={form2B.H2B1}
+              onClick={handleChange(setForm2B)}
+            // required
+            // errorMsg={errors.H2B1}
             />
 
-            <InputField 
-              h3="2B.2 : How many beds are available for the in-patient department (IPD)?" 
-              placeholder="Type here" 
-              name="H2B2" 
-              value={form2B.H2B2} 
+            <InputField
+              h3="2B.2 : How many beds are available for the in-patient department (IPD)?"
+              placeholder="Type here"
+              name="H2B2"
+              value={form2B.H2B2}
               // type={"number"}
-              onChange={handleChangeWithValidation} 
+              onChange={handleChangeWithValidation}
               required
               errorMsg={errors.H2B2}
             />
 
-            <Radio 
-              h3="2B.3 : Is there any dedicated bed present for emergency care?" 
-              CheckbobItems={["Yes", "No"]} 
-              name="H2B3" 
-              byDefault={form2B.H2B3} 
-              onClick={handleChange(setForm2B)} 
-              // required
-              // errorMsg={errors.H2B3}
+            <Radio
+              h3="2B.3 : Is there any dedicated bed present for emergency care?"
+              CheckbobItems={["Yes", "No"]}
+              name="H2B3"
+              byDefault={form2B.H2B3}
+              onClick={handleChange(setForm2B)}
+            // required
+            // errorMsg={errors.H2B3}
             />
 
             {
               (form2B.H2B3 === "Yes") &&
-              <InputField 
-                h3="2B.4 : How many beds are available for emergency care?" 
-                placeholder="Type here" 
-                name="H2B4" 
-                value={form2B.H2B4} 
+              <InputField
+                h3="2B.4 : How many beds are available for emergency care?"
+                placeholder="Type here"
+                name="H2B4"
+                value={form2B.H2B4}
                 type={"number"}
-                onChange={handleChangeWithValidation} 
+                onChange={handleChangeWithValidation}
                 // required
                 errorMsg={errors.H2B4}
               />
             }
 
-            <InputField 
-              h3="2B.5 : What is the average number of patients presenting to OPD per month?" 
-              placeholder="Type here" 
-              name="H2B5" 
-              value={form2B.H2B5} 
-              onChange={handleChangeWithValidation} 
+            <InputField
+              h3="2B.5 : What is the average number of patients presenting to OPD per month?"
+              placeholder="Type here"
+              name="H2B5"
+              value={form2B.H2B5}
+              onChange={handleChangeWithValidation}
               required
               errorMsg={errors.H2B5}
             />
 
-            <InputField 
-              h3="2B.6 : What is the average daily number of patients presenting with emergency conditions daily?" 
-              p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries, poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)" 
-              placeholder="Type here" 
-              name="H2B6" 
-              value={form2B.H2B6} 
-              onChange={handleChangeWithValidation} 
+            <InputField
+              h3="2B.6 : What is the average daily number of patients presenting with emergency conditions daily?"
+              p="(Chest pain, stroke, acute weakness, acute blindness, Shortness of breath, altered mentation, snake bite, bites, road traffic accident, injuries, poisoning, deliberate self-harm, infectious diseases, fever, pregnancy related, seizure, acute abdomen, anaphylaxis, cerebro-meningeal infections, foreign body, acute pulmonary disease, Shock, accidental injuries, infections)"
+              placeholder="Type here"
+              name="H2B6"
+              value={form2B.H2B6}
+              onChange={handleChangeWithValidation}
               required
               errorMsg={errors.H2B6}
             />
 
-            <Checkbox 
-              h3="2B.7 : Which of the following infrastructure requirements for emergency are available at the CHC?" 
-              CheckbobItems={["Emergency Registration Counter","Computerized Registration","Triage Area","Resuscitation Area","Decontamination Facility","Security Services","Designated Parking Area for Ambulance","Smooth Entry for Wheelchair Trolley and Stretcher Bay","Waiting Area for patients & Attendants.","Plaster Room/Suturing Room/Minor OT","Emergency OT","Dedicated Isolation rooms","Point of Care Lab","Blood storage unit","Point of care ultrasound","Radiology service-X ray, Ultrasound","Demarcated Duty Rooms for Doctors and Nurses","Area to Keep Dead Bodies","Tele-Medicine Facility"]} 
-              name="H2B7" 
+            <Checkbox
+              h3="2B.7 : Which of the following infrastructure requirements for emergency are available at the CHC?"
+              CheckbobItems={["Emergency Registration Counter", "Computerized Registration", "Triage Area", "Resuscitation Area", "Decontamination Facility", "Security Services", "Designated Parking Area for Ambulance", "Smooth Entry for Wheelchair Trolley and Stretcher Bay", "Waiting Area for patients & Attendants.", "Plaster Room/Suturing Room/Minor OT", "Emergency OT", "Dedicated Isolation rooms", "Point of Care Lab", "Blood storage unit", "Point of care ultrasound", "Radiology service-X ray, Ultrasound", "Demarcated Duty Rooms for Doctors and Nurses", "Area to Keep Dead Bodies", "Tele-Medicine Facility"]}
+              name="H2B7"
               setFunction={setForm2B}
               StateValue={form2B}
               array={form2B.H2B7}
@@ -299,36 +299,36 @@ function Form2B() {
               errorMsg={errors.H2B7}
             />
 
-            <Checkbox 
-              h3="2B.8 : Which of these signage or display boards of the emergency services and entitlements are available in its departments?" 
-              CheckbobItems={["Services provided to the patients are clearly defined, displayed prominently.","Names of doctor and nursing staff on duty are displayed and updated.","List of available drugs are displayed.","All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.","Important contact numbers including ambulance, blood bank, police and referral centers displayed.","Display of citizen’s charter"]} 
-              other={true} 
-              name="H2B8" 
+            <Checkbox
+              h3="2B.8 : Which of these signage or display boards of the emergency services and entitlements are available in its departments?"
+              CheckbobItems={["Services provided to the patients are clearly defined, displayed prominently.", "Names of doctor and nursing staff on duty are displayed and updated.", "List of available drugs are displayed.", "All relevant information is displayed for the patients and visitors including user charges wherever applicable at the time of procedure/ investigation/admission.", "Important contact numbers including ambulance, blood bank, police and referral centers displayed.", "Display of citizen’s charter"]}
+              other={true}
+              name="H2B8"
               setFunction={setForm2B}
               StateValue={form2B}
-              array={form2B.H2B8} 
+              array={form2B.H2B8}
               // required
               errorMsg={errors.H2B8}
             />
 
-            <Radio 
-              h3="2B.9 : Does this hospital provide ambulance services?" 
-              CheckbobItems={["Yes", "No"]} 
-              name="H2B9" 
-              byDefault={form2B.H2B9} 
-              onClick={handleChange(setForm2B)} 
-              // required
-              // errorMsg={errors.H2B9}
+            <Radio
+              h3="2B.9 : Does this hospital provide ambulance services?"
+              CheckbobItems={["Yes", "No"]}
+              name="H2B9"
+              byDefault={form2B.H2B9}
+              onClick={handleChange(setForm2B)}
+            // required
+            // errorMsg={errors.H2B9}
             />
 
             {
-              (form2B.H2B9 === 'No')  &&
-              <InputField 
-                h3="2B.10 : If ambulances are not there, how are patients transferred?" 
-                placeholder="Type here" 
-                name="H2B10" 
-                value={form2B.H2B10} 
-                onChange={handleChangeWithValidation} 
+              (form2B.H2B9 === 'No') &&
+              <InputField
+                h3="2B.10 : If ambulances are not there, how are patients transferred?"
+                placeholder="Type here"
+                name="H2B10"
+                value={form2B.H2B10}
+                onChange={handleChangeWithValidation}
                 // required
                 errorMsg={errors.H2B10}
               />
@@ -336,9 +336,10 @@ function Form2B() {
 
 
             <div className="button-container">
-            <Buttons formData={form2B} formName="form2b" prevText="Previous" nextText="Save & Next" prev="/facilityinformation-2" next="/humanresources-2" 
-            //validateForm={validateForm} 
-            />
+              <Buttons formData={form2B} formName="form2b" prevText="Previous" nextText="Save & Next" prev="/facilityinformation-2" next="/humanresources-2"
+              //validateForm={validateForm} 
+              formType="hfat2"
+              />
 
               <OverlayCard
                 isVisible={showOverlay}

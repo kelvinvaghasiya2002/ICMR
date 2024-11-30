@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 const server = import.meta.env.VITE_SERVER;
 
-function CSTPopUp({ setPopup, lastForm, from, formName }) {
+function CSTPopUp({ setPopup, lastForm, from, formName, formType }) {
   const [linkPath, setLinkPath] = useState("");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -13,6 +13,29 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
     var uniqueCode = JSON.parse(localStorage.getItem("CSTuniqueCode"));
     var CompleteForm = JSON.parse(localStorage.getItem("CompleteForm"));
     CompleteForm = { ...uniqueCode, ...CompleteForm, ...lastForm };
+
+    let targetFormType;
+
+    switch (formType) {
+      case "haft1":
+        targetFormType = "completeFormHfat1";
+        break;
+      case "haft2":
+        targetFormType = "completeFormHfat2";
+        break;
+      case "haft3":
+        targetFormType = "completeFormHfat3";
+        break;
+      case "cst":
+        targetFormType = "completeFormCST";
+        break;
+      case "autopsy":
+        targetFormType = "completeFormAutopsy";
+        break;
+      default:
+        targetFormType = "CompleteForm";
+    }
+
 
     if (formName === "formf27" || formName === "formb16") {
       var Name_and_Emergencies = JSON.parse(
@@ -57,7 +80,7 @@ function CSTPopUp({ setPopup, lastForm, from, formName }) {
           if (
             key === "token" ||
             key === "forma1" ||
-            key === "CompleteForm" ||
+            key === targetFormType ||
             key === "forma2" ||
             key === "forma3" ||
             // key === "forma3_table" ||

@@ -143,6 +143,7 @@ function Form2D() {
                 nextText="Save & Next"
                 prev="/humanresources-2"
                 next="/logistics-2-1"
+                formType="hfat2"
               />
 
               <OverlayCard

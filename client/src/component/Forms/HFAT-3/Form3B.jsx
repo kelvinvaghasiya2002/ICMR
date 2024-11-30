@@ -245,7 +245,8 @@ function Form3B() {
 
 
             <div className="button-container">
-              <Buttons formName="form3b" formData={form3B} prevText="Previous" nextText="Save & Next" prev="/facilityinformation-3" next="/humanresources-3" />
+              <Buttons formName="form3b" formData={form3B} prevText="Previous" nextText="Save & Next" prev="/facilityinformation-3" next="/humanresources-3"
+              formType="hfat3" />
 
               <OverlayCard
                 isVisible={showOverlay}

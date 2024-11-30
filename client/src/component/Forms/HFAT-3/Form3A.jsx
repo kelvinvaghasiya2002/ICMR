@@ -150,7 +150,7 @@ function Form3A() {
       "H3A6",
       "H3A7",
       "H3A8",
-      "H3A9",
+      // "H3A9",
       "H3A10",
       "H3A11",
     ];
@@ -389,6 +389,7 @@ function Form3A() {
                 nextText="Save & Next"
                 prev=""
                 next="/infrastructure-3"
+                formType="hfat3"
               />
 
               <OverlayCard

@@ -13,47 +13,53 @@ import Table from '../child-comp/Table.jsx'
 import DropDown from '../child-comp/DropDown.jsx';
 import Table1 from '../child-comp/Table1.jsx';
 import CSTButton from '../child-comp/CSTButton.jsx';
+import OverlayCard from '../OverlayCard.jsx';
+import useFormValidation from '../../../utils/custom_validation_hook.js';
 
 function FormD24() {
-    var formd24 = setLocalStorage("formd24", { D1: []})
+    var formd24 = setLocalStorage("formd24", { D1: [] })
     const [formD24, setFormD24] = useState(JSON.parse(formd24))
     turnOffbutton();
 
     const [isSidebarVisible, setSidebarVisible] = useState(
         window.innerWidth > 1024
-      );
-    
-      const toggleSidebar = () => {
+    );
+
+    const toggleSidebar = () => {
         setSidebarVisible(!isSidebarVisible);
-      };
-      const handleResize = () => {
+    };
+    const handleResize = () => {
         if (window.innerWidth >= 1025) {
-          setSidebarVisible(true);
+            setSidebarVisible(true);
         }
-      };
-    
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         window.addEventListener("resize", handleResize);
         // AOS.init({ duration: 2000 });
         return () => {
-          window.removeEventListener("resize", handleResize);
+            window.removeEventListener("resize", handleResize);
         };
-      }, []);
+    }, []);
+
+    const { isValid, errors, setErrors } = useFormValidation(formD24, [
+        "D1"
+    ]);
 
     return (
         <div>
             <div className="header">
                 <div className="burger-menu" onClick={toggleSidebar}>
-                &#9776;
+                    &#9776;
                 </div>
                 <Heading h2="Community Survey Tool"></Heading>
             </div>
             <section id='site-info' className="form-main">
                 {isSidebarVisible && (
-                <>
-                    <SidePanel id={"24"} />
-                    <div className="grayedover" onClick={toggleSidebar}></div>
-                </>
+                    <>
+                        <SidePanel id={"24"} />
+                        <div className="grayedover" onClick={toggleSidebar}></div>
+                    </>
                 )}
 
                 <div className='siteInfo'>
@@ -63,14 +69,14 @@ function FormD24() {
                         </div>
                         <div>
                             <h3>
-                            Barriers and facilitators in seeking care
+                                Barriers and facilitators in seeking care
                             </h3>
                         </div>
                     </div>
 
                     <div className="formcontent cont_extra">
-                       
-                    <Checkbox
+
+                        <Checkbox
                             h3="D.1  Why did you NOT seek medical care at the facility during the emergency?"
                             CheckbobItems={[
                                 "Lack of severity of symptoms",
@@ -90,10 +96,17 @@ function FormD24() {
                                 "Others"
                                 // other specify baaki 6
                             ]}
-                            name="D1" setFunction={setFormD24} StateValue={formD24} array={formD24.D1} 
+                            name="D1" setFunction={setFormD24} StateValue={formD24} array={formD24.D1}
                         />
 
-                        <CSTButton formName="formd24" formData={formD24} prev="" next="/barriers-and-facilitators2" prevText="Previous" nextText="Save & Next" />
+
+                        <div className="button-container">
+                            <CSTButton formName="formd24" formData={formD24} prev="" next="/barriers-and-facilitators2" prevText="Previous" nextText="Save & Next" />
+                            <OverlayCard
+                                isVisible={!isValid}
+                                message="(Please fill all required fields to proceed)"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

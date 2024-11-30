@@ -119,7 +119,8 @@ function FormD() {
 
 
           <div className="button-container">
-          <Buttons formName={"form3d"} formData={form3D} prevText="Previous" nextText="Save & Next" prev="/humanresources-3" next="/logistics-3-1" />
+          <Buttons formName={"form3d"} formData={form3D} prevText="Previous" nextText="Save & Next" prev="/humanresources-3" next="/logistics-3-1"
+          formType="hfat3" />
               <OverlayCard
                 isVisible={showOverlay}
                 message="(Please fill all required fields to proceed)"

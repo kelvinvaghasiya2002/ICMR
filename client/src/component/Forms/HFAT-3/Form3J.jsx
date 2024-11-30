@@ -141,7 +141,7 @@ function Form3J() {
 
 
             <div className="button-container">
-              <LastButton prev="/processpoliciessops-3" formName="form3j" formData={form3J} MainForm={"HFAT-3"} />
+              <LastButton prev="/processpoliciessops-3" formName="form3j" formData={form3J} MainForm={"HFAT-3"} formType="hfat3" />
 
               <OverlayCard
                 isVisible={showOverlay}

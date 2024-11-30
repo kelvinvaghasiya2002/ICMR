@@ -272,7 +272,8 @@ function Form3C() {
             }
 
             <div className="button-container">
-              <Buttons formName={"form3c"} formData={form3C} prevText="Previous" nextText="Save & Next" prev="/infrastructure-3" next="/logistics-3" />
+              <Buttons formName={"form3c"} formData={form3C} prevText="Previous" nextText="Save & Next" prev="/infrastructure-3" next="/logistics-3"
+              formType="hfat3" />
 
               <OverlayCard
                 isVisible={showOverlay}

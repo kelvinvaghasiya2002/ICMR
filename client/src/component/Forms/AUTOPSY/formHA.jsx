@@ -201,6 +201,7 @@ function FormHA() {
                 prev="/formGF"
                 next="/formHB"
                 // validateForm={validateForm}
+                formType="autopsy"
               />
               <OverlayCard
                 isVisible={!isValid}

@@ -13,6 +13,8 @@ import Table from "../child-comp/Table.jsx";
 import DropDown from "../child-comp/DropDown.jsx";
 import Table1 from "../child-comp/Table1.jsx";
 import CSTButton from "../child-comp/CSTButton.jsx";
+import OverlayCard from "../OverlayCard.jsx";
+import useFormValidation from "../../../utils/custom_validation_hook.js";
 
 function FormB18() {
   var formb16 = setLocalStorage("formb16", {
@@ -80,21 +82,44 @@ function FormB18() {
     };
   }, []);
 
+  const { isValid, errors, setErrors } = useFormValidation(formB16, [
+    "B16",
+  ]);
+
+//   const handleChangeWithValidation = (e) => {
+//     const { name, value } = e.target;
+//     let validatedValue = value;
+//     let error = "";
+
+//     setFormA3((prevValue) => ({ ...prevValue, [name]: validatedValue }));
+
+//     // Perform additional required validation
+//     switch (name) {
+//         case "B16":
+//             error = error || validateRequired(validatedValue);
+//             break;
+//         default:
+//             break;
+//     }
+
+//     setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+// };
+
   return (
     <div>
       <div className="header">
-                <div className="burger-menu" onClick={toggleSidebar}>
-                &#9776;
-                </div>
-                <Heading h2="Community Survey Tool"></Heading>
+        <div className="burger-menu" onClick={toggleSidebar}>
+          &#9776;
+        </div>
+        <Heading h2="Community Survey Tool"></Heading>
       </div>
       <section id='site-info' className="form-main">
-                {isSidebarVisible && (
-                <>
-                    <SidePanel id={"11"} />
-                    <div className="grayedover" onClick={toggleSidebar}></div>
-                </>
-                )}
+        {isSidebarVisible && (
+          <>
+            <SidePanel id={"11"} />
+            <div className="grayedover" onClick={toggleSidebar}></div>
+          </>
+        )}
         <div className="siteInfo">
           <div className="formhdr">
             <div>
@@ -123,6 +148,7 @@ function FormB18() {
               byDefault={formB16.B16}
             />
 
+            <div className="button-container">
             <CSTButton
               formName="formb16"
               formData={formB16}
@@ -131,6 +157,11 @@ function FormB18() {
               prevText="Previous"
               nextText="Save & Next"
             />
+              <OverlayCard
+                isVisible={!isValid}
+                message="(Please fill all required fields to proceed)"
+              />
+            </div>
           </div>
         </div>
       </section>
